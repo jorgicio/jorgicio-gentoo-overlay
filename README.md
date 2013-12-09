@@ -37,3 +37,4 @@ List of packages (at the moment):
  * **gnome-base/gnome-core-apps**: A slightly modified version of the package, with optional use-flag "web", for optional installation of Epiphany (and its dependencies).
  * **gnome-base/gnome-extra-apps**: A slightly modified version of the package, with optional use-flags "im" & "totem", for optional installation of Empathy and Totem (and their dependencies). 
  * **net-misc/hotot**: A slightly modified version of the official package from the Gentoo Portage tree, but changed in its 9999 version.
+ * **www-client/midori**: A lightweight web browser. Uses Vala and WebKit. Taken from the Elementary overlay.
