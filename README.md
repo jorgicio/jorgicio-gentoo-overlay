@@ -35,5 +35,4 @@ List of packages (at the moment):
  * **app-office/stickynotesnix**: Simple stickynotes. Made in Python.
  * **gnome-extra/gpaste**: The Gpaste daemon and gnome-shell extension. This is the clipboard for GNOME Shell.
  * **gnome-base/gnome-core-apps**: A slightly modified version of the package, with optional use-flag "web", for optional installation of Epiphany (and its dependencies).
- * **gnome-base/gnome-extra-apps**: A slightly modified version of the package, with optional use-flags "im" & "totem", for optional installation of Empathy and Totem (and their dependencies).
- * **app-editors/pyroom**: A free-distraction editor, entirely made in Python.
+ * **gnome-base/gnome-extra-apps**: A slightly modified version of the package, with optional use-flags "im" & "totem", for optional installation of Empathy and Totem (and their dependencies). 
