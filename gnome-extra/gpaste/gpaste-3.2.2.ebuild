@@ -13,7 +13,7 @@ RESTRICT="nomirror"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="applet bash-completion +gnome-shell +vala zsh-completion"
+IUSE="applet bash-completion +gnome-shell +vala zsh-completion +systemd"
 
 DEPEND=">=dev-libs/glib-2.30:2
 	>=sys-devel/gettext-0.17
@@ -39,6 +39,10 @@ G2CONF="
 
 
 REQUIRED_USE="|| ( gnome-shell applet )"
+
+src_configure(){
+	$(use_enable systemd)
+}
 
 src_install() {
 	use bash-completion && dobashcomp data/completions/gpaste
