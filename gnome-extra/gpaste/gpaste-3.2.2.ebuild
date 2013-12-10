@@ -41,7 +41,8 @@ G2CONF="
 REQUIRED_USE="|| ( gnome-shell applet )"
 
 src_configure(){
-	$(use_enable systemd)
+	econf \
+		$(use_enable systemd)
 }
 
 src_install() {
