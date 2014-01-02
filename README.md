@@ -40,3 +40,4 @@ List of packages (at the moment):
  * **www-client/midori:** A lightweight web browser. Uses Vala and WebKit. Taken from the [Elementary](https://github.com/pimvullers/elementary) overlay.
  * **x11-libs/granite:** As an optional dependency for Midori browser.
  * **x11-drivers/wizardpen:** Drivers for several Genius tablet models.
+ * **app-admin/cpu-g:** The Linux alternative for CPU-Z. Useful for watching all information about your PC/Laptop's hardware.
