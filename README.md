@@ -41,4 +41,4 @@ List of packages (at the moment):
  * **x11-libs/granite:** As an optional dependency for Midori browser.
  * **x11-drivers/wizardpen:** Drivers for several Genius tablet models.
  * **app-admin/cpu-g:** The Linux alternative for CPU-Z. Useful for watching all information about your PC/Laptop's hardware.
- * **net-misc/telegram-cli:** A command-line Telegram client. Thanks to Vysheng and [his Github Repository](https://github.com/vysheng/tg), specially for the ebuild.
+ * **net-misc/telegram-cli:** A command-line [Telegram](http://telegram.org) client. Thanks to Vysheng and [his Github Repository](https://github.com/vysheng/tg), specially for the ebuild.
