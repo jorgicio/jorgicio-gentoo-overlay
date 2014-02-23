@@ -26,7 +26,8 @@ DEPEND=">=dev-libs/glib-2.30:2
 	>=dev-lang/vala-0.22.0:0.22[vapigen]"
 RDEPEND="${DEPEND}
 	bash-completion? ( app-shells/bash )
-	gnome-shell? ( >gnome-base/gnome-shell-3.3.2 )
+	gnome-shell? ( >gnome-base/gnome-shell-3.3.2 
+	<gnome-base/gnome-shell-3.10 )
 	zsh-completion? ( app-shells/zsh app-shells/zsh-completion )
 	systemd? ( sys-apps/systemd )"
 
