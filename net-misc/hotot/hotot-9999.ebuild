@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_DEPEND="gtk? 2"
+PYTHON_DEPEND="gtk? 2 3"
 PYTHON_COMPAT=( python{2_6,2_7} )
 
 inherit cmake-utils git-2 python-single-r1
@@ -16,13 +16,14 @@ EGIT_REPO_URI="git://github.com/ManiacTwister/Hotot.git"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="chrome gtk kde qt4"
+IUSE="chrome gtk gtk2 gtk3 kde qt4"
 
-REQUIRED_USE="|| ( chrome gtk qt4 )"
+REQUIRED_USE="|| ( chrome gtk2 gtk3 qt4 )"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
-	gtk? ( dev-python/pywebkitgtk )
+	gtk2? ( dev-python/pywebkitgtk )
+	gtk3? ( dev-python/pygobject )
 	qt4? ( dev-qt/qtwebkit:4
 		kde? ( kde-base/kdelibs ) )"
 DEPEND="${RDEPEND}
@@ -43,8 +44,9 @@ src_configure() {
 		${mycmakeargs}
 		$(cmake-utils_use_with chrome CHROME)
 		$(cmake-utils_use_with gtk GTK)
-		$(cmake-utils_use_with gtk GTK2)
-		-DWITH_GTK3=ON
+		$(cmake-utils_use_with gtk2 GTK2)
+		$(cmake-utils_use_with gtk3 GTK3)
+		$(cmake-utils_use_with gtk3 GIR)
 		$(cmake-utils_use_with kde KDE)
 		$(cmake-utils_use_with qt4 QT)
 		-DPYTHON_EXECUTABLE=${PYTHON} )
