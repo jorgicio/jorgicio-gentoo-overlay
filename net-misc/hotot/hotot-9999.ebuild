@@ -11,7 +11,7 @@ inherit cmake-utils git-2 python-single-r1
 
 DESCRIPTION="lightweight & open source microblogging client"
 HOMEPAGE="http://hotot.org"
-EGIT_REPO_URI="git://github.com/ManiacTwister/Hotot.git"
+EGIT_REPO_URI="git://github.com/lyricat/Hotot.git"
 
 LICENSE="LGPL-3"
 SLOT="0"
