@@ -34,11 +34,6 @@ List of packages (at the moment):
  * **app-laptop/laptop-detect:** Application for detecting laptops. Used by [Prey](http://preyproject.com) ([app-laptop/prey](https://packages.gentoo.org/package/app-laptop/prey)), a best known tool for recovering stolen laptops.
  * **app-office/stickynotesnix:** Simple stickynotes. Made in Python.
  * **gnome-extra/gpaste**: The [Gpaste](http://www.imagination-land.org/posts/2013-10-22-gpaste-3.2.2-released.html) daemon and gnome-shell extension. This is the clipboard for GNOME Shell.
- * **gnome-base/gnome-core-apps:** A slightly modified version of [the package](https://packages.gentoo.org/package/gnome-base/gnome-core-apps), with optional use-flag "web", for optional installation of Epiphany (and its dependencies).
- * **gnome-base/gnome-extra-apps:** A slightly modified version of [the package](https://packages.gentoo.org/package/gnome-base/gnome-extra-apps), with optional use-flags "im" & "totem", for optional installation of Empathy and Totem (and their dependencies). 
- * **net-misc/hotot:** A slightly modified version of [the official package](https://packages.gentoo.org/package/net-misc/hotot) from the Gentoo Portage tree, but changed in its 9999 version.
- * **www-client/midori:** A lightweight web browser. Uses Vala and WebKit. Taken from the [Elementary](https://github.com/pimvullers/elementary) overlay.
- * **x11-libs/granite:** As an optional dependency for Midori browser.
  * **x11-drivers/wizardpen:** Drivers for several Genius tablet models.
  * **app-admin/cpu-g:** The Linux alternative for CPU-Z. Useful for watching all information about your PC/Laptop's hardware.
  * **net-misc/telegram-cli:** A command-line [Telegram](http://telegram.org) client. Thanks to Vysheng and [his Github Repository](https://github.com/vysheng/tg), specially for the ebuild.
