@@ -4,7 +4,6 @@
 
 EAPI=5
 
-KDE_LINGUAS="en es de"
 inherit kde4-base
 
 DESCRIPTION="KDE4 plasmoid for viewing capslocks and numlocks."
