@@ -40,3 +40,4 @@ List of packages (at the moment):
  * **app-office/kingsoft-office:** A Qt-Based Office. Thanks to [Tim Roes](http://github.com/timroes/) for the [ebuilds](http://github.com/timroes/local-portage).
  * **media-fonts/symbolfonts:** Some font used as a dependendency for Kingsoft Office. Also from Tim Roes.
  * **kde-misc/plasmoid-capslockinfo:** Capslock and Numlock information shown in a plasmoid.
+ * **media-fonts/oxygen-fonts:** A Git version of [the original package](http://packages.gentoo.org/package/media-fonts/oxygen-fonts) taken from the official repo.
