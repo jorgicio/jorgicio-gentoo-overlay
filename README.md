@@ -40,3 +40,4 @@ List of packages (at the moment):
  * **app-office/kingsoft-office:** A Qt-Based Office. Thanks to [Tim Roes](http://github.com/timroes/) for the [ebuilds](http://github.com/timroes/local-portage).
  * **media-fonts/symbolfonts:** Some font used as a dependendency for Kingsoft Office. Also from Tim Roes.
  * **kde-misc/plasmoid-capslockinfo:** Capslock and Numlock information shown in a plasmoid.  
+ * **net-wireless/create_ap:** An app to create a wireless access point. Thanks to [its author](https://github.com/oblique).
