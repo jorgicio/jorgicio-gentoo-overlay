@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.45.0363
+Name=Copy
+GenericName=Desktop client for Copy
+GenericName[es]=Cliente de escritorio de Copy
+Comment=See your files on the cloud
+Comment[es]=Vea sus archivos en la nube
+Exec=/opt/bin/copyagent
+Categories=Network;
+Icon=copy.png
