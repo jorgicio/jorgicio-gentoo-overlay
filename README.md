@@ -41,3 +41,4 @@ List of packages (at the moment):
  * **media-fonts/symbolfonts:** Some font used as a dependendency for Kingsoft Office. Also from Tim Roes.
  * **kde-misc/plasmoid-capslockinfo:** Capslock and Numlock information shown in a plasmoid.  
  * **net-wireless/create_ap:** An app to create a wireless access point. Thanks to [its author](https://github.com/oblique).
+ * **net-misc/copy:** (Not) Yet another cloud storage service.
