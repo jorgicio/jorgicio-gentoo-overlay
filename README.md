@@ -31,7 +31,7 @@ That's all, folks!
 List of packages (at the moment):
 ---------------------------------
 
- * **[/master/tree/app-laptop/laptop-detect](app-laptop/laptop-detect):** Application for detecting laptops. Used by [Prey](http://preyproject.com) ([app-laptop/prey](https://packages.gentoo.org/package/app-laptop/prey)), a best known tool for recovering stolen laptops.
+ * **[app-laptop/laptop-detect]:** Application for detecting laptops. Used by [Prey](http://preyproject.com) ([app-laptop/prey](https://packages.gentoo.org/package/app-laptop/prey)), a best known tool for recovering stolen laptops.
  * **app-office/stickynotesnix:** Simple stickynotes. Made in Python.
  * **gnome-extra/gpaste**: The [Gpaste](http://www.imagination-land.org/posts/2013-10-22-gpaste-3.2.2-released.html) daemon and gnome-shell extension. This is the clipboard for GNOME Shell.
  * **x11-drivers/wizardpen:** Drivers for several Genius tablet models.
