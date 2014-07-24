@@ -4,7 +4,7 @@
 
 EAPI=5
 
-KDE_LINGUAS="de fr it"
+KDE_LINGUAS="cs de es fr it"
 inherit kde4-base
 
 DESCRIPTION="KDE4 plasmoid for redshift."
