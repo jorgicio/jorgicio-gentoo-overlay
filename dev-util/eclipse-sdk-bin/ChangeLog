@@ -1,0 +1,33 @@
+*eclipse-sdk-bin-4.3.2 (26 Mar 2014)
+
+  26 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +eclipse-sdk-bin-4.3.2.ebuild,
+  -eclipse-sdk-bin-4.3.1-r1.ebuild, -eclipse-sdk-bin-4.3.1.ebuild:
+  [dev-util/eclipse-bin] Version bump. Cleanup old.
+
+*eclipse-sdk-bin-4.3.1-r1 (06 Mar 2014)
+
+  06 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +eclipse-sdk-bin-4.3.1-r1.ebuild,
+  -eclipse-sdk-bin-4.3.ebuild:
+  [dev-util/eclipse-bin] Fix slot in launch script. Thanks to Euank.
+
+*eclipse-sdk-bin-4.3.1 (18 Jan 2014)
+
+  18 Jan 2014; Manuel Rüger <mrueg@gentoo.org> +eclipse-sdk-bin-4.3.1.ebuild:
+  [dev-util/eclipse-sdk-bin] Version bump.
+
+  22 May 2013; Manuel Rueger (mrueg) gentoo@rueg.eu
+  eclipse-sdk-bin-4.2.2.ebuild:
+  dev-util/eclipse-sdk-bin: Silence repoman
+
+*eclipse-sdk-bin-4.2.2 (02 Mar 2013)
+
+  02 Mar 2013; Manuel Rueger (mrueg) gentoo@rueg.eu
+  +eclipse-sdk-bin-4.2.2.ebuild, -eclipse-sdk-bin-4.2.1.ebuild:
+  dev-util/eclipse-sdk-bin: Version bump, ebuild from java-overlay
+
+*eclipse-sdk-bin-4.2.1 (21 Oct 2012)
+
+  21 Oct 2012; Manuel Rueger (mrueg) gentoo@rueg.eu
+  +eclipse-sdk-bin-4.2.1.ebuild, +files/eclipse-bin-4.2,
+  +files/eclipserc-bin-4.2, +metadata.xml:
+  dev-util/eclipse-sdk-bin: Ebuild from java-overlay with minor changes
