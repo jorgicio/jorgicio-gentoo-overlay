@@ -9,7 +9,7 @@
 # Licensed under the GNU General Public License, version 2
 #
 
-SLOT="4.3"
+SLOT="4.4"
 
 [ -f "/etc/eclipserc-bin-${SLOT}" ] && . "/etc/eclipserc-bin-${SLOT}"
 [ -f "$HOME/gentoo/.eclipserc" ] && . "$HOME/gentoo/.eclipserc"
