@@ -46,3 +46,4 @@ List of packages (at the moment):
  * **[media-tv/popcorntime-bin](/media-tv/popcorntime-bin):** A good app for watching online movies from torrents. An alternative to Neflix.
  * **[dev-util/eclipse-sdk-bin](/dev-util/eclipse-sdk-bin):** The latest version of this IDE: 4.4 Luna.
  * **[sys-apps/inxi](/sys-apps/inxi):** A very detailed hardware view.
+ * **[net-dns/dnscrypt-proxy](/net-dns/dnscrypt-proxy):** A DNS proxy for surfing the web securely.
