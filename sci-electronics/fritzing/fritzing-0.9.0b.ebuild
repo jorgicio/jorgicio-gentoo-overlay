@@ -8,7 +8,7 @@ inherit eutils qt4-r2
 
 DESCRIPTION="Electronic Design Automation"
 HOMEPAGE="http://fritzing.org/"
-SRC_URI="http://fritzing.org/download/${PV}/source-tarball/${P}.source.tar_1.bz2"
+SRC_URI="http://fritzing.org/download/${PV}/source-tarball/${P}.source.tar_1.bz2 -> ${P}.source.tar.bz2"
 
 LICENSE="CC-BY-SA-3.0 GPL-2 GPL-3"
 SLOT="0"
