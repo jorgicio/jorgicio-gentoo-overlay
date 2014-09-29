@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils fdo-mime multilib
 
 DESCRIPTION="Watch torrent movies instantly"
-HOMEPAGE="http://www.time4popcorn.eu"
+HOMEPAGE="http://popcorntime.io"
 SRC_URI="
 x86?   ( http://cdn.popcorntime.io/build/Popcorn-Time-${PV}-Linux32.tar.xz )
 amd64? ( http://cdn.popcorntime.io/build/Popcorn-Time-${PV}-Linux64.tar.xz )"
