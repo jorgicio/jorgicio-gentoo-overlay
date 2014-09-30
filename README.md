@@ -13,12 +13,15 @@ First, install Layman from the official Portage tree. Must use the use-flag USE=
 
 emerge layman
 
-Then, in the section "overlays" in the /etc/layman/layman.cfg, add the following URL:
-https://raw.github.com/jorgicio/jorgicio-gentoo/master/jorgicio-repo.xml
+~Then, in the section "overlays" in the /etc/layman/layman.cfg, add the following URL:
+https://raw.github.com/jorgicio/jorgicio-gentoo/master/jorgicio-repo.xml~
+
+That's not necessary!!! Now this overlay is official and added to the list. Check it [here](http://gpo.zugaina.org/Overlays).
 
 And then, run the following command:
 
-layman -f -a jorgicio-gentoo
+~layman -f -a jorgicio-gentoo~
+layman -f -a jorgicio
 
 And you're done.
 
