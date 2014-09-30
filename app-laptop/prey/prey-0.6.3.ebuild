@@ -88,7 +88,7 @@ ${PN} configuration is only accessible as root"
 	rm -rf "${S}"/modules/system || die
 
 	epatch "${FILESDIR}"/${P}-cron-functions.patch \
-		"${FILESDIR}"/${PN}-0.5.4-gtk-ui.patch \
+		"${FILESDIR}"/${P}-gtk-ui.patch \
 		"${FILESDIR}"/${PN}-0.5.3-mplayer-support.patch
 	sed -i -e 's,readonly base_path=`dirname "$0"`,readonly \
 		base_path="/usr/share/prey",' \
