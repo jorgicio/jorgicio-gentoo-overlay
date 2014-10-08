@@ -44,5 +44,9 @@ src_install(){
 	insinto /
 	doins -r usr
 	fperms +x /usr/bin/megasync
+}
+pkg_postinst(){
+	elog "Doing a symlink..."
 	dosym /usr/lib/libcrypto++.so.0.0.0 /usr/lib/libcrypto++.so.9
+	elog "Symlink done!"
 }
