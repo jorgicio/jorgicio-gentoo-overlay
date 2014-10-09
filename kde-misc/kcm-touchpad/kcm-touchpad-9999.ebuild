@@ -4,17 +4,12 @@
 
 EAPI=5
 
-inherit kde4-base
+inherit kde4-base git-2
 
 DESCRIPTION="KCM, daemon and applet for touchpad"
 HOMEPAGE="https://projects.kde.org/projects/playground/utils/kcm-touchpad"
-if [[ "${PV}" == *9999 ]]; then
-	KEYWORDS=""
-else
-	SRC_URI="http://quickgit.kde.org/?p=kcm-touchpad.git&a=snapshot&t=v${PV} -> ${P}.tar.gz"
-	S=${WORKDIR}/${PN}
-	KEYWORDS="~amd64"
-fi
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/sanya-m/kde-touchpad-config/"
 LICENSE="GPL-2+"
 SLOT="4"
 IUSE="debug"
