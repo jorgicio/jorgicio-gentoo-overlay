@@ -53,4 +53,4 @@ List of packages (at the moment):
  * **[net-misc/megasync](net-misc/megasync):** The Official Qt-based app for syncing your [MEGA](http://mega.co.nz) account. It's very well integrated with Dolphin manager. There's also a Nautilus plugin, but I don't support it because I don't use GNOME, so if you want it, create the ebuild yourself (or ask another but me) :P
  * **[app-laptop/prey](/app-laptop/prey):** A slightly modified version of the ebuild. Originally taken from the official repos, but updated to the latest version (the version in official repos is outdated). It also has integration with laptop-detect.
  * **Faba, Moka icons and its variants.** Check them there, on [x11-themes](/x11-themes).
-* **[app-i10n/man-pages-es](/app-i10n/man-pages-es):** The man pages in Spanish, taken from Debian packages.
+ * **[app-i10n/man-pages-es](/app-i10n/man-pages-es):** The man pages in Spanish, taken from Debian packages.
