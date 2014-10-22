@@ -13,8 +13,8 @@ RESTRICT="mirror"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="+plugins ldns"
+KEYWORDS=""
 RDEPEND="dev-libs/libsodium
 		ldns? ( net-libs/ldns )"
 
