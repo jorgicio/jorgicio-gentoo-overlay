@@ -54,3 +54,4 @@ List of packages (at the moment):
  * **[app-laptop/prey](/app-laptop/prey):** A slightly modified version of the ebuild. Originally taken from the official repos, but updated to the latest version (the version in official repos is outdated). It also has integration with laptop-detect.
  * **Faba, Moka icons and its variants.** Check them there, on [x11-themes](/x11-themes).
  * **[app-i18n/man-pages-es](/app-i18n/man-pages-es):** The man pages in Spanish, taken from Debian packages.
+ * **[media-plugins/gimp-paint-studio](/media-plugins/gimp-paint-studio):** A collection of tools and brushes for making GIMP a very comfortable experience.
