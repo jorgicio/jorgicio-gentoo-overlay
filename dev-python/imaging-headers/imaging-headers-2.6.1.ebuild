@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="*"
 IUSE=""
 
-DEPEND="=dev-python/imaging-${PV}"
+DEPEND=">=dev-python/imaging-${PV}"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
