@@ -40,8 +40,6 @@ List of packages (at the moment):
  * **[x11-drivers/wizardpen](/x11-drivers/wizardpen):** Drivers for several Genius tablet models.
  * **[app-admin/cpu-g](/app-admin/cpu-g):** The Linux alternative for CPU-Z. Useful for watching all information about your PC/Laptop's hardware.
  * **[net-misc/telegram-cli](/net-misc/telegram-cli):** A command-line [Telegram](http://telegram.org) client. Thanks to Vysheng and [his Github Repository](https://github.com/vysheng/tg), specially for the ebuild.
- * **[app-office/wps-office](/app-office/wps-office):** A Qt-Based Office. Thanks to [Tim Roes](http://github.com/timroes/) for the [ebuilds](http://github.com/timroes/local-portage). **UPDATE**: Now it's called WPS Office.
- * **[media-fonts/symbolfonts](/media-fonts/symbolfonts):** Some font used as a dependendency for Kingsoft Office. Also from Tim Roes.
  * **[kde-misc/plasmoid-capslockinfo](/kde-misc/plasmoid-capslockinfo):** Capslock and Numlock information shown in a plasmoid.  
  * **[net-wireless/create_ap](/net-wireless/create_ap):** An app to create a wireless access point. Thanks to [its author](https://github.com/oblique).
  * **[net-misc/copy](/net-misc/copy):** (Not) Yet another cloud storage service.
