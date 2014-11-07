@@ -20,7 +20,6 @@ https://raw.github.com/jorgicio/jorgicio-gentoo/master/jorgicio-repo.xml~~
 
 And then, run the following command:
 
-    ~~layman -f -a jorgicio-gentoo~~
     layman -f -a jorgicio
 
 And you're done.
