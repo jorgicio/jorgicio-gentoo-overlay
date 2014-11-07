@@ -11,7 +11,7 @@ Usage
 
 First, install Layman from the official Portage tree. Must use the use-flag USE="git" at the moment of installation.
 
-emerge layman
+    emerge layman
 
 ~~Then, in the section "overlays" in the /etc/layman/layman.cfg, add the following URL:
 https://raw.github.com/jorgicio/jorgicio-gentoo/master/jorgicio-repo.xml~~
@@ -20,14 +20,14 @@ https://raw.github.com/jorgicio/jorgicio-gentoo/master/jorgicio-repo.xml~~
 
 And then, run the following command:
 
-~~layman -f -a jorgicio-gentoo~~
-layman -f -a jorgicio
+    ~~layman -f -a jorgicio-gentoo~~
+    layman -f -a jorgicio
 
 And you're done.
 
 If you want to refresh the overlay (and all another overlays), just type:
 
-layman -S
+    layman -S
 
 That's all, folks!
 
