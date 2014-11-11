@@ -17,7 +17,11 @@ IUSE="haveged systemd"
 
 RDEPEND="net-wireless/hostapd
 	net-misc/bridge-utils
-	net-misc/dhcp
+	|| (
+		net-misc/dhcp
+		net-misc/dhcpcd
+		net-misc/pump
+	)
 	net-dns/dnsmasq
 	net-firewall/iptables
 	sys-apps/iproute2
