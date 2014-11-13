@@ -52,5 +52,4 @@ List of packages (at the moment):
  * **Faba, Moka icons and its variants.** Check them there, on [x11-themes](/x11-themes).
  * **[app-i18n/man-pages-es](/app-i18n/man-pages-es):** The man pages in Spanish, taken from Debian packages.
  * **[media-plugins/gimp-paint-studio](/media-plugins/gimp-paint-studio):** A collection of tools and brushes for making GIMP a very comfortable experience.
- * **[dev-python/imaging-headers](/dev-python/imaging-headers):** Headers for the Funtoo-based Python Imaging Library (now Pillow). **WARNING: ONLY FOR FUNTOO! If using other Gentoo-based distro, don't install it!**
  * **[dev-python/sexy-python](/dev-python/sexy-python):** Python bindings for libsexy.
