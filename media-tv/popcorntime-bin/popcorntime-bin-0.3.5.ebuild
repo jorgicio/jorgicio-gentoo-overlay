@@ -26,7 +26,7 @@ RDEPEND="dev-libs/nss
 	x11-libs/gtk+:2
 	!app-arch/deb2targz"
 
-S="${WORKDIR}/Popcorn-Time"
+S="${WORKDIR}"
 
 src_install() {
 	exeinto /opt/${PN}
