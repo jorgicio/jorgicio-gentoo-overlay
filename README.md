@@ -53,3 +53,4 @@ List of packages (at the moment):
  * **[app-i18n/man-pages-es](/app-i18n/man-pages-es):** The man pages in Spanish, taken from Debian packages.
  * **[media-plugins/gimp-paint-studio](/media-plugins/gimp-paint-studio):** A collection of tools and brushes for making GIMP a very comfortable experience.
  * **[dev-python/sexy-python](/dev-python/sexy-python):** Python bindings for libsexy.
+ * **[kde-misc/raecas](/kde-misc/raecas):** A KDE Plasmoid for the Spanish-language users who want to query the RAE dictionary (Diccionario de la Real Academia Española).
