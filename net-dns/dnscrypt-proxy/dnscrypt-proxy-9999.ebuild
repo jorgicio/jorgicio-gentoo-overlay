@@ -4,17 +4,22 @@
 
 EAPI=5
 
-inherit git-2 eutils flag-o-matic systemd user
+inherit eutils flag-o-matic systemd user git-2
 
 DESCRIPTION="A tool for securing communications between a client and a DNS resolver"
 HOMEPAGE="http://dnscrypt.org/"
-EGIT_REPO_URI="https://github.com/jedisct1/dnscrypt-proxy"
 RESTRICT="mirror"
 
 LICENSE="ISC"
 SLOT="0"
+if [[ ${PV} == "9999" ]];then
+	EGIT_REPO_URI="https://github.com/jedisct1/${PN}"
+	KEYWORDS=""
+else
+	SRC_URI="http://download.dnscrypt.org/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 IUSE="+plugins ldns"
-KEYWORDS=""
 RDEPEND="dev-libs/libsodium
 		ldns? ( net-libs/ldns )"
 
