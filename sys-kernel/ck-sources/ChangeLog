@@ -1,0 +1,69 @@
+# ChangeLog for sys-kernel/ck-sources
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*ck-sources-3.18.1 (17 Dec 2014)
+*ck-sources-3.17.7 (17 Dec 2014)
+*ck-sources-3.14.27 (17 Dec 2014)
+*ck-sources-3.10.63 (17 Dec 2014)
+
+  17 Dec 2014; Harold Naparst <harold@alum.mit.edu> +ck-sources-3.10.63.ebuild,
+  +ck-sources-3.14.27.ebuild, +ck-sources-3.17.7.ebuild,
+  +ck-sources-3.18.1.ebuild:
+  Add ck-sources-3.{10.63,18.1,14.27,17.7}
+
+*ck-sources-3.18.0 (11 Dec 2014)
+
+  11 Dec 2014; Harold Naparst <harold@alum.mit.edu> +ck-sources-3.18.0.ebuild:
+  Add ck-sources-3.18.0.ebuild
+
+*ck-sources-3.17.6 (10 Dec 2014)
+
+  10 Dec 2014; Harold Naparst <harold@alum.mit.edu> +ck-sources-3.17.6.ebuild:
+  Add ck-sources-3.17.6.ebuild
+
+  24 Nov 2014; Harold Naparst <harold@alum.mit.edu> metadata.xml:
+  Change Harold Naparst to primary maintainer.
+
+*ck-sources-3.10.61 (23 Nov 2014)
+
+  23 Nov 2014; Harold Naparst <harold@alum.mit.edu> +ck-sources-3.10.61.ebuild:
+  add ck-sources-3.10.61.ebuild
+
+*ck-sources-3.17.4 (23 Nov 2014)
+
+  23 Nov 2014; Harold Naparst <harold@alum.mit.edu> +ck-sources-3.17.4.ebuild:
+  Add ck-sources-3.17.4.ebuild
+
+  21 Nov 2014; Harold Naparst <harold@alum.mit.edu> metadata.xml:
+  Removed kvm useflag
+
+  21 Nov 2014; Harold Naparst <harold@alum.mit.edu> ChangeLog:
+  Removed unneeded pre- and post-CK patches.
+  removed ck-sources-3.10.41
+
+  21 Nov 2014; Harold Naparst <harold@alum.mit.edu> ck-sources-3.10.60.ebuild:
+  Added ck-sources-3.10.60.ebuild with dlan's patch to the ck patch series.
+
+  20 Nov 2014; Harold Naparst <harold@alum.mit.edu> ChangeLog:
+  Add ck-sources-3.10.60 DOES NOT WORK. DO NOT USE.
+
+  20 Nov 2014; Harold Naparst <harold@alum.mit.edu> ChangeLog:
+  Added ck-sources-3.10.41.ebuild ck-sources-3.12.32.ebuild
+  ck-sources-3.14.24.ebuild ck-sources-3.17.3.ebuild ck-sources-3.4.104.ebuild
+  Added harold@alum.mit.edu as maintainer in metadata.xml
+  commented out kvm use flag in metadata.xml
+
+*ck-sources-3.17.2 (18 Nov 2014)
+*ck-sources-3.14.4 (18 Nov 2014)
+
+  18 Nov 2014; Harold Naparst <harold@alum.mit.edu> +ck-sources-3.14.4.ebuild,
+  +ck-sources-3.17.2.ebuild,
+  +files/ck-sources-3.4-3.5-PostCK-Sched_Fix_Race_In_Task_Group-aCOSwt_P5.patch
+  , +files/ck-sources-3.4.9-calc_load_idle-aCOSwt_P3.patch,
+  +files/ck-sources-3.4-3.5-PreCK-Sched_Fix_Race_In_Task_Group-aCOSwt_P4.patch,
+  +files/ck-sources-3.4.81-update_cpu_load-aCOSwt_P9.patch,
+  +files/ck-sources-3.6-Fix_Boot_Issue_On_Kvm-aCOSwt_P6.patch,
+  +files/ck-sources-3.9-virt_cpu_accounting_gen-aCOSwt_P7.patch, +metadata.xml:
+  add ck-sources-3.17.2
+

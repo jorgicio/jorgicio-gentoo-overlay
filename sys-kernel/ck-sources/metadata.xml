@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>harold@alum.mit.edu</email>
+		<name>Harold Naparst</name>
+		<description>Active Maintainer, Assign bugs</description>
+	</maintainer>
+	<maintainer>
+		<email>eric-f.garioud@wanadoo.fr</email>
+		<name>Eric F. GARIOUD</name>
+		<description>Previous Maintainer, CC bugs</description>
+	</maintainer>
+	<use>
+		<flag name='bfsonly'>BFS by itslef vs The full ck patchset</flag>
+		<flag name='experimental'>Allow experimental code. Can break or degrade performances. (UNSUPPORTED)</flag>
+		<flag name='urwlocks'>Use upgradable read/write locks in place of the grq spinlock. (EXPERIMENTAL)</flag>
+		<flag name='deblob'>Remove binary blobs from kernel sources to provide libre license compliance.</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+	</upstream>
+</pkgmetadata>
