@@ -24,13 +24,16 @@ RDEPEND="dev-libs/nss
 	media-fonts/corefonts
 	media-libs/alsa-lib
 	x11-libs/gtk+:2
-	!app-arch/deb2targz"
+	net-libs/nodejs"
 
 S="${WORKDIR}"
 
 src_install() {
 	exeinto /opt/${PN}
-	doexe Popcorn-Time libffmpegsumo.so nw.pak
+	doexe Popcorn-Time
+
+	insinto /opt/${PN}
+	doins libffmpegsumo.so nw.pak package.nw
 
 	dosym /usr/$(get_libdir)/libudev.so.1 /opt/${PN}/libudev.so.0
 	make_wrapper ${PN} ./Popcorn-Time /opt/${PN} /opt/${PN} /opt/bin
