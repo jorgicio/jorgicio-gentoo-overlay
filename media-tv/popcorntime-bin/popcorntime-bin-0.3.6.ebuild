@@ -34,8 +34,9 @@ src_install() {
 
 	insinto /opt/${PN}
 	doins libffmpegsumo.so nw.pak package.nw
+	fperms 755 /opt/${PN}/libffmpegsumo.so
 
-	dosym /usr/$(get_libdir)/libudev.so.1 /opt/${PN}/libudev.so.0
+	dosym /usr/$(get_libdir)/libudev.so /opt/${PN}/libudev.so.0
 	make_wrapper ${PN} ./Popcorn-Time /opt/${PN} /opt/${PN} /opt/bin
 
 	insinto /usr/share/applications
