@@ -52,7 +52,7 @@ src_install(){
 	insinto /usr/share/pixmaps
 	insopts -m644
 	doins "${S}"/lib/conf/gui/pixmaps/${PN}.png
-	make_desktop_entry 'prey config gui' "Prey Configuration" ${PN} "System;Monitor"
+	make_desktop_entry '/opt/prey/bin/prey config gui' "Prey Configuration" ${PN} "System;Monitor"
 	insinto /etc/cron.d
 	insopts -m644
 	doins "${FILESDIR}/prey.cron"
