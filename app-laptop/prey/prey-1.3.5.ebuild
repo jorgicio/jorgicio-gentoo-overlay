@@ -45,14 +45,16 @@ src_install(){
 	insopts -m755
 	doins -r lib
 	doins -r node_modules
+	insinto /opt/${PN}
+	insopts -m644
 	doins package.json
-	insinto /opt/${PN}/bin
-	doins "${S}"/bin/${PN}
-	fperms 755 /opt/${PN}/bin/${PN}
+	doins ${PN}.conf.default
+	exeinto /opt/${PN}/bin
+	doexe "${S}"/bin/${PN}
 	insinto /usr/share/pixmaps
 	insopts -m644
 	doins "${S}"/lib/conf/gui/pixmaps/${PN}.png
-	make_desktop_entry '/opt/prey/bin/prey config gui' "Prey Configuration" ${PN} "System;Monitor"
+	make_desktop_entry 'prey config gui' "Prey Configuration" ${PN} "System;Monitor"
 	insinto /etc/cron.d
 	insopts -m644
 	doins "${FILESDIR}/prey.cron"

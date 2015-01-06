@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /opt/prey/bin/prey
+exec /opt/prey/bin/prey "$@"
