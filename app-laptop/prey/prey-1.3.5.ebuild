@@ -30,7 +30,7 @@ DEPEND="
 		|| ( media-gfx/scrot media-gfx/imagemagick )
 		app-laptop/laptop-detect
 		|| ( media-video/mplayer[encode,jpeg,v4l] media-tv/xawtv )
-		sys-apps/traceroute
+		net-analyzer/traceroute
 		|| ( gnome-extra/zenity kde-base/kdialog )
 		media-sound/mpg123
 		media-sound/pulseaudio
