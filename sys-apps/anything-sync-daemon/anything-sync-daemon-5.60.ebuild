@@ -29,6 +29,7 @@ src_install() {
 	install -Dm755 "common/${PN}" "${D}/usr/bin/${PN}"
 	install -Dm644 "common/asd.conf" "${D}/etc/asd.conf"
 	install -Dm755 "common/asd.cron.hourly" "${D}/etc/cron.hourly/asd-update"	
+	dosym "/usr/bin/${PN}" "/usr/bin/asd"
 
 	if use systemd ; then
 		install -Dm644 "init/asd-resync.service" "${D}/usr/lib/systemd/system/asd-resync.service"
