@@ -9,21 +9,14 @@ SRC_URI="http://repo-ck.com/source/${PN}/${P}.tar.xz"
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="systemd +openrc"
+IUSE="systemd"
 
 RDEPEND="
 	app-shells/bash
 	net-misc/rsync
 	virtual/cron
 	systemd? ( sys-apps/systemd )
-	openrc? ( sys-apps/openrc )
 "
-
-REQUIRED_USE="
-	openrc? ( !systemd )
-	systemd? ( !openrc )
-"
-
 
 src_install() {
 	install -Dm755 "common/${PN}" "${D}/usr/bin/${PN}"
@@ -35,9 +28,7 @@ src_install() {
 		install -Dm644 "init/asd-resync.service" "${D}/usr/lib/systemd/system/asd-resync.service"
 		install -Dm644 "init/asd-resync.timer" "${D}/usr/lib/systemd/system/asd-resync.timer"
 		install -Dm644 "init/asd.service" "${D}/usr/lib/systemd/system/asd.service"
-	fi
-
-	if use openrc ; then
+	else
 		install -Dm755 ${FILESDIR}/asd "${D}/etc/init.d/asd"
 	fi
 
