@@ -5,7 +5,7 @@
 
 extra_commands="sync"
 
-_runfile="/var/run/asd"
+_runfile="/var/run/asd.pid"
 
 depend() {
 	need localmount
