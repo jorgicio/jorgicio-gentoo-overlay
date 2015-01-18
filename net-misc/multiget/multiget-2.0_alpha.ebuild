@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="x11-libs/wxGTK:2.8
