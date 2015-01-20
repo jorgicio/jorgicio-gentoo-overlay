@@ -24,6 +24,10 @@ src_install() {
 	emake -j1 DESTDIR="${ED}" \
 		install-openrc-all \
 		$(usex systemd "install-systemd" "")
+	if use !systemd; then
+		exeinto	/etc/init.d
+		doexe ${FILESDIR}/psd
+	fi
 
 	fperms -x /etc/cron.hourly/psd-update
 }
