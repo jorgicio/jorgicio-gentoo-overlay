@@ -38,7 +38,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	tc-is-cross-compiler && cp -pR "${S}" "${S}"-native
+	epatch "${FILESDIR}"/${P}-makefile.patch
+	tc-is-cross-compiler && cp -pR "${S}" "${S}"-nativh
 }
 
 _emake() {
