@@ -37,7 +37,7 @@ src_install(){
 	exeinto /usr/bin
 	doexe ${PN}
 	insinto /usr/share/icons/hicolor
-	doins -r icons
+	doins -r icons/*
 	insinto /usr/share/applications
 	doins ${PN}.desktop
 	doman man/${PN}.6
