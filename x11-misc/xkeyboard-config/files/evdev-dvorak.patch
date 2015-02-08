@@ -1,0 +1,15 @@
+--- evdev.xml.in	2015-02-08 12:58:34.043155947 -0300
++++ evdev.xml.in	2015-02-08 13:00:27.764140338 -0300
+@@ -3833,6 +3833,12 @@
+             <description>Spanish (Latin American, Sun dead keys)</description>
+           </configItem>
+         </variant>
++		<variant>
++			<configItem>
++				<name>dvorak</name>
++				<description>Spanish (Latin American, Dvorak)</description>
++      		</configItem>
++    	</variant>
+       </variantList>
+     </layout>
+     <layout>
