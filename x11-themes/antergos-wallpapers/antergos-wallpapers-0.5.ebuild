@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils unpacker
 
 DESCRIPTION="Wallpapers set taken from the Antergos repos"
-HOMEPAGE=""
+HOMEPAGE="http://antergos.com"
 SRC_URI="
 	x86? ( "http://repo.antergos.info/antergos/i686/${P}-2-any.pkg.tar.xz" )
 	amd64? ( "http://repo.antergos.info/antergos/x86_64/${P}-2-any.pkg.tar.xz" )
@@ -27,7 +27,12 @@ src_unpack(){
 	unpack "${A}"
 }
 
+src_prepare(){
+	sed -i 's/antergos\/wallpapers/backgrounds\/antergos/g;' usr/share/gnome-background-properties/antergos-backgrounds-4-3.xml
+}
+
 src_install(){
-	insinto /
-	doins -r usr
+	insinto /usr/share/backgrounds/antergos
+	doins usr/share/antergos/wallpapers/*
+	doins usr/share/gnome-background-properties/antergos-backgrounds-4-3.xml
 }
