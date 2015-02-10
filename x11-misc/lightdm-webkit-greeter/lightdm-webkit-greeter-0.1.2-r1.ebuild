@@ -13,7 +13,7 @@ SRC_URI="${HOMEPAGE}/trunk/${PV}/+download/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+branding"
+IUSE="branding"
 
 DEPEND="net-libs/webkit-gtk:2
 	x11-misc/lightdm
