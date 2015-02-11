@@ -20,7 +20,6 @@ DEPEND="net-libs/webkit-gtk:2
 	dev-libs/gobject-introspection
 	app-text/gnome-doc-utils
 	dev-util/intltool
-	branding? ( x11-themes/antergos-wallpapers )
 	"
 RDEPEND="${DEPEND}"
 
@@ -46,7 +45,7 @@ src_install(){
 	emake DESTDIR="${D}" install
 	if use branding; then
 		insinto /usr/share/lightdm-webkit/themes
-		doins -r "${FILESDIR}/gentoo-lightdm"
+		doins -r "${FILESDIR}/gentoo"
 	fi
 }
 
