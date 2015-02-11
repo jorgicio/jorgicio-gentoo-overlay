@@ -1,7 +1,0 @@
-[theme]
-name=Antergos
-version=2.0.5
-description=Antergos Theme
-engine=lightdm-webkit-greeter
-url=index.html
-session=mate
