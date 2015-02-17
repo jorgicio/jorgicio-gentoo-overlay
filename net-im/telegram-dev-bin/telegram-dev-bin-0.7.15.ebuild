@@ -15,7 +15,7 @@ SRC_URI="
 
 RESTRICT="mirror"
 LICENSE="GPL-3"
-IUSE=""
+IUSE="updater"
 KEYWORDS="~x86 ~amd64"
 INSTALL_DIR="/opt/telegram"
 SLOT="0"
@@ -26,11 +26,11 @@ S="${WORKDIR}/Telegram"
 
 src_install() {
     insinto "${INSTALL_DIR}"
-    doins -r Telegram Updater
-
-    fperms 777 ${INSTALL_DIR}/Telegram
-    fperms 777 ${INSTALL_DIR}/Updater
-
+	insopts -m755
+    doins -r Telegram 
+	if use updater;then
+		doins -r Updater
+	fi
     make_wrapper "telegram" "${INSTALL_DIR}/Telegram"
     make_desktop_entry "telegram" "Telegram" "telegram" "Messenger"
 }
