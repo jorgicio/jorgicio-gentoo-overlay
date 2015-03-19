@@ -7,11 +7,11 @@ inherit eutils versionator
 
 RESTRICT="strip"
 
-DESCRIPTION="Telegram Desktop Messenger (official client) binary version"
+DESCRIPTION="Telegram Desktop Messenger (official client; dev channel) binary version"
 HOMEPAGE="https://tdesktop.com/"
 SRC_URI="
-	amd64?	( https://updates.tdesktop.com/tlinux/tsetup.${PV}.tar.xz )
-	x86?	( https://updates.tdesktop.com/tlinux32/tsetup32.${PV}.tar.xz )"
+	amd64?	( https://updates.tdesktop.com/tlinux/tsetup.${PV}.dev.tar.xz )
+	x86?	( https://updates.tdesktop.com/tlinux32/tsetup32.${PV}.dev.tar.xz )"
 
 RESTRICT="mirror"
 LICENSE="GPL-3"
@@ -19,15 +19,16 @@ IUSE="updater"
 KEYWORDS="~x86 ~amd64"
 INSTALL_DIR="/opt/telegram"
 SLOT="0"
-DEPEND=""
+DEPEND="!net-im/telegram
+		!net-im/telegram-bin"
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/Telegram"
 
 src_install() {
     insinto "${INSTALL_DIR}"
 	insopts -m755
-    doins -r Telegram
-	if use updater; then
+    doins -r Telegram 
+	if use updater;then
 		doins -r Updater
 	fi
     make_wrapper "telegram" "${INSTALL_DIR}/Telegram"
