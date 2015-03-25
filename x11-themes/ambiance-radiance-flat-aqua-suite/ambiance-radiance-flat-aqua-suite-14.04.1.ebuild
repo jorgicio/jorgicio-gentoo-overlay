@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gtk3"
 
 DEPEND="x11-themes/gtk-engines-murrine
-	gtk3? ( x11-themes/gtk-engines-unico )"
+	gtk3? ( x11-themes/gtk-engines-unico )
+	!=x11-themes/ambiance-radiance-flat-colors-suite-${PV}"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/"
