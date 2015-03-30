@@ -1,2 +1,0 @@
-arch jorgicio/arch/x86-64bit stable
-subarch jorgicio/arch/x86-64bit/subarch/corei7-avx stable
