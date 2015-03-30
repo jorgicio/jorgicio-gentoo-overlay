@@ -1,1 +1,2 @@
-arch jorgicio/arch/x86-64bit testing arch/corei7-avx
+arch jorgicio/arch/x86-64bit stable
+subarch jorgicio/arch/x86-64bit/subarch/corei7-avx stable
