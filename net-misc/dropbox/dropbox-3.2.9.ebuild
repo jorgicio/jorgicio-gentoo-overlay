@@ -33,6 +33,7 @@ RDEPEND="
 		sys-libs/zlib
 		virtual/jpeg
 		dev-qt/qtgui:5
+		dev-python/PyQt5
 		x11-libs/libSM
 		x11-libs/libXinerama
 		x11-libs/libXxf86vm
