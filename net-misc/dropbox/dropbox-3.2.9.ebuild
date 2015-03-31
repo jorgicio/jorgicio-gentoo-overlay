@@ -67,9 +67,9 @@ src_prepare() {
 	else
 		rm -vf librsync.so.1 || die
 	fi
-	mv cffi-0.7.2-py2.7-*.egg dropbox_sqlite_ext-0.0-py2.7.egg distribute-0.6.26-py2.7.egg "${T}" || die
+	mv cffi-0.7.2-py2.7-*.egg requests-1.2.3-py2.7.egg dropbox_sqlite_ext-0.0-py2.7.egg distribute-0.6.26-py2.7.egg "${T}" || die
 	rm -rf *.egg library.zip || die
-	mv "${T}"/cffi-0.7.2-py2.7-*.egg "${T}"/dropbox_sqlite_ext-0.0-py2.7.egg "${T}"/distribute-0.6.26-py2.7.egg "${S}" || die
+	mv "${T}"/cffi-0.7.2-py2.7-*.egg "${T}"/requests-1.2.3-py2.7.egg "${T}"/dropbox_sqlite_ext-0.0-py2.7.egg "${T}"/distribute-0.6.26-py2.7.egg "${S}" || die
 	ln -s dropbox library.zip || die
 	pax-mark cm dropbox
 	mv README ACKNOWLEDGEMENTS "${T}" || die
@@ -83,7 +83,10 @@ src_install() {
 	fperms a+x "${targetdir}"/{dropbox,dropboxd}
 	dosym "${targetdir}/dropboxd" "/opt/bin/dropbox"
 
-	use X && doicon -s 16 -c status "${T}"/status
+	if use X;then
+		insinto "${targetdir}"/images/hicolor/16x16
+		doins -r "${T}"/status 
+	fi
 
 	newinitd "${FILESDIR}"/dropbox.initd dropbox
 	newconfd "${FILESDIR}"/dropbox.conf dropbox
