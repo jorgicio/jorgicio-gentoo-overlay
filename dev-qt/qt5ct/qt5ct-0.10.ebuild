@@ -41,3 +41,10 @@ src_install(){
 	insinto /usr/lib/qt5/plugins/platformthemes
 	doins src/${PN}-qtplugin/lib${PN}.so
 }
+
+pkg_postinst(){
+	elog "After install this package, please, add the following"
+	elog "line into the ~/.xprofile (user) or /etc/environment (system):"
+	elog "export QT_QPA_PLATFORMTHEME=qt5ct"
+	elog "and it will work."
+}
