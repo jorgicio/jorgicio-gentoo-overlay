@@ -4,7 +4,7 @@
 
 EAPI="5"
 ETYPE="sources"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bfsonly"
 
 HOMEPAGE="http://dev.gentoo.org/~mpagano/genpatches/

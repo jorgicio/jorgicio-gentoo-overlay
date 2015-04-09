@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/ck-sources/ck-sources-3.10.39.ebuild,v 1.1 2014/05/09 20:17:08 hwoarang Exp $
+# $Header: $
 
 EAPI="5"
 ETYPE="sources"
@@ -13,7 +13,7 @@ HOMEPAGE="http://dev.gentoo.org/~mpagano/genpatches/
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
 K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="81"
+K_GENPATCHES_VER="11"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -33,17 +33,15 @@ XTRA_INCP_MAX=""
 #--
 
 CK_VERSION="1"
-BFS_VERSION="440"
+BFS_VERSION="460"
 
-CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}-r1.bz2"
-BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}-r1.patch"
+CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}.bz2"
+BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}.patch"
 
 CK_BASE_URL="http://ck.kolivas.org/patches/3.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
-CK_URI="http://dev.gentoo.org/~dlan/distfiles/${CK_FILE}
-	${CK_LVER_URL}/${CK_FILE}"
-BFS_URI="http://dev.gentoo.org/~dlan/distfiles/${BFS_FILE}
-	${CK_LVER_URL}/patches/${BFS_FILE}"
+CK_URI="${CK_LVER_URL}/${CK_FILE}"
+BFS_URI="${CK_LVER_URL}/patches/${BFS_FILE}"
 
 #-- Build extra incremental patches list --------------------------------------
 
@@ -58,7 +56,7 @@ if [ -n "${XTRA_INCP_MIN}" ]; then
 	done
 fi
 
-#-- CK needs sometimes to patch itself... (3.7)--------------------------------
+#-- CK needs sometimes to patch itself... (3.7/3.13)---------------------------
 
 CK_INCP_URI=""
 CK_INCP_LIST=""
