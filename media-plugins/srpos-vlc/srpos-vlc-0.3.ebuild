@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="media-video/vlc"
+DEPEND="<media-video/vlc-2.2.0"
 RDEPEND="${DEPEND}"
 
 src_unpack(){
