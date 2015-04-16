@@ -57,4 +57,4 @@ List of packages (at the moment):
  * **net-im/telegram-bin:** The Official Client for Telegram, in its binary version. There's also the dev version.
  * **x11-themes/antergos-wallpapers:** The wallpapers set taken from Antergos repos.
  * **x11-themes/numix-frost-themes:** The well-known [Numix](http://numixproject.org) GTK theme, but Antergos-based.
- * **sys-kernel/ck-sources:** The Kernel Sources with the Con Kolivas patchset, that brings BFS (CPU) and BFQ (HDD). Upgrades guaranteed.
+ * **sys-kernel/ck-sources:** The Kernel Sources with the Con Kolivas patchset, that brings BFS (__B__rain __F__uck __S__cheduler) patches. Upgrades guaranteed.
