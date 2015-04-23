@@ -25,13 +25,14 @@ else
 	S="${WORKDIR}/ubuntu-mate-${PN}-${COMMIT}"
 fi
 
-LICENSE="LGPL"
+LICENSE="LGPL-3"
 SLOT="0"
 IUSE=""
 
 DEPEND="mate-base/mate-desktop
 		dev-python/setuptools
-		dev-python/python-distutils-extra"
+		dev-python/python-distutils-extra
+		x11-misc/wmctrl"
 RDEPEND="${DEPEND}"
 
 python_install(){
