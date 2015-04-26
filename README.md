@@ -46,7 +46,7 @@ List of packages (at the moment):
  * **media-tv/popcorntime-bin:** A good app for watching online movies from torrents. An alternative to Neflix.
  * **dev-util/eclipse-sdk-bin:** The latest version of this IDE: 4.4 Luna.
  * **sys-apps/inxi:** A very detailed hardware view.
- * **net-misc/megasync:** The Official Qt-based app for syncing your [MEGA](http://mega.co.nz) account. It's very well integrated with Dolphin manager. There's also a Nautilus plugin, but I don't support it because I don't use GNOME, so if you want it, create the ebuild yourself (or ask another but me) :P
+ * **net-misc/megasync:** The Official Qt-based app for syncing your [MEGA](http://mega.co.nz) account. It's very well integrated with Dolphin manager. There's also a Nautilus plugin, ~~but I don't support it because I don't use GNOME, so if you want it, create the ebuild yourself (or ask another but me) :P~~ and also did an ebuild for that :D
  * **app-laptop/prey:** A slightly modified version of the ebuild. Originally taken from the official repos, but updated to the latest version (the version in official repos is outdated). It also has integration with laptop-detect.
  * **Faba, Moka icons and its variants.** Check them there, on [x11-themes](/x11-themes).
  * **app-i18n/man-pages-es:** The man pages in Spanish, taken from Debian packages.
