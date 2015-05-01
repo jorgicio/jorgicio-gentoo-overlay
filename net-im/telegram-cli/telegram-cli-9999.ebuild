@@ -11,7 +11,7 @@ DESCRIPTION="Command line interface client for Telegram"
 HOMEPAGE="https://github.com/vysheng/tg"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 DEPEND="sys-libs/zlib
 	sys-libs/readline
