@@ -15,10 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk3"
 
-RESTRICT="fetch mirror strip"
 DEPEND="x11-themes/gtk-engines-murrine
 	gtk3? ( x11-themes/gtk-engines-unico )"
 RDEPEND="${DEPEND}"
+
+RESTRICT="fetch mirror strip"
 
 S="${WORKDIR}/"
 
