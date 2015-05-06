@@ -28,7 +28,7 @@ pkg_nofetch(){
 	einfo "https://drive.google.com/file/d/0B7iDWdwgu9QAcDI1U2pnaDA1ZTA/"
 	einfo "or:"
 	einfo "http://www.mediafire.com/download/n084cio1n4sityh/Ambiance&Radiance-FLAT-ColorSuite-14-04-1a-LTS.tar.gz"
-	einfo "then, rename it \"Ambiance&Radiance-FLAT-ColorSuite-14-04-1a-LTS.tar.gz\""
+	einfo "then, rename it \"Ambiance%26Radiance-FLAT-ColorSuite-14-04-1a-LTS.tar.gz\""
 	einfo "and place it in ${DISTDIR}"
 }
 
