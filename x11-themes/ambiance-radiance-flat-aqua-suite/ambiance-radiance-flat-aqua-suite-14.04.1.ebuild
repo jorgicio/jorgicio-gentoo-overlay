@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Ambiance & Radiance Flat Aqua Suite for Unity, Gnome Classic, MATE, XFCE, LXDE and Openbox desktops"
 HOMEPAGE="http://www.ravefinity.com/p/download-ambiance-radiance-flat-colors.html"
-SRC_URI=""
+SRC_URI="http://download1944.mediafire.com/xuoqxuxv47xg/n084cio1n4sityh/Ambiance%26Radiance-FLAT-ColorSuite-14-04-1a-LTS.tar.gz"
 
 LICENSE="LGPL-3.0"
 SLOT="0"

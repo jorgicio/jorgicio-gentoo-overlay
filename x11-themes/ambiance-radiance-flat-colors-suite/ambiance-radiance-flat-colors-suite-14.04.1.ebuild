@@ -4,11 +4,11 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils unpacker
 
 DESCRIPTION="Ambiance & Radiance Flat Colors Suite for Unity, Gnome Classic, MATE, XFCE, LXDE and Openbox desktops"
 HOMEPAGE="http://www.ravefinity.com/p/download-ambiance-radiance-flat-colors.html"
-SRC_URI=""
+SRC_URI="http://download1944.mediafire.com/xuoqxuxv47xg/n084cio1n4sityh/Ambiance%26Radiance-FLAT-ColorSuite-14-04-1a-LTS.tar.gz"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
@@ -21,14 +21,14 @@ RDEPEND="${DEPEND}"
 
 RESTRICT="fetch mirror strip"
 
-S="${WORKDIR}/"
+S="${WORKDIR}"
 
 pkg_nofetch(){
 	einfo "To install this package, please, download the source file from:"
 	einfo "https://drive.google.com/file/d/0B7iDWdwgu9QAcDI1U2pnaDA1ZTA/"
 	einfo "or:"
 	einfo "http://www.mediafire.com/download/n084cio1n4sityh/Ambiance&Radiance-FLAT-ColorSuite-14-04-1a-LTS.tar.gz"
-	einfo "then, rename it \"Ambiance%26Radiance-FLAT-ColorSuite-14-04-1a-LTS.tar.gz\""
+	einfo "then, rename it \"Ambiance&Radiance-FLAT-ColorSuite-14-04-1a-LTS.tar.gz\""
 	einfo "and place it in ${DISTDIR}"
 }
 
