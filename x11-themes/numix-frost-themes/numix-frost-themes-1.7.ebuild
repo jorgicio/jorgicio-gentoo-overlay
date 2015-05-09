@@ -8,7 +8,7 @@ inherit eutils unpacker
 
 DESCRIPTION="Official Numix GTK Theme - Antergos edition"
 HOMEPAGE="http://numixproject.org"
-SRC_URI="http://repo.antergos.info/antergos/x86_64/${P}-4-any.pkg.tar.xz -> ${P}.tar.xz"
+SRC_URI="http://repo.antergos.info/antergos/x86_64/${P}-1-any.pkg.tar.xz -> ${P}.tar.xz"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
