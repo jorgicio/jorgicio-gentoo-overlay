@@ -10,8 +10,8 @@ RESTRICT="strip"
 DESCRIPTION="Telegram Desktop Messenger (official client; dev channel) binary version"
 HOMEPAGE="https://tdesktop.com/"
 SRC_URI="
-	amd64?	( https://updates.tdesktop.com/tlinux/tsetup.${PV}.dev.tar.xz )
-	x86?	( https://updates.tdesktop.com/tlinux32/tsetup32.${PV}.dev.tar.xz )"
+	amd64?	( http://updates.tdesktop.com/tlinux/tsetup.${PV}.dev.tar.xz )
+	x86?	( http://updates.tdesktop.com/tlinux32/tsetup32.${PV}.dev.tar.xz )"
 
 RESTRICT="mirror"
 LICENSE="GPL-3"
