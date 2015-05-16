@@ -60,3 +60,4 @@ List of packages (at the moment):
  * **mate-extra/mate-tweak:** The MATE Tweak tool. Originally from Ubuntu MATE, now in Gentoo.
  * **app-admin/lightdm-gtk-greeter-settings:** The LightDM GTK+ Greeter settings tool, now in Gentoo.
  * **app-editors/visual-studio-code:** The Visual Studio Code, now multiplatform, now in Gentoo.
+ * **net-misc/hosty:** An ad-blocking script. Thanks to [juankfree](https://github.com/juankfree/hosty).
