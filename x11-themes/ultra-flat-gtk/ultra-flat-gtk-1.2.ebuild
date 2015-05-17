@@ -18,10 +18,10 @@ IUSE=""
 DEPEND="x11-themes/gtk-engines-murrine"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/Ultra-Flat"
+S="${WORKDIR}"
 
 src_install(){
-	rm -r .git LICENSE
+	rm -r Ultra-Flat/.git Ultra-Flat/LICENSE
 	insinto /usr/share/themes
-	doins -r *
+	doins -r Ultra-Flat
 }
