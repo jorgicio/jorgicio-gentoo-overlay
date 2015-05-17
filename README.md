@@ -61,3 +61,4 @@ List of packages (at the moment):
  * **app-admin/lightdm-gtk-greeter-settings:** The LightDM GTK+ Greeter settings tool, now in Gentoo.
  * **app-editors/visual-studio-code:** The Visual Studio Code, now multiplatform, now in Gentoo.
  * **net-misc/hosty:** An ad-blocking script. Thanks to [juankfree](https://github.com/juankfree/hosty).
+ * **Menda themes: Icons (Square and Circle) and GTK+ Themes:** The official [Manjaro](http://manjaro.org) themes.
