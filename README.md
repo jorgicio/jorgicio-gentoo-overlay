@@ -37,7 +37,6 @@ List of packages (at the moment):
  * **app-office/stickynotesnix** Simple stickynotes. Made in Python.
  * **gnome-extra/gpaste**: The [Gpaste](http://www.imagination-land.org/posts/2013-10-22-gpaste-3.2.2-released.html) daemon and gnome-shell extension. This is the clipboard for GNOME Shell.
  * **x11-drivers/wizardpen:** Drivers for several Genius tablet models.
- * **app-admin/cpu-g:** The Linux alternative for CPU-Z. Useful for watching all information about your PC/Laptop's hardware.
  * **net-misc/telegram-cli:** A command-line [Telegram](http://telegram.org) client. Thanks to Vysheng and [his Github Repository](https://github.com/vysheng/tg), specially for the ebuild.
  * **kde-misc/plasmoid-capslockinfo:** Capslock and Numlock information shown in a plasmoid.  
  * **net-wireless/create_ap:** An app to create a wireless access point. Thanks to [its author](https://github.com/oblique).
