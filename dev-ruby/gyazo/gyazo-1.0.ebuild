@@ -10,7 +10,8 @@ inherit ruby-fakegem
 
 DESCRIPTION="Seriously Instant Screen-Grabbing"
 HOMEPAGE="http://${PN}.com"
-SRC_URI="https://github.com/${PN}/Gyazo-for-Linux/raw/master/src/${PN}.rb -> ${PN}"
+GIT_COMMIT="704f80f8b880508e44b3e520a362d350a1015162"
+SRC_URI="https://raw.githubusercontent.com/${PN}/Gyazo-for-Linux/${GIT_COMMIT}/src/${PN}.rb -> ${PN}"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
