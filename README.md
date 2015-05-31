@@ -61,3 +61,4 @@ List of packages (at the moment):
  * **net-misc/hosty:** An ad-blocking script. Thanks to [juankfree](https://github.com/juankfree/hosty).
  * **Menda themes: Icons (Square and Circle) and GTK+ Themes:** The official [Manjaro](http://manjaro.org) themes.
  * **dev-ruby/gyazo:** The [Gyazo](http://gyazo.com) instant grabber.
+ * **app-editors/cutemarked:** A very cute QT-based Markdown editor.
