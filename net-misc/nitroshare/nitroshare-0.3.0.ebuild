@@ -4,9 +4,7 @@
 
 EAPI=5
 
-QT5_MODULE="qttools"
-
-inherit qt5-build
+inherit qmake-utils eutils
 
 DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="http://${PN}.net"
@@ -25,10 +23,14 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}"/"${P}"
 QMAKE_QT5="/usr/lib/qt5/bin/qmake"
 
-src_compile(){
-	$QMAKE_QT5 ${PN}.pro
-	emake DESTDIR="${D}/usr"
-	emake -k check
+src_configure(){
+	local myeqmakeargs=(
+		${PN}.pro
+		PREFIX="${EPREFIX}/usr"
+		DESKTOPDIR="${EPREFIX}/usr/share/applications"
+		ICONDIR="${EPREFIX}/usr/share/pixmaps"
+	)
+	eqmake5 ${myeqmakeargs[@]}
 }
 
 src_install(){

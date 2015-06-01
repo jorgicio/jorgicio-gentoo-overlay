@@ -4,9 +4,7 @@
 
 EAPI=5
 
-QT5_MODULE="qttools"
-
-inherit games qt5-build
+inherit games qmake-utils
 
 DESCRIPTION="A Qt-based version of the game 2048"
 HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
@@ -25,12 +23,14 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/2048-Qt-${PV}"
 
-QMAKE_QT5="/usr/lib/qt5/bin/qmake"
-
-src_compile(){
-	$QMAKE_QT5 ${PN}.pro
-	emake DESTDIR="${D}"
-	emake -k check
+src_configure(){
+	local myeqmakeargs=(
+		${PN}.pro
+		PREFIX="${EPREFIX}/usr"
+		DESKTOPDIR="${EPREFIX}/usr/share/applications"
+		ICONDIR="${EPREFIX}/usr/share/pixmaps"
+	)
+	eqmake5 ${myeqmakeargs[@]}
 }
 
 src_install(){

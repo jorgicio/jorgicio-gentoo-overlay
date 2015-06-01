@@ -19,6 +19,7 @@ DEPEND="
 	dev-qt/qtwebkit:5
 	app-text/discount
 	app-text/hunspell
+	app-text/peg-markdown
 "
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/CuteMarkEd-${PV}"

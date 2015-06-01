@@ -4,9 +4,7 @@
 
 EAPI=5
 
-QT5_MODULE="qttools"
-
-inherit qt5-build
+inherit qmake-utils eutils
 
 DESCRIPTION="Qt5 configuration utility"
 HOMEPAGE="http://qt-apps.org/content/show.php/Qt5+Configuration+Tool?content=168066"
@@ -18,28 +16,25 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=dev-qt/qtcore-5.4.0
-	>=dev-qt/qtsvg-5.4.0
+	>=dev-qt/qtcore-5.4.0:5
+	>=dev-qt/qtsvg-5.4.0:5
 "
 RDEPEND="${DEPEND}"
 
-QMAKE_QT5="/usr/lib/qt5/bin/qmake"
 S="${WORKDIR}"/"${P}"
 
-src_compile(){
-	$QMAKE_QT5 ${PN}.pro
-	emake DESTDIR="${D}"
-	emake -k check
+src_configure(){
+	local myeqmakeargs=(
+		${PN}.pro
+		PREFIX="${EPREFIX}/usr"
+		DESKTOPDIR="${EPREFIX}/usr/share/applications"
+		ICONDIR="${EPREFIX}/usr/share/pixmaps"
+	)
+	eqmake5 ${myeqmakeargs[@]}
 }
 
 src_install(){
-	exeinto /usr/bin
-	doexe src/${PN}/${PN}
-	insinto /usr/share/applications
-	doins src/${PN}/${PN}.desktop
-	insopts -m0755
-	insinto /usr/lib/qt5/plugins/platformthemes
-	doins src/${PN}-qtplugin/lib${PN}.so
+	emake INSTALL_ROOT="${D}" install || die
 }
 
 pkg_postinst(){
