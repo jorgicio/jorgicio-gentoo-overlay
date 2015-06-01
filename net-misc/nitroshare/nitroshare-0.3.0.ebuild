@@ -13,13 +13,18 @@ SRC_URI="https://launchpad.net/${PN}/0.3/${PV}/+download/${P}.tar.gz -> ${P}.tar
 LICENSE="LGPL-3.0"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE=""
+IUSE="indicator"
 
 DEPEND="dev-qt/qtcore:5
 		dev-qt/qtsvg:5
 		 x11-libs/libnotify"
 		 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+		indicator? (
+			x11-libs/gtk+:2
+			dev-libs/libappindicator:2
+			x11-libs/libnotify
+		)"
 
 S="${WORKDIR}"/"${P}"
 
