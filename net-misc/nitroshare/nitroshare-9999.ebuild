@@ -4,15 +4,16 @@
 
 EAPI=5
 
-inherit qmake-utils eutils
+inherit qmake-utils eutils git-r3
 
 DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="http://${PN}.net"
-SRC_URI="https://launchpad.net/${PN}/0.3/${PV}/+download/${P}.tar.gz -> ${P}.tar"
+SRC_URI=""
+GIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-qt/qtcore:5
@@ -20,8 +21,6 @@ DEPEND="dev-qt/qtcore:5
 		 x11-libs/libnotify"
 		 
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"/"${P}"
 
 src_configure(){
 	local myeqmakeargs=(
