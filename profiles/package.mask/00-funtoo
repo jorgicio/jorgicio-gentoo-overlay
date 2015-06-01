@@ -1,3 +1,3 @@
 #Funtoo has Python 3.4 masked, and I don't know why, so...
 #(Note: If you're using Gentoo, you can unmask that version)
-=>app-admin/lightdm-gtk-greeter-settings-1.1.0
+>=app-admin/lightdm-gtk-greeter-settings-1.1.0
