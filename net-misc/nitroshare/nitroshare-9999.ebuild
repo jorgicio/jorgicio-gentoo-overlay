@@ -11,7 +11,7 @@ HOMEPAGE="http://${PN}.net"
 SRC_URI=""
 GIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
 
-LICENSE="LGPL-3.0"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="indicator"
