@@ -35,13 +35,14 @@ src_prepare(){
 }
 
 src_configure(){
-	econf \ 
-		$(use_enable gnome-shell) \
-		$(use_enable gtk2) \
-		$(use_enable gtk3) \
-		$(use_enable metacity) \
-		$(use_enable unity) \
-		$(use_enable xfwm)
+	local myconf=''
+	use_enable !gtk2 && myconf+="--disable-gtk2 "
+	use_enable !gtk3 && myconf+="--disable-gtk3 "
+	use_enable !gnome-shell && myconf+="--disable-gnome-shell "
+	use_enable !unity && myconf+="--disable-unity "
+	use_enable !metacity && myconf+="--disable-metacity "
+	use_enable !xfwm && myconf+="--disable-xfwm "
+	econf ${myconf}
 }
 
 src_compile(){
