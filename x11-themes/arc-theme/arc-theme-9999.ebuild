@@ -35,12 +35,13 @@ src_prepare(){
 }
 
 src_configure(){
-	econf $(use_enable gnome-shell)
-	econf $(use_enable gtk2)
-	econf $(use_enable gtk3)
-	econf $(use_enable metacity)
-	econf $(use_enable unity)
-	econf $(use_enable xfwm)
+	econf \ 
+		$(use_enable gnome-shell) \
+		$(use_enable gtk2) \
+		$(use_enable gtk3) \
+		$(use_enable metacity) \
+		$(use_enable unity) \
+		$(use_enable xfwm)
 }
 
 src_compile(){
