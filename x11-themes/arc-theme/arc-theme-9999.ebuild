@@ -15,6 +15,7 @@ LICENSE="LGPL-3.0"
 SLOT="0"
 KEYWORDS=""
 IUSE="gnome-shell +gtk2 gtk3 metacity unity xfwm"
+REQUIRED_USE="|| ( gtk2 gtk3 )"
 
 DEPEND="x11-themes/gtk-engines-murrine
 		x11-libs/gdk-pixbuf"
