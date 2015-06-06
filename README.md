@@ -63,3 +63,4 @@ List of packages (at the moment):
  * **dev-ruby/gyazo:** The [Gyazo](http://gyazo.com) instant grabber.
  * **app-editors/cutemarked:** A very cute QT-based Markdown editor.
  * **app-misc/fluxgui:** [f.lux](http://justgetflux.com) client for Linux.
+ * **net-misc/dropbox:** A more updater version af Dropbox, now with QT5.
