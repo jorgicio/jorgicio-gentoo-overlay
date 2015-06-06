@@ -65,3 +65,4 @@ List of packages (at the moment):
  * **app-misc/fluxgui:** [f.lux](http://justgetflux.com) client for Linux.
  * **net-misc/dropbox:** A more updater version af Dropbox, now with QT5.
  * **x11-misc/lightdm-another-gtk-greeter:** Yet another LightDM GTK+ greeter, but with GTK+ 3.0.
+ * **app-admin/lightdm-another-gtk-greeter-settings:** The settings tool for the package above.
