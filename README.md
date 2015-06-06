@@ -62,3 +62,4 @@ List of packages (at the moment):
  * **Menda themes: Icons (Square and Circle) and GTK+ Themes:** The official [Manjaro](http://manjaro.org) themes.
  * **dev-ruby/gyazo:** The [Gyazo](http://gyazo.com) instant grabber.
  * **app-editors/cutemarked:** A very cute QT-based Markdown editor.
+ * **app-misc/fluxgui:** [f.lux](http://justgetflux.com) client for Linux.
