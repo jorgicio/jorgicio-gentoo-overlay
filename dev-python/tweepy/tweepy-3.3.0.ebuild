@@ -19,7 +19,8 @@ IUSE="doc examples test"
 
 #RESTRICT="test" 	#missing a required dep frpm portage
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/requests-oauthlib[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/v${PV}"
 
