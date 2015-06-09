@@ -1,0 +1,10 @@
+--- equinox-1.50-ce/src/animation.c	2012-11-17 22:31:05.437625638 +0100
++++ equinox-1.50/src/animation.c	2012-11-17 22:31:53.797625956 +0100
+@@ -7,7 +7,6 @@
+ #include "animation.h"
+ 
+ #ifdef HAVE_ANIMATION
+-#include <glib/gtimer.h>
+ 
+ struct _AnimationInfo {
+ 	GTimer *timer;

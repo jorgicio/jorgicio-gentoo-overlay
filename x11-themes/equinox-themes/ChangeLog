@@ -1,0 +1,10 @@
+# ChangeLog for x11-themes/equinox-themes
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*equinox-themes-1.50 (16 Sep 2011)
+
+  16 Sep 2011; Wojciech Dzierżanowski <wojciech.dzierzanowski@gmail.com>
+  +equinox-themes-1.50.ebuild:
+  Initial revision
+

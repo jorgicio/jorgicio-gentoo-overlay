@@ -1,0 +1,29 @@
+# ChangeLog for x11-themes/gtk-engines-equinox
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*gtk-engines-equinox-1.50-r1 (17 Nov 2012)
+
+  17 Nov 2012; Wojciech Dzierżanowski <wojciech.dzierzanowski@gmail.com>
+  +gtk-engines-equinox-1.50-r1.ebuild,
+  +files/gtk-engines-equinox-1.50-dont-include-glib-gtimer-h.patch:
+  Fix compile error
+
+  Don't include glib/gtimer.h directly.
+
+*gtk-engines-equinox-1.50 (16 Sep 2011)
+
+  16 Sep 2011; Wojciech Dzierżanowski <wojciech.dzierzanowski@gmail.com>
+  +gtk-engines-equinox-1.50.ebuild:
+  Version bump: gtk-engines-equinox-1.50.ebuild
+
+  23 Oct 2010; Wojciech Dzierżanowski <wojciech.dzierzanowski@gmail.com>
+  gtk-engines-equinox-1.30.ebuild:
+  Include version in distfile name
+
+  18 Oct 2010; <wojciech.dzierzanowski@gmail.com> gtk-engines-equinox-1.30.ebuild,
+  +metadata.xml:
+  Added (optional) dependency on x11-themes/faenza-icon-theme
+
+  Some repoman-dictated fixes
+
