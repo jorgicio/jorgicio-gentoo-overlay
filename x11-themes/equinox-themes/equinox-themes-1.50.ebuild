@@ -15,7 +15,7 @@ IUSE="+icons"
 
 RDEPEND=">=x11-themes/gtk-engines-equinox-${PV}"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 
 src_install() {
 	dodir /usr/share/themes/
