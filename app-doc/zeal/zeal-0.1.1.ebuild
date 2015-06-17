@@ -18,6 +18,7 @@ IUSE="indicator"
 DEPEND=">=dev-qt/qtwebkit-5.2.0:5
 		x11-themes/hicolor-icon-theme
 		dev-util/desktop-file-utils
+		x11-libs/xcb-util-keysyms
 		app-arch/libarchive"
 RDEPEND="${DEPEND}
 		indicator? ( dev-libs/libappindicator:3 )"
