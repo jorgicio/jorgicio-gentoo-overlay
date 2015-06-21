@@ -1,0 +1,13 @@
+--- a/po/es.po	2014-09-19 17:02:03.000000000 -0300
++++ b/po/es.po	2015-06-21 15:35:47.942192571 -0300
+@@ -2228,6 +2228,10 @@
+ msgid "Spanish (Latin American, Sun dead keys)"
+ msgstr "Español (latinoamericano, teclas muertas de Sun)"
+ 
++#: ../rules/base.xml.in.h:599
++msgid "Spanish (Latin American, Dvorak)"
++msgstr "Español (latinoamericano, Dvorak)"
++
+ #. Keyboard indicator for Lithuanian layouts
+ #: ../rules/base.xml.in.h:600 ../rules/base.extras.xml.in.h:31
+ msgid "lt"
