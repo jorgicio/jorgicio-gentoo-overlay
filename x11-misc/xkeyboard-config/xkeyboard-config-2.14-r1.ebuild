@@ -37,6 +37,8 @@ XORG_CONFIGURE_OPTIONS=(
 PATCHES=(
 	"${FILESDIR}"/evdev-dvorak.patch
 	"${FILESDIR}"/latam-dvorak.patch
+	"${FILESDIR}"/base-dvorak.patch
+	"${FILESDIR}"/es-dvorak-lang.patch
 )
 
 src_prepare() {
