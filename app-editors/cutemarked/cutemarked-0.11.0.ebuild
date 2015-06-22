@@ -4,13 +4,11 @@
 
 EAPI=5
 
-inherit eutils qmake-utils git-r3
+inherit eutils qmake-utils
 
 DESCRIPTION="QT Markdown Editor"
 HOMEPAGE="https://github.com/cloose/CuteMarkEd"
-SRC_URI=""
-EGIT_REPO_URI="${HOMEPAGE}"
-EGIT_COMMIT="b8b6194d6736f81c1369ef63043941ba8c3813dd"
+SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
@@ -24,6 +22,8 @@ DEPEND="
 	app-text/peg-markdown
 "
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/CuteMarkEd-${PV}"
 
 src_configure(){
 	local myeqmakeargs=(
