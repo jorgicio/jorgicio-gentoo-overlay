@@ -4,11 +4,13 @@
 
 EAPI=5
 
-inherit qmake-utils eutils
+inherit qmake-utils eutils git-r3
 
 DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="http://${PN}.net"
-SRC_URI="https://launchpad.net/${PN}/0.3/${PV}/+download/${P}.tar.gz -> ${P}.tar"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
+EGIT_COMMIT="ae8d579fa46b610ccd8aecd6e19a86d8ac928629"
 
 LICENSE="MIT"
 SLOT="0"
@@ -23,7 +25,6 @@ RDEPEND="${DEPEND}
 		indicator? (
 			x11-libs/gtk+:2
 			dev-libs/libappindicator:2
-			x11-libs/libnotify
 		)"
 
 S="${WORKDIR}"/"${P}"

@@ -4,11 +4,13 @@
 
 EAPI=5
 
-inherit qmake-utils
+inherit qmake-utils git-r3
 
 DESCRIPTION="Simple offline API documentation browser"
 HOMEPAGE="http://${PN}docs.org"
-SRC_URI="https://github.com/${PN}docs/${PN}/archive/v${PV}.tar.gz"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/${PN}docs/${PN}"
+EGIT_COMMIT="a03af64a74672c39dc5c60ee3233c8d38c7058c7"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
@@ -22,8 +24,6 @@ DEPEND=">=dev-qt/qtwebkit-5.2.0:5
 		app-arch/libarchive"
 RDEPEND="${DEPEND}
 		indicator? ( dev-libs/libappindicator:3 )"
-
-S="${WORKDIR}"/"${P}"
 
 src_configure(){
 	local myeqmakeargs=(

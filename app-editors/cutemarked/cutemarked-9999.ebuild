@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/cloose/CuteMarkEd"
 SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
 
-LICENSE="LGPL-2.0"
+LICENSE="LGPL-3.0"
 SLOT="0"
 KEYWORDS=""
 IUSE=""

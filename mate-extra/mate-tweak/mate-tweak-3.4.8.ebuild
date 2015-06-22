@@ -8,14 +8,15 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_SINGLE_TARGET="python2_7"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit eutils distutils-r1
+inherit eutils distutils-r1 git-r3
 
 DESCRIPTION="Tweak tool for the MATE Desktop. Fork of mintDesktop."
 HOMEPAGE="https://bitbucket.org/ubuntu-mate/${PN}"
-SRC_URI="${HOMEPAGE}/get/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
+EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_COMMIT="9dcf744abc9e"
+
 KEYWORDS="~x86 ~amd64"
-COMMIT="9dcf744abc9e"
-S="${WORKDIR}/ubuntu-mate-${PN}-${COMMIT}"
 
 LICENSE="LGPL-3"
 SLOT="0"

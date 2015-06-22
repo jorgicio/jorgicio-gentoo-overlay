@@ -9,7 +9,7 @@ inherit qmake-utils eutils git-r3
 DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="http://${PN}.net"
 SRC_URI=""
-GIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
+EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,7 +24,6 @@ RDEPEND="${DEPEND}
 		indicator? (
 			x11-libs/gtk+:2
 			dev-libs/libappindicator:2
-			x11-libs/libnotify
 		)"
 
 src_configure(){
