@@ -34,7 +34,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
-	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]"
+	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]
+	dev-python/python-wikipedia[${PYTHON_USEDEP}]"
 
 src_prepare(){
 	eautoreconf
