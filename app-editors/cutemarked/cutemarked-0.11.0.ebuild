@@ -10,7 +10,7 @@ DESCRIPTION="QT Markdown Editor"
 HOMEPAGE="https://cloose.github.io/CuteMarkEd"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/cloose/CuteMarkEd"
-EGIT_COMMIT="b8b6194d6736f81c1369ef63043941ba8c3813dd"
+EGIT_COMMIT="v${PV}"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
