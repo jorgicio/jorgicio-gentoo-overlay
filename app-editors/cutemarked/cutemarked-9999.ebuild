@@ -7,9 +7,9 @@ EAPI=5
 inherit eutils qmake-utils git-r3
 
 DESCRIPTION="QT Markdown Editor"
-HOMEPAGE="https://github.com/cloose/CuteMarkEd"
+HOMEPAGE="https://cloose.github.io/CuteMarkEd"
 SRC_URI=""
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/cloose/CuteMarkEd"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
