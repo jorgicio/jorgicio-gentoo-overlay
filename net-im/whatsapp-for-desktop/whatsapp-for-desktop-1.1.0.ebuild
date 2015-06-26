@@ -20,6 +20,7 @@ IUSE=""
 
 DEPEND="net-libs/nodejs
 		x11-libs/cairo
+		gnome-base/gconf
 		x11-libs/gtk+:2
 		x11-libs/libnotify
 		"
