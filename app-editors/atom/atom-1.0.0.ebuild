@@ -74,7 +74,6 @@ src_compile(){
 }
 
 src_install(){
-	#./script/grunt install --build-dir "${T}" --install-dir "${D}" || die
 	insinto ${EPREFIX}/usr/share/applications
 	newins resources/linux/Atom.desktop atom.desktop
 	insinto ${EPREFIX}/usr/share/pixmaps
