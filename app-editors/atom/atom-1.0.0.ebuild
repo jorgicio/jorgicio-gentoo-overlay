@@ -39,28 +39,22 @@ pkg_setup() {
 	npm config set python $PYTHON
 }
 
-PATCHES=(
-	"${FILESDIR}/${PN}-python.patch"
-	"${FILESDIR}/0002-skip-atom-shell-copy.patch"
-)
+src_unpack() {
+	git-r3_src_unpack
+}
 
 src_prepare(){
-	epatch "${PATCHES[@]}"
-	# Skip atom-shell & atom-shell-chromedriver download
-	sed -i -e "s/defaultTasks = \['download-atom-shell', 'download-atom-shell-chromedriver', /defaultTasks = [/g" \
-		./build/Gruntfile.coffee \
-		|| die "Failed to fix Gruntfile"
+	epatch "${FILESDIR}/${PN}-python.patch"
 	sed -i -e "/exception-reporting/d" \
       -e "/metrics/d" package.json
 	sed -e "s/<%= description %>/$pkgdesc/" \
     -e "s|<%= executable %>|/usr/bin/atom|"\
     -e "s|<%= iconName %>|atom|"\
     resources/linux/atom.desktop.in > resources/linux/Atom.desktop
-	# Fix atom location guessing
+    # Fix atom location guessing
 	sed -i -e 's/ATOM_PATH="$USR_DIRECTORY\/share\/atom/ATOM_PATH="$USR_DIRECTORY\/../g' \
 		./atom.sh \
 		|| die "Fail fixing atom-shell directory"
-
 	# Make bootstrap process more verbose
 	sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
 		./script/build \
@@ -74,15 +68,20 @@ src_compile(){
 }
 
 src_install(){
+	insinto ${EPREFIX}/usr/share/${PN}
+	doins -r ${T}/Atom/*
 	insinto ${EPREFIX}/usr/share/applications
 	newins resources/linux/Atom.desktop atom.desktop
 	insinto ${EPREFIX}/usr/share/pixmaps
 	doins resources/atom.png
 	insinto ${EPREFIX}/usr/share/licenses/${PN}
 	doins LICENSE.md
-	insinto ${EPREFIX}/usr/share/${PN}/resources
-	doins -r ${T}/Atom/resources/app
 	# Fixes permissions
+	fperms +x ${EPREFIX}/usr/share/${PN}/${PN}
+	fperms +x ${EPREFIX}/usr/share/${PN}/libchromiumcontent.so
+	fperms +x ${EPREFIX}/usr/share/${PN}/libffmpegsumo.so
+	fperms +x ${EPREFIX}/usr/share/${PN}/libgcrypt.so.11
+	fperms +x ${EPREFIX}/usr/share/${PN}/libnotify.so.4
 	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/atom.sh
 	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/apm/bin/apm
 	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/apm/bin/node
