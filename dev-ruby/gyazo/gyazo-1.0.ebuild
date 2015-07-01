@@ -16,7 +16,7 @@ SRC_URI="https://raw.githubusercontent.com/${PN}/Gyazo-for-Linux/${GIT_COMMIT}/s
 LICENSE="LGPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="xclip"
+IUSE="+xclip"
 
 DEPEND="media-gfx/imagemagick
 		xclip? ( x11-misc/xclip )"
