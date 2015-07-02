@@ -18,22 +18,18 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="
-		app-shells/bash
 		virtual/cron
-		net-libs/nodejs[npm]
+		net-libs/nodejs
 		dev-python/pygtk
-		|| ( net-misc/curl net-misc/wget )
-        dev-perl/IO-Socket-SSL
-        dev-perl/Net-SSLeay
+		media-tv/xawtv
         sys-apps/net-tools
 		|| ( media-gfx/scrot media-gfx/imagemagick )
 		app-laptop/laptop-detect
-		|| ( media-video/mplayer[encode,jpeg,v4l] media-tv/xawtv )
-		net-analyzer/traceroute
 		|| ( gnome-extra/zenity kde-base/kdialog )
 		media-sound/mpg123
 		media-sound/pulseaudio
-		sys-apps/iproute2
+		net-wireless/wireless-tools
+		sys-apps/lsb-release
 		"
 RDEPEND="${DEPEND}"
 
