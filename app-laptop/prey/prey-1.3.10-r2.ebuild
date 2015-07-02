@@ -18,19 +18,19 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="
-		virtual/cron
-		net-libs/nodejs
-		dev-python/pygtk
-		media-tv/xawtv
-        sys-apps/net-tools
-		|| ( media-gfx/scrot media-gfx/imagemagick )
-		app-laptop/laptop-detect
-		|| ( gnome-extra/zenity kde-base/kdialog )
-		media-sound/mpg123
-		media-sound/pulseaudio
-		net-wireless/wireless-tools
-		sys-apps/lsb-release
-		"
+	virtual/cron
+	net-libs/nodejs[npm]
+	dev-python/pygtk
+	media-tv/xawtv
+	sys-apps/net-tools
+	|| ( media-gfx/scrot media-gfx/imagemagick )
+	app-laptop/laptop-detect
+	|| ( gnome-extra/zenity kde-base/kdialog )
+	media-sound/mpg123
+	media-sound/pulseaudio
+	net-wireless/wireless-tools
+	sys-apps/lsb-release
+	"
 RDEPEND="${DEPEND}"
 
 src_install(){
