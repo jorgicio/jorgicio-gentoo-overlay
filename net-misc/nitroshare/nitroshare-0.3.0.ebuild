@@ -10,7 +10,7 @@ DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="http://${PN}.net"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
-EGIT_COMMIT="ae8d579fa46b610ccd8aecd6e19a86d8ac928629"
+EGIT_COMMIT="${PV}"
 
 LICENSE="MIT"
 SLOT="0"

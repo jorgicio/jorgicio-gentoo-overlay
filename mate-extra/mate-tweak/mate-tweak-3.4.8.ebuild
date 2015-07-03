@@ -14,7 +14,7 @@ DESCRIPTION="Tweak tool for the MATE Desktop. Fork of mintDesktop."
 HOMEPAGE="https://bitbucket.org/ubuntu-mate/${PN}"
 SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
-EGIT_COMMIT="9dcf744abc9e"
+EGIT_COMMIT="${PV}"
 
 KEYWORDS="~x86 ~amd64"
 

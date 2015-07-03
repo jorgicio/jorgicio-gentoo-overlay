@@ -12,7 +12,7 @@ DESCRIPTION="Lollypop is a new GNOME music playing application"
 HOMEPAGE="https://github.com/gnumdk/${PN}"
 SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
-EGIT_COMMIT="f007317e90c8fff3266948c1cbf28151a18eb234"
+EGIT_COMMIT="${PV}"
 
 LICENSE="LGPL-3.0"
 SLOT="0"

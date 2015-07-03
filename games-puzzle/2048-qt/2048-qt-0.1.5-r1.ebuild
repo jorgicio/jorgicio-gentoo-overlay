@@ -10,7 +10,7 @@ DESCRIPTION="A Qt-based version of the game 2048"
 HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
 SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
-EGIT_COMMIT="e7643e8548c3645e121bc2656ba4f26cc57f3005"
+EGIT_COMMIT="v${PV}"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
