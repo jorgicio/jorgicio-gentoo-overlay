@@ -5,13 +5,15 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_{5,6,7} )
 
-inherit distutils-r1 versionator
+inherit distutils-r1 versionator git-r3
 
 MY_PV=$(get_version_component_range 1-2)
 
 DESCRIPTION="A Python library to build Twitter bots over Tweepy library"
 HOMEPAGE="https://github.com/caxap/${PN}"
-SRC_URI="${HOMEPAGE}/archive/v${MY_PV}.zip"
+SRC_URI=""
+EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_COMMIT="v${MY_PV}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,10 +23,8 @@ IUSE="examples test"
 #RESTRICT="test" 	#missing a required dep frpm portage
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-		dev-python/tweepy
+		dev-python/tweepy[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 python_prepare() {
 	# Required to avoid file collisions at install

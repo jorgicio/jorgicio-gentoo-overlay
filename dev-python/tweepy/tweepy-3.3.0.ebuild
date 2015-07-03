@@ -6,11 +6,13 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_{6,7} python3_{3,4} pypy )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r1 vcs-snapshot git-r3
 
 DESCRIPTION="A Python library for accessing the Twitter API "
 HOMEPAGE="http://tweepy.github.com/"
-SRC_URI="https://github.com/tweepy/${PN}/archive/v${PV}.tar.gz"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+EGIT_COMMIT="v${PV}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,8 +23,6 @@ IUSE="doc examples test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/requests-oauthlib[${PYTHON_USEDEP}]"
-
-S="${WORKDIR}/v${PV}"
 
 python_prepare_all() {
 	# Required to avoid file collisions at install
