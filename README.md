@@ -67,5 +67,5 @@ List of packages (at the moment):
  * **x11-misc/lightdm-another-gtk-greeter:** Yet another LightDM GTK+ greeter, but with GTK+ 3.0.
  * **app-admin/lightdm-another-gtk-greeter-settings:** The settings tool for the package above.
  * **net-wireless/linssid:** The Qt5-based wireless scanning tool for Linux.
- * Modified versions of sys-apps/kbd and x11-misc/xkeyboard-config with patches to support Latin American Spanish variant for Dvorak Keyboard. You can find [here](https://github.com/flobosg/latam-dvorak) those modifications.
+ * Modified version of sys-apps/kbd with patches to support Latin American Spanish variant for Dvorak Keyboard. You can find [here](https://github.com/flobosg/latam-dvorak) those modifications.
  * **media-sound/lollypop:** A new GNOME music player.
