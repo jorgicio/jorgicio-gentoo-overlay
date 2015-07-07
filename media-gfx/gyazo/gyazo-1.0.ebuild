@@ -6,32 +6,30 @@ EAPI=5
 
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
-inherit ruby-fakegem
+inherit ruby-single git-r3
 
 DESCRIPTION="Seriously Instant Screen-Grabbing"
 HOMEPAGE="http://${PN}.com"
-GIT_COMMIT="704f80f8b880508e44b3e520a362d350a1015162"
-SRC_URI="https://raw.githubusercontent.com/${PN}/Gyazo-for-Linux/${GIT_COMMIT}/src/${PN}.rb -> ${PN}"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/gyazo/Gyazo-for-Linux"
+EGIT_COMMIT="704f80f8b880508e44b3e520a362d350a1015162"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~*"
 IUSE="+xclip"
 
 DEPEND="media-gfx/imagemagick
 		xclip? ( x11-misc/xclip )"
 RDEPEND="${DEPEND}"
 
-each_ruby_install(){
+src_install(){
 	exeinto /usr/bin
-	doexe ${DISTDIR}/${PN}
-}
-
-all_ruby_install(){
+	newexe src/${PN}.rb ${PN}
 	insinto /usr/share/applications
-	doins ${FILESDIR}/${PN}.desktop
+	doins src/${PN}.desktop
 	insinto /usr/share/pixmaps
-	doins ${FILESDIR}/${PN}.png
+	doins icons/${PN}.png
 }
 
 pkg_postinst(){
