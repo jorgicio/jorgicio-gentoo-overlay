@@ -61,7 +61,6 @@ List of packages (at the moment):
  * **net-misc/hosty:** An ad-blocking script. Thanks to [juankfree](https://github.com/juankfree/hosty).
  * **Menda themes: Icons (Square and Circle) and GTK+ Themes:** The official [Manjaro](http://manjaro.org) themes.
  * **media-gfx/gyazo:** The [Gyazo](http://gyazo.com) instant grabber.
- * **app-editors/cutemarked:** A very cute QT-based Markdown editor.
  * **app-misc/fluxgui:** [f.lux](http://justgetflux.com) client for Linux.
  * **net-misc/dropbox:** A more updater version af Dropbox, now with QT5.
  * **x11-misc/lightdm-another-gtk-greeter:** Yet another LightDM GTK+ greeter, but with GTK+ 3.0.
