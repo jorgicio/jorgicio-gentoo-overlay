@@ -31,6 +31,8 @@ src_prepare(){
 	sed -i 's#/usr/local#$(DESTDIR)/usr#g' Makefile
 	sed -i 's#/usr/local#/usr#' castawesome.py
 	sed -i 's#/usr/local#/usr#' uninstall_castawesome.sh
+	sed -i 's#Gnome;Internet#Network;AudioVideo#' Castawesome.desktop
+	sed -i 's#/home/sami/Ohjelmointi/Projektit/castawesome/IconCA.png#castawesome.png#' Castawesome.desktop
 }
 
 src_compile(){
@@ -39,4 +41,6 @@ src_compile(){
 
 src_install(){
 	emake DESTDIR="${D}" install || die
+	insinto ${EPREFIX}/usr/share/pixmaps
+	newins IconCA.png ${PN}.png
 }
