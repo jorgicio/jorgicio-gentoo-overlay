@@ -43,5 +43,5 @@ src_install(){
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
 	insinto /usr/share/pixmaps
-	doins ${PN}.png
+	doins ${FILESDIR}/${PN}.png
 }
