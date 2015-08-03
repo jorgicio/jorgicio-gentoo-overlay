@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~*"
 IUSE="debug"
 
-DEPEND="$(add_kdebase_dep dolphin)"
+DEPEND="$(add_kdeapps_dep dolphin)"
 
 RDEPEND="${DEPEND}
 	!kde-base/dolphin-box-plugin"
