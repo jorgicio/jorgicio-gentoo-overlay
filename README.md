@@ -72,3 +72,4 @@ Note for Funtoo Users
 ---------------------
 
 You can unmask the packages **dev-python/subunit** (to compile Samba 4) and LibreOffice 5 (and its language files). More information, can be read [here](http://www.funtoo.org/Portage/Unmask).
+Those packages are unmasked because they're may not be supported on Gentoo.
