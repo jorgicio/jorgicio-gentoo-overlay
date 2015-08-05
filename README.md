@@ -67,3 +67,8 @@ List of packages (at the moment):
  * **app-admin/lightdm-another-gtk-greeter-settings:** The settings tool for the package above.
  * **net-wireless/linssid:** The Qt5-based wireless scanning tool for Linux.
  * **media-sound/lollypop:** A new GNOME music player.
+
+Note for Funtoo Users
+---------------------
+
+You can unmask the packages **dev-python/subunit** (to compile Samba 4) and LibreOffice 5 (and its language files). More information, can be read [here](http://www.funtoo.org/Portage/Unmask).

@@ -1,0 +1,6 @@
+# Those packages are for Funtoo only because they handle them on a different way.
+# If you're using Gentoo, unmasking them are some dangerous. DO IT AT YOUR OWN RISK!
+
+>=dev-python/subunit-1.1.0-r1000
+>=app-office/libreoffice-5.0.0.0
+>=app-office/libreoffice-l10n-5.0.0.0
