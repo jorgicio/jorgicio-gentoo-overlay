@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Jorgicio Custom Overlay](#jorgicio-custom-overlay)
+  - [Made by Jorge Pizarro Callejas, aka Jorgicio (http://www.jorgicio.net).](#made-by-jorge-pizarro-callejas-aka-jorgicio-httpwwwjorgicionet)
+  - [Usage](#usage)
+  - [List of packages (at the moment):](#list-of-packages-at-the-moment)
+  - [Note for Funtoo Users](#note-for-funtoo-users)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 Jorgicio Custom Overlay
 =======================
 
@@ -71,5 +83,7 @@ List of packages (at the moment):
 Note for Funtoo Users
 ---------------------
 
-You can unmask the packages **dev-python/subunit** (to compile Samba 4) and LibreOffice 5 (and its language files). More information, can be read [here](http://www.funtoo.org/Portage/Unmask).
-Those packages are unmasked because they're may not be supported on Gentoo.
+There are some packages masked on this repository, some of them because they may are not supported on Gentoo. Those packages are:
+ * **dev-python/subunit**: The version 1.1.0, to compile Samba 4.
+ * **app-office/libreoffice**: The LibreOffice 5 package, rewritten _à la_ Funtoo.
+ * **app-office/libreoffice-l10n**: The language packages for the above one.
