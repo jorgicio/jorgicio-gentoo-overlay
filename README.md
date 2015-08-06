@@ -87,3 +87,4 @@ There are some packages masked on this repository, some of them because they may
  * **dev-python/subunit**: The version 1.1.0, to compile Samba 4.
  * **app-office/libreoffice**: The LibreOffice 5 package, rewritten _à la_ Funtoo.
  * **app-office/libreoffice-l10n**: The language packages for the above one.
+If you're using that Gentoo-based distro, you can unmask them if you want it, until they're being officially supported. Read [here](http://www.funtoo.org/Portage/Unmask) for more info.
