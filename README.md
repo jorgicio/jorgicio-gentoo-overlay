@@ -89,3 +89,4 @@ There are some packages masked on this repository, some of them because they may
  * **app-office/libreoffice-l10n**: The language packages for the above one.
 
 If you're using that Gentoo-based distro, you can unmask them if you want it, until they're being officially supported. Read [here](http://www.funtoo.org/Portage/Unmask) for more info.
+Also, if you install LibreOffice packages from my overlay, you must also unmask app-text/libwps-0.4.0, which is needed.
