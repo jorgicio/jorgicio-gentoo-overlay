@@ -89,7 +89,7 @@ unset lo_xt
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="*"
+KEYWORDS="amd64 x86 ~arm ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	app-arch/zip
