@@ -6,7 +6,6 @@
   - [Made by Jorge Pizarro Callejas, aka Jorgicio (http://www.jorgicio.net).](#made-by-jorge-pizarro-callejas-aka-jorgicio-httpwwwjorgicionet)
   - [Usage](#usage)
   - [List of packages (at the moment):](#list-of-packages-at-the-moment)
-  - [Note for Funtoo Users](#note-for-funtoo-users)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -79,14 +78,3 @@ List of packages (at the moment):
  * **app-admin/lightdm-another-gtk-greeter-settings:** The settings tool for the package above.
  * **net-wireless/linssid:** The Qt5-based wireless scanning tool for Linux.
  * **media-sound/lollypop:** A new GNOME music player.
-
-Note for Funtoo Users
----------------------
-
-There are some packages masked on this repository, some of them because they may are not supported on Gentoo. Those packages are:
- * **dev-python/subunit**: The version 1.1.0, to compile Samba 4.
- * **app-office/libreoffice**: The LibreOffice 5 package, rewritten _à la_ Funtoo.
- * **app-office/libreoffice-l10n**: The language packages for the above one.
-
-If you're using that Gentoo-based distro, you can unmask them if you want it, until they're being officially supported. Read [here](http://www.funtoo.org/Portage/Unmask) for more info.
-Also, if you install LibreOffice packages from my overlay, you must also unmask app-text/libwps-0.4.0, which is needed.
