@@ -19,8 +19,9 @@ IUSE="indicator"
 
 DEPEND="dev-qt/qtcore:5
 		dev-qt/qtsvg:5
-		 x11-libs/libnotify"
-		 
+		dev-qt/qtnetwork:5
+		x11-libs/libnotify"
+
 RDEPEND="${DEPEND}
 		indicator? (
 			x11-libs/gtk+:2
