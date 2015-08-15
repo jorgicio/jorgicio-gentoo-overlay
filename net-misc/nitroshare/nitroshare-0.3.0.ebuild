@@ -28,8 +28,6 @@ RDEPEND="${DEPEND}
 			dev-libs/libappindicator:2
 		)"
 
-S="${WORKDIR}"/"${P}"
-
 src_configure(){
 	local myeqmakeargs=(
 		${PN}.pro
