@@ -6,13 +6,16 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{1,2,3,4} )
 
-inherit eutils distutils-r1 git-r3
+inherit eutils git-r3 distutils-r1
 
 DESCRIPTION="Tweak tool for the MATE Desktop. Fork of mintDesktop."
 HOMEPAGE="https://bitbucket.org/ubuntu-mate/${PN}"
-EGIT_REPO_URI="${HOMEPAGE}.git"
-KEYWORDS=""
-S="${WORKDIR}"/"${P}"
+SRC_URI=""
+EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_COMMIT="${PV}"
+
+KEYWORDS="~x86 ~amd64"
+
 LICENSE="LGPL-3"
 SLOT="0"
 IUSE=""
@@ -22,4 +25,3 @@ DEPEND="mate-base/mate-desktop
 		dev-python/python-distutils-extra
 		x11-misc/wmctrl"
 RDEPEND="${DEPEND}"
-
