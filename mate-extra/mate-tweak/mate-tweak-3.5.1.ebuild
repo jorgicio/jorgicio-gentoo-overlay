@@ -23,5 +23,6 @@ IUSE=""
 DEPEND="mate-base/mate-desktop
 		dev-python/setuptools
 		dev-python/python-distutils-extra
+		dev-python/configobj
 		x11-misc/wmctrl"
 RDEPEND="${DEPEND}"
