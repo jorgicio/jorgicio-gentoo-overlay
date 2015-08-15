@@ -15,11 +15,11 @@ SRC_URI="
 
 RESTRICT="mirror"
 LICENSE="GPL-3"
-IUSE="updater indicator"
+IUSE="updater appindicator"
 KEYWORDS="~x86 ~amd64"
 INSTALL_DIR="/opt/telegram"
 SLOT="0"
-RDEPEND="indicator? (
+RDEPEND="appindicator? (
 	x11-libs/gtk+:2
 	dev-libs/libappindicator:2
 	)"

@@ -4,5 +4,5 @@
 
 #Keep them sorted
 
-indicator - Add support to libappindicator, commonly used in Unity Desktop or related
+appindicator - Add support to libappindicator, commonly used in Unity Desktop or related
 updater - An updater application

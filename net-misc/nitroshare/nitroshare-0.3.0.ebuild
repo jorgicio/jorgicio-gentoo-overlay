@@ -15,7 +15,7 @@ EGIT_COMMIT="${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="indicator"
+IUSE="appindicator"
 
 DEPEND="dev-qt/qtcore:5
 		dev-qt/qtsvg:5
@@ -23,7 +23,7 @@ DEPEND="dev-qt/qtcore:5
 		x11-libs/libnotify"
 
 RDEPEND="${DEPEND}
-		indicator? (
+		appindicator? (
 			x11-libs/gtk+:2
 			dev-libs/libappindicator:2
 		)"

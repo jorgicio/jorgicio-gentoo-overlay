@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="indicator"
+IUSE="appindicator"
 
 DEPEND="dev-qt/qtcore:5
 		dev-qt/qtsvg:5
@@ -22,7 +22,7 @@ DEPEND="dev-qt/qtcore:5
 		x11-libs/libnotify"
 
 RDEPEND="${DEPEND}
-		indicator? (
+		appindicator? (
 			x11-libs/gtk+:2
 			dev-libs/libappindicator:2
 		)"
