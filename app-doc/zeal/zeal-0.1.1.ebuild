@@ -15,7 +15,7 @@ EGIT_COMMIT="v${PV}"
 LICENSE="LGPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="indicator"
+IUSE="appindicator"
 
 DEPEND=">=dev-qt/qtwebkit-5.2.0:5
 		x11-themes/hicolor-icon-theme
@@ -23,7 +23,7 @@ DEPEND=">=dev-qt/qtwebkit-5.2.0:5
 		x11-libs/xcb-util-keysyms
 		app-arch/libarchive"
 RDEPEND="${DEPEND}
-		indicator? ( dev-libs/libappindicator:3 )"
+		appindicator? ( dev-libs/libappindicator:3 )"
 
 src_configure(){
 	local myeqmakeargs=(

@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/${PN}docs/${PN}"
 LICENSE="LGPL-3.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="indicator"
+IUSE="appindicator"
 
 DEPEND=">=dev-qt/qtwebkit-5.2.0:5
 		x11-themes/hicolor-icon-theme
@@ -22,7 +22,7 @@ DEPEND=">=dev-qt/qtwebkit-5.2.0:5
 		x11-libs/xcb-util-keysyms
 		app-arch/libarchive"
 RDEPEND="${DEPEND}
-		indicator? ( dev-libs/libappindicator:3 )"
+		appindicator? ( dev-libs/libappindicator:3 )"
 
 src_configure(){
 	local myeqmakeargs=(
