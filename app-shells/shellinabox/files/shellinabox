@@ -1,0 +1,7 @@
+# You can uncomment that line if you want to add some default parameters at running the shellinaboxd daemon.
+# Some of those are:
+# --disable-ssl: Disable SSL support (enabled by default)
+# --localhost-only: Run locally only, not remote
+# --no-beep: A beep won't sound in any case
+# More information, you can find in the old but still working page: https://code.google.com/p/shellinabox/
+# SHELLINABOX_ARGS=""

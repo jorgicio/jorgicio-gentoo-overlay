@@ -1,0 +1,15 @@
+#!/sbin/runscript
+
+_runfile="/var/run/shellinaboxd.pid"
+
+start(){
+    ebegin "Starting Shell In A Box Daemon"
+    /usr/bin/shellenaboxd -b -s '/:SSH:localhost' --localhost-only -c '/tmp' && touch "${_runfile}"
+    eend $?
+}
+
+stop(){
+    ebegin "Stopping Shell In A Box Daemon"
+    killall -9 shellinaboxd && rm "${_runfile}"
+    eend $?
+}

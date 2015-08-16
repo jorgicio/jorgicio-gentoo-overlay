@@ -78,3 +78,4 @@ List of packages (at the moment):
  * **app-admin/lightdm-another-gtk-greeter-settings:** The settings tool for the package above.
  * **net-wireless/linssid:** The Qt5-based wireless scanning tool for Linux.
  * **media-sound/lollypop:** A new GNOME music player.
+ * **app-shells/shellinabox:** Run a web-based terminal emulator with any browser! Forked from [here](https://code.google.com/p/shellinabox/).
