@@ -4,15 +4,13 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_{6,7} python3_{3,4} pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4} )
 
-inherit distutils-r1 vcs-snapshot git-r3
+inherit distutils-r1
 
 DESCRIPTION="A Python library for accessing the Twitter API "
 HOMEPAGE="http://tweepy.github.com/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/${PN}/${PN}"
-EGIT_COMMIT="v${PV}"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,12 +19,17 @@ IUSE="doc examples test"
 
 #RESTRICT="test" 	#missing a required dep frpm portage
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-		dev-python/requests-oauthlib[${PYTHON_USEDEP}]"
-
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-python/requests-2.4.3[${PYTHON_USEDEP}]
+	>=dev-python/requests-oauthlib-0.4.1[${PYTHON_USEDEP}]
+	>=dev-python/six-1.7.3[${PYTHON_USEDEP}]
+"
 python_prepare_all() {
 	# Required to avoid file collisions at install
-	sed -e "s:find_packages():find_packages(exclude=['tests','tests.*']):" -i setup.py || die
+	sed \
+		-e "/find_packages/s:]:,'tests.*','examples']:g" \
+		-i setup.py || die
 	distutils-r1_python_prepare_all
 }
 
