@@ -34,7 +34,7 @@ src_install(){
 	doins "${FILESDIR}"/${PN}
 	if use systemd; then
 		insinto /usr/lib/systemd/system
-		newins "${FILESDIR}"/${PN}-systemd "${PN}@.service"
+		newins "${FILESDIR}"/${PN}-systemd "${PN}.service"
 	else
 		doinitd "${FILESDIR}"/${PN}d
 	fi
