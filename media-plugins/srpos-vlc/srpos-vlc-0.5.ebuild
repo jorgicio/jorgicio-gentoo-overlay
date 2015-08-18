@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="VLC plugin for resuming from last played position"
 HOMEPAGE="http://vlcsrposplugin.sourceforge.net/"
-SRC_URI="http://ufpr.dl.sourceforge.net/project/vlcsrposplugin/libsrpos_plugin-0.3.tar.gz"
+SRC_URI="mirror://sourceforge/vlcsrposplugin/libsrpos_plugin-${PV}.tar.gz"
 
 LICENSE="LGPL"
 SLOT="0"
@@ -16,10 +16,7 @@ IUSE=""
 DEPEND="<media-video/vlc-2.2.0"
 RDEPEND="${DEPEND}"
 
-src_unpack(){
-	unpack ${A}
-	mv ${WORKDIR}/libsrpos_plugin-0.3 ${WORKDIR}/${P}
-}
+S="${WORKDIR}"/libsrpos_plugin-${PV}
 
 src_compile(){
 	econf || die "econf failed"
