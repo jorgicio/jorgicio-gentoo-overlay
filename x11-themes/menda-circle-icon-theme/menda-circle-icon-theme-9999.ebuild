@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils git-r3
 
 DESCRIPTION="Menda Circle Icon Theme"
-HOMEPAGE="https://github.com/manjaro/menda-icon-themes"
+HOMEPAGE="https://github.com/anexation/menda-icon-themes"
 SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
 

@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Menda Circle Icon Theme"
-HOMEPAGE="https://github.com/manjaro/menda-icon-themes"
-GIT_COMMIT="06232a0098e88d33bef931083736141ab67976da"
+HOMEPAGE="https://github.com/anexation/menda-icon-themes"
+GIT_COMMIT="f38d29c98ce41d000648ef4ad718e21019cd3e15"
 SRC_URI="${HOMEPAGE}/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3.0"
