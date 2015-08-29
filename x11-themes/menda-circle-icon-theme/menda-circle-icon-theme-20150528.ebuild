@@ -8,12 +8,13 @@ inherit eutils git-r3
 
 DESCRIPTION="Menda Circle Icon Theme"
 HOMEPAGE="https://github.com/manjaro/menda-icon-themes"
-SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_COMMIT="a2eb4a003ec808d7c31feb3628ad77f979c900e5"
+SRC_URI=""
 
 LICENSE="LGPL-3.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
