@@ -4,12 +4,15 @@
 
 EAPI=5
 
-inherit git-r3
+inherit git-r3 versionator
+
+MY_PV=$(replace_version_separator 3 '-')
 
 DESCRIPTION="Libpurple (Pidgin) plugin for using a Telegram account"
 HOMEPAGE="https://github.com/majn/${PN}"
 SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_COMMIT="v${MY_PV}"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -24,16 +27,11 @@ DEPEND="net-im/pidgin
 RDEPEND="${DEPEND}"
 
 src_compile(){
+
 	econf $(use_enable libwebp) || die "econf failed"
 	emake || die "emake failed"
 }
 
 src_install(){
-	emake DESTDIR="${D}" install
-}
-
-pkg_postinst(){
-	elog "Note: this package is in an early (pre-alpha) stage, so if you"
-	elog "want to view changes, install this package often."
-	elog "More information is available in ${HOMEPAGE}"
+	emake DESTDIR="${D}" install || die
 }
