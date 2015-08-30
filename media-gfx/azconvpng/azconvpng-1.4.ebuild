@@ -7,8 +7,8 @@ EAPI=5
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="PNG Convert"
-HOMEPAGE="http://hp.vector.co.jp/authors/VA033749/linux/index.html"
-SRC_URI="mirror://sourceforge.jp/${PN}/57793/azcvpng-${PV}-src.tar.bz2"
+HOMEPAGE="http://azsky2.html.xdomain.jp/"
+SRC_URI="http://osdn.jp/frs/redir.php?m=iij&f=/${PN}/57793/azcvpng-${PV}-src.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -j1 prefix="/usr" CXX=$(tc-getBUILD_CXX) CXXFLAGS="${CXXFLAGS}" LFLAGS=""
+	emake -j1 prefix="/usr"
 }
 
 src_install() {
