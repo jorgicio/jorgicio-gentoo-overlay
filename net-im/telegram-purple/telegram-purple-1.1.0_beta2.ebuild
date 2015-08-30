@@ -16,7 +16,7 @@ EGIT_COMMIT="v${MY_PV}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 IUSE="+libwebp"
 
 DEPEND="net-im/pidgin
