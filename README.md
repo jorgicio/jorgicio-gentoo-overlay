@@ -63,7 +63,7 @@ List of packages (at the moment):
  * **media-plugins/gimp-paint-studio:** A collection of tools and brushes for making GIMP a very comfortable experience.
  * **dev-python/sexy-python:** Python bindings for libsexy.
  * **kde-misc/raecas:** A KDE Plasmoid for the Spanish-language users who want to query the RAE dictionary (Diccionario de la Real Academia Española).
- * **net-im/telegram-bin:** The Official Client for Telegram, in its binary version. There's also the dev version.
+ * **net-im/telegram-desktop-bin:** The Official Client for Telegram, in its binary version. There's also the dev version.
  * **x11-themes/antergos-wallpapers:** The wallpapers set taken from Antergos repos.
  * **x11-themes/numix-frost-themes:** The well-known [Numix](http://numixproject.org) GTK theme, but Antergos-based.
  * **mate-extra/mate-tweak:** The MATE Tweak tool. Originally from Ubuntu MATE, now in Gentoo.
