@@ -6,6 +6,7 @@ EAPI=5
 
 EGIT_REPO_URI="https://github.com/vysheng/tg.git"
 EGIT_BRANCH="master"
+EGIT_COMMIT="${PV}"
 EGIT_HAS_SUBMODULES=1
 inherit git-2
 IUSE="+lua +json +python"
@@ -13,7 +14,7 @@ DESCRIPTION="Command line interface client for Telegram"
 HOMEPAGE="https://github.com/vysheng/tg"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="sys-libs/zlib
 	sys-libs/readline
