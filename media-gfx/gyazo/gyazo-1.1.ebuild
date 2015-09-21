@@ -12,7 +12,7 @@ DESCRIPTION="Seriously Instant Screen-Grabbing"
 HOMEPAGE="http://gyazo.com"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/gyazo/Gyazo-for-Linux"
-EGIT_COMMIT="0a9e62dcfd407161439ce9404a542a93fc6c58f2"
+EGIT_COMMIT="${PV}"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
