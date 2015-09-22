@@ -45,6 +45,10 @@ src_configure(){
 	econf --disable-schemas-compile
 }
 
+pkg_preinst(){
+	gnome2_schemas_savelist
+}
+
 pkg_postinst(){
 	gnome2_gconf_install
 	gnome2_schemas_update
