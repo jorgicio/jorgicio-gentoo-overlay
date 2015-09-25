@@ -72,6 +72,9 @@ src_prepare() {
 		futures-3.0.2-py2.7.egg
 		requests-1.2.3-py2.7.egg
 		setuptools-17.0-py2.7.egg
+		psutil-3.1.1-py2.7-*.egg
+		mock-1.0.1-py2.7.egg
+		tornado-4.2-py2.7-*.egg
 	)
 
 	rm -vf libbz2* libpopt.so.0 libpng12.so.0 || die
