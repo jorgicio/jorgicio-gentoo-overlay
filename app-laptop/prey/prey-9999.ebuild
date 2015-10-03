@@ -44,3 +44,8 @@ src_install(){
 	use systemd && systemd_dounit "${FILESDIR}/prey-agent.service"
 	use !systemd && doinitd "${FILESDIR}/prey-agent"
 }
+
+pkg_postinst(){
+	elog "Doing the post-installation hooks..."
+	prey config hooks post_install
+}
