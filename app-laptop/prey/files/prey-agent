@@ -5,7 +5,7 @@ _lockfile="/var/run/prey-agent.lock"
 
 start(){
     ebegin "Starting Prey Agent"
-    /usr/lib/node_modules/prey/bin/prey && echo $! > "${_runfile}" && touch "${_lockfile}"
+    /usr/lib/node_modules/prey/bin/prey > /dev/null 2>&1 & && echo $! > "${_runfile}" && touch "${_lockfile}"
     eend $?
 }
 
