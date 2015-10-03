@@ -1,0 +1,15 @@
+[Unit]
+Description=The Prey daemon.
+After=network.target
+[Service]
+ExecStart=/usr/lib/node_modules/prey/bin/prey
+WorkingDirectory=/usr/lib/node_modules/prey
+Restart=always
+RestartSec=15
+User=prey
+Environment="TERM=dumb" "USER=prey"
+KillMode=process
+TimeoutStopSec=20
+KillSignal=QUIT
+[Install]
+WantedBy=multi-user.target

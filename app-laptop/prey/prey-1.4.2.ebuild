@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils user git-r3
+inherit eutils user git-r3 systemd
 
 DESCRIPTION="Tracking software for asset recovery, now Node.js-powered"
 HOMEPAGE="http://preyproject.com"
@@ -15,7 +15,7 @@ EGIT_COMMIT="v${PV}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE=""
+IUSE="systemd"
 
 DEPEND="
 	virtual/cron
@@ -44,4 +44,6 @@ src_install(){
 	newins ${PN}.conf.default ${PN}.conf
 	insinto /usr/share/pixmaps
 	doins ${FILESDIR}/${PN}.png
+	use systemd && systemd_dounit "${FILESDIR}/prey-agent.service"
+	use !systemd && doinit "${FILESDIR}/prey-agent"
 }

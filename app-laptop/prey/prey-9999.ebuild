@@ -41,4 +41,6 @@ src_install(){
 	insinto /etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
+	use systemd && systemd_dounit "${FILESDIR}/prey-agent.service"
+	use !systemd && doinit "${FILESDIR}/prey-agent"
 }
