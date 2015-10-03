@@ -45,5 +45,5 @@ src_install(){
 	insinto /usr/share/pixmaps
 	doins ${FILESDIR}/${PN}.png
 	use systemd && systemd_dounit "${FILESDIR}/prey-agent.service"
-	use !systemd && doinit "${FILESDIR}/prey-agent"
+	use !systemd && doinitd "${FILESDIR}/prey-agent"
 }
