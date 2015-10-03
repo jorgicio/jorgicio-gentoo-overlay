@@ -41,11 +41,8 @@ src_install(){
 	insinto /etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
-	use systemd && systemd_dounit "${FILESDIR}/prey-agent.service"
-	use !systemd && doinitd "${FILESDIR}/prey-agent"
 }
 
 pkg_postinst(){
-	elog "Doing the post-installation hooks..."
 	prey config hooks post_install
 }
