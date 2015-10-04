@@ -9,16 +9,16 @@ EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 LANGS=" af ar be bg bn br bs ca cs cy da de el en_CA en_GB eo es es_AR et eu fa fi fr ga gl he hi hr hu hy ia id is it ja ka kk ko lt lv mr ms nb nl oc pa pl pt pt_BR ro ru sk sl sr sr@latin sv te tr uk uz vi zh_CN zh_TW"
 
 inherit cmake-utils flag-o-matic fdo-mime gnome2-utils virtualx
-[[ ${PV} == *9999* ]] && inherit git-2
+[[ ${PV} == *9999* && ${PR} != "r1" ]] && inherit git-2
 
 DESCRIPTION="A modern music player and library organizer based on Amarok 1.4 and Qt4"
 HOMEPAGE="http://www.clementine-player.org https://github.com/clementine-player/Clementine"
-[[ ${PV} == *9999* ]] || \
+[[ ${PV} == *9999* && ${PR} != "r1" ]] || \
 SRC_URI="https://github.com/clementine-player/Clementine/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-[[ ${PV} == *9999* ]] || \
+[[ ${PV} == *9999* && ${PR} != "r1" ]] || \
 KEYWORDS="amd64 x86"
 IUSE="ayatana box cdda clang +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm skydrive system-sqlite test ubuntu-one +udisks wiimote"
 IUSE+="${LANGS// / linguas_}"
