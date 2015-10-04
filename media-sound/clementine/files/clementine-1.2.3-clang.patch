@@ -1,0 +1,85 @@
+From b27f77a640d4e5edda20ffab3646772a7de28dad Mon Sep 17 00:00:00 2001
+From: Charles Pigott <charlespigott@googlemail.com>
+Date: Tue, 4 Mar 2014 13:34:35 +0000
+Subject: [PATCH] Fix compilation with clang
+
+At least, clang 3.4, on Arch Linux
+---
+ gst/moodbar/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gst/moodbar/CMakeLists.txt b/gst/moodbar/CMakeLists.txt
+index dc3934b..622c18a 100644
+--- a/gst/moodbar/CMakeLists.txt
++++ b/gst/moodbar/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 2.6)
+ 
+-set(CMAKE_C_FLAGS "-Wall")
++set(CMAKE_C_FLAGS "-Wall -std=c99")
+ set(CMAKE_CXX_FLAGS "-Woverloaded-virtual -Wall")
+ 
+ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+From ac12084fe780b15d44fc32b9155174b8d77aada3 Mon Sep 17 00:00:00 2001
+From: Charles Pigott <charlespigott@googlemail.com>
+Date: Tue, 4 Mar 2014 13:34:35 +0000
+Subject: [PATCH] Fix compilation with clang
+
+At least, clang 3.4, on Arch Linux
+---
+ CMakeLists.txt                          | 2 +-
+ ext/clementine-tagreader/CMakeLists.txt | 2 +-
+ src/CMakeLists.txt                      | 2 +-
+ tests/CMakeLists.txt                    | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 638cbff..d36975d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -158,7 +158,7 @@ if (WIN32)
+   SET(CMAKE_RC_COMPILE_OBJECT "<CMAKE_RC_COMPILER> -O coff -o <OBJECT> <SOURCE> -I ${CMAKE_SOURCE_DIR}/dist/windows")
+ endif(WIN32)
+ 
+-add_definitions(-DQT_NO_CAST_TO_ASCII -DQT_STRICT_ITERATORS)
++add_definitions(-DQT_NO_CAST_TO_ASCII -DQT_STRICT_ITERATORS -D__STRICT_ANSI__)
+ 
+ # Translations stuff
+ find_program(GETTEXT_XGETTEXT_EXECUTABLE xgettext PATHS /target/bin)
+diff --git a/ext/clementine-tagreader/CMakeLists.txt b/ext/clementine-tagreader/CMakeLists.txt
+index b881696..044371a 100644
+--- a/ext/clementine-tagreader/CMakeLists.txt
++++ b/ext/clementine-tagreader/CMakeLists.txt
+@@ -7,7 +7,7 @@ include_directories(${CMAKE_BINARY_DIR}/ext/libclementine-tagreader)
+ include_directories(${CMAKE_SOURCE_DIR}/src)
+ include_directories(${CMAKE_BINARY_DIR}/src)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x -U__STRICT_ANSI__")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
+ 
+ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index af08744..7f26bef 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Woverloaded-virtual -Wall -Wno-sign-compare -Wno-deprecated-declarations -Wno-unused-local-typedefs -Wno-unused-private-field -Wno-unknown-warning-option --std=c++0x -U__STRICT_ANSI__")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Woverloaded-virtual -Wall -Wno-sign-compare -Wno-deprecated-declarations -Wno-unused-local-typedefs -Wno-unused-private-field -Wno-unknown-warning-option -Wno-deprecated-register --std=c++0x")
+ 
+ option(BUILD_WERROR "Build with -Werror" ON)
+ 
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 9149e4b..0395792 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 2.6)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fpermissive -Wno-c++11-narrowing -U__STRICT_ANSI__")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fpermissive -Wno-c++11-narrowing")
+ 
+ if(USE_SYSTEM_GMOCK)
+   include_directories(${GMOCK_INCLUDE_DIRS} ${GTEST_INCLUDE_DIRS})
