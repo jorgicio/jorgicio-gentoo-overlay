@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{1,2,3,4} )
+PYTHON_COMPAT=( python3_{1,2,3,4,5} )
 
 inherit eutils distutils-r1 git-r3
 

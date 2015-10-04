@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{3,4} )
+PYTHON_COMPAT=( python3_{3,4,5} )
 EGIT_REPO_URI="https://github.com/LiuLang/python3-xlib.git"
 EGIT_COMMIT="e68a323cc8e2441c488344cc2225fef0baa17526"
 
