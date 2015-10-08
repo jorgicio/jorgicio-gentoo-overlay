@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python3_{3,4,5} )
 inherit python-r1 autotools git-r3 gnome2-utils
 
 DESCRIPTION="Lollypop is a new GNOME music playing application"
-HOMEPAGE="https://github.com/gnumdk/${PN}"
+HOMEPAGE="http://gnumdk.github.io/lollypop"
 SRC_URI=""
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/gnumdk/lollypop"
 EGIT_COMMIT="${PV}"
 
 LICENSE="LGPL-3.0"
