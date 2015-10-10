@@ -48,4 +48,6 @@ src_install(){
 
 pkg_postinst(){
 	prey config hooks post_install
+	ewarn "Don't forget add your user to the group prey (as root):"
+	ewarn "gpasswd -a username prey"
 }
