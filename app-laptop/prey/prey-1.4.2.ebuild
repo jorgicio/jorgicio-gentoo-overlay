@@ -4,18 +4,16 @@
 
 EAPI=5
 
-inherit eutils user git-r3 systemd
+inherit eutils user
 
 DESCRIPTION="Tracking software for asset recovery, now Node.js-powered"
 HOMEPAGE="http://preyproject.com"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/${PN}/${PN}-node-client"
-EGIT_COMMIT="v${PV}"
+SRC_URI="https://github.com/${PN}/${PN}-node-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="systemd"
+IUSE=""
 
 DEPEND="
 	virtual/cron
@@ -32,6 +30,8 @@ DEPEND="
 	sys-apps/lsb-release
 	"
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${PN}-node-client-${PV}"
 
 src_install(){
 	npm install -g --prefix="${D}/usr"
