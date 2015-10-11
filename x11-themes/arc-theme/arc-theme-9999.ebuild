@@ -14,7 +14,7 @@ EGIT_REPO_URI="${HOMEPAGE}"
 LICENSE="LGPL-3.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="gnome-shell +gtk2 gtk3 metacity unity xfwm"
+IUSE="gnome-shell +gtk2 gtk3 metacity unity xfwm transparency"
 REQUIRED_USE="|| ( gtk2 gtk3 )"
 
 DEPEND="x11-themes/gtk-engines-murrine
@@ -43,8 +43,14 @@ src_configure(){
 	use !unity && myconf+="--disable-unity "
 	use !metacity && myconf+="--disable-metacity "
 	use !xfwm && myconf+="--disable-xfwm "
+	if use gtk3 && ! use transparency; then
+		myconf+="--disable-transparency "
+	elif ! use gtk3 && ! use transparency; then
+		myconf+="--disable-gtk3 --disable-transparency "
+	fi
 	econf ${myconf}
 }
+
 
 src_compile(){
 	emake DESTDIR="${D}"
