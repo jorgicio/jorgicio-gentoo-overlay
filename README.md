@@ -79,3 +79,4 @@ List of packages (at the moment):
  * **net-wireless/linssid:** The Qt5-based wireless scanning tool for Linux.
  * **media-sound/lollypop:** A new GNOME music player.
  * **app-shells/shellinabox:** Run a web-based terminal emulator with any browser! Forked from [here](https://code.google.com/p/shellinabox/).
+ * **games-misc/fortune-mod-dross:** Fortune Mod quotes from [Dross](http://dross.tv).
