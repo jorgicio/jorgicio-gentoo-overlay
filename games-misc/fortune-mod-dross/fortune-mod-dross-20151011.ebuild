@@ -7,7 +7,7 @@ EAPI=5
 inherit versionator
 
 COMMIT_1="9b42fcb3f7d89c4762f7"
-COMMIT_2="dd068279204ecbd0c2fbf12d9e90596dc5680d68"
+COMMIT_2="13d1e70554feb45ad97f05cfeb9697b087268f8a"
 
 DESCRIPTION="Fortune database of quotes from Angel David Revilla, a.k.a. Dross Rotzank, or Dross."
 HOMEPAGE="https://gist.github.com/jorgicio"
