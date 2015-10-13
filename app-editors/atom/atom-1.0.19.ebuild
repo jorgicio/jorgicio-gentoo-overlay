@@ -79,7 +79,6 @@ src_install(){
 	doins LICENSE.md
 	# Fixes permissions
 	fperms +x ${EPREFIX}/usr/share/${PN}/${PN}
-	fperms +x ${EPREFIX}/usr/share/${PN}/libchromiumcontent.so
 	fperms +x ${EPREFIX}/usr/share/${PN}/libffmpegsumo.so
 	fperms +x ${EPREFIX}/usr/share/${PN}/libgcrypt.so.11
 	fperms +x ${EPREFIX}/usr/share/${PN}/libnotify.so.4
