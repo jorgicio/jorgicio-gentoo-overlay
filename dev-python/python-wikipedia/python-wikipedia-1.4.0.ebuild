@@ -20,6 +20,8 @@ IUSE=""
 COMMON_DEPEND="${PYTHON_DEPEND}"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${DEPEND}
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]"
+	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/wikipedia-${PV}"
