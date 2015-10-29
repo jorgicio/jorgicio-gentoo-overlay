@@ -5,6 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python3_{3,4,5} )
+PYTHON_REQ_USE="sqlite"
 
 inherit python-r1 autotools git-r3 gnome2-utils
 
@@ -34,8 +35,6 @@ RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
 	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]
 	dev-python/python-wikipedia[${PYTHON_USEDEP}]"
-
-PYTHON_REQ_USE="sqlite"
 
 src_prepare(){
 	eautoreconf
