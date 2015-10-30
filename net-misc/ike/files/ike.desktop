@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ike
+GenericName=VPN client
+Comment=Shrew soft VPN Client
+Exec=qikea
+Terminal=false
+Icon=ikea
+Type=Application
+Categories=Network;
+Version=1.0

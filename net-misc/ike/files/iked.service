@@ -1,0 +1,11 @@
+[Unit]
+Description=Shrew VPN Client Iked
+Documentation=man:iked(8) man:iked.conf(5) http://www.shrew.net/support/Main_Page
+After=local-fs.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/iked -f /etc/ike/iked.conf
+
+[Install]
+WantedBy=multi-user.target
