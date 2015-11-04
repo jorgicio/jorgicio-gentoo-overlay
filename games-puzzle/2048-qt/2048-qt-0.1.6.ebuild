@@ -8,7 +8,7 @@ inherit games qmake-utils
 
 DESCRIPTION="A Qt-based version of the game 2048"
 HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz"
+SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
@@ -36,10 +36,10 @@ src_configure(){
 src_install(){
 	dogamesbin ${PN}
 	insinto /usr/share/icons/hicolor
-	doins -r icons/*
+	doins -r res/icons/*
 	insinto /usr/share/applications
-	doins ${PN}.desktop
-	doman man/${PN}.6
+	doins res/${PN}.desktop
+	doman res/man/${PN}.6
 }
 
 pkg_postinst(){
