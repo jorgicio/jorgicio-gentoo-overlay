@@ -19,6 +19,8 @@ IUSE="bzip2 cairo crypt curl dbus +desktop examples gmp gsl gtk httpd +imageio i
 	jit libxml media mysql mime ncurses net opengl postgres odbc openssl openal pcre pdf \
 	+qt4 qt5 sdl sdlsound smtp sqlite +sqlite3 svg v4l xml zlib"
 
+REQUIRED_USE="qt4"
+
 # libcrypt.so is part of glibc
 COMMON_DEPEND="
 	bzip2?	( >=app-arch/bzip2-1.0.5 )
