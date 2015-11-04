@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 x86"
 IUSE="bzip2 cairo crypt curl dbus +desktop examples gmp gsl gtk httpd +imageio imageimlib \
 	jit libxml media mysql mime ncurses net opengl postgres odbc openssl openal pcre pdf \
-	+qt4 sdl sdlsound smtp sqlite +sqlite3 svg v4l xml zlib"
+	+qt4 qt5 sdl sdlsound smtp sqlite +sqlite3 svg v4l xml zlib"
 
 # libcrypt.so is part of glibc
 COMMON_DEPEND="
@@ -69,9 +69,14 @@ COMMON_DEPEND="
 	postgres?	( >=dev-db/postgresql-base-8.2 )
 	pcre?	( dev-libs/libpcre )
 	qt4? (
-		>=dev-qt/qtcore-4.5
-		>=dev-qt/qtopengl-4.5
-		>=dev-qt/qtwebkit-4.5
+		>=dev-qt/qtcore-4.5:4
+		>=dev-qt/qtopengl-4.5:4
+		>=dev-qt/qtwebkit-4.5:4
+	)
+	qt5? (
+		>=dev-qt/qtcore-5.4.0:5
+		>=dev-qt/qtopengl-5.4.0:5
+		>=dev-qt/qtwebkit-5.4.0:5
 	)
 	sdl?	(
 		media-libs/sdl-ttf
@@ -99,6 +104,7 @@ COMMON_DEPEND="
 	x11-libs/libXcursor
 	virtual/libffi
 "
+
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
@@ -133,6 +139,7 @@ src_configure() {
 		$(use_enable v4l) \
 		$(use_enable crypt) \
 		$(use_enable qt4) \
+		$(use_enable qt5) \
 		$(use_enable gtk) \
 		$(use_enable opengl) \
 		$(use_enable desktop) \
