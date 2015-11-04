@@ -7,7 +7,7 @@ EAPI=5
 inherit qmake-utils eutils git-r3
 
 DESCRIPTION="Network File Transfer Application"
-HOMEPAGE="http://${PN}.net"
+HOMEPAGE="http://nitroshare.net"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
 

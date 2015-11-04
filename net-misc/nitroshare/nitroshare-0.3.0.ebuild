@@ -4,13 +4,13 @@
 
 EAPI=5
 
-inherit qmake-utils eutils git-r3
+inherit qmake-utils eutils versionator
+
+MY_BR=$(get_version_component_range 1-2)
 
 DESCRIPTION="Network File Transfer Application"
-HOMEPAGE="http://${PN}.net"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
-EGIT_COMMIT="${PV}"
+HOMEPAGE="http://nitroshare.net"
+SRC_URI="https://launchpad.net/nitroshare/${MY_BR}/${PV}/+download/${P}.tar.gz -> ${P}.tar"
 
 LICENSE="MIT"
 SLOT="0"
