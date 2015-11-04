@@ -1,196 +1,252 @@
-# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI="5"
 
-inherit autotools eutils fdo-mime libtool multilib qt4-r2
+inherit autotools eutils fdo-mime gnome2-utils
+
+SLOT="3"
+MY_PN="${PN}${SLOT}"
 
 DESCRIPTION="Gambas is a free development environment based on a Basic interpreter with object extensions"
-HOMEPAGE="http://gambas.sourceforge.net/"
+HOMEPAGE="http://gambas.sourceforge.net"
 
-MY_PN="gambas3"
-SLOT="0"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}.tar.bz2"
+
 LICENSE="GPL-2"
+KEYWORDS="*"
 
-KEYWORDS="amd64 x86"
-IUSE="bzip2 cairo crypt curl dbus +desktop examples gmp gsl gtk httpd +imageio imageimlib \
-	jit libxml media mysql mime ncurses net opengl postgres odbc openssl openal pcre pdf \
-	+qt4 qt5 sdl sdlsound smtp sqlite +sqlite3 svg v4l xml zlib"
+IUSE="+curl +net +qt4 +x11
+	bzip2 cairo crypt dbus examples gmp gnome gsl gstreamer gtk2 gtk3 httpd image-imlib image-io jit libxml mime
+	mysql ncurses odbc openal opengl openssl pcre pdf pop3 postgres qt4-opengl qt4-webkit qt5 sdl sdl-sound sdl2 sqlite v4l xml zlib"
 
-REQUIRED_USE="qt4"
+# gambas3 have the only one gui. it is based on qt4.
+# these use flags (modules/plugins) require this qt4 gui to be present at the system to work properly:
+# cairo gnome gstreamer gtk2 gtk3 imageimlib imageio opengl pdf sdl sdl2 v4l
 
-# libcrypt.so is part of glibc
-COMMON_DEPEND="
-	bzip2?	( >=app-arch/bzip2-1.0.5 )
-	cairo?	( >=x11-libs/cairo-1.6 )
-	curl?	( >=net-misc/curl-7.15.5-r1 )
-	dbus?	( sys-apps/dbus )
-	desktop?	(
-		x11-libs/libXtst
-		x11-misc/xdg-utils
-		gnome-base/gnome-keyring
-	)
-	gmp?	( dev-libs/gmp )
-	gsl?	( sci-libs/gsl )
-	gtk?	(
-		>=x11-libs/gtk+-2.16:2[cups]
-		>=x11-libs/cairo-1.6
-		svg? ( >=gnome-base/librsvg-2.16.1-r2 )
-		>=x11-libs/gtkglext-1.0
-	)
-	imageio?	( x11-libs/gdk-pixbuf )
-	imageimlib?	( media-libs/imlib2 )
-	jit?	( >=sys-devel/llvm-3.1 )
-	libxml?	( dev-libs/libxml2 )
-	media?	(
-		>=media-libs/gstreamer-1.0
-		media-libs/gst-plugins-base
-		media-plugins/gst-plugins-xvideo
-		media-tv/v4l-utils
-	)
-	mysql?	(
-		>=virtual/mysql-5.0
-		>=sys-libs/zlib-1.2.3-r1
-	)
-	mime?	( >=dev-libs/gmime-2.6 )
-	ncurses?	( sys-libs/ncurses )
-	net?	( >=net-misc/curl-7.13 )
-	odbc?	( dev-db/unixODBC )
-	openal? ( media-libs/alure )
-	opengl?	(
-		>=media-libs/mesa-7.0.2
-		|| ( x11-drivers/nvidia-drivers x11-drivers/ati-drivers x11-libs/libGlw )
-		media-libs/glew
-		media-libs/glu
-	)
-	openssl?	( dev-libs/openssl )
-	pcre?	( >=dev-libs/libpcre-7.6-r1 )
-	pdf?	( >=app-text/poppler-0.5 )
-	postgres?	( >=dev-db/postgresql-base-8.2 )
-	pcre?	( dev-libs/libpcre )
-	qt4? (
-		>=dev-qt/qtcore-4.5:4
-		>=dev-qt/qtopengl-4.5:4
-		>=dev-qt/qtwebkit-4.5:4
-	)
+REQUIRED_USE="cairo? ( qt4 x11 )
+	gnome? ( qt4 x11 )
+	gstreamer? ( qt4 x11 )
+	gtk2? ( qt4 x11 )
+	gtk3? ( qt4 x11 )
+	image-imlib? ( qt4 x11 )
+	image-io? ( qt4 x11 )
+	net? ( curl
+		pop3? ( mime ) )
+	opengl? ( qt4 x11 )
+	pdf? ( qt4 x11 )
+	qt4? ( x11 )
+	qt4-opengl? ( qt4 )
+	qt4-webkit? ( qt4 )
+	sdl? ( qt4 x11 )
+	sdl-sound? ( sdl )
+	sdl2? ( qt4 x11 )
+	v4l? ( qt4 x11 )"
+
+RDEPEND="bzip2? ( app-arch/bzip2 )
+	cairo? ( x11-libs/cairo )
+	curl? ( net-misc/curl )
+	dbus? ( sys-apps/dbus )
+	gnome? ( gnome-base/gnome-keyring )
+	gmp? ( dev-libs/gmp )
+	gsl? ( sci-libs/gsl )
+	gstreamer? ( media-libs/gst-plugins-base
+		media-libs/gstreamer )
+	gtk2? ( x11-libs/gtk+:2 )
+	gtk3? ( x11-libs/gtk+:3 )
+	jit? ( sys-devel/llvm )
+	image-imlib? ( media-libs/imlib2 )
+	image-io? ( dev-libs/glib
+		x11-libs/gdk-pixbuf )
+	libxml? ( dev-libs/libxml2 )
+	mime? ( dev-libs/gmime )
+	mysql?  ( virtual/mysql )
+	ncurses? ( sys-libs/ncurses )
+	odbc? ( dev-db/unixODBC )
+	openal? ( media-libs/openal )
+	opengl? ( media-libs/mesa )
+	openssl? ( dev-libs/openssl )
+	pcre? ( dev-libs/libpcre )
+	pdf? ( app-text/poppler )
+	postgres? ( virtual/postgresql-base )
+	qt4? ( dev-qt/qtcore:4[qt3support]
+		dev-qt/qtgui:4[qt3support]
+		dev-qt/qtsvg:4 )
+	qt4-opengl? ( dev-qt/qtwebkit:4 )
+	qt4-webkit? ( dev-qt/qtopengl:4[qt3support] )
 	qt5? (
 		>=dev-qt/qtcore-5.4.0:5
 		>=dev-qt/qtopengl-5.4.0:5
 		>=dev-qt/qtwebkit-5.4.0:5
 	)
-	sdl?	(
-		media-libs/sdl-ttf
-		>=media-libs/sdl-mixer-1.2.7
-		>=media-libs/mesa-7.0.2
-		|| ( x11-drivers/nvidia-drivers x11-drivers/ati-drivers x11-libs/libGlw )
-		media-libs/glew
-	)
-	sdlsound?	( media-libs/sdl-sound )
-	smtp?	( >=dev-libs/glib-2.16.2 )
-	sqlite?	( =dev-db/sqlite-2* )
-	sqlite3?	( >=dev-db/sqlite-3.5.6 )
-	svg?	( gnome-base/librsvg )
-	v4l?	(
-		media-tv/v4l-utils
-		>=media-libs/libpng-1.2.26
-		virtual/jpeg
-	)
-	xml?	(
-		>=dev-libs/libxml2-2.6.31
-		>=dev-libs/libxslt-1.1.22
-	)
-	zlib?	( >=sys-libs/zlib-1.2.3-r1 )
-	x11-libs/libSM
-	x11-libs/libXcursor
-	virtual/libffi
-"
+	sdl? ( media-libs/libsdl[opengl]
+		media-libs/sdl-image
+		media-libs/sdl-ttf )
+	sdl-sound? ( media-libs/sdl-mixer )
+	sdl2? ( media-libs/libsdl2
+		media-libs/sdl2-image
+		media-libs/sdl2-mixer )
+	v4l? ( virtual/jpeg:0
+		media-libs/libpng )
+	x11? ( x11-libs/libX11
+		x11-libs/libXtst )
+	xml? ( dev-libs/libxml2
+		dev-libs/libxslt )
+	zlib? ( sys-libs/zlib )"
 
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
-"
-RDEPEND="${COMMON_DEPEND}"
+DEPEND="${RDEPEND}
+	virtual/libintl"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
+autocrap_cleanup() {
+	sed -e "/^\(AC\|GB\)_CONFIG_SUBDIRS(${1}[,)]/d" \
+		-i "${S}/configure.ac" || die
+	sed -e "/^ \(@${1}_dir@\|${1}\)/d" \
+		-i "${S}/Makefile.am" || die
+}
+
 src_prepare() {
-	epatch "${FILESDIR}"/xdgutils.patch
-	elibtoolize
+	# funtoo-ism
+	epatch "${FILESDIR}/xdgutils.patch"
+
+	# deprecated
+	autocrap_cleanup sqlite2
+
+	use_if_iuse bzip2 || autocrap_cleanup bzlib2
+	use_if_iuse cairo || autocrap_cleanup cairo
+	use_if_iuse crypt || autocrap_cleanup crypt
+	use_if_iuse curl || autocrap_cleanup curl
+	use_if_iuse dbus || autocrap_cleanup dbus
+	use_if_iuse examples || autocrap_cleanup examples
+	use_if_iuse gsl || autocrap_cleanup gsl
+	use_if_iuse gmp || autocrap_cleanup gmp
+	use_if_iuse gnome || autocrap_cleanup keyring
+	use_if_iuse gstreamer || autocrap_cleanup media
+	use_if_iuse gtk2 || autocrap_cleanup gtk
+	use_if_iuse gtk3 || autocrap_cleanup gtk3
+	use_if_iuse httpd || autocrap_cleanup httpd
+	use_if_iuse image-imlib || autocrap_cleanup imageimlib
+	use_if_iuse image-io || autocrap_cleanup imageio
+	use_if_iuse jit || autocrap_cleanup jit
+	use_if_iuse libxml || autocrap_cleanup libxml
+	use_if_iuse mime || autocrap_cleanup mime
+	use_if_iuse mysql || autocrap_cleanup mysql
+	use_if_iuse ncurses || autocrap_cleanup ncurses
+	use_if_iuse net || autocrap_cleanup net
+	use_if_iuse odbc || autocrap_cleanup odbc
+	use_if_iuse openal || autocrap_cleanup openal
+	use_if_iuse opengl || autocrap_cleanup opengl
+	use_if_iuse openssl || autocrap_cleanup openssl
+	use_if_iuse pcre || autocrap_cleanup pcre
+	use_if_iuse pdf || autocrap_cleanup pdf
+	use_if_iuse postgres || autocrap_cleanup postgresql
+	use_if_iuse qt4 || autocrap_cleanup qt4
+	use_if_iuse sdl || autocrap_cleanup sdl
+	use_if_iuse sdl-sound || autocrap_cleanup sdlsound
+	use_if_iuse sdl2 || autocrap_cleanup sdl2
+	use_if_iuse sqlite || autocrap_cleanup sqlite
+	use_if_iuse v4l || autocrap_cleanup v4l
+	use_if_iuse x11 || autocrap_cleanup x11
+	use_if_iuse xml || autocrap_cleanup xml
+	use_if_iuse zlib || autocrap_cleanup zlib
+
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable bzip2 bzlib2) \
-		$(use_enable zlib) \
-		$(use_enable mysql) \
-		$(use_enable odbc) \
-		$(use_enable postgres postgresql) \
-		$(use_enable sqlite sqlite2) \
-		$(use_enable sqlite3) \
-		$(use_enable net) \
-		$(use_enable curl) \
-		$(use_enable smtp) \
-		$(use_enable mime) \
-		$(use_enable pcre) \
-		$(use_enable sdl) \
-		$(use_enable sdlsound) \
-		$(use_enable libxml) \
-		$(use_enable xml) \
-		$(use_enable v4l) \
-		$(use_enable crypt) \
-		$(use_enable qt4) \
-		$(use_enable qt5) \
-		$(use_enable gtk) \
-		$(use_enable opengl) \
-		$(use_enable desktop) \
-		$(use_enable pdf) \
+	use_if_iuse qt4 && cd ${S}/gb.qt4 && \
+		econf $(use_enable qt4-opengl qtopengl) \
+			$(use_enable qt4-webkit qtwebkit)
+
+	cd ${S} && econf $(use_enable bzip2 bzlib2) \
 		$(use_enable cairo) \
-		$(use_enable imageio) \
-		$(use_enable imageimlib) \
+		$(use_enable crypt) \
+		$(use_enable curl) \
 		$(use_enable dbus) \
-		$(use_enable gsl) \
+		$(use_enable examples) \
 		$(use_enable gmp) \
-		$(use_enable ncurses) \
-		$(use_enable media) \
-		$(use_enable jit) \
+		$(use_enable gnome keyring) \
+		$(use_enable gsl) \
+		$(use_enable gstreamer media) \
+		$(use_enable gtk2) \
+		$(use_enable gtk3) \
 		$(use_enable httpd) \
+		$(use_enable image-imlib imageimlib) \
+		$(use_enable image-io imageio) \
+		$(use_enable jit) \
+		$(use_enable libxml) \
+		$(use_enable mime) \
+		$(use_enable mysql) \
+		$(use_enable ncurses) \
+		$(use_enable net) \
+		$(use_enable odbc) \
+		$(use_enable openal) \
+		$(use_enable opengl) \
 		$(use_enable openssl) \
-		$(use_enable openal)
+		$(use_enable pcre) \
+		$(use_enable pdf) \
+		$(use_enable postgres postgresql) \
+		$(use_enable qt4) \
+		$(use_enable qt5)
+		$(use_enable sdl) \
+		$(use_enable sdl-sound sdlsound) \
+		$(use_enable sqlite sqlite3) \
+		$(use_enable v4l) \
+		$(use_enable x11) \
+		$(use_enable xml) \
+		$(use_enable zlib)
 }
 
 src_install() {
-	DESTDIR="${D}" make install || die "emake install failed"
+	emake DESTDIR="${D}" install -j1
 
-	dodoc AUTHORS README TODO
-	use net && { newdoc gb.net/src/doc/README gb.net-README; }
-	use net && { newdoc gb.net/src/doc/changes.txt gb.net-ChangeLog; }
-	use pcre && { newdoc gb.pcre/src/README gb.pcre-README; }
-	use sqlite && { newdoc gb.db.sqlite2/README gb.db.squlite2-README; }
-	use sqlite3 && { newdoc gb.db.sqlite3/README gb.db.sqlite3-README; }
-	use jit && { newdoc gb.jit/README gb.jit-README; }
-	use smtp && { newdoc gb.net.smtp/README gb.net.smtp-README; }
+	dodoc AUTHORS ChangeLog NEWS README
 
-	if { use qt4 || use gtk; } ; then
-		newicon -s 128 app/src/${MY_PN}/img/logo/logo.png gambas3.png
-		doicon -s 64 -c mimetypes app/mime/*.png main/mime/*.png
-		insinto /usr/share/applications
-		doins app/desktop/gambas3.desktop
+	if use net ; then
+		newdoc gb.net/src/doc/README gb.net-README
+		newdoc gb.net/src/doc/changes.txt gb.net-ChangeLog
+	fi
+
+	if use pcre ; then
+		newdoc gb.pcre/src/README gb.pcre-README
+	fi
+
+	if use qt4 ; then
+		doicon "${S}/app/desktop/${MY_PN}.svg"
+		domenu "${S}/app/desktop/${MY_PN}.desktop"
+
+		doicon -s 64 -c mimetypes \
+			"${S}/app/mime/application-x-gambasscript.png" \
+			"${S}/app/mime/application-x-gambasserverpage.png" \
+			"${S}/main/mime/application-x-gambas3.png"
+
 		insinto /usr/share/mime/application
-		doins app/mime/*.xml main/mime/*.xml
+		doins "${S}/app/mime/application-x-gambasscript.xml" \
+			"${S}/app/mime/application-x-gambasserverpage.xml" \
+			"${S}/main/mime/application-x-gambas3.xml"
 	fi
 }
 
-my_fdo_update() {
-	{ use qt4 || use gtk; } && fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+pkg_preinst() {
+	if use qt4 ; then
+		gnome2_icon_savelist
+	fi
 }
 
 pkg_postinst() {
-	my_fdo_update
+	fdo-mime_desktop_database_update
+	fdo-mime_mime_database_update
+
+	if use qt4 ; then
+		gnome2_icon_cache_update
+	fi
 }
 
 pkg_postrm() {
-	my_fdo_update
+	fdo-mime_desktop_database_update
+	fdo-mime_mime_database_update
+
+	if use qt4 ; then
+		gnome2_icon_cache_update
+	fi
 }
