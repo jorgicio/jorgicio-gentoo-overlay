@@ -141,6 +141,7 @@ src_prepare() {
 	use_if_iuse pdf || autocrap_cleanup pdf
 	use_if_iuse postgres || autocrap_cleanup postgresql
 	use_if_iuse qt4 || autocrap_cleanup qt4
+	use_if_iuse qt5 || autocrap_cleanup qt5
 	use_if_iuse sdl || autocrap_cleanup sdl
 	use_if_iuse sdl-sound || autocrap_cleanup sdlsound
 	use_if_iuse sdl2 || autocrap_cleanup sdl2
@@ -187,7 +188,7 @@ src_configure() {
 		$(use_enable pdf) \
 		$(use_enable postgres postgresql) \
 		$(use_enable qt4) \
-		$(use_enable qt5)
+		$(use_enable qt5) \
 		$(use_enable sdl) \
 		$(use_enable sdl-sound sdlsound) \
 		$(use_enable sqlite sqlite3) \
