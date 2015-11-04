@@ -4,15 +4,16 @@
 
 EAPI=5
 
-inherit games qmake-utils
+inherit games qmake-utils git-r3
 
 DESCRIPTION="A Qt-based version of the game 2048"
 HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz"
+SRC_URI=""
+EGIT_REPO_URI="${HOMEPAGE}"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-qt/qtcore:5
@@ -20,8 +21,6 @@ DEPEND="dev-qt/qtcore:5
 	dev-qt/qtquickcontrols[widgets]
 	x11-themes/hicolor-icon-theme"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/2048-Qt-${PV}"
 
 src_configure(){
 	local myeqmakeargs=(
