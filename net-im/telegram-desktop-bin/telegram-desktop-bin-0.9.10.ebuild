@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI="5"
-inherit eutils versionator
+inherit eutils pax-utils
 
 RESTRICT="strip"
 
@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/Telegram"
 
 src_install() {
+	pax-mark m Telegram
     insinto "${INSTALL_DIR}"
 	insopts -m755
     doins -r Telegram
@@ -35,5 +36,6 @@ src_install() {
 	fi
     make_wrapper "telegram" "${INSTALL_DIR}/Telegram"
     make_desktop_entry "telegram" "Telegram" "telegram" "Messenger"
+
 }
 
