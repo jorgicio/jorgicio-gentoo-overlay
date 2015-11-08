@@ -34,6 +34,7 @@ src_install() {
 	insopts -m755
     doins -r Telegram 
 	if use updater;then
+		pax-mark m Updater
 		doins -r Updater
 	fi
     make_wrapper "telegram" "${INSTALL_DIR}/Telegram"
