@@ -1,0 +1,98 @@
+diff -Naur a/caffeine/caffeine-screensaver b/caffeine/caffeine-screensaver
+--- a/caffeine/caffeine-screensaver	2015-01-16 14:45:37.000000000 -0300
++++ b/caffeine/caffeine-screensaver	2015-11-09 00:57:17.383590455 -0300
+@@ -332,6 +332,7 @@
+ detectDE()
+ {
+     if [ x"$KDE_FULL_SESSION" = x"true" ]; then DE=kde;
++    elif [ x"$DESKTOP_SESSION" = x"mate" ]; then DE=mate;
+     elif [ x"$GNOME_DESKTOP_SESSION_ID" != x"" ]; then DE=gnome;
+     elif `dbus-send --print-reply --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.GetNameOwner string:org.gnome.SessionManager > /dev/null 2>&1` ; then DE=gnome;
+     elif xprop -root _DT_SAVE_MODE 2> /dev/null | grep ' = \"xfce4\"$' >/dev/null 2>&1; then DE=xfce;
+@@ -439,7 +440,9 @@
+     xfce)
+       screensaver_xserver "$1"
+       ;;
+-
++    mate)
++   	  screensaver_mate "$1" "/org/mate/ScreenSaver"
++      ;;
+     '')
+       screensaver_xserver "$1"
+       ;;
+@@ -639,6 +642,44 @@
+         return 1
+         ;;
+     esac
++}
++
++screensaver_mate()
++{
++    case "$1" in
++        suspend)
++        rm -f "$screensaver_file.pid"
++        caffeine-screensaver-mate-helper &
++        echo $! > "$screensaver_file.pid"
++        result=$?
++        ;;
++
++        resume)
++        if [ -f "$screensaver_file.pid" ] ; then
++            kill -HUP `cat "$screensaver_file.pid"`
++            rm -f "$screensaver_file.pid"
++        fi
++        result=$?
++        ;;
++
++        activate|lock|reset)
++        echo "ERROR: Command '$1' is not implemented in the $DE environment" >&2
++        ;;
++
++        status)
++        result=0
++        if [ -f "$screensaver_file" ] ; then
++            echo "disabled"
++        else
++            echo "enabled"
++        fi
++        ;;
++
++        *)
++        echo "ERROR: Unknown command '$1'" >&2
++        return 1
++        ;;
++    esac
+ }
+ 
+ screensaver_xserver()
+diff -Naur a/caffeine/caffeine-screensaver-mate-helper b/caffeine/caffeine-screensaver-mate-helper
+--- a/caffeine/caffeine-screensaver-mate-helper	1969-12-31 21:00:00.000000000 -0300
++++ b/caffeine/caffeine-screensaver-mate-helper	2015-11-09 00:52:41.475710642 -0300
+@@ -0,0 +1,16 @@
++#!/usr/bin/perl
++# Helper for caffeine-screensaver to inhibit desktop idleness using MATE DBus interface
++# N.B. This script sleeps forever, so it must be killed to stop the inhibition
++
++use strict;
++use warnings;
++
++use Net::DBus;
++
++my $bus = Net::DBus->session;
++my $service = $bus->get_service("org.mate.ScreenSaver");
++my $manager = $service->get_object("/org/mate/ScreenSaver", "org.mate.ScreenSaver");
++$manager->Inhibit("org.mate.xdg-screensaver", "caffeine-screensaver suspend");
++
++# Keep inhibiting until we're killed
++sleep;
+diff -Naur a/caffeine/setup.py b/caffeine/setup.py
+--- a/caffeine/setup.py	1969-12-31 21:00:00.000000000 -0300
++++ b/caffeine/setup.py	2015-11-09 00:52:41.475710642 -0300
+@@ -40,5 +40,5 @@
+     url="https://launchpad.net/caffeine",
+     py_modules=["ewmh"],
+     data_files=data_files,
+-    scripts=["caffeine", "caffeinate", "caffeine-indicator", "caffeine-screensaver", "caffeine-screensaver-freedesktop-helper"]
++    scripts=["caffeine", "caffeinate", "caffeine-indicator", "caffeine-screensaver", "caffeine-screensaver-freedesktop-helper", "caffeine-screensaver-mate-helper"]
+     )
+
