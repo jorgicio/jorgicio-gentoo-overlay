@@ -20,7 +20,7 @@ IUSE=""
 DEPEND="${PYTHON_DEPEND}
 	dev-python/PyQt4[${PYTHON_USEDEP}]
 	dev-libs/box2d
-	dev-python/pygame[${PYTHON_USEDEP}]
+	dev-python/pygame[X,${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	"
 RDEPEND="${DEPEND}"
