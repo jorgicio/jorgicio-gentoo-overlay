@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{3,4} )
+PYTHON_COMPAT=( python3_{3,4,5} )
 inherit distutils-r1 gnome2-utils
 
 DESCRIPTION="Prevent desktop idleness in full-screen mode"
