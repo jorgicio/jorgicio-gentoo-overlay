@@ -1,0 +1,10 @@
+--- atom.sh	2015-10-29 19:00:41.000000000 +0100
++++ atom2.sh	2015-11-11 18:50:34.565624639 +0100
+@@ -91,6 +91,7 @@
+     ATOM_PATH="$USR_DIRECTORY/share/atom/atom"
+   fi
+ 
++  export PYTHON=python2
+   ATOM_HOME="${ATOM_HOME:-$HOME/.atom}"
+   mkdir -p "$ATOM_HOME"
+
