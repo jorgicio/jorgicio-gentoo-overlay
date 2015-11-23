@@ -29,11 +29,12 @@ DEPEND="
 	media-sound/pulseaudio
 	net-wireless/wireless-tools
 	sys-apps/lsb-release
+	|| ( x11-libs/gksu kde-apps/kdesu kde-misc/kdesudo )
 	"
 RDEPEND="${DEPEND}"
 
 src_install(){
-	npm install -g --prefix="${D}/usr"
+	npm install -g --prefix="${D}/usr" ${PN}
 	make_desktop_entry 'prey config gui' "Prey Configuration" ${PN} "System;Monitor"
 	insinto /etc/cron.d
 	insopts -m644
