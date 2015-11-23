@@ -12,12 +12,13 @@ SRC_URI="https://github.com/${PN}/${PN}-node-client/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 IUSE=""
 
 DEPEND="
 	virtual/cron
 	net-libs/nodejs[npm]
+	dev-libs/openssl
 	dev-python/pygtk
 	media-tv/xawtv
 	sys-apps/net-tools
