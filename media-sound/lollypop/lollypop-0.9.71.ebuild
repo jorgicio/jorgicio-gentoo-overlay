@@ -7,16 +7,15 @@ EAPI=5
 PYTHON_COMPAT=( python3_{3,4,5} )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-r1 autotools git-r3 gnome2-utils
+inherit python-r1 autotools gnome2-utils
 
 DESCRIPTION="Lollypop is a new GNOME music playing application"
 HOMEPAGE="http://gnumdk.github.io/lollypop"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/gnumdk/lollypop"
+SRC_URI="https://github.com/gnumdk/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
