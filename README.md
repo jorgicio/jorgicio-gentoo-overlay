@@ -67,7 +67,6 @@ List of packages (at the moment):
  * **net-im/telegram-desktop-bin:** The Official Client for Telegram, in its binary version. There's also the dev version.
  * **x11-themes/antergos-wallpapers:** The wallpapers set taken from Antergos repos.
  * **x11-themes/numix-frost-themes:** The well-known [Numix](http://numixproject.org) GTK theme, but Antergos-based.
- * **mate-extra/mate-tweak:** The MATE Tweak tool. Originally from Ubuntu MATE, now in Gentoo.
  * **app-admin/lightdm-gtk-greeter-settings:** The LightDM GTK+ Greeter settings tool, now in Gentoo.
  * **app-editors/visual-studio-code:** The Visual Studio Code, now multiplatform, now in Gentoo.
  * **net-misc/hosty:** An ad-blocking script. Thanks to [juankfree](https://github.com/juankfree/hosty).
