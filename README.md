@@ -6,6 +6,7 @@
   - [Made by Jorge Pizarro Callejas, aka Jorgicio (http://www.jorgicio.net).](#made-by-jorge-pizarro-callejas-aka-jorgicio-httpwwwjorgicionet)
   - [Usage](#usage)
   - [List of packages (at the moment):](#list-of-packages-at-the-moment)
+  - [Note for all MATE lovers (READ IT!!!)](#note-for-all-mate-lovers-read-it)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -80,3 +81,9 @@ List of packages (at the moment):
  * **media-sound/lollypop:** A new GNOME music player.
  * **app-shells/shellinabox:** Run a web-based terminal emulator with any browser! Forked from [here](https://code.google.com/p/shellinabox/).
  * **games-misc/fortune-mod-dross:** Fortune Mod quotes from [Dross](http://dross.tv).
+
+Note for all MATE lovers (READ IT!!!)
+-------------------------------------
+
+For all [MATE](http://mate-desktop.org) lovers, there's another overlay to use latter versions of that desktop environment because Gentoo portage version is pretty old. You can check it [here](mate-jorgicio), instructions included.
+Thanks.
