@@ -68,13 +68,17 @@ src_unpack() {
 src_prepare() {
 	local target=(
 		cffi-1.2.1-py2.7-*.egg
+		cryptography-1.0-py2.7-*.egg #new
 		dropbox_sqlite_ext-0.0-py2.7.egg
 		futures-3.0.2-py2.7.egg
+		idna-2.0-py2.7.egg #new
+		ipaddress-1.0.14-py2.7.egg #new
 		requests-1.2.3-py2.7.egg
 		setuptools-18.1-py2.7.egg
 		psutil-3.1.1-py2.7-*.egg
+		pyasn1-0.1.8-py2.7.egg
+		six-1.9.0-py2.7.egg #new
 		mock-1.0.1-py2.7.egg
-		six-1.9.0-py2.7.egg
 		tornado-4.2-py2.7-*.egg
 	)
 
