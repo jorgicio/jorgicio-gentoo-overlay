@@ -1,3 +1,0 @@
-#!/bin/sh
-
-gksudo -D Aurous 'java -jar /opt/aurous-bin/Aurous.jar'
