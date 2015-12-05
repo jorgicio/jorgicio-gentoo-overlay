@@ -74,6 +74,7 @@ src_prepare() {
 		setuptools-18.1-py2.7.egg
 		psutil-3.1.1-py2.7-*.egg
 		mock-1.0.1-py2.7.egg
+		six-1.9.0-py2.7.egg
 		tornado-4.2-py2.7-*.egg
 	)
 
