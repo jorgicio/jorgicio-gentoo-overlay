@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python library to support Wikipedia articles"
 HOMEPAGE="http://pypi.python.org/pypi/wikipedia/"
-SRC_URI="mirror://pypi/w/wikipedia/${MY_P}.tar.gz"
+SRC_URI="mirror://pypi/w/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
