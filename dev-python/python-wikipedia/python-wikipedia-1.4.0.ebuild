@@ -8,9 +8,12 @@ PYTHON_COMPAT=( python2_{6,7} python3_{1,2,3,4,5} pypy )
 
 inherit distutils-r1
 
+MY_PN="wikipedia"
+MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="Python library to support Wikipedia articles"
 HOMEPAGE="http://pypi.python.org/pypi/wikipedia/"
-SRC_URI="mirror://pypi/w/wikipedia/wikipedia-${PV}.tar.gz"
+SRC_URI="mirror://pypi/w/wikipedia/${MY_P}.tar.gz"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
@@ -24,4 +27,4 @@ RDEPEND="${DEPEND}
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-S="${WORKDIR}/wikipedia-${PV}"
+S="${WORKDIR}/${MY_P}"
