@@ -13,16 +13,13 @@ SRC_URI="https://github.com/graysky2/profile-sync-daemon/archive/v${PV}.tar.gz -
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+systemd"
+IUSE=""
 
 RDEPEND="
 	app-shells/bash
 	net-misc/rsync[xattr]
-	systemd? ( sys-apps/systemd )"
+	sys-apps/systemd"
 
 src_install() {
-	emake DESTDIR="${ED}" \
-		$(usex systemd "install-systemd" "")
-	emake DESTDIR="${ED}" install-bin
-	emake DESTDIR="${ED}" install-man
+	emake DESTDIR="${ED}" install
 }
