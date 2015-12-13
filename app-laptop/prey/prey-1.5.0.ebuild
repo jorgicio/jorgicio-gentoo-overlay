@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}-node-client/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 IUSE="+openrc"
 
 DEPEND="
@@ -54,6 +54,7 @@ pkg_postinst(){
 		rm /etc/init.d/prey-agent
 		install -m755 ${FILESDIR}/prey-agent /etc/init.d
 	fi
-	ewarn "Don't forget add your user to the group prey (as root):"
-	ewarn "gpasswd -a username prey"
+	elog "Don't forget add your user to the group prey (as root):"
+	elog "gpasswd -a username prey"
+	elog "After that, you must run the prey-agent daemon."
 }
