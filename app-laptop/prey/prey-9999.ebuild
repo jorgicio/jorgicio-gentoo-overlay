@@ -46,6 +46,7 @@ src_install(){
 
 pkg_postinst(){
 	prey config hooks post_install
+	gpasswd -a prey video >/dev/null
 	if use openrc;then
 		rm /etc/init.d/prey-agent
 		install -m755 ${FILESDIR}/prey-agent /etc/init.d
@@ -53,4 +54,9 @@ pkg_postinst(){
 	elog "Don't forget add your user to the group prey (as root):"
 	elog "gpasswd -a username prey"
 	elog "After that, you must run the prey-agent daemon."
+}
+
+pkg_prerm(){
+	prey config hooks pre_uninstall
+	userdel prey
 }
