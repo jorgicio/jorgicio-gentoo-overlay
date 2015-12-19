@@ -5,7 +5,7 @@
 EAPI=5
 
 COMMIT_1="9b42fcb3f7d89c4762f7"
-COMMIT_2="17f213d583fe44bc72b9d62396f1282640441e74"
+COMMIT_2="1993028c582ed3ac1a82d1025cebff1af629cca7"
 
 DESCRIPTION="Fortune database of quotes from Angel David Revilla, a.k.a. Dross Rotzank, or Dross."
 HOMEPAGE="https://gist.github.com/jorgicio"
