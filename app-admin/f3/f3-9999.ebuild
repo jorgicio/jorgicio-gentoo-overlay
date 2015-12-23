@@ -21,5 +21,5 @@ RDEPEND="${DEPEND}"
 src_install() {
 	dobin f3write
 	dobin f3read
-	dodoc README
+	newdoc README.md README
 }
