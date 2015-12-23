@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}-node-client-${PV}"
 
 src_install(){
-	npm install -g --prefix="${D}/usr"
+	npm install -g --prefix="${D}/usr" || die "Installation failed"
 	make_desktop_entry 'prey config gui' "Prey Configuration" ${PN} "System;Monitor"
 	insinto /etc/cron.d
 	insopts -m644
