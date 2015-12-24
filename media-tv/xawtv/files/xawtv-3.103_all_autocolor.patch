@@ -1,0 +1,22 @@
+--- a/x11/xv.c	2013-04-02 10:19:10.000000000 -0300
++++ b/x11/xv.c	2015-12-24 16:43:54.843196987 -0300
+@@ -333,6 +333,7 @@
+     struct STRTAB *inputs = NULL;
+     char *h;
+     int n, i, vi_port = -1, vi_adaptor = -1;
++    Atom xv_atom;
+ 
+     if (Success != XvQueryExtension(dpy,&ver,&rel,&req,&ev,&err)) {
+ 	if (debug)
+@@ -442,6 +443,11 @@
+ 		handle->xv_encoding = XV_ENCODING;
+ 	    if (0 == strcmp("XV_FREQ",at[i].name))
+ 		handle->xv_freq     = XV_FREQ;
++		if (0 == strcmp("XV_AUTOPAINT_COLORKEY",at[i].name))
++	    {
++			xv_atom = XInternAtom(dpy,"XV_AUTOPAINT_COLORKEY",False);
++			XvSetPortAttribute(dpy,vi_port,xv_atom,1);
++	    }
+ #if 0
+ 	    if (0 == strcmp("XV_COLORKEY",at[i].name))
+ 		handle->xv_colorkey = XV_COLORKEY;
