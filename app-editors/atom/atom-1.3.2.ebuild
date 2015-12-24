@@ -1,16 +1,16 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $id$
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic python-any-r1 eutils
+inherit flag-o-matic python-any-r1 eutils 
 
 DESCRIPTION="A hackable text editor for the 21st Century"
 HOMEPAGE="https://atom.io"
 SRC_URI="https://github.com/atom/atom/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-
+RESTRICT="mirror"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -37,15 +37,24 @@ pkg_setup() {
 }
 
 src_prepare(){
-	epatch "${FILESDIR}/${PN}-python-1.1.0.patch"
-	sed -i -e "/exception-reporting/d" \
-      -e "/metrics/d" package.json
-
+	epatch "${FILESDIR}/${PN}-python.patch"
+	sed -i  -e "/exception-reporting/d" \
+		-e "/metrics/d" package.json
 	sed -e "s/<%= description %>/$pkgdesc/" \
-    -e "s|<%= iconPath %>|atom|"\
-	-e "s|<%= installDir %>/share/<%= appFileName %>|/usr/bin|"\
-	-e "s|<%= appName %>|Atom|" \
-    resources/linux/atom.desktop.in > resources/linux/Atom.desktop
+		-e "s|<%= installDir %>/share/<%= appFileName %>/atom|/usr/bin/atom|"\
+		-e "s|<%= iconPath %>|atom|"\
+		-e "s|<%= appName %>|Atom|" \
+		resources/linux/atom.desktop.in > resources/linux/Atom.desktop
+
+    	# Fix atom location guessing
+	sed -i -e 's/ATOM_PATH="$USR_DIRECTORY\/share\/atom/ATOM_PATH="$USR_DIRECTORY\/../g' \
+		./atom.sh \
+		|| die "Fail fixing atom-shell directory"
+
+	# Make bootstrap process more verbose
+	sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
+		./script/build \
+		|| die "Fail fixing verbosity of script/build"
 }
 
 src_compile(){
@@ -55,14 +64,23 @@ src_compile(){
 }
 
 src_install(){
-	./script grunt install --build-dir "${T}" --install-dir "${D}/usr"
 	insinto ${EPREFIX}/usr/share/${PN}
 	doins -r ${T}/Atom/*
 	insinto ${EPREFIX}/usr/share/applications
 	newins resources/linux/Atom.desktop atom.desktop
 	insinto ${EPREFIX}/usr/share/pixmaps
-    mv resources/app-icons/stable/png/1024.png resources/app-icons/stable/png/atom.png
-	doins resources/app-icons/stable/png/atom.png
+	newins resources/app-icons/stable/png/128.png atom.png
 	insinto ${EPREFIX}/usr/share/licenses/${PN}
 	doins LICENSE.md
+	# Fixes permissions
+	fperms +x ${EPREFIX}/usr/share/${PN}/${PN}
+	fperms +x ${EPREFIX}/usr/share/${PN}/libgcrypt.so.11
+	fperms +x ${EPREFIX}/usr/share/${PN}/libnotify.so.4
+	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/atom.sh
+	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/apm/bin/apm
+	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/apm/bin/node
+	fperms +x ${EPREFIX}/usr/share/${PN}/resources/app/apm/node_modules/npm/bin/node-gyp-bin/node-gyp
+	# Symlinking to /usr/bin
+	dosym ${EPREFIX}/usr/share/${PN}/resources/app/atom.sh /usr/bin/atom
+	dosym ${EPREFIX}/usr/share/${PN}/resources/app/apm/bin/apm /usr/bin/apm
 }
