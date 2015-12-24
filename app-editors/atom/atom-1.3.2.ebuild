@@ -44,7 +44,7 @@ src_prepare(){
 	sed -e "s/<%= description %>/$pkgdesc/" \
     -e "s|<%= iconPath %>|atom|"\
 	-e "s|<%= installDir %>/share/<%= appFileName %>|/usr/bin|"\
-	-e "s|<%= appName %>|Atom|"
+	-e "s|<%= appName %>|Atom|" \
     resources/linux/atom.desktop.in > resources/linux/Atom.desktop
     # Fix atom location guessing
 	sed -i -e 's/ATOM_PATH="$USR_DIRECTORY\/share\/atom/ATOM_PATH="$USR_DIRECTORY\/../g' \
