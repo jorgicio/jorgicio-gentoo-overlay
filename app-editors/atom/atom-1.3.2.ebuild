@@ -46,14 +46,6 @@ src_prepare(){
 	-e "s|<%= installDir %>/share/<%= appFileName %>|/usr/bin|"\
 	-e "s|<%= appName %>|Atom|" \
     resources/linux/atom.desktop.in > resources/linux/Atom.desktop
-    # Fix atom location guessing
-	sed -i -e 's/ATOM_PATH="$USR_DIRECTORY\/share\/atom/ATOM_PATH="$USR_DIRECTORY\/../g' \
-		./atom.sh \
-		|| die "Fail fixing atom-shell directory"
-	# Make bootstrap process more verbose
-	sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
-		./script/build \
-		|| die "Fail fixing verbosity of script/build"
 }
 
 src_compile(){
@@ -63,6 +55,7 @@ src_compile(){
 }
 
 src_install(){
+	./script grunt install --build-dir "${T}" --install-dir "${D}/usr"
 	insinto ${EPREFIX}/usr/share/${PN}
 	doins -r ${T}/Atom/*
 	insinto ${EPREFIX}/usr/share/applications
