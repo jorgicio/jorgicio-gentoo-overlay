@@ -37,6 +37,14 @@ src_prepare(){
 	vala_src_prepare
 }
 
+src_configure(){
+	local mycmakeargs=(
+		"-DICON_UPDATE=OFF"
+		"-DGSETTINGS_COMPILE=OFF"
+	)
+	cmake-utils_src_configure
+}
+
 pkg_preinst(){
 	gnome2_schemas_savelist
 }
