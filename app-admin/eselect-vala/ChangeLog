@@ -1,0 +1,20 @@
+# ChangeLog for app-admin/eselect-vala
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  16 Jul 2011; <ulltor@gentoo.org> +eselect-vala-0.1.1.ebuild,
+  eselect-vala-0.1.2.ebuild, eselect-vala-9999.ebuild:
+  Moved to GoogleCode
+
+*eselect-vala-0.1.1 (11 Jul 2011)
+
+  11 Jul 2011; <ulltor@gentoo.org> +eselect-vala-0.1.1.ebuild:
+  Version bump to 0.1.1
+
+*eselect-vala-9999 (10 Jul 2011)
+*eselect-vala-0.1 (10 Jul 2011)
+
+  10 Jul 2011; <ulltor@gentoo.org> +eselect-vala-0.1.ebuild,
+  +eselect-vala-9999.ebuild, +metadata.xml:
+  Added eselect-vala ebuilds
+
