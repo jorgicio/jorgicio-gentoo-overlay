@@ -19,8 +19,8 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="
-	${PYTHON_DEPEND}
-	dev-python/PyQt4[X]
+	${PYTHON_DEPS}
+	dev-python/PyQt4[X,${PYTHON_USEDEP}]
 	net-misc/logmein-hamachi
 "
 RDEPEND="${DEPEND}"
