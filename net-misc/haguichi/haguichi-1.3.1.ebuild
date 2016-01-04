@@ -31,10 +31,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare(){
-	epatch ${FILESDIR}/${PN}-vala-version-finder.patch
 	DOCS="AUTHORS"
 	gnome2_src_prepare
 	vala_src_prepare
+	export VALAC="$(type -p valac-$(vala_best_api_version))"
 }
 
 src_configure(){
