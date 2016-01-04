@@ -1,3 +1,5 @@
-# Since 6.0, Profile Sync Daemon developers removed all non-SystemD support, so it won't be compatible with any other init that's not SystemD.
+# Since 6.0, Profile Sync Daemon developers removed all non-systemd support, so it won't be compatible with any other init that's not systemd.
 # If you're using SystemD, you can unmask this package.
 >=www-misc/profile-sync-daemon-6.0
+# Budgie Desktop is not fully supported without systemd. If you use systemd, you can unmask it.
+gnome-extra/budgie-desktop
