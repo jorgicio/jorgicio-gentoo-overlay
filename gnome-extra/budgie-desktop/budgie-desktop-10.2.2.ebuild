@@ -41,7 +41,7 @@ RDEPEND="
 	!systemd? ( sys-power/upower-pm-utils[introspection?] )
 	dev-util/intltool
 	>=gnome-base/gnome-session-3.18.0[systemd?]
-	>=x11-terms/gnome-terminal-3.18.0
+	>=x11-terms/gnome-terminal-3.18.0[-gnome-shell]
 	gnome-base/gnome-control-center
 	gnome-base/nautilus[introspection?]
 	>=gnome-base/gnome-desktop-3.18.0:3
