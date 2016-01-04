@@ -27,7 +27,6 @@ RDEPEND="
 	${DEPEND}
 	>=x11-libs/libwnck-3.14.0:3
 	>=gnome-base/gnome-menus-3.10.1
-	gnome-base/gnome-settings-daemon
 	>=dev-libs/libpeas-1.3.0
 	>=x11-wm/mutter-3.18
 	dev-util/desktop-file-utils
@@ -37,9 +36,13 @@ RDEPEND="
 	media-sound/pulseaudio[X]
 	systemd? ( 
 		sys-apps/systemd
-		sys-power/upower[introspection?] 
+		sys-power/upower[introspection?]
+		gnome-base/gnome-settings-daemon
 	)
-	!systemd? ( sys-power/upower-pm-utils[introspection?] )
+	!systemd? ( 
+		sys-power/upower-pm-utils[introspection?]
+		gnome-base/gnome-settings-daemon[openrc-force]
+	)
 	dev-util/intltool
 	>=gnome-base/gnome-session-3.18.0[systemd?]
 	>=x11-terms/gnome-terminal-3.18.0[-gnome-shell]
