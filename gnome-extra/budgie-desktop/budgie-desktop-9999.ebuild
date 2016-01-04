@@ -37,11 +37,11 @@ RDEPEND="
 	systemd? ( 
 		sys-apps/systemd
 		sys-power/upower[introspection?]
-		gnome-base/gnome-settings-daemon
+		>=gnome-base/gnome-settings-daemon-3.18.0
 	)
 	!systemd? ( 
 		sys-power/upower-pm-utils[introspection?]
-		gnome-base/gnome-settings-daemon[openrc-force]
+		>=gnome-base/gnome-settings-daemon-3.18.0[openrc-force]
 	)
 	dev-util/intltool
 	>=gnome-base/gnome-session-3.18.0[systemd?]
