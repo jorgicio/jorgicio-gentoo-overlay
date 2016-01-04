@@ -30,7 +30,7 @@ RDEPEND="
 	gnome-base/gnome-settings-daemon
 	>=dev-libs/libpeas-1.3.0
 	>=x11-wm/mutter-3.18
-	dev-utils/desktop-file-utils
+	dev-util/desktop-file-utils
 	dev-libs/libgee[introspection?]
 	x11-themes/gnome-themes-standard
 	>=x11-libs/gtk+-3.16:3
