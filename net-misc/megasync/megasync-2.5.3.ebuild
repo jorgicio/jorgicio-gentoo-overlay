@@ -12,6 +12,7 @@ SRC_URI="
 		x86? ( https://mega.co.nz/linux/MEGAsync/xUbuntu_14.04/i386/${PN}_${PV}_i386.deb )
 		amd64? ( https://mega.co.nz/linux/MEGAsync/xUbuntu_14.04/amd64/${PN}_${PV}_amd64.deb )
 		"
+RESTRICT="mirror"
 
 LICENSE="MEGA"
 SLOT="0"
