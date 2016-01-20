@@ -3,3 +3,5 @@
 >=www-misc/profile-sync-daemon-6.0
 # Budgie Desktop is not fully supported without systemd. If you use systemd, you can unmask it.
 gnome-extra/budgie-desktop
+# Fails at installing app-laptop/prey
+=net-libs/nodejs-5.4.1
