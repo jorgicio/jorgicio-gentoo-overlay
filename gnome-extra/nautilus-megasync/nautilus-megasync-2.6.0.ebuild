@@ -9,8 +9,8 @@ inherit eutils multilib unpacker
 DESCRIPTION="Nautilus plugin for using the MEGA account with Megasync"
 HOMEPAGE="http://mega.co.nz"
 SRC_URI="
-	x86? ( https://mega.co.nz/linux/MEGAsync/xUbuntu_14.04/i386/${PN}_${PV}_i386.deb )
-		amd64? ( https://mega.co.nz/linux/MEGAsync/xUbuntu_14.04/amd64/${PN}_${PV}_amd64.deb )
+	x86? ( https://mega.nz/linux/MEGAsync/xUbuntu_14.04/i386/${PN}-xUbuntu_14.04_i386.deb -> ${PN}_${PV}_i386.deb )
+		amd64? ( https://mega.nz/linux/MEGAsync/xUbuntu_14.04/amd64/${PN}-xUbuntu_14.04_amd64.deb -> ${PN}_${PV}_amd64.deb )
 "
 RESTRICT="mirror"
 
