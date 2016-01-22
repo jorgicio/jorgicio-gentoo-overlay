@@ -23,7 +23,6 @@ DEPEND="
 	media-tv/xawtv
 	sys-apps/net-tools
 	|| ( media-gfx/scrot media-gfx/imagemagick )
-	app-laptop/laptop-detect
 	|| ( gnome-extra/zenity kde-base/kdialog )
 	media-sound/mpg123
 	media-sound/pulseaudio
