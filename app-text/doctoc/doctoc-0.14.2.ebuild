@@ -4,13 +4,9 @@
 
 EAPI=5
 
-inherit git-r3
-
 DESCRIPTION="Generates a table of contents for Markdown files inside for a git-based repository"
 HOMEPAGE="https://github.com/thlorenz/${PN}"
-SRC_URI=""
-EGIT_REPO_URI="${HOMEPAGE}"
-EGIT_COMMIT="v${PV}"
+SRC_URI="https://github.com/thlorenz/doctoc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
