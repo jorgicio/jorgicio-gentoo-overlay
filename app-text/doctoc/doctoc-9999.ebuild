@@ -20,5 +20,5 @@ DEPEND="net-libs/nodejs[npm]"
 RDEPEND="${DEPEND}"
 
 src_install(){
-	npm install -g --prefix="${D}/usr" ${PN}
+	npm install -g --prefix="${D}/usr" ${PN} || die "Installation failed"
 }
