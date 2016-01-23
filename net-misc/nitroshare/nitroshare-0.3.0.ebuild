@@ -10,7 +10,7 @@ MY_BR=$(get_version_component_range 1-2)
 
 DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="http://nitroshare.net"
-SRC_URI="https://launchpad.net/nitroshare/${MY_BR}/${PV}/+download/${P}.tar.gz -> ${P}.tar"
+SRC_URI="https://launchpad.net/nitroshare/${MY_BR}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
