@@ -23,7 +23,7 @@ RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 
-DOCS="AUTHORS ChangeLog NEWS README* TECHNOTES THANKS"
+DOCS="AUTHORS ChangeLog NEWS README* THANKS"
 
 pkg_setup() {
 	enewgroup dnscrypt
