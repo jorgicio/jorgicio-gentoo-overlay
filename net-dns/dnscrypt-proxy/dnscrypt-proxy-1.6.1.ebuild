@@ -38,7 +38,7 @@ src_configure() {
 
 src_install() {
 	default
-	if !use systemd; then
+	if use !systemd; then
 		newinitd "${FILESDIR}"/${PN}.initd-1.6.0-r1 ${PN}
 		newconfd "${FILESDIR}"/${PN}.confd-1.6.0-r1 ${PN}
 	else
