@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-LANGS="cs de en_CA en_GB es fr hu id it ja ko nb nn_NO pl pt_BR ro ru sl sv uk zh_CN zh_TW"
+LANGS="brx ca cs da de el en_CA en_GB es fa fr he hu id it ja ko nb nn_NO pl pt_BR ro ru sk sl sr@cyrillic sv tr uk zh_CN zh_TW"
 for x in ${LANGS}; do
 	IUSE+="linguas_${x} "
 done
