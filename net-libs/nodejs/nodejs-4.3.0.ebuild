@@ -19,7 +19,6 @@ IUSE="debug icu +npm snapshot +ssl"
 
 RDEPEND="icu? ( >=dev-libs/icu-55:= )
 	${PYTHON_DEPS}
-	>=net-libs/http-parser-2.5:=
 	>=dev-libs/libuv-1.6.1:=
 	>=dev-libs/openssl-1.0.2d:0=[-bindist]
 	sys-libs/zlib
@@ -91,7 +90,7 @@ src_prepare() {
 
 src_configure() {
 	local myarch=""
-	local myconf+=( --shared-openssl --shared-libuv --shared-http-parser --shared-zlib )
+	local myconf+=( --shared-openssl --shared-libuv --shared-zlib )
 	use npm || myconf+=( --without-npm )
 	use icu && myconf+=( --with-intl=system-icu )
 	use snapshot && myconf+=( --with-snapshot )
