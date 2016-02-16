@@ -91,7 +91,7 @@ src_prepare() {
 
 src_configure() {
 	local myarch=""
-	local myconf+=( --shared-openssl --shared-libuv --shared-zlib )
+	local myconf=( --shared-openssl --shared-libuv --shared-zlib )
 	#If http-parser is not set, Node.js uses its internal implementation
 	use http-parser && myconf+=( --shared-http-parser )
 	use npm || myconf+=( --without-npm )
