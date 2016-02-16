@@ -15,13 +15,14 @@ SRC_URI="http://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86 ~x64-macos"
-IUSE="debug icu +npm snapshot +ssl"
+IUSE="debug http-parser icu +npm snapshot +ssl"
 
 RDEPEND="icu? ( >=dev-libs/icu-55:= )
 	${PYTHON_DEPS}
 	>=dev-libs/libuv-1.6.1:=
 	>=dev-libs/openssl-1.0.2d:0=[-bindist]
 	sys-libs/zlib
+	http-parser? ( >=net-libs/http-parser-2.5:= )
 "
 DEPEND="${RDEPEND}
 	!!net-libs/iojs"
@@ -91,6 +92,8 @@ src_prepare() {
 src_configure() {
 	local myarch=""
 	local myconf+=( --shared-openssl --shared-libuv --shared-zlib )
+	#If http-parser is not set, Node.js uses its internal implementation
+	use http-parser && myconf+=( --shared-http-parser )
 	use npm || myconf+=( --without-npm )
 	use icu && myconf+=( --with-intl=system-icu )
 	use snapshot && myconf+=( --with-snapshot )
