@@ -6,13 +6,12 @@ EAPI=5
 
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
-inherit ruby-single git-r3
+inherit ruby-single
 
 DESCRIPTION="Seriously Instant Screen-Grabbing"
 HOMEPAGE="http://gyazo.com"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/gyazo/Gyazo-for-Linux"
-EGIT_COMMIT="${PV}"
+SRC_URI="https://github.com/gyazo/Gyazo-for-Linux/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/Gyazo-for-Linux-${PV}"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
