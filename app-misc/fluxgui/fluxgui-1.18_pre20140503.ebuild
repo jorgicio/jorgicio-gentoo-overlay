@@ -23,6 +23,7 @@ DEPEND=""
 RDEPEND="${DEPEND}
   dev-python/pexpect
   dev-libs/libappindicator:2
+  dev-python/gconf-python
 "
 
 python_install(){
