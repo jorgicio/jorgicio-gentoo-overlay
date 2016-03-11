@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}.tar.bz2"
 RESTRICT="mirror"
 
 LICENSE="GPL-2"
-KEYWORDS="~*"
+KEYWORDS="*"
 
 IUSE="+curl +net +qt4 +x11
 	bzip2 cairo crypt dbus examples gmp gnome gsl gstreamer gtk2 gtk3 httpd image-imlib image-io jit libxml mime
