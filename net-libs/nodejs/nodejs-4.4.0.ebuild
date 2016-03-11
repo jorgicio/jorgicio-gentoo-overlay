@@ -1,41 +1,42 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE="threads"
 
 inherit flag-o-matic pax-utils python-single-r1 toolchain-funcs
 
-DESCRIPTION="Evented IO for V8 Javascript"
-HOMEPAGE="http://nodejs.org/"
-SRC_URI="http://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
+DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
+HOMEPAGE="https://nodejs.org/"
+SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86 ~x64-macos"
-IUSE="debug http-parser icu +npm snapshot +ssl"
+IUSE="cpu_flags_x86_sse2 debug icu +npm snapshot +ssl test"
 
 RDEPEND="icu? ( >=dev-libs/icu-55:= )
-	${PYTHON_DEPS}
-	>=dev-libs/libuv-1.6.1:=
-	>=dev-libs/openssl-1.0.2d:0=[-bindist]
-	sys-libs/zlib
-	http-parser? ( >=net-libs/http-parser-2.5:= )
-"
+	npm? ( ${PYTHON_DEPS} )
+	>=net-libs/http-parser-2.5.2:=
+	>=dev-libs/libuv-1.8.0:=
+	>=dev-libs/openssl-1.0.2g:0=[-bindist]
+	sys-libs/zlib"
 DEPEND="${RDEPEND}
-	!!net-libs/iojs"
+	${PYTHON_DEPS}
+	test? ( net-misc/curl )"
 
 S="${WORKDIR}/node-v${PV}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != "binary" ]] ; then
-		if ! test-flag-CXX -std=c++11 ; then
-			die "Your compiler doesn't support C++11. Use GCC 4.8, Clang 3.3 or newer."
-		fi
-	fi
+	(use x86 && ! use cpu_flags_x86_sse2) && \
+		die "Your CPU doesn't support the required SSE2 instruction."
+
+	( [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11 ) && \
+		die "Your compiler doesn't support C++11. Use GCC 4.8, Clang 3.3 or newer."
 }
 
 src_prepare() {
@@ -66,19 +67,6 @@ src_prepare() {
 	# It doesn't really belong upstream , so it'll just be removed until someone
 	# with more gentoo-knowledge than me (jbergstroem) figures it out.
 	rm test/parallel/test-stdout-close-unref.js || die
-	# AssertionError: 1 == 2 (on line 97)
-	rm test/parallel/test-cluster-disconnect.js || die
-	# AssertionError: Client never errored
-	rm test/parallel/test-tls-hello-parser-failure.js || die
-	# --- TIMEOUT ---
-	rm test/parallel/test-child-process-fork-net.js \
-		test/parallel/test-child-process-fork-net2.js \
-		test/parallel/test-child-process-recv-handle.js \
-		test/parallel/test-cluster-dgram-1.js \
-		test/parallel/test-cluster-send-deadlock.js \
-		test/parallel/test-cluster-shared-handle-bind-error.js \
-		test/parallel/test-dgram-exclusive-implicit-bind.js \
-		test/parallel/test-tls-ticket-cluster.js || die
 
 	# debug builds. change install path, remove optimisations and override buildtype
 	if use debug; then
@@ -91,9 +79,7 @@ src_prepare() {
 
 src_configure() {
 	local myarch=""
-	local myconf=( --shared-openssl --shared-libuv --shared-zlib )
-	#If http-parser is not set, Node.js uses its internal implementation
-	use http-parser && myconf+=( --shared-http-parser )
+	local myconf+=( --shared-openssl --shared-libuv --shared-http-parser --shared-zlib )
 	use npm || myconf+=( --without-npm )
 	use icu && myconf+=( --with-intl=system-icu )
 	use snapshot && myconf+=( --with-snapshot )
@@ -146,8 +132,7 @@ src_install() {
 
 src_test() {
 	out/${BUILDTYPE}/cctest || die
-	declare -xl TESTTYPE="${BUILDTYPE}"
-	"${PYTHON}" tools/test.py --mode=${TESTTYPE} -J message parallel sequential || die
+	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
 }
 
 pkg_postinst() {
