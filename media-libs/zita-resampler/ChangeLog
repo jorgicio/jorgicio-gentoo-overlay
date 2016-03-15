@@ -1,0 +1,77 @@
+# ChangeLog for media-libs/zita-resampler
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  09 Apr 2015; Karl Linden (lilrc) <lilrc@users.sourceforge.net>
+  zita-resampler-1.3.0.ebuild:
+  eapi 5
+  keyword for ~ppc
+  use emake -C instead of cd and base_src_make
+
+  11 Dec 2014; Karl Linden (lilrc) <lilrc@users.sourceforge.net>
+  zita-resampler-1.3.0.ebuild:
+  stabilize
+
+*zita-resampler-1.3.0 (28 Oct 2012)
+
+  28 Oct 2012; Gavin Pryke (gavlee) <gavinlee303@googlemail.com>
+  -zita-resampler-0.1.1-r2.ebuild,
+  -files/zita-resampler-0.1.1-apps-Makefile.patch,
+  -files/zita-resampler-0.1.1-makefile.patch, -zita-resampler-1.1.0-r1.ebuild,
+  -zita-resampler-1.1.0-r2.ebuild, -files/zita-resampler-1.1.0-Makefile.patch,
+  -files/zita-resampler-1.1.0-Makefile-v2.patch, -zita-resampler-1.2.0.ebuild,
+  -files/zita-resampler-1.2.0-Makefile.patch, +zita-resampler-1.3.0.ebuild,
+  +files/zita-resampler-1.3.0-Makefile.patch, metadata.xml:
+  bump thanks to Jannis Achstetter. cleanup.
+
+*zita-resampler-1.2.0 (26 Sep 2012)
+
+  26 Sep 2012; Gavin Pryke (gavlee) <gavinlee303@googlemail.com>
+  +zita-resampler-1.2.0.ebuild, +files/zita-resampler-1.2.0-Makefile.patch:
+  bump
+
+*zita-resampler-1.1.0-r2 (24 Aug 2012)
+
+  24 Aug 2012; Gavin Pryke (gavlee) <gavinlee303@googlemail.com>
+  -zita-resampler-0.1.1-r1.ebuild, +zita-resampler-1.1.0-r2.ebuild,
+  +files/zita-resampler-1.1.0-Makefile-v2.patch:
+  revise to fix linking of zresample app on fresh install. add README and
+  install html docs. LICENSE for 1.1.0 is now GPL-3. remove old ebuild.
+
+*zita-resampler-1.1.0-r1 (30 Jul 2012)
+
+  30 Jul 2012; Dominique Michel <dominique@tuxfamily.org>
+  - zita-resampler-1.1.0 (30 Jun 2012)
+  -files/zita-resampler-1.1.0-apps-Makefile.patch
+  zita-resampler-1.1.0-Makefile.patch: drop arch; pass DESTDIR
+  + zita-resampler-1.1.0.ebuild-r1: the new patch fix dynamic linking consistency
+ 
+*zita-resampler-1.1.0 (30 Jun 2012)
+
+  30 Jun 2012; Dominique Michel <dominique@tuxfamily.org>
+  + zita-resampler-1.1.0.ebuild: initial ebuild for the 1.1.0 version
+
+*zita-resampler-0.1.1-r2 (06 Jan 2012)
+
+  06 Jan 2012; Gavin Pryke <gavinlee303@googlemail.com>
+  -zita-resampler-0.1.1.ebuild, +zita-resampler-0.1.1-r2.ebuild,
+  +files/zita-resampler-0.1.1-apps-Makefile.patch, metadata.xml:
+  install resample application
+
+  01 May 2011; Gavin Pryke <gavinlee303@googlemail.com>
+  zita-resampler-0.1.1.ebuild, zita-resampler-0.1.1-r1.ebuild:
+  update HOMEPAGE and SRC_URI
+
+*zita-resampler-0.1.1-r1 (12 Jan 2011)
+
+  12 Jan 2011; Gavin Pryke <gavinlee303@googlemail.com>
+  +zita-resampler-0.1.1-r1.ebuild:
+  add ~amd64, multilib changes, cleanup cruft from an older wip ebuild.
+
+*zita-resampler-0.1.1 (27 Oct 2010)
+
+  27 Oct 2010; Gavin Pryke <gavinlee303@googlemail.com>
+  +zita-resampler-0.1.1.ebuild, +files/zita-resampler-0.1.1-makefile.patch,
+  +metadata.xml:
+  Initial import.
+

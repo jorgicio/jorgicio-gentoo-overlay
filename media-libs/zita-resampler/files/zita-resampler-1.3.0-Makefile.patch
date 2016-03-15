@@ -1,0 +1,86 @@
+--- libs/Makefile.orig	2012-09-26 15:09:36.730652389 +0100
++++ libs/Makefile	2012-09-26 15:35:01.381004641 +0100
+@@ -20,9 +20,10 @@
+ 
+ # Modify as required.
+ #
++CXX ?= g++
+ PREFIX = /usr/local
+ SUFFIX := $(shell uname -m | sed -e 's/^unknown/$//' -e 's/^i.86/$//' -e 's/^x86_64/$/64/')
+-LIBDIR = lib$(SUFFIX)
++LIBDIR ?= lib$(SUFFIX)
+ 
+ MAJVERS = 1
+ MINVERS = 1.0
+@@ -31,8 +32,7 @@
+ 
+ 
+ CPPFLAGS += -I. -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+-CXXFLAGS += -Wall -fPIC -O2 -ffast-math
+-CXXFLAGS += -march=native
++CXXFLAGS += -Wall -fPIC -ffast-math
+ LDFLAGS += 
+ LDLIBS +=
+ 
+@@ -46,7 +46,7 @@
+ 
+ 
+ $(ZITA-RESAMPLER_MIN): $(ZITA-RESAMPLER_O)
+-	g++ -shared $(LDFLAGS) -Wl,-soname,$(ZITA-RESAMPLER_MAJ) -o $(ZITA-RESAMPLER_MIN) $(ZITA-RESAMPLER_O) $(ZITA-RESAMPLER_DEP)
++	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(ZITA-RESAMPLER_MAJ) -o $(ZITA-RESAMPLER_MIN) $(ZITA-RESAMPLER_O) $(ZITA-RESAMPLER_DEP)
+ 
+ $(ZITA-RESAMPLER_O):	$(ZITA-RESAMPLER_H)
+ 
+@@ -57,7 +57,7 @@
+ 	install -m 644 $(ZITA-RESAMPLER_H) $(DESTDIR)$(PREFIX)/include/zita-resampler
+ 	install -m 644 $(ZITA-RESAMPLER_MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)
+ 	ln -sf $(ZITA-RESAMPLER_MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/$(ZITA-RESAMPLER_SO)
+-	ldconfig
++	/sbin/ldconfig -n $(DESTDIR)$(PREFIX)/$(LIBDIR)
+ 
+ uninstall:
+ 	/bin/rm -rf $(DESTDIR)$(PREFIX)/include/zita-resampler
+--- apps/Makefile.orig	2012-09-26 15:09:26.702966080 +0100
++++ apps/Makefile	2012-09-26 15:35:04.016922423 +0100
+@@ -17,7 +17,7 @@
+ #
+ # ----------------------------------------------------------------------------
+ 
+-
++CXX ?= g++
+ PREFIX = /usr/local
+ SUFFIX := $(shell uname -m | sed -e 's/^unknown/$//' -e 's/^i.86/$//' -e 's/^x86_64/$/64/')
+ LIBDIR = lib$(SUFFIX)
+@@ -25,26 +25,25 @@
+ VERSION = 0.4.0
+ MANDIR = /usr/share/man/man1
+ LDFLAGS += -L$(PREFIX)/$(LIBDIR)
+-CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\"
+-CXXFLAGS += -O3  -ffast-math -Wall
+-CXXFLAGS += -march=native
++CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\" -I../libs
++CXXFLAGS += -ffast-math -Wall
+ 
+ 
+ all:	zresample zretune zresample.1.gz zretune.1.gz
+ 
+ 
+ ZRESAMPLE_O = zresample.o audiofile.o dither.o
+-zresample:	LDLIBS += -lzita-resampler -lsndfile -lrt
++zresample:	LDLIBS += ../libs/libzita-resampler.so.1.3.0 -lsndfile -lrt
+ zresample:	$(ZRESAMPLE_O)
+-	g++ $(LDFLAGS) -o $@ $(ZRESAMPLE_O) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(ZRESAMPLE_O) $(LDLIBS)
+ $(ZRESAMPLE_O):
+ -include $(ZRESAMPLE_O:%.o=%.d)
+ 
+ 
+ ZRETUNE_O = zretune.o audiofile.o dither.o
+-zretune:	LDLIBS += -lzita-resampler -lsndfile -lrt
++zretune:	LDLIBS += ../libs/libzita-resampler.so.1.3.0 -lsndfile -lrt
+ zretune:	$(ZRETUNE_O)
+-	g++ $(LDFLAGS) -o $@ $(ZRETUNE_O) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(ZRETUNE_O) $(LDLIBS)
+ $(ZRETUNE_O):
+ -include $(ZRETUNE_O:%.o=%.d)
+ 
