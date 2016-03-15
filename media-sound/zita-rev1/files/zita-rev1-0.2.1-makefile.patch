@@ -1,0 +1,30 @@
+--- source/Makefile.orig	2012-01-04 15:07:49.361522735 +0000
++++ source/Makefile	2012-01-04 15:21:55.029777009 +0000
+@@ -18,16 +18,14 @@
+ #
+ # --------------------------------------------------------------------------
+ 
+-
++CXX ?= g++
+ PREFIX = /usr/local
+ SUFFIX := $(shell uname -m | sed -e 's/^unknown/$//' -e 's/^i.86/$//' -e 's/^x86_64/$/64/')
+ LIBDIR = lib$(SUFFIX)
+ BINDIR = $(PREFIX)/bin
+ SHARED = $(PREFIX)/share/zita-rev1
+ VERSION = 0.2.1
+-CPPFLAGS += -O2 -ffast-math -Wall -MMD -MP -DVERSION=\"$(VERSION)\" -DSHARED=\"$(SHARED)\"
+-CPPFLAGS += -march=native
+-
++CPPFLAGS += -Wall -MMD -MP -DVERSION=\"$(VERSION)\" -DSHARED=\"$(SHARED)\"
+ 
+ all:	zita-rev1
+ 
+@@ -37,7 +35,7 @@
+ zita-rev1:	LDFLAGS += -pthread
+ zita-rev1:	LDFLAGS += -L/usr/X11R6/lib
+ zita-rev1:	$(ZITA-REV1_O) 
+-	g++ $(LDFLAGS) -o $@ $(ZITA-REV1_O) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(ZITA-REV1_O) $(LDLIBS)
+ $(ZITA-REV1_O):
+ -include $(ZITA-REV1_O:%.o=%.d)
+ 

@@ -1,0 +1,34 @@
+# ChangeLog for media-sound/zita-at1
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  04 Oct 2012; Gavin Pryke (gavlee) <gavinlee303@googlemail.com>
+  zita-at1-0.2.3.ebuild, +files/zita-at1-0.2.3-includes.patch:
+  add patch for compiling with >=media-libs/zita-resampler-1.1.0 reported by
+  Arve Barsnes
+
+*zita-at1-0.2.3 (06 Jan 2012)
+
+  06 Jan 2012; Gavin Pryke <gavinlee303@googlemail.com> -zita-at1-0.2.1.ebuild,
+  -files/zita-at1-0.2.1-Makefile.patch, +zita-at1-0.2.3.ebuild,
+  +files/zita-at1-0.2.3-Makefile.patch, metadata.xml:
+  bump
+
+  01 May 2011; Gavin Pryke <gavinlee303@googlemail.com>
+  zita-at1-0.2.1.ebuild:
+  update HOMEPAGE and SRC_URI
+
+*zita-at1-0.2.1 (12 Jan 2011)
+
+  12 Jan 2011; Gavin Pryke <gavinlee303@googlemail.com>
+  -zita-at1-0.1.1.ebuild, -files/zita-at1-0.1.1-makefile.patch,
+  +zita-at1-0.2.1.ebuild, +files/zita-at1-0.2.1-Makefile.patch:
+  Remove build with non-existant SRC_URI, bump to 0.2.1. 
+
+*zita-at1-0.1.1 (27 Oct 2010)
+
+  27 Oct 2010; Gavin Pryke <gavinlee303@googlemail.com>
+  +zita-at1-0.1.1.ebuild, +files/zita-at1-0.1.1-makefile.patch,
+  +metadata.xml:
+  Initial import.
+

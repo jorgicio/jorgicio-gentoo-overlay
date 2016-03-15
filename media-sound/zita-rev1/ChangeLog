@@ -1,0 +1,28 @@
+# ChangeLog for media-sound/zita-rev1
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  08 Nov 2012; Gavin Pryke (gavlee) <gavinlee303@googlemail.com>
+  zita-rev1-0.2.1.ebuild:
+  change SRC_URI to point to uploaded tarball on proaudio distfiles. thanks to
+  Dominique Michel and Jannis Achstetter for spotting failing digest due to
+  gzipped tar with extension tar.bz2
+
+*zita-rev1-0.2.1 (04 Jan 2012)
+
+  04 Jan 2012; Gavin Pryke <gavinlee303@googlemail.com>
+  -zita-rev1-0.1.1.ebuild, -files/zita-rev1-0.1.1-makefile.patch,
+  +zita-rev1-0.2.1.ebuild, +files/zita-rev1-0.2.1-makefile.patch, metadata.xml:
+  bump/clean
+
+  01 May 2011; Gavin Pryke <gavinlee303@googlemail.com>
+  zita-rev1-0.1.1.ebuild:
+  update HOMEPAGE and SRC_URI
+
+*zita-rev1-0.1.1 (27 Oct 2010)
+
+  27 Oct 2010; Gavin Pryke <gavinlee303@googlemail.com>
+  +zita-rev1-0.1.1.ebuild, +files/zita-rev1-0.1.1-makefile.patch,
+  +metadata.xml:
+  Initial import.
+
