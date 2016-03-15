@@ -1,0 +1,38 @@
+--- a/Makefile	2013-04-20 22:52:26.346432555 +0200
++++ b/Makefile	2013-04-20 23:03:57.600409761 +0200
+@@ -3,13 +3,10 @@
+ 
+ VERSION=0.9.70
+ 
+-CC=gcc
+-CPP=g++
++CC ?= gcc
++CXX ?= g++
+ 
+-OPTIMIZE=-O3
+-#OPTIMIZE=-O0 -g
+-
+-COMPILEFLAGS=$(CFLAGS) $(OPTIMIZE) -DVERSION=\"$(VERSION)\" -Wall -Wextra -Wno-unused
++COMPILEFLAGS=$(CFLAGS) -DVERSION=\"$(VERSION)\" -Wall -Wextra -Wno-unused
+ LINKFLAGS=$(LDFLAGS) -ljack -lsndfile -lm -lpthread -lrt
+ 
+ targets = jack_capture
+@@ -33,7 +30,7 @@
+ 	which install
+ 	which pkg-config
+ 	which $(CC)
+-	which $(CPP)
++	which $(CXX)
+ 	$(CC) -E testsndfile.c >/dev/null
+ 	@echo "All seems good "
+ 	@echo
+@@ -56,7 +53,7 @@
+ 
+ 
+ jack_capture_gui2: jack_capture_gui2.cpp
+-	$(CPP) $(CPPFLAGS) $(OPTIMIZE) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
++	$(CXX) $(CXXFLAGS) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
+ 
+ config_flags: Makefile das_config.h
+ 	cat das_config.h |grep COMPILEFLAGS|sed s/\\/\\/COMPILEFLAGS//|tr '\n' ' ' >config_flags
+
