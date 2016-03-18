@@ -41,12 +41,12 @@ fi
 src_install(){
 	insinto "/opt/${PN}"
 	doins -r *
-	dosym "/opt/${PN}/Code" "/usr/bin/visual-studio-code"
+	dosym "/opt/${PN}/code" "/usr/bin/visual-studio-code"
 	insinto "/usr/share/applications"
 	doins ${FILESDIR}/${PN}.desktop
 	insinto "/usr/share/pixmaps"
 	doins ${FILESDIR}/${PN}.png
-	fperms +x "/opt/${PN}/Code"
+	fperms +x "/opt/${PN}/code"
 	fperms +x "/opt/${PN}/libgcrypt.so.11"
 	fperms +x "/opt/${PN}/libnode.so"
 	fperms +x "/opt/${PN}/libnotify.so.4"
