@@ -1,0 +1,23 @@
+# ChangeLog for media-libs/zita-alsa-pcmi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  09 Apr 2015; Karl Linden (lilrc) <lilrc@users.sourceforge.net>
+  zita-alsa-pcmi-0.2.0.ebuild:
+  eapi 5
+  keyword for ~ppc
+  rdepend on alsa-lib
+  use emake -C instead of cd and emake
+
+  27 Apr 2013; Gavin Pryke (gavlee) <gavinlee303@googlemail.com>
+  zita-alsa-pcmi-0.2.0.ebuild:
+  test and add ~x86 keyword, keep repoman happy for media-sound/aliki
+
+*zita-alsa-pcmi-0.2.0 (01 Nov 2012)
+
+  01 Nov 2012; Gavin Pryke (gavlee) <gavinlee303@googlemail.com>
+  +zita-alsa-pcmi-0.2.0.ebuild, +files/zita-alsa-pcmi-0.2.0-Makefile.patch,
+  +metadata.xml:
+  Import new ebuild thanks to Jannis Achstetter. Modified ebuild and added
+  another patch to install files from apps directory.
+

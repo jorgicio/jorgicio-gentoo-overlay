@@ -1,0 +1,64 @@
+# AUTHOR: Karl Linden (lilrc) <lilrc@users.sourceforge.net>
+# STATUS: Sent upstream (by email).
+# An upstream friendly patch with various improvements to the Makefile
+# including
+# 1. possibility to turn off optimizations
+# 2. respecting the CXX variable,
+# 3. creation of the libzita-convolver.so.3 symlink,
+# 4. possibility to turn off the ldconfig call.
+
+diff -ur zita-convolver-3.1.0.orig/libs/Makefile zita-convolver-3.1.0/libs/Makefile
+--- zita-convolver-3.1.0.orig/libs/Makefile	2014-12-10 14:55:25.256570999 +0100
++++ zita-convolver-3.1.0/libs/Makefile	2014-12-10 16:27:19.886269610 +0100
+@@ -20,6 +20,7 @@
+ 
+ # Modify as required.
+ #
++LDCONFIG = $(shell which ldconfig)
+ PREFIX = /usr/local
+ SUFFIX := $(shell uname -m | sed -e 's/^unknown/$//' -e 's/^i.86/$//' -e 's/^x86_64/$/64/')
+ LIBDIR = lib$(SUFFIX)
+@@ -30,24 +31,23 @@
+ VERSION = $(MAJVERS).$(MINVERS)
+ 
+ 
+-CPPFLAGS += -I. -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS -DENABLE_VECTOR_MODE 
++CPPFLAGS += -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS -DENABLE_VECTOR_MODE
+ CXXFLAGS += -fPIC -Wall
+-CXXFLAGS += -ffast-math -funroll-loops -O3
+-CXXFLAGS += -march=native
+-LDLFAGS += 
+-LDLIBS +=
+-
++ifndef NOOPTIMIZE
++	CXXFLAGS += -ffast-math -funroll-loops -O3
++	CXXFLAGS += -march=native
++endif
+ 
+ ZITA-CONVOLVER_SO = libzita-convolver.so
+ ZITA-CONVOLVER_MAJ = $(ZITA-CONVOLVER_SO).$(MAJVERS)
+ ZITA-CONVOLVER_MIN = $(ZITA-CONVOLVER_MAJ).$(MINVERS)
+ ZITA-CONVOLVER_DEP = -lfftw3f -lpthread
+ ZITA-CONVOLVER_O = zita-convolver.o
+-ZITA-CONVOLVER_H = zita-convolver.h 
++ZITA-CONVOLVER_H = zita-convolver.h
+ 
+ 
+ $(ZITA-CONVOLVER_MIN):	$(ZITA-CONVOLVER_O)
+-	g++ -shared $(LDFLAGS) -Wl,-soname,$(ZITA-CONVOLVER_MAJ) -o $(ZITA-CONVOLVER_MIN) $(ZITA-CONVOLVER_O) $(ZITA-CONVOLVER_DEP)
++	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(ZITA-CONVOLVER_MAJ) -o $(ZITA-CONVOLVER_MIN) $(ZITA-CONVOLVER_O) $(ZITA-CONVOLVER_DEP)
+ 
+ 
+ install:	$(ZITA-CONVOLVER_MIN)
+@@ -56,8 +56,9 @@
+ 	install -m 644 $(ZITA-CONVOLVER_H) $(DESTDIR)$(PREFIX)/include
+ 	install -m 755 $(ZITA-CONVOLVER_MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)
+ 	ln -sf $(ZITA-CONVOLVER_MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/$(ZITA-CONVOLVER_SO)
+-	ldconfig
++	ln -sf $(ZITA-CONVOLVER_MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/$(ZITA-CONVOLVER_MAJ)
++	$(LDCONFIG)
+ 
+ clean:
+-	/bin/rm -f *~ *.o *.a *.d *.so.*
++	rm -f *~ *.o *.a *.d *.so.*
+ 
