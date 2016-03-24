@@ -79,7 +79,7 @@ src_compile(){
 
 src_install(){
 	insinto usr/share/licenses/${PN}
-	doins LICENCE.md terms.txt
+	doins LICENCE.md installer/terms.txt
 	cd src/MEGASync
 	dobin ${PN}
 	cd platform/linux/data
