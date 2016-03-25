@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND="net-misc/megasync
+DEPEND="net-misc/megasync[-nautilus]
 		gnome-base/nautilus"
 RDEPEND="${DEPEND}"
 
