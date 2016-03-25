@@ -4,15 +4,13 @@
 
 EAPI=5
 
-inherit eutils multilib versionator qmake-utils autotools git-2
+inherit eutils multilib versionator qmake-utils autotools
 
 MY_PV="$(replace_all_version_separators _)"
 DESCRIPTION="A Qt-based program for syncing your MEGA account in your PC. This is the official app."
 HOMEPAGE="http://mega.co.nz"
-SRC_URI=""
-EGIT_REPO_URI="http://github.com/meganz/MEGAsync"
-EGIT_COMMIT="v${MY_PV}_0_Linux"
-EGIT_OPTIONS="--recursive --recurse-submodules"
+SRC_URI="https://github.com/meganz/MEGAsync/archive/v${MY_PV}_0_Linux.tar.gz -> ${P}.tar.gz
+	https://github.com/meganz/sdk/archive/v2.5.0.tar.gz -> ${PN}-sdk-2.5.0.tar.gz"
 
 LICENSE="MEGA"
 SLOT="0"
@@ -36,14 +34,12 @@ RDEPEND="${DEPEND}
 		readline? ( sys-libs/readline:0 )
 		"
 
+S="${WORKDIR}/MEGAsync-${MY_PV}_0_Linux"
+
 src_prepare(){
-	git clone "https://github.com/meganz/sdk.git"
-	git submodule init
-	git config submodule.src/MEGASync/mega.url sdk
-	git submodule update
+	cp -r ../sdk-2.5.0/* src/MEGASync/mega
 	cd src/MEGASync/mega
 	eautoreconf
-	cd ../../..
 }
 
 src_configure(){
