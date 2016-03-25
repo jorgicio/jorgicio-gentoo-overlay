@@ -16,9 +16,16 @@ RESTRICT="mirror"
 LICENSE="MEGA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ares +cryptopp +sqlite libsodium +zlib +curl freeimage readline examples threads"
+IUSE="+ares +cryptopp +sqlite libsodium +zlib +curl freeimage readline examples threads +qt4 qt5"
 
-DEPEND="dev-qt/qtcore:4"
+REQUIRED_USE="^^ ( qt4 qt5 )"
+
+DEPEND="
+	qt4? ( dev-qt/qtcore:4 )
+	qt5? ( 
+			dev-qt/qtcore:5
+			dev-qt/linguist-tools
+		)"
 RDEPEND="${DEPEND}
 		dev-libs/openssl
 		dev-libs/libgcrypt
@@ -65,8 +72,13 @@ src_configure(){
 		MEGA.pro
 		CONFIG+="release"
 	)
-	eqmake4 ${myeqmakeargs[@]}
-	$(qt4_get_bindir)/lrelease MEGASync/MEGASync.pro
+	if use qt4; then
+		eqmake4 ${myeqmakeargs[@]}
+		$(qt4_get_bindir)/lrelease MEGASync/MEGASync.pro
+	elif use qt5; then
+		eqmake5 ${myeqmakeargs[@]}
+		$(qt5_get_bindir)/lrelease MEGASync/MEGASync.pro
+	fi
 }
 
 src_compile(){
