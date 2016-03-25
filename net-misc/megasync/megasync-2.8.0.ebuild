@@ -72,13 +72,11 @@ src_configure(){
 		$(use_with readline) \
 		$(use_enable examples)	
 	cd ../..
-	local config_qt
-	use !nautilus && config_qt="release"
-	use nautilus && config_qt="release with_ext"
 	local myeqmakeargs=(
 		MEGA.pro
-		CONFIG+="${config_qt}"
+		CONFIG+="release"
 	)
+	use nautilus && myeqmakeargs+=( CONFIG+="with_ext" )
 	if use qt4; then
 		eqmake4 ${myeqmakeargs[@]}
 		$(qt4_get_bindir)/lrelease MEGASync/MEGASync.pro
