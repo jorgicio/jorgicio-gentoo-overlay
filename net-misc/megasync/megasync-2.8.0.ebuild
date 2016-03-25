@@ -101,7 +101,7 @@ src_install(){
 	doins ${PN}.desktop
 	cd icons/hicolor
 	for size in 16x16 32x32 48x48 128x128 256x256;do
-		insinto usr/share/icons/hicolor/$size/apps/mega.png
+		insinto usr/share/icons/hicolor/$size/apps/
 		doins $size/apps/mega.png
 	done
 	if use nautilus; then
@@ -112,9 +112,9 @@ src_install(){
 		for size in 32x32 64x64;do
 			insinto usr/share/icons/hicolor/$size/emblems
 			doins $size/mega-{pending,synced,syncing,upload}.{icon,png}
-			dosym usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0.0 usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0
-			dosym usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0.0 usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1
-			dosym usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0.0 usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so
+			dosym ${EPREFIX}/usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0.0 ${EPREFIX}/usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0
+			dosym ${EPREFIX}/usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0.0 ${EPREFIX}/usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1
+			dosym ${EPREFIX}/usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0.0 ${EPREFIX}/usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so
 		done
 	fi
 }
