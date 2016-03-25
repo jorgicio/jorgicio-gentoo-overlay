@@ -16,7 +16,7 @@ RESTRICT="mirror"
 LICENSE="MEGA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ares +cryptopp +sqlite libsodium +zlib +curl freeimage readline examples threads +qt4 qt5"
+IUSE="+ares +cryptopp +sqlite libsodium +zlib +curl freeimage readline examples threads +qt4 qt5 nautilus"
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
@@ -40,6 +40,10 @@ RDEPEND="${DEPEND}
 		curl? ( net-misc/curl[ssl] )
 		freeimage? ( media-libs/freeimage )
 		readline? ( sys-libs/readline:0 )
+		nautilus? (
+			>=gnome-base/nautilus-3.12.0
+			!!gnome-extra/nautilus-megasync 
+			)
 		"
 
 S="${WORKDIR}/MEGAsync-${MY_PV}_0_Linux"
@@ -68,9 +72,11 @@ src_configure(){
 		$(use_with readline) \
 		$(use_enable examples)	
 	cd ../..
+	local config_qt="release"
+	use nautilus && config_qt+=" _with_ext"
 	local myeqmakeargs=(
 		MEGA.pro
-		CONFIG+="release"
+		CONFIG+="${config_qt}"
 	)
 	if use qt4; then
 		eqmake4 ${myeqmakeargs[@]}
@@ -99,4 +105,17 @@ src_install(){
 		insinto usr/share/icons/hicolor/$size/apps/mega.png
 		doins $size/apps/mega.png
 	done
+	if use nautilus; then
+		cd "${S}/src/MEGAShellExtNautilus"
+		insinto usr/lib/nautilus/extensions-3.0
+		doins libMEGAShellExtNautilus.so.1.0.0
+		cd data/emblems
+		for size in 32x32 64x64;do
+			insinto usr/share/icons/hicolor/$size/emblems
+			doins $size/mega-{pending,synced,syncing,upload}.{icon,png}
+			dosym usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0.0 usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0
+			dosym usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0.0 usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1
+			dosym usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so.1.0.0 usr/lib/nautilus/extensions-3.0/libMEGAShellExtNautilus.so
+		done
+	fi
 }
