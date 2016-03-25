@@ -10,7 +10,8 @@ MY_PV="$(replace_all_version_separators _)"
 DESCRIPTION="A Qt-based program for syncing your MEGA account in your PC. This is the official app."
 HOMEPAGE="http://mega.co.nz"
 SRC_URI="https://github.com/meganz/MEGAsync/archive/v${MY_PV}_0_Linux.tar.gz -> ${P}.tar.gz
-	https://github.com/meganz/sdk/archive/ad50d1188a8ea0d87c4d2425e446c0600638bb3c.tar.gz -> ${PN}-sdk-20160218.tar.gz"
+	https://github.com/meganz/sdk/archive/11a5370ab79a101d05130de246e96b5184aad37a.tar.gz -> ${PN}-sdk-20160324.tar.gz"
+RESTRICT="mirror"
 
 LICENSE="MEGA"
 SLOT="0"
@@ -37,7 +38,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/MEGAsync-${MY_PV}_0_Linux"
 
 src_prepare(){
-	cp -r ../sdk-ad50d1188a8ea0d87c4d2425e446c0600638bb3c/* src/MEGASync/mega
+	cp -r ../sdk-11a5370ab79a101d05130de246e96b5184aad37a/* src/MEGASync/mega
 	cd src/MEGASync/mega
 	eautoreconf
 }
