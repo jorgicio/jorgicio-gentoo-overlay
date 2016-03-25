@@ -73,7 +73,7 @@ src_configure(){
 		$(use_enable examples)	
 	cd ../..
 	local config_qt="release"
-	use nautilus && config_qt+=" _with_ext"
+	use nautilus && config_qt+=" with_ext"
 	local myeqmakeargs=(
 		MEGA.pro
 		CONFIG+="${config_qt}"
