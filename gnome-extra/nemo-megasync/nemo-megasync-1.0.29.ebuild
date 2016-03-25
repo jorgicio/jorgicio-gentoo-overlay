@@ -20,7 +20,7 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="
-	gnome-exnta/nemo
+	gnome-extra/nemo
 	net-misc/megasync[-nautilus]
 	"
 RDEPEND="${DEPEND}"
