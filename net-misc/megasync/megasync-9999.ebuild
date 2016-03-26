@@ -20,11 +20,15 @@ IUSE="+ares +cryptopp +sqlite libsodium +zlib +curl freeimage readline examples 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
 DEPEND="
-	qt4? ( dev-qt/qtcore:4 )
+	qt4? ( 
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		)
 	qt5? ( 
 		dev-qt/qtcore:5
 		dev-qt/linguist-tools
 		dev-qt/qtwidgets:5
+		dev-qt/qtgui:5
 		)"
 RDEPEND="${DEPEND}
 		dev-libs/openssl
