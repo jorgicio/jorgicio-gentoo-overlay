@@ -23,8 +23,9 @@ REQUIRED_USE="^^ ( qt4 qt5 )"
 DEPEND="
 	qt4? ( dev-qt/qtcore:4 )
 	qt5? ( 
-			dev-qt/qtcore:5
-			dev-qt/linguist-tools
+		dev-qt/qtcore:5
+		dev-qt/linguist-tools
+		dev-qt/qtwidgets:5
 		)"
 RDEPEND="${DEPEND}
 		dev-libs/openssl
