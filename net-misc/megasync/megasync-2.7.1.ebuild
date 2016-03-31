@@ -4,20 +4,19 @@
 
 EAPI=5
 
-inherit eutils multilib qmake-utils autotools ${ECLASS}
+inherit eutils multilib qmake-utils autotools versionator ${GIT_ECLASS}
 
 
 DESCRIPTION="A Qt-based program for syncing your MEGA account in your PC. This is the official app."
 HOMEPAGE="http://mega.co.nz"
 if [[ ${PV} != *9999* ]];then
-	ECLASS="versionator"
 	MY_PV="$(replace_all_version_separators _)"
 	SRC_URI="https://github.com/meganz/MEGAsync/archive/v${MY_PV}_0_Linux.tar.gz -> ${P}.tar.gz
 	https://github.com/meganz/sdk/archive/ad50d1188a8ea0d87c4d2425e446c0600638bb3c.tar.gz -> ${PN}-sdk-20160218.tar.gz"
 	KEYWORDS="~x86 ~amd64"
 	S="${WORKDIR}/MEGAsync-${MY_PV}_0_Linux"
 else
-	ECLASS="git-2"
+	GIT_ECLASS="git-2"
 	EGIT_REPO_URI="https://github.com/meganz/MEGAsync"
 	KEYWORDS=""
 fi
