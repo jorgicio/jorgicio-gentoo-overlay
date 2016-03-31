@@ -4,17 +4,27 @@
 
 EAPI=5
 
-inherit eutils multilib versionator qmake-utils autotools git-2
+inherit eutils multilib qmake-utils autotools ${ECLASS}
 
-MY_PV="$(replace_all_version_separators _)"
+
 DESCRIPTION="A Qt-based program for syncing your MEGA account in your PC. This is the official app."
 HOMEPAGE="http://mega.co.nz"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/meganz/MEGAsync"
+if [[ ${PV} != *9999* ]];then
+	ECLASS="versionator"
+	MY_PV="$(replace_all_version_separators _)"
+	SRC_URI="https://github.com/meganz/MEGAsync/archive/v${MY_PV}_0_Linux.tar.gz -> ${P}.tar.gz
+	https://github.com/meganz/sdk/archive/11a5370ab79a101d05130de246e96b5184aad37a.tar.gz -> ${PN}-sdk-20160324.tar.gz"
+	KEYWORDS="~x86 ~amd64"
+	S="${WORKDIR}/MEGAsync-${MY_PV}_0_Linux"
+else
+	ECLASS="git-2"
+	EGIT_REPO_URI="https://github.com/meganz/MEGAsync"
+	KEYWORDS=""
+fi
+RESTRICT="mirror"
 
 LICENSE="MEGA"
 SLOT="0"
-KEYWORDS=""
 IUSE="+ares +cryptopp +sqlite libsodium +zlib +curl freeimage readline examples threads +qt4 qt5 nautilus"
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
@@ -55,10 +65,14 @@ RDEPEND="${DEPEND}
 		"
 
 src_prepare(){
-	git clone "https://github.com/meganz/sdk"
-	git submodule init
-	git config submodule.src/MEGASync/mega.url sdk
-	git submodule update
+	if [[ ${PV} == *9999* ]];then
+		git clone "https://github.com/meganz/sdk"
+		git submodule init
+		git config submodule.src/MEGASync/mega.url sdk
+		git submodule update
+	else
+		cp -r ../sdk-11a5370ab79a101d05130de246e96b5184aad37a/* src/MEGASync/mega
+	fi
 	cd src/MEGASync/mega
 	eautoreconf
 }
