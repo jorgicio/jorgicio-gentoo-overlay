@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+description="TLP start/stop actions"
+
+readonly TLP=/usr/sbin/tlp
+
+_tlp_init() { [ -x "$TLP" ] && $TLP init "$@"; }
+
+depend() {
+   after modules
+
+   # sysfs is required (bat thresholds); localmount:/usr
+   need sysfs localmount acpid
+
+   # run after xdm to avoid bluetooth/wwan/... race-condition with gdm
+   after xdm
+}
+
+start()   { _tlp_init start; }
+stop()    { _tlp_init stop; }
+restart() { _tlp_init restart; }
