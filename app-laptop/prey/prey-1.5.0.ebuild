@@ -41,22 +41,22 @@ RDEPEND="${DEPEND}"
 src_install(){
 	npm install -g --prefix="${D}/usr" || die "Installation failed"
 	make_desktop_entry 'prey config gui' "Prey Configuration" ${PN} "System;Monitor"
-	insinto /etc/cron.d
+	insinto ${EPREFIX}/etc/cron.d
 	insopts -m644
 	doins "${FILESDIR}/prey.cron"
-	insinto /etc/prey
+	insinto ${EPREFIX}/etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
-	insinto /usr/share/pixmaps
+	insinto ${EPREFIX}/usr/share/pixmaps
 	doins ${FILESDIR}/${PN}.png
 }
 
 pkg_postinst(){
 	prey config hooks post_install
 	gpasswd -a prey video >/dev/null
-	if [ -f /etc/init.d/prey-agent ];then
-		rm /etc/init.d/prey-agent
-		install -m755 ${FILESDIR}/prey-agent /etc/init.d
+	if [ -f ${EPREFIX}/etc/init.d/prey-agent ];then
+		rm ${EPREFIX}/etc/init.d/prey-agent
+		install -m755 ${FILESDIR}/prey-agent ${EPREFIX}/etc/init.d
 	fi
 	elog "Don't forget add your user to the group prey (as root):"
 	elog "gpasswd -a username prey"
