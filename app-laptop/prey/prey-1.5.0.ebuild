@@ -4,15 +4,22 @@
 
 EAPI=5
 
-inherit eutils user
+inherit eutils user ${GIT_ECLASS}
 
 DESCRIPTION="Tracking software for asset recovery, now Node.js-powered"
 HOMEPAGE="http://preyproject.com"
-SRC_URI="https://github.com/${PN}/${PN}-node-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ ${PV} == *9999* ]];then
+	GIT_ECLASS="git-r3"
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}-node-client"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/${PN}/${PN}-node-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="x86 amd64"
+	S="${WORKDIR}/${PN}-node-client-${PV}"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="x86 amd64"
 IUSE=""
 
 DEPEND="
@@ -30,8 +37,6 @@ DEPEND="
 	sys-apps/lsb-release
 	"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-node-client-${PV}"
 
 src_install(){
 	npm install -g --prefix="${D}/usr" || die "Installation failed"

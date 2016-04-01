@@ -4,21 +4,28 @@
 
 EAPI=5
 
-inherit eutils user git-r3
+inherit eutils user ${GIT_ECLASS}
 
 DESCRIPTION="Tracking software for asset recovery, now Node.js-powered"
 HOMEPAGE="http://preyproject.com"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/${PN}/${PN}-node-client"
+if [[ ${PV} == *9999* ]];then
+	GIT_ECLASS="git-r3"
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}-node-client"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/${PN}/${PN}-node-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="x86 amd64"
+	S="${WORKDIR}/${PN}-node-client-${PV}"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 DEPEND="
 	virtual/cron
 	net-libs/nodejs[npm]
+	dev-libs/openssl
 	dev-python/pygtk
 	media-tv/xawtv
 	sys-apps/net-tools
@@ -40,6 +47,8 @@ src_install(){
 	insinto /etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
+	insinto /usr/share/pixmaps
+	doins ${FILESDIR}/${PN}.png
 }
 
 pkg_postinst(){
