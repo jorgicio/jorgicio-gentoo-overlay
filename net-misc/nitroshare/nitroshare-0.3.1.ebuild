@@ -24,7 +24,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="appindicator"
 
 DEPEND=">=dev-qt/qtcore-5.1:5
