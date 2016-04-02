@@ -6,12 +6,21 @@ EAPI=5
 
 CMAKE_MIN_VERSION="3.2.0"
 
-inherit cmake-utils eutils git-r3
+inherit cmake-utils eutils versionator ${GIT_ECLASS}
+
+MY_BR=$(get_version_component_range 1-2)
 
 DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="http://nitroshare.net"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
+if [[ ${PV} == *9999* ]];then
+	GIT_ECLASS="git-r3"
+	SRC_URI=""
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
+	KEYWORDS=""
+else
+	SRC_URI="https://launchpad.net/nitroshare/${MY_BR}/${PV}/+download/${P}.tar.gz"
+	KEYWORDS="~x86 ~amd64"
+fi
 
 LICENSE="MIT"
 SLOT="0"
