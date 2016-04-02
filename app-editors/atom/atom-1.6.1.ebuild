@@ -5,15 +5,22 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic python-any-r1 eutils
+inherit flag-o-matic python-any-r1 eutils ${GIT_ECLASS}
 
 DESCRIPTION="A hackable text editor for the 21st Century"
 HOMEPAGE="https://atom.io"
-SRC_URI="https://github.com/atom/atom/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ ${PV} == *9999* ]];then
+	GIT_ECLASS="git-r3"
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/atom/atom/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~x86 ~amd64"
+fi
+
 RESTRICT="mirror"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
