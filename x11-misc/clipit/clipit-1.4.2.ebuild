@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/gtkclipit/Version%201/${P}.tar.gz"
 LICENSE="LGPL-3.0"
 SLOT="0"
 KEYWORDS="x86 amd64"
-IUSE="appindicator nls xdotool"
+IUSE="appindicator nls"
 
 DEPEND="
 	>=x11-libs/gtk+-2.10:2
