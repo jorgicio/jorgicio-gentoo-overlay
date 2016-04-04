@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 	appindicator? (
 		dev-libs/libappindicator:2
 	)
-	xdotool? ( x11-misc/xdotool )
+	x11-misc/xdotool
 "
 
 src_configure(){
