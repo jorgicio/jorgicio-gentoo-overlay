@@ -11,7 +11,7 @@ HOMEPAGE="http://www.valentina-project.org/"
 SRC_URI="https://bitbucket.org/dismine/valentina/get/v0.4.3.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
-SLOT="1"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnome"
 

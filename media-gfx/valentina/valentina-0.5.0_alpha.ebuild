@@ -13,7 +13,7 @@ EHG_REPO_URI="https://bitbucket.org/dismine/valentina"
 EHG_REVISION="develop"
 
 LICENSE="GPL-3"
-SLOT="1"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnome"
 
