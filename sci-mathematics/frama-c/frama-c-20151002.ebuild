@@ -6,9 +6,10 @@ EAPI="5"
 
 inherit autotools eutils
 
+RNAME="Magnesium"
 DESCRIPTION="Framework for analysis of source codes written in C"
 HOMEPAGE="http://frama-c.com"
-SRC_URI="${HOMEPAGE}/download/${PN}-Magnesium-${PV}.tar.gz"
+SRC_URI="${HOMEPAGE}/download/${PN}-${RNAME}-${PV}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -23,7 +24,7 @@ RDEPEND=">=dev-lang/ocaml-4.02[ocamlopt?]
 		gtk? ( >=dev-ml/lablgtk-2.14[sourceview,gnomecanvas,ocamlopt?] )"
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${PN}-Magnesium-${PV}"
+S="${WORKDIR}/${PN}-${RNAME}-${PV}"
 
 src_prepare(){
 	touch config_file
@@ -46,4 +47,9 @@ src_compile(){
 src_install(){
 	emake install DESTDIR="${D}" || die "emake install failed"
 	dodoc Changelog doc/README
+	
+	if use gtk;then
+		doicon "${FILESDIR}"/${PN}.png
+		make_desktop_entry "frama-c-gui" "Frama-C GUI" "frama-c" "Development"
+	fi
 }

@@ -1,0 +1,204 @@
+--- crypto++-5.6.3/GNUmakefile
++++ crypto++-5.6.3/GNUmakefile
+@@ -1,3 +1,6 @@
++LIBTOOL ?= libtool
++LIBDIR ?= lib
++
+ # Base CXXFLAGS used if the user did not specify them
+ CXXFLAGS ?= -DNDEBUG -g2 -O2
+ 
+@@ -14,9 +17,10 @@
+ AR ?= ar
+ ARFLAGS ?= -cr	# ar needs the dash on OpenBSD
+ RANLIB ?= ranlib
+-CP ?= cp
++LN_S ?= ln -s
+ CHMOD ?= chmod
+ MKDIR ?= mkdir
++INSTALL ?= install
+ EGREP ?= egrep
+ 
+ UNAME := $(shell uname)
+@@ -137,8 +141,11 @@
+ LDLIBS += -lws2_32
+ endif
+ 
++THREAD_LIBS =
++
+ ifeq ($(IS_LINUX),1)
+ LDFLAGS += -pthread
++THREAD_LIBS += -lpthread
+ ifeq ($(findstring -fopenmp,$(CXXFLAGS)),-fopenmp)
+ ifeq ($(findstring -lgomp,$(LDLIBS)),)
+ LDLIBS += -lgomp
+@@ -250,18 +257,18 @@
+ # List of objects with crytlib.o and cpu.o at the first and second index position
+ OBJS := $(SRCS:.cpp=.o)
+ 
+-# test.o needs to be after bench.o for cygwin 1.1.4 (possible ld bug?)
+-TESTOBJS := bench.o bench2.o test.o validat1.o validat2.o validat3.o adhoc.o datatest.o regtest.o fipsalgt.o dlltest.o
++# test.lo needs to be after bench.lo for cygwin 1.1.4 (possible ld bug?)
++TESTOBJS := bench.lo bench2.lo test.lo validat1.lo validat2.lo validat3.lo adhoc.lo datatest.lo regtest.lo fipsalgt.lo dlltest.lo
+ LIBOBJS := $(filter-out $(TESTOBJS),$(OBJS))
+ 
+ # List cryptlib.cpp first in an attempt to tame C++ static initialization problems
+ DLLSRCS := cryptlib.cpp algebra.cpp algparam.cpp asn.cpp basecode.cpp cbcmac.cpp channels.cpp des.cpp dessp.cpp dh.cpp dll.cpp dsa.cpp ec2n.cpp eccrypto.cpp ecp.cpp eprecomp.cpp files.cpp filters.cpp fips140.cpp fipstest.cpp gf2n.cpp gfpcrypt.cpp hex.cpp hmac.cpp integer.cpp iterhash.cpp misc.cpp modes.cpp modexppc.cpp mqueue.cpp nbtheory.cpp oaep.cpp osrng.cpp pch.cpp pkcspad.cpp pubkey.cpp queue.cpp randpool.cpp rdtables.cpp rijndael.cpp rng.cpp rsa.cpp sha.cpp simple.cpp skipjack.cpp strciphr.cpp trdlocal.cpp
+-DLLOBJS := $(DLLSRCS:.cpp=.export.o)
++DLLOBJS := $(DLLSRCS:.cpp=.export.lo)
+ 
+ # Import lib testing
+-LIBIMPORTOBJS := $(LIBOBJS:.o=.import.o)
+-TESTIMPORTOBJS := $(TESTOBJS:.o=.import.o)
+-DLLTESTOBJS := dlltest.dllonly.o
++LIBIMPORTOBJS := $(LIBOBJS:.lo=.import.lo)
++TESTIMPORTOBJS := $(TESTOBJS:.lo=.import.lo)
++DLLTESTOBJS := dlltest.dllonly.lo
+ 
+ # For Shared Objects, Diff, Dist/Zip rules
+ LIB_VER := $(shell $(EGREP) "define CRYPTOPP_VERSION" config.h | cut -d" " -f 3)
+@@ -273,15 +280,7 @@
+ LIB_PATCH := 0
+ endif
+ 
+-all: cryptest.exe
+-
+-ifneq ($(IS_DARWIN),0)
+-static: libcryptopp.a
+-shared dynamic dylib: libcryptopp.dylib
+-else
+-static: libcryptopp.a
+-shared dynamic: libcryptopp.so
+-endif
++all: libcrypto++.la
+ 
+ .PHONY: deps
+ deps GNUmakefile.deps:
+@@ -291,8 +290,8 @@
+ asan ubsan align aligned: libcryptopp.a cryptest.exe
+ 
+ .PHONY: test check
+-test check: cryptest.exe
+-	./cryptest.exe v
++test check: cryptest
++	./cryptest v
+ 
+ # Directory we want (can't specify on Doygen command line)
+ DOCUMENT_DIRECTORY := ref$(LIB_VER)
+@@ -315,9 +314,9 @@
+ 
+ .PHONY: clean
+ clean:
+-	-$(RM) libcryptopp.a libcryptopp.so libcryptopp.dylib cryptopp.dll libcryptopp.dll.a libcryptopp.import.a
+-	-$(RM) adhoc.cpp.o adhoc.cpp.proto.o $(LIBOBJS) $(TESTOBJS) $(DLLOBJS) $(LIBIMPORTOBJS) $(TESTIMPORTOBJS) $(DLLTESTOBJS) *.stackdump core-*
+-	-$(RM) cryptest.exe dlltest.exe cryptest.import.exe ct rdrand-???.o
++	$(RM) libcrypto++.* libcryptopp.* cryptopp.dll
++	$(RM) adhoc.cpp.lo adhoc.cpp.proto.lo $(LIBOBJS) $(TESTOBJS) $(DLLOBJS) $(LIBIMPORTOBJS) $(TESTIMPORTOBJS) $(DLLTESTOBJS) *.stackdump core-*
++	$(RM) cryptest cryptest.import
+ ifneq ($(wildcard *.exe.dSYM),)
+ 	-$(RM) -r *.exe.dSYM/
+ endif
+@@ -343,50 +342,42 @@
+ 
+ .PHONY: install
+ install:
+-	$(MKDIR) -p $(PREFIX)/include/cryptopp $(PREFIX)/lib $(PREFIX)/bin
+-	-$(CP) *.h $(PREFIX)/include/cryptopp
+-	-$(CHMOD) 755 $(PREFIX)/include/cryptopp
+-	-$(CHMOD) 644 $(PREFIX)/include/cryptopp/*.h
+-	-$(CP) libcryptopp.a $(PREFIX)/lib
+-	-$(CHMOD) 644 $(PREFIX)/lib/libcryptopp.a
+-	-$(CP) cryptest.exe $(PREFIX)/bin
+-	-$(CHMOD) 755 $(PREFIX)/bin/cryptest.exe
++	$(MKDIR) -p $(DESTDIR)$(PREFIX)/include/cryptopp $(DESTDIR)$(PREFIX)/lib $(DESTDIR)$(PREFIX)/bin
++	$(INSTALL) -m 644 *.h $(DESTDIR)$(PREFIX)/include/crypto++
++	$(LN_S) crypto++ $(DESTDIR)$(PREFIX)/include/cryptopp
++	$(LIBTOOL) --mode=install $(INSTALL) libcrypto++.la $(DESTDIR)$(PREFIX)/$(LIBDIR)
++	set -e; \
++	for f in $(DESTDIR)$(PREFIX)/$(LIBDIR)/libcrypto++*; do \
++		$(LN_S) $${f##*/} `echo $$f | sed "s:libcrypto++:libcryptopp:"`; \
++	done
++	$(CHMOD) 755 $(DESTDIR)$(PREFIX)/bin/cryptest
+ ifneq ($(IS_DARWIN),0)
+ 	-$(CP) libcryptopp.dylib $(PREFIX)/lib
+ 	-$(CHMOD) 755 $(PREFIX)/lib/libcryptopp.dylib
+ else
+-	-$(CP) libcryptopp.so $(PREFIX)/lib
+-	-$(CHMOD) 755 $(PREFIX)/lib/libcryptopp.so
++	-$(INSTALL) -m 755 libcryptopp.so $(DESTDIR)$(PREFIX)/lib
+ endif
+ 
+ .PHONY: remove uninstall
+ remove uninstall:
+-	-$(RM) -r $(PREFIX)/include/cryptopp
+-	-$(RM) $(PREFIX)/lib/libcryptopp.a
+-	-$(RM) $(PREFIX)/bin/cryptest.exe
+-ifneq ($(IS_DARWIN),0)
+-	-$(RM) $(PREFIX)/lib/libcryptopp.dylib
+-else
+-	-$(RM) $(PREFIX)/lib/libcryptopp.so
+-endif
+-
+-libcryptopp.a: public_service | $(LIBOBJS)
+-	$(AR) $(ARFLAGS) $@ $(LIBOBJS)
+-	$(RANLIB) $@
++	$(RM) -rf $(DESTDIR)$(PREFIX)/include/crypto++
++	$(RM) $(DESTDIR)$(PREFIX)/$(LIBDIR)/libcryptopp.*
++	$(RM) $(DESTDIR)$(PREFIX)/$(LIBDIR)/libcrypto++.*
++	$(RM) $(DESTDIR)$(PREFIX)/bin/cryptest
+ 
+-libcryptopp.so: public_service | $(LIBOBJS)
+-	$(CXX) -shared -o $@ $(CXXFLAGS) $(GOLD_OPTION) $(LIBOBJS) $(LDLIBS)
++libcrypto++.la: public_service | $(LIBOBJS)
++	$(LIBTOOL) --tag=CXX --mode=link $(CXX) $(LDFLAGS) $(GOLD_OPTION) -rpath $(PREFIX)/$(LIBDIR) -o $@ $(LIBOBJS) $(LDLIBS) $(THREAD_LIBS)
+ 
+ libcryptopp.dylib: $(LIBOBJS)
+ 	$(CXX) -dynamiclib -o $@ $(CXXFLAGS) -install_name "$@" -current_version "$(LIB_MAJOR).$(LIB_MINOR).$(LIB_PATCH)" -compatibility_version "$(LIB_MAJOR).$(LIB_MINOR)" $(LIBOBJS)
+ 
+-cryptest.exe: public_service | libcryptopp.a $(TESTOBJS)
+-	$(CXX) -o $@ $(CXXFLAGS) $(TESTOBJS) ./libcryptopp.a $(LDFLAGS) $(GOLD_OPTION) $(LDLIBS)
++cryptest: public_service | libcrypto++.la $(TESTOBJS)
++	$(LIBTOOL) --tag=CXX --mode=link $(CXX) $(LDFLAGS) -o $@ $(TESTOBJS) -L. -lcrypto++ $(LDLIBS) $(THREAD_LIBS)
+ 
+ nolib: $(OBJS)		# makes it faster to test changes
+-	$(CXX) -o ct $(CXXFLAGS) $(OBJS) $(LDFLAGS) $(LDLIBS)
++	$(LIBTOOL) --tag=CXX --mode=link $(CXX) -o ct $(LDFLAGS) $(OBJS) $(LDLIBS) $(THREAD_LIBS)
+ 
+-dll: cryptest.import.exe dlltest.exe
++dll: cryptest.import dlltest
+ 
+ cryptopp.dll: $(DLLOBJS)
+ 	$(CXX) -shared -o $@ $(CXXFLAGS) $(DLLOBJS) $(LDFLAGS) $(LDLIBS) -Wl,--out-implib=libcryptopp.dll.a
+@@ -395,10 +386,10 @@
+ 	$(AR) $(ARFLAGS) $@ $(LIBIMPORTOBJS)
+ 	$(RANLIB) $@
+ 
+-cryptest.import.exe: cryptopp.dll libcryptopp.import.a $(TESTIMPORTOBJS)
++cryptest.import: cryptopp.dll libcryptopp.import.a $(TESTIMPORTOBJS)
+ 	$(CXX) -o $@ $(CXXFLAGS) $(TESTIMPORTOBJS) -L. -lcryptopp.dll -lcryptopp.import $(LDFLAGS) $(LDLIBS)
+ 
+-dlltest.exe: cryptopp.dll $(DLLTESTOBJS)
++dlltest: cryptopp.dll $(DLLTESTOBJS)
+ 	$(CXX) -o $@ $(CXXFLAGS) $(DLLTESTOBJS) -L. -lcryptopp.dll $(LDFLAGS) $(LDLIBS)
+ 
+ # This recipe requires a previous "svn co -r 541 http://svn.code.sf.net/p/cryptopp/code/trunk/c5"
+@@ -469,16 +460,16 @@
+ endif
+ endif
+ 
+-%.dllonly.o : %.cpp
++%.dllonly.lo : %.cpp
+ 	$(CXX) $(CXXFLAGS) -DCRYPTOPP_DLL_ONLY -c $< -o $@
+ 
+-%.import.o : %.cpp
++%.import.lo : %.cpp
+ 	$(CXX) $(CXXFLAGS) -DCRYPTOPP_IMPORTS -c $< -o $@
+ 
+-%.export.o : %.cpp
++%.export.lo : %.cpp
+ 	$(CXX) $(CXXFLAGS) -DCRYPTOPP_EXPORTS -c $< -o $@
+ 
+-%.o : %.cpp
++%.lo : %.cpp
+ 	$(CXX) $(CXXFLAGS) -c $<
+ 
+ # Warn of potential configurations issues. They will go away after 5.6.3.
