@@ -29,6 +29,6 @@ src_prepare(){
 
 src_install(){
 	insinto ${EPREFIX}/usr/share/licenses/${PN}
-	doins ${FILESDIR}/LICENSE.*
+	doins ${FILESDIR}/LICENSE*
 	font_src_install
 }
