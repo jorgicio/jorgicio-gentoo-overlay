@@ -14,13 +14,14 @@ if [[ ${PV} == *9999* ]];then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}/${PN}-node-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="x86 amd64"
 	S="${WORKDIR}/${PN}-node-client-${PV}"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
+RESTRICT="mirror"
 
 DEPEND="
 	virtual/cron

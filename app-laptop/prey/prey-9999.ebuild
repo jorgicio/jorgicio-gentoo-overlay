@@ -21,6 +21,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
+RESTRICT="mirror"
 
 DEPEND="
 	virtual/cron
