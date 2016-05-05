@@ -4,19 +4,20 @@
 
 EAPI=5
 
-inherit eutils fdo-mime
+inherit eutils fdo-mime git-r3
 
 DESCRIPTION="Lightweight GTK+ clipboard manager. Fork of Parcellite."
 HOMEPAGE="http://gtkclipit.sourceforge.net"
-SRC_URI="mirror://sourceforge/gtkclipit/Version%201/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/ChristianHenzel/ClipIt"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
-KEYWORDS="x86 amd64"
-IUSE="appindicator nls"
+KEYWORDS=""
+IUSE="appindicator nls gtk3"
 
 DEPEND="
-	>=x11-libs/gtk+-2.10:2
+	!gtk3? ( >=x11-libs/gtk+-2.10:2 )
+	gtk3? ( x11-libs/gtk+:3 )
 	>=dev-libs/glib-2.14
 	nls? (
 		dev-util/intltool
@@ -25,7 +26,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	appindicator? (
-		dev-libs/libappindicator:2
+		!gtk3? ( dev-libs/libappindicator:2 )
+		gtk3? ( dev-libs/libappindicator:3 )
 	)
 	x11-misc/xdotool
 "
@@ -33,7 +35,8 @@ RDEPEND="${DEPEND}
 src_configure(){
 	econf \
 		$(use_enable appindicator) \
-		$(use_enable nls)
+		$(use_enable nls) \
+		$(use_with gtk3)
 }
 
 pkg_postinst() {
