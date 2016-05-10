@@ -24,6 +24,13 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare(){
 	epatch "${FILESDIR}/delete-extra-files.patch"
+	#Deleting some files because are already provided by sys-apps/man-db
+	rm -r man3
+	rm man5/resolv.conf.5
+	rm man5/acct.5
+	rm man5/host.conf.5
+	rm man5/resolver.5
+	rm man8/ld.so.8
 }
 
 src_compile(){
