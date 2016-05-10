@@ -1,0 +1,13 @@
+diff -Naur a/manpages-es-extra-0.8a/Makefile b/manpages-es-extra-0.8a/Makefile
+--- a/manpages-es-extra-0.8a/Makefile	2016-05-10 12:29:37.947341195 -0300
++++ b/manpages-es-extra-0.8a/Makefile	2016-05-10 12:30:16.241248976 -0300
+@@ -60,9 +60,6 @@
+ 		install -d -m 755 $(MANDIR)/$$i; \
+ 		install -m 644 $$i/* $(MANDIR)/$$i; \
+ 	done
+-	install -m 644 LEEME.extra $(MANDIR)
+-	install -m 644 PROYECTO $(MANDIR)
+-	install -m 644 PAQUETES $(MANDIR)
+ 
+ # Tal vez alguien también querría mirar en el directorio /var/catman/cat2 o
+ # algo por el estilo. El problema es que la posición de las páginas cat
