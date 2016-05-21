@@ -21,6 +21,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
+RESTRICT="mirror"
 
 DEPEND="
 	virtual/cron
@@ -65,6 +66,6 @@ pkg_postinst(){
 
 pkg_prerm(){
 	prey config hooks pre_uninstall
-	groupdel prey
 	userdel prey
+	groupdel prey
 }
