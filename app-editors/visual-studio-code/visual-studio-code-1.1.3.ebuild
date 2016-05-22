@@ -29,8 +29,6 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-ARCH="$(uname -m)"
-
 use amd64 &&  S="${WORKDIR}/VSCode-linux-x64"
 use x86 && S="${WORKDIR}/VSCode-linux-ia32"
 
