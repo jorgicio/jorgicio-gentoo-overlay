@@ -14,7 +14,7 @@ S="${WORKDIR}"
 RESTRICT="mirror"
 LICENSE="MIT"
 SLOT="0"
-IUSE="X"
+IUSE=""
 
 DEPEND="media-fonts/ttf-bitstream-vera[X?]"
 RDEPEND="${DEPEND}"
