@@ -8,8 +8,8 @@ inherit eutils font
 
 DESCRIPTION="A color and B&W emoji SVG-in-OpenType font"
 HOMEPAGE="https://github.com/eosrei/emojione-color-font"
-SRC_URI="https://github.com/eosrei/emojione-color-font/releases/download/v${PV//_/-}/EmojiOneColor-SVGinOT-Linux-${PV//_/-}.tar.gz"
-KEYWORDS="~*"
+SRC_URI="${HOMEPAGE}/releases/download/v${PV//_/-}/EmojiOneColor-SVGinOT-Linux-${PV//_/-}.tar.gz"
+KEYWORDS="*"
 RESTRICT="mirror"
 LICENSE="MIT"
 SLOT="0"
