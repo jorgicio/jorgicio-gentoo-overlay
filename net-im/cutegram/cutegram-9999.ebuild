@@ -6,8 +6,6 @@ EAPI=5
 
 inherit qmake-utils ${GIT_ECLASS}
 
-MY_PV=${PV}-stable
-
 DESCRIPTION="A different telegram client from Aseman team forked from Sigram by Sialan Labs. "
 HOMEPAGE="http://aseman.co/en/products/cutegram/"
 if [[ ${PV} == *9999* ]];then
@@ -15,6 +13,7 @@ if [[ ${PV} == *9999* ]];then
 	EGIT_REPO_URI="https://github.com/Aseman-Land/Cutegram"
 	KEYWORDS=""
 else
+	MY_PV=${PV}-stable
 	SRC_URI="https://github.com/Aseman-Land/Cutegram/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	RESTRICT="mirror"
 	KEYWORDS="~x86 ~amd64"
