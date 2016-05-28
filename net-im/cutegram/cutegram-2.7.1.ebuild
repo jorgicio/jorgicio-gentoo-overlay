@@ -55,3 +55,8 @@ src_install(){
 	emake INSTALL_ROOT="${D}" install || die "Failed installation"
 }
 
+pkg_postinst(){
+	ewarn "NOTE: Two-step verification is not supported yet,"
+	ewarn "so please, disable it before using Cutegram."
+	ewarn "It'll be supported in version 3.0. Our apologies."
+}
