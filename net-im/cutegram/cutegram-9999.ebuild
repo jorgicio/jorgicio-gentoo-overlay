@@ -18,6 +18,7 @@ else
 	SRC_URI="https://github.com/Aseman-Land/Cutegram/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	RESTRICT="mirror"
 	KEYWORDS="~x86 ~amd64"
+	S="${WORKDIR}/Cutegram-${MY_PV}"
 fi
 
 LICENSE="GPLv3"
@@ -34,9 +35,6 @@ DEPEND="
 	dev-qt/qtsql:5[sqlite]
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/Cutegram-${MY_PV}"
-
 
 src_configure(){
 	local myeqmakeargs=(

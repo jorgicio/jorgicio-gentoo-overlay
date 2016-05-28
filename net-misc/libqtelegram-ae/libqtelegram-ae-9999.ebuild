@@ -17,6 +17,7 @@ else
 	SRC_URI="https://github.com/Aseman-Land/libqtelegram-aseman-edition/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	RESTRICT="mirror"
 	KEYWORDS="~x86 ~amd64"
+	S=${WORKDIR}/libqtelegram-aseman-edition-${MY_PV}
 fi
 
 LICENSE="GPLv3"
@@ -36,8 +37,6 @@ DEPEND="
 	dev-libs/libappindicator
 "
 RDEPEND="${DEPEND}"
-
-S=${WORKDIR}/libqtelegram-aseman-edition-${MY_PV}
 
 src_prepare(){
 	sed -i 's/\/$$LIB_PATH//g' ./libqtelegram-ae.pro
