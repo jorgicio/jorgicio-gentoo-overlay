@@ -14,7 +14,11 @@ if [[ ${PV} == *9999* ]];then
 	KEYWORDS=""
 else
 	MY_PV=${PV}-stable
-	SRC_URI="https://github.com/Aseman-Land/Cutegram/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	HASH_TOOLS="91bf14b790c749bcaaddb09a8124ef6415a93906"
+	SRC_URI="
+		https://github.com/Aseman-Land/Cutegram/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/Aseman-Land/aseman-qt-tools/archive/${HASH_TOOLS}.tar.gz -> aseman-qt-tools-20160110.tar.gz
+	"
 	RESTRICT="mirror"
 	KEYWORDS="~x86 ~amd64"
 	S="${WORKDIR}/Cutegram-${MY_PV}"
@@ -30,6 +34,12 @@ DEPEND="
 	dev-qt/qtmultimedia:5
 "
 RDEPEND="${DEPEND}"
+
+if [[ ${PV} != *9999* ]];then
+	src_prepare(){
+		cp -r ../aseman-qt-tools-${HASH_TOOLS}/* Cutegram/asemantools
+	}
+fi
 
 src_configure(){
 	local myeqmakeargs=(
