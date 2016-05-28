@@ -33,6 +33,7 @@ src_prepare(){
 
 src_install(){
 	insinto /usr/share/backgrounds/antergos
-	doins usr/share/antergos/wallpapers/*
+	doins usr/share/antergos/wallpapers/*.jpg  usr/share/antergos/wallpapers/*.png
+	insinto /usr/share/gnome-background-properties
 	doins usr/share/gnome-background-properties/antergos-backgrounds-4-3.xml
 }
