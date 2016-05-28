@@ -16,7 +16,7 @@ LICENSE="GPL-3"
 IUSE="updater appindicator"
 KEYWORDS="~x86 ~amd64"
 INSTALL_DIR="/opt/telegram"
-SLOT="0"
+SLOT="stable"
 RDEPEND="appindicator? (
 	x11-libs/gtk+:2
 	dev-libs/libappindicator:2
@@ -24,9 +24,8 @@ RDEPEND="appindicator? (
 DEPEND="${RDEPEND}
 	!net-im/telegram
 	!net-im/telegram-desktop
-	!net-im/telegram-dev
-	!net-im/telegram-desktop-dev
-	!net-im/telegram-desktop-dev-bin"
+	!net-im/telegram-dev"
+
 S="${WORKDIR}/Telegram"
 
 src_install() {
