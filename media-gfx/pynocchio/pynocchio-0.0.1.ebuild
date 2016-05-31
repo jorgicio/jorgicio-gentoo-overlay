@@ -22,15 +22,15 @@ fi
 
 LICENSE="LGPL-3.0"
 SLOT="0"
-IUSE=""
+IUSE="designer"
 
 DEPEND="
-	dev-python/pyside[X,designer,${PYTHON_USEDEP}]
+	dev-python/pyside[X,designer?,${PYTHON_USEDEP}]
 	dev-python/pyside-tools[${PYTHON_USEDEP}]
 	dev-python/rarfile[${PYTHON_USEDEP}]
 	dev-python/peewee[${PYTHON_USEDEP}]
 	dev-qt/linguist:4
-	dev-python/PyQt4[X,designer,${PYTHON_USEDEP}]
+	dev-python/PyQt4[X,designer?,${PYTHON_USEDEP}]
 	dev-qt/qtsql:4[sqlite]
 	app-arch/unrar-gpl
 "
