@@ -37,7 +37,7 @@ RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	app-arch/unzip"
 
-S=${WORKDIR}/dismine-${PN}-e915983d0fe8
+S=${WORKDIR}/dismine-${PN}-610ac13345d7
 
 src_configure() {
 	local locales=""
