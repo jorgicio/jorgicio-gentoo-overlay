@@ -4,20 +4,15 @@
 
 EAPI=5
 
-inherit eutils user ${GIT_ECLASS}
+inherit eutils user
 
 DESCRIPTION="Tracking software for asset recovery, now Node.js-powered"
 HOMEPAGE="http://preyproject.com"
-if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}-node-client"
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/${PN}/${PN}-node-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="x86 amd64"
-	S="${WORKDIR}/${PN}-node-client-${PV}"
-fi
-
+SRC_URI="
+	x86? ( https://github.com/prey/prey-node-client/releases/download/v${PV}/${PN}-linux-${PV}-x86.zip )
+	amd64? ( https://github.com/prey/prey-node-client/releases/download/v${PV}/${PN}-linux-${PV}-x64.zip )
+"
+KEYWORDS="x86 amd64"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
@@ -25,7 +20,7 @@ RESTRICT="mirror"
 
 DEPEND="
 	virtual/cron
-	net-libs/nodejs[npm]
+	>=net-libs/nodejs-0.6
 	dev-libs/openssl
 	dev-python/pygtk
 	media-tv/xawtv
@@ -39,21 +34,25 @@ DEPEND="
 	"
 RDEPEND="${DEPEND}"
 
+src_prepare(){
+	rm bin/node
+	epatch "${FILESDIR}/prey-node-client.patch"
+}
+
 src_install(){
-	npm install -g --prefix="${D}/usr" || die "Installation failed"
+	insinto ${EPREFIX}/opt/${PN}-node-client
+	doins -r *
 	make_desktop_entry 'prey config gui' "Prey Configuration" ${PN} "System;Monitor"
-	insinto ${EPREFIX}/etc/cron.d
-	insopts -m644
-	doins "${FILESDIR}/prey.cron"
 	insinto ${EPREFIX}/etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
-	insinto ${EPREFIX}/usr/share/pixmaps
-	doins ${FILESDIR}/${PN}.png
+	doicon ${FILESDIR}/${PN}.png
+	dosym /opt/${PN}-node-client/bin/${PN} ${EPREFIX}/usr/bin/${PN}
+	fperms +x /opt/${PN}-node-client/bin/${PN}
 }
 
 pkg_postinst(){
-	prey config hooks post_install
+	/opt/prey-node-client/bin/prey config hooks post_install >/dev/null
 	gpasswd -a prey video >/dev/null
 	if [ -f ${EROOT}/etc/init.d/prey-agent ];then
 		rm -v ${EROOT}/etc/init.d/prey-agent
@@ -65,7 +64,6 @@ pkg_postinst(){
 }
 
 pkg_prerm(){
-	prey config hooks pre_uninstall
+	/opt/prey-node-client/bin/prey config hooks pre_uninstall
 	userdel prey
-	groupdel prey
 }

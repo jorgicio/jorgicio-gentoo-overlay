@@ -7,7 +7,7 @@ index 5b5203c..915abd7 100755
  [ -x "$dir/node" ] && node="$dir/node" || node="$(command -v node || command -v nodejs)"
  
 -# if current file is a symlink (e.g. installed via npm) we'll append
-+# if current file is a symlink (e.g. installed via pacman) we'll append
++# if current file is a symlink (e.g. installed via Portage) we'll append
  # the relative path to where the package is actually installed.
  if [ -n "$(readlink $0 2> /dev/null)" ]; then
    rel="$(dirname $(readlink $0))"
