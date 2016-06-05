@@ -40,10 +40,10 @@ src_prepare(){
 }
 
 src_install(){
-	insinto ${EPREFIX}/opt/${PN}-node-client
+	insinto /opt/${PN}-node-client
 	doins -r *
 	make_desktop_entry 'prey config gui' "Prey Configuration" ${PN} "System;Monitor"
-	insinto ${EPREFIX}/etc/prey
+	insinto /etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
 	doicon ${FILESDIR}/${PN}.png
