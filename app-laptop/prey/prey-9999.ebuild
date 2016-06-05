@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 DEPEND="
 	virtual/cron
-	net-libs/nodejs[npm]
+	>=net-libs/nodejs-0.6[npm]
 	dev-libs/openssl
 	dev-python/pygtk
 	media-tv/xawtv
