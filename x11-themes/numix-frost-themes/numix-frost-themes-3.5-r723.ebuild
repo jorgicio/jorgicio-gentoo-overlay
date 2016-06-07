@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils unpacker versionator
+inherit eutils unpacker
 
 DESCRIPTION="Official Numix GTK Theme - Antergos edition"
 HOMEPAGE="http://numixproject.org"
@@ -14,6 +14,7 @@ LICENSE="LGPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+RESTRICT="mirror"
 
 DEPEND="x11-themes/gtk-engines-murrine"
 RDEPEND="${DEPEND}"
