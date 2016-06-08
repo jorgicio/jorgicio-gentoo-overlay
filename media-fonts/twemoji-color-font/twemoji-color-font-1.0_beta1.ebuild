@@ -27,3 +27,9 @@ S="${WORKDIR}"
 src_prepare(){
 	mv fontconfig/user-bitstream-vera-fonts.conf fontconfig/56-twemoji-color.conf
 }
+
+src_install(){
+	insinto ${EPREFIX}/usr/share/licenses/${PN}
+	doins ${FILESDIR}/LICENSE*
+	font_src_install
+}
