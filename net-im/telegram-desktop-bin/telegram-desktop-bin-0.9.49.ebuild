@@ -39,7 +39,7 @@ src_install() {
 	fi
 	doicon "${FILESDIR}/telegram.png"
     make_wrapper "telegram" "${INSTALL_DIR}/Telegram"
-    make_desktop_entry "telegram" "Telegram" "telegram" "Network;Messenger"
+    make_desktop_entry "telegram" "Telegram" "telegram" "Network;InstantMessaging;"
 
 }
 
