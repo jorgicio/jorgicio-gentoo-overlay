@@ -37,7 +37,8 @@ src_install() {
 		pax-mark m Updater
 		doins -r Updater
 	fi
+    doicon "${FILESDIR}/telegram.png"
     make_wrapper "telegram" "${INSTALL_DIR}/Telegram"
-    make_desktop_entry "telegram" "Telegram" "telegram" "Messenger"
+    make_desktop_entry "telegram" "Telegram" "telegram" "Network;Messenger"
 
 }
