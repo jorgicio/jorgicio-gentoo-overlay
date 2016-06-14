@@ -118,8 +118,7 @@ src_install(){
 	doins ${PN}.desktop
 	cd icons/hicolor
 	for size in 16x16 32x32 48x48 128x128 256x256;do
-		insinto usr/share/icons/hicolor/$size/apps/
-		doins $size/apps/mega.png
+		doicon -s $size $size/apps/mega.png
 	done
 	if use nautilus; then
 		cd "${S}/src/MEGAShellExtNautilus"
