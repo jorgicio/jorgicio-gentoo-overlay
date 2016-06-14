@@ -1,44 +1,68 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-EGIT_REPO_URI="https://github.com/vysheng/tg.git"
-EGIT_BRANCH="master"
-EGIT_HAS_SUBMODULES=1
-inherit git-2
-IUSE="+lua +json +python"
+PYTHON_COMPAT=( python2_7 python3_{1,2,3,4,5} )
+
+inherit eutils python-r1 ${GIT_ECLASS}
+
 DESCRIPTION="Command line interface client for Telegram"
 HOMEPAGE="https://github.com/vysheng/tg"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+IUSE="+lua +json +python"
+
+if [[ ${PV} == *9999* ]];then
+	GIT_ECLASS="git-r3"
+	EGIT_REPO_URI="${HOMEPAGE}"
+	KEYWORDS=""
+else
+	TGL_COMMIT="b3dcce35110f5c995366318c2886065287815d09"
+	TL_PARSER_COMMIT="ec8a8ed7a4f22428b83e21a9d3b5815f7a6f3bd9"
+	SRC_URI="
+		${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/vysheng/tgl/archive/${TGL_COMMIT}.tar.gz -> tgl-20150514.tar.gz
+		https://github.com/vysheng/tl-parser/archive/${TL_PARSER_COMMIT}.tar.gz -> tl-parser-20141119.tar.gz
+	"
+	KEYWORDS="~amd64 ~x86"
+	RESTRICT="mirror"
+	S="${WORKDIR}/tg-${PV}"
+fi
 
 DEPEND="sys-libs/zlib
 	sys-libs/readline
 	dev-libs/libconfig
 	dev-libs/openssl
 	dev-libs/libevent
+	dev-libs/tgl
 	lua? ( dev-lang/lua )
 	json? ( dev-libs/jansson )
-	python? ( dev-lang/python )"
+	python? ( ${PYTHON_DEPS} )"
 
-src_unpack() {
-	git-2_src_unpack
-	cd $EGIT_SOURCEDIR
-	git submodule update --init --recursive
-}
+RDEPEND="${DEPEND}"
+
+if [[ ${PV} != *9999* ]];then
+	src_prepare(){
+		cp -r ../tgl-${TGL_COMMIT}/* tgl
+		cp -r ../tl-parser-${TL_PARSER_COMMIT}/* tgl/tl-parser
+		eapply_user
+	}
+fi
 
 src_configure() {
 	econf $(use_enable lua liblua )
-	econf $(use_enable python python )
-	econf $(use_enable json json )
+	econf $(use_enable python )
+	econf $(use_enable json )
+}
+
+src_compile(){
+	emake DESTDIR="${D}" || die "Compilation failed"
 }
 
 src_install() {
-	newbin bin/telegram-cli telegram-cli
-
-	insinto /etc/telegram-cli/
+	dobin bin/${PN}
+	insinto /etc/${PN}
 	newins tg-server.pub server.pub
 }
