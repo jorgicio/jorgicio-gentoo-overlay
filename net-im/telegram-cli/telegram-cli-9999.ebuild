@@ -36,7 +36,6 @@ DEPEND="sys-libs/zlib
 	dev-libs/libconfig
 	dev-libs/openssl
 	dev-libs/libevent
-	dev-libs/tgl
 	lua? ( dev-lang/lua )
 	json? ( dev-libs/jansson )
 	python? ( ${PYTHON_DEPS} )"
