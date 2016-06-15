@@ -23,7 +23,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=dev-libs/libqtelegram-ae-6.0
+	>=net-misc/libqtelegram-ae-6.0
 	dev-qt/qtxml:5
 	dev-qt/qtimageformats:5
 "
