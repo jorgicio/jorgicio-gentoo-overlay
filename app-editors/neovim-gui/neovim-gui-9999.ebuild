@@ -19,6 +19,7 @@ else
 	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	RESTRICT="mirror"
+	S="${WORKDIR}/python-gui-${PV}"
 fi
 
 LICENSE="LGPL-3.0"
