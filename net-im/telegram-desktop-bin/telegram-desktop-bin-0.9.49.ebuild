@@ -16,7 +16,7 @@ LICENSE="GPL-3"
 IUSE="updater appindicator"
 KEYWORDS="~x86 ~amd64"
 INSTALL_DIR="/opt/telegram"
-SLOT="stable"
+SLOT="0"
 RDEPEND="appindicator? (
 	x11-libs/gtk+:2
 	dev-libs/libappindicator:2
