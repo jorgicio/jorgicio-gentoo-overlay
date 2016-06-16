@@ -53,7 +53,7 @@ RDEPEND="${DEPEND}
 		sqlite? ( dev-db/sqlite:3 )
 		libsodium? ( dev-libs/libsodium )
 		zlib? ( sys-libs/zlib )
-		curl? ( net-misc/curl[ssl] )
+		curl? ( net-misc/curl[ssl,curl_ssl_openssl] )
 		freeimage? ( media-libs/freeimage )
 		readline? ( sys-libs/readline:0 )
 		nautilus? (
