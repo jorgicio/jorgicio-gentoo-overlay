@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python3_{3,4,5} )
 inherit eutils xdg python-r1 pax-utils
 
 DESCRIPTION="A simple & beautiful desktop client for Whatsapp Web (binary package)"
-HOMEPAGE="http://github.com/Aluxian/Whatsie"
+HOMEPAGE="http://whatsie.chat"
 MY_P="whatsie-${PV}"
-BASE_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_P}-linux"
+BASE_URI="http://github.com/Aluxian/Whatsie/releases/download/v${PV}/${MY_P}-linux"
 SRC_URI="
 	x86? ( ${BASE_URI}-i386.deb )
 	amd64? ( ${BASE_URI}-amd64.deb )
