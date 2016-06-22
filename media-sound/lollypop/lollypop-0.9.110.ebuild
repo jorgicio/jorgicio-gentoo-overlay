@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python3_{3,4,5} )
 PYTHON_REQ_USE="sqlite"
@@ -18,7 +18,7 @@ if [[ ${PV} == *9999* ]];then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gnumdk/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="x86 amd64"
 fi
 
 RESTRICT="mirror"
@@ -45,6 +45,7 @@ RDEPEND="${DEPEND}
 
 src_prepare(){
 	eautoreconf
+	eapply_user
 }
 
 src_configure(){
