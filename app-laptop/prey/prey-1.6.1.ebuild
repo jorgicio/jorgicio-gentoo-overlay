@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 inherit eutils user
 
@@ -37,6 +37,7 @@ RDEPEND="${DEPEND}"
 src_prepare(){
 	rm bin/node
 	epatch "${FILESDIR}/prey-node-client.patch"
+	eapply_user
 }
 
 src_install(){
