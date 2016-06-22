@@ -8,9 +8,10 @@ inherit eutils user
 
 DESCRIPTION="Tracking software for asset recovery, now Node.js-powered"
 HOMEPAGE="http://preyproject.com"
+BASE_URI=" https://github.com/${PN}/${PN}-node-client/releases/download/v${PV}/${PN}-linux-${PV}"
 SRC_URI="
-	x86? ( https://github.com/prey/prey-node-client/releases/download/v${PV}/${PN}-linux-${PV}-x86.zip )
-	amd64? ( https://github.com/prey/prey-node-client/releases/download/v${PV}/${PN}-linux-${PV}-x64.zip )
+	x86? ( ${BASE_URI}-x86.zip )
+	amd64? ( ${BASE_URI}-x64.zip )
 "
 KEYWORDS="x86 amd64"
 LICENSE="GPL-3"
