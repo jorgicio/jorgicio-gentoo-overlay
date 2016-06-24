@@ -74,7 +74,7 @@ src_prepare() {
 		BUILDTYPE=Debug
 	fi
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
