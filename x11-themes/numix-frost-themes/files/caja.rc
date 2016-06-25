@@ -1,8 +1,0 @@
-style "caja-sidebar" = "murrine-sidebar" {
-    base[NORMAL] = @bg_color
-}
-
-widget_class "*CajaSidePane.*"         style "caja-sidebar"
-widget_class "*Caja*Places*Sidebar*"   style "caja-sidebar"
-widget_class "*Caja*Side*.GtkWidget*"  style "caja-sidebar"
-widget_class "*Caja*Side*Title*"       style "caja-sidebar"
