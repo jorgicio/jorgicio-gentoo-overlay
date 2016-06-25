@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 VALA_MIN_API_VERSION=0.28
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
-inherit eutils autotools-utils gnome2 vala git-r3
+inherit eutils autotools gnome2 vala git-r3
 
 DESCRIPTION="Native GTK+3 Twitter client"
 HOMEPAGE="http://corebird.baedert.org/"
