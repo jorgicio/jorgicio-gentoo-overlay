@@ -41,7 +41,7 @@ if [[ ${PV} != *9999* ]];then
 fi
 
 src_install() {
-	insinto /usr/share/themes/Numix
+	insinto /usr/share/themes/${_PN}
 	doins -r .
 	dodoc README.md
 }
