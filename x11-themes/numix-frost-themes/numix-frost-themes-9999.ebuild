@@ -29,7 +29,6 @@ fi
 DEPEND="
 	x11-themes/gtk-engines-murrine
 	dev-ruby/sass
-	>=x11-libs/gtk+-3.16:3
 "
 RDEPEND="${DEPEND}"
 
