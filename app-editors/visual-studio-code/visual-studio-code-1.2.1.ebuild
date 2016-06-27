@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils pax-utils
 
-RELEASE="809e7b30e928e0c430141b3e6abf1f63aaf55589"
+RELEASE="fe7f407b95b7f78405846188259504b34ef72761"
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
 SRC_URI="
