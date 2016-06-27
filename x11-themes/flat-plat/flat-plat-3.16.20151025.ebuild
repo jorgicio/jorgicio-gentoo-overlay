@@ -25,8 +25,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	x11-libs/gtk:2
-	>=x11-libs/gtk-3.14:3
+	x11-libs/gtk+:2
+	>=x11-libs/gtk+-3.14:3
 	>=x11-themes/gnome-themes-standard-3.14[gtk]
 	x11-libs/gdk-pixbuf
 "
