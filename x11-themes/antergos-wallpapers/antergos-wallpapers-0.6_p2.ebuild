@@ -4,13 +4,16 @@
 
 EAPI=6
 
-inherit eutils unpacker
+inherit eutils unpacker versionator
 
 DESCRIPTION="Wallpapers set taken from the Antergos repos"
 HOMEPAGE="http://antergos.com"
+BASE_URI="http://repo.antergos.info/antergos"
+RELEASE=$(replace_version_separator 2 '-')
+MY_P="${PN}-${RELEASE//p}"
 SRC_URI="
-	x86? ( "http://repo.antergos.info/antergos/i686/${P}-1-any.pkg.tar.xz" )
-	amd64? ( "http://repo.antergos.info/antergos/x86_64/${P}-1-any.pkg.tar.xz" )
+	x86? ( ${BASE_URI}/i686/${MY_P}-any.pkg.tar.xz )
+	amd64? ( ${BASE_URI}/x86_64/${MY_P}-any.pkg.tar.xz )
 "
 
 LICENSE="CCPL:by-nc-sa"
