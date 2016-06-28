@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 inherit eutils unpacker
 
@@ -28,7 +28,8 @@ src_unpack(){
 }
 
 src_prepare(){
-	sed -i 's/antergos\/wallpapers/backgrounds\/antergos/g;' usr/share/gnome-background-properties/antergos-backgrounds-4-3.xml
+	sed -i 's#antergos/wallpapers#backgrounds/antergos#g;' usr/share/gnome-background-properties/antergos-backgrounds-4-3.xml
+	eapply_user
 }
 
 src_install(){
