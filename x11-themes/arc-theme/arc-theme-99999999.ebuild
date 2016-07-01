@@ -2,19 +2,26 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-inherit eutils autotools
+inherit eutils autotools ${GIT_ECLASS}
 
 DESCRIPTION="A flat theme with transparent elements for GTK 3, GTK2 and GNOME Shell"
-HOMEPAGE="https://github.com/horst3180/Arc-theme"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/horst3180/arc-theme"
+if [[ ${PV} == *99999999* ]];then
+	GIT_ECLASS="git-r3"
+	SRC_URI=""
+	EGIT_REPO_URI="${HOMEPAGE}"
+	KEYWORDS=""
+else
+	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="*"
+	RESTRICT="mirror"
+fi
 
 LICENSE="LGPL-3.0"
 SLOT="0"
-KEYWORDS="~*"
 IUSE="gnome-shell +gtk2 gtk3 metacity unity xfwm transparency"
-REQUIRED_USE="|| ( gtk2 gtk3 )"
 
 DEPEND="x11-themes/gtk-engines-murrine
 		x11-libs/gdk-pixbuf"
@@ -30,27 +37,21 @@ RDEPEND="${DEPEND}
 				)
 		)"
 
-S="${WORKDIR}/Arc-theme-${PV}"
-
 src_prepare(){
 	eautoreconf
+	eapply_user
 }
 
 src_configure(){
-	local myconf=''
-	use !gtk2 && myconf+="--disable-gtk2 "
-	use !gtk3 && myconf+="--disable-gtk3 "
-	use !gnome-shell && myconf+="--disable-gnome-shell "
-	use !unity && myconf+="--disable-unity "
-	use !metacity && myconf+="--disable-metacity "
-	use !xfwm && myconf+="--disable-xfwm "
-	if use gtk3 && ! use transparency; then
-		myconf+="--disable-transparency "
-	elif ! use gtk3 && ! use transparency; then
-		myconf+="--disable-gtk3 --disable-transparency "
-	fi
-	econf ${myconf}
+	econf $(use_enable gtk2) \
+		$(use_enable gtk3) \
+		$(use_enable gnome-shell) \
+		$(use_enable unity) \
+		$(use_enable metacity) \
+		$(use_enable transparency) \
+		$(use_enable xfwm)
 }
+
 
 src_compile(){
 	emake DESTDIR="${D}"
