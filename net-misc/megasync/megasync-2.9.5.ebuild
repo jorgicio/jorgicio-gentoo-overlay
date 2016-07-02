@@ -24,7 +24,7 @@ fi
 
 LICENSE="MEGA"
 SLOT="0"
-IUSE="+ares +cryptopp +sqlite libsodium +zlib +curl freeimage readline examples threads qt5 nautilus"
+IUSE="+cryptopp +sqlite libsodium +zlib +curl freeimage readline examples threads qt5 nautilus"
 
 DEPEND="
 	!qt5? ( 
@@ -45,7 +45,7 @@ RDEPEND="${DEPEND}
 		dev-libs/openssl
 		dev-libs/libgcrypt
 		media-libs/libpng
-		ares? ( net-dns/c-ares )
+		net-dns/c-ares
 		cryptopp? ( dev-libs/crypto++ )
 		app-arch/xz-utils
 		dev-libs/libuv
@@ -79,7 +79,7 @@ src_configure(){
 		$(use_with zlib) \
 		$(use_with sqlite) \
 		$(use_with cryptopp) \
-		$(use_with ares cares) \
+		"--with-cares" \
 		$(use_with curl) \
 		"--without-termcap" \
 		$(use_enable threads posix-threads) \
