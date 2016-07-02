@@ -4,13 +4,12 @@
 
 EAPI=6
 
-inherit eutils multilib qmake-utils autotools versionator ${GIT_ECLASS}
-
+inherit eutils multilib qmake-utils autotools versionator
 
 DESCRIPTION="A Qt-based program for syncing your MEGA account in your PC. This is the official app."
 HOMEPAGE="http://mega.co.nz"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/meganz/MEGAsync"
 	KEYWORDS=""
 else
