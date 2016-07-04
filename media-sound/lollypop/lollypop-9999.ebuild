@@ -2,26 +2,26 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python3_{3,4,5} )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-r1 autotools gnome2-utils ${GIT_ECLASS}
+inherit python-r1 autotools gnome2-utils
 
 DESCRIPTION="Lollypop is a new GNOME music playing application"
 HOMEPAGE="http://gnumdk.github.io/lollypop"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/gnumdk/lollypop"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gnumdk/${PN}/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~x86 ~amd64"
+	RESTRICT="mirror"
 fi
 
-RESTRICT="mirror"
 LICENSE="LGPL-3.0"
 SLOT="0"
 IUSE=""
