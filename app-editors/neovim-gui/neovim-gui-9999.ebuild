@@ -6,13 +6,13 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-inherit distutils-r1 eutils ${GIT_ECLASS}
+inherit distutils-r1 eutils
 
 DESCRIPTION="Simple nvim gui implemented using GTK"
 HOMEPAGE="https://github.com/neovim/python-gui"
 
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else
