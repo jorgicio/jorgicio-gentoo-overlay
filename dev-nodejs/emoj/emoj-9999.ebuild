@@ -4,12 +4,12 @@
 
 EAPI=6
 
-inherit eutils ${GIT_ECLASS}
+inherit eutils
 
 DESCRIPTION="Find relevant emoji from text on the command line"
 HOMEPAGE="https://github.com/sindresorhus/emoj"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	KEYWORDS=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 else

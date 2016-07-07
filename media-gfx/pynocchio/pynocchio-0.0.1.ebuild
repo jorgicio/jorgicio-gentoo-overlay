@@ -6,12 +6,12 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils gnome2-utils xdg ${GIT_ECLASS}
+inherit distutils-r1 eutils gnome2-utils xdg
 
 DESCRIPTION="Qt4-based image viewer specialized in manga/comic reading"
 HOMEPAGE="https://github.com/pynocchio/pynocchio"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else

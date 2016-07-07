@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit qmake-utils ${GIT_ECLASS}
+inherit qmake-utils
 
 DESCRIPTION="A different telegram client from Aseman team forked from Sigram by Sialan Labs. "
 HOMEPAGE="http://aseman.co/en/products/cutegram/"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Aseman-Land/Cutegram"
 	KEYWORDS=""
 else

@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=6
 
-inherit eutils autotools ${GIT_ECLASS}
+inherit eutils autotools
 
 DESCRIPTION="A flat theme with transparent elements for GTK 3, GTK2 and GNOME Shell"
 HOMEPAGE="https://github.com/horst3180/arc-theme"
 if [[ ${PV} == *99999999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""

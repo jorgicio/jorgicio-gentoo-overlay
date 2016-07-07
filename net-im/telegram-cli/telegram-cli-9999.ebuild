@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{1,2,3,4,5} )
 
-inherit eutils python-r1 ${GIT_ECLASS}
+inherit eutils python-r1
 
 DESCRIPTION="Command line interface client for Telegram"
 HOMEPAGE="https://github.com/vysheng/tg"
@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="+lua +json +python"
 
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else

@@ -4,13 +4,13 @@
 
 EAPI=6
 
-inherit eutils ${GIT_ECLASS}
+inherit eutils
 
 DESCRIPTION="A Material Design-like flat theme for GTK3, GTK2 and GNOME Shell"
 HOMEPAGE="https://github.com/nana-4/Flat-Plat"
 
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else

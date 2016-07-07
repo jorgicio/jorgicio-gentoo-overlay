@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-inherit eutils ${GIT_ECLASS}
+inherit eutils
 
 DESCRIPTION="Generates a table of contents for Markdown files inside for a git-based repository"
 HOMEPAGE="https://github.com/thlorenz/doctoc"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""

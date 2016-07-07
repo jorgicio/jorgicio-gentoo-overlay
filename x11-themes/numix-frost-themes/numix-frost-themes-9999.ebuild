@@ -7,7 +7,7 @@ EAPI=6
 _PN="Numix-Frost"
 _P="${_PN}-${PV}"
 
-inherit eutils ${GIT_ECLASS}
+inherit eutils
 
 DESCRIPTION="A modern flat theme that supports Gnome, Unity, XFCE and Openbox."
 HOMEPAGE="https://numixproject.org"
@@ -16,11 +16,11 @@ LICENSE="GPL-3.0+"
 SLOT="0"
 
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Antergos/${_PN}"
 	KEYWORDS=""
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="*"
 	SRC_URI="https://github.com/Antergos/${_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	RESTRICT="mirror"
 

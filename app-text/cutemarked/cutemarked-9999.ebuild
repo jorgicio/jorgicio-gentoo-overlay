@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit qmake-utils git-r3
 
@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}"-0.11.1-respect-destdir.patch
+	eapply_user
 }
 
 src_configure() {

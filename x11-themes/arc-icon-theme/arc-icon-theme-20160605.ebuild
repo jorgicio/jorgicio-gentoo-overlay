@@ -4,12 +4,12 @@
 
 EAPI=6
 
-inherit eutils autotools ${GIT_ECLASS}
+inherit eutils autotools
 
 DESCRIPTION="The Arc Icon Theme"
 HOMEPAGE="https://github.com/horst3180/arc-icon-theme"
 if [[ ${PV} == *99999999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else

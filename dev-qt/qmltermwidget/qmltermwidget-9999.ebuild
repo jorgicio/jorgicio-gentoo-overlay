@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils qmake-utils ${GIT_ECLASS}
+inherit eutils qmake-utils
 
 DESCRIPTION="QML port of qtermwidget"
 HOMEPAGE="https://github.com/Swordfish90/qmltermwidget"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else

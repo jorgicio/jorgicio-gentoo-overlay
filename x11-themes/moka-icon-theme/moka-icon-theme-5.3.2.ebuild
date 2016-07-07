@@ -4,12 +4,12 @@
 
 EAPI=6
 
-inherit eutils autotools ${GIT_ECLASS}
+inherit eutils autotools
 
 DESCRIPTION="Moka is a stylized Linux desktop icon set, and the titular icon theme of the Moka Project. They are designed to be clear, simple and consistent."
 HOMEPAGE="http://snwh.org"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/moka-project/moka-icon-theme.git"
 	KEYWORDS=""

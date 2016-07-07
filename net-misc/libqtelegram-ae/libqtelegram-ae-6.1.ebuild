@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-inherit qmake-utils ${GIT_ECLASS}
+inherit qmake-utils
 
 DESCRIPTION="A fork of libqtelegram by Aseman Team"
 HOMEPAGE="https://github.com/Aseman-Land/libqtelegram-aseman-edition"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else

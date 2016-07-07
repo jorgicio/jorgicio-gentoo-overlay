@@ -4,12 +4,12 @@
 
 EAPI=6
 
-inherit eutils autotools ${GIT_ECLASS}
+inherit eutils autotools
 
 DESCRIPTION="Faba is a sexy and modern icon theme with Tango influences. This a monochrome variant of this theme, used for panel icons."
 HOMEPAGE="http://snwh.org"
 if [[ ${PV} == *9999* ]];then
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/moka-project/faba-mono-icons.git"
 	KEYWORDS=""
