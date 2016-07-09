@@ -13,13 +13,20 @@ SRC_URI="
 
 RESTRICT="mirror strip"
 LICENSE="GPL-3"
-IUSE="updater appindicator"
+IUSE="updater appindicator gtk3"
 KEYWORDS="~x86 ~amd64"
 INSTALL_DIR="/opt/telegram"
 SLOT="0"
-RDEPEND="appindicator? (
-	x11-libs/gtk+:2
-	dev-libs/libappindicator:2
+RDEPEND="
+	appindicator? (
+		!gtk3? (
+			x11-libs/gtk+:2
+			dev-libs/libappindicator:2
+		)
+		gtk3? (
+			x11-libs/gtk+:3
+			dev-libs/libappindicator:3
+		)
 	)"
 DEPEND="${RDEPEND}
 	!net-im/telegram
