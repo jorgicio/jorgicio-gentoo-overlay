@@ -35,8 +35,10 @@ src_configure(){
 
 src_install(){
 	dogamesbin ${PN}
-	insinto /usr/share/icons/hicolor
-	doins -r res/icons/*
+	for size in 16x16 32x32 48x48 256x256;do
+		doicon -s $size res/icons/$size/apps/${PN}.png
+	done
+	doicon res/icons/scalable/apps/${PN}.svg
 	insinto /usr/share/applications
 	doins res/${PN}.desktop
 	doman res/man/${PN}.6
