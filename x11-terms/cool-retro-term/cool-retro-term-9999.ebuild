@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare(){
 	sed -i '/qmltermwidget/d' ${PN}.pro
+	eapply_user
 }
 
 src_configure(){
