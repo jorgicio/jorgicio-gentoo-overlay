@@ -13,10 +13,10 @@ DESCRIPTION="Native GTK+3 Twitter client"
 HOMEPAGE="http://corebird.baedert.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/baedert/corebird"
+KEYWORDS=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug gstreamer"
 
 RDEPEND="
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/libgee:0.8
 	gstreamer? ( media-plugins/gst-plugins-meta:1.0[X,ffmpeg] )
 	>=net-libs/libsoup-2.42.3.1
-	>=net-libs/rest-0.7.91:0.7
+	>=net-libs/rest-0.7.93:0.7
 	>=x11-libs/gtk+-3.16:3
 "
 DEPEND="${RDEPEND}
@@ -38,7 +38,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	sed -i -e "/manpagedir/s/manpagedir.*/&\/man1/g" data/Makefile.am || die
-	autotools-utils_src_prepare
+	sed -i "s/1.2.1/${PV}/g" ui/about-dialog.ui || die
+	eautoreconf
 	gnome2_src_prepare
 	vala_src_prepare
 }

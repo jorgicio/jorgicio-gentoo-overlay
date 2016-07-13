@@ -12,10 +12,11 @@ inherit eutils autotools gnome2 vala
 DESCRIPTION="Native GTK+3 Twitter client"
 HOMEPAGE="http://corebird.baedert.org/"
 SRC_URI="https://github.com/baedert/corebird/archive/${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="debug gstreamer"
 
 RDEPEND="
@@ -38,7 +39,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	sed -i -e "/manpagedir/s/manpagedir.*/&\/man1/g" data/Makefile.am || die
 	sed -i "s/1.2.1/${PV}/g" ui/about-dialog.ui || die
-	autotools-utils_src_prepare
+	eautoreconf
 	gnome2_src_prepare
 	vala_src_prepare
 }
