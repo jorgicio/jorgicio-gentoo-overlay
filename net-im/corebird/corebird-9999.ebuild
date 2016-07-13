@@ -38,7 +38,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	sed -i -e "/manpagedir/s/manpagedir.*/&\/man1/g" data/Makefile.am || die
-	sed -i "s/1.2.1/${PV}/g" ui/about-dialog.ui || die
 	eautoreconf
 	gnome2_src_prepare
 	vala_src_prepare
