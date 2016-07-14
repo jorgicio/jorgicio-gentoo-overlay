@@ -17,7 +17,7 @@
  uninstall-openrc:
 -	$(RM) "$(DESTDIR)$(DOCDIR)/psd.openrc"
 +	$(RM) "$(DESTDIR)$(CONFDIR)/psd.conf"
-+	$(RM) "$(DESTDIR)$(INITDIR_UPSTART)/psd.openrc"
++	$(RM) "$(DESTDIR)$(INITDIR_UPSTART)/psd"
  
  uninstall-systemd:
  	$(RM) "$(DESTDIR)$(CONFDIR)/psd.conf"
