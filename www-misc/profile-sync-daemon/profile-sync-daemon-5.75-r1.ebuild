@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/www-misc/profile-sync-daemon/profile-sync-daemon-5.45.1.ebuild,v 1.3 2014/03/12 05:21:36 phajdan.jr Exp $
 
-EAPI=5
+EAPI=6
 
 inherit eutils vcs-snapshot
 
@@ -24,10 +24,8 @@ src_install() {
 	emake -j1 DESTDIR="${ED}" \
 		install-openrc-all \
 		$(usex systemd "install-systemd" "")
-	if use !systemd; then
-		exeinto	/etc/init.d
-		doexe ${FILESDIR}/psd
-	fi
+	
+	use !systemd && doinitd ${FILESDIR}/psd
 
 	fperms -x /etc/cron.hourly/psd-update
 }
