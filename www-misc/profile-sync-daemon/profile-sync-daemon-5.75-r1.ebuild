@@ -14,18 +14,22 @@ LICENSE="GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="systemd"
+RESTRICT="mirror"
 
 RDEPEND="
 	app-shells/bash
 	net-misc/rsync[xattr]
 	systemd? ( sys-apps/systemd )"
 
+src_prepare(){
+	epatch ${FILESDIR}/${P}-openrc_install.patch
+	eapply_user
+}
+
 src_install() {
 	emake -j1 DESTDIR="${ED}" \
-		install-openrc-all \
-		$(usex systemd "install-systemd" "")
-	
-	use !systemd && doinitd ${FILESDIR}/psd
+		$(usex !systemd "install-openrc-all" "") \
+		$(usex systemd "install-systemd-all" "") \
 
 	fperms -x /etc/cron.hourly/psd-update
 }
