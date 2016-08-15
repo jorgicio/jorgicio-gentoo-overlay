@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 
 command=/opt/prey-node-client/bin/prey
