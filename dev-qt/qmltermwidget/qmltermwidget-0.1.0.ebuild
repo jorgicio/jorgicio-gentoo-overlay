@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]];then
 	KEYWORDS=""
 else
 	KEYWORDS="~x86 ~amd64"
-	SRC_URI="${HOMEPAGE}/archive/v${PV} -> ${P}.tar.gz"
+	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	RESTRICT="mirror"
 fi
 

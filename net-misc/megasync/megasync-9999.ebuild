@@ -13,10 +13,10 @@ if [[ ${PV} == *9999* ]];then
 	EGIT_REPO_URI="https://github.com/meganz/MEGAsync"
 	KEYWORDS=""
 else
-	SDK_COMMIT="f1f9d5070d5b123d8c2f198764f83a64719ddb2d"
+	SDK_COMMIT="d7412bb8a13139600302ad9a907a10c47bdd0b52"
 	MY_PV="$(replace_all_version_separators _)"
 	SRC_URI="https://github.com/meganz/MEGAsync/archive/v${MY_PV}_0_Linux.tar.gz -> ${P}.tar.gz
-	https://github.com/meganz/sdk/archive/${SDK_COMMIT}.tar.gz -> ${PN}-sdk-20160531.tar.gz"
+	https://github.com/meganz/sdk/archive/${SDK_COMMIT}.tar.gz -> ${PN}-sdk-20160719.tar.gz"
 	KEYWORDS="~x86 ~amd64"
 	RESTRICT="mirror"
 	S="${WORKDIR}/MEGAsync-${MY_PV}_0_Linux"
@@ -24,7 +24,7 @@ fi
 
 LICENSE="MEGA"
 SLOT="0"
-IUSE="+cryptopp +sqlite libsodium +zlib +curl freeimage readline examples threads qt5 nautilus"
+IUSE="+cryptopp +sqlite +zlib +curl freeimage readline examples threads qt5 nautilus"
 
 DEPEND="
 	!qt5? ( 
@@ -50,7 +50,7 @@ RDEPEND="${DEPEND}
 		app-arch/xz-utils
 		dev-libs/libuv
 		sqlite? ( dev-db/sqlite:3 )
-		libsodium? ( dev-libs/libsodium )
+		dev-libs/libsodium
 		zlib? ( sys-libs/zlib )
 		curl? ( net-misc/curl[ssl,curl_ssl_openssl] )
 		freeimage? ( media-libs/freeimage )
@@ -83,7 +83,7 @@ src_configure(){
 		$(use_with curl) \
 		"--without-termcap" \
 		$(use_enable threads posix-threads) \
-		$(use_with libsodium sodium) \
+		"--with-sodium" \
 		$(use_with freeimage) \
 		$(use_with readline) \
 		$(use_enable examples)	

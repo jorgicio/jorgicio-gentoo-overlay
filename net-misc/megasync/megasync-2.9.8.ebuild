@@ -24,7 +24,7 @@ fi
 
 LICENSE="MEGA"
 SLOT="0"
-IUSE="+cryptopp +sqlite libsodium +zlib +curl freeimage readline examples threads qt5 nautilus"
+IUSE="+cryptopp +sqlite +zlib +curl freeimage readline examples threads qt5 nautilus"
 
 DEPEND="
 	!qt5? ( 
@@ -50,7 +50,7 @@ RDEPEND="${DEPEND}
 		app-arch/xz-utils
 		dev-libs/libuv
 		sqlite? ( dev-db/sqlite:3 )
-		libsodium? ( dev-libs/libsodium )
+		dev-libs/libsodium
 		zlib? ( sys-libs/zlib )
 		curl? ( net-misc/curl[ssl,curl_ssl_openssl] )
 		freeimage? ( media-libs/freeimage )
@@ -83,7 +83,7 @@ src_configure(){
 		$(use_with curl) \
 		"--without-termcap" \
 		$(use_enable threads posix-threads) \
-		$(use_with libsodium sodium) \
+		"--with-sodium" \
 		$(use_with freeimage) \
 		$(use_with readline) \
 		$(use_enable examples)	
