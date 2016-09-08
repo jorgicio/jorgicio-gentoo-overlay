@@ -27,7 +27,9 @@ RDEPEND="
 	gstreamer? ( media-plugins/gst-plugins-meta:1.0[X,ffmpeg] )
 	>=net-libs/libsoup-2.42.3.1
 	>=net-libs/rest-0.7.93:0.7
-	>=x11-libs/gtk+-3.16:3
+	>=x11-libs/gtk+-3.18:3
+	>=sys-devel/gettext-0.19.0
+	net-libs/libsoup:2.4
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
