@@ -24,7 +24,10 @@ RDEPEND="
 	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
 	dev-libs/libgee:0.8
-	gstreamer? ( media-plugins/gst-plugins-meta:1.0[X,ffmpeg] )
+	gstreamer? ( 
+		media-plugins/gst-plugins-meta:1.0[X,ffmpeg]
+		media-plugins/gst-plugins-hls:1.0
+	)
 	>=net-libs/libsoup-2.42.3.1
 	>=net-libs/rest-0.7.93:0.7
 	>=x11-libs/gtk+-3.18:3
