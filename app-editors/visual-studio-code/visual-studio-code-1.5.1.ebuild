@@ -33,10 +33,10 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-ARCH="$(uname -m)"
-
-[[ $ARCH == "x86_64" ]] && S="${WORKDIR}/VSCode-linux-x64"
-[[ $ARCH != "x86_64" ]] && S="${WORKDIR}/VSCode-linux-ia32"
+S="
+	amd64? ( ${WORKDIR}/VSCode-linux-x64 )
+	x86? ( ${WORKDIR}/VSCode-linux-ia32 )
+"
 
 src_install(){
 	pax-mark m code
