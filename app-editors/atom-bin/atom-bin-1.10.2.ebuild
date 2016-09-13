@@ -63,7 +63,7 @@ src_install() {
 	newbin ${FILESDIR}/${PN} ${MY_PN}
 	insinto ${EPREFIX}/usr/share/lintian/overrides
 	newins ${FILESDIR}/${MY_PN}-${PV}-lintian ${MY_PN}
-	dosym ${EPREFIX}/usr/share/${MY_PN}/resources/arr/apm/bin/apm ${EPREFIX}/usr/bin/apm	
+	dosym ${EPREFIX}/usr/share/${MY_PN}/resources/app/apm/bin/apm ${EPREFIX}/usr/bin/apm	
 	
 	# Fixes permissions
 	fperms +x /usr/bin/${MY_PN}
