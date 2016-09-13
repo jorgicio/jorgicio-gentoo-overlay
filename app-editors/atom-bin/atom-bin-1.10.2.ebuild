@@ -53,6 +53,12 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare(){
+	rm resources/app/apm/bin/node
+	rm resources/arr/apm/bin/npm
+	epatch_user
+}
+
 src_install() {
 	pax-mark m ${MY_PN}
 	insinto ${EPREFIX}/usr/share/${MY_PN}
