@@ -56,7 +56,7 @@ pkg_setup() {
 src_prepare(){
 	rm resources/app/apm/bin/node
 	rm resources/app/apm/bin/npm
-	epatch_user
+	eapply_user
 }
 
 src_install() {
