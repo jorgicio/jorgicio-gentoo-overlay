@@ -55,7 +55,7 @@ pkg_setup() {
 
 src_prepare(){
 	rm resources/app/apm/bin/node
-	rm resources/arr/apm/bin/npm
+	rm resources/app/apm/bin/npm
 	epatch_user
 }
 
