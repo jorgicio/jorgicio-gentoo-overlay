@@ -6,12 +6,12 @@ EAPI=6
 
 inherit eutils pax-utils
 
-RELEASE="07d663dc1bd848161edf4cd4ce30cce410d3d877"
+RELEASE="66f37fd2a99eb9d628dd374d81d78835b410c39b"
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
 BASE_URI="https://az764295.vo.msecnd.net/stable/${RELEASE}"
-TAR_64="1473370243"
-TAR_32="1473369468"
+TAR_64="1473686317"
+TAR_32="1473685537"
 SRC_URI="
 	x86? ( ${BASE_URI}/code-stable-code_${PV}-${TAR_32}_i386.tar.gz )
 	amd64? ( ${BASE_URI}/code-stable-code_${PV}-${TAR_64}_amd64.tar.gz )
@@ -33,10 +33,10 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-S="
-	amd64? ( ${WORKDIR}/VSCode-linux-x64 )
-	x86? ( ${WORKDIR}/VSCode-linux-ia32 )
-"
+ARCH=$(uname -m)
+
+[[ ${ARCH} == "x86_64" ]] && S="${WORKDIR}/VSCode-linux-x64"
+[[ ${ARCH} != "x86_64" ]] && S="${WORKDIR}/VSCode-linux-ia32"
 
 src_install(){
 	pax-mark m code
