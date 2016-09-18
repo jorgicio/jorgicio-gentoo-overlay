@@ -23,6 +23,7 @@ IUSE=""
 DEPEND="${PYTHON_DEPS}
 	media-fonts/inconsolata
 	!!dev-util/atom-shell
+	!dev-util/apm
 	!app-editors/atom"
 
 RDEPEND="${DEPEND}
@@ -35,7 +36,7 @@ RDEPEND="${DEPEND}
 	media-libs/alsa-lib
 	net-print/cups
 	sys-libs/libcap
-	net-libs/nodejs[npm]
+	<net-libs/nodejs-5.0[npm]
 	x11-libs/libXtst
 	x11-libs/pango"
 
