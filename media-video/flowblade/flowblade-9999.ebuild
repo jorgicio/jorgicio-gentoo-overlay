@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils distutils-r1 fdo-mime gnome2-utils
+inherit eutils python-r1 fdo-mime gnome2-utils
 
 DESCRIPTION="A multitrack non-linear video editor"
 HOMEPAGE="https://github.com/jliljebl/flowblade"
@@ -50,6 +50,18 @@ RDEPEND="${DEPEND}"
 src_prepare(){
 	epatch "${FILESDIR}/${P}-install-dir-fix.patch"
 	eapply_user
+}
+
+src_install(){
+	dobin ${PN}
+	insinto /usr/share/${PN}
+	doins -r Flowblade/*
+	doman installdata/${PN}.1
+	dodoc README
+	doicon -s 128 installdata/${PN}.png
+	domenu installdata/${PN}.desktop
+	insinto /usr/share/mime/packages
+	doins installdata/${PN}.xml
 }
 
 pkg_preinst(){
