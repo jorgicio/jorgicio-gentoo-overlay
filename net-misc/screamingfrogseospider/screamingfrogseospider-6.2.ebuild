@@ -30,7 +30,7 @@ src_unpack(){
 }
 
 src_install(){
-	insinto /
+	insinto /usr
 	doins -r usr/share
 	dobin usr/bin/${PN}
 }
