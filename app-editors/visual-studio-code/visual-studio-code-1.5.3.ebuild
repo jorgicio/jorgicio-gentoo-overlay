@@ -28,7 +28,11 @@ DEPEND="
 	x11-libs/libXtst
 "
 
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	>=net-print/cups-2.0.0
+	x11-libs/libnotify
+"
 
 ARCH=$(uname -m)
 
