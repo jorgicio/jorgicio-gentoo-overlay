@@ -38,10 +38,11 @@ src_configure() {
 
 src_install() {
 	default
+
+	newconfd "${FILESDIR}"/${PN}.confd-1.6.0-r1 ${PN}
 	
 	if use !systemd; then
 		newinitd "${FILESDIR}"/${PN}.initd-1.6.1 ${PN}
-		newconfd "${FILESDIR}"/${PN}.confd-1.6.0-r1 ${PN}
 	else
 		systemd_dounit "${FILESDIR}"/${PN}.service
 	fi
