@@ -34,7 +34,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=gnome-extra/zeitgeist-0.9.14[introspection,${PYTHON_USEDEP}]
 	dev-util/desktop-file-utils
-	x11-base/xorg-server[xvfb]
 	"
 
 pkg_setup(){
@@ -46,6 +45,7 @@ src_prepare(){
 	sed -i -e 's:/sbin/ldconfig:/bin/true:g' waflib/Build.py
 	PATCHES=( 
 		"${FILESDIR}/${PN}-force-bfd.patch"
+		"${FILESDIR}/${PN}-remove-xvfb.patch"
 		"${FILESDIR}/${PN}-generate-schema.patch" 
 	)
 	epatch ${PATCHES[@]}
