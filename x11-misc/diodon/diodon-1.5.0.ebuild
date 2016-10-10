@@ -32,7 +32,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.10.0:3
 "
 RDEPEND="${DEPEND}
-	>=gnome-extra/zeitgeist-0.9.14[introspection]
+	>=gnome-extra/zeitgeist-0.9.14[introspection,${PYTHON_USEDEP}]
 	dev-util/desktop-file-utils
 	x11-base/xorg-server[xvfb]
 	"
