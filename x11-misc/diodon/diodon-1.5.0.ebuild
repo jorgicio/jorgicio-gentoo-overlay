@@ -17,7 +17,7 @@ SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="appindicator"
+IUSE=""
 
 DEPEND="
 	$(vala_depend)
@@ -28,7 +28,7 @@ DEPEND="
 	dev-libs/libunique:3
 	>=dev-libs/libpeas-1.1.0[python,gtk]
 	>=x11-libs/libXtst-1.2.0
-	appindicator? ( dev-libs/libappindicator:3 )
+	dev-libs/libappindicator:3
 	>=x11-libs/gtk+-3.10.0:3
 "
 RDEPEND="${DEPEND}
@@ -58,8 +58,7 @@ src_configure(){
 	waf-utils_src_configure \
 		--notests \
 		--nocache \
-		--skiptests \
-		$(usex appindicator "" --disable-indicator-plugin)
+		--skiptests
 }
 
 pkg_preinst(){
