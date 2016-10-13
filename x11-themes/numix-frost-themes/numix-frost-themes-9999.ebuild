@@ -4,9 +4,6 @@
 
 EAPI=6
 
-_PN="Numix-Frost"
-_P="${_PN}-${PV}"
-
 inherit eutils
 
 DESCRIPTION="A modern flat theme that supports Gnome, Unity, XFCE and Openbox."
@@ -17,30 +14,30 @@ SLOT="0"
 
 if [[ ${PV} == *9999* ]];then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/Antergos/${_PN}"
+	EGIT_REPO_URI="https://github.com/Antergos/Numix-Frost"
 	KEYWORDS=""
 else
+	_PN="Numix-Frost"
+	_P="${_PN}-${PV}"
 	KEYWORDS="*"
 	SRC_URI="https://github.com/Antergos/${_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	RESTRICT="mirror"
+	S="${WORKDIR}/${_P}"
 
 fi
 
 DEPEND="
 	x11-themes/gtk-engines-murrine
 	dev-ruby/sass
+	dev-libs/glib:2
+	x11-libs/gdk-pixbuf
 "
 RDEPEND="${DEPEND}"
 
-if [[ ${PV} != *9999* ]];then
-	src_unpack() {
-		unpack "${A}"
-		mv "${_P}" "${P}"
-	}
-fi
+src_compile(){
+	emake DESTDIR="${D}" || die
+}
 
 src_install() {
-	insinto /usr/share/themes/${_PN}
-	doins -r .
-	dodoc README.md
+	emake DESTDIR="${D}" install || die
 }
