@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 SLOT="0"
 LICENSE="MIT"
 
-IUSE=""
+IUSE="system-node"
 
 DEPEND="${PYTHON_DEPS}
 	media-fonts/inconsolata
@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}
 	media-libs/alsa-lib
 	net-print/cups
 	sys-libs/libcap
-	<net-libs/nodejs-5.0[npm]
+	system-node? ( <net-libs/nodejs-5.0[npm] )
 	x11-libs/libXtst
 	x11-libs/pango"
 
@@ -56,8 +56,11 @@ pkg_setup() {
 }
 
 src_prepare(){
-	rm resources/app/apm/bin/node
-	rm resources/app/apm/bin/npm
+	#If you want to use the system node, we don't need the local one, so we must delete it first
+	if use system-node; then
+		rm resources/app/apm/bin/node
+		rm resources/app/apm/bin/npm
+	fi
 	#Fix apm binary to use the nodejs binary rather than the built-in
 	sed -i "s#\$binDir\/\$nodeBin#\$\(which \$nodeBin\)#" resources/app/apm/bin/apm
 	eapply_user
@@ -79,6 +82,10 @@ src_install() {
 	fperms +x /usr/bin/${MY_PN}
 	fperms +x /usr/share/${MY_PN}/${MY_PN}
 	fperms +x /usr/share/${MY_PN}/resources/app/${MY_PN}.sh
+	if use !system-node; then
+		fperms +x /usr/share/${MY_PN}/resources/app/apm/bin/node
+		fperms +x /usr/share/${MY_PN}/resources/app/apm/bin/npm
+	fi
 	fperms +x /usr/share/${MY_PN}/resources/app/apm/bin/apm
 	fperms +x /usr/share/${MY_PN}/resources/app/apm/node_modules/npm/bin/node-gyp-bin/node-gyp
 	fperms +x /usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/symbols-view/vendor/ctags-linux
