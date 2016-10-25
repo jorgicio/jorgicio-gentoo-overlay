@@ -60,9 +60,9 @@ src_prepare(){
 	if use system-node; then
 		rm resources/app/apm/bin/node
 		rm resources/app/apm/bin/npm
+		#Fix apm binary to use the nodejs binary rather than the built-in
+		sed -i "s#\$binDir\/\$nodeBin#\$\(which \$nodeBin\)#" resources/app/apm/bin/apm
 	fi
-	#Fix apm binary to use the nodejs binary rather than the built-in
-	sed -i "s#\$binDir\/\$nodeBin#\$\(which \$nodeBin\)#" resources/app/apm/bin/apm
 	eapply_user
 }
 
