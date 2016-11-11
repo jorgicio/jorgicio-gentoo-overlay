@@ -35,7 +35,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 PREFIX="${EPREFIX}/usr" BUILD_MODE+=lib telegramqml.pro
+	eqmake5 PREFIX="${EPREFIX}/usr" BUILD_MODE+=lib
 }
 
 src_install() {
