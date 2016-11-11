@@ -23,7 +23,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=net-misc/libqtelegram-ae-6.0
+	>=net-libs/libqtelegram-ae-10.0
 	dev-qt/qtxml:5
 	dev-qt/qtimageformats:5
 "
@@ -31,10 +31,11 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i 's/\/$$LIB_PATH//g' ./telegramqml.pro
+	eapply_user
 }
 
 src_configure() {
-	eqmake5 PREFIX="${EPREFIX}/usr" BUILD_MODE+=lib
+	eqmake5 PREFIX="${EPREFIX}/usr" BUILD_MODE+=lib telegramqml.pro
 }
 
 src_install() {

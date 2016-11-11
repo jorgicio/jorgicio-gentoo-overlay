@@ -40,6 +40,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare(){
 	sed -i 's/\/$$LIB_PATH//g' ./libqtelegram-ae.pro
+	eapply_user
 }
 
 src_configure(){

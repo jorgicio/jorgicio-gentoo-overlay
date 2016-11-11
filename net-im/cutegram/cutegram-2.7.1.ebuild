@@ -29,7 +29,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=net-misc/TelegramQML-0.9.1
+	>=dev-libs/TelegramQML-0.9.1
 	dev-qt/qtwebkit:5
 	dev-qt/qtmultimedia:5
 "
@@ -38,6 +38,7 @@ RDEPEND="${DEPEND}"
 if [[ ${PV} != *9999* ]];then
 	src_prepare(){
 		cp -r ../aseman-qt-tools-${HASH_TOOLS}/* Cutegram/asemantools
+		eapply_user
 	}
 fi
 
