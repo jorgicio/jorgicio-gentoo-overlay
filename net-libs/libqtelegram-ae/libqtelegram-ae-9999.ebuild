@@ -29,7 +29,6 @@ DEPEND="
 	dev-qt/qtdeclarative:5
 	dev-qt/qtsql:5
 	dev-qt/qtmultimedia:5[qml]
-	dev-qt/qtquick1:5
 	dev-qt/qtgraphicaleffects:5
 	dev-qt/qtgui:5
 	dev-qt/qtquickcontrols:5
