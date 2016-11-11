@@ -34,6 +34,7 @@ DEPEND="
 	dev-qt/qtquickcontrols:5
 	dev-libs/openssl
 	dev-libs/libappindicator
+	dev-util/libqtelegram-code-generator
 "
 RDEPEND="${DEPEND}"
 
@@ -43,7 +44,7 @@ src_prepare(){
 }
 
 src_configure(){
-	eqmake5 PREFIX="${EPREFIX}/usr"
+	eqmake5 PREFIX="${EPREFIX}/usr" CONFIG+=typeobjects
 }
 
 src_install(){
