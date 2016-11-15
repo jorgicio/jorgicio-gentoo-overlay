@@ -51,6 +51,7 @@ src_prepare(){
 	epatch ${PATCHES[@]}
 	rm -rf tests/*
 	touch tests/wscript_build
+	export VALAC="$(type -p valac-$(vala_best_api_version))"
 	eapply_user
 }
 
