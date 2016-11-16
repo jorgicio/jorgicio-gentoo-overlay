@@ -15,9 +15,9 @@ DESCRIPTION="Python library to support Wikipedia articles"
 HOMEPAGE="http://pypi.python.org/pypi/wikipedia/"
 SRC_URI="mirror://pypi/w/${MY_PN}/${MY_P}.tar.gz"
 
-LICENSE="LGPL-3.0"
+LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 x86 ~arm ~ppc ~ppc64"
 IUSE=""
 
 COMMON_DEPEND="${PYTHON_DEPEND}"
