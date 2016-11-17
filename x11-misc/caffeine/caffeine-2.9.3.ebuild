@@ -18,7 +18,7 @@ LANGS="ar bg bs ca cs da de el en_GB eo es eu fi fr gl he hu it ja lt ms nl no p
 IUSE=""
 
 for lang in ${LANGS}; do
-	IUSE+=" linguas_${lang}"
+	IUSE+=" l10n_${lang}"
 done
 
 DEPEND="
@@ -40,7 +40,7 @@ S="${WORKDIR}/${PN}"
 _clean_up_locales() {
 	einfo "Cleaning up locales..."
 	for lang in ${LANGS}; do
-		use "linguas_${lang}" && {
+		use "l10n_${lang}" && {
 			einfo "- keeping ${lang}"
 			continue
 		}
