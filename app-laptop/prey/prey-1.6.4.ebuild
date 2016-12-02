@@ -8,20 +8,14 @@ inherit eutils user
 
 DESCRIPTION="Tracking software for asset recovery, now Node.js-powered"
 HOMEPAGE="http://preyproject.com"
-BASE_URI=" https://github.com/${PN}/${PN}-node-client/releases/download/v${PV}/${PN}-linux-${PV}"
-SRC_URI="
-	x86? ( ${BASE_URI}-x86.zip )
-	amd64? ( ${BASE_URI}-x64.zip )
-"
-KEYWORDS="~x86 ~amd64"
+SRC_URI="https://github.com/${PN}/${PN}-node-client/releases/download/v${PV}/${P}.zip"
+KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
-RESTRICT="mirror"
-
 DEPEND="
 	virtual/cron
-	>=net-libs/nodejs-0.6
+	>=net-libs/nodejs-0.6[npm]
 	dev-libs/openssl
 	dev-python/pygtk
 	media-tv/xawtv
@@ -35,31 +29,21 @@ DEPEND="
 	"
 RDEPEND="${DEPEND}"
 
-src_prepare(){
-	rm bin/node
-	epatch "${FILESDIR}/prey-node-client.patch"
-	eapply_user
-}
-
 src_install(){
-	insinto /opt/${PN}-node-client
-	doins -r *
+	npm install -g --prefix="${D}/usr" || die "Installation failed"
 	make_desktop_entry 'prey config gui' "Prey Configuration" ${PN} "System;Monitor"
-	insinto /etc/prey
+	insinto ${EPREFIX}/etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
 	doicon ${FILESDIR}/${PN}.png
-	dosym /opt/${PN}-node-client/bin/${PN} ${EPREFIX}/usr/bin/${PN}
-	fperms +x /opt/${PN}-node-client/bin/${PN}
 }
 
 pkg_postinst(){
-	/opt/prey-node-client/bin/prey config hooks post_install >/dev/null
-	useradd prey || die
+	prey config hooks post_install
 	gpasswd -a prey video >/dev/null
 	if [ -f ${EROOT}/etc/init.d/prey-agent ];then
 		rm -v ${EROOT}/etc/init.d/prey-agent
-		install -m755 ${FILESDIR}/prey-agent ${EROOT}/etc/init.d
+		install -m755 ${FILESDIR}/prey-agent-9999 ${EROOT}/etc/init.d/prey-agent
 	fi
 	elog "Don't forget add your user to the group prey (as root):"
 	elog "gpasswd -a username prey"
@@ -67,6 +51,6 @@ pkg_postinst(){
 }
 
 pkg_prerm(){
-	/opt/prey-node-client/bin/prey config hooks pre_uninstall
+	prey config hooks pre_uninstall
 	userdel prey
 }
