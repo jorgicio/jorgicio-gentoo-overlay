@@ -18,6 +18,11 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 "
 
+src_prepare(){
+	epatch "${FILESDIR}/asd-openrc-support.patch"
+	eapply_user
+}
+
 src_compile(){
 	emake DESTDIR="${D}"
 }
