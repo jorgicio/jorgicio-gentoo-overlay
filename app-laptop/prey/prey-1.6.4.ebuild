@@ -55,6 +55,7 @@ src_install(){
 
 pkg_postinst(){
 	/opt/prey-node-client/bin/prey config hooks post_install >/dev/null
+	useradd prey || die
 	gpasswd -a prey video >/dev/null
 	if [ -f ${EROOT}/etc/init.d/prey-agent ];then
 		rm -v ${EROOT}/etc/init.d/prey-agent
