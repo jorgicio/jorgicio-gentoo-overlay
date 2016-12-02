@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 
 command=/usr/lib/node_modules/prey/bin/prey
