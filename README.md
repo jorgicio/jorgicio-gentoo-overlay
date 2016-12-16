@@ -84,5 +84,7 @@ List of packages (at the moment):
 Note for all MATE lovers (READ IT!!!)
 -------------------------------------
 
-For all [MATE](http://mate-desktop.org) lovers, there's another overlay to use latter versions of that desktop environment because Gentoo portage version is pretty old. You can check it [here](../../../mate-jorgicio), instructions included.
-Thanks.
+~~For all [MATE](http://mate-desktop.org) lovers, there's another overlay to use latter versions of that desktop environment because Gentoo portage version is pretty old. You can check it [here](../../../mate-jorgicio), instructions included.
+Thanks.~~
+That information is not needed anymore. MATE packages are already available on the official Portage tree, so I won't maintain that repo anymore.
+Thanks for the support!
