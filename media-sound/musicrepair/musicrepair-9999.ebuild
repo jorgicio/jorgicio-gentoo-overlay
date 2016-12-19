@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 
 inherit distutils-r1
 
-DESCRIPTION=""
+DESCRIPTION="A simple Python utility to fix mp3 metadata"
 HOMEPAGE="https://github.com/lakshaykalbhor/MusicRepair"
 
 if [[ ${PV} == *9999* ]];then
