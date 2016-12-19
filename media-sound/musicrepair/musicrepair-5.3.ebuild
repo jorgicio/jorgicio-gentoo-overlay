@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="A simple Python utility to fix mp3 metadata"
-HOMEPAGE="https://pypi.python.org/pypi/spotipy https://github.com/lakshaykalbhor/MusicRepair"
+HOMEPAGE="https://pypi.python.org/pypi/musicrepair https://github.com/lakshaykalbhor/MusicRepair"
 
 if [[ ${PV} == *9999* ]];then
 	inherit git-r3
