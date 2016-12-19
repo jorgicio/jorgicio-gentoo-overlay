@@ -9,12 +9,12 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="A thin Python-based library for the Spotify Web API"
-HOMEPAGE="https://github.com/plamere/spotipy"
+HOMEPAGE="https://pypi.python.org/pypi/spotipy https://github.com/plamere/spotipy"
 
 if [[ ${PV} == *9999* ]];then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://github.com/plamere/spotipy"
 	KEYWORDS=""
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
