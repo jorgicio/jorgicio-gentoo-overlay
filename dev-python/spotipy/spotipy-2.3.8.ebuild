@@ -26,7 +26,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	${PYTHON_DEPEND}
+	${PYTHON_DEPS}
 	dev-python/requests[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"

@@ -26,7 +26,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	${PYTHON_DEPEND}
+	${PYTHON_DEPS}
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	media-libs/mutagen[${PYTHON_USEDEP}]
