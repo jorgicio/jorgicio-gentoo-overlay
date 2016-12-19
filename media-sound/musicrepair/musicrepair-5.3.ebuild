@@ -37,7 +37,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-python_prepare(){
+src_prepare(){
 	sed -i -e "s/bs4/beautifulsoup4/" setup.py
-	distutils-r1_python_prepare
+	eapply_user
 }
