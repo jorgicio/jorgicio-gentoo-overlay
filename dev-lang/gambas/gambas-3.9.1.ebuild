@@ -107,9 +107,6 @@ autocrap_cleanup() {
 }
 
 src_prepare() {
-	# funtoo-ism
-	epatch "${FILESDIR}/xdgutils.patch"
-
 	# deprecated
 	autocrap_cleanup sqlite2
 
