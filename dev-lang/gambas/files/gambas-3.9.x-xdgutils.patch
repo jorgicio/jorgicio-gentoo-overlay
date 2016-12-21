@@ -1,9 +1,13 @@
+
 --- a/app/Makefile.am	2016-09-04 16:33:23.000000000 -0300
-+++ b/app/Makefile.am	2016-12-21 01:14:24.590073518 -0300
-@@ -35,9 +35,6 @@
- 		echo "Registering Gambas script mimetype"; \
- 		xdg-icon-resource install --context mimetypes --size 256 $(DESTDIR)$(gbdatadir)/icons/application-x-gambasscript.png application-x-gambasscript; \
- 		xdg-mime install $(srcdir)/mime/application-x-gambasscript.xml; \
++++ b/app/Makefile.am	2016-12-21 01:37:17.560075609 -0300
+@@ -32,12 +32,6 @@
+ 	@if test x"$(XDG_UTILS)" != x; then \
+ 		$(INSTALL) -d $(DESTDIR)$(gbdatadir)/icons; \
+ 		cp -f $(srcdir)/mime/application-x-gambas*.png $(DESTDIR)$(gbdatadir)/icons; \
+-		echo "Registering Gambas script mimetype"; \
+-		xdg-icon-resource install --context mimetypes --size 256 $(DESTDIR)$(gbdatadir)/icons/application-x-gambasscript.png application-x-gambasscript; \
+-		xdg-mime install $(srcdir)/mime/application-x-gambasscript.xml; \
 -		echo "Registering Gambas server page mimetype"; \
 -		xdg-icon-resource install --context mimetypes --size 256 $(DESTDIR)$(gbdatadir)/icons/application-x-gambasserverpage.png application-x-gambasserverpage; \
 -		xdg-mime install $(srcdir)/mime/application-x-gambasserverpage.xml; \
@@ -11,7 +15,7 @@
  
  	@echo "Installing the Gambas appdata file"
 --- a/main/Makefile.am	2016-09-04 16:35:10.000000000 -0300
-+++ b/main/Makefile.am	2016-12-21 01:15:06.860073583 -0300
++++ b/main/Makefile.am	2016-12-21 01:37:41.260075645 -0300
 @@ -32,8 +32,6 @@
  		echo "Registering Gambas executable mimetype"; \
  		$(INSTALL) -d $(DESTDIR)$(gbdatadir)/icons; \
