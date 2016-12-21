@@ -12,7 +12,7 @@ DESCRIPTION="An engine to make games in an easy way with Python. Made in Argenti
 HOMEPAGE="http://pilas-engine.com.ar"
 EGIT_REPO_URI="https://github.com/hugoruscitti/${PN}"
 
-LICENSE="LGPL-3.0"
+LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
