@@ -107,6 +107,7 @@ autocrap_cleanup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/${PN}-3.9.1-xdgutils.patch"
 	# deprecated
 	autocrap_cleanup sqlite2
 
