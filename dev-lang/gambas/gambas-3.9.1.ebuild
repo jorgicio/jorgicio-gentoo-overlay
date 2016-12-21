@@ -150,6 +150,7 @@ src_prepare() {
 	use_if_iuse zlib || autocrap_cleanup zlib
 
 	eautoreconf
+	eapply_user
 }
 
 src_configure() {
