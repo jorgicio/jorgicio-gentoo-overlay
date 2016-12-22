@@ -10,9 +10,9 @@ DESCRIPTION="A Qt-based version of the game 2048"
 HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
 SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-3.0"
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-qt/qtcore:5

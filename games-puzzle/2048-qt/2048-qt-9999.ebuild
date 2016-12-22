@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
 SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
 
-LICENSE="LGPL-3.0"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
