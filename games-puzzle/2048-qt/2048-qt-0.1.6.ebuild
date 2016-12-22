@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-inherit games qmake-utils
+inherit qmake-utils
 
 DESCRIPTION="A Qt-based version of the game 2048"
 HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
@@ -34,17 +34,11 @@ src_configure(){
 }
 
 src_install(){
-	dogamesbin ${PN}
+	dobin ${PN}
 	for size in 16x16 32x32 48x48 256x256;do
 		doicon -s $size res/icons/$size/apps/${PN}.png
 	done
 	doicon res/icons/scalable/apps/${PN}.svg
-	insinto /usr/share/applications
-	doins res/${PN}.desktop
+	domenu res/${PN}.desktop
 	doman res/man/${PN}.6
-}
-
-pkg_postinst(){
-	elog "IMPORTANT: Add your user to the games group, and restart your current session."
-	elog "After that, you can play. Enjoy!"
 }
