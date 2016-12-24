@@ -18,7 +18,7 @@ else
 	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~*"
 	RESTRICT="mirror"
-	S="${WORKDIR}/Adapta-${PV}"
+	S="${WORKDIR}/${P}"
 fi
 
 LICENSE="GPL-2"
@@ -31,6 +31,7 @@ DEPEND="
 	>=dev-ruby/bundler-1.11
 	media-gfx/inkscape
 	dev-libs/libxml2:2
+	sys-process/parallel
 "
 RDEPEND="${DEPEND}"
 
