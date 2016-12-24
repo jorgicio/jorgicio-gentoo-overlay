@@ -18,7 +18,7 @@ else
 	inherit versionator
 	MY_BR=$(get_version_component_range 1-2)
 	SRC_URI="https://launchpad.net/nitroshare/${MY_BR}/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="x86 amd64"
 	RESTRICT="mirror"
 fi
 
