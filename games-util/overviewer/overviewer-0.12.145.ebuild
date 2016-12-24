@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_{6,7} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
 DESCRIPTION="The Minecraft Overviewer tool that renders a Google Maps-like map interface"
-HOMEPAGE="http://${PN}.org"
+HOMEPAGE="http://overviewer.org"
 SRC_URI="${HOMEPAGE}/builds/src/5/${P}.tar.gz"
 
 LICENSE="GPL-3"

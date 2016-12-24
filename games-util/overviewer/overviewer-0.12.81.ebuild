@@ -12,7 +12,7 @@ DESCRIPTION="The Minecraft Overviewer tool that renders a Google Maps-like map i
 HOMEPAGE="http://${PN}.org"
 SRC_URI="${HOMEPAGE}/builds/src/5/${P}.tar.gz"
 
-LICENSE="LGPL-3.0"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
