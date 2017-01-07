@@ -17,7 +17,7 @@ RESTRICT="mirror"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug gstreamer"
+IUSE="debug gstreamer spell"
 
 RDEPEND="
 	dev-db/sqlite:3
@@ -36,6 +36,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
+	spell? ( app-text/gspell[vala] )
 	>=dev-util/intltool-0.40
 	sys-apps/sed
 	virtual/pkgconfig
@@ -51,6 +52,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(usex gstreamer "" --disable-video)
+		$(usex spell "" --disable-spellcheck)
 	)
 	gnome2_src_configure "${myeconfargs[@]}"
 }
