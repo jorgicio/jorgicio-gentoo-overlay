@@ -7,13 +7,13 @@ VALA_MIN_API_VERSION=0.28
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
-inherit eutils autotools gnome2 vala git-r3
+inherit eutils autotools gnome2 vala
 
 DESCRIPTION="Native GTK+3 Twitter client"
 HOMEPAGE="http://corebird.baedert.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/baedert/corebird"
-KEYWORDS=""
+SRC_URI="https://github.com/baedert/corebird/archive/${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
 
 LICENSE="GPL-3"
 SLOT="0"
