@@ -1,2 +1,0 @@
-# GAMBAS has only one GUI IDE, and it's Qt4-based.
-dev-lang/gambas qt5
