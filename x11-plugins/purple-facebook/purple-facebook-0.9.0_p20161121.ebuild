@@ -1,31 +1,29 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils autotools
+inherit eutils autotools versionator
 
-MY_PV="ad2ee74b913a"
+MY_PV="$(get_version_component_range 1-3)-c9b74a765767"
 S="${WORKDIR}/${PN}-${MY_PV}"
 DESCRIPTION="Facebook protocol plugin for libpurple"
 HOMEPAGE="https://github.com/jgeboski/purple-facebook"
-SRC_URI="https://github.com/jgeboski/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jgeboski/${PN}/releases/download/v${MY_PV}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/json-glib
-	 net-im/pidgin"
+RDEPEND="
+	dev-libs/json-glib
+	net-im/pidgin"
 DEPEND="${RDEPEND}"
 DOCS=( AUTHORS ChangeLog NEWS README VERSION )
 
-src_configure() {
-	econf --with-ssl-certs
-}
-
 src_prepare() {
 	eautoreconf
+	eapply_user
 }
