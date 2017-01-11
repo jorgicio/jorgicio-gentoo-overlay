@@ -4,13 +4,15 @@
 
 EAPI=6
 
+inherit git-r3
+
 DESCRIPTION="Streaming torrent client for node.js"
 HOMEPAGE="https://github.com/mafintosh/peerflix"
-SRC_URI="https://github.com/mafintosh/peerflix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="${HOMEPAGE}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 RDEPEND="net-libs/nodejs[npm]"
 DEPEND="${RDEPEND}"
