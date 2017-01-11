@@ -16,6 +16,7 @@ if [[ ${PV} == *9999* ]];then
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
+	S="${WORKDIR}"/${PN}-trunk
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~x86 ~amd64"
