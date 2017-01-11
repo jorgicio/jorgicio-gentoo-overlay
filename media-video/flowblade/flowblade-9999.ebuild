@@ -16,11 +16,9 @@ if [[ ${PV} == *9999* ]];then
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
-	S="${WORKDIR}"/${PN}-trunk
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~x86 ~amd64"
-	S="${WORKDIR}"/${P}/${PN}-trunk
 fi
 
 LICENSE="LGPL-3"
@@ -46,6 +44,8 @@ DEPEND="
 	virtual/ffmpeg
 "
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}"/${P}/${PN}-trunk
 
 src_prepare(){
 	epatch "${FILESDIR}/${PN}-1.8-install-dir-fix.patch"
