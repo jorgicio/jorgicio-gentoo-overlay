@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 
 inherit distutils-r1 eutils udev
 
@@ -36,10 +36,15 @@ src_prepare(){
 	eapply_user
 }
 
-src_install(){
-	esetup.py install --root="${D}" --optimize=1
+python_install(){
+	distutils-r1_python_install
 	udev_dorules ${PN}/data/99-steelseries-rival.rules
 	dodoc doc/*
+}
+
+
+python_install_all(){
+	distutils-r1_python_install_all
 }
 
 pkg_postinst(){
