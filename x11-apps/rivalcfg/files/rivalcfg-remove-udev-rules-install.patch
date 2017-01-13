@@ -1,0 +1,23 @@
+--- a/setup.py	2016-08-17 03:57:59.000000000 -0300
++++ b/setup.py	2017-01-13 18:16:48.166495262 -0300
+@@ -13,20 +13,6 @@
+ class install(_install):
+     def run(self):
+         _install.run(self)
+-        print("Installing udev rules...")
+-        if not os.path.isdir("/etc/udev/rules.d"):
+-            print("WARNING: udev rules have not been installed (/etc/udev/rules.d is not a directory)")
+-            return
+-        try:
+-            shutil.copy("./rivalcfg/data/99-steelseries-rival.rules", "/etc/udev/rules.d/")
+-        except IOError:
+-            print("WARNING: udev rules have not been installed (permission denied)")
+-            return
+-        try:
+-            subprocess.call(["udevadm", "trigger"])
+-        except OSError:
+-            print("WARNING: unable to update udev rules, please run the 'udevadm trigger' command")
+-            return
+         print("Done!")
+ 
+ 
