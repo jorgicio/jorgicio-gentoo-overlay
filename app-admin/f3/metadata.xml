@@ -6,4 +6,8 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="extras">Uses f3 extra features</flag>
+		<flag name="experimental">Uses f3 extra feaures (experimental)</flag>
+	</use>
 </pkgmetadata>
