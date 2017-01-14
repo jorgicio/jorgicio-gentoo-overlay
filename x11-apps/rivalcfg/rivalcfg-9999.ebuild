@@ -38,7 +38,8 @@ src_prepare(){
 
 python_install(){
 	distutils-r1_python_install
-	udev_dorules ${PN}/data/99-steelseries-rival.rules
+	insinto /etc/udev/rules.d
+	doins ${PN}/data/99-steelseries-rival.rules
 	dodoc doc/*
 }
 
@@ -48,5 +49,5 @@ python_install_all(){
 }
 
 pkg_postinst(){
-	udevadm trigger || die
+	udev_reload
 }
