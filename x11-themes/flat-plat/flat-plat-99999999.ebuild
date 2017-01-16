@@ -26,8 +26,8 @@ IUSE=""
 
 DEPEND="
 	x11-libs/gtk+:2
-	>=x11-libs/gtk+-3.14:3
-	>=x11-themes/gnome-themes-standard-3.14
+	>=x11-libs/gtk+-3.18:3
+	>=x11-themes/gnome-themes-standard-3.18
 	x11-libs/gdk-pixbuf
 "
 RDEPEND="${DEPEND}"
