@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]];then
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else
-	SRC_URI="${HOMEPAGE}/releases/download/${PV}/Flat-Plat-${PV}.tar.gz"
+	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~*"
 	S="${WORKDIR}/Flat-Plat"
 	RESTRICT="mirror"
