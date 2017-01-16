@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]];then
 	KEYWORDS=""
 else
 	SRC_URI="${HOMEPAGE}/releases/download/${PV}/Flat-Plat-${PV}.tar.gz"
-	KEYWORDS="~*"
+	KEYWORDS="*"
 	S="${WORKDIR}/Flat-Plat"
 	RESTRICT="mirror"
 fi
