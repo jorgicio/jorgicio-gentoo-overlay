@@ -14,9 +14,9 @@ if [[ ${PV} == *9999* ]];then
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else
-	SRC_URI="${HOMEPAGE}/releases/download/${PV}/Flat-Plat-${PV}.tar.gz"
+	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~*"
-	S="${WORKDIR}/Flat-Plat"
+	S="${WORKDIR}/Flat-Plat-${PV}"
 	RESTRICT="mirror"
 fi
 
@@ -26,8 +26,8 @@ IUSE=""
 
 DEPEND="
 	x11-libs/gtk+:2
-	>=x11-libs/gtk+-3.14:3
-	>=x11-themes/gnome-themes-standard-3.14
+	>=x11-libs/gtk+-3.18:3
+	>=x11-themes/gnome-themes-standard-3.18
 	x11-libs/gdk-pixbuf
 "
 RDEPEND="${DEPEND}"
