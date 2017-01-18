@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -8,8 +8,16 @@ inherit eutils user
 
 DESCRIPTION="Tracking software for asset recovery, now Node.js-powered"
 HOMEPAGE="http://preyproject.com"
-SRC_URI="https://github.com/${PN}/${PN}-node-client/releases/download/v${PV}/${P}.zip"
-KEYWORDS="~amd64 ~x86"
+
+if [[ ${PV} == *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}-node-client"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/${PN}/${PN}-node-client/releases/download/v${PV}/${P}.zip"
+	KEYWORDS="amd64 x86"
+fi
+
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
