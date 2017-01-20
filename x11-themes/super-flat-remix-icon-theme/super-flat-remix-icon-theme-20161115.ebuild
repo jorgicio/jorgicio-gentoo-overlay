@@ -6,7 +6,7 @@ EAPI=6
 
 inherit git-r3
 
-DESCRIPTION=""
+DESCRIPTION="A pretty simple icon theme, derived from Ultra-Flat-Icons, Paper and Flattr"
 HOMEPAGE="http://gnome-look.org/content/show.php/Super+flat+remix+icon+theme?content=169073 https://github.com/daniruiz/Flat-Remix"
 EGIT_REPO_URI="https://github.com/daniruiz/Flat-Remix.git"
 
