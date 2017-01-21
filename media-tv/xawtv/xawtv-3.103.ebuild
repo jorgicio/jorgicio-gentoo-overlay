@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils font autotools flag-o-matic
 
@@ -21,7 +21,7 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 ~ia64 ~ppc ~sparc x86"
 
-RDEPEND=">=sys-libs/ncurses-5.1
+RDEPEND=">=sys-libs/ncurses-5.1:0
 	virtual/jpeg:0
 	X? (
 		x11-libs/libFS
@@ -81,6 +81,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.95-libquicktime-compat.patch"
 	epatch "${FILESDIR}/${PN}-3.95-stdbool.patch"
 	epatch "${FILESDIR}/${PN}-3.103_all_autocolor.patch"
+	eapply_user
 	eautoreconf
 }
 
