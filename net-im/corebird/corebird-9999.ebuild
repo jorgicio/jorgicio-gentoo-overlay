@@ -47,6 +47,7 @@ src_prepare() {
 	eautoreconf
 	gnome2_src_prepare
 	vala_src_prepare
+	export VALAC="$(type -p valac-$(vala_best_api_version))"
 }
 
 src_configure() {
