@@ -31,3 +31,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	virtual/ffmpeg[X,encode]"
+
+src_prepare(){
+	sed '/pypi/d' __init__.py
+	eapply_user
+}
