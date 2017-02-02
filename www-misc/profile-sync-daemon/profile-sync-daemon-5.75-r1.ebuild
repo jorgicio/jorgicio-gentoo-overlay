@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit eutils
+
 DESCRIPTION="Symlinks and syncs browser profile dirs to RAM."
 HOMEPAGE="https://wiki.archlinux.org/index.php/Profile-sync-daemon"
 SRC_URI="https://github.com/graysky2/profile-sync-daemon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -17,6 +19,11 @@ RDEPEND="
 	app-shells/bash
 	net-misc/rsync
 	systemd? ( sys-apps/systemd )"
+
+src_prepare(){
+	epatch "${FILESDIR}/${PN}-openrc-path.patch"
+	eapply_user
+}
 
 src_install() {
 	emake -j1 DESTDIR="${ED}" \
