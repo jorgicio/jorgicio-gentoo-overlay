@@ -5,7 +5,6 @@
 - [Jorgicio Custom Overlay](#jorgicio-custom-overlay)
   - [Made by Jorge Pizarro Callejas, aka Jorgicio (http://www.jorgicio.net).](#made-by-jorge-pizarro-callejas-aka-jorgicio-httpwwwjorgicionet)
   - [Usage](#usage)
-  - [List of packages (at the moment):](#list-of-packages-at-the-moment)
   - [Note for all MATE lovers (READ IT!!!)](#note-for-all-mate-lovers-read-it)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
