@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( pypy python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5}} pypy )
 
 inherit distutils-r1
 
@@ -22,7 +22,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}"
