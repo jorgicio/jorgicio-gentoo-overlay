@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5}} pypy )
 
 inherit distutils-r1
 
@@ -26,4 +26,4 @@ IUSE=""
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	sys-apps/util-linux[${PYTHON_USEDEP}]"
+	sys-apps/util-linux[python]"
