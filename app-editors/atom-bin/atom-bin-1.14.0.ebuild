@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 	media-libs/alsa-lib
 	net-print/cups
 	sys-libs/libcap
-	system-node? ( <net-libs/nodejs-5.0[npm] )
+	system-node? ( net-libs/nodejs[npm] )
 	x11-libs/libXtst
 	x11-libs/pango"
 
