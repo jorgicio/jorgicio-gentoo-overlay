@@ -26,7 +26,7 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_install(){
-	insinto /usr/share/icons
+	insinto /usr/share/icons/${PN}
 	doins -r *
 }
 
