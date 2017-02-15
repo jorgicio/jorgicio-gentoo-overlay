@@ -1,25 +1,25 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 GCONF_DEBUG="no"
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
-inherit eutils vala versionator gnome2 cmake-utils
+inherit eutils vala versionator gnome2 cmake-utils git-r3
 
 MY_BRANCH="$(get_version_component_range 1-2)"
 
 DESCRIPTION="Provides a user friendly GTK+-3 GUI to control the Hamachi client on Linux"
 HOMEPAGE="https://www.haguichi.net"
-SRC_URI="http://launchpad.net/${PN}/${MY_BRANCH}/${PV}/+download/${P}.tar.xz"
-RESTRICT="mirror"
+EGIT_REPO_URI="https://github.com/ztefn/haguichi.git"
+SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~arm"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="
