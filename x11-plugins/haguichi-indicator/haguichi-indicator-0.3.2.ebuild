@@ -37,6 +37,7 @@ src_prepare(){
 src_configure(){
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX=/usr
+		-DUSE_VALA_BINARY=$(type -p valac-$(vala_best_api_version))
 	)
 	cmake-utils_src_configure
 }
