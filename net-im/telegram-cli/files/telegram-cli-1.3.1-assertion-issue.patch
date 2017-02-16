@@ -1,0 +1,12 @@
+--- a/tgl/structures.c	2017-02-16 12:41:19.902072236 -0300
++++ b/tgl/structures.c	2017-02-16 12:44:57.372070714 -0300
+@@ -1004,7 +1004,8 @@
+     M->user_id = DS_LVAL (DS_DMM->user_id);
+     break;
+   default:
+-    assert (0);
++    M->type = tgl_message_media_unsupported;
++    break;
+   }
+ }
+ 
