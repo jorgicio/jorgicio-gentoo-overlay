@@ -10,7 +10,7 @@ inherit eutils python-r1
 
 DESCRIPTION="Command line interface client for Telegram"
 HOMEPAGE="https://github.com/vysheng/tg"
-LICENSE="GPL-2"
+LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 IUSE="+lua +json"
 
