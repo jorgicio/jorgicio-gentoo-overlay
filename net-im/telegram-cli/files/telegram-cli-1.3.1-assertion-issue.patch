@@ -1,7 +1,7 @@
---- a/tgl/structures.c	2017-02-16 12:41:19.902072236 -0300
-+++ b/tgl/structures.c	2017-02-16 12:44:57.372070714 -0300
-@@ -1004,7 +1004,8 @@
-     M->user_id = DS_LVAL (DS_DMM->user_id);
+--- a/tgl/structures.c	2015-05-14 09:46:56.000000000 -0300
++++ b/tgl/structures.c	2017-02-16 14:36:19.972023942 -0300
+@@ -941,7 +941,8 @@
+     M->venue.venue_id = DS_STR_DUP (DS_MM->venue_id);   
      break;
    default:
 -    assert (0);
