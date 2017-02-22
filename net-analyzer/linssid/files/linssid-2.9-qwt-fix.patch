@@ -1,0 +1,20 @@
+--- a/linssid-app/linssid-app.pro	2016-09-14 11:58:21.000000000 -0300
++++ b/linssid-app/linssid-app.pro	2017-02-22 12:47:44.353339373 -0300
+@@ -3,7 +3,7 @@
+ TARGET = linssid
+ VERSION = 2.9
+ CONFIG -= debug_and_release app_bundle lib_bundle
+-CONFIG += release 
++CONFIG += release qwt
+ PKGCONFIG +=
+ QT = core gui widgets svg
+ SOURCES += AboutBox.cpp Getter.cpp MainForm.cpp main.cpp passBox.cpp prefsDialog.cpp
+@@ -22,7 +22,7 @@
+ INCLUDEPATH += /usr/include/qt5
+ INCLUDEPATH += /usr/include/qwt
+ LIBS += -lboost_regex
+-LIBS += /usr/lib/libqwt-qt5.so.6
++LIBS += /usr/lib/libqwt6-qt5.so.6
+ QMAKE_CXXFLAGS += -std=c++11
+ #
+ TARGET = linssid

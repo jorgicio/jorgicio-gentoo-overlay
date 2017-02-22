@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-inherit qmake-utils
+inherit qmake-utils eutils
 
 DESCRIPTION="Graphical wireless scanning for Linux"
-HOMEPAGE="http://sourceforge.net/projects/${PN}/"
+HOMEPAGE="http://sourceforge.net/projects/linssid"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="LGPL-3.0"
@@ -29,10 +29,8 @@ RDEPEND="${DEPEND}
 	"
 
 src_prepare(){
-	#Some workarounds
-	sed -i -e 's/QT_STATIC_CONST/static const/g' qwt-lib/src/qwt_transform.h
-	sed -i -e 's/QT_STATIC_CONST_IMPL/const/g' qwt-lib/src/qwt_transform.cpp
-	sed -i -e 's/\:libboost\_regex\.a/boost_regex/g' ${PN}-app/${PN}-app.pro
+	epatch "${FILESDIR}/${P}-qwt-fix.patch"
+	eapply_user
 }
 
 src_configure(){
