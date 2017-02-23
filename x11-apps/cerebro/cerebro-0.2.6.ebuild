@@ -24,7 +24,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	net-libs/nodejs[npm]
+	>=net-libs/nodejs-6.0.0[npm]
 "
 RDEPEND="${DEPEND}
 	media-libs/alsa-lib
