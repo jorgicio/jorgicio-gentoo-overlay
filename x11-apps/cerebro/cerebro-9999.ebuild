@@ -43,11 +43,6 @@ QA_PRESTRIPPED="
 	usr/lib/cerebro/cerebro
 "
 
-src_prepare(){
-	epatch "${FILESDIR}/${PN}-use-yarn.patch"
-	eapply_user
-}
-
 src_compile(){
 	yarn && cd ./app && yarn && cd ..
 	yarn build
