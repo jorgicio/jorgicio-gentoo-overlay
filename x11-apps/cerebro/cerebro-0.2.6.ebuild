@@ -70,7 +70,7 @@ src_install(){
 	for res in 16x16 32x32 48x48 128x128 256x256 512x512 1024x1024;do
 		doicon build/icons/${res}.png
 	done
-	newicon build/icons/256x256.png ${PN}.png
+	newicon build/icons/48x48.png ${PN}.png
 	insinto /usr/share/licenses/${PN}
 	if [ $ARCH == '64' ];then
 		doins release/linux-unpacked/LICENSE*.*
