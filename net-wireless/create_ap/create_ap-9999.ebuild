@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-inherit git-2
+inherit git-r3
 
 DESCRIPTION="Tool for creating an access point for sharing wireless network"
 HOMEPAGE="https://github.com/oblique/create_ap"
