@@ -23,7 +23,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""
 
-DEPEND="x11-libs/gtk+:3"
+DEPEND=">=x11-libs/gtk+-3.18.0:3"
 RDEPEND="${DEPEND}
 	|| (
 		<x11-misc/mate-notification-daemon-1.16[gtk3]
