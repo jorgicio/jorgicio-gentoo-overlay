@@ -69,18 +69,19 @@ src_prepare() {
 	if use X; then
 		cd "${WORKDIR}/${MY_FONT}"
 		epatch "${WORKDIR}/patches/extra/${MY_FONT}-nox.patch"
+		cd "${S}"
 	fi
-	cd "${S}"
-	#Some patches is not needed anymore
+	#Some patches are not needed anymore
 	rm "${WORKDIR}/patches/000_all_xlibs-search-path.patch"
 	rm "${WORKDIR}/patches/030_all_autocolor.patch"
 	rm "${WORKDIR}/patches/040_all_sparc.patch"
 	rm "${WORKDIR}/patches/050_all_nostrip.patch"
 	rm "${WORKDIR}/patches/060_all_gcc41.patch"
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
+	epatch "${FILESDIR}/${P}-ncurses.patch"
 	epatch "${FILESDIR}/${PN}-3.95-libquicktime-compat.patch"
 	epatch "${FILESDIR}/${PN}-3.95-stdbool.patch"
-	epatch "${FILESDIR}/${PN}-3.103_all_autocolor.patch"
+	epatch "${FILESDIR}/${P}_all_autocolor.patch"
 	eapply_user
 	eautoreconf
 }
