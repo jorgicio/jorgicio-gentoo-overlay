@@ -1,0 +1,2 @@
+# It has a bug at build time
+media-tv/xawtv -cpu_flags_x86_mmx
