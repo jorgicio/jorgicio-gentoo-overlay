@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 	media-libs/alsa-lib
 	net-print/cups
 	sys-libs/libcap
-	system-node? ( <net-libs/nodejs-5.0[npm] )
+	system-node? ( net-libs/nodejs[npm] )
 	x11-libs/libXtst
 	x11-libs/pango"
 
@@ -77,9 +77,9 @@ src_install() {
 	newins resources/LICENSE.md copyright
 	newbin ${FILESDIR}/${PN} ${MY_PN}
 	insinto ${EPREFIX}/usr/share/lintian/overrides
-	newins ${FILESDIR}/${MY_PN}-${PV}-lintian ${MY_PN}
-	dosym ${EPREFIX}/usr/share/${MY_PN}/resources/app/apm/bin/apm ${EPREFIX}/usr/bin/apm	
-	
+	newins ${FILESDIR}/${MY_PN}-lintian ${MY_PN}
+	dosym ${EPREFIX}/usr/share/${MY_PN}/resources/app/apm/bin/apm ${EPREFIX}/usr/bin/apm
+
 	# Fixes permissions
 	fperms +x /usr/bin/${MY_PN}
 	fperms +x /usr/share/${MY_PN}/${MY_PN}

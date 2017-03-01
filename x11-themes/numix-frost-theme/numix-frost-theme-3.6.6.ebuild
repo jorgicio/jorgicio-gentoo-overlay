@@ -9,7 +9,7 @@ inherit eutils
 DESCRIPTION="A modern flat theme that supports Gnome, Unity, XFCE and Openbox."
 HOMEPAGE="https://numixproject.org"
 
-LICENSE="GPL-3.0+"
+LICENSE="GPL-3+"
 SLOT="0"
 
 if [[ ${PV} == *9999* ]];then
