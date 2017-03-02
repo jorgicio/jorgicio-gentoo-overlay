@@ -4,8 +4,7 @@
 
 EAPI=6
 VALA_MIN_API_VERSION=0.28
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
+VALA_USE_DEPEND="vapigen"
 
 inherit eutils autotools gnome2 vala
 
@@ -36,24 +35,33 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
-	spell? ( app-text/gspell[vala] )
+	spell? ( >=app-text/gspell-1.0[vala] )
 	>=dev-util/intltool-0.40
 	sys-apps/sed
 	virtual/pkgconfig
 "
 
 src_prepare() {
-	sed -i -e "/manpagedir/s/manpagedir.*/&\/man1/g" data/Makefile.am || die
+	export VALAC="$(type -p valac-$(vala_best_api_version))"
 	eautoreconf
 	gnome2_src_prepare
-	vala_src_prepare
-	export VALAC="$(type -p valac-$(vala_best_api_version))"
+	vala_src_prepare	
 }
 
 src_configure() {
 	local myeconfargs=(
 		$(usex gstreamer "" --disable-video)
 		$(usex spell "" --disable-spellcheck)
+		--disable-gst-check
+		VALAC="$(type -p valac-$(vala_best_api_version))"
 	)
 	gnome2_src_configure "${myeconfargs[@]}"
+}
+
+src_compile(){
+	emake VALAC="$(type -p valac-$(vala_best_api_version))"
+}
+
+src_install(){
+	emake DESTDIR="${D}" install
 }
