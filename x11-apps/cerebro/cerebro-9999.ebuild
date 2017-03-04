@@ -24,7 +24,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=net-libs/nodejs-6.0.0[npm]
+	>=net-libs/nodejs-6.0.0
+	sys-apps/yarn
 "
 RDEPEND="${DEPEND}
 	media-libs/alsa-lib
@@ -43,8 +44,8 @@ QA_PRESTRIPPED="
 "
 
 src_compile(){
-	npm install && cd ./app && npm install && cd ..
-	npm run build
+	yarn && cd ./app && yarn && cd ..
+	yarn build
 	if [ $ARCH == '64' ];then
 		node_modules/.bin/build --linux --x64 --dir
 	else
