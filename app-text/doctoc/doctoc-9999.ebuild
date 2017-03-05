@@ -19,7 +19,7 @@ else
 	RESTRICT="mirror"
 fi
 
-LICENSE="LGPL-3"
+LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
