@@ -25,14 +25,13 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-python/pyside[X,${PYTHON_USEDEP}]
+	dev-python/pyside[X,multimedia,${PYTHON_USEDEP}]
 	dev-python/pyside-tools[${PYTHON_USEDEP}]
 	dev-python/rarfile[${PYTHON_USEDEP}]
 	dev-python/peewee[${PYTHON_USEDEP}]
 	dev-qt/linguist:5
 	dev-qt/linguist-tools:5
 	dev-python/PyQt5[gui,multimedia,${PYTHON_USEDEP}]
-	dev-qt/qtsql:5[sqlite]
 	app-arch/unrar-gpl
 "
 RDEPEND="${DEPEND}
