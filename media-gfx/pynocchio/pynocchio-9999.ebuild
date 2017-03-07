@@ -8,16 +8,15 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit distutils-r1 eutils gnome2-utils xdg
 
-DESCRIPTION="Qt4-based image viewer specialized in manga/comic reading"
-HOMEPAGE="https://github.com/pynocchio/pynocchio"
+DESCRIPTION="Qt-based image viewer specialized in manga/comic reading"
+HOMEPAGE="https://pynocchio.github.io"
 if [[ ${PV} == *9999* ]];then
 	inherit git-r3
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://github.com/pynocchio/pynocchio"
 	KEYWORDS=""
 else
-	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/pynocchio/pynocchio/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	RESTRICT="mirror"
 fi
 
 LICENSE="GPL-3"
@@ -35,6 +34,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
+
+src_prepare(){
+	mv ./${PN}-client.py ./scripts/${PN}
+	sed -i "s#pynocchio-client.py#scripts/pynocchio#" setup.py
+	eapply_user
+}
 
 pkg_preinst() {
 	xdg_pkg_preinst
