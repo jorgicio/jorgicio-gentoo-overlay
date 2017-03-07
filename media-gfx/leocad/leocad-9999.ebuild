@@ -44,8 +44,7 @@ RDEPEND="${DEPEND}
 	x11-themes/hicolor-icon-theme"
 
 src_configure(){
-	use !qt5 && QTBIN="eqmake4"
-	use qt5 && QTBIN="eqmake5"
+	use qt5 && QTBIN="eqmake5" || QTBIN="eqmake4"
 	${QTBIN} ${PN}.pro DISABLE_UPDATE_CHECK=1
 }
 
