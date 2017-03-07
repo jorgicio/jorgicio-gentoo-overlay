@@ -25,8 +25,6 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-python/pyside[X,multimedia,${PYTHON_USEDEP}]
-	dev-python/pyside-tools[${PYTHON_USEDEP}]
 	dev-python/rarfile[${PYTHON_USEDEP}]
 	dev-python/peewee[${PYTHON_USEDEP}]
 	dev-qt/linguist:5
