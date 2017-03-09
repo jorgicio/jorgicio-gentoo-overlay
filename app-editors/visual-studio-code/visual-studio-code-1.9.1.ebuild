@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils pax-utils
 
-DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
+DESCRIPTION="Multiplatform Visual Studio Code from EULA MIT"
 HOMEPAGE="https://code.visualstudio.com"
 BASE_URI="https://vscode-update.azurewebsites.net/${PV}"
 SRC_URI="
@@ -15,7 +15,7 @@ SRC_URI="
 	"
 RESTRICT="mirror strip"
 
-LICENSE="Microsoft"
+LICENSE="EULA MIT"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
