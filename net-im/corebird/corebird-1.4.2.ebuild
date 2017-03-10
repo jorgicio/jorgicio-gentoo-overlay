@@ -10,9 +10,15 @@ inherit eutils autotools gnome2 vala
 
 DESCRIPTION="Native GTK+3 Twitter client"
 HOMEPAGE="http://corebird.baedert.org/"
-SRC_URI="https://github.com/baedert/corebird/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
-RESTRICT="mirror"
+if [[ ${PV} == *9999* ]];then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/baedert/corebird"
+	SRC_URI=""
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/baedert/corebird/releases/download/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"

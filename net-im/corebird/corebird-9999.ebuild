@@ -6,13 +6,19 @@ EAPI=6
 VALA_MIN_API_VERSION=0.28
 VALA_USE_DEPEND="vapigen"
 
-inherit eutils autotools gnome2 vala git-r3
+inherit eutils autotools gnome2 vala
 
 DESCRIPTION="Native GTK+3 Twitter client"
 HOMEPAGE="http://corebird.baedert.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/baedert/corebird"
-KEYWORDS=""
+if [[ ${PV} == *9999* ]];then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/baedert/corebird"
+	SRC_URI=""
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/baedert/corebird/releases/download/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
