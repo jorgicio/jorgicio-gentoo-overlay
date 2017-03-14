@@ -15,7 +15,7 @@ LICENSE="MIT CC-BY-4.0"
 SLOT="0"
 IUSE=""
 
-DEPEND="media-fonts/ttf-bitstream-vera[X?]"
+DEPEND=""
 RDEPEND="${DEPEND}"
 
 FONT_SUFFIX="ttf"
@@ -23,6 +23,13 @@ DOCS="README.md"
 FONT_CONF=( fontconfig/56-emojione-color.conf )
 
 S="${WORKDIR}/EmojiOneColor-SVGinOT-Linux-${PV//_/-}"
+
+src_prepare(){
+	# A trick to replace the emojione conf file because it fails if it tries to install directly from the FILESDIR
+	cp "${FILESDIR}"/56-emojione-color.conf "${S}/fontconfig/56-emojione-color.conf"
+	eapply_user
+}
+
 src_install(){
 	insinto ${EPREFIX}/usr/share/licenses/${PN}
 	doins ${FILESDIR}/LICENSE*
