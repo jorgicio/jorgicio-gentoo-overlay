@@ -30,7 +30,7 @@ FONT_S="${S}"
 
 src_prepare(){
 	# A trick to replace the emojione conf file because it fails if it tries to install directly from the FILESDIR if USE="gnome" is enabled
-	use gnome && cp "${FILESDIR}"/56-emojione-color.conf "${S}/fontconfig/56-emojione-color.conf"
+	use gnome && cp "${FILESDIR}"/56-emojione-color-cantarell.conf "${S}/fontconfig/56-emojione-color.conf"
 	eapply_user
 }
 
