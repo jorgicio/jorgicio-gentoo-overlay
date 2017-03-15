@@ -21,8 +21,8 @@ RDEPEND="${DEPEND}"
 FONT_SUFFIX="ttf"
 DOCS="README.md"
 FONT_CONF=( fontconfig/56-twemoji-color.conf )
-
 S="${WORKDIR}/TwitterColorEmoji-SVGinOT-Linux-${PV//_/-}"
+FONT_S="${S}"
 
 src_install(){
 	insinto ${EPREFIX}/usr/share/licenses/${PN}
