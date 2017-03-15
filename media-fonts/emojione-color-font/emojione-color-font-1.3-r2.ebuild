@@ -13,9 +13,13 @@ KEYWORDS="*"
 RESTRICT="mirror"
 LICENSE="MIT CC-BY-4.0"
 SLOT="0"
-IUSE=""
+IUSE="gnome"
 
-DEPEND=""
+DEPEND="
+	!gnome? (
+		media-fonts/ttf-bitstream-vera[X?]
+	)
+	"
 RDEPEND="${DEPEND}"
 
 FONT_SUFFIX="ttf"
@@ -25,8 +29,8 @@ S="${WORKDIR}/EmojiOneColor-SVGinOT-Linux-${PV//_/-}"
 FONT_S="${S}"
 
 src_prepare(){
-	# A trick to replace the emojione conf file because it fails if it tries to install directly from the FILESDIR
-	cp "${FILESDIR}"/56-emojione-color.conf "${S}/fontconfig/56-emojione-color.conf"
+	# A trick to replace the emojione conf file because it fails if it tries to install directly from the FILESDIR if USE="gnome" is enabled
+	use gnome && cp "${FILESDIR}"/56-emojione-color.conf "${S}/fontconfig/56-emojione-color.conf"
 	eapply_user
 }
 
