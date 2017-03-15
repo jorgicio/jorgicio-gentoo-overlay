@@ -21,8 +21,8 @@ RDEPEND="${DEPEND}"
 FONT_SUFFIX="ttf"
 DOCS="README.md"
 FONT_CONF=( fontconfig/56-emojione-color.conf )
-
 S="${WORKDIR}/EmojiOneColor-SVGinOT-Linux-${PV//_/-}"
+FONT_S="${S}"
 
 src_prepare(){
 	# A trick to replace the emojione conf file because it fails if it tries to install directly from the FILESDIR
