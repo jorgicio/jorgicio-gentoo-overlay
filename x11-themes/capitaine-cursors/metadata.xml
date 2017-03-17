@@ -7,6 +7,6 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
-		<flag name="build">Optionally build the package instead of install from the built ones provided by the maintainer</flag>
+		<flag name="build">Optionally build the cursor icons instead of install from the built ones provided by the maintainer</flag>
 	</use>
 </pkgmetadata>

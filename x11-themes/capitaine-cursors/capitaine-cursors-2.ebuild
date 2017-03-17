@@ -33,7 +33,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare(){
-	sed -ie "s#mkdir \"\$OUTPUT\"#mkdir -p \"\$OUTPUT\"#" src/build.sh
+	use build && sed -ie "s#mkdir \"\$OUTPUT\"#mkdir -p \"\$OUTPUT\"#" src/build.sh
 	eapply_user
 }
 
