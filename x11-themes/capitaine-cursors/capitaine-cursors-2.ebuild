@@ -28,10 +28,14 @@ IUSE="build"
 DEPEND="
 	build? (
 		x11-apps/xcursorgen
-		media-gfx/inkscape
 	)
 "
 RDEPEND="${DEPEND}"
+
+src_prepare(){
+	sed -ie "s#mkdir \"\$OUTPUT\"#mkdir -p \"\$OUTPUT\"#" src/build.sh
+	eapply_user
+}
 
 src_compile(){
 	if use build;then
