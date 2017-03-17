@@ -35,7 +35,9 @@ RDEPEND="${DEPEND}"
 
 src_compile(){
 	if use build;then
-		./src/build.sh
+		cd src
+		./build.sh
+		cd ..
 	fi
 }
 
