@@ -21,7 +21,7 @@ IUSE=""
 DEPEND="
 	${PYTHON_DEPS}
 	dev-python/PyQt4[X,${PYTHON_USEDEP}]
-	net-misc/logmein-hamachi
+	net-vpn/logmein-hamachi
 "
 RDEPEND="${DEPEND}"
 

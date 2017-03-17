@@ -24,7 +24,7 @@ IUSE=""
 
 DEPEND="
 	$(vala_depend)
-	net-misc/logmein-hamachi
+	net-vpn/logmein-hamachi
 	x11-libs/gtk+:3
 	x11-libs/libnotify
 "
