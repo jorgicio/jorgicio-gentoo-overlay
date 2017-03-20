@@ -8,11 +8,9 @@ PYTHON_COMPAT=( python3_{3,4,5,6} )
 
 inherit python-r1 eutils
 
-MY_P="${PN^}-${PV}"
-
 DESCRIPTION="A QT4-based Hamachi GUI for Linux"
 HOMEPAGE="http://Quamachi.Xavion.name"
-SRC_URI="mirror://sourceforge/${PN^}/${PV}/${MY_P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN^}/${PV}/${PN^}-${PV}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -26,7 +24,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}/Build"
+S="${WORKDIR}/${PN^}/Build"
 
 src_install(){
 	emake DESTDIR="${D}" Sys-SBin="/usr/bin" install
