@@ -18,11 +18,11 @@ if [[ ${PV} == *9999* ]];then
 else
 	SRC_URI="https://bitbucket.org/ubuntu-mate/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86 ~arm"
-	HASH="fb51f26f7eba"
+	HASH="47c23ea77e72"
 	S="${WORKDIR}/ubuntu-mate-${PN}-${HASH}"
 fi
 
-LICENSE="LGPL-2+"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="nls"
 

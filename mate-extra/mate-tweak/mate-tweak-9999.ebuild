@@ -22,7 +22,7 @@ else
 	S="${WORKDIR}/ubuntu-mate-${PN}-${HASH}"
 fi
 
-LICENSE="LGPL-2+"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="nls"
 
