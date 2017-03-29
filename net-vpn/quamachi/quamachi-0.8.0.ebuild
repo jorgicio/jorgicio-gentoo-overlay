@@ -22,9 +22,21 @@ DEPEND="
 	dev-python/PyQt5[${PYTHON_USEDEP},network,gui]
 	>=net-vpn/logmein-hamachi-2.1
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	net-misc/putty
+	net-analyzer/mtr
+	|| ( x11-libs/gksu kde-apps/kdesu kde-frameworks/kdesu kde-apps/kdesudo )
+	net-misc/vinagre
+"
 
 S="${WORKDIR}/${PN^}/Build"
+
+src_prepare(){
+	local externals_dir="${S}/../Externals"
+	echo "mate-terminal -e" >> ${externals_dir}/Terminal.txt
+	echo "gksu" >> ${externals_dir}/SUdo.txt
+	eapply_user
+}
 
 src_install(){
 	emake DESTDIR="${D}" Sys-SBin="/usr/bin" install
