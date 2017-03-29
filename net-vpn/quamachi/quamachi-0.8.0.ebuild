@@ -10,7 +10,7 @@ inherit python-r1 eutils
 
 DESCRIPTION="A QT4-based Hamachi GUI for Linux"
 HOMEPAGE="http://Quamachi.Xavion.name"
-SRC_URI="mirror://sourceforge/${PN^}/${PV}/${PN^}-${PV}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN^}/${PN^}-${PV}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"
