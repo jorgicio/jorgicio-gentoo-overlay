@@ -8,9 +8,9 @@ PYTHON_COMPAT=( python3_{3,4,5,6} )
 
 inherit python-r1 eutils
 
-DESCRIPTION="A QT4-based Hamachi GUI for Linux"
+DESCRIPTION="A QT5-based Hamachi GUI for Linux"
 HOMEPAGE="http://Quamachi.Xavion.name"
-SRC_URI="mirror://sourceforge/${PN^}/${PN^}-${PV}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${PN^}-${PV}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -19,8 +19,8 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	dev-python/PyQt4[X,${PYTHON_USEDEP}]
-	net-vpn/logmein-hamachi
+	dev-python/PyQt5[X,${PYTHON_USEDEP}]
+	>=net-vpn/logmein-hamachi-2.1
 "
 RDEPEND="${DEPEND}"
 
