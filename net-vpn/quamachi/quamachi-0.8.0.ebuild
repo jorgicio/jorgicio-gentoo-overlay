@@ -19,7 +19,7 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	dev-python/PyQt5[X,${PYTHON_USEDEP}]
+	dev-python/PyQt5[${PYTHON_USEDEP},network,gui]
 	>=net-vpn/logmein-hamachi-2.1
 "
 RDEPEND="${DEPEND}"
