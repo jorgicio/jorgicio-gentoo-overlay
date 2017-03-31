@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 GCONF_DEBUG="no"
 VALA_MIN_API_VERSION="0.26"
