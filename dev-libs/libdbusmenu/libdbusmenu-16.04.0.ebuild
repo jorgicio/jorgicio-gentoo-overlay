@@ -52,7 +52,6 @@ multilib_src_configure() {
 		--disable-gtk
 		--disable-static
 		--disable-silent-rules
-		--disable-scrollkeeper
 		# dumper extra tool is only for GTK+-2.x, tests use valgrind which is stupid
 		--disable-dumper
 		$(multilib_native_use_enable introspection)
