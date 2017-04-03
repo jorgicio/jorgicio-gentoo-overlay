@@ -5,7 +5,7 @@ EAPI=6
 
 inherit eutils autotools
 
-MY_PV="0.9.2-c9b74a765767"
+MY_PV="0.9.3-c9b74a765767"
 S="${WORKDIR}/${PN}-${MY_PV}"
 DESCRIPTION="Facebook protocol plugin for libpurple"
 HOMEPAGE="https://github.com/dequis/purple-facebook"
