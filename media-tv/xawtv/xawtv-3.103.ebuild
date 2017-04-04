@@ -81,6 +81,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-ncurses.patch"
 	epatch "${FILESDIR}/${PN}-3.95-libquicktime-compat.patch"
 	epatch "${FILESDIR}/${PN}-3.95-stdbool.patch"
+	epatch "${FILESDIR}/${PN}-3.95-underlinking.patch"
 	epatch "${FILESDIR}/${P}_all_autocolor.patch"
 	eapply_user
 	eautoreconf

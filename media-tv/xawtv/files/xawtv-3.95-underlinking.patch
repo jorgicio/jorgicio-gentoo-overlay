@@ -1,0 +1,41 @@
+diff -Naur xawtv-3.103/configure.ac b/configure.ac
+--- xawtv-3.103/configure.ac	2013-04-02 10:19:10.000000000 -0300
++++ b/configure.ac	2017-04-04 18:54:39.600008715 -0300
+@@ -148,15 +148,7 @@
+   XFT_FLAGS=""
+   XFT_LIBS=""
+   if test "$enable_xft" != "no"; then
+-    AC_MSG_CHECKING(for Xft)
+-    if test -x "`which pkg-config 2>/dev/null`" && pkg-config xft && pkg-config fontconfig; then
+-      XFT_FLAGS="`pkg-config --cflags xft fontconfig`"
+-      XFT_LIBS="`pkg-config --libs xft fontconfig`"
+-      AC_DEFINE(HAVE_XFT,1,"have xft")
+-      AC_MSG_RESULT(yes)
+-    else
+-      AC_MSG_RESULT(no)
+-    fi
++    PKG_CHECK_MODULES([XFT], [xft fontconfig], [AC_DEFINE([HAVE_XFT], [1], ["have xft"])])
+   fi
+ else
+   ATHENA=""
+@@ -170,7 +162,7 @@
+ AC_SUBST(SUBS)
+ AC_SUBST(TOOLS)
+ AC_SUBST(LDLIBS)
+-AC_SUBST(XFT_FLAGS)
++AC_SUBST(XFT_CFLAGS)
+ AC_SUBST(XFT_LIBS)
+ 
+ AC_CHECK_LIB(v4l2, v4l2_fd_open, LIBV4L="yes",,)
+diff -Naur xawtv-3.103/Makefile.in b/Makefile.in
+--- xawtv-3.103/Makefile.in	2013-04-02 10:19:10.000000000 -0300
++++ b/Makefile.in	2017-04-04 18:51:54.340008667 -0300
+@@ -30,7 +30,7 @@
+ # for CFLAGS
+ WARN_FLAGS	:= -Wall -Wmissing-prototypes -Wstrict-prototypes -Wpointer-arith -Wno-pointer-sign
+ LFS_FLAGS	:= -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+-X11_FLAGS	:= @X_CFLAGS@ @XFT_FLAGS@ -I/usr/include/X11/fonts
++X11_FLAGS	:= @X_CFLAGS@ @XFT_CFLAGS@ -I/usr/include/X11/fonts
+ LIB_FLAGS	:= -I. -I./vbistuff -I./x11 \
+ 		   -I$(srcdir)/jwz -I$(srcdir)/common -I$(srcdir)/console \
+ 		   -I$(srcdir)/x11 -I$(srcdir)/structs \
