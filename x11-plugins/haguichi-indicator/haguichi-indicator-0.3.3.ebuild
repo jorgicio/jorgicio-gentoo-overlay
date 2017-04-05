@@ -8,29 +8,24 @@ GCONF_DEBUG="no"
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
-inherit eutils vala versionator gnome2 cmake-utils git-r3
+inherit vala eutils gnome2 cmake-utils
 
-MY_BRANCH="$(get_version_component_range 1-2)"
-
-DESCRIPTION="Provides a user friendly GTK+-3 GUI to control the Hamachi client on Linux"
-HOMEPAGE="https://www.haguichi.net"
-EGIT_REPO_URI="https://github.com/ztefn/haguichi.git"
-SRC_URI=""
+DESCRIPTION="An appindicator for Haguichi"
+HOMEPAGE="http://www.haguichi.net"
+SRC_URI="http://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="appindicator"
+KEYWORDS="~amd64 ~x86 ~arm"
+IUSE=""
 
 DEPEND="
 	$(vala_depend)
-	net-vpn/logmein-hamachi
 	x11-libs/gtk+:3
-	x11-libs/libnotify
-"
-RDEPEND="${DEPEND}
-	appindicator? ( x11-plugins/haguichi-indicator )
-"
+	dev-libs/libappindicator:3
+	net-vpn/haguichi
+	"
+RDEPEND="${DEPEND}"
 
 src_prepare(){
 	DOCS="AUTHORS"
@@ -41,9 +36,8 @@ src_prepare(){
 
 src_configure(){
 	local mycmakeargs=(
-		"-DICON_UPDATE=OFF"
-		"-DGSETTINGS_COMPILE=OFF"
-		"-DUSE_VALA_BINARY=$(type -p valac-$(vala_best_api_version))"
+		-DCMAKE_INSTALL_PREFIX=/usr
+		-DUSE_VALA_BINARY=$(type -p valac-$(vala_best_api_version))
 	)
 	cmake-utils_src_configure
 }

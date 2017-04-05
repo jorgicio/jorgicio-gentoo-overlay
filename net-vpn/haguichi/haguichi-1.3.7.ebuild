@@ -20,7 +20,7 @@ RESTRICT="mirror"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~arm"
-IUSE=""
+IUSE="appindicator"
 
 DEPEND="
 	$(vala_depend)
@@ -28,7 +28,9 @@ DEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libnotify
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	appindicator? ( x11-plugins/haguichi-indicator )
+"
 
 src_prepare(){
 	DOCS="AUTHORS"
