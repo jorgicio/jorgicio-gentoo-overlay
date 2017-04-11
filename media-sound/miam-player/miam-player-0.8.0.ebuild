@@ -30,7 +30,7 @@ IUSE=""
 
 DEPEND="
 	dev-qt/qtmultimedia:5[alsa,pulseaudio,gstreamer]
-	dev-qt/qtgui:5
+	dev-qt/qtx11extras:5
 "
 RDEPEND="${DEPEND}
 	media-libs/taglib
