@@ -5,7 +5,7 @@ EAPI=6
 
 inherit eutils qmake-utils
 
-DESCRIPTION=""
+DESCRIPTION="Cross-platform open source music player built with Qt5, QTav and Taglib."
 HOMEPAGE="http://www.miam-player.org"
 
 MY_PN=(${PN//-/ })
