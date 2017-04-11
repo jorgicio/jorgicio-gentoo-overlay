@@ -50,11 +50,4 @@ src_configure(){
 src_install(){
 	emake INSTALL_ROOT="${D}" install
 	newicon debian/usr/share/icons/hicolor/64x64/apps/application-x-${PN//-}.png ${PN}.png
-	local desktop_opts=(
-		${PN},
-		"Miam Player",
-		${PN},
-		"Application;AudioVideo"
-	)
-	make_desktop_entry ${desktop_opts[@]}
 }
