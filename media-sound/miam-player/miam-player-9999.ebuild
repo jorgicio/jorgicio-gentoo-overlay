@@ -26,10 +26,10 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+IUSE="pulseaudio"
 
 DEPEND="
-	dev-qt/qtmultimedia:5[alsa,pulseaudio,gstreamer]
+	dev-qt/qtmultimedia:5[alsa,pulseaudio?,gstreamer]
 	dev-qt/qtx11extras:5
 "
 RDEPEND="${DEPEND}
