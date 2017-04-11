@@ -20,7 +20,7 @@ if [[ ${PV} == *9999* ]];then
 else
 	MY_P="${MY_PN}-${PV}"
 	SRC_URI="https://github.com/MBach/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS=""
+	KEYWORDS="~x86 ~amd64"
 	S="${WORKDIR}/${MY_P}"
 fi
 
