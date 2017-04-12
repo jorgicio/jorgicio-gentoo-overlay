@@ -27,5 +27,5 @@ IUSE=""
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	dev-python/pip[${PYTHON_USEDEP}]
-	dev-python/sparqlwrapper[${PYTHON_USEDEP}]
+	dev-python/sparql-wrapper[${PYTHON_USEDEP}]
 "
