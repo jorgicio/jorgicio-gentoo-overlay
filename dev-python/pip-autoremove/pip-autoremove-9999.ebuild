@@ -24,7 +24,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND="${PYTHON_DEPENDS}"
+DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	dev-python/pip
+	dev-python/pip[${PYTHON_USEDEP}]
+	dev-python/sparqlwrapper[${PYTHON_USEDEP}]
 "
