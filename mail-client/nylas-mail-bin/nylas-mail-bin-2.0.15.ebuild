@@ -62,7 +62,7 @@ src_install(){
 	doins usr/share/${PN//-bin}/LICENSE
 	fperms +x /usr/share/${PN//-bin}/nylas
 	fperms +x /usr/share/${PN//-bin}/libnode.so
-	fperms +x /usr/share/${PN//-bin}/resources/apm/bin/${node,apm}
+	fperms +x /usr/share/${PN//-bin}/resources/apm/bin/{node,apm}
 }
 
 pkg_postinst(){
