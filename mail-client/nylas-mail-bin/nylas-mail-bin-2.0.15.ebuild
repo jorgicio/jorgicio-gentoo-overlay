@@ -64,3 +64,9 @@ src_install(){
 	fperms +x /usr/share/${PN//-bin}/libnode.so
 	fperms +x /usr/share/${PN//-bin}/resources/apm/bin/${node,apm}
 }
+
+pkg_postinst(){
+	einfo "Thanks for installing the new Nylas 2.0"
+	einfo "In order to use it, first you must create a Nylas account in http://nylas.com"
+	einfo "and then you can manage your e-mail accounts."
+}
