@@ -7,6 +7,6 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
     <use>
-        <flag name="system-node">Use node.js system implementation instead of the built-in one.</flag>
+        <flag name="system-node">Use node.js system implementation instead of bundled.</flag>
     </use>
 </pkgmetadata>

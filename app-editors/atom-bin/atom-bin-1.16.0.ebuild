@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 inherit flag-o-matic python-any-r1 eutils unpacker pax-utils
 
-DESCRIPTION="A hackable text editor for the 21st Century. - Binary package"
+DESCRIPTION="A hackable text editor for the 21st Century - Binary package"
 HOMEPAGE="https://atom.io"
 MY_PN="atom"
 SRC_URI="
@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 	media-libs/alsa-lib
 	net-print/cups
 	sys-libs/libcap
-	system-node? ( >=net-libs/nodejs-6.0.0[npm] )
+	system-node? ( net-libs/nodejs[npm] )
 	x11-libs/libXtst
 	x11-libs/pango"
 

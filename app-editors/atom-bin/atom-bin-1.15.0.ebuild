@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 inherit flag-o-matic python-any-r1 eutils unpacker pax-utils
 
-DESCRIPTION="A hackable text editor for the 21st Century. - Binary package"
+DESCRIPTION="A hackable text editor for the 21st Century - Binary package"
 HOMEPAGE="https://atom.io"
 MY_PN="atom"
 SRC_URI="
