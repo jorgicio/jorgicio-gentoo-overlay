@@ -24,6 +24,7 @@ IUSE="system-node"
 
 DEPEND="${PYTHON_DEPS}
 	media-fonts/inconsolata
+	system-node? ( net-libs/nodejs[npm] )
 	!!dev-util/atom-shell
 	!dev-util/apm
 	!app-editors/atom"
@@ -38,7 +39,6 @@ RDEPEND="${DEPEND}
 	media-libs/alsa-lib
 	net-print/cups
 	sys-libs/libcap
-	system-node? ( net-libs/nodejs[npm] )
 	x11-libs/libXtst
 	x11-libs/pango"
 
