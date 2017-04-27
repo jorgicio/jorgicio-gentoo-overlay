@@ -45,7 +45,7 @@ QA_PRESTRIPPED="
 
 src_compile(){
 	yarn && cd ./app && yarn && cd ..
-	yarn build
+	yarn run build
 	if [ $ARCH == '64' ];then
 		node_modules/.bin/build --linux --x64 --dir
 	else
