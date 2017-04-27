@@ -22,6 +22,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
+RESTRICT="strip"
 
 DEPEND="
 	>=net-libs/nodejs-6.0.0
@@ -44,7 +45,7 @@ QA_PRESTRIPPED="
 "
 
 src_compile(){
-	yarn && cd ./app && yarn && cd ..
+	yarn && cd ./app && yarn && cd ../
 	yarn run build
 	if [ $ARCH == '64' ];then
 		node_modules/.bin/build --linux --x64 --dir
