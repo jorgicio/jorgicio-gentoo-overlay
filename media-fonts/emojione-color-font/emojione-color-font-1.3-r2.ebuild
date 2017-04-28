@@ -17,7 +17,11 @@ IUSE="gnome"
 
 DEPEND="
 	!gnome? (
-		media-fonts/ttf-bitstream-vera[X?]
+		|| ( 
+			media-fonts/ttf-bitstream-vera[X?]
+			media-fonts/roboto[X?]
+			media-fonts/noto[X?]
+		)
 	)
 	"
 RDEPEND="${DEPEND}"
