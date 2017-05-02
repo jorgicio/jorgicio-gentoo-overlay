@@ -53,7 +53,7 @@ QA_PRESTRIPPED="
 
 ARCH=$(getconf LONG_BIT)
 
-[[ $ARCH == "64" ]] && S="${WORKDIR}/${MY_PN}-${PV}-amd64"
+[[ ${ARCH} == "64" ]] && S="${WORKDIR}/${MY_PN}-${PV}-amd64"
 
 pkg_setup() {
 	python-any-r1_pkg_setup
