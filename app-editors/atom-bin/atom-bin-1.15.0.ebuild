@@ -51,7 +51,9 @@ QA_PRESTRIPPED="
 	/usr/share/${MY_PN}/libgcrypt.so.11
 	/usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/symbols-view/vendor/ctags-linux"
 
-S="${WORKDIR}/${MY_PN}-${PV}-amd64"
+ARCH=$(getconf LONG_BIT)
+
+[[ $ARCH == "64" ]] && S="${WORKDIR}/${MY_PN}-${PV}-amd64"
 
 pkg_setup() {
 	python-any-r1_pkg_setup
