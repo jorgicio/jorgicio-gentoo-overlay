@@ -34,9 +34,9 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 "
 
-ARCH=$(uname -m)
+ARCH=$(getconf LONG_BIT)
 
-[[ ${ARCH} == "x86_64" ]] && S="${WORKDIR}/VSCode-linux-x64" || S="${WORKDIR}/VSCode-linux-ia32"
+[[ ${ARCH} == "64" ]] && S="${WORKDIR}/VSCode-linux-x64" || S="${WORKDIR}/VSCode-linux-ia32"
 
 QA_PRESTRIPPED="opt/${PN}/code"
 
