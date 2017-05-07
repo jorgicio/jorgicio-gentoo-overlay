@@ -49,6 +49,8 @@ QA_PRESTRIPPED="
 	/usr/share/${MY_PN}/libnotify.so.4
 	/usr/share/${MY_PN}/libchromiumcontent.so
 	/usr/share/${MY_PN}/libgcrypt.so.11
+	/usr/share/${MY_PN}/libffmpeg.so
+	/usr/share/${MY_PN}/libnode.so
 	/usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/symbols-view/vendor/ctags-linux"
 
 ARCH=$(getconf LONG_BIT)
