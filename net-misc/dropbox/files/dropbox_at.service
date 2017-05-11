@@ -7,7 +7,7 @@ ExecStart=/opt/dropbox/dropboxd
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=always
-User=%I
+User=%i
 
 [Install]
 WantedBy=multi-user.target
