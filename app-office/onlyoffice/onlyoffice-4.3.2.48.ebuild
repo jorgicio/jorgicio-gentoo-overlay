@@ -32,6 +32,7 @@ NATIVE_DEPEND="
 	media-libs/gst-plugins-base:0.10
 	media-libs/gstreamer:0.10
 	media-libs/libpng:1.2
+	net-misc/curl
 	virtual/opengl
 	media-libs/tiff:3
 	sys-apps/util-linux
@@ -72,6 +73,7 @@ src_install() {
 	fperms u+x /opt/${PN}/desktopeditors/${PN}-desktopeditors.sh
 	fperms u+x /opt/${PN}/desktopeditors/DesktopEditors
 	dosym /opt/${PN}/desktopeditors/${PN}-desktopeditors.sh /usr/bin/${PN}-desktopeditors
+	dosym /usr/lib/libcurl-compat.so.4.4.0 /opt/${PN}/desktopeditors/converter/libcurl.so.4
 	for res in 16 24 32 48 64 128 256; do
 		doicon desktopeditors/asc-de-${res}.png
 	done
