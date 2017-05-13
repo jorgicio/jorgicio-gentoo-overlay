@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit eutils multilib qmake-utils autotools python-r1
 
@@ -25,7 +25,7 @@ fi
 
 LICENSE="MEGA"
 SLOT="0"
-IUSE="+cryptopp +sqlite +zlib +curl freeimage readline examples threads qt5 nautilus python python3 php java chat +libsodium"
+IUSE="+cryptopp +sqlite +zlib +curl freeimage readline examples threads qt5 nautilus python2 python3 php java chat +libsodium"
 
 DEPEND="
 	!qt5? ( 
@@ -61,8 +61,8 @@ RDEPEND="${DEPEND}
 			!!gnome-extra/nautilus-megasync 
 			)
 		libsodium? ( dev-libs/libsodium:0 )
+		python2? ( ${PYTHON_DEPS} )
 		python3? ( ${PYTHON_DEPS} )
-		python? ( ${PYTHON_DEPS} )
 		java? ( virtual/jdk )
 		php? ( dev-lang/php )
 		"
@@ -86,7 +86,7 @@ src_configure(){
 		$(use_with python3) \
 		$(use_with sqlite) \
 		$(use_with cryptopp) \
-		$(use_enable python) \
+		$(use_enable python2 python) \
 		$(use_enable java) \
 		$(use_enable chat) \
 		$(use_enable php) \

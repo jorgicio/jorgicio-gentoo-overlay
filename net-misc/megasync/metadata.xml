@@ -8,9 +8,12 @@
 	</maintainer>
 	<use>
 		<flag name="php">Enable PHP bindings</flag>
-		<flag name="python">Enable Python 2.x bindings</flag>
+		<flag name="python2">Enable Python 2.x bindings</flag>
 		<flag name="python3">Enable Python 3.x bindings</flag>
 		<flag name="libsodium">Enable libsodium support</flag>
 		<flag name="chat">Enable MEGA chat</flag>
+		<flag name="freeimage">Enable support for media-libs/freeimage library</flag>
+		<flag name="nautilus">Enable support for file management with Nautilus</flag>
+		<flag name="cryptopp">Enable encryptation support using dev-libs/crypto++ library</flag>
 	</use>
 </pkgmetadata>
