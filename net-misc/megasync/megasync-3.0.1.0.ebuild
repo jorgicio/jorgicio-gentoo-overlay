@@ -20,7 +20,7 @@ else
 	https://github.com/meganz/sdk/archive/V${SDK_VERSION}.tar.gz -> ${PN}-sdk-${SDK_VERSION}.tar.gz"
 	KEYWORDS="~x86 ~amd64"
 	RESTRICT="mirror"
-	S="${WORKDIR}/MEGAsync-${MY_PV}_0_Linux"
+	S="${WORKDIR}/MEGAsync-${PV}_Linux"
 fi
 
 LICENSE="MEGA"
