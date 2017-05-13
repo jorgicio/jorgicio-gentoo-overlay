@@ -25,7 +25,7 @@ fi
 
 LICENSE="MEGA"
 SLOT="0"
-IUSE="+cryptopp +sqlite +zlib +curl freeimage readline examples threads qt5 nautilus python"
+IUSE="+cryptopp +sqlite +zlib +curl freeimage readline examples threads qt5 nautilus python python3 php java chat +libsodium"
 
 DEPEND="
 	!qt5? ( 
@@ -51,7 +51,7 @@ RDEPEND="${DEPEND}
 		app-arch/xz-utils
 		dev-libs/libuv
 		sqlite? ( dev-db/sqlite:3 )
-		dev-libs/libsodium
+		dev-lang/swig:0
 		zlib? ( sys-libs/zlib )
 		curl? ( net-misc/curl[ssl,curl_ssl_openssl] )
 		freeimage? ( media-libs/freeimage )
@@ -60,13 +60,19 @@ RDEPEND="${DEPEND}
 			>=gnome-base/nautilus-3.12.0
 			!!gnome-extra/nautilus-megasync 
 			)
+		libsodium? ( dev-libs/libsodium:0 )
+		python3? ( ${PYTHON_DEPS} )
 		python? ( ${PYTHON_DEPS} )
+		java? ( virtual/jdk )
+		php? ( dev-lang/php )
 		"
 
 if [[ ${PV} != *9999* ]];then
 	src_prepare(){
 		cp -r ../sdk-${SDK_VERSION}/* src/MEGASync/mega
-		cd src/MEGASync/mega
+		cd ${S}/src/MEGASync/mega/src/posix
+		epatch "${FILESDIR}/netcpp-openssl110.patch"
+		cd ${S}/src/MEGASync/mega
 		eapply_user
 		eautoreconf
 	}
@@ -79,14 +85,18 @@ src_configure(){
 		"--disable-curl-checks" \
 		"--disable-megaapi" \
 		$(use_with zlib) \
-		$(use_with python python3) \
+		$(use_with python3) \
 		$(use_with sqlite) \
 		$(use_with cryptopp) \
+		$(use_enable python) \
+		$(use_enable java) \
+		$(use_enable chat) \
+		$(use_enable php) \
 		"--with-cares" \
 		$(use_with curl) \
 		"--without-termcap" \
 		$(use_enable threads posix-threads) \
-		"--with-sodium" \
+		$(use_with libsodium sodium) \
 		$(use_with freeimage) \
 		$(use_with readline) \
 		$(use_enable examples)	

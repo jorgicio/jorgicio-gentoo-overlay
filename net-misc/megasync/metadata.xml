@@ -6,4 +6,11 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="php">Enable PHP bindings</flag>
+		<flag name="python">Enable Python 2.x bindings</flag>
+		<flag name="python3">Enable Python 3.x bindings</flag>
+		<flag name="libsodium">Enable libsodium support</flag>
+		<flag name="chat">Enable MEGA chat</flag>
+	</use>
 </pkgmetadata>
