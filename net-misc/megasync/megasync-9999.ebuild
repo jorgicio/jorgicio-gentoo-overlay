@@ -70,9 +70,7 @@ RDEPEND="${DEPEND}
 if [[ ${PV} != *9999* ]];then
 	src_prepare(){
 		cp -r ../sdk-${SDK_VERSION}/* src/MEGASync/mega
-		cd ${S}/src/MEGASync/mega/src/posix
-		epatch "${FILESDIR}/netcpp-openssl110.patch"
-		cd ${S}/src/MEGASync/mega
+		cd "${S}"/src/MEGASync/mega
 		eapply_user
 		eautoreconf
 	}
