@@ -102,6 +102,7 @@ src_configure(){
 	local myeqmakeargs=(
 		MEGA.pro
 		CONFIG+="release"
+		PREFIX=/usr
 	)
 	use nautilus && myeqmakeargs+=( CONFIG+="with_ext" )
 	if use qt5; then
@@ -115,20 +116,20 @@ src_configure(){
 
 src_compile(){
 	cd "${S}"/src
-	emake INSTALL_ROOT="${D}" || die
+	emake
 }
 
 src_install(){
+	sed -i "/update-desktop-database/d" "${S}"/src/MEGASync/Makefile
+	cd "${S}"/src
+	emake INSTALL_ROOT="${D}" install
+	cd "${S}"
 	insinto /usr/share/licenses/${PN}
 	doins LICENCE.md installer/terms.txt
-	cd src/MEGASync
+	cd "${S}"/src/MEGASync
 	dobin ${PN}
-	cd platform/linux/data
-	domenu ${PN}.desktop
-	cd icons/hicolor
-	for size in 16x16 32x32 48x48 128x128 256x256;do
-		doicon -s $size $size/apps/mega.png
-	done
+	#cd "${S}"/src/MEGAsync/mega
+	#emake INSTALL_ROOT="${D}" install
 	if use nautilus; then
 		cd "${S}/src/MEGAShellExtNautilus"
 		insinto usr/lib/nautilus/extensions-3.0
