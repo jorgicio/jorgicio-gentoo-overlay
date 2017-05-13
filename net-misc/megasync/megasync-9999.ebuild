@@ -119,13 +119,12 @@ src_compile(){
 }
 
 src_install(){
-	insinto usr/share/licenses/${PN}
+	insinto /usr/share/licenses/${PN}
 	doins LICENCE.md installer/terms.txt
 	cd src/MEGASync
 	dobin ${PN}
 	cd platform/linux/data
-	insinto usr/share/applications
-	doins ${PN}.desktop
+	domenu ${PN}.desktop
 	cd icons/hicolor
 	for size in 16x16 32x32 48x48 128x128 256x256;do
 		doicon -s $size $size/apps/mega.png
