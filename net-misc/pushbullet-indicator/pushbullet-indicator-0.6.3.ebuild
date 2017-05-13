@@ -47,5 +47,12 @@ distutils-r1_python_compile(){
 
 distutils-r1_python_install(){
 	${PYTHON2_BIN} setup.py install --root="${D}" --optimize=1 || die "No binary python2 or some missing dependency found"
+	insinto /usr/share/licenses/${PN}/LICENSE
+	doins LICENSE
+	insinto /usr/share/locale
+	doins -r ./build/locale-langpack
+}
 
+pkg_postinst(){
+	rm -rf /opt/extras.ubuntu.com/${PN}/share/locale-langpack
 }
