@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=6
 
-DESCRIPTION="Numix Circle icon theme"
+DESCRIPTION="Numix Square icon theme"
 HOMEPAGE="https://numixproject.org"
 
 if [[ ${PV} == *99999999* ]] ; then
@@ -19,7 +19,7 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
-LICENSE="GPL-3.0+"
+LICENSE="GPL-3"
 SLOT="0"
 
 DEPEND="x11-themes/numix-icon-theme"
@@ -27,6 +27,8 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	insinto /usr/share/icons
-	doins -r Numix-Circle Numix-Circle-Light
+	doins -r Numix-Square Numix-Square-Light
 	dodoc README.md
+	insinto /usr/share/licenses/${PN}
+	doins LICENSE
 }
