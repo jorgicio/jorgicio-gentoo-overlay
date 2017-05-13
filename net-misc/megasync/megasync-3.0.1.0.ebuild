@@ -23,7 +23,7 @@ else
 	S="${WORKDIR}/MEGAsync-${PV}_Linux"
 fi
 
-LICENSE="MEGA"
+LICENSE="MEGA BSD-2"
 SLOT="0"
 IUSE="+cryptopp +sqlite +zlib +curl freeimage readline examples threads qt5 nautilus python2 python3 php java chat +libsodium"
 
