@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}
-	dev-libs/libappindicator:3[python,introspection]
+	dev-libs/libappindicator:3[introspection]
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
