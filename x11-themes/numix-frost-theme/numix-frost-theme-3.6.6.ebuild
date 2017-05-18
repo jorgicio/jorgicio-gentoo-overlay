@@ -34,10 +34,15 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_prepare(){
+	#epatch "${FILESDIR}/numix_frost_theme_fix_utils_and_makefile.patch"
+	eapply_user
+}
+
 src_compile(){
-	emake DESTDIR="${D}" || die
+	emake
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 }
