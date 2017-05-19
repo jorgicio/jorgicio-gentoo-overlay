@@ -19,7 +19,6 @@ S="${WORKDIR}"
 
 DEPEND="
 	x11-themes/gtk-engines-murrine
-	dev-ruby/sass
 	dev-libs/glib:2
 	x11-libs/gdk-pixbuf
 "
