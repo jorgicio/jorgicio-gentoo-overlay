@@ -14,8 +14,13 @@ SLOT="0"
 
 if [[ ${PV} == *9999* ]];then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/Antergos/Numix-Frost"
-	KEYWORDS=""
+		EGIT_REPO_URI="https://github.com/Antergos/Numix-Frost"
+	if [[ ${PV} != "9999" ]];then
+		EGIT_COMMIT="a986308c4ab03f7ce5cdd758b393d9ed0781ba52"
+		KEYWORDS="*"
+	else
+		KEYWORDS=""
+	fi
 else
 	_PN="Numix-Frost"
 	_P="${_PN}-${PV}"
@@ -33,6 +38,10 @@ DEPEND="
 	x11-libs/gdk-pixbuf
 "
 RDEPEND="${DEPEND}"
+
+src_prepare(){
+	eapply_user
+}
 
 src_compile(){
 	emake
