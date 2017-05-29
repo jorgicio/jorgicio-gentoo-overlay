@@ -4,17 +4,25 @@
 
 EAPI=5
 
-inherit versionator
-
-MY_PV=$(get_version_component_range 1-3)
+inherit eutils
 
 DESCRIPTION="Libpurple (Pidgin) plugin for using a Telegram account"
 HOMEPAGE="https://github.com/majn/telegram-purple"
-SRC_URI="${HOMEPAGE}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-3"
+if [[ ${PV} == *9999* ]];then
+	inherit git-r3
+	EGIT_REPO_URI="${HOMEPAGE}"
+	SRC_URI=""
+	KEYWORDS=""
+else
+	MY_P=${PN}_${PV}
+	SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_P}.orig.tar.gz"
+	S="${WORKDIR}/${PN}"
+	KEYWORDS="~x86 ~amd64"
+fi
+
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
 IUSE="+libwebp"
 
 DEPEND="net-im/pidgin

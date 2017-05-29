@@ -1,19 +1,28 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=5
 
-inherit git-r3
+inherit eutils
 
 DESCRIPTION="Libpurple (Pidgin) plugin for using a Telegram account"
-HOMEPAGE="https://github.com/majn/${PN}"
-SRC_URI=""
-EGIT_REPO_URI="${HOMEPAGE}"
+HOMEPAGE="https://github.com/majn/telegram-purple"
 
-LICENSE="LGPL-3"
+if [[ ${PV} == *9999* ]];then
+	inherit git-r3
+	EGIT_REPO_URI="${HOMEPAGE}"
+	SRC_URI=""
+	KEYWORDS=""
+else
+	MY_P=${PN}_${PV}
+	SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_P}.orig.tar.gz"
+	S="${WORKDIR}/${PN}"
+	KEYWORDS="~x86 ~amd64"
+fi
+
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="+libwebp"
 
 DEPEND="net-im/pidgin
@@ -24,16 +33,11 @@ DEPEND="net-im/pidgin
 RDEPEND="${DEPEND}"
 
 src_compile(){
+
 	econf $(use_enable libwebp) || die "econf failed"
 	emake || die "emake failed"
 }
 
 src_install(){
-	emake DESTDIR="${D}" install
-}
-
-pkg_postinst(){
-	elog "Note: this package is in an early (pre-alpha) stage, so if you"
-	elog "want to view changes, install this package often."
-	elog "More information is available in ${HOMEPAGE}"
+	emake DESTDIR="${D}" install || die
 }
