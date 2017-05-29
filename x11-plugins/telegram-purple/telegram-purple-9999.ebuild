@@ -32,10 +32,13 @@ DEPEND="net-im/pidgin
 		"
 RDEPEND="${DEPEND}"
 
-src_compile(){
+src_configure(){
+	econf \
+		$(use_enable libwebp)
+}
 
-	econf $(use_enable libwebp) || die "econf failed"
-	emake || die "emake failed"
+src_compile(){
+	emake
 }
 
 src_install(){
