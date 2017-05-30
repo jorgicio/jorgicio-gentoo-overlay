@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.orig.tar.gz"
 LICENSE="GPL-3 Boost-1.0 QPL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+sudo"
+IUSE=""
 
 DEPEND="
 	dev-qt/qtcore:5
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 	net-wireless/iw
 	net-wireless/wireless-tools
 	x11-libs/libxkbcommon[X]
-	sudo? ( app-admin/sudo )
+	app-admin/sudo
 	"
 
 src_prepare(){
