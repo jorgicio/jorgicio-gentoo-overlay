@@ -32,6 +32,11 @@ DEPEND="net-im/pidgin
 		"
 RDEPEND="${DEPEND}"
 
+src_prepare(){
+	eapply "${FILESDIR}/${PN}-reduces-werror.patch"
+	eapply_user
+}
+
 src_configure(){
 	econf \
 		$(use_enable libwebp)
