@@ -17,7 +17,7 @@ SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
+IUSE="+xvfb"
 
 DEPEND="
 	$(vala_depend)
@@ -30,6 +30,7 @@ DEPEND="
 	>=x11-libs/libXtst-1.2.0
 	dev-libs/libappindicator:3
 	>=x11-libs/gtk+-3.10.0:3
+	x11-base/xorg-server[xvfb?]
 "
 RDEPEND="${DEPEND}
 	>=gnome-extra/zeitgeist-0.9.14[introspection,${PYTHON_USEDEP}]
@@ -45,10 +46,10 @@ src_prepare(){
 	sed -i -e 's:/sbin/ldconfig:/bin/true:g' waflib/Build.py
 	PATCHES=( 
 		"${FILESDIR}/${PN}-force-bfd.patch"
-		"${FILESDIR}/${PN}-remove-xvfb.patch"
 		"${FILESDIR}/${PN}-generate-schema.patch" 
 	)
-	epatch ${PATCHES[@]}
+	use !xvfb && PATCHES+=( "${FILESDIR}/${PN}-remove-xvfb.patch" )
+	eapply ${PATCHES[@]}
 	rm -rf tests/*
 	touch tests/wscript_build
 	export VALAC="$(type -p valac-$(vala_best_api_version))"
