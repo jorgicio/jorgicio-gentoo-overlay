@@ -45,7 +45,7 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-		-DNO_GTK="$(usex gtk3)"
+		-DNO_GTK="$(usex !gtk3)"
 	)
 
 	cmake-utils_src_configure
