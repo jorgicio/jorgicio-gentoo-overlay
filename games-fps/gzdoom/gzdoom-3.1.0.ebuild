@@ -21,9 +21,9 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="fluidsynth +gtk3 timidity"
+IUSE="gtk3 timidity"
 
-RDEPEND="fluidsynth? ( media-sound/fluidsynth )
+RDEPEND="media-sound/fluidsynth
 	gtk3? ( x11-libs/gtk+:3 )
 	timidity? ( media-sound/timidity++ )
 	media-libs/libsdl2
