@@ -34,4 +34,5 @@ RDEPEND="${DEPEND}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	sys-block/parted
 	app-arch/p7zip
+	sys-fs/udisks:2
 "
