@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]];then
 	EGIT_REPO_URI="https://bitbucket.org/luisangelsm/${PN}"
 else
 	SRC_URI="https://bitbucket.org/luisangelsm/${PN}/downloads/${P}-src.tar.xz"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="~x86 ~amd64 ~arm"
 fi
 
 LICENSE="GPL-3"
