@@ -17,7 +17,7 @@ HOMEPAGE="https://www.haguichi.net"
 EGIT_REPO_URI="https://github.com/ztefn/haguichi.git"
 SRC_URI=""
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
 IUSE="appindicator"
