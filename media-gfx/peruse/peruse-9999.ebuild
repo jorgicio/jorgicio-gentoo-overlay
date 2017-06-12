@@ -19,7 +19,6 @@ else
 fi
 
 LICENSE="LGPL-2.1"
-SLOT="0"
 IUSE=""
 
 DEPEND="
