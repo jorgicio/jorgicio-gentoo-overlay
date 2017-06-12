@@ -38,10 +38,6 @@ src_configure(){
 	eqmake5 YACReader.pro
 }
 
-src_compile(){
-	emake
-}
-
 src_install(){
 	emake INSTALL_ROOT="${D}" install
 }
