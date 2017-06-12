@@ -30,6 +30,7 @@ DEPEND="
 	virtual/glu
 	dev-qt/qtquickcontrols:5
 	dev-util/desktop-file-utils
+	app-arch/unarr
 "
 RDEPEND="${DEPEND}"
 

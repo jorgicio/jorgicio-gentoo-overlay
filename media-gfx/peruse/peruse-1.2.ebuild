@@ -32,3 +32,10 @@ DEPEND="
 	dev-qt/qtgraphicaleffects:5
 "
 RDEPEND="${DEPEND}"
+
+pkg_postinst(){
+	echo
+	elog "For cb* (cbr, cbz, etc.), pdf, deja-vu and epub support, you can do it by"
+	elog "installing kde-apps/okular"
+	echo
+}
