@@ -15,10 +15,9 @@ LICENSE="MIT CC-BY-4.0"
 SLOT="0"
 IUSE="gnome"
 
+#The media-fonts/ttf-bitstream-vera package was masked due to #282754 bug, so it recommends to use media-fonts/dejavu instead
 DEPEND="
-	!gnome? (
-		media-fonts/ttf-bitstream-vera[X?]
-	)
+	media-fonts/dejavu[X?]
 	"
 RDEPEND="${DEPEND}"
 
