@@ -19,7 +19,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1+ GPL-3"
 SLOT="0"
 
 IUSE=""
