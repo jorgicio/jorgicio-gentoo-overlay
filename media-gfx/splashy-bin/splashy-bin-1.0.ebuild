@@ -27,7 +27,7 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	net-libs/nodejs
 "
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 S="${WORKDIR}"
 
 src_unpack(){
