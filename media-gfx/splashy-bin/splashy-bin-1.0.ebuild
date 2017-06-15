@@ -26,6 +26,7 @@ RDEPEND="
 	dev-libs/nss
 	x11-libs/libXScrnSaver
 	net-libs/nodejs
+	!media-gfx/splashy
 "
 DEPEND="${RDEPEND}"
 S="${WORKDIR}"
