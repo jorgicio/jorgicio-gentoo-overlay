@@ -18,7 +18,7 @@ if [[ ${PV} == *9999* ]];then
 else
 	SRC_URI="https://bitbucket.org/ubuntu-mate/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86 ~arm"
-	HASH="fb51f26f7eba"
+	HASH="0da9e6155652"
 	S="${WORKDIR}/ubuntu-mate-${PN}-${HASH}"
 fi
 
@@ -26,9 +26,11 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="nls"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
+	${PYTHON_DEPS}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-devel/gettext
-        dev-python/python-distutils-extra"
+    dev-python/python-distutils-extra"
 RDEPEND="dev-libs/glib:2
 	dev-python/psutil
 	dev-python/pygobject:3
@@ -42,3 +44,12 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	>=x11-libs/libnotify-0.7"
+
+pkg_postinst(){
+	echo
+	elog "If you're using x11-misc/compton, you can create a local configuration file"
+	elog "depending on the window manager you're using (metacity or marco)."
+	elog "The configuration must be in ~/.config/wmname-compton.conf, begin 'wmname'"
+	elog "the window manager."
+	echo
+}
