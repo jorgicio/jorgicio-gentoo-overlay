@@ -1,18 +1,27 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5} )
 inherit toolchain-funcs python-r1
 
 DESCRIPTION="garnetius' patched fork of compton with fixes for glx errors and Nvidia drivers"
 HOMEPAGE="https://github.com/garnetius/compton"
-SRC_URI="https://github.com/garnetius/compton/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} == *9999* ]];then
+	inherit git-r3
+	EGIT_REPO_URI="${HOMEPAGE}"
+	SRC_URI=""
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/garnetius/compton/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN//-garnetius}-${PV}"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="dbus +drm opengl +pcre xinerama"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -38,8 +47,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	x11-proto/xproto
 	drm? ( x11-libs/libdrm )"
-
-S="${WORKDIR}/${PN//-garnetius}-${PV}"
 
 nobuildit() { use $1 || echo yes ; }
 
