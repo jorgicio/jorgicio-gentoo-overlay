@@ -22,7 +22,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="pulseaudio"
 
 DEPEND="
