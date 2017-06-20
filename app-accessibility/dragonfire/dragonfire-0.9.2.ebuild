@@ -42,7 +42,7 @@ DEPEND="
 	>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
 	dev-python/pyaudio[${PYTHON_USEDEP}]
 	dev-python/tinydb[${PYTHON_USEDEP}]
-	net-misc/youtube_dl[${PYTHON_USEDEP}]
+	net-misc/youtube-dl[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
