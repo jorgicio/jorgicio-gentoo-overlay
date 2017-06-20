@@ -26,7 +26,7 @@ IUSE="pulseaudio"
 
 DEPEND="
 	${PYTHON_DEPS}
-	app-accessibility/julius[portaudio,pulseaudio?]
+	app-accessibility/julius[pulseaudio?]
 	app-accessibility/festival
 	dev-python/python-xlib[${PYTHON_USEDEP}]
 	media-libs/portaudio
