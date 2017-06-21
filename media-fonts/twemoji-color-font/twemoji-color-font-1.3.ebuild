@@ -15,7 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="media-fonts/ttf-bitstream-vera[X?]"
+DEPEND="media-fonts/dejavu[X?]"
 RDEPEND="${DEPEND}"
 
 FONT_SUFFIX="ttf"
