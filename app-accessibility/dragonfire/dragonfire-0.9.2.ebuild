@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="An open source virtual assistent project for Linux distributions"
-HOMEPAGE="https://github.com/DragonComputer/Dragonfire"
+HOMEPAGE="https://pypi.python.org/pypi/dragonfire  https://github.com/DragonComputer/Dragonfire"
 
 if [[ ${PV} == *9999* ]];then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://github.com/DragonComputer/${PN^}"
 	KEYWORDS=""
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
@@ -32,7 +32,7 @@ DEPEND="
 	media-libs/portaudio
 	media-libs/flac
 	x11-libs/libnotify
-	dev-python/python-wikipedia[${PYTHON_USEDEP}]
+	dev-python/wikipedia[${PYTHON_USEDEP}]
 	dev-python/PyUserInput[${PYTHON_USEDEP}]
 	dev-python/google-api-python-client[${PYTHON_USEDEP}]
 	dev-python/speech_recognition[${PYTHON_USEDEP}]
@@ -52,7 +52,7 @@ pkg_postinst(){
 	elog "To deactivate it, say GO TO SLEEP."
 	elog "To silence it, say ENOUGH or SHUT UP."
 	elog "To kill it, say GOODBYE, BYE BYE or SEE YOU LATER."
-	elog "For more commands, go to the homepage: ${HOMEPAGE}"
+	elog "For more commands, go to the homepage: https://github.com/DragonComputer/${PN^}"
 	elog "If you're wondering, it's available in English only by the moment."
 	echo
 }

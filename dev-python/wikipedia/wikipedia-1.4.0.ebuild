@@ -16,11 +16,8 @@ if [[ ${PV} == *9999* ]];then
 	EGIT_REPO_URI="https://github.com/goldsmith/wikipedia"
 	KEYWORDS=""
 else
-	MY_PN="wikipedia"
-	MY_P="${MY_PN}-${PV}"
-	SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 	KEYWORDS="amd64 x86 ~arm ~ppc ~ppc64"
-	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="MIT"
