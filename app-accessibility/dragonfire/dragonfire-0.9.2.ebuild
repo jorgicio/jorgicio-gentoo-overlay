@@ -47,12 +47,12 @@ RDEPEND="${DEPEND}"
 
 pkg_postinst(){
 	echo
-	elog "To use ${PN}, simply run the command \"${PN}\" (no quotes) on a terminal."
-	elog "To activate it, you must say HEY or WAKE UP."
-	elog "To deactivate it, say GO TO SLEEP."
-	elog "To silence it, say ENOUGH or SHUT UP."
-	elog "To kill it, say GOODBYE, BYE BYE or SEE YOU LATER."
-	elog "For more commands, go to the homepage: https://github.com/DragonComputer/${PN^}"
-	elog "If you're wondering, it's available in English only by the moment."
+	einfo "To use ${PN}, simply run the command \"${PN}\" (no quotes) on a terminal."
+	einfo "To activate it, you must say HEY or WAKE UP."
+	einfo "To deactivate it, say GO TO SLEEP."
+	einfo "To silence it, say ENOUGH or SHUT UP."
+	einfo "To kill it, say GOODBYE, BYE BYE or SEE YOU LATER."
+	einfo "For more commands, go to the homepage: https://github.com/DragonComputer/${PN^}"
+	einfo "If you're wondering, it's available in English only by the moment."
 	echo
 }
