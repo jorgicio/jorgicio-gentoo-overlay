@@ -24,7 +24,10 @@ IUSE=""
 
 DEPEND="
 	>=net-libs/nodejs-4.0.0[npm]
-	media-fonts/emojione-color-font[X]
+	|| ( 
+		media-fonts/emojione-color-font[X]
+		media-fonts/twemoji-color-font[X]
+	)
 "
 RDEPEND="${DEPEND}"
 
