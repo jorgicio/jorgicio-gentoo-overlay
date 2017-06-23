@@ -51,6 +51,7 @@ src_prepare() {
 	# Fix shebang manually as otherwise python_fix_shebang gets confused
 	sed -i -e 's: @python_path@:/usr/bin/python2:' pybliographer.py || die
 	epatch "${FILESDIR}/configure.patch"
+	sed -i -e "48d;49d" Pyblio/ConfDir/GnomeUI.py
 	eautoreconf
 	gnome2_src_prepare
 }
