@@ -5,7 +5,7 @@ EAPI=6
 
 inherit cmake-utils eutils
 
-DESCRIPTION="GUI configuration tool fot compton X composite manager"
+DESCRIPTION="GUI configuration tool for the compton X composite manager"
 HOMEPAGE="http://github.com/lxde/compton-conf"
 
 if [[ ${PV} == *9999* ]];then
