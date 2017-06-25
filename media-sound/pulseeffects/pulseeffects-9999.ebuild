@@ -34,7 +34,7 @@ DEPEND="
 	media-plugins/swh-plugins
 	x11-libs/gtk+:3
 	dev-python/numpy[${PYTHON_USEDEP}]
-	>=dev-python/scipy-0.18[${PYTHON_USEDEP}]
+	>=sci-libs/scipy-0.18[${PYTHON_USEDEP}]
 	media-libs/gst-plugins-good:1.0
 	media-libs/gst-plugins-bad:1.0
 "
