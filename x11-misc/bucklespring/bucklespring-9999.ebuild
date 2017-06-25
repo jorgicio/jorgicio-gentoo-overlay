@@ -47,6 +47,6 @@ src_install(){
 
 pkg_postinst(){
 	echo
-	einfo "In order to run the program, simple run the 'buckle' binary"
+	einfo "In order to run the program, simply run the 'buckle' binary"
 	echo
 }
