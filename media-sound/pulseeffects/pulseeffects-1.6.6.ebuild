@@ -37,7 +37,7 @@ DEPEND="
 	>=sci-libs/scipy-0.18[${PYTHON_USEDEP}]
 	media-libs/gst-plugins-good:1.0
 	media-libs/gst-plugins-bad:1.0
-	media-libs/gst-plugins-ladspa:1.0
+	media-plugins/gst-plugins-ladspa:1.0
 "
 RDEPEND="${DEPEND}
 	media-sound/pulseaudio[equalizer]
