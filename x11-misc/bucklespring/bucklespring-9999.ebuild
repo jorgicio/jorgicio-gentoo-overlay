@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]];then
 	KEYWORDS=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
-	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz"
+	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~arm"
 fi
 
