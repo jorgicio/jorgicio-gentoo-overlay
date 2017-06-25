@@ -43,7 +43,7 @@ RDEPEND="${DEPEND}
 "
 
 src_install(){
-	distutils-r1_python_install
+	distutils-r1_src_install
 	insinto /usr/
 	doins -r share
 }
