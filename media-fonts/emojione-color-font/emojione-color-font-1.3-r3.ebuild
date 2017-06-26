@@ -10,7 +10,6 @@ DESCRIPTION="A color and B&W emoji SVG-in-OpenType font"
 HOMEPAGE="https://github.com/eosrei/emojione-color-font"
 SRC_URI="${HOMEPAGE}/releases/download/v${PV//_/-}/EmojiOneColor-SVGinOT-Linux-${PV//_/-}.tar.gz"
 KEYWORDS="*"
-RESTRICT="mirror"
 LICENSE="MIT CC-BY-4.0"
 SLOT="0"
 IUSE="gnome"
@@ -18,6 +17,7 @@ IUSE="gnome"
 #The media-fonts/ttf-bitstream-vera package was masked due to #282754 bug, so it recommends to use media-fonts/dejavu instead
 DEPEND="
 	media-fonts/dejavu[X?]
+	app-i18n/unicode-data
 	"
 RDEPEND="${DEPEND}"
 

@@ -15,7 +15,10 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="media-fonts/dejavu[X?]"
+DEPEND="
+	media-fonts/dejavu[X?]
+	app-i18n/unicode-data
+"
 RDEPEND="${DEPEND}"
 
 FONT_SUFFIX="ttf"
