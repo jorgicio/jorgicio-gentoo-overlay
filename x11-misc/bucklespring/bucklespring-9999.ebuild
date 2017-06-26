@@ -18,7 +18,7 @@ else
 	KEYWORDS="~amd64 ~x86 ~arm"
 fi
 
-LICENSE="MIT"
+LICENSE="GPL-2"
 SLOT="0"
 IUSE="wayland"
 
