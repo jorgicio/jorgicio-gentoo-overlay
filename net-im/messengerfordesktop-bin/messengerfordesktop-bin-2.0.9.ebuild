@@ -18,9 +18,9 @@ SRC_URI="
 RESTRICT="strip mirror"
 
 QA_PRESTRIPPED="
-	opt/${MY_PN}/libffmpeg.so
-	opt/${MY_PN}/${MY_PN}
-	opt/${MY_PN}/libnode.so
+	/opt/${MY_PN}/libffmpeg.so
+	/opt/${MY_PN}/${MY_PN}
+	/opt/${MY_PN}/libnode.so
 "
 
 LICENSE="LGPL-3"
