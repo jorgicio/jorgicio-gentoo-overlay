@@ -3,7 +3,9 @@
 
 EAPI=6
 
-inherit eutils
+PYTHON_COMPAT=( python2_7 )
+
+inherit eutils python-r1
 
 DESCRIPTION="Port of Webkit to FLTK 1.3"
 HOMEPAGE="http://fifth-browser.sourceforge.net"
@@ -23,6 +25,9 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
+	${PYTHON_DEPS}
+	dev-lang/perl
+	dev-lang/ruby[ssl]
 	sys-libs/zlib
 	media-libs/libpng:0
 	virtual/jpeg:0
@@ -39,15 +44,12 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_compile(){
-	BUILDS=(
-		Source/bmalloc/bmalloc
-		Source/WTF/wtf
-		Source/JavaScriptCore gen
-		Source/JavaScriptCore
-		Source/WebCore
-		Source/WebKit/fltk
-	)
-	emake -C ${BUILDS[@]}
+	emake -C Source/bmalloc/bmalloc
+	emake -C Source/WTF/wtf
+	emake -C Source/JavaScriptCore gen
+	emake -C Source/JavaScriptCore
+	emake -C Source/WebCore
+	emake -C Source/WebKit/fltk
 }
 
 src_install(){
