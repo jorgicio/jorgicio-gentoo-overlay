@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit eutils autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Linux-exclusive Opera-like lightweight web browser"
 HOMEPAGE="http://fifth-browser.sourceforge.net"
@@ -28,6 +28,16 @@ DEPEND="
 	dev-games/physfs
 "
 RDEPEND="${DEPEND}"
+
+pkg_pretend(){
+	if ! test-flag-CXX -std=c++11; then
+		die "You need at least GCC 4.7.3 or Clang >= 3.3 for C++11-specific compiler flags"
+	fi
+
+	if tc-is-gcc && [[ $(gcc-version) < 4.7.3 ]]; then
+		die "The active compiler needs to be gcc 4.7.3 (or newer)"
+	fi
+}
 
 src_prepare(){
 	eautoreconf -i

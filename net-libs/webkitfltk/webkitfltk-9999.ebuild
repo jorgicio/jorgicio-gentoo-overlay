@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1
+inherit eutils python-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Port of Webkit to FLTK 1.3"
 HOMEPAGE="http://fifth-browser.sourceforge.net"
@@ -42,6 +42,16 @@ DEPEND="
 	>=x11-libs/fltk-1.3.3
 "
 RDEPEND="${DEPEND}"
+
+pkg_pretend(){
+	if ! test-flag-CXX -std=c++11; then
+		die "You need at least GCC 4.7.3 or clang >= 3.3 for C++11-specific compiler flags"
+	fi
+
+	if tc-is-gcc && [[ $(gcc-version) < 4.7.3 ]]; then
+		die "The active compiler needs to be 4.7.3 (or newer)"
+	fi
+}
 
 src_compile(){
 	emake -C Source/bmalloc/bmalloc
