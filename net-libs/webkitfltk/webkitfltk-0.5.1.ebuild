@@ -41,7 +41,7 @@ RDEPEND="${DEPEND}"
 src_prepare(){
 	PATCHES=(
 		"${FILESDIR}/${PN}-1.patch"
-		"${FILESDIR/}${PN}-2.patch"
+		"${FILESDIR}/${PN}-2.patch"
 	)
 	eapply ${PATCHES[@]}
 	eapply_user
