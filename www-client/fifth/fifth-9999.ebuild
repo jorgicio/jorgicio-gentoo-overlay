@@ -24,7 +24,7 @@ IUSE=""
 
 DEPEND="
 	net-libs/webkitfltk
-	dev-libs/liburlmatch
+	dev-libs/urlmatch
 	dev-games/physfs
 "
 RDEPEND="${DEPEND}"
