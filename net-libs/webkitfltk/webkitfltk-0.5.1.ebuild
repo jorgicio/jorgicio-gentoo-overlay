@@ -53,14 +53,14 @@ pkg_pretend(){
 	fi
 }
 
-#src_prepare(){
-#	PATCHES=(
-#		"${FILESDIR}/${PN}-1.patch"
-#		"${FILESDIR}/${PN}-2.patch"
-#	)
-#	epatch ${PATCHES[@]}
-#	eapply_user
-#}
+src_prepare(){
+	PATCHES=(
+		"${FILESDIR}/${PN}-1.patch"
+		"${FILESDIR}/${PN}-2.patch"
+	)
+	epatch ${PATCHES[@]}
+	eapply_user
+}
 
 src_compile(){
 	emake -C Source/bmalloc/bmalloc
