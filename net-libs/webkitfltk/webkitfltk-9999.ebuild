@@ -34,13 +34,13 @@ DEPEND="
 	dev-libs/libxslt
 	dev-libs/libxml2
 	media-libs/freetype
-	>=dev-libs/openssl-0.9.8k
+	>=dev-libs/openssl-0.9.8k:0
 	net-misc/curl
 	dev-libs/icu
 	media-libs/harfbuzz[icu]
 	dev-db/sqlite:3
 	dev-util/gperf
-	>=x11-libs/fltk-1.3.3:1
+	>=x11-libs/fltk-1.3.3:1[cairo]
 "
 RDEPEND="${DEPEND}"
 
@@ -52,6 +52,12 @@ pkg_pretend(){
 	if tc-is-gcc && [[ $(gcc-version) < 4.7.3 ]]; then
 		die "The active compiler needs to be 4.7.3 (or newer)"
 	fi
+}
+
+src_prepare(){
+	sed -i '39 a\
+		#include <cmath>' Source/JavaScriptCore/runtime/Options.cpp
+	eapply_user
 }
 
 src_compile(){
