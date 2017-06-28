@@ -39,6 +39,7 @@ RDEPEND="dev-libs/glib:2
 	mate-base/mate-panel
 	mate-extra/mate-media
 	sys-process/psmisc
+	x11-misc/wmctrl
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	>=x11-libs/libnotify-0.7"
