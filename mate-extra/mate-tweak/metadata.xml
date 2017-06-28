@@ -7,6 +7,6 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
-		<flag use="ubuntu">Install the Ubuntu style (and other additional styles) for MATE panel</flag>
+		<flag name="ubuntu">Install the Ubuntu style (and other additional styles) for MATE panel</flag>
 	</use>
 </pkgmetadata>
