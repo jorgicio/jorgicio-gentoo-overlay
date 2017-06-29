@@ -34,14 +34,14 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_compile(){
-	local mymakeflags="PATH_AUDIO=/usr/share/${PN}"
+	local mymakeflags="PATH_AUDIO=${EPREFIX}/usr/share/${PN}"
 	use wayland && mymakeflags+=" libinput=1"
 	emake ${mymakeflags}
 }
 
 src_install(){
 	dobin buckle
-	insinto /usr/share/${PN}
+	insinto ${EPREFIX}/usr/share/${PN}
 	doins -r wav/*
 }
 

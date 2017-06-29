@@ -45,7 +45,7 @@ RDEPEND="${DEPEND}
 
 src_install(){
 	distutils-r1_src_install
-	insinto /usr/
+	insinto ${EPREFIX}/usr/
 	doins -r share
 }
 
