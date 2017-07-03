@@ -28,7 +28,13 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure(){
-	eqmake5 ${PN}.pro
+	local myeqmakeargs=(
+		${PN}.pro
+		PREFIX="${EPREFIX}/usr"
+		DESKTOPDIR="${EPREFIX}/usr/share/applications"
+		ICONDIR="${EPREFIX}/usr/share/pixmaps"
+	)
+	eqmake5 ${myeqmakeargs[@]}
 }
 
 src_install(){
