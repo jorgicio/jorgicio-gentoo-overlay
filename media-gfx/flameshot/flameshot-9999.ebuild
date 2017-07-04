@@ -28,7 +28,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare(){
-	sed -i "#/usr/local#/usr#" ${PN}.pro
+	sed -i "s#/usr/local#/usr#" ${PN}.pro
 	eapply_user
 }
 
