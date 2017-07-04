@@ -27,6 +27,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_prepare(){
+	sed -i "#/usr/local#/usr#" ${PN}.pro
+	eapply_user
+}
+
 src_configure(){
 	local myeqmakeargs=(
 		${PN}.pro
