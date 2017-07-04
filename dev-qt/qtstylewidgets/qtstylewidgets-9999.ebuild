@@ -39,7 +39,7 @@ src_install(){
 
 pkg_postinst(){
 	echo
-	einfo "To mqke QT5 applications use the gtk2 style"
+	einfo "To make QT5 applications use the gtk2 style"
 	einfo "insert the following into your ~/.xprofile or ~/.profile:"
 	einfo "QT_QPA_PLATFORMTHEME=gtk2"
 	einfo "If you're using Wayland with GNOME, do this in your ~/.pam_environment:"
