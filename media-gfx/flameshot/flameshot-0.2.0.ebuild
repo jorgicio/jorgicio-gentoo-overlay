@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils qmake-utils fdo-mime
+inherit eutils qmake-utils
 
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
 HOMEPAGE="http://github.com/lupoDharkael/flameshot"
@@ -24,11 +24,15 @@ IUSE=""
 
 DEPEND="
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 "
 RDEPEND="${DEPEND}"
 
 src_prepare(){
 	sed -i "s#/usr/local#/usr#" ${PN}.pro
+	sed -i "s#icons#pixmaps#" ${PN}.pro
+	sed -i "s#/usr/local#/usr#" docs/desktopEntry/make/${PN}.desktop
+	sed -i "s#icons#pixmaps#" docs/desktopEntry/make/${PN}.desktop
 	eapply_user
 }
 
@@ -44,12 +48,4 @@ src_configure(){
 
 src_install(){
 	emake INSTALL_ROOT="${D}" install
-}
-
-pkg_postinst(){
-	fdo-mime_desktop_database_update
-}
-
-pkg_postrm(){
-	fdo-mime_desktop_database_update
 }
