@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit qmake-utils
+inherit qmake-utils eutils
 
 DESCRIPTION="A Qt-based version of the game 2048"
 HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
