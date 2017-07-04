@@ -4,16 +4,24 @@
 
 EAPI=6
 
-inherit qmake-utils git-r3
+inherit qmake-utils
 
 DESCRIPTION="A Qt-based version of the game 2048"
 HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
-SRC_URI=""
-EGIT_REPO_URI="${HOMEPAGE}"
+
+if [[ ${PV} == *9999* ]];then
+	inherit git-r3
+	EGIT_REPO_URI="${HOMEPAGE}"
+	SRC_URI=""
+	KEYWORDS=""
+else
+	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86 ~arm"
+	S="${WORKDIR}/2048-Qt-${PV}"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-qt/qtcore:5
