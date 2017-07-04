@@ -44,5 +44,6 @@ pkg_postinst(){
 	einfo "QT_QPA_PLATFORMTHEME=gtk2"
 	einfo "If you're using Wayland with GNOME, do this in your ~/.pam_environment:"
 	einfo "QT_QPA_PLATFORMTHEME OVERRIDE=gtk2"
+	einfo "Optionally, you can use the x11-misc/qt5ct app to do that."
 	echo
 }
