@@ -4,7 +4,6 @@
 
 EAPI=6
 
-GCONF_DEBUG="no"
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
