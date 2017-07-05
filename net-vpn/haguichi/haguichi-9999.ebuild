@@ -26,7 +26,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="appindicator"
+IUSE=""
 
 DEPEND="
 	$(vala_depend)

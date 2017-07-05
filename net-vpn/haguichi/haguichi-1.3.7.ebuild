@@ -18,7 +18,7 @@ SRC_URI="http://launchpad.net/${PN}/${MY_BRANCH}/${PV}/+download/${P}.tar.xz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~arm"
-IUSE="appindicator"
+IUSE=""
 
 DEPEND="
 	$(vala_depend)
