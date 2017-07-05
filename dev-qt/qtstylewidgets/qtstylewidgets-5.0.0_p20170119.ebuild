@@ -13,7 +13,7 @@ EGIT_REPO_URI="${HOMEPAGE}.git"
 if [[ ${PV} == *9999*  ]];then
 	KEYWORDS=""
 else
-	KEYWORDS="~x86 ~amd64 ~arm"
+	KEYWORDS="x86 amd64 ~arm"
 	EGIT_COMMIT="84b443109729664c7a0bd124b42c493f28069efc"
 fi
 
