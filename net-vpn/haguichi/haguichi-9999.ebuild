@@ -37,9 +37,7 @@ DEPEND="
 	dev-util/ninja
 	sys-devel/gettext
 "
-RDEPEND="${DEPEND}
-	appindicator? ( x11-plugins/haguichi-indicator )
-"
+RDEPEND="${DEPEND}"
 
 pkg_setup(){
 	export MAKE=ninja

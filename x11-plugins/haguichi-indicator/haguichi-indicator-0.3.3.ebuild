@@ -23,6 +23,7 @@ DEPEND="
 	$(vala_depend)
 	x11-libs/gtk+:3
 	dev-libs/libappindicator:3
+	net-vpn/haguichi
 	"
 RDEPEND="${DEPEND}"
 

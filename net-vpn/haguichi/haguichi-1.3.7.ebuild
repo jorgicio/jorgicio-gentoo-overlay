@@ -26,9 +26,7 @@ DEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libnotify
 "
-RDEPEND="${DEPEND}
-	appindicator? ( x11-plugins/haguichi-indicator )
-"
+RDEPEND="${DEPEND}"
 
 pkg_setup(){
 	export VALAC="$(type -p valac-$(vala_best_api_version))"
