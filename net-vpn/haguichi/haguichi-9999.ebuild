@@ -7,16 +7,25 @@ EAPI=6
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
-inherit eutils vala gnome2 git-r3
+inherit eutils vala gnome2
 
 DESCRIPTION="Provides a user friendly GTK+-3 GUI to control the Hamachi client on Linux"
 HOMEPAGE="https://www.haguichi.net"
-EGIT_REPO_URI="https://github.com/ztefn/haguichi.git"
-SRC_URI=""
+
+if [[ ${PV} == *9999* ]];then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/ztefn/${PN}.git"
+	SRC_URI=""
+	KEYWORDS=""
+else
+	inherit versionator
+	MY_BRANCH="$(get_version_component_range 1-2)"
+	SRC_URI="http://launchpad.net/${PN}/${MY_BRANCH}/${PV}/+download/${P}.tar.xz"
+	KEYWORDS="~arm ~amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
 IUSE="appindicator"
 
 DEPEND="

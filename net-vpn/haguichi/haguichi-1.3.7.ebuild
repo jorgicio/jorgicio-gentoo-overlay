@@ -14,7 +14,6 @@ MY_BRANCH="$(get_version_component_range 1-2)"
 DESCRIPTION="Provides a user friendly GTK+-3 GUI to control the Hamachi client on Linux"
 HOMEPAGE="https://www.haguichi.net"
 SRC_URI="http://launchpad.net/${PN}/${MY_BRANCH}/${PV}/+download/${P}.tar.xz"
-RESTRICT="mirror"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -31,11 +30,14 @@ RDEPEND="${DEPEND}
 	appindicator? ( x11-plugins/haguichi-indicator )
 "
 
+pkg_setup(){
+	export VALAC="$(type -p valac-$(vala_best_api_version))"
+}
+
 src_prepare(){
 	DOCS="AUTHORS"
 	gnome2_src_prepare
 	vala_src_prepare
-	export VALAC="$(type -p valac-$(vala_best_api_version))"
 }
 
 src_configure(){
