@@ -27,7 +27,7 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	>=dev-util/meson-0.41[${PYTHON_USEDEP}]
+	>=dev-util/meson-0.40[${PYTHON_USEDEP}]
 	dev-util/ninja
 	>=x11-libs/gtk+-3.14.0:3
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
