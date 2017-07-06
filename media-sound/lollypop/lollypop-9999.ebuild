@@ -27,6 +27,8 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
+	>=dev-util/meson-0.41
+	dev-util/ninja
 	>=x11-libs/gtk+-3.14.0:3
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-libs/gobject-introspection[cairo]
@@ -42,21 +44,20 @@ RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
 	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]"
 
-src_prepare(){
-	eautoreconf
-	eapply_user
+pkg_setup(){
+	export MAKE=ninja
 }
 
 src_configure(){
-	econf --disable-schemas-compile
+	meson build --prefix=/usr --sysconfdir=/etc --buildtype plain || die
 }
 
 src_compile(){
-	emake DESTDIR="${D}"
+	meson builddir --prefix=/usr || die
 }
 
 src_install(){
-	emake DESTDIR="${D}" install
+	DESTDIR="${ED}" emake -C builddir install
 }
 
 pkg_preinst(){
