@@ -53,14 +53,11 @@ src_configure(){
 }
 
 src_compile(){
-	mkdir "${S}/build"
-	cd "${S}/build"
-	emake
+	emake -C "${S}/build"
 }
 
 src_install(){
-	cd "${S}/build"
-	DESTDIR="${ED}" emake install
+	DESTDIR="${ED}" emake -C "${S}/build" install
 }
 
 pkg_preinst(){
