@@ -53,11 +53,14 @@ src_configure(){
 }
 
 src_compile(){
-	meson builddir --prefix=/usr || die
+	mkdir "${S}/build"
+	cd "${S}/build"
+	emake
 }
 
 src_install(){
-	DESTDIR="${ED}" emake -C builddir install
+	cd "${S}/build"
+	DESTDIR="${ED}" emake install
 }
 
 pkg_preinst(){
