@@ -1,2 +1,0 @@
-# Meson-based package, but it can't find python3 as a dependency
-=media-sound/lollypop-0.9.243

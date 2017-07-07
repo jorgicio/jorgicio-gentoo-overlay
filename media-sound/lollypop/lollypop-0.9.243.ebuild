@@ -49,12 +49,20 @@ pkg_setup(){
 	export MAKE=ninja
 }
 
+src_prepare(){
+	eapply "${FILESDIR}/${PN}-fix-python-search.patch"
+	eapply_user
+}
+
 src_configure(){
 	meson build --prefix=/usr --sysconfdir=/etc --buildtype plain || die
 }
 
 src_compile(){
 	emake -C "${S}/build"
+	fperms +x "./build/${PN}"
+	fperms +x "./build/${PN}-cli"
+	fperms +x "./build/rhythmbox2${PN}"
 }
 
 src_install(){

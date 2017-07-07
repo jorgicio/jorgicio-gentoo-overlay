@@ -1,0 +1,17 @@
+diff -Naur a/meson.build b/meson.build
+--- a/meson.build	2017-07-07 12:38:31.924032227 -0400
++++ b/meson.build	2017-07-07 12:40:02.374030724 -0400
+@@ -7,7 +7,12 @@
+ project_id = 'org.gnome.Lollypop'
+ 
+ message('Looking for dependencies')
+-dependency('python3')
++python_bin = python.find_python()
++if python_bin.found()
++    message('Found python3 binary')
++else
++    error('No valid python3 binary found')
++endif
+ dependency('glib-2.0')
+ dependency('gobject-introspection-1.0', version: '>=1.35.9')
+ dependency('gtk+-3.0', version :'>=3.14')
