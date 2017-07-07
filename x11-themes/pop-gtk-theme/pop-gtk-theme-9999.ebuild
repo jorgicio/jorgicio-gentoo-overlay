@@ -57,6 +57,7 @@ src_configure(){
 		$(use_enable plank) \
 		$(use_enable telegram) \
 		--disable-gtk_next
+		--disable-chrome
 }
 
 src_install(){
