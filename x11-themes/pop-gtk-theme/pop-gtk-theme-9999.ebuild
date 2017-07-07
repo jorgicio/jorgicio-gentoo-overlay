@@ -30,6 +30,7 @@ DEPEND="
 	>=gnome-base/librsvg-2.40.13
 	>=dev-libs/libsass-3.3.6
 	dev-libs/libxml2
+	dev-lang/sassc
 	parallel? ( sys-process/parallel )
 	openbox? ( x11-wm/openbox )
 	gnome? ( gnome-base/gnome-desktop )
