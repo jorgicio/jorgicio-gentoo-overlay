@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]];then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/mesonbuild/meson/releases/download/${PV}/meson-${PV}.tar.gz"
-	KEYWORDS="~*"
+	KEYWORDS="~x86 ~amd64"
 fi
 
 S="${WORKDIR}/meson-${PV}/syntax-highlighting/vim"
