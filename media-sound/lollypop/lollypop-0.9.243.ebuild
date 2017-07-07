@@ -32,6 +32,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.14.0:3
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=dev-libs/gobject-introspection-1.35.9[cairo]
+	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	dev-python/pycairo
 	dev-python/dbus-python
 	dev-libs/totem-pl-parser
