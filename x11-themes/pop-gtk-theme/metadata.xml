@@ -16,6 +16,6 @@
 		<flag name="telegram">Add Telegram theme</flag>
 		<flag name="unity">Add Unity theme</flag>
 		<flag name="xfce">Add Xfce theme</flag>
-		<flag name="parallel"></flag>
+		<flag name="parallel">Enable GNU Parallel support for parallel compilation using sys-process/parallel</flag>
 	</use>
 </pkgmetadata>
