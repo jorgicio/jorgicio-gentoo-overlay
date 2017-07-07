@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]];then
 else
 	SRC_URI="${HOMEPAGE}/archive/${PV}${PR}.tar.gz -> ${P}${PR}.tar.gz"
 	KEYWORDS="~x86 ~amd64 ~arm"
-	S="${WORKDIR}/${P}-${PR}"
+	S="${WORKDIR}/${P}${PR}"
 fi
 
 LICENSE="GPL-2"
