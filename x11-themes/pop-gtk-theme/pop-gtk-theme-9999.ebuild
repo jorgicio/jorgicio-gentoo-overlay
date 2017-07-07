@@ -56,7 +56,7 @@ src_configure(){
 		$(use_enable openbox) \
 		$(use_enable plank) \
 		$(use_enable telegram) \
-		--disable-gtk_next
+		--disable-gtk_next \
 		--disable-chrome
 }
 
