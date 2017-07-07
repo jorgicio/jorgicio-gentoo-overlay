@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
-inherit base toolchain-funcs multilib
+EAPI=6
+inherit toolchain-funcs multilib
 
-DESCRIPTION="Successor of clalsadrv. API providing easy access to ALSA PCM devices"
+DESCRIPTION="C++ library for real-time resampling of audio signals"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/"
 SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 
@@ -14,12 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND="media-libs/alsa-lib"
-DEPEND="${RDEPEND}"
+DEPEND="media-libs/libsndfile"
+RDEPEND="${DEPEND}"
 
 RESTRICT="mirror"
 
 DOCS=(AUTHORS README)
+HTML_DOCS=(docs/)
 
 PATCHES=("${FILESDIR}"/${P}-Makefile.patch)
 
@@ -30,7 +31,7 @@ src_compile() {
 }
 
 src_install() {
-	emake -C libs DESTDIR="${D}" LIBDIR="$(get_libdir)" PREFIX="${EPREFIX}/usr" install
+	emake -C libs DESTDIR="${D}" PREFIX="${EPREFIX}/usr" LIBDIR=$(get_libdir) install
 	emake -C apps DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
-	base_src_install_docs
+	dodoc "${DOCS[@]}"
 }

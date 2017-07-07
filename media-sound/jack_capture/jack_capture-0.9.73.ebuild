@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	gtk? ( virtual/pkgconfig )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.9.73-Makefile.patch"
+	"${FILESDIR}/${P}-Makefile.patch"
 )
 DOCS=( README config )
 
@@ -47,6 +47,6 @@ src_compile()
 src_install()
 {
 	dobin jack_capture
-	use gtk && dobin jack_capture_gui2	
+	use gtk && dobin jack_capture_gui2
 	dodoc "${DOCS[@]}"
 }
