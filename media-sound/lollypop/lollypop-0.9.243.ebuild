@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-r1 autotools gnome2-utils
+inherit python-r1 gnome2-utils eutils
 
 DESCRIPTION="Lollypop is a new GNOME music playing application"
 HOMEPAGE="http://gnumdk.github.io/lollypop"
@@ -40,6 +40,7 @@ DEPEND="
 	dev-util/intltool
 	app-crypt/libsecret
 	gnome-base/gnome-common
+	media-sound/${PN}-portal
 "
 RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
@@ -55,7 +56,7 @@ src_prepare(){
 }
 
 src_configure(){
-	meson build --prefix=/usr --sysconfdir=/etc --buildtype plain || die
+	meson build --prefix=${EPREFIX}/usr --sysconfdir=${EPREFIX}/etc --buildtype plain || die
 }
 
 src_compile(){

@@ -1,0 +1,27 @@
+diff -Naur a/meson.build b/meson.build
+--- a/meson.build	2017-07-08 13:55:46.792462656 -0400
++++ b/meson.build	2017-07-08 13:59:13.322462970 -0400
+@@ -5,7 +5,12 @@
+ python = import('python3')
+ 
+ message('Looking for dependencies')
+-dependency('python3')
++python_bin = python.find_python()
++if python_bin.found()
++    message('Found python3 binary')
++else
++    error('No valid python3 binary found')
++endif
+ dependency('gobject-introspection-1.0', version: '>=1.35.9')
+ dependency('gtk+-3.0', version :'>=3.14')
+ 
+@@ -18,8 +23,8 @@
+ conf.set('pyexecdir', join_paths(get_option('prefix'), python.sysconfig_path('stdlib')))
+ conf.set('libexecdir', libexec_dir)
+ 
+-
+ message('Preparing init file')
++run_command(['chmod', '+x', 'lollypop-portal.in'])
+ configure_file(
+   input: 'lollypop-portal.in',
+   output: 'lollypop-portal',
