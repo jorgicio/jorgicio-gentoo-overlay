@@ -42,7 +42,7 @@ src_prepare(){
 }
 
 src_configure(){
-	meson build --prefix=${EPREFIX}/usr --sysconfidir=${EPREFIX}/usr --buildtype plain || die
+	meson build --prefix=${EPREFIX}/usr --sysconfdir=${EPREFIX}/usr --buildtype plain || die
 }
 
 src_compile(){
