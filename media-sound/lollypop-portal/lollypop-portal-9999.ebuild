@@ -29,6 +29,10 @@ DEPEND="
 	${PYTHON_DEPS}
 	>=dev-util/meson-0.40[${PYTHON_USEDEP}]
 	dev-util/ninja
+	>=x11-libs/gtk+-3.14.0:3
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	>=dev-libs/gobject-introspection-1.35.9[cairo]
+	dev-python/pkgconfig[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
