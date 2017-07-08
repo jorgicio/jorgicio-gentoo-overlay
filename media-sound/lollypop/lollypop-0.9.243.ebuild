@@ -60,9 +60,6 @@ src_configure(){
 
 src_compile(){
 	emake -C "${S}/build"
-	fperms +x "./build/${PN}"
-	fperms +x "./build/${PN}-cli"
-	fperms +x "./build/rhythmbox2${PN}"
 }
 
 src_install(){
