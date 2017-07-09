@@ -39,9 +39,9 @@ RDEPEND="${DEPEND}
 ARCH="$(getconf LONG_BIT)"
 
 QA_PRESTRIPPED="
-	usr/lib/cerebro/libnode.so
-	usr/lib/cerebro/libffmpeg.so
-	usr/lib/cerebro/cerebro
+	usr/lib/${PN}/libnode.so
+	usr/lib/${PN}/libffmpeg.so
+	usr/lib/${PN}/${PN}
 "
 
 src_compile(){
