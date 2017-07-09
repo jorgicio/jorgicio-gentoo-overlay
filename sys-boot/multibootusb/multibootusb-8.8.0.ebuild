@@ -27,7 +27,7 @@ IUSE=""
 DEPEND="
 	dev-python/PyQt5[${PYTHON_USEDEP}]
 	sys-fs/mtools
-	sys-apps/util-linux[${PYTHON_USEDEP}]
+	sys-apps/util-linux
 	dev-python/six[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
