@@ -30,11 +30,11 @@ DEPEND="
 	>=gnome-base/librsvg-2.40.13
 	>=dev-libs/libsass-3.3.6
 	dev-libs/libxml2
-	dev-lang/sassc
+	>=dev-lang/sassc-3.3.2
 	parallel? ( sys-process/parallel )
 	openbox? ( x11-wm/openbox )
-	gnome? ( gnome-base/gnome-desktop )
-	mate? ( mate-base/mate-desktop )
+	gnome? ( >=gnome-base/gnome-desktop-3.18.3 )
+	mate? ( >=mate-base/mate-desktop-1.14 )
 "
 RDEPEND="${DEPEND}"
 
