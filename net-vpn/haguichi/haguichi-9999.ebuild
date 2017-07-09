@@ -52,7 +52,7 @@ src_prepare(){
 }
 
 src_configure(){ 
-	meson build --prefix=/usr --sysconfdir=/etc --buildtype plain || die
+	meson build --prefix=${EPREFIX}/usr --sysconfdir=${EPREFIX}/etc --buildtype plain || die
 }
 
 src_compile(){
