@@ -60,7 +60,7 @@ src_install() {
 
 	cd "${BUILD_DIR}"
 
-	insinto "/usr/share/doom-data"
+	insinto "${EPREFIX}/usr/share/doom-data"
 	doins *.pk3
 
 	dobin "${PN}"
