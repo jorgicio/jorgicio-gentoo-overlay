@@ -20,7 +20,7 @@ if [[ ${PV} == *9999* ]];then
 	KEYWORDS=""
 else
 	SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86 ~arm"
 fi
 
 LICENSE="GPL-2"
@@ -47,6 +47,7 @@ RDEPEND="${DEPEND}
 
 pkg_setup(){
 	python-single-r1_pkg_setup
+	export VALAC="$(type -p valac-$(vala_best_api_version))"
 }
 
 src_prepare(){
@@ -60,7 +61,6 @@ src_prepare(){
 	eapply ${PATCHES[@]}
 	rm -rf tests/*
 	touch tests/wscript_build
-	export VALAC="$(type -p valac-$(vala_best_api_version))"
 	eapply_user
 }
 
