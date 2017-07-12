@@ -5,7 +5,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic python-any-r1 eutils unpacker pax-utils
+inherit flag-o-matic python-any-r1 eutils unpacker pax-utils xdg-utils gnome2
 
 DESCRIPTION="A hackable text editor for the 21st Century - Binary package"
 HOMEPAGE="https://atom.io"
@@ -99,4 +99,18 @@ src_install() {
 	make_desktop_entry "/usr/bin/${MY_PN} %U" "${MY_PN}" "${MY_PN}" \
 		"GNOME;GTK;Utility;TextEditor;Development;" \
 		"GenericName=Text Editor\nMimeType=text/plain;\nStartupNotify=true\nStartupWMClass=${MY_PN}"
+}
+
+pkg_preinst(){
+	gnome2_icon_savelist
+}
+
+pkg_postinst(){
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm(){
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
