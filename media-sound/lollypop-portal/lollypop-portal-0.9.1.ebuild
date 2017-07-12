@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit python-r1 eutils gnome2-utils
+inherit python-r1 eutils gnome2-utils autotools
 
 DESCRIPTION="Advanced features for Lollypop"
 HOMEPAGE="http://gnumdk.github.io/lollypop-web"
@@ -36,25 +36,18 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-pkg_setup(){
-	export MAKE=ninja
-}
 
 src_prepare(){
-	eapply "${FILESDIR}/${PN}-fix-python-search.patch"
+	eautoreconf
 	eapply_user
 }
 
 src_configure(){
-	meson build --prefix=${EPREFIX}/usr --sysconfdir=${EPREFIX}/usr --buildtype plain || die
-}
-
-src_compile(){
-	emake -C "${S}/build"
+	econf --disable-schemas-compile
 }
 
 src_install(){
-	DESTDIR="${ED}" emake -C "${S}/build" install
+	emake DESTDIR="${D}" install
 }
 
 pkg_preinst(){
