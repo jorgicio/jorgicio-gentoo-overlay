@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-r1 gnome2-utils eutils
+inherit python-r1 gnome2-utils eutils meson
 
 DESCRIPTION="Lollypop is a new GNOME music playing application"
 HOMEPAGE="http://gnumdk.github.io/lollypop"
@@ -27,8 +27,6 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	>=dev-util/meson-0.40[${PYTHON_USEDEP}]
-	dev-util/ninja
 	>=x11-libs/gtk+-3.14.0:3
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=dev-libs/gobject-introspection-1.35.9[cairo]
@@ -45,22 +43,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
 	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]"
-
-pkg_setup(){
-	export MAKE=ninja
-}
-
-src_configure(){
-	meson build --prefix=${EPREFIX}/usr --sysconfdir=${EPREFIX}/etc --buildtype plain || die
-}
-
-src_compile(){
-	emake -C "${S}/build"
-}
-
-src_install(){
-	DESTDIR="${ED}" emake -C "${S}/build" install
-}
 
 pkg_preinst(){
 	gnome2_schemas_savelist

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit python-r1 eutils gnome2-utils
+inherit python-r1 eutils gnome2-utils meson
 
 DESCRIPTION="Advanced features for Lollypop"
 HOMEPAGE="http://gnumdk.github.io/lollypop-web"
@@ -27,8 +27,6 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	>=dev-util/meson-0.40[${PYTHON_USEDEP}]
-	dev-util/ninja
 	>=x11-libs/gtk+-3.14.0:3
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=dev-libs/gobject-introspection-1.35.9[cairo]
@@ -36,25 +34,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-pkg_setup(){
-	export MAKE=ninja
-}
-
 src_prepare(){
 	eapply "${FILESDIR}/${PN}-fix-python-search.patch"
 	eapply_user
-}
-
-src_configure(){
-	meson build --prefix=${EPREFIX}/usr --sysconfdir=${EPREFIX}/usr --buildtype plain || die
-}
-
-src_compile(){
-	emake -C "${S}/build"
-}
-
-src_install(){
-	DESTDIR="${ED}" emake -C "${S}/build" install
 }
 
 pkg_preinst(){
