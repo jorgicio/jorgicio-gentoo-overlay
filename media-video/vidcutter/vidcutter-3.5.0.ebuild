@@ -35,6 +35,6 @@ RDEPEND="${DEPEND}
 	virtual/ffmpeg[X,encode]"
 
 src_prepare(){
-	sed -i '/pypi/d' __init__.py
+	sed -i '/pypi/d' ${PN}/__init__.py
 	eapply_user
 }
