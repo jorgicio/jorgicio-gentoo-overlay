@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86 ~arm ~ppc ~ppc64 ~hppa"
 IUSE=""
 
 RDEPEND="sys-apps/dmidecode"
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_install() {
 	newbin laptop-detect.in laptop-detect
