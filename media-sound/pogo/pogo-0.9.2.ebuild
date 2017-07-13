@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 	media-libs/gst-plugins-bad:1.0
 	media-libs/gst-plugins-ugly:1.0
 	media-plugins/gst-plugins-libav:1.0
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-sound/pulseaudio[equalizer] )
 	gnome? ( gnome-base/gnome-settings-daemon )
 "
 
