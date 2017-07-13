@@ -19,8 +19,8 @@ RDEPEND="sys-apps/dmidecode"
 DEPEND="${RDEPEND}"
 
 src_install() {
-	newbin laptop-detect.in laptop-detect
-	doman laptop-detect.1
+	newbin ${PN}.in ${PN}
+	doman ${PN}.1
 	dodoc README
 	insinto ${EPREFIX}/usr/share/licenses/${PN}/
 	doins debian/copyright
