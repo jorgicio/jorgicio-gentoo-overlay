@@ -9,7 +9,7 @@ inherit flag-o-matic python-any-r1 eutils unpacker pax-utils xdg-utils gnome2-ut
 
 DESCRIPTION="A hackable text editor for the 21st Century - Binary package"
 HOMEPAGE="https://atom.io"
-MY_PN="atom"
+MY_PN="${PN//-bin}"
 SRC_URI="
 	amd64? ( https://github.com/${MY_PN}/${MY_PN}/releases/download/v${PV}/${MY_PN}-amd64.tar.gz -> ${MY_PN}-amd64-${PV}.tar.gz )
 "
@@ -43,15 +43,15 @@ RDEPEND="${DEPEND}
 	x11-libs/pango"
 
 QA_PRESTRIPPED="
-	/usr/share/${MY_PN}/${MY_PN}
-	/usr/share/${MY_PN}/chromedriver/chromedriver
-	/usr/share/${MY_PN}/libffmpegsumo.so
-	/usr/share/${MY_PN}/libnotify.so.4
-	/usr/share/${MY_PN}/libchromiumcontent.so
-	/usr/share/${MY_PN}/libgcrypt.so.11
-	/usr/share/${MY_PN}/libffmpeg.so
-	/usr/share/${MY_PN}/libnode.so
-	/usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/symbols-view/vendor/ctags-linux"
+	usr/share/${MY_PN}/${MY_PN}
+	usr/share/${MY_PN}/chromedriver/chromedriver
+	usr/share/${MY_PN}/libffmpegsumo.so
+	usr/share/${MY_PN}/libnotify.so.4
+	usr/share/${MY_PN}/libchromiumcontent.so
+	usr/share/${MY_PN}/libgcrypt.so.11
+	usr/share/${MY_PN}/libffmpeg.so
+	usr/share/${MY_PN}/libnode.so
+	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/symbols-view/vendor/ctags-linux"
 
 ARCH=$(getconf LONG_BIT)
 
