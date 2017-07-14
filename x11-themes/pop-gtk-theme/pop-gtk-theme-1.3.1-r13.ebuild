@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+parallel gnome cinnamon flashback unity xfce mate openbox plank telegram"
+IUSE="+parallel gnome cinnamon flashback xfce mate openbox plank telegram"
 
 DEPEND="
 	media-gfx/inkscape
@@ -50,12 +50,12 @@ src_configure(){
 		$(use_enable cinnamon) \
 		$(use_enable telegram) \
 		$(use_enable flashback) \
-		$(use_enable unity) \
 		$(use_enable xfce) \
 		$(use_enable mate) \
 		$(use_enable openbox) \
 		$(use_enable plank) \
 		$(use_enable telegram) \
+		--disable-unity \
 		--disable-gtk_next \
 		--disable-chrome
 }
