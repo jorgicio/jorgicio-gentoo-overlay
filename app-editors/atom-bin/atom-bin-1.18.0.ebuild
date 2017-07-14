@@ -40,7 +40,8 @@ RDEPEND="${DEPEND}
 	net-print/cups
 	sys-libs/libcap
 	x11-libs/libXtst
-	x11-libs/pango"
+	x11-libs/pango
+	dev-vcs/git"
 
 QA_PRESTRIPPED="
 	usr/share/${MY_PN}/${MY_PN}
