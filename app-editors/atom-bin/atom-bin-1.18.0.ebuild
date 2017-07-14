@@ -51,7 +51,10 @@ QA_PRESTRIPPED="
 	usr/share/${MY_PN}/libgcrypt.so.11
 	usr/share/${MY_PN}/libffmpeg.so
 	usr/share/${MY_PN}/libnode.so
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/symbols-view/vendor/ctags-linux"
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-lfs
+	usr/share/${MY_PN}/resources/app/node_modules/symbols-view/vendor/ctags-linux
+"
+
 
 ARCH=$(getconf LONG_BIT)
 
