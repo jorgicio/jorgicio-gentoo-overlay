@@ -35,6 +35,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare(){
+	eapply "${FILESDIR}/fix-libexecdir.patch"
 	eapply "${FILESDIR}/${PN}-fix-python-search.patch"
 	eapply_user
 }
