@@ -31,6 +31,7 @@ RDEPEND="${DEPEND}
 	x11-libs/gtk+:3"
 
 src_prepare(){
+	eapply "${FILESDIR}/add-sneezy-schema.patch"
 	eautoreconf
 	eapply_user
 }
