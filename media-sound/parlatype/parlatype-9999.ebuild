@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="libreoffice +introspection glade-catalog doc"
+IUSE="libreoffice +introspection +glade-catalog doc"
 
 DEPEND="
 	>=x11-libs/gtk+-3.10:3
