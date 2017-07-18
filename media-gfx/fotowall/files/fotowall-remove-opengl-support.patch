@@ -1,0 +1,16 @@
+diff -Naur a/fotowall.pro b/fotowall.pro
+--- a/fotowall.pro	2017-07-18 12:45:47.045645624 -0400
++++ b/fotowall.pro	2017-07-18 12:46:21.195645676 -0400
+@@ -21,12 +21,6 @@
+     xml \
+     printsupport
+ 
+-# include OpenGL code paths where available
+-contains(QT_CONFIG, opengl)|contains(QT_CONFIG, opengles1)|contains(QT_CONFIG, opengles2) {
+-    message("Using OpenGL")
+-    QT += opengl
+-}
+-
+ # enable features for mobile user interfaces
+ symbian|simulator: {
+     contains(QT_VERSION, ^4\\.6\\..*): error("Use at least Qt 4.7 for symbian builds.")
