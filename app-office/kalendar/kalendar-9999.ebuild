@@ -36,8 +36,9 @@ src_configure(){
 
 src_install(){
 	insinto /usr/share/${PN}
-	doins -r ${PN^} tools
-	fperms +x /usr/share/${PN}/${PN^}
+	doins -r tools
+	exeinto /usr/share/${PN}
+	doexe ${PN^}
 	dobin "${FILESDIR}/${PN}"
 	doicon ../icon/${PN}.png
 	dodoc ../README.md
