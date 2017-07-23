@@ -25,7 +25,7 @@ DEPEND="
 	$(add_frameworks_dep baloo)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kio-extras)
+	$(add_kdeapps_dep kio-extras)
 	$(add_frameworks_dep extra-cmake-modules)
 	$(add_frameworks_dep kdoctools)
 	dev-libs/kirigami:1
