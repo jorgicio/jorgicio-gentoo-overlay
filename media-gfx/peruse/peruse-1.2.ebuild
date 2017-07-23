@@ -16,6 +16,7 @@ if [[ ${PV} == *9999* ]];then
 else
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 	KEYWORDS="~x86 ~amd64 ~arm"
+	S="${WORKDIR}/${PN}"
 fi
 
 LICENSE="LGPL-2.1"
@@ -28,8 +29,10 @@ DEPEND="
 	$(add_kdeapps_dep kio-extras)
 	$(add_frameworks_dep extra-cmake-modules)
 	$(add_frameworks_dep kdoctools)
+	$(add_frameworks_dep kdeclarative)
 	dev-libs/kirigami:1
 	dev-qt/qtgraphicaleffects:5
+	dev-qt/qtquickcontrols:5
 "
 RDEPEND="${DEPEND}"
 
