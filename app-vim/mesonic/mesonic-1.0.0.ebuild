@@ -14,7 +14,3 @@ IUSE=""
 SRC_URI="http://www.vim.org/scripts/download_script.php?src_id=24206 -> ${P}.tar.gz"
 
 VIM_PLUGIN_HELPFILES="README.md"
-RDEPEND="
-	${RDEPEND}
-	dev-util/meson
-"
