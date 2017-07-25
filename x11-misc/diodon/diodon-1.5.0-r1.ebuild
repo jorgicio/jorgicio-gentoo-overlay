@@ -54,7 +54,7 @@ src_prepare(){
 	sed -i -e 's:/sbin/ldconfig:/bin/true:g' wscript
 	sed -i -e 's:/sbin/ldconfig:/bin/true:g' waflib/Build.py
 	PATCHES=( 
-		"${FILESDIR}/${PN}-force-bfd.patch"
+		"${FILESDIR}/${P}-force-bfd.patch"
 		"${FILESDIR}/${PN}-generate-schema.patch" 
 	)
 	use !xvfb && PATCHES+=( "${FILESDIR}/${PN}-remove-xvfb.patch" )

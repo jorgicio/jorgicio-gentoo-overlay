@@ -1,10 +1,11 @@
---- a/wscript	2016-04-23 15:58:44.000000000 -0300
-+++ b/wscript	2016-10-09 19:27:41.572144143 -0300
-@@ -99,6 +99,7 @@
-     conf.env['PLUGINS_DIR'] = os.path.join(conf.env['LIBDIR'], APPNAME, 'plugins')
-     conf.define('PLUGINS_DATA_DIR', os.path.join(conf.env['DATADIR'], APPNAME, 'plugins'))
-     conf.define('TEST_DATA_DIR', conf.path.abspath() + '/tests/data/')
+diff -Naur a/wscript b/wscript
+--- a/wscript	2017-07-24 22:31:28.777184993 -0400
++++ b/wscript	2017-07-24 22:32:26.377186126 -0400
+@@ -119,6 +119,7 @@
+     # in any case we need to ignore warnings as C-code is generated
+     conf.env['CFLAGS'] += ['-w']
+     conf.env['VALAFLAGS'] = ['--disable-assert']
 +    conf.env['LINKFLAGS'] += ['-fuse-ld=bfd']
-       
-     # set 'default' variant
-     conf.define ('DEBUG', 0)
+ 
+     # set some debug relevant config values
+     if Options.options.debug:
