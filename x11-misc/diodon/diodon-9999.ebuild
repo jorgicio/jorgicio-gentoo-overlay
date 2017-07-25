@@ -25,7 +25,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+xvfb"
+IUSE=""
 
 DEPEND="
 	$(vala_depend)
@@ -38,7 +38,7 @@ DEPEND="
 	>=x11-libs/libXtst-1.2.0
 	dev-libs/libappindicator:3
 	>=x11-libs/gtk+-3.10.0:3
-	x11-base/xorg-server[xvfb?]
+	x11-base/xorg-server[xvfb]
 "
 RDEPEND="${DEPEND}
 	>=gnome-extra/zeitgeist-0.9.14[introspection,${PYTHON_USEDEP}]
@@ -57,7 +57,6 @@ src_prepare(){
 		"${FILESDIR}/${PN}-generate-schema.patch" 
 		"${FILESDIR}/${PN}-force-bfd.patch"
 	)
-	use !xvfb && PATCHES+=( "${FILESDIR}/${PN}-remove-xvfb.patch" )
 	eapply ${PATCHES[@]}
 	rm -rf tests/*
 	touch tests/wscript_build
