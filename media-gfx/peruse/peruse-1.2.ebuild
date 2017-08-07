@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]];then
 	EGIT_REPO_URI="git://anongit.kde.org/${PN}.git"
 else
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~x86 ~amd64 ~arm"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/${PN}"
 fi
 
@@ -30,9 +30,9 @@ DEPEND="
 	$(add_frameworks_dep extra-cmake-modules)
 	$(add_frameworks_dep kdoctools)
 	$(add_frameworks_dep kdeclarative)
-	dev-libs/kirigami:1
-	dev-qt/qtgraphicaleffects:5
-	dev-qt/qtquickcontrols:5
+	$(add_frameworks_dep kirigami)
+	$(add_qt_dep qtgraphicaleffects)
+	$(add_qt_dep qtquickcontrols)
 "
 RDEPEND="${DEPEND}"
 
