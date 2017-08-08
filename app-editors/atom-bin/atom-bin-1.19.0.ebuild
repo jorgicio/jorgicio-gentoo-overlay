@@ -54,6 +54,23 @@ QA_PRESTRIPPED="
 	usr/share/${MY_PN}/libnode.so
 	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-lfs
 	usr/share/${MY_PN}/resources/app/node_modules/symbols-view/vendor/ctags-linux
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-shell
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-show-index
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-http-backend
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-imap-send
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-credential-cache--daemon
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-remote-http
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-daemon
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-upload-pack
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-credential-cache
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-sh-i18n--envsubst
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-remote-testsvn
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-fast-import
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-credential-store
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-http-push
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/libexec/git-core/git-http-fetch
+	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/bin/git
 "
 
 
@@ -78,7 +95,7 @@ src_prepare(){
 
 src_install() {
 	pax-mark m ${MY_PN}
-	insinto ${EPREFIX}/usr/share/${MY_PN}
+	insinto ${EPREFIX} usr/share/${MY_PN}
 	doins -r .
 	doicon ${MY_PN}.png
 	insinto ${EPREFIX}/usr/share/doc/${MY_PN}
@@ -86,19 +103,19 @@ src_install() {
 	newbin ${FILESDIR}/${PN} ${MY_PN}
 	insinto ${EPREFIX}/usr/share/lintian/overrides
 	newins ${FILESDIR}/${MY_PN}-lintian ${MY_PN}
-	dosym ${EPREFIX}/usr/share/${MY_PN}/resources/app/apm/bin/apm ${EPREFIX}/usr/bin/apm
+	dosym ${EPREFIX} usr/share/${MY_PN}/resources/app/apm/bin/apm ${EPREFIX}/usr/bin/apm
 
 	# Fixes permissions
 	fperms +x /usr/bin/${MY_PN}
-	fperms +x /usr/share/${MY_PN}/${MY_PN}
-	fperms +x /usr/share/${MY_PN}/resources/app/${MY_PN}.sh
+	fperms +x  usr/share/${MY_PN}/${MY_PN}
+	fperms +x  usr/share/${MY_PN}/resources/app/${MY_PN}.sh
 	if use !system-node; then
-		fperms +x /usr/share/${MY_PN}/resources/app/apm/bin/node
-		fperms +x /usr/share/${MY_PN}/resources/app/apm/bin/npm
+		fperms +x  usr/share/${MY_PN}/resources/app/apm/bin/node
+		fperms +x  usr/share/${MY_PN}/resources/app/apm/bin/npm
 	fi
-	fperms +x /usr/share/${MY_PN}/resources/app/apm/bin/apm
-	fperms +x /usr/share/${MY_PN}/resources/app/apm/node_modules/npm/bin/node-gyp-bin/node-gyp
-	fperms +x /usr/share/${MY_PN}/resources/app/node_modules/symbols-view/vendor/ctags-linux
+	fperms +x  usr/share/${MY_PN}/resources/app/apm/bin/apm
+	fperms +x  usr/share/${MY_PN}/resources/app/apm/node_modules/npm/bin/node-gyp-bin/node-gyp
+	fperms +x  usr/share/${MY_PN}/resources/app/node_modules/symbols-view/vendor/ctags-linux
 
 	make_desktop_entry "/usr/bin/${MY_PN} %U" "${MY_PN}" "${MY_PN}" \
 		"GNOME;GTK;Utility;TextEditor;Development;" \
