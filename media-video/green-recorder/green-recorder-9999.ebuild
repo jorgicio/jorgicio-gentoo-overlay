@@ -30,9 +30,12 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/libappindicator:3
 	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
+	dev-python/configparser[${PYTHON_USEDEP}]
 	"
 RDEPEND="${DEPEND}
+	media-gfx/imagemagick
 	virtual/ffmpeg
 	sys-apps/gawk
 	x11-apps/xwininfo
+	x11-misc/xdg-utils
 	"
