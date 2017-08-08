@@ -29,6 +29,7 @@ DEPEND="${PYTHON_DEPS}
 	x11-libs/gtk+:3
 	dev-libs/libappindicator:3
 	dev-python/urllib3[${PYTHON_USEDEP}]
+	dev-python/dbus-python[${PYTHON_USEDEP}]
 	"
 RDEPEND="${DEPEND}
 	virtual/ffmpeg
