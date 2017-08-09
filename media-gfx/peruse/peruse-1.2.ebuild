@@ -30,7 +30,7 @@ DEPEND="
 	$(add_frameworks_dep extra-cmake-modules)
 	$(add_frameworks_dep kdoctools)
 	$(add_frameworks_dep kdeclarative)
-	kde-frameworks/kirigami:5
+	kde-frameworks/kirigami:1
 	$(add_qt_dep qtgraphicaleffects)
 	$(add_qt_dep qtquickcontrols)
 "
