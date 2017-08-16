@@ -29,15 +29,15 @@ src_unpack(){
 	unpack_deb "${A}"
 }
 
-src_install(){
-	insinto "/usr/$(get_libdir)/opera"
-	doins usr/lib/chromium-browser/libffmpeg.so
-}
-
 pkg_preinst(){
 	if [ -f "/usr/lib/opera/libffmpeg.so" ];then
 		mv "/usr/lib/opera/libffmpeg.so" "/usr/lib/opera/libffmpeg.so.bkp"
 	fi
+}
+
+src_install(){
+	insinto "/usr/$(get_libdir)/opera"
+	doins usr/lib/chromium-browser/libffmpeg.so
 }
 
 pkg_postrm(){
