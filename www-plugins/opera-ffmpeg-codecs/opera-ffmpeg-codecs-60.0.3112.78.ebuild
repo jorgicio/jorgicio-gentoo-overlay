@@ -39,6 +39,10 @@ pkg_postinst(){
 		mv "/usr/$(get_libdir)/opera/libffmpeg.so" "/usr/$(get_libdir)/opera/libffmpeg.so.bkp"
 	fi
 	mv "/usr/$(get_libdir)/opera/libffmpeg.so.new" "/usr/$(get_libdir)/opera/libffmpeg.so"
+	echo
+	ewarn "WARNING: Every time you upgrade Opera, we suggest to remove this package first"
+	ewarn "to avoid file conflicts."
+	echo
 }
 
 pkg_postrm(){
