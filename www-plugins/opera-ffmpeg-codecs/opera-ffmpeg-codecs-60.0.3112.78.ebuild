@@ -23,31 +23,13 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
-QA_PRESTRIPPED="usr/lib/opera/libffmpeg.so"
+QA_PRESTRIPPED="usr/lib/opera/lib_extra/libffmpeg.so"
 
 src_unpack(){
 	unpack_deb "${A}"
 }
 
 src_install(){
-	insinto "/usr/$(get_libdir)/opera"
-	newins usr/lib/chromium-browser/libffmpeg.so libffmpeg.so.new
-}
-
-pkg_postinst(){
-	if [ -f "/usr/$(get_libdir)/opera/libffmpeg.so" ];then
-		mv "/usr/$(get_libdir)/opera/libffmpeg.so" "/usr/$(get_libdir)/opera/libffmpeg.so.bkp"
-	fi
-	mv "/usr/$(get_libdir)/opera/libffmpeg.so.new" "/usr/$(get_libdir)/opera/libffmpeg.so"
-	echo
-	ewarn "WARNING: Every time you upgrade Opera, we suggest to remove this package first"
-	ewarn "to avoid file conflicts."
-	echo
-}
-
-pkg_postrm(){
-	if [ -f "/usr/$(get_libdir)/opera/libffmpeg.so.bkp" ];then
-		mv "/usr/$(get_libdir)/opera/libffmpeg.so.bkp" "/usr/$(get_libdir)/opera/libffmpeg.so"
-	fi
-
+	insinto "/usr/$(get_libdir)/opera/lib_extra"
+	doins usr/lib/chromium-browser/libffmpeg.so
 }
