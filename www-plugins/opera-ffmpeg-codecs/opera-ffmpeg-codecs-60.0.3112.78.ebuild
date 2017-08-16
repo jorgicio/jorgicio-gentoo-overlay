@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit unpacker
+inherit unpacker eutils
 
 DESCRIPTION="ffmpeg extra codecs for Opera (i.e. mp3 and h.264)"
 HOMEPAGE="http://ffmpeg.org"
@@ -29,20 +29,21 @@ src_unpack(){
 	unpack_deb "${A}"
 }
 
-pkg_preinst(){
-	if [ -f "/usr/lib/opera/libffmpeg.so" ];then
-		mv "/usr/lib/opera/libffmpeg.so" "/usr/lib/opera/libffmpeg.so.bkp"
-	fi
-}
-
 src_install(){
 	insinto "/usr/$(get_libdir)/opera"
-	doins usr/lib/chromium-browser/libffmpeg.so
+	newins usr/lib/chromium-browser/libffmpeg.so libffmpeg.so.new
+}
+
+pkg_postinst(){
+	if [ -f "/usr/$(get_libdir)/opera/libffmpeg.so" ];then
+		mv "/usr/$(get_libdir)/opera/libffmpeg.so" "/usr/$(get_libdir)/opera/libffmpeg.so.bkp"
+	fi
+	mv "/usr/$(get_libdir)/opera/libffmpeg.so.new" "/usr/$(get_libdir)/opera/libffmpeg.so"
 }
 
 pkg_postrm(){
-	if [ -f "/usr/lib/opera/libffmpeg.so.bkp" ];then
-		mv "/usr/lib/opera/libffmpeg.so.bkp" "/usr/lib/opera/libffmpeg.so"
+	if [ -f "/usr/$(get_libdir)/opera/libffmpeg.so.bkp" ];then
+		mv "/usr/$(get_libdir)/opera/libffmpeg.so.bkp" "/usr/$(get_libdir)/opera/libffmpeg.so"
 	fi
 
 }
