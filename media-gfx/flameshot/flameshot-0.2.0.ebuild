@@ -18,7 +18,7 @@ else
 	KEYWORDS="~x86 ~amd64 ~arm"
 fi
 
-LICENSE="FreeArt GPL-3 Apache-2.0"
+LICENSE="FreeArt GPL-3+ Apache-2.0"
 SLOT="0"
 IUSE=""
 
