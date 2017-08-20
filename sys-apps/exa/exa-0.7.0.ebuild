@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]];then
 	EGIT_REPO_URI="https://github.com/ogham/${PN}.git"
 else
 	SRC_URI="https://github.com/ogham/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~x86 ~arm64"
+	KEYWORDS="~x86 ~amd64"
 fi
 
 LICENSE="MIT"
