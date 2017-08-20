@@ -6,4 +6,7 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="fish-completion">Enable fish completion support</flag>
+	</use>
 </pkgmetadata>
