@@ -1,0 +1,34 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2017-08-20 19:17:36.120400975 -0300
++++ b/Makefile	2017-08-20 19:18:41.820402267 -0300
+@@ -1,5 +1,5 @@
+ DESTDIR =
+-PREFIX  = /usr/local
++PREFIX  = /usr
+ 
+ override define compdir
+ ifndef $(1)
+@@ -11,14 +11,11 @@
+ ZSHDIR  = /usr/share/zsh/vendor-completions
+ $(eval $(call compdir,FISHDIR,fish,$(PREFIX)/share/fish/vendor_completions.d))
+ 
+-FEATURES ?= default
+-
+-
+ all: target/release/exa
+ build: target/release/exa
+ 
+ target/release/exa:
+-	cargo build --release --no-default-features --features "$(FEATURES)"
++	cargo build --release
+ 
+ install: install-exa install-man
+ 
+@@ -73,7 +70,6 @@
+ 	@echo '  BASHDIR  - The directory to install bash completions in (default: $$PREFIX/etc/bash_completion.d)'
+ 	@echo '  ZSHDIR   - The directory to install zsh completions in (default: /usr/share/zsh/vendor-completions)'
+ 	@echo '  FISHDIR  - The directory to install fish completions in (default: $$PREFIX/share/fish/vendor_completions.d)'
+-	@echo '  FEATURES - The cargo feature flags to use. Set to an empty string to disable git support'
+ 
+ .PHONY: all build target/release/exa install-exa install-man preview-man \
+ 	install-bash-completions install-zsh-completions install-fish-completions \
