@@ -27,6 +27,7 @@ DEPEND="${PYTHON_DEPS}
 	system-node? ( >=net-libs/nodejs-6.0[npm] )
 	!!dev-util/atom-shell
 	!dev-util/apm
+	!dev-util/electron
 	!app-editors/atom"
 
 RDEPEND="${DEPEND}
