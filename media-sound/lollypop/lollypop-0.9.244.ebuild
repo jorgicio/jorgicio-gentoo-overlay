@@ -11,14 +11,14 @@ inherit python-r1 gnome2-utils eutils meson
 
 DESCRIPTION="Lollypop is a new GNOME music playing application"
 HOMEPAGE="http://gnumdk.github.io/lollypop"
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/gnumdk/lollypop"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gnumdk/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~x86 ~amd64 ~arm"
+	KEYWORDS="x86 amd64 ~arm"
 fi
 
 LICENSE="GPL-3"

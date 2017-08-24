@@ -10,7 +10,7 @@ inherit python-r1 eutils gnome2-utils meson
 DESCRIPTION="Advanced features for Lollypop"
 HOMEPAGE="http://gnumdk.github.io/lollypop-web"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/gnumdk/${PN}"
