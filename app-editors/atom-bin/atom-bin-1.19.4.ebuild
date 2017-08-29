@@ -108,6 +108,7 @@ src_install() {
 	# Fixes permissions
 	fperms +x /usr/bin/${MY_PN}
 	fperms +x /usr/share/${MY_PN}/${MY_PN}
+	fperms +x /usr/share/${MY_PN}/libnode.so
 	fperms +x /usr/share/${MY_PN}/resources/app/${MY_PN}.sh
 	if use !system-node; then
 		fperms +x /usr/share/${MY_PN}/resources/app/apm/bin/node
@@ -116,10 +117,11 @@ src_install() {
 	fperms +x /usr/share/${MY_PN}/resources/app/apm/bin/apm
 	fperms +x /usr/share/${MY_PN}/resources/app/apm/node_modules/npm/bin/node-gyp-bin/node-gyp
 	fperms +x /usr/share/${MY_PN}/resources/app/node_modules/symbols-view/vendor/ctags-linux
+	fperms +x /usr/share/${MY_PN}/resources/app/apm/bin/python-interceptor.sh
 
 	make_desktop_entry "/usr/bin/${MY_PN} %U" "${MY_PN}" "${MY_PN}" \
 		"GNOME;GTK;Utility;TextEditor;Development;" \
-		"GenericName=Text Editor\nMimeType=text/plain;\nStartupNotify=true\nStartupWMClass=${MY_PN}"
+		"GenericName=Text Editor\nMimeType=text/plain;\nStartupNotify=true\nStartupWMClass=${MY_PN^}"
 }
 
 pkg_preinst(){
