@@ -8,7 +8,7 @@ inherit eutils bash-completion-r1
 DESCRIPTION="A modern replacement for ls written in Rust"
 HOMEPAGE="https://the.exa.website"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS=""
@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="zsh-completion fish-completion"
+IUSE="bash-completion zsh-completion fish-completion"
 
 DEPEND="
 	>=virtual/rust-1.17.0
@@ -44,7 +44,7 @@ src_prepare(){
 src_install(){
 	emake DESTDIR="${D}" install
 	
-	newbashcomp contrib/completions.bash "${PN}"
+	use bash-completion && newbashcomp contrib/completions.bash "${PN}"
 	
 	if use zsh-completion;then
 		insinto /usr/share/zsh/site-functions
