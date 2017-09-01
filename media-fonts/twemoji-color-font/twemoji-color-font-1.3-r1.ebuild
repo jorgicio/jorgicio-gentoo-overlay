@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils font
+inherit font
 
 DESCRIPTION="A color and B&W emoji SVG-in-OpenType font with support for ZWJ, skin tone modifiers and country flags."
 HOMEPAGE="https://github.com/eosrei/twemoji-color-font"
@@ -28,7 +28,7 @@ S="${WORKDIR}/TwitterColorEmoji-SVGinOT-Linux-${PV//_/-}"
 FONT_S="${S}"
 
 src_prepare(){
-	epatch "${FILESDIR}/${PN}-fix-match.patch"
+	eapply "${FILESDIR}/${PN}-fix-match.patch"
 	default
 }
 

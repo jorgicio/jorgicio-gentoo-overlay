@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils font
+inherit font
 
 DESCRIPTION="A color and B&W emoji SVG-in-OpenType font"
 HOMEPAGE="https://github.com/eosrei/emojione-color-font"
@@ -28,7 +28,7 @@ S="${WORKDIR}/EmojiOneColor-SVGinOT-Linux-${PV//_/-}"
 FONT_S="${S}"
 
 src_prepare(){
-	epatch "${FILESDIR}/${PN}-match-fix.patch"
+	eapply "${FILESDIR}/${PN}-match-fix.patch"
 	default
 }
 
