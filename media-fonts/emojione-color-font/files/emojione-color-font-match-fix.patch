@@ -1,0 +1,130 @@
+diff -Naur a/fontconfig/56-emojione-color.conf b/fontconfig/56-emojione-color.conf
+--- a/fontconfig/56-emojione-color.conf	2017-09-01 00:43:09.731562311 -0300
++++ b/fontconfig/56-emojione-color.conf	2017-09-01 00:46:17.341566002 -0300
+@@ -26,104 +26,28 @@
+ fc-match -s monospace
+ -->
+ <fontconfig>
+-  <match target="font">
+-    <!-- If the requested font is Bitstream Vera Serif -->
+-    <test name="family" compare="eq">
+-        <string>Bitstream Vera Serif</string>
+-    </test>
+-    <!-- Replace the entire match list with Bitstream Vera Serif alone -->
+-    <edit name="family" mode="assign_replace">
+-      <string>Bitstream Vera Serif</string>
+-    </edit>
+-    <!-- Assign the serif family -->
+-    <edit name="family" mode="append_last">
+-      <string>serif</string>
+-    </edit>
+-  </match>
+-
+-  <match>
+-    <!-- If the requested font is serif -->
+-    <test qual="any" name="family">
+-        <string>serif</string>
+-    </test>
+-    <!-- Make Bitstream Vera Serif the first result -->
+-    <edit name="family" mode="prepend_first">
+-      <string>Bitstream Vera Serif</string>
+-    </edit>
+-    <!-- Followed by EmojiOne Color -->
+-    <edit name="family" mode="prepend_first">
+-      <string>EmojiOne Color</string>
+-    </edit>
+-  </match>
+-
+-  <match target="font">
+-    <!-- If the requested font is Bitstream Vera Sans -->
+-    <test name="family" compare="eq">
+-        <string>Bitstream Vera Sans</string>
+-    </test>
+-    <!-- Replace the entire match list with Bitstream Vera Sans alone -->
+-    <edit name="family" mode="assign_replace">
+-      <string>Bitstream Vera Sans</string>
+-    </edit>
+-    <!-- Assign the sans-serif family -->
+-    <edit name="family" mode="append_last">
+-      <string>sans-serif</string>
+-    </edit>
+-  </match>
+-
+-  <match target="pattern">
+-    <!-- If the requested font is sans-serif -->
+-    <test qual="any" name="family">
+-        <string>sans-serif</string>
+-    </test>
+-    <!-- Make Bitstream Vera Sans the first result -->
+-    <edit name="family" mode="prepend_first">
+-      <string>Bitstream Vera Sans</string>
+-    </edit>
+-    <!-- Followed by EmojiOne Color -->
+-    <edit name="family" mode="prepend_first">
+-      <string>EmojiOne Color</string>
+-    </edit>
+-  </match>
+-
+-  <match target="font">
+-    <!-- If the requested font is Bitstream Vera Sans Mono -->
+-    <test name="family" compare="eq">
+-        <string>Bitstream Vera Sans Mono</string>
+-    </test>
+-    <!-- Replace the entire match list with Bitstream Vera Sans Mono alone -->
+-    <edit name="family" mode="assign_replace">
+-      <string>Bitstream Vera Sans Mono</string>
+-    </edit>
+-    <!-- Assign the monospace family last -->
+-    <edit name="family" mode="append_last">
+-      <string>monospace</string>
+-    </edit>
+-  </match>
+-
+-  <match target="pattern">
+-    <!-- If the requested font is monospace -->
+-    <test qual="any" name="family">
+-        <string>monospace</string>
+-    </test>
+-    <!--
+-    Make Bitstream Vera Sans Mono the first result
+-    Note: If you want a different monospace font, this is where you change it.
+-    -->
+-    <edit name="family" mode="prepend_first">
+-      <string>Bitstream Vera Sans Mono</string>
+-    </edit>
+-    <!-- Followed by EmojiOne Color -->
+-    <edit name="family" mode="prepend_first">
+-      <string>EmojiOne Color</string>
+-    </edit>
+-  </match>
+-
+-  <!-- Add emoji generic family -->
+-  <alias binding="strong">
+-    <family>emoji</family>
+-    <default><family>EmojiOne Color</family></default>
+-  </alias>
++    <alias>
++        <family>sans-serif</family>
++        <prefer>
++            <family>EmojiOne Color</family>
++            <family>Bitstream Vera Sans</family>
++        </prefer>
++    </alias>
++    <alias>
++        <family>serif</family>
++        <prefer>
++            <family>EmojiOne Color</family>
++            <family>Bitstream Vera Serif</family>
++        </prefer>
++    </alias>
++
++    <alias>
++        <family>monospace</family>
++        <prefer>
++            <family>EmojiOne Color</family>
++            <family>Bitstream Vera Sans Mono</family>
++        </prefer>
++    </alias>
+ 
+   <!-- Alias requests for the other emoji fonts -->
+   <alias binding="strong">
