@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit vala cmake-utils python-any-r1 gnome2
 
 DESCRIPTION="A simple ebook reader originally intended for Elementary OS"
-HOMEPAGE="http://babluboy.github.io/bookworm"
+HOMEPAGE="https://babluboy.github.io/bookworm/"
 
 if [[ ${PV} == *9999* ]];then
 	inherit git-r3
