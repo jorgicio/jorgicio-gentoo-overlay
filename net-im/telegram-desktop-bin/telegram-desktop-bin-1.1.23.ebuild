@@ -36,11 +36,11 @@ src_install() {
 	local icon_size
 	for icon_size in 16 32 48 64 128 256 512; do
 		newicon -s "${icon_size}" \
-			"${WORKDIR}/tdesktop-${PV}/Telegram/Resources/art/icon${icon_size}.png" \
+			"${WORKDIR}/tdesktop-${PV//23/22}/Telegram/Resources/art/icon${icon_size}.png" \
 			telegram-desktop.png
 	done
 
-	newmenu "${WORKDIR}/tdesktop-${PV}"/lib/xdg/telegramdesktop.desktop telegram-desktop.desktop
+	newmenu "${WORKDIR}/tdesktop-${PV//23/22}"/lib/xdg/telegramdesktop.desktop telegram-desktop.desktop
 }
 
 pkg_preinst() {
