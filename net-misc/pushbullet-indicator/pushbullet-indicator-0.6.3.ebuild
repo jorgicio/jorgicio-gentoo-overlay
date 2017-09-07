@@ -39,7 +39,9 @@ src_prepare(){
 	eapply_user
 }
 
-PYTHON2_BIN="$(which python2)"
+pkg_setup(){
+	PYTHON2_BIN=python2
+}
 
 distutils-r1_python_compile(){
 	${PYTHON2_BIN} setup.py build || die "No binary python2 or some missing dependency found"
