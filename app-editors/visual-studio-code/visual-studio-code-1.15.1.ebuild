@@ -34,11 +34,11 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 "
 
-ARCH=$(getconf LONG_BIT)
-
-[[ ${ARCH} == "64" ]] && S="${WORKDIR}/VSCode-linux-x64" || S="${WORKDIR}/VSCode-linux-ia32"
-
 QA_PRESTRIPPED="opt/${PN}/code"
+
+pkg_setup(){
+	use amd64 && S="${WORKDIR}/VSCode-linux-x64" || S="${WORKDIR}/VSCode-linux-ia32"
+}
 
 src_install(){
 	pax-mark m code

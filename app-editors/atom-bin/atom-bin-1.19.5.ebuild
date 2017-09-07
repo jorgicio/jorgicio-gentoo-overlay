@@ -73,13 +73,9 @@ QA_PRESTRIPPED="
 	usr/share/${MY_PN}/resources/app/node_modules/dugite/git/bin/git
 "
 
-
-ARCH=$(getconf LONG_BIT)
-
-[[ ${ARCH} == "64" ]] && S="${WORKDIR}/${MY_PN}-${PV}-amd64"
-
 pkg_setup() {
 	python-any-r1_pkg_setup
+	use amd64 && S="${WORKDIR}/${MY_PN}-${PV}-amd64" || die "Arch not supported"
 }
 
 src_prepare(){
