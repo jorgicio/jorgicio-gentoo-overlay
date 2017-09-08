@@ -9,13 +9,13 @@ inherit eutils user
 DESCRIPTION="Tracking software for asset recovery, now Node.js-powered"
 HOMEPAGE="http://preyproject.com"
 
-if [[ ${PV} == *9999* ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}-node-client"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}/${PN}-node-client/releases/download/v${PV}/${P}.zip"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3"
@@ -47,11 +47,12 @@ src_install(){
 }
 
 pkg_postinst(){
-	prey config hooks post_install
+	prey config hooks post_install >/dev/null
 	gpasswd -a prey video >/dev/null
 	if [ -f ${EROOT}/etc/init.d/prey-agent ];then
 		rm -v ${EROOT}/etc/init.d/prey-agent
-		install -m755 ${FILESDIR}/prey-agent-9999 ${EROOT}/etc/init.d/prey-agent
+		#install -m755 ${FILESDIR}/prey-agent-9999 ${EROOT}/etc/init.d/prey-agent
+		doinitd "${FILESDIR}/prey-agent"
 	fi
 	elog "Don't forget add your user to the group prey (as root):"
 	elog "gpasswd -a username prey"

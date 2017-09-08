@@ -47,11 +47,12 @@ src_install(){
 }
 
 pkg_postinst(){
-	prey config hooks post_install
+	prey config hooks post_install >/dev/null
 	gpasswd -a prey video >/dev/null
 	if [ -f ${EROOT}/etc/init.d/prey-agent ];then
 		rm -v ${EROOT}/etc/init.d/prey-agent
-		install -m755 ${FILESDIR}/prey-agent-9999 ${EROOT}/etc/init.d/prey-agent
+		#install -m755 ${FILESDIR}/prey-agent-9999 ${EROOT}/etc/init.d/prey-agent
+		doinitd "${FILESDIR}/prey-agent"
 	fi
 	elog "Don't forget add your user to the group prey (as root):"
 	elog "gpasswd -a username prey"
