@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 		dev-libs/libappindicator:2
 	)"
 
-src_prepare(){
-	eapply "${FILESDIR}/${PN}-caja-extension.patch"
-	eapply_user
-}
+#src_prepare(){
+#	eapply "${FILESDIR}/${PN}-caja-extension.patch"
+#	eapply_user
+#}
