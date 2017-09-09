@@ -37,3 +37,8 @@ RDEPEND="${DEPEND}
 		x11-libs/gtk+:2
 		dev-libs/libappindicator:2
 	)"
+
+src_prepare(){
+	eapply "${FILESDIR}/${PN}-caja-extension.patch"
+	eapply_user
+}
