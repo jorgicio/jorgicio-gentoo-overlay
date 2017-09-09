@@ -10,7 +10,7 @@ inherit cmake-utils eutils
 
 DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="http://nitroshare.net"
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
 	KEYWORDS=""
@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 		dev-libs/libappindicator:2
 	)"
 
-#src_prepare(){
-#	eapply "${FILESDIR}/${PN}-caja-extension.patch"
-#	eapply_user
-#}
+src_prepare(){
+	eapply "${FILESDIR}/${PN}-caja-extension.patch"
+	eapply_user
+}
