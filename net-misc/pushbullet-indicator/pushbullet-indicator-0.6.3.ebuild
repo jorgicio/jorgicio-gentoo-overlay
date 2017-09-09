@@ -38,16 +38,12 @@ src_prepare(){
 	eapply_user
 }
 
-pkg_setup(){
-	PYTHON2_BIN=python2
+src_compile(){
+	python2 setup.py build || die "No binary python2 or some missing dependency found"
 }
 
-distutils-r1_python_compile(){
-	${PYTHON2_BIN} setup.py build || die "No binary python2 or some missing dependency found"
-}
-
-distutils-r1_python_install(){
-	${PYTHON2_BIN} setup.py install --root="${D}" --optimize=1 || die "No binary python2 or some missing dependency found"
+src_install(){
+	python2 setup.py install --root="${D}" --optimize=1 || die "No binary python2 or some missing dependency found"
 	insinto /usr/share/licenses/${PN}/LICENSE
 	doins LICENSE
 	insinto /usr/share/locale
