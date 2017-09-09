@@ -25,8 +25,9 @@ DEPEND="${PYTHON_DEPS}
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/ws4py[${PYTHON_USEDEP}]
 	dev-python/pushbullet-commons
-	dev-python/python-distutils-extra[${PYTHON_USEDEP}]
-	dev-python/polib[${PYTHON_USEDEP}]
+	dev-python/python-distutils-extra
+	dev-python/polib
+	net-libs/webkit-gtk:3[introspection]
 "
 RDEPEND="${DEPEND}
 	x11-misc/shared-mime-info"
