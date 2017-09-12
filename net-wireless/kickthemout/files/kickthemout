@@ -1,0 +1,5 @@
+#!/bin/bash
+BIN="kickthemout"
+DIR="/usr/share/${BIN}"
+cd "${DIR}"
+python2 "${BIN}"
