@@ -7,12 +7,11 @@ MULTILIB_COMPAT=( abi_x86_64 )
 
 inherit gstreamer
 
-DESCRIPTION="Ladspa elements for Gstreamer"
-KEYWORDS="amd64 x86"
+DESCRIPTION="LV2 elements for Gstreamer"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	media-libs/ladspa-sdk
-	<media-libs/gstreamer-1.12:1.0
+	media-libs/lv2
 "
 DEPEND="${RDEPEND}"
