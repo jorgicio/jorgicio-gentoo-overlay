@@ -24,14 +24,15 @@ RDEPEND="${PYTHON_DEPS}
 	x11-libs/gtk+:3
 	x11-libs/libnotify
 	media-plugins/gst-plugins-libav
+	media-plugins/gst-plugins-good:1.0
+	media-plugins/gst-plugins-bad:1.0
+	media-plugins/gst-plugins-ugly:1.0
 	media-plugins/gst-plugins-faac:1.0
 	media-plugins/gst-plugins-faad:1.0
 	media-plugins/gst-plugins-flac:1.0
 	media-plugins/gst-plugins-lame:1.0
 	media-plugins/gst-plugins-mad:1.0
 	media-plugins/gst-plugins-taglib:1.0
-	media-plugins/gst-plugins-ogg:1.0
-	media-plugins/gst-plugins-vorbis:1.0
 	media-plugins/gst-plugins-opus:1.0
 "
 DEPEND="${RDEPEND}
