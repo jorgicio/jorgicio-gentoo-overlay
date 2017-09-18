@@ -24,9 +24,9 @@ RDEPEND="${PYTHON_DEPS}
 	x11-libs/gtk+:3
 	x11-libs/libnotify
 	media-plugins/gst-plugins-libav
-	media-plugins/gst-plugins-good:1.0
-	media-plugins/gst-plugins-bad:1.0
-	media-plugins/gst-plugins-ugly:1.0
+	media-libs/gst-plugins-good:1.0
+	media-libs/gst-plugins-bad:1.0
+	media-libs/gst-plugins-ugly:1.0
 	media-plugins/gst-plugins-faac:1.0
 	media-plugins/gst-plugins-faad:1.0
 	media-plugins/gst-plugins-flac:1.0
