@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="aac flac mp3 opus vorbis"
+IUSE=""
 
 RDEPEND="${PYTHON_DEPS}
 	gnome-base/gconf:2
