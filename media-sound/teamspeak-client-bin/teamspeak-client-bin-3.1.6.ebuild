@@ -61,6 +61,7 @@ src_prepare() {
 
 	# Rename the tsclient to its shorter version, required by the teamspeak3 script we install.
 	mv ts3client_linux_* ts3client || die "Couldn't rename ts3client to its shorter version."
+	default
 }
 
 src_install() {
