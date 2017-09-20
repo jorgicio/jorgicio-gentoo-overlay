@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit distutils-r1 gnome2-utils eutils
+inherit gnome2-utils meson python-r1
 
 DESCRIPTION="Limiter, compressor, reverberation, equalizer and auto volume effects for Pulseaudio applications"
 HOMEPAGE="https://github.com/wwmm/pulseeffects"
@@ -43,12 +43,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	media-sound/pulseaudio[equalizer]
 "
-
-src_install(){
-	distutils-r1_src_install
-	insinto ${EPREFIX}/usr/
-	doins -r share
-}
 
 pkg_preinst(){
 	gnome2_schemas_savelist
