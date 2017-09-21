@@ -10,18 +10,12 @@ inherit eutils multilib qmake-utils autotools python-r1
 
 DESCRIPTION="A Qt-based program for syncing your MEGA account in your PC. This is the official app."
 HOMEPAGE="http://mega.co.nz"
-if [[ ${PV} == *9999* ]];then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/meganz/MEGAsync"
-	KEYWORDS=""
-else
-	SDK_VERSION="3.1.0"
-	SRC_URI="https://github.com/meganz/MEGAsync/archive/v${PV}_Linux.tar.gz -> ${P}.tar.gz
-	https://github.com/meganz/sdk/archive/V${SDK_VERSION}.tar.gz -> ${PN}-sdk-${SDK_VERSION}.tar.gz"
-	KEYWORDS="~x86 ~amd64"
-	RESTRICT="mirror"
-	S="${WORKDIR}/MEGAsync-${PV}_Linux"
-fi
+
+SDK_VERSION="3.2.3"
+SRC_URI="https://github.com/meganz/MEGAsync/archive/v${PV}_Linux.tar.gz -> ${P}.tar.gz
+	https://github.com/meganz/sdk/archive/v${SDK_VERSION}.tar.gz -> ${PN}-sdk-${SDK_VERSION}.tar.gz"
+KEYWORDS="~x86 ~amd64"
+S="${WORKDIR}/MEGAsync-${PV}_Linux"
 
 LICENSE="MEGA BSD-2"
 SLOT="0"
@@ -67,14 +61,12 @@ RDEPEND="${DEPEND}
 		php? ( dev-lang/php )
 		"
 
-if [[ ${PV} != *9999* ]];then
-	src_prepare(){
-		cp -r ../sdk-${SDK_VERSION}/* src/MEGASync/mega
-		cd "${S}"/src/MEGASync/mega
-		eapply_user
-		eautoreconf
-	}
-fi
+src_prepare(){
+	cp -r ../sdk-${SDK_VERSION}/* src/MEGASync/mega
+	cd "${S}"/src/MEGASync/mega
+	eautoreconf
+	default
+}
 
 src_configure(){
 	cd "${S}"/src/MEGASync/mega
