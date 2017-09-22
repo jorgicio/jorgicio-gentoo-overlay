@@ -11,10 +11,13 @@ inherit eutils multilib qmake-utils autotools python-r1
 DESCRIPTION="A Qt-based program for syncing your MEGA account in your PC. This is the official app."
 HOMEPAGE="http://mega.co.nz"
 
-SDK_VERSION="3.2.3"
-SRC_URI="https://github.com/meganz/MEGAsync/archive/v${PV}_Linux.tar.gz -> ${P}.tar.gz
-	https://github.com/meganz/sdk/archive/v${SDK_VERSION}.tar.gz -> ${PN}-sdk-${SDK_VERSION}.tar.gz"
+SDK_COMMIT="0065d126734f83a4e7760e5dd5c17c04a961a25a"
+SRC_URI="
+	https://github.com/meganz/MEGAsync/archive/v${PV}_Linux.tar.gz -> ${P}.tar.gz
+	https://github.com/meganz/sdk/archive/${SDK_COMMIT}.tar.gz -> megasync-sdk-20170619.tar.gz
+"
 KEYWORDS="~x86 ~amd64"
+
 S="${WORKDIR}/MEGAsync-${PV}_Linux"
 
 LICENSE="MEGA BSD-2"
@@ -22,7 +25,7 @@ SLOT="0"
 IUSE="+cryptopp +sqlite +zlib +curl freeimage readline examples threads qt5 nautilus python2 python3 php java chat +libsodium"
 
 DEPEND="
-	!qt5? ( 
+	!qt5? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
 		dev-qt/qtdbus:4
@@ -62,7 +65,7 @@ RDEPEND="${DEPEND}
 		"
 
 src_prepare(){
-	cp -r ../sdk-${SDK_VERSION}/* src/MEGASync/mega
+	cp -r ../sdk-${SDK_COMMIT}/* src/MEGASync/mega
 	cd "${S}"/src/MEGASync/mega
 	eautoreconf
 	default
