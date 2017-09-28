@@ -11,7 +11,7 @@ inherit eutils python-r1 fdo-mime gnome2-utils
 DESCRIPTION="A multitrack non-linear video editor"
 HOMEPAGE="https://github.com/jliljebl/flowblade"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
