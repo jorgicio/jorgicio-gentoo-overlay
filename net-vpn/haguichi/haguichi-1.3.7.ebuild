@@ -15,7 +15,7 @@ DESCRIPTION="Provides a user friendly GTK+-3 GUI to control the Hamachi client o
 HOMEPAGE="https://www.haguichi.net"
 SRC_URI="http://launchpad.net/${PN}/${MY_BRANCH}/${PV}/+download/${P}.tar.xz"
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~arm"
 IUSE=""
