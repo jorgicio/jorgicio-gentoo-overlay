@@ -69,7 +69,7 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	openssl? ( dev-libs/openssl )
 	pcre? ( dev-libs/libpcre )
 	pdf? ( app-text/poppler )
-	postgres? ( virtual/postgresql-base )
+	postgres? ( dev-db/postgresql)
 	qt4? ( dev-qt/qtcore:4[qt3support]
 		dev-qt/qtgui:4[qt3support]
 		dev-qt/qtsvg:4 )
