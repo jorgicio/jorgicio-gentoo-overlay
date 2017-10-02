@@ -12,7 +12,6 @@ DESCRIPTION="Gambas is a free development environment based on a Basic interpret
 HOMEPAGE="http://gambas.sourceforge.net"
 
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}.tar.bz2"
-RESTRICT="mirror"
 
 LICENSE="GPL-2"
 KEYWORDS="~*"
@@ -108,7 +107,7 @@ autocrap_cleanup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-3.9.x-xdgutils.patch"
+	eapply "${FILESDIR}/${PN}-3.9.x-xdgutils.patch"
 	# deprecated
 	autocrap_cleanup sqlite2
 
