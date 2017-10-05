@@ -38,7 +38,7 @@ DEPEND="
 	dev-util/intltool
 	app-crypt/libsecret
 	gnome-base/gnome-common
-	media-sound/${PN}-portal
+	media-libs/${PN}-portal
 "
 RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
