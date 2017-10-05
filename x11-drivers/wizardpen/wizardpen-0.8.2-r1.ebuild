@@ -34,7 +34,7 @@ src_install() {
 
 pkg_postinst(){
 	echo
-	einfo "One you have installed this package, don't forget to"
+	einfo "Once you have installed this package, don't forget to"
 	einfo "run the wizardpen-calibrate tool in order to"
 	einfo "calibrate the device."
 	echo
