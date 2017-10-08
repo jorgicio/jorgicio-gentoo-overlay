@@ -7,7 +7,7 @@ EAPI=6
 DESCRIPTION="Official icon theme from the Numix project."
 HOMEPAGE="https://numixproject.org"
 
-if [[ ${PV} == *99999999* ]] ; then
+if [[ ${PV} == *99999999 ]] ; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/numixproject/${PN}.git"
@@ -15,7 +15,7 @@ if [[ ${PV} == *99999999* ]] ; then
 else
 	MY_PV="${PV:2:2}-${PV:4:2}-${PV:6:2}"
 	SRC_URI="https://github.com/numixproject/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86 arm"
+	KEYWORDS="~amd64 ~x86 ~arm"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
