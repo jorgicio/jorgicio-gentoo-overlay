@@ -1,25 +1,25 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
 
 EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_REQ_USE="sqlite"
 
-inherit python-r1 eutils gnome2-utils meson
+inherit python-r1 gnome2-utils eutils meson
 
-DESCRIPTION="Advanced features for Lollypop"
-HOMEPAGE="http://gnumdk.github.io/lollypop-web"
-
+DESCRIPTION="Lollypop is a new GNOME music playing application"
+HOMEPAGE="http://gnumdk.github.io/lollypop"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/gnumdk/${PN}"
+	EGIT_REPO_URI="https://github.com/gnumdk/lollypop"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/gnumdk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/gnumdk/${PN}/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~x86 ~amd64 ~arm"
 fi
-
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -31,15 +31,18 @@ DEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=dev-libs/gobject-introspection-1.35.9[cairo]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
+	dev-python/pycairo
+	dev-python/dbus-python
+	dev-libs/totem-pl-parser
+	dev-util/itstool
+	dev-util/intltool
+	app-crypt/libsecret
+	gnome-base/gnome-common
+	media-libs/${PN}-portal
 "
-RDEPEND="${DEPEND}"
-
-src_prepare(){
-	PATCHES=(
-		"${FILESDIR}/${PN}-fix-python-search.patch"
-	)
-	default
-}
+RDEPEND="${DEPEND}
+	dev-util/desktop-file-utils
+	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]"
 
 pkg_preinst(){
 	gnome2_schemas_savelist
