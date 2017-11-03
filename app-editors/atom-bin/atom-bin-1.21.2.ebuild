@@ -14,7 +14,7 @@ SRC_URI="
 	amd64? ( https://github.com/${MY_PN}/${MY_PN}/releases/download/v${PV}/${MY_PN}-amd64.tar.gz -> ${MY_PN}-${PV}-amd64.tar.gz )
 "
 
-RESTRICT="mirror"
+RESTRICT="mirror strip bindist"
 
 KEYWORDS="~amd64"
 SLOT="0"
@@ -75,6 +75,16 @@ QA_PRESTRIPPED="
 	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-http-push
 	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-http-fetch
 	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/bin/git
+"
+QA_PREBUILT="
+	usr/share/${MY_PN}/${MY_PN}
+	usr/share/${MY_PN}/chromedriver/chromedriver
+	usr/share/${MY_PN}/libffmpegsumo.so
+	usr/share/${MY_PN}/libnotify.so.4
+	usr/share/${MY_PN}/libchromiumcontent.so
+	usr/share/${MY_PN}/libgcrypt.so.11
+	usr/share/${MY_PN}/libffmpeg.so
+	usr/share/${MY_PN}/libnode.so
 "
 
 pkg_setup() {

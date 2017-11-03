@@ -16,9 +16,14 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-RESTRICT="mirror strip"
+RESTRICT="mirror strip bindist"
 
-QA_PRESTRIPPED="/opt/Signal/${MY_PN}"
+QA_PRESTRIPPED="opt/Signal/${MY_PN}"
+QA_PREBUILT="
+	opt/Signal/${MY_PN}
+	opt/Signal/libnode.so
+	opt/Signal/libffmpeg.so
+"
 
 RDEPEND="
 	x11-libs/gtk+:2
@@ -32,11 +37,7 @@ RDEPEND="
 	!net-im/signal-desktop
 "
 DEPEND="${RDEPEND}"
-
-
-pkg_setup(){
-	use amd64 && S="${WORKDIR}" || die "Arch not allowed"
-}
+S="${WORKDIR}"
 
 src_unpack(){
 	unpack_deb "${A}"
