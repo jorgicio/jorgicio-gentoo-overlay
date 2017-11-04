@@ -12,7 +12,7 @@ SRC_URI="
 	x86? ( ${BASE_URI}/linux-ia32/stable ->  ${P}-x86.tar.gz )
 	amd64? ( ${BASE_URI}/linux-x64/stable -> ${P}-amd64.tar.gz )
 	"
-RESTRICT="mirror strip"
+RESTRICT="mirror strip bindist"
 
 LICENSE="EULA MIT"
 SLOT="0"
@@ -36,6 +36,7 @@ RDEPEND="
 "
 
 QA_PRESTRIPPED="opt/${PN}/code"
+QA_PREBUILT="opt/${PN}/code"
 
 pkg_setup(){
 	use amd64 && S="${WORKDIR}/VSCode-linux-x64" || S="${WORKDIR}/VSCode-linux-ia32"
