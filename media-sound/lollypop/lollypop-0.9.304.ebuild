@@ -18,7 +18,7 @@ if [[ ${PV} == *9999 ]];then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gnumdk/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~x86 ~amd64 ~arm"
+	KEYWORDS="x86 amd64 ~arm"
 fi
 
 LICENSE="GPL-3"
