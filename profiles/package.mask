@@ -1,0 +1,2 @@
+# It depends on LLVM/Clang from 4.0 onwards
+=www-client/firefox-57.0
