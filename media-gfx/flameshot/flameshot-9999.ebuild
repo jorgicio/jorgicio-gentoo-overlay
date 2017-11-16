@@ -23,8 +23,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
+	>=dev-qt/qtcore-5.3.0:5
+	>=dev-qt/qtdbus-5.3.0:5
 "
 RDEPEND="${DEPEND}"
 
