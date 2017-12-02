@@ -4,14 +4,14 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5,6} )
 
 inherit distutils-r1
 
 DESCRIPTION="A very simple cli-based solution with short-term time managment"
 HOMEPAGE="https://github.com/liviu-/ding"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
