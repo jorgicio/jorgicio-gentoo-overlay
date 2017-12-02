@@ -1,0 +1,11 @@
+--- caffeine-screensaver	2015-01-16 20:45:37.000000000 +0300
++++ caffeine-screensaver-patched	2016-03-19 12:57:30.000000000 +0300
+@@ -417,7 +417,7 @@
+ 
+   case "$DE" in
+     kde)
+-      if [ x"$KDE_SESSION_VERSION" = x"4" ]; then
++      if [ -n "${KDE_SESSION_VERSION}" ]; then
+           screensaver_freedesktop "$1" "/ScreenSaver"
+       else
+           screensaver_kde "$1"

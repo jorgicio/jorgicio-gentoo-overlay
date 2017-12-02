@@ -1,0 +1,29 @@
+--- caffeinate	2016-11-04 23:45:02.000000000 +0300
++++ caffeinate-patched	2016-11-19 10:58:11.000000000 +0300
+@@ -18,7 +18,7 @@
+ import sys
+ import argparse
+ import signal
+-from subprocess import run
++from subprocess import call
+ 
+ import pkg_resources
+ from Xlib import display
+@@ -54,14 +54,14 @@
+     sys.exit(1)
+ 
+ def release():
+-    if run(['xdg-screensaver', 'resume', wid]).returncode != 0:
++    if call(['xdg-screensaver', 'resume', wid]) != 0:
+         die("could not uninhibit desktop idleness")
+ 
+ for sig in [signal.SIGINT, signal.SIGTERM, signal.SIGHUP]:
+     signal.signal(sig, signal_action)
+ 
+ # Run command, bracketed by xdg-screensaver suspend/resume
+-if run(['xdg-screensaver', 'suspend', wid]).returncode != 0:
++if call(['xdg-screensaver', 'suspend', wid]) != 0:
+     die("could not inhibit desktop idleness")
+-run([args.COMMAND] + args.ARGUMENT)
++call([args.COMMAND] + args.ARGUMENT)
+ release()
