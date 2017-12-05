@@ -13,14 +13,14 @@ inherit waf-utils vala python-single-r1 eutils gnome2-utils
 DESCRIPTION="GTK+ clipboard manager"
 HOMEPAGE="https://launchpad.net/diodon"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit bzr
 	EBZR_REPO_URI="https://code.launchpad.net/${PN}"
 	SRC_URI=""
 	KEYWORDS=""
 else
 	SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~arm"
+	KEYWORDS="amd64 x86 ~arm"
 fi
 
 LICENSE="GPL-2"
