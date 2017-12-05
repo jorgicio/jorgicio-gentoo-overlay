@@ -8,7 +8,7 @@ VALA_MIN_API_VERSION="0.26"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit waf-utils vala python-single-r1 eutils gnome2-utils
+inherit waf-utils vala python-single-r1 eutils gnome2-utils xdg
 
 DESCRIPTION="GTK+ clipboard manager"
 HOMEPAGE="https://launchpad.net/diodon"
@@ -77,9 +77,11 @@ pkg_preinst(){
 pkg_postinst(){
 	gnome2_gconf_install
 	gnome2_schemas_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm(){
 	gnome2_gconf_uninstall
 	gnome2_schemas_update
+	xdg_desktop_database_update
 }
