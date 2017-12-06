@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}/${PN}-node-client/releases/download/v${PV}/${P}.zip"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3"
