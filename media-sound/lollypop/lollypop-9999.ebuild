@@ -14,7 +14,7 @@ HOMEPAGE="http://gnumdk.github.io/lollypop"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/gnumdk/lollypop"
+	EGIT_REPO_URI="https://gitlab.gnome.org/gnumdk/lollypop"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gnumdk/${PN}/releases/download/${PV}/${P}.tar.xz"
