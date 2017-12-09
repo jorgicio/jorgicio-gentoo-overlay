@@ -5,4 +5,4 @@
 >=app-laptop/prey-1.3.0
 
 # To support the google-musicmanager package
-dev-qt/webkit::jorgicio
+=dev-qt/webkit-4.8.7
