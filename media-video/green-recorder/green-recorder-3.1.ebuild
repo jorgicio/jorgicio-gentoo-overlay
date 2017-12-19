@@ -29,10 +29,10 @@ DEPEND="${PYTHON_DEPS}
 	x11-libs/gtk+:3
 	dev-libs/libappindicator:3
 	dev-python/urllib3[${PYTHON_USEDEP}]
-	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/configparser[${PYTHON_USEDEP}]
 	"
 RDEPEND="${DEPEND}
+	dev-python/pydbus[${PYTHON_USEDEP}]
 	media-gfx/imagemagick
 	virtual/ffmpeg
 	sys-apps/gawk
