@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A simple yet functional desktop recorder for Linux systems"
 HOMEPAGE="http://github.com/green-project/green-recorder"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""

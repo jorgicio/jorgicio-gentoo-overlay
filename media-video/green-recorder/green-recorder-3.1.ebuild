@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A simple yet functional desktop recorder for Linux systems"
 HOMEPAGE="http://github.com/green-project/green-recorder"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
@@ -29,9 +29,13 @@ DEPEND="${PYTHON_DEPS}
 	x11-libs/gtk+:3
 	dev-libs/libappindicator:3
 	dev-python/urllib3[${PYTHON_USEDEP}]
+	dev-python/dbus-python[${PYTHON_USEDEP}]
+	dev-python/configparser[${PYTHON_USEDEP}]
 	"
 RDEPEND="${DEPEND}
+	media-gfx/imagemagick
 	virtual/ffmpeg
 	sys-apps/gawk
 	x11-apps/xwininfo
+	x11-misc/xdg-utils
 	"
