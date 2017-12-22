@@ -14,7 +14,7 @@ SRC_URI="
 	"
 RESTRICT="mirror strip bindist"
 
-LICENSE="EULA MIT"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
