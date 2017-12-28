@@ -1,0 +1,2 @@
+# This package depends on gnome-extra/zeitgeist, which is masked due to dependencies on older and deprecated packages
+x11-misc/diodon
