@@ -26,7 +26,7 @@ DEPEND="
 	x11-themes/hicolor-icon-theme
 "
 RDEPEND="${DEPEND}
-	>=dev-python/python-distutils-extra-2.37
+	>=dev-python/python-distutils-extra-2.37[${PYTHON_USEDEP}]
 "
 
 pkg_preinst(){
