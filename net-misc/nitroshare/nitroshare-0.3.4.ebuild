@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
 	KEYWORDS=""
 else
-	SRC_URI="https://launchpad.net/nitroshare/${PV:0:3}/${PV}/+download/${P}.tar.gz"
+	SRC_URI="https://launchpad.net/nitroshare/${PV:0:3}/${PV}/+download/${P}.tar.gz -> ${P}.tar"
 	KEYWORDS="~x86 ~amd64 ~arm"
 fi
 
