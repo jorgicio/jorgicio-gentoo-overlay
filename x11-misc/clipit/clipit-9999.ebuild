@@ -8,7 +8,7 @@ inherit eutils fdo-mime git-r3
 
 DESCRIPTION="Lightweight GTK+ clipboard manager. Fork of Parcellite."
 HOMEPAGE="http://gtkclipit.sourceforge.net"
-EGIT_REPO_URI="https://github.com/ChristianHenzel/ClipIt"
+EGIT_REPO_URI="https://github.com/CristianHenzel/ClipIt"
 
 LICENSE="LGPL-3.0"
 SLOT="0"
