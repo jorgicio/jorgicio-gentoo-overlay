@@ -10,10 +10,10 @@ DESCRIPTION="Lightweight GTK+ clipboard manager. Fork of Parcellite."
 HOMEPAGE="http://gtkclipit.sourceforge.net"
 EGIT_REPO_URI="https://github.com/CristianHenzel/ClipIt"
 
-LICENSE="LGPL-3.0"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="appindicator nls gtk3"
+IUSE="nls gtk3"
 
 DEPEND="
 	!gtk3? ( >=x11-libs/gtk+-2.10:2 )
@@ -25,16 +25,11 @@ DEPEND="
 		)
 "
 RDEPEND="${DEPEND}
-	appindicator? (
-		!gtk3? ( dev-libs/libappindicator:2 )
-		gtk3? ( dev-libs/libappindicator:3 )
-	)
 	x11-misc/xdotool
 "
 
 src_configure(){
 	econf \
-		$(use_enable appindicator) \
 		$(use_enable nls) \
 		$(use_with gtk3)
 }
