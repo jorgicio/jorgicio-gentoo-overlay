@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils fdo-mime git-r3
+inherit eutils fdo-mime git-r3 autotools
 
 DESCRIPTION="Lightweight GTK+ clipboard manager. Fork of Parcellite."
 HOMEPAGE="http://gtkclipit.sourceforge.net"
@@ -27,6 +27,12 @@ DEPEND="
 RDEPEND="${DEPEND}
 	x11-misc/xdotool
 "
+
+src_prepare(){
+	eautoreconf
+	default
+}
+
 
 src_configure(){
 	econf \
