@@ -119,6 +119,7 @@ src_compile() {
 		OVERRIDE_CC=$(tc-getCC) \
 		OVERRIDE_CXX=$(tc-getCXX) \
 		OVERRIDE_LD=$(tc-getCXX) \
+		QT_SELECT=qt5 \
 		QT_HOME="$(qt5_get_libdir)/qt5" \
 		ARCH= \
 			emake "$@" \
