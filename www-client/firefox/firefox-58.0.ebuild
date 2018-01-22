@@ -123,7 +123,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}/firefox"
-	eapply "${FILESDIR}"/firefox-57.0-pkcs11-backport.patch
+#	eapply "${FILESDIR}"/firefox-57.0-pkcs11-backport.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then
