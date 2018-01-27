@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,20 +7,18 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="A Material Design-like flat theme for GTK3, GTK2 and GNOME Shell"
-HOMEPAGE="https://github.com/nana-4/Flat-Plat"
+HOMEPAGE="https://github.com/nana-4/materia-theme"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *99999999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~*"
-	S="${WORKDIR}/Flat-Plat-${PV}"
-	RESTRICT="mirror"
 fi
 
-LICENSE="LGPL-3.0"
+LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
@@ -33,5 +31,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_install(){
-	destdir="${D}" ./install.sh || die "failed to install"
+	mkdir -p "${D}/usr/share/themes"
+	./install.sh --dest "${D}/usr/share/themes" || die "failed to install"
 }
