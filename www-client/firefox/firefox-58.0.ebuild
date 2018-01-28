@@ -60,6 +60,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/cargo-0.22.0
 	>=sys-devel/llvm-4.0.1
 	>=sys-devel/clang-4.0.1
+	>=media-libs/libpng-1.6.34:0/16
 	amd64? ( ${ASM_DEPEND} virtual/opengl )
 	x86? ( ${ASM_DEPEND} virtual/opengl )"
 
