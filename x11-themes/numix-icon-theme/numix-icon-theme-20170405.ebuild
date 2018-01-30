@@ -4,10 +4,12 @@
 
 EAPI=6
 
+inherit xdg-utils gnome2-utils
+
 DESCRIPTION="Official icon theme from the Numix project."
 HOMEPAGE="https://numixproject.org"
 
-if [[ ${PV} == *99999999* ]] ; then
+if [[ ${PV} == *99999999 ]] ; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/numixproject/${PN}.git"
@@ -31,4 +33,18 @@ src_install() {
 	dodoc readme.md
 	insinto /usr/share/licenses/${PN}
 	doins license
+}
+
+pkg_preinst(){
+	gnome2_icon_savelist
+}
+
+pkg_postinst(){
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm(){
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit xdg-utils gnome2-utils
+
 DESCRIPTION="Numix Square icon theme"
 HOMEPAGE="https://numixproject.org"
 
@@ -31,4 +33,18 @@ src_install() {
 	dodoc README.md
 	insinto /usr/share/licenses/${PN}
 	doins LICENSE
+}
+
+pkg_preinst(){
+	gnome2_icon_savelist
+}
+
+pkg_postinst(){
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm(){
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
