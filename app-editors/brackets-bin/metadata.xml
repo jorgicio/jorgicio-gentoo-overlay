@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>harold@naparst.com</email>
+		<name>Harold Naparst</name>
+		<description>Active Maintainer, Assign bugs</description>
+	</maintainer>
+	<use>
+	  <flag name="live_preview">Enable live editing using chromium/google-chrome</flag>
+	</use>
+</pkgmetadata>
