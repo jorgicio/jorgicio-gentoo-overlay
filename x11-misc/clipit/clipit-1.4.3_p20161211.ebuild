@@ -4,15 +4,17 @@
 
 EAPI=6
 
-inherit eutils fdo-mime autotools git-r3
+inherit eutils fdo-mime autotools
 
 DESCRIPTION="Lightweight GTK+ clipboard manager. Fork of Parcellite."
 HOMEPAGE="http://gtkclipit.sourceforge.net https://github.com/CristianHenzel/ClipIt"
-EGIT_REPO_URI="https://github.com/CristianHenzel/ClipIt"
+COMMIT="ea3e1c4dd53f022289dd1c4835200ce2eab8ec98"
+SRC_URI="https://github.com/CristianHenzel/ClipIt/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/ClipIt-${COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 IUSE="nls +gtk3 appindicator"
 
 DEPEND="
@@ -35,6 +37,11 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare(){
+	#Some fixes
+	mv configure.in configure.ac
+	PATCHES=( 
+		"${FILESDIR}/fixpkgandautotoolwarnings.patch"	
+	)
 	default
 	eautoreconf
 }
