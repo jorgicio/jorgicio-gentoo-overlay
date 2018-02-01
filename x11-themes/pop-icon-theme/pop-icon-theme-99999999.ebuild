@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ if [[ ${PV} == *99999999* ]];then
 else
 	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~x86 ~amd64 ~arm"
+	S="${WORKDIR}/${P//pop-}"
 fi
 
 LICENSE="CC-BY-SA-4.0"
