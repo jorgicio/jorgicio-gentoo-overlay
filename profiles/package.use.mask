@@ -1,0 +1,3 @@
+#In order to avoid blockage with newer icu versions
+
+=dev-qt/qtwebkit-4.8.7:4 icu
