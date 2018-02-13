@@ -2,4 +2,4 @@
 >=media-tv/xawtv-3.103
 
 # To support the google-musicmanager package
-=dev-qt/qtwebkit-4.8.7:4
+=dev-qt/qtwebkit-4.8.7
