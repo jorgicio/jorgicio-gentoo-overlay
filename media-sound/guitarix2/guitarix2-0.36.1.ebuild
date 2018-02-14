@@ -13,7 +13,6 @@ inherit python-any-r1 waf-utils
 DESCRIPTION="A simple Linux Guitar Amplifier for jack with one input and two outputs"
 HOMEPAGE="http://guitarix.sourceforge.net/"
 
-RESTRICT="mirror"
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/guitarix/git/"
 	S="${S}/trunk"
