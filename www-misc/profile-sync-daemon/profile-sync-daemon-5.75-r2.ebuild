@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,8 +21,11 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )"
 
 src_prepare(){
-	epatch "${FILESDIR}/${PN}-openrc-path.patch"
-	eapply_user
+	PATCHES=(
+		"${FILESDIR}/${PN}-openrc-path.patch"
+		"${FILESDIR}/${PN}-bad-substitution-fix.patch"
+	)
+	default
 }
 
 src_install() {
