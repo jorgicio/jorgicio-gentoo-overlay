@@ -7,11 +7,11 @@ PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
 
 inherit cmake-utils python-single-r1
 
-my_pn="Sigil"
+my_pn="${PN^}"
 
 DESCRIPTION="Sigil is a multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="http://sigil-ebook.com/"
-SRC_URI="https://github.com/Sigil-Ebook/${my_pn}/releases/download/${PV}/${my_pn}-${PV}-Code.zip"
+SRC_URI="https://github.com/Sigil-Ebook/${my_pn}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -49,7 +49,7 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 "
 
-S="${WORKDIR}"
+S="${WORKDIR}/${my_pn}-${PV}"
 
 PATCHES=(
 	# sigil tries to copy non-needed qt libs for deb package, safe to ignore this completely
