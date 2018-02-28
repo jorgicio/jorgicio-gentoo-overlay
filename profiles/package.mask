@@ -1,2 +1,4 @@
 # This package depends on gnome-extra/zeitgeist, which is masked due to dependencies on older and deprecated packages
 x11-misc/diodon
+# Fails due to missing header
+=games-emulation/sdlmame-0.195
