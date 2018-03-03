@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils autotools
 
 DESCRIPTION="System76 Pop GTK+ Theme, based in adapta-gtk-theme"
-HOMEPAGE="http://github.com/system76/pop-gtk-theme"
+HOMEPAGE="http://github.com/pop-os/gtk-theme"
 
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3

@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="System76 Pop icon theme for Linux"
-HOMEPAGE="http://github.com/system76/pop-icon-theme"
-if [[ ${PV} == *99999999* ]];then
+HOMEPAGE="http://github.com/pop-os/icon-theme"
+if [[ ${PV} == *99999999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	SRC_URI=""
