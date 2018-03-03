@@ -34,6 +34,7 @@ DEPEND="
 	>=dev-libs/libsass-3.3.6
 	dev-libs/libxml2
 	>=dev-lang/sassc-3.3.2
+	media-gfx/optipng
 "
 
 RDEPEND="${DEPEND}"
