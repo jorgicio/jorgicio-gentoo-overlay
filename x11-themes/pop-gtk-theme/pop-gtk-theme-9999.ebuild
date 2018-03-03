@@ -17,7 +17,7 @@ else
 	MY_PR="${PR//r}"
 	SRC_URI="${HOMEPAGE}/archive/${PV}-${MY_PR}.tar.gz -> ${P}-${MY_PR}.tar.gz"
 	KEYWORDS="~x86 ~amd64 ~arm"
-	S="${WORKDIR}/${P}-${MY_PR}"
+	S="${WORKDIR}/${PN//pop-}-${PV}-${MY_PR}"
 fi
 
 LICENSE="GPL-2"
