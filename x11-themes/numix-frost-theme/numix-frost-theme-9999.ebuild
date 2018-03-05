@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -9,7 +9,7 @@ inherit eutils
 DESCRIPTION="A modern flat theme that supports Gnome, Unity, XFCE and Openbox."
 HOMEPAGE="https://numixproject.org"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 
 if [[ ${PV} == *9999* ]];then
@@ -21,7 +21,6 @@ else
 	_P="${_PN}-${PV}"
 	KEYWORDS="*"
 	SRC_URI="https://github.com/Antergos/${_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	RESTRICT="mirror"
 	S="${WORKDIR}/${_P}"
 
 fi
@@ -33,11 +32,3 @@ DEPEND="
 	x11-libs/gdk-pixbuf
 "
 RDEPEND="${DEPEND}"
-
-src_compile(){
-	emake
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
-}
