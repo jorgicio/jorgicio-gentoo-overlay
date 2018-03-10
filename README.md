@@ -44,7 +44,7 @@ That's all, folks!
 
 __Note:__ If needed, you must resync first the repos list. You can do it with `emaint sync -A`, which comes with Portage.
 
-[Eselect-repository](https://wiki.gentoo.org/wiki/Eselect/Repository) is a new Eselect module intended to manage repositories. It superseed the need for Layman to list, configure, and handle synchronizations of alternate repositories (except some ones like mercurial, bazaar, and g-sorcery). It can handles the repos list in `/etc/portage/repos.conf`
+[Eselect-repository](https://wiki.gentoo.org/wiki/Eselect/Repository) is a new Eselect module intended to manage repositories. It superseed the need for Layman to list, configure, and handle synchronizations of alternate repositories (except some ones like mercurial, bazaar, and g-sorcery). It can handles the repos list in [/etc/portage/repos.conf](https://wiki.gentoo.org/wiki//etc/portage/repos.conf)
 
 First install eselect-repository from Portage:
 
