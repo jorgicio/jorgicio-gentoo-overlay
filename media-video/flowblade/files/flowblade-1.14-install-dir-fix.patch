@@ -1,0 +1,12 @@
+diff -Naur a/flowblade-trunk/flowblade b/flowblade-trunk/flowblade
+--- a/flowblade-trunk/flowblade	2018-03-12 21:14:33.506173879 -0300
++++ b/flowblade-trunk/flowblade	2018-03-12 21:15:51.956173901 -0300
+@@ -38,6 +38,8 @@
+     modules_path = "/usr/share/flowblade/Flowblade"
+     if not os.path.isdir(modules_path):
+         modules_path = "/usr/share/pyshared/Flowblade"
++        if not os.path.isdir(modules_path):
++            modules_path = "/usr/share/flowblade"
+     print "modules path:", modules_path
+ else:
+     print "Running from filesystem..."
