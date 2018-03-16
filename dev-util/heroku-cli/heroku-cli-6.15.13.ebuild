@@ -44,5 +44,6 @@ src_install(){
 	use !system-node && fperms +x /opt/${PN}/bin/node
 	insinto /usr/share/licenses/${PN}
 	doins LICENSE
+	dosym /opt/${PN}/bin/${PN//-cli} /usr/bin/${PN//-cli}
 	dosym /opt/${PN}/bin/${PN//-cli} /usr/bin/${PN}
 }
