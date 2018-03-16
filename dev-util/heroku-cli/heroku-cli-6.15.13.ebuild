@@ -15,11 +15,10 @@ SRC_URI="
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+git +system-node"
+IUSE="+git"
 
 DEPEND="
 	git? ( dev-vcs/git )
-	system-node? ( net-libs/nodejs[npm] )
 "
 RDEPEND="${DEPEND}"
 
@@ -29,19 +28,11 @@ pkg_setup(){
 	S="${WORKDIR}/${PN}-v${PV}-${HEROKU_HASH}-linux-${ARCH}"
 }
 
-src_prepare(){
-	if use system-node; then
-		rm bin/node
-		sed -i "s#\"\$DIR/node\"#\$\(which node\)#" bin/heroku
-	fi
-	default
-}
-
 src_install(){
 	insinto /opt/${PN}
 	doins -r *
 	fperms +x /opt/${PN}/bin/${PN//-cli}
-	use !system-node && fperms +x /opt/${PN}/bin/node
+	fperms +x /opt/${PN}/bin/node
 	insinto /usr/share/licenses/${PN}
 	doins LICENSE
 	dosym /opt/${PN}/bin/${PN//-cli} /usr/bin/${PN//-cli}
