@@ -19,7 +19,7 @@ IUSE="+git +system-node"
 
 DEPEND="
 	git? ( dev-vcs/git )
-	system-node? ( dev-libs/nodejs[npm] )
+	system-node? ( net-libs/nodejs[npm] )
 "
 RDEPEND="${DEPEND}"
 
