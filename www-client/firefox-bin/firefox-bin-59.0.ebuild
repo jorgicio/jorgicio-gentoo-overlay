@@ -121,10 +121,10 @@ src_install() {
 	# Install language packs
 	mozlinguas_src_install
 
-	local LANG=${linguas%% *}
+	local LANG=${LINGUAS%% *}
 	if [[ -n ${LANG} && ${LANG} != "en" ]]; then
 		elog "Setting default locale to ${LANG}"
-		echo "pref(\"general.useragent.locale\", \"${LANG}\");" \
+		echo "pref(\"intl.locale.requested\", \"${LANG}\");" \
 			>> "${ED}${MOZILLA_FIVE_HOME}"/defaults/pref/${PN}-prefs.js || \
 			die "sed failed to change locale"
 	fi
