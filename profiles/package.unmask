@@ -3,3 +3,6 @@
 
 # To support the google-musicmanager package
 =dev-qt/qtwebkit-4.8.7
+
+# This version builds well, so it doesn't need unmasking. If it fails, please report an issue.
+=games-emulation/sdlmame-0.194
