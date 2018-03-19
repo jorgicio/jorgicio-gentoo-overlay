@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils qmake-utils
+inherit qmake-utils toolchain-funcs versionator
 
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
 HOMEPAGE="http://github.com/lupoDharkael/flameshot"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	SRC_URI=""
@@ -28,11 +28,17 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+pkg_pretend(){
+	if tc-is-gcc && ! version_is_at_least 4.9.2 "$(gcc-version)" ;then
+		die "You need at least GCC 4.9.2 to build this package"
+	fi
+}
+
 src_prepare(){
 	sed -i "s#/usr/local#/usr#" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro
-	sed -i "s#/usr/local#/usr#" docs/desktopEntry/make/${PN}.desktop
-	sed -i "s#icons#pixmaps#" docs/desktopEntry/make/${PN}.desktop
+	sed -i "s#/usr/local#/usr#" docs/desktopEntry/package/${PN}.desktop
+	sed -i "s#icons#pixmaps#" docs/desktopEntry/package/${PN}.desktop
 	eapply_user
 }
 

@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils autotools flag-o-matic toolchain-funcs
+inherit eutils autotools flag-o-matic toolchain-funcs versionator
 
 DESCRIPTION="Linux-exclusive Opera-like lightweight web browser"
 HOMEPAGE="http://fifth-browser.sourceforge.net"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS=""
@@ -34,7 +34,7 @@ pkg_pretend(){
 		die "You need at least GCC 4.7.3 or Clang >= 3.3 for C++11-specific compiler flags"
 	fi
 
-	if tc-is-gcc && [[ $(gcc-version) < 4.7.3 ]]; then
+	if tc-is-gcc && ! version_is_at_least 4.7.3 "$(gcc-version)"; then
 		die "The active compiler needs to be gcc 4.7.3 (or newer)"
 	fi
 }
