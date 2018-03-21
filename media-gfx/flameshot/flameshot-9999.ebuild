@@ -25,6 +25,8 @@ IUSE=""
 DEPEND="
 	>=dev-qt/qtcore-5.3.0:5
 	>=dev-qt/qtdbus-5.3.0:5
+	>=dev-qt/qtnetwork-5.3.0:5
+	>=dev-qt/qtwidgets-5.3.0:5
 "
 RDEPEND="${DEPEND}"
 
@@ -35,6 +37,7 @@ pkg_pretend(){
 }
 
 src_prepare(){
+	sed -i "s#\(VERSION = \).*#\1${PV}#" ${PN}.pro
 	sed -i "s#/usr/local#/usr#" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro
 	sed -i "s#/usr/local#/usr#" docs/desktopEntry/package/${PN}.desktop
@@ -43,13 +46,7 @@ src_prepare(){
 }
 
 src_configure(){
-	local myeqmakeargs=(
-		${PN}.pro
-		PREFIX="${EPREFIX}/usr"
-		DESKTOPDIR="${EPREFIX}/usr/share/applications"
-		ICONDIR="${EPREFIX}/usr/share/pixmaps"
-	)
-	eqmake5 ${myeqmakeargs[@]}
+	eqmake5 "CONFIG+=packaging" ${PN}.pro
 }
 
 src_install(){
