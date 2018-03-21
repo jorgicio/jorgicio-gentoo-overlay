@@ -37,7 +37,7 @@ pkg_pretend(){
 }
 
 src_prepare(){
-	sed -i "s#\(VERSION = \).*#\1${PV}#" ${PN}.pro
+	[[ ${PV} != *9999 ]] && sed -i "s#\(VERSION = \).*#\1${PV}#" ${PN}.pro
 	sed -i "s#/usr/local#/usr#" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro
 	sed -i "s#/usr/local#/usr#" docs/desktopEntry/package/${PN}.desktop
