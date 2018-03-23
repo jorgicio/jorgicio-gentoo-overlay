@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,9 +7,9 @@ EAPI=6
 inherit gnome2 autotools
 
 DESCRIPTION="An adaptive GTK+ theme based on Material Design Guidelines"
-HOMEPAGE="https://github.com/tista500/Adapta"
+HOMEPAGE="https://github.com/adapta-project/adapta-gtk-theme"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
