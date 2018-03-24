@@ -43,10 +43,12 @@ IUSE="bindist eme-free +gmp-autoupdate hardened hwaccel jack +screenshot selinux
 RESTRICT="!bindist? ( bindist )"
 
 SRCHASH=3db9e3d52b17563efca181ccbb50deb8660c59ae
+SDIR="release"
+[[ ${PV} = *_beta* ]] && SDIR="beta"
 
 PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/${PATCH}.tar.xz )
 SRC_URI="${SRC_URI}
-	https://hg.mozilla.org/releases/mozilla-release/archive/${SRCHASH}.tar.bz2 -> firefox-${MOZ_PV}.source.tar.bz2
+	https://hg.mozilla.org/releases/mozilla-${SDIR}/archive/${SRCHASH}.tar.bz2 -> firefox-${MOZ_PV}.source.tar.bz2
 	${PATCH_URIS[@]}"
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
@@ -64,7 +66,7 @@ DEPEND="${RDEPEND}
 	amd64? ( ${ASM_DEPEND} virtual/opengl )
 	x86? ( ${ASM_DEPEND} virtual/opengl )"
 
-S="${WORKDIR}"/mozilla-release-${SRCHASH}
+S="${WORKDIR}"/mozilla-${SDIR}-${SRCHASH}
 
 QA_PRESTRIPPED="usr/lib*/${PN}/firefox"
 
@@ -273,6 +275,15 @@ src_install() {
 
 	# Install language packs
 	mozlinguas_src_install
+
+	#A hack to set the default installation language
+	local LANG=${LINGUAS%% *}
+	if [[ -n ${LANG} && ${LANG} != "en" ]]; then
+		elog "Setting default locale to ${LANG}"
+		echo "pref(\"intl.locale.requested\", \"${LANG}\");" \
+			>> "${ED}${MOZILLA_FIVE_HOME}"/defaults/pref/${PN}-prefs.js || \
+			die "sed failed to change locale"
+	fi
 
 	local size sizes icon_path icon name
 	if use bindist; then
