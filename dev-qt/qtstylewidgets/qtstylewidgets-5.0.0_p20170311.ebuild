@@ -10,11 +10,11 @@ HOMEPAGE="https://code.qt.io/cgit/qt/qtstyleplugins"
 SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}.git"
 
-if [[ ${PV} == *9999  ]];then
+if [[ ${PV} == *9999 ]];then
 	KEYWORDS=""
 else
-	KEYWORDS="~x86 ~amd64 ~arm"
-	EGIT_COMMIT="v${PV}"
+	KEYWORDS="x86 amd64 ~arm"
+	EGIT_COMMIT="335dbece103e2cbf6c7cf819ab6672c2956b17b3"
 fi
 
 LICENSE="LGPL-2"
