@@ -25,6 +25,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-libs/libappindicator:3
 	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/pyudev[pygobject,${PYTHON_USEDEP}]
+	x11-apps/xinput
 	x11-libs/libnotify
 	x11-drivers/xf86-input-synaptics
 "
