@@ -97,7 +97,7 @@ src_install() {
 
 	insinto "${targetdir}"
 	doins -r *
-	fperms a+x "${targetdir}"/{dropbox,dropbox_py3,dropboxd}
+	fperms a+x "${targetdir}"/{dropbox,dropboxd}
 	dosym "${targetdir}/dropboxd" "/opt/bin/dropbox"
 
 	use X && doicon -s 16 -c status "${T}"/status
