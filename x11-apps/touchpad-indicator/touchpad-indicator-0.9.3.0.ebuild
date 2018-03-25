@@ -5,18 +5,18 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit bzr distutils-r1
 
 DESCRIPTION="A simple indicator for controlling a synaptics touchpad"
 HOMEPAGE="https://launchpad.net/touchpad-indicator"
-SRC_URI="https://bazaar.launchpad.net/~lorenzo-carbonell/touchpad-indicator/${PV}/tarball/${PR//r}?start_revid=${PR//r} -> ${P}.tgz"
+SRC_URI=""
+EBZR_REPO_URI="https://code.launchpad.net/~lorenzo-carbonell/${PN}/${PV:0:3}"
+EBZR_BRANCH="${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-S="${WORKDIR}/~lorenzo-carbonell/${PN}/${PV}"
 
 DEPEND="
 	dev-python/polib[${PYTHON_USEDEP}]
