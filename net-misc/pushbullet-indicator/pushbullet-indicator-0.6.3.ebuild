@@ -27,7 +27,6 @@ DEPEND="${PYTHON_DEPS}
 	dev-python/pushbullet-commons
 	dev-python/python-distutils-extra
 	dev-python/polib
-	net-libs/webkit-gtk:3[introspection]
 "
 RDEPEND="${DEPEND}
 	x11-misc/shared-mime-info"
