@@ -23,9 +23,9 @@ COMMON_DEPEND="
 	>=dev-python/eyeD3-0.7
 	dev-python/html5lib
 	dev-python/pycairo
-	dev-python/pygobject:3
+	>=dev-python/pygobject-3.22.0:3
 	>=dev-python/podcastparser-0.6.0
-	>=dev-python/mygpoclient-1.7
+	>=dev-python/mygpoclient-1.8
 	dbus? ( dev-python/dbus-python )
 	bluetooth? ( net-wireless/bluez )
 	ipod? ( media-libs/libgpod[python] )
