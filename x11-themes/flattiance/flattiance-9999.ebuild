@@ -8,7 +8,7 @@ inherit eutils
 DESCRIPTION="A semi-flat fork of the Ubuntu Ambiance theme"
 HOMEPAGE="https://github.com/IonicaBizau/Flattiance"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
@@ -27,7 +27,9 @@ DEPEND="
 	x11-libs/gtk+:3
 	x11-libs/gdk-pixbuf
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	x11-themes/gtk-engines-flat
+"
 
 src_install(){
 	insinto /usr/share/themes
