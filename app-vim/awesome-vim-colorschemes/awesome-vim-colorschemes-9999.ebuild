@@ -15,4 +15,7 @@ SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}.git"
 
 VIM_PLUGIN_HELPTEXT="This plugin is a collection of awesome color schemes for Neo/vim, merged for quick use."
-RDEPEND="app-vim/airline"
+RDEPEND="
+	app-vim/airline
+	!app-vim/colorschemes
+"
