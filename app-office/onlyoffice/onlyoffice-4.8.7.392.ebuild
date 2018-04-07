@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
-inherit fdo-mime font gnome2-utils eutils
+inherit fdo-mime font gnome2-utils eutils multilib
 
 DESCRIPTION="onlyoffice is an office productivity suite"
 HOMEPAGE="http://www.onlyoffice.com/"
@@ -61,11 +61,6 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
 
-src_prepare(){
-	rm -r desktopeditors/dictionaries/.git
-	eapply_user
-}
-
 src_install() {
 	insinto /opt/${PN}
 	doins -r desktopeditors
@@ -73,7 +68,7 @@ src_install() {
 	fperms u+x /opt/${PN}/desktopeditors/${PN}-desktopeditors.sh
 	fperms u+x /opt/${PN}/desktopeditors/DesktopEditors
 	dosym /opt/${PN}/desktopeditors/${PN}-desktopeditors.sh /usr/bin/${PN}-desktopeditors
-	dosym /usr/lib/libcurl-compat.so.4.4.0 /opt/${PN}/desktopeditors/converter/libcurl.so.4
+	dosym $(get_libdir)/libcurl.so.4 /opt/${PN}/desktopeditors/converter/libcurl.so.4
 	for res in 16 24 32 48 64 128 256; do
 		doicon desktopeditors/asc-de-${res}.png
 	done
