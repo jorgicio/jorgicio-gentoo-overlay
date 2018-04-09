@@ -27,7 +27,7 @@ S="${WORKDIR}/TwitterColorEmoji-SVGinOT-Linux-${PV//_/-}"
 FONT_S="${S}"
 
 src_prepare(){
-	eapply "${FILESDIR}/${PN}-fix-match.patch"
+	PATCHES=( "${FILESDIR}/${PN}-fix-match.patch" )
 	default
 }
 
