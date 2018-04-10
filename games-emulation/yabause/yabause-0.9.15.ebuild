@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PLOCALES="ar da de el es fr it ja ko lt nl pl_PL pt_BR pt ru sv tr zh_CN zh_TW"
+LANGS=(ar da de el es fr it ja ko lt nl pl_PL pt_BR pt ru sv tr zh_CN zh_TW)
 
-inherit cmake-utils l10n
+inherit cmake-utils
 
 DESCRIPTION="A Sega Saturn emulator"
 HOMEPAGE="https://yabause.org/"
@@ -23,8 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="ffmpeg openal opengl pic qt5 sdl"
+IUSE="ffmpeg openal opengl pic qt5 sdl ${LANGS[@]/#/l10n_}"
 
 RDEPEND="
 	x11-libs/libXrandr
@@ -64,7 +63,7 @@ src_prepare() {
 
 src_configure() {
 	local langs="" x
-	for x in ${PLOCALES}; do
+	for x in ${LANGS}; do
 		use l10n_${x} && langs+=" ${x}"
 	done
 
