@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ffmpeg openal opengl pic qt5 sdl ${LANGS[@]/#/l10n_}"
+IUSE="ffmpeg network openal opengl pic qt5 sdl ${LANGS[@]/#/l10n_}"
 
 RDEPEND="
 	x11-libs/libXrandr
@@ -76,9 +76,9 @@ src_configure() {
 		-DYAB_WANT_OPENGL=$(usex opengl ON OFF)
 		-DYAB_WANT_SDL=$(usex sdl ON OFF)
 		-DYAB_PORTS=$(usex qt5 "qt" "gtk")
+		-DYAB_NETWORK=$(usex network ON OFF)
 	)
+	[[ ${PV} != *9999 ]] && mycmakeargs+=( -DCMAKE_BUILD_TYPE="Release" )
 
-	#export CC=clang
-	#export CXX=clang++
 	cmake-utils_src_configure
 }
