@@ -1,3 +1,5 @@
-#In order to avoid blockage with newer icu versions
-
+# In order to avoid blockage with newer icu versions.
 =dev-qt/qtwebkit-4.8.7 icu
+
+# It fails to build if ffmpeg support is enabled.
+games-emulation/yabause ffmpeg
