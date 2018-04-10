@@ -63,7 +63,7 @@ src_prepare() {
 
 src_configure() {
 	local langs="" x
-	for x in ${LANGS}; do
+	for x in ${LANGS[@]}; do
 		use l10n_${x} && langs+=" ${x}"
 	done
 
