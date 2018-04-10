@@ -47,7 +47,6 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2[opengl?,video] )
 "
 DEPEND="${RDEPEND}
-	sys-devel/clang
 	virtual/pkgconfig
 "
 
