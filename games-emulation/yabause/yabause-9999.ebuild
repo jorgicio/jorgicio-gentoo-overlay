@@ -21,7 +21,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 IUSE="ffmpeg network openal opengl optimized-dma pic qt5 sdl ${LANGS[@]/#/l10n_}"
 
