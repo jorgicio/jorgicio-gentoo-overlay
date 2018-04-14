@@ -8,7 +8,7 @@ inherit qmake-utils toolchain-funcs versionator
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
 HOMEPAGE="http://github.com/lupoDharkael/flameshot"
 
-if [[ ${PV} == *9999 ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	SRC_URI=""
@@ -37,11 +37,11 @@ pkg_pretend(){
 }
 
 src_prepare(){
-	[[ ${PV} != *9999 ]] && sed -i "s#\(VERSION = \).*#\1${PV}#" ${PN}.pro
-	sed -i "s#/usr/local#/usr#" ${PN}.pro
+	[[ ${PV} != 9999 ]] && sed -i "s#\(VERSION = \).*#\1${PV}#" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro
-	sed -i "s#/usr/local#/usr#" docs/desktopEntry/package/${PN}.desktop
-	sed -i "s#icons#pixmaps#" docs/desktopEntry/package/${PN}.desktop
+	sed -i "s#^Icon=.*#Icon=${PN}#" "docs/desktopEntry/package/${PN}.desktop" \
+		"docs/desktopEntry/package/${PN}-config.desktop" \
+		"docs/desktopEntry/package/${PN}-init.desktop"
 	eapply_user
 }
 
