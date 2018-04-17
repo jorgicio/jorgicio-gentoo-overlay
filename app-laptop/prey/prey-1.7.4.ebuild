@@ -17,7 +17,7 @@ RESTRICT="strip"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+IUSE="systemd"
 DEPEND="
 	virtual/cron
 	>=net-libs/nodejs-0.6[npm]
@@ -32,7 +32,9 @@ DEPEND="
 	net-wireless/wireless-tools
 	sys-apps/lsb-release
 	"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	systemd? ( sys-apps/systemd )
+"
 
 QA_PRESTRIPPED="
 	opt/${PN}/bin/node
@@ -42,9 +44,10 @@ QA_PRESTRIPPED="
 "
 
 src_prepare(){
-	default
 	sed -i "s#dir=\"\$dir/\$rel\"#dir=\"\$rel\"#" "bin/prey"
 	sed -i "s#auto\_update\ =\ true#auto\_update\ =\ false#" "prey.conf.default"
+	use systemd && PATCHES=( "${FILESDIR}/${PN}-systemd-support.patch" ) || PATCHES=( ${FILESDIR}/${PN}-openrc-support.patch )
+	default
 }
 
 src_install(){
