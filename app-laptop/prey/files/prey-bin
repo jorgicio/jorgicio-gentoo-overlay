@@ -1,2 +1,2 @@
 #!/bin/bash
-/opt/prey-node-client/bin/prey "$@"
+/opt/prey/bin/prey "$@"

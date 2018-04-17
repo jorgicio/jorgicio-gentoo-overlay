@@ -35,10 +35,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 QA_PRESTRIPPED="
-	opt/${PN}-node-client/bin/node
-	opt/${PN}-node-client/node_modules/sqlite3/lib/binding/node-v46-linux-ia32/node_sqlite3.node
-	opt/${PN}-node-client/node_modules/sqlite3/lib/binding/node-v46-linux-x64/node_sqlite3.node
-	opt/${PN}-node-client/lib/agent/actions/wipe/linux/wipe-linux
+	opt/${PN}/bin/node
+	opt/${PN}/node_modules/sqlite3/lib/binding/node-v46-linux-ia32/node_sqlite3.node
+	opt/${PN}/node_modules/sqlite3/lib/binding/node-v46-linux-x64/node_sqlite3.node
+	opt/${PN}/lib/agent/actions/wipe/linux/wipe-linux
 "
 
 src_prepare(){
@@ -48,25 +48,31 @@ src_prepare(){
 }
 
 src_install(){
-	insinto /opt/${PN}-node-client
+	insinto /opt/${PN}
 	doins -r *
 	insinto /etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
-	fperms +x /opt/${PN}-node-client/bin/node
-	fperms +x /opt/${PN}-node-client/bin/${PN}
-	fperms +x /opt/${PN}-node-client/bin/${PN}-user
-	doinitd "${FILESDIR}/${PN}-agent"
+	# Find executables and give them exec permissions
+	for x in $(find . -executable -type f); do
+		fperms +x /opt/${PN}/${x}
+	done
 	exeinto /usr/bin
 	newexe "${FILESDIR}/${PN}-bin" "${PN}"
 }
 
 pkg_postinst(){
 	prey config hooks post_install >/dev/null
+	if [[ -f "${EROOT}/etc/init.d/prey-agent" ]];then
+		elog "Daemon for prey-agent found. Cleaning..."
+		rm -f "${EROOT}/etc/init.d/prey-agent"
+	fi
+	install -m755 "${FILESDIR}/${PN}-agent" "${EROOT}/etc/init.d/prey-agent"
+	elog "Daemon for OpenRC installed"
 	gpasswd -a prey video >/dev/null
-	elog "Don't forget add your user to the group prey (as root):"
-	elog "gpasswd -a username prey"
-	elog "After that, you must run the prey-agent daemon."
+	einfo "Don't forget add your user to the group prey (as root):"
+	einfo "gpasswd -a username prey"
+	einfo "After that, you must run the prey-agent daemon."
 }
 
 pkg_prerm(){
