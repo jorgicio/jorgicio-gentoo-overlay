@@ -24,9 +24,10 @@ SLOT="0"
 IUSE="appindicator"
 
 DEPEND="
-	>=dev-qt/qtcore-5.1:5
+	>=dev-qt/qtcore-5.1.0:5
 	>=dev-qt/qtsvg-5.1:5
-	>=dev-qt/qtnetwork-5.1:5
+	>=dev-qt/qtnetwork-5.1.0:5
+	>=dev-qt/linguist-tools-5.1.0:5
 	x11-libs/libnotify"
 
 RDEPEND="${DEPEND}
