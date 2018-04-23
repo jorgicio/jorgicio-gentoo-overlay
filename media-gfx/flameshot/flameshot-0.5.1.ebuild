@@ -27,6 +27,7 @@ DEPEND="
 	>=dev-qt/qtdbus-5.3.0:5
 	>=dev-qt/qtnetwork-5.3.0:5
 	>=dev-qt/qtwidgets-5.3.0:5
+	>=dev-qt/linguist-tools-5.3.0:5
 "
 RDEPEND="${DEPEND}"
 
