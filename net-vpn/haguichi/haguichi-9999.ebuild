@@ -12,7 +12,7 @@ inherit eutils vala gnome2 meson
 DESCRIPTION="Provides a user friendly GTK+-3 GUI to control the Hamachi client on Linux"
 HOMEPAGE="https://www.haguichi.net"
 
-if [[ ${PV} == *9999 ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ztefn/${PN}.git"
 	SRC_URI=""
@@ -22,7 +22,7 @@ else
 	KEYWORDS="~arm ~amd64 ~x86"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE=""
 
