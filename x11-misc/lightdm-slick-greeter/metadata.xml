@@ -6,7 +6,4 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
-	<use>
-		<flag name="numlock">Enable support for the numlock keys</flag>
-	</use>
 </pkgmetadata>

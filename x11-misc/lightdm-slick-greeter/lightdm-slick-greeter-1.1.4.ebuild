@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="numlock"
+IUSE=""
 
 DEPEND="
 	$(vala_depend)
@@ -39,7 +39,6 @@ RDEPEND="${DEPEND}
 	x11-libs/libXext
 	>=x11-misc/lightdm-1.12[introspection,vala]
 	x11-libs/pixman
-	numlock? ( x11-misc/numlockx )
 "
 
 src_prepare(){
@@ -54,6 +53,10 @@ pkg_preinst(){
 
 pkg_postinst(){
 	gnome2_schemas_update
+	einfo "To enable the slick-greeter support, set the greeter-session option"
+	einfo "to 'slick-greeter' in your lightdm.conf in order to get this:"
+	einfo "greeter-session=slick-greeter"
+	einfo "then, restart your session and the lightdm/xdm daemon."
 }
 
 pkg_postrm(){
