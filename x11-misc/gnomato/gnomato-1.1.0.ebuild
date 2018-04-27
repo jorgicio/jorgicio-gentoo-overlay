@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic python-r1
+inherit autotools gnome2-utils flag-o-matic python-r1
 
 DESCRIPTION="A timer for Pomodoro Technique"
 HOMEPAGE="https://github.com/diegorubin/gnomato"
@@ -30,25 +30,33 @@ DEPEND="
 	dev-util/boost-build
 	dev-cpp/gtkmm:3.0
 	>=x11-libs/libnotify-0.7.3
-	dev-util/intltool
+	>=dev-util/intltool-0.35.0
 	sys-devel/gettext[cxx]
 	dev-db/sqlite:3
 "
 RDEPEND="${DEPEND}"
 
-pkg_pretend(){
-	if ! test-flag-CXX -std=c++11; then
-		die "Your compiler doesn't support the c++11 standard, so it won't compile"
-	fi
-}
-
 src_prepare(){
-	sed -i "s/python2/python-2\.7/" configure.ac
+	sed -i "s/python2/python-2\.7/" "configure.ac"
+	sed -i "s/1\.0\.2/${PV}/" "configure.ac"
+	sed -i "s/Accessories/Utility/" "gnomato.desktop.in"
 	eautoreconf -vi
 	default
 }
 
 src_compile(){
-	append-cxxflags -std=c++11
+	append-cxxflags $(test-flags-CXX -std=c++11)
 	default
+}
+
+pkg_preinst(){
+	gnome2_schemas_savelist
+}
+
+pkg_postinst(){
+	gnome2_schemas_update
+}
+
+pkg_postrm(){
+	gnome2_schemas_update
 }
