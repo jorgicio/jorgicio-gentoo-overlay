@@ -27,7 +27,7 @@ IUSE=""
 DEPEND="
 	${PYTHON_DEPS}
 	dev-libs/boost
-	dev-libs/boost-build
+	dev-util/boost-build
 	dev-cpp/gtkmm:3.0
 	>=x11-libs/libnotify-0.7.3
 	dev-util/intltool
