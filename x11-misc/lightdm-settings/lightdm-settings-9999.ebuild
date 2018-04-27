@@ -44,4 +44,5 @@ src_install(){
 	dobin usr/bin/${PN}
 	insinto /usr
 	doins -r usr/share
+	fperms +x /usr/$(get_libdir)/${PN}/${PN}
 }
