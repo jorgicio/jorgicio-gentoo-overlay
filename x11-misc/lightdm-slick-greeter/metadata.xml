@@ -2,15 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dev@lara.click</email>
-		<name>Lara Maia</name>
+		<email>jpizarrocallejas@gmail.com</email>
+		<name>Jorge Pizarro Callejas</name>
+		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
-	<upstream>
-		<maintainer>
-			<email>gandalfn@club-internet.fr</email>
-			<name>Nicolas Bruguier</name>
-		</maintainer>
-		<bugs-to>https://github.com/gandalfn/Cairo-Composite-Manager/issues</bugs-to>
-		<remote-id type="github">gandalfn/Cairo-Composite-Manager</remote-id>
-	</upstream>
+	<use>
+		<flag name="numlock">Enable support for the numlock keys</flag>
+	</use>
 </pkgmetadata>

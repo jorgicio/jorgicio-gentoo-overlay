@@ -34,7 +34,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	x11-libs/cairo
 	media-libs/freetype
-	>=x11-libs/gtk-3.20:3
+	>=x11-libs/gtk+-3.20:3
 	media-libs/libcanberra
 	x11-libs/libXext
 	>=x11-misc/lightdm-1.12[introspection,vala]
