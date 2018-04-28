@@ -43,7 +43,7 @@ src_prepare(){
 	default
 }
 
-src_compile(){
+src_configure(){
 	append-cxxflags $(test-flags-CXX -std=c++11)
 	default
 }
