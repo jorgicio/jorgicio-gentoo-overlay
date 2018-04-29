@@ -3,3 +3,6 @@
 
 # It fails to build if ffmpeg support is enabled.
 games-emulation/yabause ffmpeg
+
+# The bench support is untested and the shaderc support is in beta as shown in https://github.com/google/shaderc/releases
+media-libs/libplacebo bench shaderc
