@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils
+inherit eutils gnome2-utils xdg-utils
 
 # get the major version from PV
 MV=${PV:0:1}
@@ -55,10 +55,16 @@ src_install() {
 	mv "${ED%/}"/usr/share/applications/subl{-sublime-text,}.desktop || die
 }
 
-pkg_postrm() {
-	gnome2_icon_cache_update
+pkg_preinst(){
+	gnome2_icon_savelist
 }
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
