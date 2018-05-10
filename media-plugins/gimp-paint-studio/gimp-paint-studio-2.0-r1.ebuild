@@ -19,8 +19,6 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}
 
 src_install(){
-	insinto ${EPREFIX}/usr/share/gimp
-	doins sessionrc
 	insinto ${EPREFIX}/usr/share/gimp/2.0
 	doins -r *
 }
