@@ -23,7 +23,7 @@ else
 	KEYWORDS="~amd64 ~x86 ~arm"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE=""
 
@@ -31,7 +31,7 @@ DEPEND="
 	$(vala_depend)
 	x11-libs/gtk+:3
 	dev-libs/libappindicator:3
-	net-vpn/haguichi
+	<net-vpn/haguichi-1.4.0
 	"
 RDEPEND="${DEPEND}"
 

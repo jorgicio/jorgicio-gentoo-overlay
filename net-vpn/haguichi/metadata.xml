@@ -6,4 +6,7 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="appindicator">Enable support for appindicator using dev-libs/libappindicator</flag>
+	</use>
 </pkgmetadata>
