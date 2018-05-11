@@ -31,8 +31,8 @@ DEPEND="
 	$(vala_depend)
 	x11-libs/gtk+:3
 	dev-libs/libappindicator:3
-	<net-vpn/haguichi-1.4.0
-	"
+	!>=net-vpn/haguichi-1.4.0
+"
 RDEPEND="${DEPEND}"
 
 pkg_setup(){
