@@ -1,0 +1,23 @@
+From b504ea0177cd91ed42cc326e684d702ed021e28d Mon Sep 17 00:00:00 2001
+From: Sebastian Geiger <sbastig@gmx.net>
+Date: Fri, 2 Mar 2018 16:09:16 +0100
+Subject: [PATCH] wizard.c: store correct transparency value in config
+
+Fixes #269
+---
+ src/wizard.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wizard.c b/src/wizard.c
+index ddd1551..13d76b0 100644
+--- a/src/wizard.c
++++ b/src/wizard.c
+@@ -1292,7 +1292,7 @@ static void spin_level_of_transparency_value_changed_cb (GtkWidget *w, tilda_win
+     bg.blue  =    GUINT16_TO_FLOAT(config_getint ("back_blue"));
+     bg.alpha =    1.0 - (status / 100.0);
+ 
+-    config_setint ("back_alpha", (100 - status) * 0x290 - 65);
++    config_setint ("back_alpha", GUINT16_FROM_FLOAT (bg.alpha));
+     for (i=0; i<g_list_length (tw->terms); i++) {
+             tt = g_list_nth_data (tw->terms, i);
+             vte_terminal_set_color_background(VTE_TERMINAL(tt->vte_term), &bg);

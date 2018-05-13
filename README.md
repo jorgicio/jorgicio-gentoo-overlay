@@ -42,8 +42,6 @@ That's all, folks!
 
 ### Using eselect-repository
 
-__Note:__ If needed, you must resync first the repos list. You can do it with `emaint sync -A`, which comes with Portage.
-
 [Eselect-repository](https://wiki.gentoo.org/wiki/Eselect/Repository) is a new Eselect module intended to manage repositories. It superseed the need for Layman to list, configure, and handle synchronizations of alternate repositories (except some ones like mercurial, bazaar, and g-sorcery). It can handles the repos list in [/etc/portage/repos.conf](https://wiki.gentoo.org/wiki//etc/portage/repos.conf)
 
 First install eselect-repository from Portage:
@@ -53,6 +51,10 @@ First install eselect-repository from Portage:
 Then, enable the repo:
 
     eselect repository enable jorgicio
+
+After that, use `emaint` (already included in Portage) to sync the repo and its files:
+    
+    emaint sync -r jorgicio
 
 Now you're ready to use this repo.
 More information about this method, you can find it in the link above.
