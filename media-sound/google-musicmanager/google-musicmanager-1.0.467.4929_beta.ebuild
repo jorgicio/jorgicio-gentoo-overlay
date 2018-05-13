@@ -25,7 +25,7 @@ RDEPEND="
 	dev-qt/qtsingleapplication
 	media-libs/flac
 	media-libs/libvorbis
-	net-dns/libidn
+	<net-dns/libidn-1.35
 	sys-libs/glibc
 	log? ( dev-libs/log4cxx )
 	"
@@ -50,8 +50,6 @@ src_install() {
 	doexe libaacdec.so libaudioenc.so.0 libmpgdec.so.0 libid3tag.so
 
 	dosym /"${INSTALL_BASE}"/google-musicmanager /opt/bin/google-musicmanager
-	# Create a symlink to libQtSingleApplication to make the app work
-	dosym /usr/$(get_libdir)/libQt5Solutions_SingleApplication-2.6.so.1.0.0 /usr/$(get_libdir)/libQtSingleApplication.so.1 || die "Library not found. Please, install dev-qt/qtsingleapplication"
 
 	local icon size
 	for icon in product_logo_*.png; do

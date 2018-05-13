@@ -30,7 +30,7 @@ RDEPEND="
 	dev-qt/qtwebkit:4
 	media-libs/flac
 	media-libs/libvorbis
-	net-dns/libidn
+	<net-dns/libidn-1.35
 	sys-libs/glibc
 	log? ( dev-libs/log4cxx )
 	"
