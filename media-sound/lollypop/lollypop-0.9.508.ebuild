@@ -17,7 +17,8 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="https://gitlab.gnome.org/gnumdk/${PN}"
 	KEYWORDS=""
 else
-	SRC_URI="https://gitlab.gnome.org/gnumdk/${PN}/-/archive/${PV}/${P}.tar.bz2"
+	HASH="14d754166eb532a9efe5788f1176a4c1"
+	SRC_URI="https://gitlab.gnome.org/gnumdk/${PN}/uploads/${HASH}/${P}.tar.xz"
 	KEYWORDS="~x86 ~amd64 ~arm"
 fi
 
