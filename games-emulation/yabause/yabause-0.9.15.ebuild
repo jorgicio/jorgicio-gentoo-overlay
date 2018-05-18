@@ -14,10 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	KEYWORDS=""
 	S=${WORKDIR}/${P}/${PN}
 else
-	MY_PV=$(replace_version_separator 3 '-')
-	MY_P="${PN}-${MY_PV}"
-
-	SRC_URI="https://download.tuxfamily.org/${PN}/releases/${MY_PV}/${MY_P}.tar.gz"
+	SRC_URI="https://download.tuxfamily.org/${PN}/releases/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
