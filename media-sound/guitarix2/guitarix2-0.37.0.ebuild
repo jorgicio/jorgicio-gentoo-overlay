@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -72,7 +72,7 @@ src_configure() {
 		$(usex avahi "" --no-avahi)
 		$(usex debug --debug "")
 		$(usex faust --faust --no-faust)
-		$(usex ladspa --ladspadir="${EPREFIX}"/usr/share/ladspa "--no-ladspa --no-new-ladspa")
+		$(usex ladspa "--ladspadir=\"${EPREFIX}\"/usr/share/ladspa --ladspa --new-ladspa" "")
 		$(usex lv2 --lv2dir="${EPREFIX}"/usr/$(get_libdir)/lv2 --no-lv2)
 	)
 
