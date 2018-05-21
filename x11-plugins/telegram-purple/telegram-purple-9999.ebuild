@@ -28,6 +28,7 @@ IUSE="+libwebp"
 DEPEND="net-im/pidgin
 		dev-libs/openssl
 		sys-libs/glibc
+		dev-libs/libgcrypt
 		libwebp? ( media-libs/libwebp )
 		"
 RDEPEND="${DEPEND}"
