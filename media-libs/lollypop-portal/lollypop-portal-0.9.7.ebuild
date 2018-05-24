@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]];then
 	KEYWORDS=""
 else
 	SRC_URI="https://gitlab.gnome.org/gnumdk/${PN}/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~x86 ~amd64 ~arm"
+	KEYWORDS="x86 amd64 ~arm"
 fi
 
 
