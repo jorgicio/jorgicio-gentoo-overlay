@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="https://gitlab.gnome.org/gnumdk/${PN}"
 	KEYWORDS=""
 else
-	HASH="14d754166eb532a9efe5788f1176a4c1"
+	HASH="fc731e0878cea850ebadb46afd69b3b8"
 	SRC_URI="https://gitlab.gnome.org/gnumdk/${PN}/uploads/${HASH}/${P}.tar.xz"
 	KEYWORDS="~x86 ~amd64 ~arm"
 fi
@@ -43,6 +43,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
+	dev-libs/appstream-glib[introspection]
 	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]"
 
 pkg_preinst(){

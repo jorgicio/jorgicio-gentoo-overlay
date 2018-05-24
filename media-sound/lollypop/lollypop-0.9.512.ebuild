@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]];then
 else
 	HASH="8a084e3edb9f0d700454554323d9d960"
 	SRC_URI="https://gitlab.gnome.org/gnumdk/${PN}/uploads/${HASH}/${P}.tar.xz"
-	KEYWORDS="~x86 ~amd64 ~arm"
+	KEYWORDS="x86 amd64 ~arm"
 fi
 
 LICENSE="GPL-3"
@@ -43,6 +43,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
+	dev-libs/appstream-glib[introspection]
 	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]"
 
 pkg_preinst(){
