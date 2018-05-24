@@ -44,6 +44,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
 	dev-libs/appstream-glib[introspection]
+	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]"
 
 pkg_preinst(){
