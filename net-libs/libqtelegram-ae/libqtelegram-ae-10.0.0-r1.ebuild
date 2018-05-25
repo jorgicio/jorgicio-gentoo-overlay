@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -15,12 +15,11 @@ if [[ ${PV} == *9999* ]];then
 else
 	MY_PV=${PV}-stable
 	SRC_URI="https://github.com/Aseman-Land/libqtelegram-aseman-edition/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	RESTRICT="mirror"
 	KEYWORDS="~x86 ~amd64"
 	S=${WORKDIR}/libqtelegram-aseman-edition-${MY_PV}
 fi
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 
@@ -34,6 +33,7 @@ DEPEND="
 	dev-qt/qtquickcontrols:5
 	dev-libs/openssl
 	dev-libs/libappindicator
+	dev-util/libqtelegram-code-generator
 "
 RDEPEND="${DEPEND}"
 
@@ -43,7 +43,7 @@ src_prepare(){
 }
 
 src_configure(){
-	eqmake5 PREFIX="${EPREFIX}/usr"
+	eqmake5 QMAKE_CFLAGS_ISYSTEM= PREFIX="${EPREFIX}/usr" CONFIG+=typeobjects
 }
 
 src_install(){
