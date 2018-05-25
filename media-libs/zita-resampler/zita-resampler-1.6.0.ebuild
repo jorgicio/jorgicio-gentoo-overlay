@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -11,27 +11,25 @@ SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+KEYWORDS="amd64 ~ppc x86"
+IUSE="-standalone"
 
-DEPEND="media-libs/libsndfile"
-RDEPEND="${DEPEND}"
+RDEPEND="standalone? ( media-libs/libsndfile )"
+DEPEND="${RDEPEND}"
 
-RESTRICT="mirror"
-
-DOCS=(AUTHORS README)
-HTML_DOCS=(docs/)
+DOCS="README"
+HTML_DOCS="docs/"
 
 PATCHES=("${FILESDIR}"/${P}-Makefile.patch)
 
 src_compile() {
 	tc-export CXX
 	emake -C libs
-	emake -C apps
+	use standalone && emake -C apps
 }
 
 src_install() {
 	emake -C libs DESTDIR="${D}" PREFIX="${EPREFIX}/usr" LIBDIR=$(get_libdir) install
-	emake -C apps DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
-	dodoc "${DOCS[@]}"
+	use standalone && emake -C apps DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	default
 }
