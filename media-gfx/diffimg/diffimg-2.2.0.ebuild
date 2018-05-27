@@ -18,7 +18,7 @@ S="${WORKDIR}/${P^}-src"
 DEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	x11-libs/qwt[qt4,svg]
+	<x11-libs/qwt-6.1.3-r2[qt4,svg]
 	media-libs/opencv[png]
 "
 RDEPEND="${DEPEND}"

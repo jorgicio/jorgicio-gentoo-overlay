@@ -19,7 +19,10 @@ DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtsvg:5
 	dev-libs/boost
-	x11-libs/qwt:6[qt5,svg,opengl]
+	|| ( 
+		<x11-libs/qwt-6.1.3-r2:6[qt5,svg,opengl]
+		>=x11-libs/qwt-6.1.3-r2:6[svg,opengl]
+	)
 "
 RDEPEND="${DEPEND}
 	net-wireless/iw
@@ -29,18 +32,12 @@ RDEPEND="${DEPEND}
 	"
 
 src_prepare(){
-	epatch "${FILESDIR}/${P}-qwt-fix.patch"
-	eapply_user
+	PATCHES=( "${FILESDIR}/${P}-qwt-fix.patch" )
+	default
 }
 
 src_configure(){
-	local myeqmakeargs=(
-		${PN}.pro
-		PREFIX="${EPREFIX}/usr"
-		DESKTOPDIR="${EPREFIX}/usr/share/applications"
-		ICONDIR="${EPREFIX}/usr/share/pixmaps"
-	)
-	eqmake5 ${myeqmakeargs[@]}
+	eqmake5
 }
 
 src_install(){
