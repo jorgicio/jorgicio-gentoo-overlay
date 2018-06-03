@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}
 "
 
 src_configure(){
-	eqmake5
+	eqmake5 PREFIX="${EPREFIX}/usr" DESKTOPDIR="${EPREFIX}/usr/share/applications"
 }
 
 src_install(){
