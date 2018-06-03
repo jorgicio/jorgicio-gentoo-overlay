@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils qmake-utils
 
 DESCRIPTION="Cross-platform open source music player built with Qt5, QTav and Taglib."
-HOMEPAGE="https://github.com/MBach/Miam-Player"
+HOMEPAGE="https://mbach.github.io/Miam-Player"
 
 MY_PN="Miam-Player"
 
@@ -36,10 +36,10 @@ RDEPEND="${DEPEND}
 "
 
 src_configure(){
-	eqmake5 PREFIX="${EPREFIX}/usr" DESKTOPDIR="${EPREFIX}/usr/share/applications"
+	eqmake5
 }
 
 src_install(){
-	emake INSTALL_DIR="${D}" install
+	emake INSTALL_ROOT="${D}" install
 	newicon debian/usr/share/icons/hicolor/64x64/apps/application-x-${PN//-}.png ${PN}.png
 }
