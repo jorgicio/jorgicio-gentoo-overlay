@@ -40,6 +40,6 @@ src_configure(){
 }
 
 src_install(){
-	default
+	emake INSTALL_DIR="${D}" install
 	newicon debian/usr/share/icons/hicolor/64x64/apps/application-x-${PN//-}.png ${PN}.png
 }
