@@ -23,15 +23,9 @@ SLOT="0"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
-
-src_configure(){
-	default
-}
-
-src_compile(){
-	default
-}
+RDEPEND="${DEPEND}
+	!x11-themes/papirus-icon-theme
+"
 
 src_install(){
 	emake DESTDIR="${D}" install
