@@ -35,8 +35,16 @@ RDEPEND="${DEPEND}
 	media-libs/qtav:0/1[pulseaudio?]
 "
 
+src_prepare(){
+	for x in {Core,Library,TabPlaylists,UniqueLibrary}; do
+		sed -i -e "s/lib\$\$LIB_SUFFIX/\$\$LIB_SUFFIX/" "src/${x}/${x}.pro" || die
+	done
+	PATCHES="${FILESDIR}/${PN}-add-qheaderview.patch"
+	default
+}
+
 src_configure(){
-	eqmake5
+	eqmake5 LIB_SUFFIX="$(get_libdir)"
 }
 
 src_install(){
