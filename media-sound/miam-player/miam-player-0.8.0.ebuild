@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils qmake-utils
+inherit eutils qmake-utils xdg-utils
 
 DESCRIPTION="Cross-platform open source music player built with Qt5, QTav and Taglib."
 HOMEPAGE="https://mbach.github.io/Miam-Player"
@@ -50,4 +50,13 @@ src_configure(){
 src_install(){
 	emake INSTALL_ROOT="${D}" install
 	newicon debian/usr/share/icons/hicolor/64x64/apps/application-x-${PN//-}.png ${PN}.png
+}
+
+
+pkg_postinst(){
+	xdg_desktop_database_update
+}
+
+pkg_postrm(){
+	xdg_desktop_database_update
 }
