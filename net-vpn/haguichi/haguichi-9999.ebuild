@@ -40,7 +40,6 @@ RDEPEND="${DEPEND}"
 src_prepare(){
 	DOCS="AUTHORS"
 	export VALAC="$(type -P valac-$(vala_best_api_version))"
-	gnome2_src_prepare
 	vala_src_prepare
 }
 
