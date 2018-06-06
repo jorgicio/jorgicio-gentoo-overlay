@@ -40,6 +40,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare(){
 	sed -i -e "s/NAMES valac/NAMES valac-$(vala_best_api_version)/" cmake/FindVala.cmake || die
+	sed -i '/$ENV{HOME}/d' CMakeLists.txt || die
 	PATCHES=( "${FILESDIR}/${PN}-fix-paths.patch" )
 	cmake-utils_src_prepare
 }
