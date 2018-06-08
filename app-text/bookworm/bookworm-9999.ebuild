@@ -1,18 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 )
 
-inherit vala cmake-utils python-any-r1 gnome2
+inherit vala cmake-utils python-r1 gnome2
 
 DESCRIPTION="A simple ebook reader originally intended for Elementary OS"
 HOMEPAGE="http://babluboy.github.io/bookworm"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS=""
@@ -36,23 +36,22 @@ DEPEND="
 	net-libs/webkit-gtk:4/37
 	x11-libs/gtk+:3
 	dev-db/sqlite:3
+	dev-python/html2text[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
 pkg_setup(){
-	python-any-r1_pkg_setup
 	export VALAC="$(type -p valac-$(vala_best_api_version))"
+	python-any-r1_pkg_setup
 }
 
 src_prepare(){
 	DOCS="AUTHORS"
-	gnome2_src_prepare
-	vala_src_prepare
+	cmake-utils_src_prepare
 }
 
 src_configure(){
 	local mycmakeargs=(
-		"-DCMAKE_BUILD_TYPE=Release"
 		"-DICON_UPDATE=OFF"
 		"-DGSETTINGS_COMPILE=OFF"
 		"-DUSE_VALA_BINARY=$(type -p valac-$(vala_best_api_version))"
