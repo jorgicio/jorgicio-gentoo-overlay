@@ -14,11 +14,11 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Lollypop"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="https://gitlab.gnome.org/gnumdk/${PN}"
+	EGIT_REPO_URI="https://gitlab.gnome.org/World/${PN}"
 	KEYWORDS=""
 else
 	HASH="fc731e0878cea850ebadb46afd69b3b8"
-	SRC_URI="https://gitlab.gnome.org/gnumdk/${PN}/uploads/${HASH}/${P}.tar.xz"
+	SRC_URI="https://gitlab.gnome.org/World/${PN}/uploads/${HASH}/${P}.tar.xz"
 	KEYWORDS="~x86 ~amd64 ~arm"
 fi
 
