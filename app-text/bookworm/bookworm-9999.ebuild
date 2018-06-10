@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}"
 
 pkg_setup(){
 	export VALAC="$(type -p valac-$(vala_best_api_version))"
-	python-any-r1_pkg_setup
+	default
 }
 
 src_prepare(){
