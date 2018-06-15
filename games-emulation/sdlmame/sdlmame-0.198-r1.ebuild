@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-arch/unzip
 	virtual/pkgconfig
-	x11-proto/xineramaproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}
 
