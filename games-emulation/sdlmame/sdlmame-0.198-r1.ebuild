@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-any-r1 toolchain-funcs qmake-utils
+inherit eutils python-any-r1 toolchain-funcs qmake-utils games
 
 MY_PV="${PV/.}"
 
@@ -61,6 +61,7 @@ enable_feature() {
 }
 
 pkg_setup() {
+	games_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -127,7 +128,7 @@ src_compile() {
 	my_emake -j1 generate
 
 	my_emake ${targetargs} \
-		SDL_INI_PATH="\$\$\$\$HOME/.sdlmame;${ED}/etc/${PN}" \
+		SDL_INI_PATH="\$\$\$\$HOME/.sdlmame;${GAMES_SYSCONFDIR}/${PN}" \
 		USE_QTDEBUG=${qtdebug}
 
 	#if use tools ; then
@@ -141,8 +142,8 @@ src_install() {
 	local f
 
 	function mess_install() {
-		dosym ${MAMEBIN} "${ED}/usr/bin"/mess${suffix}
-		dosym ${MAMEBIN} "${ED}/usr/bin"/sdlmess
+		dosym ${MAMEBIN} "${GAMES_BINDIR}"/mess${suffix}
+		dosym ${MAMEBIN} "${GAMES_BINDIR}"/sdlmess
 		newman docs/man/mess.6 sdlmess.6
 		doman docs/man/mess.6
 	}
@@ -159,8 +160,8 @@ src_install() {
 		MAMEBIN="mess${suffix}"
 		mess_install
 	fi
-	dobin ${MAMEBIN}
-	dosym ${MAMEBIN} "${ED}/usr/bin/${PN}"
+	dogamesbin ${MAMEBIN}
+	dosym ${MAMEBIN} "${GAMES_BINDIR}/${PN}"
 
 	insinto "${GAMES_DATADIR}/${PN}"
 	doins -r keymaps $(use mess && echo hash)
