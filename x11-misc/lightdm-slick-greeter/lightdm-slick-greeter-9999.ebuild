@@ -28,6 +28,7 @@ IUSE=""
 
 DEPEND="
 	$(vala_depend)
+	>=x11-misc/lightdm-1.12[introspection,vala]
 	>=dev-util/intltool-0.35.0
 	sys-devel/gettext
 "
@@ -37,7 +38,6 @@ RDEPEND="${DEPEND}
 	>=x11-libs/gtk+-3.20:3
 	media-libs/libcanberra
 	x11-libs/libXext
-	>=x11-misc/lightdm-1.12[introspection,vala]
 	x11-libs/pixman
 "
 
