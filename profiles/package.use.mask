@@ -8,4 +8,4 @@ games-emulation/yabause ffmpeg
 media-libs/libplacebo bench shaderc
 
 # X86 MMX makes xawtv fail to build, as mentioned in https://github.com/jorgicio/issues/82
-media-tv/xawtv -cpu_flags_x86_mmx
+media-tv/xawtv cpu_flags_x86_mmx
