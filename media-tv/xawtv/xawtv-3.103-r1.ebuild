@@ -55,8 +55,7 @@ DEPEND="${RDEPEND}
 	X? (
 		x11-apps/xset
 		x11-apps/bdftopcf
-		x11-proto/videoproto
-		xext? ( x11-proto/xineramaproto )
+		x11-base/xorg-proto
 	)"
 
 pkg_setup() {

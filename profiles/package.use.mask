@@ -6,3 +6,6 @@ games-emulation/yabause ffmpeg
 
 # The bench support is untested and the shaderc support is in beta as shown in https://github.com/google/shaderc/releases
 media-libs/libplacebo bench shaderc
+
+# X86 MMX makes xawtv fail to build, as mentioned in https://github.com/jorgicio/issues/82
+media-tv/xawtv -cpu_flags_x86_mmx
