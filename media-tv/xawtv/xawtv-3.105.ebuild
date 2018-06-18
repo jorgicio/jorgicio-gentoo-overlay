@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit eutils font autotools flag-o-matic
 
 PATCHLEVEL="4"
 
-IUSE="aalib alsa dv lirc cpu_flags_x86_mmx motif nls opengl quicktime X xv zvbi xext"
+IUSE="aalib alsa dv lirc -cpu_flags_x86_mmx motif nls opengl quicktime X xv zvbi xext"
 
 MY_FONT=tv-fonts-1.1
 DESCRIPTION="Small suite of video4linux related software"
@@ -77,11 +77,11 @@ src_prepare() {
 	rm "${WORKDIR}/patches/050_all_nostrip.patch"
 	rm "${WORKDIR}/patches/060_all_gcc41.patch"
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
-	epatch "${FILESDIR}/${P}-ncurses.patch"
+	epatch "${FILESDIR}/${PN}-3.103-ncurses.patch"
 	epatch "${FILESDIR}/${PN}-3.95-libquicktime-compat.patch"
 	epatch "${FILESDIR}/${PN}-3.95-stdbool.patch"
 	epatch "${FILESDIR}/${PN}-3.95-underlinking.patch"
-	epatch "${FILESDIR}/${P}_all_autocolor.patch"
+	epatch "${FILESDIR}/${PN}-3.103_all_autocolor.patch"
 	eapply_user
 	eautoreconf
 }
@@ -106,6 +106,7 @@ src_configure() {
 }
 
 src_compile() {
+	append-ldflags -fuse-ld=bfd
 	emake verbose=yes
 
 	if use X; then
