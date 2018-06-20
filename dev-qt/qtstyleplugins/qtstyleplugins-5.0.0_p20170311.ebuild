@@ -1,21 +1,16 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit qmake-utils git-r3
+inherit qmake-utils
 
 DESCRIPTION="Additional style plugins for Qt5 (gtk2, cleanlooks, plastic, motif)"
 HOMEPAGE="https://code.qt.io/cgit/qt/qtstyleplugins"
-SRC_URI=""
-EGIT_REPO_URI="${HOMEPAGE}.git"
-
-if [[ ${PV} == *9999  ]];then
-	KEYWORDS=""
-else
-	KEYWORDS="~x86 ~amd64 ~arm"
-	EGIT_COMMIT="v${PV}"
-fi
+COMMIT="335dbece103e2cbf6c7cf819ab6672c2956b17b3"
+KEYWORDS="x86 amd64 ~arm"
+SRC_URI="https://github.com/qt/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="LGPL-2"
 SLOT="5"
