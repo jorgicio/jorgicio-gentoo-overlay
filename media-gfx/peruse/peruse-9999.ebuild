@@ -8,7 +8,7 @@ inherit kde5
 DESCRIPTION="A comic book viewer based on Framework 5, for use on multiple form factors."
 HOMEPAGE="http://peruse.kde.org"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS=""
@@ -30,7 +30,7 @@ DEPEND="
 	$(add_frameworks_dep extra-cmake-modules)
 	$(add_frameworks_dep kdoctools)
 	$(add_frameworks_dep kdeclarative)
-	kde-frameworks/kirigami:1
+	$(add_frameworks_dep kirigami)
 	$(add_qt_dep qtgraphicaleffects)
 	$(add_qt_dep qtquickcontrols)
 "
