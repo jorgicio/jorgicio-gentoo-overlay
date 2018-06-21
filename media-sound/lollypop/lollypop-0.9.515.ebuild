@@ -39,9 +39,9 @@ DEPEND="
 	dev-util/intltool
 	app-crypt/libsecret
 	gnome-base/gnome-common
-	media-libs/${PN}-portal
 "
 RDEPEND="${DEPEND}
+	media-plugins/lollypop-portal
 	dev-util/desktop-file-utils
 	dev-libs/appstream-glib[introspection]
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]

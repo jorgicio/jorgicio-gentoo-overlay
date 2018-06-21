@@ -11,7 +11,7 @@ inherit python-r1 gnome2-utils eutils meson
 
 DESCRIPTION="Lollypop is a new GNOME music playing application"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lollypop"
-if [[ ${PV} == *9999 ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://gitlab.gnome.org/gnumdk/${PN}"
@@ -39,9 +39,9 @@ DEPEND="
 	dev-util/intltool
 	app-crypt/libsecret
 	gnome-base/gnome-common
-	media-libs/${PN}-portal
 "
 RDEPEND="${DEPEND}
+	media-plugins/lollypop-portal
 	dev-util/desktop-file-utils
 	dev-libs/appstream-glib[introspection]
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
