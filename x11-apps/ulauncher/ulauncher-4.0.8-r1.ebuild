@@ -40,7 +40,7 @@ RDEPEND="${DEPEND}
 	dev-python/websocket-client[${PYTHON_USEDEP}]
 	dev-libs/gobject-introspection[${PYTHON_USEDEP}]
 	dev-libs/libappindicator:3
-	dev-libs/keybinder:3[python,${PYTHON_USEDEP}]
+	dev-libs/keybinder:3
 	net-libs/webkit-gtk:4/37
 "
 
