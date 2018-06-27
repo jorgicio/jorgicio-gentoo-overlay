@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Application launcher for Linux"
 HOMEPAGE="https://ulauncher.io"
@@ -46,10 +46,10 @@ RDEPEND="${DEPEND}
 
 src_prepare(){
 	find -iname "*.py" | xargs sed -i 's=\(^#! */usr/bin.*\)python *$=\1python2='
-	distutils-r1-src_prepare
+	distutils-r1_src_prepare
 }
 
 src_install(){
 	domenu build/share/applications/${PN}.desktop
-	distutils-r1-src_install
+	distutils-r1_src_install
 }
