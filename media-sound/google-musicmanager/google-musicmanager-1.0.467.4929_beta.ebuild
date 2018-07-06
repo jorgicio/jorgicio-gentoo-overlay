@@ -25,7 +25,7 @@ RDEPEND="
 	dev-qt/qtsingleapplication
 	media-libs/flac
 	media-libs/libvorbis
-	<net-dns/libidn-1.35
+	net-dns/libidn:1.33
 	sys-libs/glibc
 	log? ( dev-libs/log4cxx )
 	"

@@ -68,5 +68,5 @@ src_install() {
 	doins "${FILESDIR}"/qtsinglecoreapplication.prf
 	use X && doins "${FILESDIR}"/${PN}.prf
 	#Creating symlink
-	dosym /usr/$(get_libdir)/libQt5Solutions_SingleApplication-${PV}.so.1.0.0 /usr/$(get_libdir)/libQtSingleApplication.so.1
+	dosym /usr/$(get_libdir)/libQt5Solutions_SingleApplication-${PV:0:3}.so.1.0.0 /usr/$(get_libdir)/libQtSingleApplication.so.1
 }
