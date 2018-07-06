@@ -41,7 +41,7 @@ S="${WORKDIR}/${INSTALL_BASE}"
 
 src_install() {
 	insinto "/${INSTALL_BASE}"
-	doins config.json product_logo* lang.*.qm
+	doins config.json product_logo* lang.*.qm roots.pem
 
 	exeinto "/${INSTALL_BASE}"
 	chrpath -d MusicManager || die
