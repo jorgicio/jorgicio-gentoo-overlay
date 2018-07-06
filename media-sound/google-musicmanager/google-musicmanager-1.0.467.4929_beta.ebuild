@@ -22,7 +22,6 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwebkit:5
-	dev-qt/qtsingleapplication
 	media-libs/flac
 	media-libs/libvorbis
 	net-dns/libidn:1.33
@@ -41,13 +40,13 @@ S="${WORKDIR}/${INSTALL_BASE}"
 
 src_install() {
 	insinto "/${INSTALL_BASE}"
-	doins config.json product_logo* lang.*.qm roots.pem
+	doins config.json product_logo* lang.*.qm roots.pem thirdparty.html
 
 	exeinto "/${INSTALL_BASE}"
 	chrpath -d MusicManager || die
 	doexe MusicManager google-musicmanager minidump_upload
 	#TODO unbundle this
-	doexe libaacdec.so libaudioenc.so.0 libmpgdec.so.0 libid3tag.so
+	doexe libaacdec.so libaudioenc.so.0 libmpgdec.so.0 libid3tag.so libQtSingleApplication*.so* xdg-*
 
 	dosym /"${INSTALL_BASE}"/google-musicmanager /opt/bin/google-musicmanager
 
