@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit meson git-r3 gnome2-utils
+inherit meson git-r3 gnome2-utils xdg-utils
 
 DESCRIPTION="Markdown editor made with GTK+-3.0"
 HOMEPAGE="https://fabiocolacio.github.io/Marker"
@@ -36,9 +36,11 @@ pkg_preinst(){
 pkg_postinst(){
 	gnome2_gconf_install
 	gnome2_schemas_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm(){
 	gnome2_gconf_uninstall
 	gnome2_schemas_update
+	xdg_desktop_database_update
 }
