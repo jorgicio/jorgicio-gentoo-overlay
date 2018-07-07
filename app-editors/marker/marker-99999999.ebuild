@@ -29,6 +29,11 @@ RDEPEND="${DEPEND}
 	pandoc? ( app-text/pandoc )
 "
 
+src_prepare(){
+	sed -i 's/en_US/C/' src/scidown/src/charter/src/svg.c
+	default
+}
+
 pkg_preinst(){
 	gnome2_schemas_savelist
 }
