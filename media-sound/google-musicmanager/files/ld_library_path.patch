@@ -1,0 +1,11 @@
+--- bin/google-musicmanager	2018-07-13 17:54:41.516291910 -0700
++++ bin/google-musicmanager	2018-07-13 18:34:51.013498234 -0700
+@@ -25,7 +25,7 @@
+ 
+ # Always use our versions of libs.
+ # This also makes RPMs find the compatibly-named lib symlinks.
+-if [[ -n "$LD_LIBRARY_PATH" ]]; then
++if [[ -z "$LD_LIBRARY_PATH" ]]; then
+   LD_LIBRARY_PATH="$HERE:$HERE/lib:$LD_LIBRARY_PATH"
+ else
+   LD_LIBRARY_PATH="$HERE:$HERE/lib"
