@@ -52,11 +52,7 @@ src_install() {
 	chrpath -d MusicManager || die
 	doexe MusicManager google-musicmanager minidump_upload
 	# These libraries are not compatible with gentoo.
-	doexe	libaacdec.so		\ # libfaad.so
-		libaudioenc.so.0	\ # libmp3lame.so
-		libmpgdec.so.0		\ # libmpg123.so.0
-		libQtSingleApplication.*\ # libQt5Solutions_SingleApplication-2.6.so
-		xdg-*
+	doexe libaacdec.so libaudioenc.so.0 libmpgdec.so.0 libQtSingleApplication.* xdg-*
 
 	dosym /"${INSTALL_BASE}"/google-musicmanager /opt/bin/google-musicmanager
 
