@@ -1,16 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit distutils-r1 eutils gnome2-utils xdg
 
 DESCRIPTION="Qt-based image viewer specialized in manga/comic reading"
 HOMEPAGE="https://pynocchio.github.io"
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/pynocchio/pynocchio"
 	KEYWORDS=""

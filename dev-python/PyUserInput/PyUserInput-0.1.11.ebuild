@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 inherit distutils-r1
 
 DESCRIPTION="A simple, cross-platform module for mouse and keyboard control"

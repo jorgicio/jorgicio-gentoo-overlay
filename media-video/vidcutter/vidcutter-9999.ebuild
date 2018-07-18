@@ -4,14 +4,14 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit distutils-r1
 
 DESCRIPTION="FFmpeg-based simple video cutter & joiner with a modern PyQt5 GUI"
 HOMEPAGE="http://vidcutter.ozmartians.com https://github.com/ozmartian/vidcutter"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ozmartian/vidcutter"
 	KEYWORDS=""

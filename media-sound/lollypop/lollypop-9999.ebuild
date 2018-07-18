@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 PYTHON_REQ_USE="sqlite"
 
 inherit python-r1 gnome2-utils eutils meson
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]];then
 	EGIT_REPO_URI="https://gitlab.gnome.org/World/${PN}"
 	KEYWORDS=""
 else
-	HASH="ffc39d0c4519e3979393bd86fd748539"
+	HASH="e4df2ed75c5ed71d64afcc668e579b2a"
 	SRC_URI="https://gitlab.gnome.org/World/${PN}/uploads/${HASH}/${P}.tar.xz"
 	KEYWORDS="~x86 ~amd64 ~arm"
 fi
