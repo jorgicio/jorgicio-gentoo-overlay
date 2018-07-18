@@ -4,14 +4,14 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit eutils python-r1 bash-completion-r1
 
 DESCRIPTION="Google Search from command line"
 HOMEPAGE="https://github.com/jarun/googler"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
