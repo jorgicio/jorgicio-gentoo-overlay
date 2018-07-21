@@ -22,19 +22,13 @@ RDEPEND=">=games-engines/love-0.10.0:0.10
 DEPEND="app-arch/zip"
 
 src_prepare(){
-	rm -rf "./_DO NOT INCLUDE"
+	rm -rf "./_DO NOT INCLUDE" "README.md"
 	default
 }
 
 src_compile(){
 	elog "Creating .love file..."
-	for x in graphics mappacks netplayinc shaders sounds;do
-		zip -ur "${MY_P}.love" "${x}" && elog "\"${x}\" added" || die
-	done
-	for x in *.lua;do
-		zip -u "${MY_P}.love" "${x}" && elog "\"${x}\" added" || die
-	done
-	elog "${MY_P}.love created"
+	zip -9 -r "${MY_P}.love" . && elog "${MY_P}.love created" || die
 }
 
 src_install() {
