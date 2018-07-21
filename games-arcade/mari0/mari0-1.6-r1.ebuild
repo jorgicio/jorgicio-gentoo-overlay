@@ -30,7 +30,7 @@ src_install() {
 	doexe ${MY_P}.love
 
 	doicon -s scalable ${FILESDIR}/${PN}.svg
-	games_make_wrapper ${PN} "love ${MY_P}.love" "${dir}"
+	games_make_wrapper ${PN} "love-0.8 ${MY_P}.love" "${dir}"
 	make_desktop_entry ${PN}
 
 	prepgamesdirs
