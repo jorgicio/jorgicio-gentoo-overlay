@@ -28,8 +28,13 @@ src_prepare(){
 
 src_compile(){
 	elog "Creating .love file..."
-	local dirs="graphics mappacks netplayinc shaders sounds"
-	zip -r "${MY_P}.love" . -i "*.lua" "${dirs}" && elog "${MY_P}.love created" || die
+	for x in graphics mappacks netplayinc shaders sounds;do
+		zip -ur "${MY_P}.love" "${x}" && elog "\"${x}\" added" || die
+	done
+	for x in *.lua;do
+		zip -u "${MY_P}.love" "${x}" && elog "\"${x}\" added" || die
+	done
+	elog "${MY_P}.love created"
 }
 
 src_install() {
