@@ -43,6 +43,7 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare(){
+	sed -i "s/1\.4\.3/${PV}/" configure.ac
 	default
 	eautoreconf
 }
