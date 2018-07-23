@@ -1,0 +1,32 @@
+From d6fab2be79b2fc8319b492a1a834300df64e4db8 Mon Sep 17 00:00:00 2001
+From: Cristian Henzel <CristianHenzel@users.noreply.github.com>
+Date: Sat, 30 Jun 2018 10:26:13 +0300
+Subject: [PATCH] Remove use of deprecated gtk_window_get_pointer
+
+---
+ src/daemon.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/daemon.c b/src/daemon.c
+index df3562c..b7981ec 100644
+--- a/src/daemon.c
++++ b/src/daemon.c
+@@ -53,7 +53,17 @@ static void daemon_check()
+ 	{
+ 		/* Get the button state to check if the mouse button is being held */
+ 		GdkModifierType button_state;
+-		gdk_window_get_pointer(NULL, NULL, NULL, &button_state);
++		GdkScreen *screen = gdk_screen_get_default();
++		if (screen)
++		{
++			GdkDisplay *display = gdk_screen_get_display(screen);
++			GdkWindow *window = gdk_screen_get_root_window(screen);
++			GdkSeat *seat = gdk_display_get_default_seat(display);
++
++			gdk_window_get_device_position(window, gdk_seat_get_pointer(seat), NULL,
++				NULL, &button_state);
++		}
++
+ 		if ((primary_temp != NULL) && !(button_state & GDK_BUTTON1_MASK))
+ 		{
+ 			g_free(primary_text);

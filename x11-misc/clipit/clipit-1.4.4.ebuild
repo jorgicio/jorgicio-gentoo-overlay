@@ -44,6 +44,11 @@ RDEPEND="${DEPEND}
 
 src_prepare(){
 	sed -i "s/1\.4\.3/${PV}/" configure.ac
+	PATCHES=(
+		"${FILESDIR}/${P}-remove-deprecated.patch"
+		"${FILESDIR}/${P}-stdin-fix.patch"
+		"${FILESDIR}/${P}-gtk3-newer-fix.patch"
+	)
 	default
 	eautoreconf
 }
