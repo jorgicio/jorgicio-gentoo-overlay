@@ -1,17 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 
 inherit distutils-r1 eutils
 
 DESCRIPTION="Simple nvim gui implemented using GTK"
 HOMEPAGE="https://github.com/neovim/python-gui"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""

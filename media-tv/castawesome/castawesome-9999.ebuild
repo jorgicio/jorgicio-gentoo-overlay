@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit git-r3 python-r1
 
@@ -32,14 +32,10 @@ src_prepare(){
 	sed -i 's#/usr/local#/usr#' uninstall_castawesome.sh
 	sed -i 's#Gnome;Internet#Network;AudioVideo#' Castawesome.desktop
 	sed -i 's#/home/sami/Ohjelmointi/Projektit/castawesome/IconCA.png#castawesome.png#' Castawesome.desktop
-	eapply_user
-}
-
-src_compile(){
-	emake DESTDIR="${D}" || die
+	default
 }
 
 src_install(){
-	emake DESTDIR="${D}" install || die
+	default
 	newicon IconCA.png ${PN}.png
 }

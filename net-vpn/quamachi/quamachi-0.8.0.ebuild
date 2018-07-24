@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{3,4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit python-r1 eutils
 

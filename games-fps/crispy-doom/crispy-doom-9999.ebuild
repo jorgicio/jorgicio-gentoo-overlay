@@ -3,14 +3,14 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit eutils autotools python-r1
 
 DESCRIPTION="Vanilla-compatible enhanced Doom engine, forked from Chocolate Doom"
 HOMEPAGE="http://fabiangreffrath.github.io/crispy-doom"
 
-if [[ ${PV} == *9999 ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/fabiangreffrath/${PN}.git"
