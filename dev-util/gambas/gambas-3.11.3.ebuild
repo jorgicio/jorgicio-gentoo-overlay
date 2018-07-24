@@ -18,7 +18,7 @@ KEYWORDS="~*"
 
 IUSE="+curl +net +qt4 +x11
 	bzip2 cairo crypt dbus examples gmp gnome gsl gstreamer gtk2 gtk3 httpd image-imlib image-io jit libxml mime
-	mysql ncurses odbc openal opengl openssl pcre pdf pop3 postgres qt4-opengl qt4-webkit qt5 sdl sdl-sound sdl2 sqlite v4l xml zlib"
+	mysql ncurses odbc openal opengl openssl pcre pdf pop3 postgres qt5 sdl sdl-sound sdl2 sqlite v4l xml zlib"
 
 # gambas3 have the only one gui. it is based on qt4.
 # these use flags (modules/plugins) require this qt4 gui to be present at the system to work properly:
@@ -36,8 +36,6 @@ REQUIRED_USE="cairo? ( qt4 x11 )
 	opengl? ( qt4 x11 )
 	pdf? ( qt4 x11 )
 	qt4? ( x11 )
-	qt4-opengl? ( qt4 )
-	qt4-webkit? ( qt4 )
 	sdl? ( qt4 x11 )
 	sdl-sound? ( sdl )
 	sdl2? ( qt4 x11 )
@@ -72,8 +70,6 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	qt4? ( dev-qt/qtcore:4[qt3support]
 		dev-qt/qtgui:4[qt3support]
 		dev-qt/qtsvg:4 )
-	qt4-opengl? ( dev-qt/qtwebkit:4 )
-	qt4-webkit? ( dev-qt/qtopengl:4[qt3support] )
 	qt5? (
 		>=dev-qt/qtcore-5.4.0:5
 		>=dev-qt/qtopengl-5.4.0:5
