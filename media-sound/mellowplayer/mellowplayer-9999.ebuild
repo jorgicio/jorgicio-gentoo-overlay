@@ -38,6 +38,7 @@ RDEPEND="
 	www-plugins/adobe-flash:*
 	www-plugins/chrome-binary-plugins:*[widevine?]
 	x11-libs/libnotify
+	widevine? ( dev-qt/qtwebengine-widevine )
 "
 
 src_prepare(){
