@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="widevine"
+IUSE="+widevine"
 
 DEPEND="
 	>=sys-devel/binutils-2.29
