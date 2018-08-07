@@ -26,8 +26,8 @@ src_unpack(){
 }
 
 src_install(){
-	insinto "/usr/$(get_libdir)/qt5/plugins/ppapi"
-	doins opt/google/chrome/libwidevinecdm*.so
+	exeinto "/usr/$(get_libdir)/qt5/plugins/ppapi"
+	doexe opt/google/chrome/libwidevinecdm*.so
 	insinto "/usr/share/licenses/${PN}"
 	doins "${DISTDIR}/chrome-eula_text.html"
 }
