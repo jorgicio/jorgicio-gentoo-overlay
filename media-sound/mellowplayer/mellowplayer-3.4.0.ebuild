@@ -44,6 +44,7 @@ RDEPEND="
 src_prepare(){
 	qbs-setup-toolchains --detect || die
 	qbs-setup-qt $(which qmake) qt5 || die
+	use widevine && PATCHES=( "${FILESDIR}/widevine-path.patch" )
 	default
 }
 
