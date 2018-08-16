@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils autotools flag-o-matic toolchain-funcs versionator
+inherit eutils autotools flag-o-matic toolchain-funcs versionator xdg-utils
 
 DESCRIPTION="Linux-exclusive Opera-like lightweight web browser"
 HOMEPAGE="http://fifth-browser.sourceforge.net"
@@ -49,4 +49,12 @@ src_configure(){
 src_install(){
 	emake check
 	emake DESTDIR="${D}" install
+}
+
+pkg_postinst(){
+	xdg_desktop_database_update
+}
+
+pkg_postrm(){
+	xdg_desktop_database_update
 }
