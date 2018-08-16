@@ -51,6 +51,7 @@ src_prepare(){
 		"${FILESDIR}/${PN}-3.patch"
 		"${FILESDIR}/${PN}-4.patch"
 		"${FILESDIR}/${PN}-5.patch"
+		"${FILESDIR}/${PN}-6.patch"
 	)
 	sed -i '39 a\
 		#include <cmath>' Source/JavaScriptCore/runtime/Options.cpp
