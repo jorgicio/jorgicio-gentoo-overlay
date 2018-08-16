@@ -44,7 +44,19 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-pkg_pretend(){
+src_prepare(){
+	PATCHES=(
+		"${FILESDIR}/${PN}-1.patch"
+		"${FILESDIR}/${PN}-2.patch"
+		"${FILESDIR}/${PN}-3.patch"
+		"${FILESDIR}/${PN}-4.patch"
+	)
+	sed -i '39 a\
+		#include <cmath>' Source/JavaScriptCore/runtime/Options.cpp
+	default
+}
+
+src_configure(){
 	if ! test-flag-CXX -std=c++11; then
 		die "You need at least GCC 4.7.3 or clang >= 3.3 for C++11-specific compiler flags"
 	fi
@@ -52,16 +64,6 @@ pkg_pretend(){
 	if tc-is-gcc && [[ $(gcc-version) < 4.7.3 ]]; then
 		die "The active compiler needs to be 4.7.3 (or newer)"
 	fi
-}
-
-src_prepare(){
-	PATCHES=(
-		"${FILESDIR}/${PN}-1.patch"
-		"${FILESDIR}/${PN}-2.patch"
-		"${FILESDIR}/${PN}-3.patch"
-	)
-	sed -i '39 a\
-		#include <cmath>' Source/JavaScriptCore/runtime/Options.cpp
 	default
 }
 
