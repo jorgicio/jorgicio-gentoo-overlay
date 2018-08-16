@@ -55,9 +55,14 @@ pkg_pretend(){
 }
 
 src_prepare(){
+	PATCHES=(
+		"${FILESDIR}/${PN}-1.patch"
+		"${FILESDIR}/${PN}-2.patch"
+		"${FILESDIR}/${PN}-3.patch"
+	)
 	sed -i '39 a\
 		#include <cmath>' Source/JavaScriptCore/runtime/Options.cpp
-	eapply_user
+	default
 }
 
 src_compile(){

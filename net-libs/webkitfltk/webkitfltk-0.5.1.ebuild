@@ -60,10 +60,9 @@ src_prepare(){
 		"${FILESDIR}/${PN}-2.patch"
 		"${FILESDIR}/${PN}-3.patch"
 	)
-	epatch ${PATCHES[@]}
 	sed -i '39 a\
 		#include <cmath>' Source/JavaScriptCore/runtime/Options.cpp
-	eapply_user
+	default
 }
 
 src_compile(){
