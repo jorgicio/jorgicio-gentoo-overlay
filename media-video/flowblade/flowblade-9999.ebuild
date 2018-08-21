@@ -39,7 +39,7 @@ DEPEND="
 	dev-python/librsvg-python[${PYTHON_USEDEP}]
 	gnome-base/librsvg:2
 	media-gfx/gmic[ffmpeg,X]
-	dev-libs/glib:2[dbus,${PYTHON_USEDEP}]
+	dev-libs/glib:2[dbus]
 	x11-libs/gdk-pixbuf:2[X]
 	virtual/ffmpeg
 "
