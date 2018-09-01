@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]];then
 	KEYWORDS=""
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86 ~arm"
+	KEYWORDS="amd64 ~arm x86"
 	S="${WORKDIR}/2048-Qt-${PV}"
 fi
 
