@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=6
 
-inherit qmake-utils eutils
+inherit qmake-utils eutils gnome2-utils
 
 DESCRIPTION="A Qt-based version of the game 2048"
 HOMEPAGE="https://github.com/xiaoyong/2048-Qt"
@@ -48,4 +47,12 @@ src_install(){
 	doicon res/icons/scalable/apps/${PN}.svg
 	domenu res/${PN}.desktop
 	doman res/man/${PN}.6
+}
+
+pkg_postinst(){
+	gnome2_icon_cache_update
+}
+
+pkg_postrm(){
+	gnome2_icon_cache_update
 }
