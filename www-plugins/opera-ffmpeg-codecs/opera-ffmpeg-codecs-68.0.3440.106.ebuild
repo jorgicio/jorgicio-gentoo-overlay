@@ -7,9 +7,8 @@ inherit unpacker eutils
 
 DESCRIPTION="ffmpeg extra codecs for Opera (i.e. mp3 and h.264)"
 HOMEPAGE="http://ffmpeg.org"
-BUILD_NUM="17.10.1388"
 SRC_URI="
-	amd64? ( http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${PV}-0ubuntu0.${BUILD_NUM}_amd64.deb )
+	amd64? ( http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${PV}-0ubuntu1_amd64.deb )
 "
 
 RESTRICT="mirror strip bindist"
