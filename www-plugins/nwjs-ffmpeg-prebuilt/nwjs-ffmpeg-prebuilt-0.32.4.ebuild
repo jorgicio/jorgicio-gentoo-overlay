@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="Node-build prebuilt propietary codecs for some browsers (chromium, opera, etc.)"
+DESCRIPTION="Node-prebuilt propietary codecs for some browsers (chromium, opera, etc.)"
 HOMEPAGE="https://github.com/iteufel/nwjs-ffmpeg-prebuilt"
 SRC_URI="
 	x86? ( ${HOMEPAGE}/releases/download/${PV}/${PV}-linux-ia32.zip -> ${P}-x86.zip )
