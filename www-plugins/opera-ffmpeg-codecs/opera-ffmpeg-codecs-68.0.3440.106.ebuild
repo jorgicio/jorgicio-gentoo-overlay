@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit unpacker eutils
+inherit multilib unpacker
 
 DESCRIPTION="ffmpeg extra codecs for Opera (i.e. mp3 and h.264)"
 HOMEPAGE="http://ffmpeg.org"
@@ -24,8 +24,8 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
-QA_PRESTRIPPED="usr/lib/opera/lib_extra/libffmpeg.so"
-QA_PREBUILT="usr/lib/opera/lib_extra/libffmpeg.so"
+QA_PRESTRIPPED="/usr/lib/opera/lib_extra/libffmpeg.so"
+QA_PREBUILT="/usr/lib/opera/lib_extra/libffmpeg.so"
 
 src_unpack(){
 	unpack_deb "${A}"
