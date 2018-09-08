@@ -34,7 +34,7 @@ DEPEND="
 	dev-python/setproctitle[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
-	x11-libs/libappindicator:3[introspection]
+	dev-libs/libappindicator:3[introspection]
 	x11-libs/gtk+:3
 	x11-libs/libnotify[introspection]
 "
