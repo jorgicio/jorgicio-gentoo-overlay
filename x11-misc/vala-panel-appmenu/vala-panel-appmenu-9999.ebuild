@@ -56,7 +56,7 @@ src_configure(){
 		-DENABLE_VALAPANEL=$(usex vala-panel ON OFF)
 		-DENABLE_WNCK=$(usex wnck ON OFF)
 		-DENABLE_MATE=$(usex mate ON OFF)
-		-DENABLE_APPMENU_GTK_MODULE=OFF
+		-DENABLE_APPMENU_GTK_MODULE=ON
 		-DGSETTINGS_COMPILE=OFF
 	)
 	cmake-utils_src_configure
