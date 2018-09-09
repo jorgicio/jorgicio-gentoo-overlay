@@ -21,11 +21,11 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="+vala-panel xfce +wnck mate"
+IUSE="+vala-panel xfce +wnck mate wayland"
 REQUIRED_USE="|| ( xfce vala-panel mate )"
 
 DEPEND="
-	>=x11-libs/gtk+-3.22.0:3
+	>=x11-libs/gtk+-3.22.0:3[wayland?]
 	$(vala_depend)
 	virtual/pkgconfig
 	sys-devel/gettext
@@ -41,6 +41,11 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare(){
+	if use !wayland;then
+		sed -i 's/WAYLAND//' CMakeLists.txt
+		sed -i 's/WAYLAND//' subprojects/appmenu-gtk-module/CMakeLists.txt
+		sed -i 's/\${WAYLAND_INCLUDE}//'  subprojects/appmenu-gtk-module/src/CMakeLists.txt
+	fi
 	vala_src_prepare
 	cmake-utils_src_prepare
 }
@@ -48,9 +53,10 @@ src_prepare(){
 src_configure(){
 	local mycmakeargs=(
 		-DENABLE_XFCE=$(usex xfce ON OFF)
-		-DENABLE_VALAPANEL=$(usex vala-panel VALAPANEL)
+		-DENABLE_VALAPANEL=$(usex vala-panel ON OFF)
 		-DENABLE_WNCK=$(usex wnck ON OFF)
 		-DENABLE_MATE=$(usex mate ON OFF)
+		-DENABLE_APPMENU_GTK_MODULE=OFF
 		-DGSETTINGS_COMPILE=OFF
 	)
 	cmake-utils_src_configure
