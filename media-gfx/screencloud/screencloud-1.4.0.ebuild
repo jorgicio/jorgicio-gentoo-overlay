@@ -49,7 +49,7 @@ src_prepare(){
 
 src_configure(){
 	local mycmakeargs=(
-		-DPYTHON_USE_PYTHON3="$(usex python_single_target_python_2_7 OFF ON)"
+		-DPYTHON_USE_PYTHON3="$(usex python_single_target_python2_7 OFF ON)"
 	)
 	cmake-utils_src_configure
 }
