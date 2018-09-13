@@ -4,7 +4,7 @@
 EAPI=6
 
 CMAKE_MIN_VERSION="2.8.12"
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
 inherit cmake-utils python-single-r1 xdg-utils
 
@@ -27,6 +27,7 @@ IUSE="libressl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
+	dev-libs/quazip
 	>=dev-python/PythonQt-3.2[extensions]
 	dev-qt/qtmultimedia:5[widgets]
 	dev-qt/qtconcurrent:5
@@ -44,6 +45,13 @@ DOCS=( README.md )
 
 src_prepare(){
 	cmake-utils_src_prepare
+}
+
+src_configure(){
+	local mycmakeargs=(
+		-DPYTHON_USE_PYTHON3="$(usex python_single_target_python_2_7 OFF ON)"
+	)
+	cmake-utils_src_configure
 }
 
 pkg_postinst(){
