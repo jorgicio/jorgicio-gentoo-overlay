@@ -31,7 +31,7 @@ DEPEND="
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/python-distutils-extra[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-libs/gobject-introspection[${PYTHON_USEDEP}]
+	dev-libs/gobject-introspection
 	media-libs/gstreamer:1.0[introspection]
 	media-libs/gst-plugins-base:1.0[introspection]
 	x11-libs/gtk+:3
