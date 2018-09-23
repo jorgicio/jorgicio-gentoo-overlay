@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1
+inherit distutils-r1
 
 DESCRIPTION="Process-based network emulator"
 HOMEPAGE="https://mininet.org"
@@ -39,20 +39,13 @@ RDEPEND="${DEPEND}
 	xhost? ( x11-apps/xhost )
 "
 
-run_setup_py(){
-	for x in ${PYTHON_COMPAT};do
-		elog "${x}: Running ${x/_/.} setup.py $@"
-		${x/_/.} setup.py $@ || eerror "Could not run setup.py for ${x}"
-	done
-}
-
 src_compile(){
 	emake mnexec
 	emake man
 }
 
 src_install(){
-	run_setup_py install --optimize=1 --root="${D}"
+	distutils-r1_src_install
 	dobin mnexec
 	doman mn.1
 	doman mnexec.1
