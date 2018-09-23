@@ -40,6 +40,7 @@ RDEPEND="${DEPEND}
 "
 
 src_compile(){
+	distutils-r1_src_compile
 	emake mnexec
 	emake man
 }
