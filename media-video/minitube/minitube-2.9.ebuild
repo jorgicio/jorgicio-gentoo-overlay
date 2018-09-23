@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ inherit l10n qmake-utils
 DESCRIPTION="Qt5 YouTube Client"
 HOMEPAGE="http://flavio.tordini.org/minitube"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/flaviotordini/${PN}.git"
@@ -19,7 +19,7 @@ if [[ ${PV} == *9999* ]];then
 else
 	SRC_URI="https://github.com/flaviotordini/${PN}/archive/${PV}.tar.gz ->
 ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -33,7 +33,7 @@ DEPEND="dev-qt/qtgui:5[accessibility]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	dev-qt/qtsingleapplication[qt5(+),X]
-	media-libs/phonon[qt5]
+	media-libs/phonon
 "
 RDEPEND="${DEPEND}"
 
@@ -43,7 +43,7 @@ DOCS="AUTHORS CHANGES TODO"
 PATCHES=( "${FILESDIR}"/${PN}-2.5.1-disable-updates.patch )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	eapply "${PATCHES[@]}"
 
 	# Remove unneeded translations
 	local trans=
