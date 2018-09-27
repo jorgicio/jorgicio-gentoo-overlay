@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/PyQt5[svg,webkit,${PYTHON_USEDEP}]
-	>=media-libs/libopenshot-0.1.8[python,${PYTHON_USEDEP}]
+	>=media-libs/libopenshot-0.2.0[python,${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/pyzmq[${PYTHON_USEDEP}]
 "
