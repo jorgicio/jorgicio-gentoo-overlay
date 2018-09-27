@@ -40,12 +40,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-pkg_setup(){
-	export VALAC="$(type -p valac-$(vala_best_api_version))"
-	default
-}
-
 src_prepare(){
+	export VALAC="$(type -p valac-$(vala_best_api_version))"
 	DOCS="AUTHORS"
 	cmake-utils_src_prepare
 }
