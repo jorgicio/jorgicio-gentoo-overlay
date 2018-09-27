@@ -127,7 +127,7 @@ src_compile() {
 	}
 	my_emake -j1 generate
 
-	my_emake ${targetargs} \
+	my_emake -j1 ${targetargs} \
 		SDL_INI_PATH="\$\$\$\$HOME/.sdlmame;${GAMES_SYSCONFDIR}/${PN}" \
 		USE_QTDEBUG=${qtdebug}
 
