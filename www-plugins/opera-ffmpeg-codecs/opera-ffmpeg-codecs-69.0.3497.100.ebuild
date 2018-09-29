@@ -31,7 +31,6 @@ DEPEND="
 	dev-libs/nss
 	sys-apps/pciutils
 	x11-libs/gtk+:3
-	dev-vcs/git
 "
 RDEPEND="${DEPEND}"
 
