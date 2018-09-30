@@ -1,20 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit linux-info git-r3 cmake-utils
 
 CMAKE_MIN_VERSION="2.8.11"
 
 DESCRIPTION="Small set of tools to control UKSM"
-HOMEPAGE="https://github.com/pfactum/uksmtools"
+HOMEPAGE="https://github.com/kernelOfTruth/uksmtools"
+SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
 
-LICENSE="LGPL-3.0"
+LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="kernel_linux"
 
 DEPEND=""
@@ -37,4 +38,5 @@ pkg_pretend(){
 src_prepare(){
 	# Install binaries in /usr/sbin instead of /usr/bin
 	sed -i 's/bin/sbin/g;' CMakeLists.txt
+	cmake-utils_src_prepare
 }
