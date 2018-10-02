@@ -17,6 +17,9 @@
       PulseAudio plugin enabled. This ensures that clients supporting
       ALSA only will use PulseAudio.
     </flag>
+	<flag name="elogind">
+		Enable support for <pkg>sys-auth/elogind</pkg>
+	</flag>
     <flag name="gconf">
       Ensure <pkg>gnome-base/gconf</pkg> is present for pulseaudio GConf
       to GSettings module automatic migration (keeping the user configuration)
