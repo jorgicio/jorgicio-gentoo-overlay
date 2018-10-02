@@ -40,6 +40,7 @@ RDEPEND="${DEPEND}"
 src_prepare(){
 	DOCS="AUTHORS"
 	export VALAC="$(type -P valac-$(vala_best_api_version))"
+	default
 	vala_src_prepare
 }
 
