@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
-QA_PRESTRIPPED="/usr/lib/iscan/libesint7E.so*"
+QA_PRESTRIPPED="/usr/lib/iscan/libesint7E.so.2.0.0"
 
 src_unpack(){
 	unpack_deb "${A}"
@@ -32,7 +32,9 @@ src_unpack(){
 
 src_install() {
 	exeinto /usr/$(get_libdir)/iscan
-	doexe usr/lib/iscan/*
+	doexe usr/lib/iscan/libesint7E.so.2.0.0
+	dosym /usr/$(get_libdir)/iscan/libesint7E.so.2.0.0 /usr/$(get_libdir)/iscan/libesint7E.so
+	dosym /usr/$(get_libdir)/iscan/libesint7E.so.2.0.0 /usr/$(get_libdir)/iscan/libesint7E.so.2
 	dodoc usr/share/doc/*/*
 }
 
