@@ -33,8 +33,11 @@ src_unpack(){
 src_install() {
 	exeinto /usr/$(get_libdir)/iscan
 	doexe usr/lib/iscan/libesint7E.so.2.0.0
-	dosym /usr/$(get_libdir)/iscan/libesint7E.so.2.0.0 /usr/$(get_libdir)/iscan/libesint7E.so
-	dosym /usr/$(get_libdir)/iscan/libesint7E.so.2.0.0 /usr/$(get_libdir)/iscan/libesint7E.so.2
+	rm usr/lib/iscan/libesint7E.so.2.0.0
+	#dosym /usr/$(get_libdir)/iscan/libesint7E.so.2.0.0 /usr/$(get_libdir)/iscan/libesint7E.so
+	#dosym /usr/$(get_libdir)/iscan/libesint7E.so.2.0.0 /usr/$(get_libdir)/iscan/libesint7E.so.2
+	insinto /usr/$(get_libdir)/iscan
+	doins usr/lib/iscan/*
 	dodoc usr/share/doc/*/*
 }
 
