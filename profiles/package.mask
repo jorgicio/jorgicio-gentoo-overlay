@@ -1,8 +1,5 @@
 # This package depends on gnome-extra/zeitgeist, which is masked due to dependencies on older and deprecated packages
 x11-misc/diodon
 
-# Fails due to missing header
-=games-emulation/sdlmame-0.195
-
-#Fails at build
-=www-plugins/opera-ffmpeg-codecs-69.0.3497.92
+# This may build, but doesn't have a (proper) install method.
+=games-engines/box2d-9999

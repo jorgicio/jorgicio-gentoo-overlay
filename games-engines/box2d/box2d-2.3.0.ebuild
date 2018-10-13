@@ -1,13 +1,13 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 MY_PN=Box2D
 
-CMAKE_MIN_VERSION=2.8
-inherit cmake-utils eutils
+CMAKE_MIN_VERSION=2.6
+inherit cmake-utils
 
 DESCRIPTION="Box2D is an open source physics engine written primarily for games."
 HOMEPAGE="http://www.box2d.org"
@@ -18,14 +18,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="media-libs/freeglut
-	app-arch/unzip"
-DEPEND="${RDEPEND}"
+DEPEND=""
+RDEPEND="${DEPEND}"
 
-S="${WORKDIR}"/${MY_PN}_v${PV}/${MY_PN}
+S="${WORKDIR}"/${MY_PN}-${PV}/${MY_PN}
 
 src_configure() {
-	mycmakeargs="${mycmakeargs} -DBOX2D_BUILD_SHARED=ON"
-
+	local mycmakeargs=(
+		-DBOX2D_BUILD_SHARED=ON
+		-DBOX2D_INSTALL=ON
+		-DBOX2D_BUILD_EXAMPLES=OFF
+		-DBOX2D_BUILD_STATIC=OFF
+	)
 	cmake-utils_src_configure
 }
