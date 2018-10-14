@@ -6,4 +6,7 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="7z">Enable support for 7z by installing <pkg>app-arch/p7zip</pkg></flag>
+	</use>
 </pkgmetadata>

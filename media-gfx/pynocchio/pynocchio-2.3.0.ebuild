@@ -29,7 +29,7 @@ DEPEND="
 	dev-qt/linguist:5
 	dev-qt/linguist-tools:5
 	dev-python/PyQt5[gui,multimedia,sql,${PYTHON_USEDEP}]
-	app-arch/unrar-gpl
+	app-arch/unrar
 	dev-qt/qtsql:5[sqlite]
 "
 RDEPEND="${DEPEND}
