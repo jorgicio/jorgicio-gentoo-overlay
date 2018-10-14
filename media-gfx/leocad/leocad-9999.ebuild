@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit qmake-utils
+inherit qmake-utils xdg-utils
 
 DESCRIPTION="LeoCAD is a CAD program that uses bricks similar to those found in many toys."
 HOMEPAGE="http://www.leocad.org"
@@ -45,4 +45,12 @@ src_install(){
 	emake INSTALL_ROOT="${D}" install
 	insinto /usr/share/${PN}
 	doins "${WORKDIR}/library.bin"
+}
+
+pkg_postinst(){
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm(){
+	xdg_mimeinfo_database_update
 }
