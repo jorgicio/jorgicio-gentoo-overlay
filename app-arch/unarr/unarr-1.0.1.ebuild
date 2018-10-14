@@ -20,19 +20,11 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="7z"
+IUSE=""
 
 DEPEND="
 	sys-libs/zlib
 	app-arch/bzip2
 	app-arch/xz-utils
-	7z? ( app-arch/p7zip )
 "
 RDEPEND="${DEPEND}"
-
-src_configure(){
-	local mycmakeargs=(
-		-DENABLE_7Z=$(usex 7z ON OFF)
-	)
-	cmake-utils_src_configure
-}
