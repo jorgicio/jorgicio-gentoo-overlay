@@ -25,14 +25,13 @@ IUSE="kernel_linux"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/appdirs[${PYTHON_USEDEP}]
-	dev-python/block_tracing[${PYTHON_USEDEP}]
-	dev-python/dropbox-sdk-python[${PYTHON_USEDEP}]
+	>=dev-python/appdirs-1.4[${PYTHON_USEDEP}]
+	>=dev-python/block_tracing-1.0[${PYTHON_USEDEP}]
+	>=dev-python/dropbox-sdk-python-3.38[${PYTHON_USEDEP}]
 	>=dev-python/keyring-15.1.0[${PYTHON_USEDEP}]
-	<dev-python/keyring-16.0.0[${PYTHON_USEDEP}]
-	dev-python/privy[${PYTHON_USEDEP}]
-	dev-python/sentry-sdk[${PYTHON_USEDEP}]
-	dev-python/userspacefs[${PYTHON_USEDEP}]
+	>=dev-python/privy-6.0.0[${PYTHON_USEDEP}]
+	>=dev-python/sentry-sdk-0.3[${PYTHON_USEDEP}]
+	>=dev-python/userspacefs-1.0.8[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	kernel_linux? ( sys-fs/fuse:0 )
