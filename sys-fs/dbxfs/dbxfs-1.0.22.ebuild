@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
@@ -24,11 +24,21 @@ SLOT="0"
 IUSE="kernel_linux"
 
 DEPEND="
-	${PYTHON_DEPS}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/appdirs[${PYTHON_USEDEP}]
+	dev-python/block_tracing[${PYTHON_USEDEP}]
+	dev-python/dropbox-sdk-python[${PYTHON_USEDEP}]
+	dev-python/keyring[${PYTHON_USEDEP}]
+	dev-python/privy[${PYTHON_USEDEP}]
+	dev-python/sentry-sdk[${PYTHON_USEDEP}]
+	dev-python/userspacefs[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	kernel_linux? ( sys-fs/fuse:0 )
 "
+BDEPEND="${PYTHON_DEPS}"
+
+PATCHES=( "${FILESDIR}/python-${PN}.patch" )
 
 pkg_postinst(){
 	echo
