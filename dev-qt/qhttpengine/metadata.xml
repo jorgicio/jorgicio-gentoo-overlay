@@ -6,9 +6,4 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
-	<use>
-		<flag name="appindicator">Use the appindicator tray</flag>
-		<flag name="http">Allow local applications access</flag>
-		<flag name="mdns">Enable multicast DNS (mDNS) discovery</flag>
-	</use>
 </pkgmetadata>
