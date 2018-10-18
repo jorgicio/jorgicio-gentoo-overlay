@@ -24,7 +24,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=x11-misc/gtk+-3.18:3
+	>=x11-libs/gtk+-3.18:3
 	>=mate-base/mate-panel-1.16.0
 	dev-libs/glib:2
 	dev-perl/XML-Parser
