@@ -1,0 +1,12 @@
+diff -Naur a/src/engine.c b/src/engine.c
+--- a/src/engine.c	2018-10-18 13:16:59.491020806 -0300
++++ b/src/engine.c	2018-10-18 13:19:29.567126956 -0300
+@@ -86,7 +86,7 @@
+         settings = gtk_settings_get_default();
+         g_object_get(settings, "gtk-theme-name", &cur_theme, NULL);
+ 
+-        if (cur_theme && g_str_has_prefix(cur_theme, "Arc")) {
++        if (cur_theme && (g_str_has_prefix(cur_theme, "Arc") || g_str_has_prefix(cur_theme, "Numix"))) {
+                 priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
+         }
+ 

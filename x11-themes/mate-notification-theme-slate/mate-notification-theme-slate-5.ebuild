@@ -32,8 +32,8 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare(){
+	default
 	eautoreconf
-	eapply_user
 }
 
 src_install(){

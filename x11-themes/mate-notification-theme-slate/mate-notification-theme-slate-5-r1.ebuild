@@ -31,6 +31,8 @@ RDEPEND="${DEPEND}
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-add-numix-support.patch" )
+
 src_prepare(){
 	default
 	eautoreconf
