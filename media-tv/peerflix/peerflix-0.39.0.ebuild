@@ -6,7 +6,7 @@ EAPI=6
 
 DESCRIPTION="Streaming torrent client for node.js"
 HOMEPAGE="https://github.com/mafintosh/peerflix"
-if [[ ${PV} == *9999 ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
@@ -23,5 +23,5 @@ RDEPEND="net-libs/nodejs[npm]"
 DEPEND="${RDEPEND}"
 
 src_install() {
-  npm install -g --prefix "${D}/usr" || die "Failed installation"
+	npm install -g --prefix "${D}/usr" || die "Failed installation"
 }
