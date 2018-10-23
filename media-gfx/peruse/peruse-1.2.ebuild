@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]];then
 	EGIT_REPO_URI="git://anongit.kde.org/${PN}.git"
 else
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="x86 amd64"
 	S="${WORKDIR}/${PN}"
 fi
 
