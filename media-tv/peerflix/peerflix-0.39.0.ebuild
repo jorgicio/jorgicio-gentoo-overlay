@@ -23,5 +23,5 @@ RDEPEND="net-libs/nodejs[npm]"
 DEPEND="${RDEPEND}"
 
 src_install() {
-	npm install -g --prefix "${D}/usr" || die "Failed installation"
+	npm install --cache ../cache --user root  -g  --prefix "${D}/usr" "${DISTDIR}/${P}.tar.gz"  || die "Failed installation"
 }
