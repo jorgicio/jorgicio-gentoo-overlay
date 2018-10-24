@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/joncampbell123/dosbox-x.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS=""
 IUSE="alsa debug hardened ffmpeg opengl"
 
 DEPEND="alsa? ( media-libs/alsa-lib )
