@@ -6,27 +6,29 @@ EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit distutils-r1
 
-DESCRIPTION="Python bindings for the secure Argon2 password hashing algorithm."
-HOMEPAGE="https://argon2-cffi.readthedocs.io/en/stable"
+DESCRIPTION="The new Python SDK for Sentry.io"
+HOMEPAGE="https://github.com/getsentry/sentry-python"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS=""
-	EGIT_REPO_URI="https://github.com/hynek/${PN}.git"
+	EGIT_REPO_URI="${HOMEPAGE}"
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="MIT"
+LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 DEPEND="
+	dev-python/blinker[${PYTHON_USEDEP}]
+	dev-python/flask[${PYTHON_USEDEP}]
+	dev-python/certifi[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	virtual/python-cffi[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}"
