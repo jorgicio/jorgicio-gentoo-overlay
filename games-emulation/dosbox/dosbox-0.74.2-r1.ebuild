@@ -36,7 +36,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	use glide && eapply "${DISTDIR}"/dosbox_glide-${PV}-${GLIDE_PATCH}.diff
+	use glide && eapply "${DISTDIR}"/dosbox-${PV}-${GLIDE_PATCH}_glide.diff
 	default
 	eautoreconf
 }
