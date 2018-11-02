@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools desktop flag-o-matic
 
 GLIDE_PATCH=3722fc563b737d2d7933df6a771651c2154e6f7b
-MY_PV="${PV:2:4}"
-MY_P="${PN}-${PV:0:2}${MY_PV/./-}"
+MY_PV="${PV:0:4}-${PV:5:6}"
+MY_P="${PN}-${MY_PV}"
 DESCRIPTION="DOS emulator"
 HOMEPAGE="http://dosbox.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
