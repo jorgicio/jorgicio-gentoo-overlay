@@ -43,6 +43,12 @@ RDEPEND="${DEPEND}
 	!x11-misc/caffeine
 "
 
+src_prepare(){
+	sed -i -e "s/PF4Public/caffeine-ng/" \
+		share/caffeine/glade/GUI.glade
+	default
+}
+
 pkg_preinst(){
 	gnome2_schemas_savelist
 }
