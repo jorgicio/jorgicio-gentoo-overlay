@@ -24,3 +24,5 @@ DEPEND="
 	x11-libs/wxGTK:3.0
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-fix-prefix.patch" )
