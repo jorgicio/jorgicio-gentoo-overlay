@@ -1,0 +1,12 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2018-11-05 14:39:32.036977302 -0300
++++ b/CMakeLists.txt	2018-11-05 14:39:44.158260656 -0300
+@@ -74,8 +74,6 @@
+ 
+ # setup some symlinks and remove deprecated stuff from previous installation
+ install(CODE "
+-      execute_process(COMMAND ln -s ${CMAKE_INSTALL_PREFIX}/bin/far2l ${CMAKE_INSTALL_PREFIX}/lib/far2l/far2l_askpass)
+-      execute_process(COMMAND ln -s ${CMAKE_INSTALL_PREFIX}/bin/far2l ${CMAKE_INSTALL_PREFIX}/lib/far2l/far2l_sudoapp)
+       execute_process(COMMAND rm -f ${CMAKE_INSTALL_PREFIX}/lib/far2l/Plugins/objinfo/plug/objinfo.far-plug-mb)
+       "
+     )

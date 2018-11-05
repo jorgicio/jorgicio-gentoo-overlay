@@ -28,4 +28,13 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-fix-prefix.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-prefix.patch"
+	"${FILESDIR}/${PN}-remove-symlinks.patch"
+)
+
+src_install(){
+	cmake-utils_src_install
+	dosym "../../bin/${PN}" "${EPREFIX}/usr/$(get_libdir)/${PN}/${PN}_askpass"
+	dosym "../../bin/${PN}" "${EPREFIX}/usr/$(get_libdir)/${PN}/${PN}_sudoapp"
+}
