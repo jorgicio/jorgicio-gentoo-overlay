@@ -3,9 +3,9 @@
 
 EAPI=6
 
-inherit cmake-utils
-
 CMAKE_MIN_VERSION="3.2.2"
+
+inherit cmake-utils
 
 MY_PV="${PV:4:5}-${PV:15:2}nov${PV:11:2}"
 MY_P="${PN}-${MY_PV}"

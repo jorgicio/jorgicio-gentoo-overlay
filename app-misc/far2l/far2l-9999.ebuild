@@ -3,9 +3,9 @@
 
 EAPI=6
 
-inherit cmake-utils git-r3
-
 CMAKE_MIN_VERSION="3.2.2"
+
+inherit cmake-utils git-r3
 
 DESCRIPTION="Linux port of FAR Manager v2"
 HOMEPAGE="https://farmanager.com"
