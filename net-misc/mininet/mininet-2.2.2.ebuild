@@ -22,22 +22,33 @@ fi
 
 LICENSE="Mininet"
 SLOT="0"
-IUSE="xhost"
+IUSE="doc test tools xhost"
 
 DEPEND="
 	${PYTHON_DEPS}
-	app-shells/bash
 	dev-python/networkx[${PYTHON_USEDEP}]
 	sys-apps/net-tools[hostname]
 	net-misc/iputils
-	sys-apps/help2man
+	doc? ( sys-apps/help2man )
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	net-misc/iperf:2
-	net-misc/openvswitch[monitor]
+	net-misc/openvswitch
+	dev-libs/libcgroup
 "
 RDEPEND="${DEPEND}
+	net-misc/netkit-telnetd
+	sys-process/procps
+	tools? (
+		net-misc/socat
+		sys-process/psmisc
+		net-misc/iperf
+		x11-terms/xterm
+		sys-apps/ethtool
+	)
 	xhost? ( x11-apps/xhost )
 "
+
+PATCHES=( "${FILESDIR}/${PN}-2.2.1-modify-sys-mount.patch" )
 
 src_compile(){
 	distutils-r1_src_compile
@@ -50,4 +61,5 @@ src_install(){
 	dobin mnexec
 	doman mn.1
 	doman mnexec.1
+	use doc && dodoc
 }

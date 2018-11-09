@@ -7,6 +7,7 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
+		<flag name="tools">Enable the support for the mininet tools</flag>
 		<flag name="xhost">Enable support for <package>xhost</package></flag>
 	</use>
 </pkgmetadata>
