@@ -36,7 +36,10 @@ DEPEND="
 	dev-libs/libcgroup
 "
 RDEPEND="${DEPEND}
-	net-misc/netkit-telnetd
+	|| (
+		net-misc/netkit-telnetd
+		net-misc/telnet-bsd
+	)
 	sys-process/procps
 	tools? (
 		net-misc/socat
