@@ -57,4 +57,4 @@ IUSE=""
 
 DEPEND="sys-apps/lm_sensors"
 RDEPEND="${DEPEND}"
-BDEPEND=">=virtual/rust-1.2.6"
+BDEPEND=">=virtual/rust-1.26.0"
