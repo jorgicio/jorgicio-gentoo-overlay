@@ -6,4 +6,8 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="gtk3">Install the GTK-based frontend</flag>
+		<flag name="legacy-opengl">Use the legacy opengl instead if modern is not supported</flag>
+	</use>
 </pkgmetadata>
