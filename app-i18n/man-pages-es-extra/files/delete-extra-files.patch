@@ -1,6 +1,6 @@
-diff -Naur a/manpages-es-extra-0.8a/Makefile b/manpages-es-extra-0.8a/Makefile
---- a/manpages-es-extra-0.8a/Makefile	2016-05-10 12:29:37.947341195 -0300
-+++ b/manpages-es-extra-0.8a/Makefile	2016-05-10 12:30:16.241248976 -0300
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2018-11-17 01:01:04.129999830 -0300
++++ b/Makefile	2018-11-17 01:02:06.306584411 -0300
 @@ -60,9 +60,6 @@
  		install -d -m 755 $(MANDIR)/$$i; \
  		install -m 644 $$i/* $(MANDIR)/$$i; \
