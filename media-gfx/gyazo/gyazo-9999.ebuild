@@ -4,7 +4,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby23 ruby 24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 inherit desktop ruby-single
 
