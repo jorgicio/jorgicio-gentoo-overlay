@@ -1,34 +1,40 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=7
 
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby23 ruby 24 ruby25"
 
-inherit ruby-single git-r3
+inherit desktop ruby-single
 
 DESCRIPTION="Seriously Instant Screen-Grabbing"
 HOMEPAGE="http://gyazo.com"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/gyazo/Gyazo-for-Linux"
+if [[ ${PV} == 9999 ]];then
+	inherit git-r3
+	SRC_URI=""
+	KEYWORDS=""
+	EGIT_REPO_URI="https://github.com/gyazo/Gyazo-for-Linux.git"
+else
+	SRC_URI="https://github.com/gyazo/Gyazo-for-Linux/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86"
+	S="${WORKDIR}/Gyazo-for-Linux-${PV}"
+fi
 
-LICENSE="LGPL-3.0"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE="+xclip"
+IUSE=""
 
-DEPEND="media-gfx/imagemagick
-		xclip? ( x11-misc/xclip )"
-RDEPEND="${DEPEND}"
+DEPEND="media-gfx/imagemagick"
+RDEPEND="${DEPEND}
+	x11-misc/xclip
+"
+BDEPEND="${RUBY_DEPS}"
 
 src_install(){
-	exeinto /usr/bin
-	newexe src/${PN}.rb ${PN}
-	insinto /usr/share/applications
-	doins src/${PN}.desktop
-	insinto /usr/share/pixmaps
-	doins icons/${PN}.png
+	newbin src/${PN}.rb ${PN}
+	domenu src/${PN}.desktop
+	doicon icons/${PN}.png
 }
 
 pkg_postinst(){
