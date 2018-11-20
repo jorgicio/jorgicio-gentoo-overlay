@@ -20,7 +20,6 @@ SLOT="0"
 IUSE="systemd"
 DEPEND="
 	virtual/cron
-	>=net-libs/nodejs-0.6[npm]
 	dev-libs/openssl
 	dev-python/pygtk
 	media-tv/xawtv
@@ -35,6 +34,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	systemd? ( sys-apps/systemd )
 "
+BDEPEND=">=net-libs/nodejs-0.6[npm]"
 
 QA_PRESTRIPPED="
 	usr/lib/${PN}/bin/node
