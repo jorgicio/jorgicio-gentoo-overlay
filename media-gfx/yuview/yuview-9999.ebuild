@@ -35,6 +35,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/qtcore:5"
 
+src_prepare(){
+	sed -i -e "s/\#\#VERSION\#\#/${PV}/" docs/about.html
+	default
+}
+
 src_configure(){
 	eqmake5 PREFIX="${EPREFIX}/usr" YUView.pro
 }
