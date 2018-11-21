@@ -30,7 +30,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtxml:5
 	virtual/ffmpeg
-	dev-libs/libde265[qt5]
+	media-libs/libde265[qt5]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/qtcore:5"
