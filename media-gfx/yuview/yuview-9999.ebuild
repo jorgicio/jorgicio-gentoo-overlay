@@ -30,6 +30,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtxml:5
 	virtual/ffmpeg
+	dev-libs/libde265[qt5]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/qtcore:5"
@@ -40,10 +41,6 @@ src_configure(){
 
 src_install(){
 	emake INSTALL_ROOT="${D}" install
-	exeinto /usr/$(get_libdir)/YUView
-	doexe libde265/libde265-internals.so
-	insinto /usr/$(get_libdir)/YUView
-	doins libde265/libde265.so.0
 }
 
 pkg_postinst(){
