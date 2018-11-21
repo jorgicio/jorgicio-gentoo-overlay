@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils
+inherit qmake-utils xdg-utils
 
 DESCRIPTION="Free and open source cross-platform YUV viewer with advanced analytics toolset"
 HOMEPAGE="https://ient.github.io/YUView"
