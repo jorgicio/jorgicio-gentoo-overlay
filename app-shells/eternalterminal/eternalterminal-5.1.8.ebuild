@@ -3,9 +3,9 @@
 
 EAPI=6
 
-inherit cmake-utils
-
 CMAKE_MIN_VERSION="3.0.2"
+
+inherit cmake-utils
 
 DESCRIPTION="Re-connectable secure remote shell"
 HOMEPAGE="https://mistertea.github.io/EternalTerminal"
