@@ -9,7 +9,7 @@ DESCRIPTION="Markdown editor made with GTK+-3.0"
 HOMEPAGE="https://fabiocolacio.github.io/Marker"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/fabiocolacio/${PN^}"
-if [[ ${PV} == 99999999 ]];then
+if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 else
 	EGIT_COMMIT="${PV}"
