@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/fabiocolacio/${PN^}"
 if [[ ${PV} == 99999999 ]];then
 	KEYWORDS=""
 else
-	EGIT_COMMIT="${PV:0:4}.${PV:4:2}.${PV:6:2}"
+	EGIT_COMMIT="${PV}"
 	KEYWORDS="~x86 ~amd64"
 fi
 
