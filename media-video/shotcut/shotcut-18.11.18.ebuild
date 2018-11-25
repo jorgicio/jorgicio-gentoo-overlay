@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit desktop qmake-utils
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="A free, open source, cross-platform video editor"
 HOMEPAGE="https://www.shotcut.org/"
@@ -61,4 +61,14 @@ src_install() {
 	make_desktop_entry shotcut "Shotcut"
 
 	einstalldocs
+}
+
+pkg_postinst(){
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm(){
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
