@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gentoo-overlay@mva.name</email>
+    <description>If you have any issues, please contact me, or try
+    to find me in IRC on Freenode, OFTC or RusNet.</description>
+    <name>Vadim A. Misbakh-Soloviov</name>
+  </maintainer>
+  <longdescription>Telegram Desktop Client</longdescription>
+  <use>
+    <flag name="crash-report">Enable Crash Reporter</flag>
+    <flag name="custom-api-id">Use custom API ID and API HASH (you
+    must set it either in make.conf or
+    portage/env/{CAT}/{PN}.</flag>
+    <flag name="gtk3">Keeps GTK3 stuff enabled</flag>
+    <flag name="pulseaudio">Keeps Pulseaudio support enabled
+    (ALSA-only backend will be used if you disable this)</flag>
+    <flag name="wide-baloons">Apply custom patch to make text
+    baloons in chat journal follow longest line width on adaptive
+    widescreen layout, instead of using short ones and keep tons of
+    empty space.</flag>
+    <!--
+    <flag name="upstream-api-id">
+      Use upstream's default API ID ans API HASH (upstream discourages custom builds with same API/HASH that "original" app).
+      If neither that flag or "custom api id" is set, build will use API ID/HASH Gentoo's official API ID and API HASH .
+    !!!!!!!! Please generate them first, before uncommenting. Also, don't forget to fill proper values in the patch and uncomment in the ebuild! !!!!!!!!
+    </flag>
+    -->
+  </use>
+  <upstream>
+    <remote-id type="github">telegramdesktop/tdesktop</remote-id>
+    <bugs-to>
+    https://github.com/telegramdesktop/tdesktop/issues</bugs-to>
+  </upstream>
+</pkgmetadata>

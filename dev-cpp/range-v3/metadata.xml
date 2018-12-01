@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE 
+pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription>The Kashmir Library is intended to provide
+  functionality needed in many software projects, but not present
+  in the C++ standard library.</longdescription>
+</pkgmetadata>
