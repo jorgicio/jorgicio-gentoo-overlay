@@ -70,8 +70,11 @@ set_property(SOURCE ${TELEGRAM_GENERATED_SOURCES} PROPERTY SKIP_AUTOMOC ON)
 
 set(QRC_FILES
 	Resources/qrc/telegram.qrc
-	Resources/qrc/telegram_emoji.qrc
-	Resources/qrc/telegram_emoji_large.qrc
+	Resources/qrc/telegram_emoji_1.qrc
+	Resources/qrc/telegram_emoji_2.qrc
+	Resources/qrc/telegram_emoji_3.qrc
+	Resources/qrc/telegram_emoji_4.qrc
+	Resources/qrc/telegram_emoji_5.qrc
 	# This only disables system plugin search path
 	# We do not want this behavior for system build
 	# Resources/qrc/telegram_linux.qrc

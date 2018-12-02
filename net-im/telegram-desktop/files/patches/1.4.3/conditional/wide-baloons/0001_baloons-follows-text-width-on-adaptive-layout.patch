@@ -13,7 +13,7 @@ diff --git a/Telegram/SourceFiles/history/history_media_types.cpp b/Telegram/Sou
 @@ -279,7 +279,7 @@ QSize HistoryPhoto::countOptimalSize() {
  
  QSize HistoryPhoto::countCurrentSize(int newWidth) {
- 	int tw = convertScale(_data->full->width()), th = convertScale(_data->full->height());
+ 	int tw = ConvertScale(_data->full->width()), th = ConvertScale(_data->full->height());
 -	if (tw > st::maxMediaSize) {
 +	if (!Adaptive::ChatWide() && tw > st::maxMediaSize) {
  		th = (st::maxMediaSize * th) / tw;
