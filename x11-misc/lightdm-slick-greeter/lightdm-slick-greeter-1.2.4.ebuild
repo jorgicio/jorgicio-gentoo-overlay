@@ -42,13 +42,13 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare(){
+	default_src_prepare
 	export VALAC="$(type -P valac-$(vala_best_api_version))"
 	eautoreconf
-	default
 }
 
 src_install(){
-	default
+	default_src_install
 	insinto /etc/lightdm
 	doins "${FILESDIR}/${PN//lightdm-}.conf"
 }

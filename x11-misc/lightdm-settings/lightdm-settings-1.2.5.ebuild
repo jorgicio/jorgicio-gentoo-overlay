@@ -34,10 +34,6 @@ RDEPEND="${DEPEND}
 	x11-misc/lightdm-slick-greeter
 "
 
-src_compile(){
-	emake
-}
-
 src_install(){
 	insinto /usr/$(get_libdir)
 	doins -r usr/lib/*
