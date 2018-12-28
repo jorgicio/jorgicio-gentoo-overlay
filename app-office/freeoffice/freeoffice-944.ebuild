@@ -26,6 +26,7 @@ RDEPEND="
 	dev-util/desktop-file-utils
 	net-misc/curl
 	app-arch/xz-utils
+	media-libs/mesa
 "
 
 QA_PRESTRIPPED="
