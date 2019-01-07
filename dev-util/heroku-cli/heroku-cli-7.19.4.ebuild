@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="A tool for creating and managing Heroku apps from the command line"
 HOMEPAGE="https://devcenter.heroku.com/articles/heroku-cli"
@@ -13,12 +13,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+git"
 RESTRICT="strip"
 
-DEPEND="
-	net-libs/nodejs[npm]
-"
-RDEPEND="${DEPEND}
-	git? ( dev-vcs/git )"
-
+RDEPEND="git? ( dev-vcs/git )"
+BDEPEND="net-libs/nodejs[npm]"
 
 S="${WORKDIR}/package"
 
