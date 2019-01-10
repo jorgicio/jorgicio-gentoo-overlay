@@ -31,10 +31,10 @@ src_install(){
 pkg_postinst(){
 	echo
 	einfo "In order to run Dropbox with this library, run the"
-	echo "/usr/$(get_libdir)/${PN}/dropbox_start.py script, or"
-	echo "set the LD_PRELOAD variable to the libdropbox_fs_fix.so path"
-	echo "and then, run 'dropbox start'. i.e."
-	echo "LD_PRELOAD=/usr/$(get_libdir)/${PN}/libdropbox_fs_fix.so dropbox start"
-	echo "You could also create a script to do that."
+	einfo "/usr/$(get_libdir)/${PN}/dropbox_start.py script, or"
+	einfo "set the LD_PRELOAD variable to the libdropbox_fs_fix.so path"
+	einfo "and then, run 'dropbox start'. i.e."
+	einfo "LD_PRELOAD=/usr/$(get_libdir)/${PN}/libdropbox_fs_fix.so dropbox start"
+	einfo "You could also create a script to do that."
 	echo
 }
