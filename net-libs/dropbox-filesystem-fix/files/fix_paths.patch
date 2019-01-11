@@ -7,7 +7,7 @@ index 82617c5..2aa4cf1 100644
  
  def start_dropbox():
 -    lib_dir = os.path.dirname(os.path.realpath(__file__))
-+    lib_dir = os.path.dirname('/usr/local/lib/')
++    lib_dir = os.path.dirname('/usr/lib/dropbox-filesystem-fix/')
      lib_path = os.path.join(lib_dir, "libdropbox_fs_fix.so")
      if not os.access(lib_path, os.X_OK):
          print(">>> Library '%s' is not available!" % lib_path)
@@ -15,7 +15,7 @@ index 82617c5..2aa4cf1 100644
      os.environ["LD_PRELOAD"] = lib_path
  
 -    db_path = os.path.expanduser(u"~/.dropbox-dist/dropboxd").encode(
-+    db_path = os.path.expanduser(u"/usr/bin/dropbox").encode(
++    db_path = os.path.expanduser(u"/opt/bin/dropbox").encode(
          sys.getfilesystemencoding()
      )
      if os.access(db_path, os.X_OK):
