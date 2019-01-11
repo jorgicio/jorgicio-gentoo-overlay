@@ -15,13 +15,21 @@ EGIT_REPO_URI="https://github.com/dark/${PN}.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="clang"
 
 RDEPEND=">=net-misc/dropbox-62.0.0"
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	clang? ( sys-devel/clang )
+	${PYTHON_DEPS}
+"
 
 PATCHES=( "${FILESDIR}/fix_paths.patch" )
+
+src_prepare(){
+	use clang && sed -i -e "s/gcc/clang/" Makefile
+	default_src_prepare
+}
 
 src_install(){
 	local DB_INSTALL_DIR="/usr/$(get_libdir)/${PN}"
