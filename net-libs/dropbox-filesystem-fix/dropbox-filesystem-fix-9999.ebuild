@@ -21,6 +21,8 @@ RDEPEND=">=net-misc/dropbox-62.0.0"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
+PATCHES=( "${FILESDIR}/fix_paths.patch" )
+
 src_install(){
 	local DB_INSTALL_DIR="/usr/$(get_libdir)/${PN}"
 	exeinto "${DB_INSTALL_DIR}"
