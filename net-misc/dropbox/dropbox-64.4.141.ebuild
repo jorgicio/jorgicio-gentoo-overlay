@@ -103,7 +103,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/dropbox.initd dropbox
 	newconfd "${FILESDIR}"/dropbox.conf dropbox
-	systemd_newunit "${FILESDIR}"/dropbox_at.service-r1 "dropbox@.service"
+	systemd_newunit "${FILESDIR}"/dropbox_at.service "dropbox@.service"
 
 	dodoc "${T}"/{README,ACKNOWLEDGEMENTS}
 }
