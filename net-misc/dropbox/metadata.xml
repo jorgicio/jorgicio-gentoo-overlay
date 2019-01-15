@@ -9,5 +9,6 @@
   </maintainer>
   <use>
     <flag name="librsync-bundled">Use bundled librsync library</flag>
+	<flag name="experimental">Add an experimental feature: non-ext4 support</flag>
   </use>
 </pkgmetadata>
