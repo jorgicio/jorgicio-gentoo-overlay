@@ -101,7 +101,7 @@ src_compile(){
 }
 
 src_install() {
-	use experimental && rm -vf Makefile README.md detect-ext4.c dropbox-start.py libdropbox_fs_fix.c LICENSE
+	use experimental && rm -vf Makefile README.md detect-ext4.c dropbox_start.py libdropbox_fs_fix.c LICENSE
 	local targetdir="/opt/dropbox"
 
 	insinto "${targetdir}"
