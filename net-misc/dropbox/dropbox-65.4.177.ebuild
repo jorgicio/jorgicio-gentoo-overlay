@@ -129,7 +129,7 @@ pkg_postinst() {
 	if use experimental; then
 		echo
 		ewarn "If Dropbox won't start, it may upgraded itself. Check if"
-		ewarn "in your $HOME directory is the folder ~/.dropbox-dist present."
+		ewarn "in your \$HOME directory is the folder ~/.dropbox-dist present."
 		ewarn "If so, delete it first before upgrading and running Dropbox"
 		ewarn "again."
 		echo
