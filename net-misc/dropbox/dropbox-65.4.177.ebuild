@@ -128,6 +128,10 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 	if use experimental; then
 		echo
+		ewarn "You enabled the 'experimental' USE-flag, so you can use Dropbox"
+		ewarn "on non-ext4 filesystems. It may lead to some failures, so"
+		ewarn "proceed with caution."
+		echo
 		ewarn "If Dropbox won't start, it may upgraded itself. Check if"
 		ewarn "in your \$HOME directory is the folder ~/.dropbox-dist present."
 		ewarn "If so, delete it first before upgrading and running Dropbox"
