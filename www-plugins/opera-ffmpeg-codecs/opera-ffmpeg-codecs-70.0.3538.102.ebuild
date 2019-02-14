@@ -32,7 +32,9 @@ DEPEND="
 	sys-apps/pciutils
 	x11-libs/gtk+:3
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	media-video/ffmpeg[-chromium]
+"
 
 S="${WORKDIR}/chromium-${PV}"
 
