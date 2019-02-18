@@ -35,7 +35,7 @@ src_prepare(){
 }
 
 src_compile(){
-	FLAGS="DESTDIR=\"${ED}\" PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc	SYSTEM_MINIZIP=1 SYSTEM_ZLIB=1 CTIME=0"
+	FLAGS="DESTDIR=\"${ED}\" PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc	CTIME=0"
 	emake ${FLAGS} \
 		DEBUG=$(usex debug "1" "0") \
 		JOYSTICK=$(usex joystick "1" "0") \
