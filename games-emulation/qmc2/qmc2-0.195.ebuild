@@ -1,9 +1,8 @@
-# Copyright 2019 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+
 
 EAPI=7
 
-inherit eutils
+inherit eutils xdg-utils
 
 DESCRIPTION="Qt-based UNIX MAME frontend supporting SDLMAME"
 HOMEPAGE="https://qmc2.batcom-it.net"
@@ -20,16 +19,21 @@ DEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtxmlpatterns:5
-	media-libs/libsdl2[X,opengl,sound,video]
+	media-libs/libsdl2[X,opengl?,sound,video,joystick?]
 	net-misc/rsync
+	x11-apps/xwininfo
+	arcade? ( dev-qt/qtdeclarative:5 )
+	opengl? ( dev-qt/qtopengl:5 )
+	phonon? ( media-libs/phonon )
+	tools? ( dev-qt/qtscript:5 )
 "
 RDEPEND="${DEPEND}
-	>=games-emulation/sdlmame-0.170[arcade?,tools?]
+	>=games-emulation/sdlmame-0.170[tools=]
 "
 S="${WORKDIR}/${PN}"
 
 src_prepare(){
-	sed -e "s:\$(GLOBAL_DATADIR)/applications:${ED}usr/share/applications:g" \
+	sed -e "s:\$(GLOBAL_DATADIR)/applications:${ED}/usr/share/applications:g" \
 		-i Makefile || die
 	default_src_prepare
 }
@@ -50,4 +54,12 @@ src_install(){
 	emake ${FLAGS} install
 	use arcade && emake ${FLAGS} arcade-install
 	use tools && emake ${FLAGS} tools-install
+}
+
+pkg_postinst(){
+	xdg_desktop_database_update
+}
+
+pkg_postrm(){
+	xdg_desktop_database_update
 }

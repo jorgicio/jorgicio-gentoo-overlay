@@ -9,5 +9,6 @@
 	<use>
 		<flag name="arcade">Enable arcade support</flag>
 		<flag name="tools">Enable MAME tools</flag>
+		<flag name="phonon">Enable Phonon backend</flag>
 	</use>
 </pkgmetadata>
