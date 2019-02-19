@@ -28,7 +28,10 @@ DEPEND="
 	tools? ( dev-qt/qtscript:5 )
 "
 RDEPEND="${DEPEND}
-	>=games-emulation/sdlmame-0.170[tools=]
+	|| (
+		>=games-emulation/sdlmame-0.163[tools=]
+		games-emulation/xmame
+	)
 "
 S="${WORKDIR}/${PN}"
 
