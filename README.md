@@ -7,6 +7,7 @@
     - [Using Layman](#using-layman)
     - [Using eselect-repository](#using-eselect-repository)
   - [Note for all people who send pull requests (MUST READ)](#note-for-all-people-who-send-pull-requests-must-read)
+  - [Note for all people who doesn't own a Github accound (MUST READ)](#note-for-all-people-who-doesnt-own-a-github-accound-must-read)
   - [Note for all MATE lovers (READ IT!!!)](#note-for-all-mate-lovers-read-it)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -62,6 +63,12 @@ More information about this method, you can find it in the link above.
 ## Note for all people who send pull requests (MUST READ)
 
 All pull requests are welcomed to this repo, but if you do it, please use the [Gentoo Git Commit Message Format](https://devmanual.gentoo.org/ebuild-maintenance/index.html#git-commit-message-format). Thank you!
+
+## Note for all people who doesn't own a Github accound (MUST READ)
+
+If you don't have a Github account, you can email me but ONLY with the tag \[Gentoo\] (as you can see it, with brackets and respecting capital letters). Any mail sent without that, can't be read, because is too annoying searching emails when one has a lot of them. With that tag, I can filter it easily, so I can read those emails.
+
+Thanks in advance.
 
 ## Note for all MATE lovers (READ IT!!!)
 
