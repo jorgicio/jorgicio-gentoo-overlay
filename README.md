@@ -66,7 +66,7 @@ All pull requests are welcomed to this repo, but if you do it, please use the [G
 
 ## Note for all people who doesn't own a Github accound (MUST READ)
 
-If you don't have a Github account, you can email me but ONLY with the tag \[Gentoo\] (as you can see it, with brackets and respecting capital letters). Any mail sent without that, can't be read, because is too annoying searching emails when one has a lot of them. With that tag, I can filter it easily, so I can read those emails.
+If you don't have a Github account, you can email me but ONLY with the tag \[Gentoo Overlay\] (as you can see it, with brackets and respecting capital letters). Any mail sent without that, can't be read, because is too annoying searching emails when one has a lot of them. With that tag, I can filter it easily, so I can read those emails.
 
 Thanks in advance.
 
