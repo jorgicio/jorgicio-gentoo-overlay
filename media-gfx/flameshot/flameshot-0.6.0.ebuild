@@ -23,6 +23,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
+	>=dev-qt/qtsvg-5.3.0:5
 	>=dev-qt/qtcore-5.3.0:5
 	>=dev-qt/qtdbus-5.3.0:5
 	>=dev-qt/qtnetwork-5.3.0:5
