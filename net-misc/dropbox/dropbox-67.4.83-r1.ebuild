@@ -75,8 +75,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply_user
-
 	rm -vf libGL.so.1 libX11* libdrm.so.2 libpopt.so.0 wmctrl || die
 	# tray icon doesnt load when removing libQt5* (bug 641416)
 	#rm -vrf libQt5* libicu* qt.conf plugins/ || die
@@ -92,16 +90,19 @@ src_prepare() {
 	fi
 	pax-mark cm dropbox
 	mv README ACKNOWLEDGEMENTS "${T}" || die
-	use experimental && eapply "${FILESDIR}/dropbox-support-non-ext4.patch"
+	use experimental && PATCHES=( "${FILESDIR}/dropbox-support-non-ext4.patch" )
+	default_src_prepare
 }
 
 src_compile(){
-	default_src_compile
-	use experimental && emake
+	if use experimental; then
+		default_src_compile
+		rm -vf Makefile README.md detect-ext4.c \
+		dropbox_start.py libdropbox_fs_fix.c LICENSE
+	fi
 }
 
 src_install() {
-	use experimental && rm -vf Makefile README.md detect-ext4.c dropbox_start.py libdropbox_fs_fix.c LICENSE
 	local targetdir="/opt/dropbox"
 
 	insinto "${targetdir}"
@@ -126,6 +127,18 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	if use experimental; then
+		echo
+		ewarn "You enabled the 'experimental' USE-flag, so you can use Dropbox"
+		ewarn "on non-ext4 filesystems. It may lead to some failures, so"
+		ewarn "proceed with caution."
+		echo
+		ewarn "If Dropbox won't start, it may upgraded itself. Check if"
+		ewarn "in your \$HOME directory is the folder ~/.dropbox-dist present."
+		ewarn "If so, delete it first before upgrading and running Dropbox"
+		ewarn "again."
+		echo
+	fi
 }
 
 pkg_postrm() {

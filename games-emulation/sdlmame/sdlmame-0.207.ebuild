@@ -127,7 +127,7 @@ src_compile() {
 	my_emake -j1 generate
 
 	my_emake ${targetargs} \
-		SDL_INI_PATH="\$\$\$\$HOME/.sdlmame;${GAMES_SYSCONFDIR}/${PN}" \
+		SDL_INI_PATH="\$\$\$\$HOME/.sdlmame;/etc/${PN}" \
 		USE_QTDEBUG=${qtdebug}
 
 	#if use tools ; then
@@ -162,7 +162,7 @@ src_install() {
 	dobin ${MAMEBIN}
 	dosym ${MAMEBIN} "/usr/bin/${PN}"
 
-	insinto "${GAMES_DATADIR}/${PN}"
+	insinto "/usr/share/${PN}"
 	doins -r keymaps $(use mess && echo hash)
 
 	# Create default mame.ini and inject Gentoo settings into it
