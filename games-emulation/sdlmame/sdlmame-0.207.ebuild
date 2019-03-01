@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-any-r1 toolchain-funcs qmake-utils
+inherit desktop eutils python-any-r1 toolchain-funcs qmake-utils xdg-utils
 
 MY_PV="${PV/.}"
 
@@ -226,6 +226,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
 
 	elog "It is strongly recommended to change either the system-wide"
 	elog "  /etc/${PN}/mame.ini or use a per-user setup at ~/.${PN}/mame.ini"
@@ -236,4 +237,8 @@ pkg_postinst() {
 		elog
 		elog "For more info see http://wiki.mamedev.org"
 	fi
+}
+
+pkg_postrm(){
+	xdg_desktop_database_update
 }
