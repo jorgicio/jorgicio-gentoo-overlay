@@ -70,7 +70,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch ${FILESDIR}"/${PN}-0.184-qt.patch"
+	PATCHES=( ${FILESDIR}"/${PN}-0.184-qt.patch" )
+	default_src_prepare
 	# Disable using bundled libraries
 	enable_feature USE_SYSTEM_LIB_EXPAT
 	enable_feature USE_SYSTEM_LIB_FLAC
