@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit eutils fdo-mime autotools
+inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="Lightweight GTK+ clipboard manager. Fork of Parcellite."
 HOMEPAGE="http://gtkclipit.sourceforge.net https://github.com/CristianHenzel/ClipIt"
@@ -24,11 +24,11 @@ SLOT="0"
 IUSE="nls gtk3 appindicator"
 
 DEPEND="
-	!gtk3? ( 
-		>=x11-libs/gtk+-2.10:2 
+	!gtk3? (
+		>=x11-libs/gtk+-2.10:2
 		appindicator? ( dev-libs/libappindicator:2 )
 	)
-	gtk3? ( 
+	gtk3? (
 		x11-libs/gtk+:3
 		appindicator? ( dev-libs/libappindicator:3 )
 	)
@@ -42,14 +42,15 @@ RDEPEND="${DEPEND}
 	x11-misc/xdotool
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-remove-deprecated.patch"
+	"${FILESDIR}/${P}-stdin-fix.patch"
+	"${FILESDIR}/${P}-gtk3-newer-fix.patch"
+)
+
 src_prepare(){
-	sed -i "s/1\.4\.3/${PV}/" configure.ac
-	PATCHES=(
-		"${FILESDIR}/${P}-remove-deprecated.patch"
-		"${FILESDIR}/${P}-stdin-fix.patch"
-		"${FILESDIR}/${P}-gtk3-newer-fix.patch"
-	)
-	default
+	sed -i -e "s/1\.4\.3/${PV}/" configure.ac
+	default_src_prepare
 	eautoreconf
 }
 
@@ -61,10 +62,16 @@ src_configure(){
 		$(use_with gtk3)
 }
 
+pkg_preinst(){
+	gnome2_icon_savelist
+}
+
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
