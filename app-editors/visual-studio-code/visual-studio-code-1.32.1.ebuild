@@ -1,16 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit eutils pax-utils
 
+
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-BASE_URI="https://vscode-update.azurewebsites.net/${PV}"
+
 SRC_URI="
-	x86? ( ${BASE_URI}/linux-ia32/stable ->  ${P}-x86.tar.gz )
-	amd64? ( ${BASE_URI}/linux-x64/stable -> ${P}-amd64.tar.gz )
+	x86? ( https://update.code.visualstudio.com/${PV}/linux-ia32/stable ->  ${P}-x86.tar.gz )
+	amd64? ( https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz )
 	"
 RESTRICT="mirror strip bindist"
 
