@@ -8,7 +8,7 @@ inherit desktop gnome2-utils xdg-utils
 MY_PN=${PN/-/_}
 
 DESCRIPTION="A new Git Client, from the creators of Sublime Text"
-HOMEPAGE="https://www.sublimemerge.org"
+HOMEPAGE="https://www.sublimemerge.com"
 SRC_URI="
 	amd64? ( https://download.sublimetext.com/${MY_PN}_build_${PV}_x64.tar.xz )
 "
