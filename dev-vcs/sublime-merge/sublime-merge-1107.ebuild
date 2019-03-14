@@ -20,6 +20,7 @@ IUSE="dbus"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
+	dev-vcs/git
 	dev-libs/glib:2
 	x11-libs/gtk+:3
 	x11-libs/libX11

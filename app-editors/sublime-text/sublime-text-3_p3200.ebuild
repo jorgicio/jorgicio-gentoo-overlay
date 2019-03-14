@@ -18,14 +18,15 @@ SRC_URI="
 LICENSE="Sublime"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dbus"
+IUSE="dbus git"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	dev-libs/glib:2
 	x11-libs/gtk+:3
 	x11-libs/libX11
-	dbus? ( sys-apps/dbus )"
+	dbus? ( sys-apps/dbus )
+	git? ( dev-vcs/sublime-merge )"
 
 QA_PREBUILT="*"
 S="${WORKDIR}/sublime_text_${MV}"
