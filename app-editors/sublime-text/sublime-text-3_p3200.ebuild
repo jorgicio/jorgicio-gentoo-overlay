@@ -62,4 +62,12 @@ pkg_postrm() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	if use git; then
+		echo
+		einfo "It seems you enabled the 'git' USE-flag, so you must set the"
+		einfo "'sublime_merge_path' variable with the full path of sublime-merge:"
+		einfo "/opt/sublime-merge/sublime_merge"
+		echo "to enable Git support."
+		echo
+	fi
 }
