@@ -31,7 +31,7 @@ DEPEND="
 	dev-python/setproctitle[${PYTHON_USEDEP}]
 	media-sound/pulseaudio
 	net-misc/aria2
-	net-misc/youtube-dl
+	net-misc/youtube-dl[${PYTHON_USEDEP}]
 	x11-libs/libnotify
 	x11-themes/sound-theme-freedesktop
 "
