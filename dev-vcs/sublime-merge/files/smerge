@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/sublime-merge/sublime_merge "$@"
