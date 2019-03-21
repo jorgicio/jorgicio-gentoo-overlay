@@ -3,9 +3,12 @@
 
 EAPI=7
 
+MY_PN="${PN/-cli}"
+MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="A tool for creating and managing Heroku apps from the command line"
 HOMEPAGE="https://devcenter.heroku.com/articles/heroku-cli"
-SRC_URI="https://registry.npmjs.org/heroku/-/heroku-${PV}.tgz"
+SRC_URI="https://registry.npmjs.org/${MY_PN}/-/${MY_P}.tgz"
 
 LICENSE="ISC"
 SLOT="0"
@@ -16,10 +19,15 @@ RESTRICT="strip"
 RDEPEND="git? ( dev-vcs/git )"
 BDEPEND="net-libs/nodejs[npm]"
 
-S="${WORKDIR}/package"
+S="${WORKDIR}"
+
+# Don't unpack
+src_unpack(){
+	elog "Not unpacking \"${DISTDIR}/${MY_P}.tgz\"; continue..."
+}
 
 src_install(){
-	npm install -g --user root --prefix "${D}/usr" "${DISTDIR}/heroku-${PV}.tgz" || die
-	dosym "/usr/$(get_libdir)/node_modules/heroku/LICENSE" "/usr/share/licenses/${PN}/LICENSE"
+	npm install -g --user root --prefix "${D}/usr" "${DISTDIR}/${MY_P}.tgz" || die
+	dosym "/usr/$(get_libdir)/node_modules/${MY_PN}/LICENSE" "/usr/share/licenses/${PN}/LICENSE"
 	find "${D}/usr" -type d -exec chmod 755 '{}' +
 }
