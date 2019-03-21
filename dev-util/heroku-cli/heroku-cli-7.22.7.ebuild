@@ -19,7 +19,7 @@ BDEPEND="net-libs/nodejs[npm]"
 S="${WORKDIR}/package"
 
 src_install(){
-	npm install -g --user root --prefix "${D}/usr" "${DISTDIR}/heroku-${PV}.tgz"
+	npm install -g --user root --prefix "${D}/usr" "${DISTDIR}/heroku-${PV}.tgz" || die
 	dosym "/usr/$(get_libdir)/node_modules/heroku/LICENSE" "/usr/share/licenses/${PN}/LICENSE"
 	find "${D}/usr" -type d -exec chmod 755 '{}' +
 }
