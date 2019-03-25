@@ -60,7 +60,7 @@ pkg_setup(){
 }
 
 PATCHES=(
-	"${FILESDIR}/chromium-FORTIFY_SOURCE-r2.patch"
+	"${FILESDIR}/chromium-${PV}-FORTIFY_SOURCE-r2.patch"
 )
 
 src_prepare(){
