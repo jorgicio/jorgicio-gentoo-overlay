@@ -11,11 +11,11 @@ HOMEPAGE="http://solus-project.com http://github.com/solus-project"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/solus-project/${PN}"
+	EGIT_REPO_URI="https://github.com/getsolus/${PN}"
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/solus-project/${PN}/releases/download/v${PV}/${P}.tar.xz"
+	SRC_URI="https://github.com/getsolus/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~x86 ~amd64 ~x86-linux ~amd64-linux ~arm ~arm64"
 fi
 
@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5-add-numix-support.patch" )
+PATCHES=( "${FILESDIR}/${P}-add-numix-support.patch" )
 
 src_prepare(){
 	default_src_prepare
