@@ -35,7 +35,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.3.1-assertion-issue.patch"
+	"${FILESDIR}/${P}-assertion-issue.patch"
 )
 
 src_configure() {
