@@ -30,15 +30,10 @@ RDEPEND="
 QA_PREBUILD="*"
 S="${WORKDIR}/${MY_PN}"
 
-src_prepare(){
-	sed -i -e "s#/opt/sublime_merge#/opt/sublime-merge#" ${MY_PN}.desktop
-	default_src_prepare
-}
-
 src_install(){
-	insinto /opt/${PN}
+	insinto /opt/${MY_PN}
 	doins -r Icon Packages changelog.txt
-	exeinto /opt/${PN}
+	exeinto /opt/${MY_PN}
 	doexe crash_reporter git-credential-sublime ssh-askpass-sublime ${MY_PN}
 	domenu ${MY_PN}.desktop
 	local size
