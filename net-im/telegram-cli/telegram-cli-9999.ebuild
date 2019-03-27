@@ -36,6 +36,7 @@ BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.1-assertion-issue.patch"
+	"${FILESDIR}/${PN}-openssl-1.1.patch"
 )
 
 src_configure() {

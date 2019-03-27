@@ -1,16 +1,7 @@
-From 66758bbea27515c5f35e3fafc64d3a3601a5b777 Mon Sep 17 00:00:00 2001
-From: pollolobo <pollolobo@toshi.casa>
-Date: Mon, 6 Mar 2017 01:26:49 +0100
-Subject: [PATCH] OpenSSL 1.1 compatibility
-
----
- crypto/rsa_pem_openssl.c | 63 ++++++++++++++++++++++++++++++++++------
- 1 file changed, 54 insertions(+), 9 deletions(-)
-
-diff --git a/crypto/rsa_pem_openssl.c b/crypto/rsa_pem_openssl.c
+diff --git a/tgl/crypto/rsa_pem_openssl.c b/tgl/crypto/rsa_pem_openssl.c
 index db653f2..06b630f 100644
---- a/crypto/rsa_pem_openssl.c
-+++ b/crypto/rsa_pem_openssl.c
+--- a/tgl/crypto/rsa_pem_openssl.c
++++ b/tgl/crypto/rsa_pem_openssl.c
 @@ -31,6 +31,47 @@
  #include "meta.h"
  #include "rsa_pem.h"
@@ -92,3 +83,25 @@ index db653f2..06b630f 100644
  
  void TGLC_rsa_free (TGLC_rsa *p) {
    RSA_free (unwrap_rsa (p));
+diff --git a/tgl/mtproto-utils.c b/tgl/mtproto-utils.c
+index 0948bc8..bbd666e 100644
+--- a/tgl/mtproto-utils.c
++++ b/tgl/mtproto-utils.c
+@@ -98,7 +98,7 @@ static unsigned long long BN2ull (TGLC_bn *b) {
+   if (sizeof (unsigned long) == 8) {
+     return TGLC_bn_get_word (b);
+   } else if (sizeof (unsigned long long) == 8) {
+-    assert (0); // As long as nobody ever uses this code, assume it is broken.
++    // assert (0); // As long as nobody ever uses this code, assume it is broken.
+     unsigned long long tmp;
+     /* Here be dragons, but it should be okay due to be64toh */
+     TGLC_bn_bn2bin (b, (unsigned char *) &tmp);
+@@ -112,7 +112,7 @@ static void ull2BN (TGLC_bn *b, unsigned long long val) {
+   if (sizeof (unsigned long) == 8 || val < (1ll << 32)) {
+     TGLC_bn_set_word (b, val);
+   } else if (sizeof (unsigned long long) == 8) {
+-    assert (0); // As long as nobody ever uses this code, assume it is broken.
++    // assert (0); // As long as nobody ever uses this code, assume it is broken.
+     htobe64(val);
+     /* Here be dragons, but it should be okay due to htobe64 */
+     TGLC_bn_bin2bn ((unsigned char *) &val, 8, b);
