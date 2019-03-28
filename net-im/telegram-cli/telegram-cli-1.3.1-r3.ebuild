@@ -25,7 +25,7 @@ fi
 DEPEND="sys-libs/zlib
 	sys-libs/readline
 	dev-libs/libconfig
-	!libressl? ( dev-libs/openssl )
+	!libressl? ( <dev-libs/openssl-1.1.0:0 )
 	libressl? ( dev-libs/libressl )
 	dev-libs/libevent
 	lua? ( dev-lang/lua )
