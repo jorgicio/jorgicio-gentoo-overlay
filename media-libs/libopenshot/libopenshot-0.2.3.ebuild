@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+EAPI=7
+PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit cmake-utils python-single-r1 toolchain-funcs versionator
+inherit cmake-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="Video editing library used by OpenShot"
 HOMEPAGE="http://www.openshotvideo.com/"
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets]
-	>=media-libs/libopenshot-audio-${PV}
+	>=media-libs/libopenshot-audio-0.1.8
 	imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] )
 	libav? ( media-video/libav:=[encode,x264,xvid,vpx,mp3,theora] )
 	!libav? ( media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] )
