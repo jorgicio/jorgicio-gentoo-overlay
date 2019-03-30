@@ -8,4 +8,4 @@ x11-misc/diodon
 games-engines/pilas
 
 # Depends on JDK/JRE 11, which support for Gentoo is still incomplete.
-app-misc/ghidra
+dev-util/ghidra
