@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
-inherit eutils unpacker
+inherit desktop unpacker
 
 DESCRIPTION="An application for adding music to your Google Music library"
 HOMEPAGE="https://music.google.com"
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="log"
 
-RESTRICT="strip mirror"
+RESTRICT="mirror strip"
 
 RDEPEND="
 	dev-libs/expat
@@ -39,10 +39,7 @@ QA_PREBUILT="${INSTALL_BASE}/*"
 
 S="${WORKDIR}/${INSTALL_BASE}"
 
-src_prepare() {
-	epatch "${FILESDIR}/ld_library_path.patch"
-	eapply_user
-}
+PATCHES=( "${FILESDIR}/ld_library_path.patch" )
 
 src_install() {
 	insinto "/${INSTALL_BASE}"
