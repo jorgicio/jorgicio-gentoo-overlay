@@ -5,6 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 PYTHON_REQ_USE="threads(+)"
+VALA_MIN_API_VERSION="0.42"
 
 inherit python-any-r1 vala waf-utils
 

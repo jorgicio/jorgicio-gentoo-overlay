@@ -5,6 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 PYTHON_REQ_USE="threads(+)"
+VALA_MIN_API_VERSION="0.42"
 
 inherit gnome2-utils python-any-r1 vala waf-utils
 
@@ -32,6 +33,7 @@ DEPEND="
 	${PYTHON_DEPS}
 	dev-util/intltool
 	>=media-libs/diorite-4.7.0
+	media-libs/libdri2
 "
 RDEPEND="${DEPEND}
 	x11-libs/gtk+:3
