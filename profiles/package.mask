@@ -9,3 +9,8 @@ games-engines/pilas
 
 # Depends on JDK/JRE 11, which support for Gentoo is still incomplete.
 dev-util/ghidra
+
+# Support partially working, but not as expected.
+media-libs/nuvolasdk
+media-plugins/nuvola-app-deezer
+media-sound/nuvolaplayer
