@@ -25,7 +25,7 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="appindicator debug"
+IUSE="debug"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
@@ -47,7 +47,6 @@ RDEPEND="${DEPEND}
 	dev-libs/libunique:3
 	>=net-libs/libsoup-2.34:2.4
 	x11-libs/gdk-pixbuf[jpeg]
-	appindicator? ( dev-libs/libappindicator:3 )
 "
 
 pkg_setup(){
@@ -61,10 +60,13 @@ src_prepare(){
 
 src_configure(){
 	local myconf=()
-	use !appindicator && myconf+=( --no-appindicator )
 	use !debug && myconf+=( --no-debug-symbols )
 	waf-utils_src_configure \
 		--no-unity \
+		--no-vala-lint \
+		--no-cef \
+		--no-js-lint \
+		--no-appindicator \
 		"${myconf[@]}"
 }
 
