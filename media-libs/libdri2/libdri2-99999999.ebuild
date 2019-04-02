@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit xorg-3 git-r3
+inherit autotools xorg-3 git-r3
 
 DESCRIPTION="Library for the DRI2 extension to the X Window System"
 #HOMEPAGE=""
@@ -27,3 +27,8 @@ DEPEND="
 	x11-base/xorg-proto
 "
 RDEPEND="${DEPEND}"
+
+src_prepare(){
+	default_src_prepare
+	eautoreconf
+}
