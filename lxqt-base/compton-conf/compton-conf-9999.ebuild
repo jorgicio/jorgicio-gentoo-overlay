@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 else
 	SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~x86 ~amd64 ~ppc ~arm"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="LGPL-2.1"
