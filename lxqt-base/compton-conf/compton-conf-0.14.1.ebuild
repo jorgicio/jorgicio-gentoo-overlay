@@ -3,6 +3,8 @@
 
 EAPI=7
 
+CMAKE_MIN_API="3.1.0"
+
 inherit cmake-utils
 
 DESCRIPTION="GUI configuration tool for the compton X composite manager"
@@ -24,8 +26,8 @@ IUSE=""
 
 DEPEND="
 	x11-misc/compton
-	dev-util/lxqt-build-tools
-	dev-qt/qtcore:5
+	>=dev-util/lxqt-build-tools-0.6.0
+	>=dev-qt/qtcore-5.7.1:5
 	dev-libs/libconfig
 	lxqt-base/liblxqt:0=
 "
