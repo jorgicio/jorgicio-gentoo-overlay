@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils pax-utils
-
+inherit desktop pax-utils
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
@@ -18,7 +17,7 @@ RESTRICT="mirror strip bindist"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="libsecret"
+IUSE="global-menu libsecret qt5"
 
 DEPEND="
 	>=media-libs/libpng-1.2.46
@@ -35,6 +34,12 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	dev-libs/nss
 	libsecret? ( app-crypt/libsecret[crypt] )
+	global-menu? (
+		dev-libs/libdbusmenu
+		qt5? (
+			dev-libs/libdbusmenu-qt
+		)
+	)
 "
 
 QA_PRESTRIPPED="opt/${PN}/code"
@@ -57,7 +62,7 @@ src_install(){
 	fperms +x "/opt/${PN}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
 	fperms +x "/opt/${PN}/resources/app/extensions/git/dist/askpass.sh"
 	insinto "/usr/share/licenses/${PN}"
-	newins "resources/app/LICENSE.txt" "LICENSE"
+	newins "resources/app/LICENSE.rtf" "LICENSE"
 }
 
 pkg_postinst(){
