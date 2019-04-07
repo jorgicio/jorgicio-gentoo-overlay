@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit python-r1 eutils
+inherit python-any-r1
 
 DESCRIPTION="A QT5-based Hamachi GUI for Linux"
 HOMEPAGE="http://Quamachi.Xavion.name"
@@ -14,30 +14,37 @@ SRC_URI="mirror://sourceforge/${PN}/${PN^}-${PV}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	${PYTHON_DEPS}
-	dev-python/PyQt5[${PYTHON_USEDEP},network,gui]
-	>=net-vpn/logmein-hamachi-2.1
-"
-RDEPEND="${DEPEND}
-	net-misc/putty
-	net-analyzer/mtr
-	|| ( x11-libs/gksu kde-apps/kdesu kde-frameworks/kdesu kde-apps/kdesudo )
-	net-misc/vinagre
-"
+	$(python_gen_any_dep 'dev-python/PyQt5[${PYTHON_USEDEP},network,gui]')
+	>=net-vpn/logmein-hamachi-2.1"
+RDEPEND="${DEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 S="${WORKDIR}/${PN^}/Build"
 
-src_prepare(){
-	local externals_dir="${S}/../Externals"
-	echo "mate-terminal -e" >> ${externals_dir}/Terminal.txt
-	echo "gksu" >> ${externals_dir}/SUdo.txt
-	eapply_user
+python_check_deps(){
+	has_version "dev-python/PyQt5[${PYTHON_USEDEP}]"
+}
+
+pkg_setup(){
+	python-any-r1_pkg_setup
 }
 
 src_install(){
 	emake DESTDIR="${D}" Sys-SBin="/usr/bin" install
+}
+
+pkg_postinst(){
+	echo
+	elog "Thanks for using Quamachi."
+	elog "Optionally, you can install some frontends such as:"
+	elog "net-misc/putty, for SSH"
+	elog "net-analyzer/mtr, for ping"
+	elog "Some terminal you like"
+	elog "Some sudo frontend, like gksu or kdesudo"
+	elog "net-misc/vinagre, for VNC support"
+	echo
 }
