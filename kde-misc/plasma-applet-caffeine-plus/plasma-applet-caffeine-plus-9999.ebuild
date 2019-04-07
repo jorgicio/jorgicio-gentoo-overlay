@@ -18,7 +18,6 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-LICENSE="GPL-2"
 IUSE=""
 
 DEPEND="
