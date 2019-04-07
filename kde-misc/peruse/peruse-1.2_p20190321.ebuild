@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]];then
 else
 	COMMIT="d5ff8337512feb5f346600db04e4323aa65b9ac0"
 	SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
