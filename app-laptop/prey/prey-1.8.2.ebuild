@@ -25,7 +25,7 @@ DEPEND="
 	media-tv/xawtv
 	sys-apps/net-tools
 	|| ( media-gfx/scrot media-gfx/imagemagick )
-	|| ( gnome-extra/zenity kde-base/kdialog )
+	|| ( gnome-extra/zenity kde-apps/kdialog )
 	media-sound/mpg123
 	media-sound/pulseaudio
 	net-wireless/wireless-tools
