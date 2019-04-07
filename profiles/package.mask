@@ -8,9 +8,10 @@ x11-misc/diodon
 games-engines/pilas
 
 # Depends on JDK/JRE 11, which support for Gentoo is still incomplete.
-dev-util/ghidra
+dev-util/ghidra-bin
 
 # Support partially working, but not as expected.
 media-libs/nuvolasdk
 media-plugins/nuvola-app-deezer
 media-sound/nuvolaplayer
+media-libs/diorite
