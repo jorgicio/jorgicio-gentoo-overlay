@@ -14,7 +14,7 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+git"
-RESTRICT="strip"
+RESTRICT="network-sandbox strip"
 
 RDEPEND="git? ( dev-vcs/git )"
 BDEPEND="net-libs/nodejs[npm]"
