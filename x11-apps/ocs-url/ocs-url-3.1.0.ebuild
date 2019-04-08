@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils
+inherit qmake-utils xdg-utils
 
 DESCRIPTION="A program enabling web-installation of items via OpenCollaborationServices"
 HOMEPAGE="https://opendesktop.org/p/1136805"
@@ -46,6 +46,8 @@ src_install(){
 }
 
 pkg_postinst(){
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	echo
 	elog "Thanks for installing ocs-url."
 	elog "You can install packages from any page from"
@@ -53,4 +55,9 @@ pkg_postinst(){
 	elog "Just click on \"Install\", and then open the ocs://"
 	elog "url provided by every package."
 	echo
+}
+
+pkg_postrm(){
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
