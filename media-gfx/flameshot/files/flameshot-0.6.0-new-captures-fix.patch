@@ -1,0 +1,57 @@
+From 415b059fb248eec4b4ee3be85a1594ce99bfce67 Mon Sep 17 00:00:00 2001
+From: lupoDharkael <izhe@hotmail.es>
+Date: Thu, 13 Sep 2018 15:35:49 +0200
+Subject: [PATCH] Fix #311
+
+    Flameshot was unable to start new captures after saving with
+    Ctrl+s while having a text area active from the Text tool.
+    This was caused by the overloaded call to close() which
+    was deleting the text area instead of closing the capture
+    and the consequent call of the destructor. That caused an
+    always active capture session.
+---
+ src/widgets/capture/capturewidget.cpp | 6 +++---
+ src/widgets/capture/capturewidget.h   | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/widgets/capture/capturewidget.cpp b/src/widgets/capture/capturewidget.cpp
+index a07fee7f..1b1413e9 100644
+--- a/src/widgets/capture/capturewidget.cpp
++++ b/src/widgets/capture/capturewidget.cpp
+@@ -186,12 +186,12 @@ QPixmap CaptureWidget::pixmap() {
+     return m_context.selectedScreenshotArea();
+ }
+ 
+-void CaptureWidget::close() {
++void CaptureWidget::deleteToolwidgetOrClose() {
+     if (m_toolWidget) {
+         m_toolWidget->deleteLater();
+         m_toolWidget = nullptr;
+     } else {
+-        QWidget::close();
++        close();
+     }
+ }
+ 
+@@ -739,7 +739,7 @@ void CaptureWidget::initShortcuts() {
+     new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Up), this, SLOT(upResize()));
+     new QShortcut(QKeySequence(Qt::SHIFT + Qt::Key_Down), this, SLOT(downResize()));
+     new QShortcut(Qt::Key_Space, this, SLOT(togglePanel()));
+-    new QShortcut(Qt::Key_Escape, this, SLOT(close()));
++    new QShortcut(Qt::Key_Escape, this, SLOT(deleteToolwidgetOrClose()));
+     new QShortcut(Qt::Key_Return, this, SLOT(copyScreenshot()));
+ }
+ 
+diff --git a/src/widgets/capture/capturewidget.h b/src/widgets/capture/capturewidget.h
+index 97601d34..eb638706 100644
+--- a/src/widgets/capture/capturewidget.h
++++ b/src/widgets/capture/capturewidget.h
+@@ -61,7 +61,7 @@ class CaptureWidget : public QWidget {
+     QPixmap pixmap();
+ 
+ public slots:
+-    void close();
++    void deleteToolwidgetOrClose();
+ 
+ signals:
+     void captureTaken(uint id, QPixmap p);
