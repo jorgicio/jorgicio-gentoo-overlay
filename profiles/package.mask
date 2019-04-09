@@ -15,3 +15,6 @@ media-libs/nuvolasdk
 media-plugins/nuvola-app-deezer
 media-sound/nuvolaplayer
 media-libs/diorite
+
+# Vulkan is still merged despite USE="vulkan" is disabled. Also, that support is experimental.
+>=games-fps/gzdoom-4.0.0
