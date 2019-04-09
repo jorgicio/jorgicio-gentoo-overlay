@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 xdg-utils
 
@@ -53,10 +54,10 @@ src_install(){
 pkg_postinst(){
 	xdg_desktop_database_update
 	echo
-	einfo "Thank you for installing Persepolis Download Manager."
-	einfo "You can also integrate it with your favorite web browser."
-	einfo "Install the extension required to do so. Available for"
-	einfo "Firefox, Google Chrome/Chromium and Opera (and based ones)."
+	elog "Thank you for installing Persepolis Download Manager."
+	elog "You can also integrate it with your favorite web browser."
+	elog "Install the extension required to do so. Available for"
+	elog "Firefox, Google Chrome/Chromium and Opera (and based ones)."
 	echo
 }
 
