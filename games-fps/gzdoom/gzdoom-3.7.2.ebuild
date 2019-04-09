@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-inherit cmake-utils desktop
+inherit eutils cmake-utils
 
 DESCRIPTION="A 3D-accelerated Doom source port based on ZDoom code"
 HOMEPAGE="https://gzdoom.drdteam.org/"
@@ -14,14 +14,16 @@ if [[ ${PV} == 9999 ]];then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-src-g${PV}.zip"
+	SRC_URI="
+		!legacy-opengl? ( https://zdoom.org/files/gzdoom/src/${PN}-src-g${PV}.zip )
+		legacy-opengl? ( https://zdoom.org/files/gzdoom/src/${PN}-src-g${PV}_legacy.zip )
+	"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-g${PV}"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gtk3 vulkan"
+IUSE="+gtk3 legacy-opengl"
 
 RDEPEND="
 	gtk3? ( x11-libs/gtk+:3 )
@@ -31,12 +33,14 @@ RDEPEND="
 	virtual/opengl"
 
 DEPEND="${RDEPEND}
-	vulkan? (
-		media-libs/vulkan-loader
-		dev-util/glslang
-	)
-	media-libs/mesa[vulkan?]
 	|| ( dev-lang/nasm dev-lang/yasm )"
+
+src_unpack(){
+	if [[ ${PV} != 9999 ]];then
+		use legacy-opengl && S="${WORKDIR}/${PN}-g${PV}_legacy" || S="${WORKDIR}/${PN}-g${PV}"
+	fi
+	default
+}
 
 src_prepare() {
 	# Use default data path
@@ -51,7 +55,6 @@ src_prepare() {
 src_configure() {
 	mycmakeargs=(
 		-DNO_GTK="$(usex gtk3 no yes)"
-		-DHAVE_VULKAN="$(usex vulkan yes no)"
 	)
 	cmake-utils_src_configure
 }
@@ -71,7 +74,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
 	elog 'Copy or link wad files into /usr/share/doom-data/ or $HOME/.config/gzdoom/'
 	elog "ATTENTION: The path has changed! It used to be /usr/share/games/doom-data/"
 	elog
@@ -83,13 +85,4 @@ pkg_postinst() {
 	elog "To play, simply run:"
 	elog "   gzdoom"
 	elog
-	if use vulkan; then
-		elog "Warning: you have enabled Vulkan support,"
-		elog "which is currently experimental. Check first"
-		elog "if your video card supports it. Use it at"
-		elog "your own risk."
-		elog "To enable it, use \"+vid_backend 0\" on the command line."
-		elog "Set that value to 1 instead if you want to go back to OpenGL."
-	fi
-	echo
 }

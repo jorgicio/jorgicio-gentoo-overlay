@@ -31,7 +31,10 @@ RDEPEND="
 	virtual/opengl"
 
 DEPEND="${RDEPEND}
-	vulkan? ( media-libs/vulkan-loader )
+	vulkan? (
+		media-libs/vulkan-loader
+		dev-util/glslang
+	)
 	media-libs/mesa[vulkan?]
 	|| ( dev-lang/nasm dev-lang/yasm )"
 
