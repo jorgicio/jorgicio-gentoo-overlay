@@ -12,3 +12,6 @@ media-tv/xawtv cpu_flags_x86_mmx
 
 # Link for pre-rendered files is broken for this version (and recents)
 >=x11-themes/arc-theme-20190213 pre-rendered
+
+# Vulkan support is experimental.
+>=games-fps/gzdoom-4.0.0 vulkan
