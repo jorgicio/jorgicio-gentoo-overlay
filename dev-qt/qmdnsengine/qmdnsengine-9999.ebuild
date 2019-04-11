@@ -22,6 +22,15 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
+RESTRICT="strip"
 
 DEPEND="dev-qt/qtcore:5"
 RDEPEND="${DEPEND}"
+PATCHES=( "${FILESDIR}/${PN}-cmake-libdir.patch" )
+
+src_configure(){
+	mycmakeargs=(
+		-DLIB_INSTALL_DIR=$(get_libdir)
+	)
+	cmake-utils_src_configure
+}

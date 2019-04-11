@@ -1,0 +1,21 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-04-10 22:04:25.981850989 -0400
++++ b/CMakeLists.txt	2019-04-10 22:08:13.605726678 -0400
+@@ -9,6 +9,8 @@
+     set(LINUX 1)
+ endif()
+ 
++INCLUDE(GNUInstallDirs)
++
+ set(PROJECT_NAME "NitroShare")
+ set(PROJECT_DESCRIPTION "Cross-platform network file transfer application")
+ set(PROJECT_AUTHOR "Nathan Osman")
+@@ -38,7 +40,7 @@
+ 
+ # Allow file installation directories to be customized
+ set(INSTALL_BIN_PATH bin CACHE STRING "Application installation directory")
+-set(INSTALL_LIB_PATH lib CACHE STRING "Shared library installation directory")
++set(INSTALL_LIB_PATH ${CMAKE_INSTALL_FULL_LIBDIR} CACHE STRING "Shared library installation directory")
+ set(INSTALL_INCLUDE_PATH include CACHE STRING "Header installation directory")
+ set(INSTALL_PLUGIN_PATH "${INSTALL_LIB_PATH}/nitroshare/plugins" CACHE STRING "Plugin installation directory")
+ 

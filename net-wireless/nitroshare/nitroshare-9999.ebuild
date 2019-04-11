@@ -40,11 +40,14 @@ RDEPEND="${DEPEND}
 	)
 	"
 
+PATCHES=( "${FILESDIR}/${PN}-cmake-libdir.patch" )
+
 src_configure(){
 	local mycmakeargs=(
 		-DBUILD_API=$(usex http ON OFF)
 		-DBUILD_MDNS=$(usex mdns ON OFF)
 		-DBUILD_TESTS=$(usex test ON OFF)
+		-DLIB_INSTALL_DIR=$(get_libdir)
 	)
 	cmake-utils_src_configure
 }
