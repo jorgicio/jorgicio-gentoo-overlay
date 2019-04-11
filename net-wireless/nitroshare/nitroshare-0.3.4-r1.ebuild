@@ -1,11 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=6
+EAPI=7
 
 CMAKE_MIN_VERSION="3.2.0"
-
 inherit cmake-utils
 
 DESCRIPTION="Network File Transfer Application"
@@ -16,7 +15,7 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 else
 	SRC_URI="https://launchpad.net/nitroshare/${PV:0:3}/${PV}/+download/${P}.tar.gz -> ${P}.tar"
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 LICENSE="MIT"
