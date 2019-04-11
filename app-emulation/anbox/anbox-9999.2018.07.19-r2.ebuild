@@ -48,7 +48,7 @@ RDEPEND="dev-util/android-tools
 DEPEND="${RDEPEND}
 	app-emulation/lxc[cgmanager]
 	dev-libs/boost:=[threads]
-	dev-libs/dbus-cpp
+	dev-libs/dbus-c++
 	dev-libs/glib:2
 	dev-cpp/properties-cpp
 	dev-libs/protobuf
