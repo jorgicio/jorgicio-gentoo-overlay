@@ -6,4 +6,7 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="kvantum">Enable support for the Kvantum engine</flag>
+	</use>
 </pkgmetadata>
