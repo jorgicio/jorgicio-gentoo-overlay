@@ -18,12 +18,19 @@ fi
 
 LICENSE="GPL-3 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="konsole kvantum"
+IUSE="kvantum"
 
 RDEPEND="
-	konsole? ( kde-apps/konsole )
 	kvantum? ( x11-themes/kvantum )
 "
+
+src_prepare(){
+	if use !kvantum; then
+		sed -i -e "s#konversation Kvantum#konversation#" Makefile
+		sed -i -e "/Kvantum/d" Makefile
+	fi
+	default_src_prepare
+}
 
 pkg_postinst(){
 	if use !kvantum; then

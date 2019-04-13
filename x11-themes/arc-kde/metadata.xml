@@ -7,7 +7,6 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
-		<flag name="konsole">Enable Konsole theming</flag>
 		<flag name="kvantum">Enable kvantum engine support for better look-and-feel experience</flag>
 	</use>
 </pkgmetadata>
