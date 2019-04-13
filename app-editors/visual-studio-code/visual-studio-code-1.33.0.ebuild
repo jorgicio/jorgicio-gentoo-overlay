@@ -55,7 +55,7 @@ src_install(){
 	doins -r *
 	dosym "/opt/${PN}/bin/code" "/usr/bin/${PN}"
 	make_desktop_entry "${PN}" "Visual Studio Code" "${PN}" "Development;IDE"
-	doicon ${FILESDIR}/${PN}.png
+	newicon "resources/app/resources/linux/code.png" ${PN}.png
 	fperms +x "/opt/${PN}/code"
 	fperms +x "/opt/${PN}/bin/code"
 	fperms +x "/opt/${PN}/libnode.so"
