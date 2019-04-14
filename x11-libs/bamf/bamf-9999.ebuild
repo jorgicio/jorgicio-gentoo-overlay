@@ -34,6 +34,7 @@ DEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	>=x11-libs/libwnck-3.4.7:3
+	>=gnome-base/gnome-common-3.18.0:3
 "
 RDEPEND="${DEPEND}
 	$(vala_depend)

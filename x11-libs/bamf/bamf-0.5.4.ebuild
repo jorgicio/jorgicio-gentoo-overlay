@@ -34,6 +34,7 @@ DEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	>=x11-libs/libwnck-3.4.7:3
+	>=gnome-base/gnome-common-3.18.0:3
 "
 RDEPEND="${DEPEND}
 	$(vala_depend)
@@ -45,14 +46,14 @@ RDEPEND="${DEPEND}
 	virtual/pkgconfig
 "
 
-DOCS=(AUTHORS COPYING COPYING.LGPL COPYING.LGPL-2.1 ChangeLog NEWS README TODO)
+DOCS=(AUTHORS COPYING COPYING.LGPL ChangeLog NEWS README TODO)
 
 src_prepare(){
 	sed -i 's/-Werror//' configure.ac
 	sed -i 's/tests//' Makefile.am
 	eautoreconf
 	vala_src_prepare
-	default_src_prepare
+	default
 }
 
 src_configure(){
