@@ -3,9 +3,9 @@
 
 EAPI=6
 
-VALA_MIN_API_VERSION=0.24
-
-inherit cmake-utils eutils gnome2-utils git-r3 vala
+VALA_MIN_API_VERSION=0.34
+CMAKE_MIN_VERSION=3.6
+inherit cmake-utils git-r3 gnome2-utils vala
 
 DESCRIPTION="Global Menu plugin for xfce4 and vala-panel"
 HOMEPAGE="https://github.com/rilian-la-te/vala-panel-appmenu"
@@ -29,6 +29,8 @@ DEPEND="
 	$(vala_depend)
 	virtual/pkgconfig
 	sys-devel/gettext
+	dev-libs/libpeas[gtk]
+	x11-libs/startup-notification
 "
 RDEPEND="${DEPEND}
 	x11-libs/cairo
@@ -39,6 +41,12 @@ RDEPEND="${DEPEND}
 	xfce? ( >=xfce-base/xfce4-panel-4.11.2 )
 	mate? ( >=mate-base/mate-panel-1.20.0 )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-no-rpmbuild.patch"
+	"${FILESDIR}/${PN}-find-vala-fix.patch"
+	"${FILESDIR}/${PN}-check-vala-version.patch"
+)
 
 src_prepare(){
 	if use !wayland;then
@@ -58,6 +66,9 @@ src_configure(){
 		-DENABLE_MATE=$(usex mate ON OFF)
 		-DENABLE_APPMENU_GTK_MODULE=ON
 		-DGSETTINGS_COMPILE=OFF
+		-DENABLE_JAYATANA=OFF
+		-DENABLE_BUDGIE=OFF
+		-DENABLE_REGISTRAR=OFF
 	)
 	cmake-utils_src_configure
 }

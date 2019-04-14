@@ -1,0 +1,12 @@
+diff -Naur a/cmake/Vala/FindVala.cmake b/cmake/Vala/FindVala.cmake
+--- a/cmake/Vala/FindVala.cmake	2019-04-14 00:47:44.570283650 -0400
++++ b/cmake/Vala/FindVala.cmake	2019-04-14 00:48:25.834761302 -0400
+@@ -45,7 +45,7 @@
+ 
+ # Search for the valac executable in the usual system paths.
+ find_program(VALA_EXECUTABLE
+-  NAMES valac valac-0.38 valac-0.36 valac-0.34)
++  NAMES valac valac-0.44 valac-0.42 valac-0.40 valac-0.38 valac-0.36 valac-0.34)
+ 
+ execute_process(COMMAND ${VALA_EXECUTABLE} "--version" 
+                 OUTPUT_VARIABLE "VALA_VERSION")
