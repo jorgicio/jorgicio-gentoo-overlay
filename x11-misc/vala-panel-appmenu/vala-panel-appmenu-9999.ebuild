@@ -22,7 +22,7 @@ fi
 LICENSE="LGPL-3"
 SLOT="0"
 IUSE="+vala-panel xfce +wnck mate wayland"
-REQUIRED_USE="|| ( xfce vala-panel mate )"
+#REQUIRED_USE="|| ( xfce vala-panel mate )"
 
 DEPEND="
 	>=x11-libs/gtk+-3.22.0:3[wayland?]
