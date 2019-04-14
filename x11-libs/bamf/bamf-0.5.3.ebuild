@@ -63,3 +63,8 @@ src_configure(){
 		$(use_enable introspection) \
 		VALA_API_GEN="${VAPIGEN}"
 }
+
+src_install(){
+	default_src_install
+	doinitd "${FILESDIR}/bamfdaemon"
+}
