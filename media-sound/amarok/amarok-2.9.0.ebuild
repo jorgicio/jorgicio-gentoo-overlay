@@ -9,6 +9,7 @@ inherit kde5
 DESCRIPTION="Advanced audio player based on KDE frameworks"
 HOMEPAGE="https://amarok.kde.org/"
 SRC_URI="https://download.kde.org/stable/${PN}/${PV}/src/${P}.tar.xz"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 IUSE="ipod lastfm libav mtp ofa podcast wikipedia"
