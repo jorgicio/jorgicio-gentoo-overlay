@@ -8,8 +8,10 @@ inherit kde5
 
 DESCRIPTION="Advanced audio player based on KDE frameworks"
 HOMEPAGE="https://amarok.kde.org/"
-SRC_URI="https://download.kde.org/stable/${PN}/${PV}/src/${P}.tar.xz"
+COMMIT="f0d3e6f069dd2e60b299ea855e5ac4759582923e"
+SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2"
 IUSE="ipod lastfm libav mtp ofa podcast wikipedia"
@@ -83,7 +85,10 @@ RDEPEND="${DEPEND}
 	!ofa? ( virtual/ffmpeg )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-2.8.90-mysqld-rpath.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.8.90-mysqld-rpath.patch"
+	"${FILESDIR}/${PN}_mariadb.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
