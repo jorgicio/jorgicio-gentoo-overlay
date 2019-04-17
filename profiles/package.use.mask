@@ -15,3 +15,6 @@ media-tv/xawtv cpu_flags_x86_mmx
 
 # Vulkan support is experimental.
 >=games-fps/gzdoom-4.0.0 vulkan
+
+# Phonon support is kinda broken.
+games-emulation/qmc2 phonon
