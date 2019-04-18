@@ -1,0 +1,29 @@
+diff -Naur a/src/configure.ac b/src/configure.ac
+--- a/src/configure.ac	2019-04-17 21:06:48.663081043 -0400
++++ b/src/configure.ac	2019-04-17 21:15:36.659992919 -0400
+@@ -1106,6 +1106,12 @@
+   fi
+ 
+   dnl -- find the python executable
++  AC_MSG_CHECKING(--with-python-command argument)
++  AC_SUBST(vi_cv_path_python)
++  AC_ARG_WITH(python-command, [  --with-python-command=NAME  name of the Python 2 command (default: python2 or python)],
++    vi_cv_path_python="$withval"; AC_MSG_RESULT($vi_cv_path_python),
++    AC_MSG_RESULT(no))
++
+   AC_PATH_PROGS(vi_cv_path_python, python2 python)
+   if test "X$vi_cv_path_python" != "X"; then
+ 
+@@ -1337,6 +1343,12 @@
+   fi
+ 
+   dnl -- find the python3 executable
++  AC_MSG_CHECKING(--with-python3-command argument)
++  AC_SUBST(vi_cv_path_python3)
++  AC_ARG_WITH(python3-command, [  --with-python3-command=NAME  name of the Python 3 command (default: python3 or python)],
++    vi_cv_path_python3="$withval"; AC_MSG_RESULT($vi_cv_path_python3),
++    AC_MSG_RESULT(no))
++
+   AC_PATH_PROGS(vi_cv_path_python3, python3 python)
+   if test "X$vi_cv_path_python3" != "X"; then
+ 
