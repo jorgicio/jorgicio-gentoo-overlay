@@ -64,7 +64,7 @@ RDEPEND="
 	x11-libs/libXt
 "
 
-PDEPEND="~app-editors/vim-core-${VIM_VERSION}"
+PDEPEND=">=app-editors/vim-core-8.0"
 
 BDEPEND="
 	dev-util/ctags
