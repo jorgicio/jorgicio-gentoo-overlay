@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VIM_VERSION="8.1"
+VIM_VERSION="8.0"
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby23 ruby24 ruby25"
@@ -64,7 +64,7 @@ RDEPEND="
 	x11-libs/libXt
 "
 
-PDEPEND=">=app-editors/vim-core-8.0"
+PDEPEND="=app-editors/vim-core-${VIM_VERSION}*"
 
 BDEPEND="
 	dev-util/ctags
@@ -85,7 +85,6 @@ src_prepare(){
 	default_src_prepare
 	cd src
 	eautoreconf
-	sed -i -e "s#VIMMINOR = 0#VIMMINOR = 1#" Makefile
 	sed -i -e "s#\#VIMRUNTIMEDIR#VIMRUNTIMEDIR#" Makefile
 	cd -
 	sed -i -e \
