@@ -157,7 +157,7 @@ src_configure(){
 		--with-ex-name=qex \
 		--with-view-name=qview \
 		--with-x \
-		--with-global-runtime=/usr/share/vim/vim81 \
+		--with-global-runtime=/usr/share/vim/vim80 \
 		${myconf[@]}
 }
 
