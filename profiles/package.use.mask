@@ -1,12 +1,3 @@
-# In order to avoid blockage with newer icu versions.
-=dev-qt/qtwebkit-4.8.7 icu
-
-# It fails to build if ffmpeg support is enabled.
-games-emulation/yabause ffmpeg
-
-# The bench support is untested and the shaderc support is in beta as shown in https://github.com/google/shaderc/releases
-media-libs/libplacebo bench shaderc
-
 # X86 MMX makes xawtv fail to build, as mentioned in https://github.com/jorgicio/issues/82
 media-tv/xawtv cpu_flags_x86_mmx
 
@@ -16,6 +7,6 @@ media-tv/xawtv cpu_flags_x86_mmx
 # Vulkan support is experimental.
 >=games-fps/gzdoom-4.0.0 vulkan
 
-# Phonon support is kinda broken.
+# Phonon support is kinda broken or unstable.
 games-emulation/qmc2 phonon
 media-sound/strawberry phonon
