@@ -6,4 +6,11 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="phonon">Enable Phonon backend (unstable feature, use with caution)</flag>
+		<flag name="system-taglib">Use <pkg>media-libs/taglib</pkg> instead of bundled one</flag>
+		<flag name="tidal">Enable Tidal support (may require a Premium account)</flag>
+		<flag name="vlc">Enable VLC backend</flag>
+		<flag name="xine">Enable Xine backend</flag>
+	</use>
 </pkgmetadata>

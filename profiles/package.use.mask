@@ -18,3 +18,4 @@ media-tv/xawtv cpu_flags_x86_mmx
 
 # Phonon support is kinda broken.
 games-emulation/qmc2 phonon
+media-sound/strawberry phonon

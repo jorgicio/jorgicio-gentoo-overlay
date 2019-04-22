@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cdda +dbus debug ipod mms mtp pulseaudio +udisks"
+IUSE="cdda +dbus debug ipod mms mtp phonon pulseaudio system-taglib tidal +udisks vlc xine"
 
 REQUIRED_USE="
 	udisks? ( dbus )
@@ -50,8 +50,6 @@ COMMON_DEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 	>=media-libs/libmygpo-qt-1.0.9[qt5(+)]
-	>=media-libs/taglib-1.11.1_p20181028
-	media-video/vlc
 	sys-libs/zlib
 	virtual/glu
 	x11-libs/libX11
@@ -59,6 +57,10 @@ COMMON_DEPEND="
 	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
+	phonon? ( media-libs/phonon )
+	system-taglib? ( >=media-libs/taglib-1.11.1_p20181028 )
+	vlc? ( media-video/vlc )
+	xine? ( media-libs/xine-lib )
 "
 # Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
 RDEPEND="${COMMON_DEPEND}
@@ -83,7 +85,7 @@ src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
 	cmake-utils_src_prepare
-	rm -r 3rdparty/taglib || die
+	use system-taglib && rm -r 3rdparty/taglib
 }
 
 src_configure() {
@@ -100,7 +102,12 @@ src_configure() {
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
+		-DENABLE_PHONON="$(usex phonon)"
+		-DENABLE_STREAM_TIDAL="$(usex tidal)"
 		-DENABLE_UDISKS2="$(usex udisks)"
+		-DENABLE_VLC="$(usex vlc)"
+		-DENABLE_XINE="$(usex xine)"
+		-DUSE_SYSTEM_TAGLIB="$(usex system-taglib)"
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
