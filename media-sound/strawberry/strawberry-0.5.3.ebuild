@@ -121,4 +121,12 @@ pkg_postinst() {
 	elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
 	elog "USE flags. You may be interested in setting aac, flac, mp3, ogg or wavpack USE flags "
 	elog "depending on your preferences"
+
+	if use phonon; then
+		elog "WARNING: You enabled the 'phonon' USE-flag."
+		elog "Phonon support for Strawberry is currently unstable,"
+		elog "it may lead to some failures and settings are user-wide"
+		elog "rather than application-wide. So use it with caution."
+	fi
+
 }
