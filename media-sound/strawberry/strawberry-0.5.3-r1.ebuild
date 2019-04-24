@@ -83,6 +83,7 @@ DOCS=( Changelog README.md )
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-small-sidebar-mode-width.patch"
+	"${FILESDIR}/${P}-fix-vlc-crash.patch"
 	"${FILESDIR}/${P}-vlc-fix.patch"
 )
 
