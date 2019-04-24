@@ -12,22 +12,19 @@ inherit autotools
 
 DESCRIPTION="A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell"
 HOMEPAGE="https://github.com/NicoHood/arc-theme"
-SRC_URI="https://github.com/NicoHood/${PN}/releases/download/${PV}/${P}.tar.xz
-	pre-rendered? ( https://dev.gentoo.org/~chewi/distfiles/${PN}-20181022-pngs.tar.xz )"
+SRC_URI="https://github.com/NicoHood/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="cinnamon gnome-shell +gtk2 +gtk3 mate +pre-rendered xfce"
+IUSE="cinnamon gnome-shell +gtk2 +gtk3 mate xfce"
 
 SASSC_DEPEND="
 	dev-lang/sassc
 "
 
 SVG_DEPEND="
-	!pre-rendered? (
-		media-gfx/inkscape
-		media-gfx/optipng
-	)
+	media-gfx/inkscape
+	media-gfx/optipng
 "
 
 # Supports various GTK+3 versions and uses pkg-config to determine which
@@ -69,9 +66,6 @@ src_prepare() {
 }
 
 src_configure() {
-	use pre-rendered &&
-		export INKSCAPE="${BROOT}"/bin/false OPTIPNG="${BROOT}"/bin/false
-
 	econf \
 		--disable-openbox \
 		--disable-plank \
