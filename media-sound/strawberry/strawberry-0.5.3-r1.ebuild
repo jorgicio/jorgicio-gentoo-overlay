@@ -81,6 +81,11 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( Changelog README.md )
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-small-sidebar-mode-width.patch"
+	"${FILESDIR}/${P}-vlc-fix.patch"
+)
+
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
