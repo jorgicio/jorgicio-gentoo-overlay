@@ -1,0 +1,49 @@
+From 36c62f6e810063ccb0f836fce91a894824f54c2a Mon Sep 17 00:00:00 2001
+From: Boyuan Yang <073plan@gmail.com>
+Date: Sun, 19 Aug 2018 12:33:00 -0400
+Subject: [PATCH] infowindow: Pop up infowindow at screen center (#318)
+
+Currently info window will pop up at the topleft corner of the screen,
+which is rather bothering. This patch will move the window to
+screen center when popped up.
+
+Since QGuiApplication::ScreenAt() is introduced since Qt 5.10, the
+code will only take effect when compiled against Qt >= 5.10.
+
+Signed-off-by: Boyuan Yang <073plan@gmail.com>
+---
+ src/widgets/infowindow.cpp | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/src/widgets/infowindow.cpp b/src/widgets/infowindow.cpp
+index 6b29b2e1..28600472 100644
+--- a/src/widgets/infowindow.cpp
++++ b/src/widgets/infowindow.cpp
+@@ -23,6 +23,13 @@
+ #include <QLabel>
+ #include <QKeyEvent>
+ 
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
++#include <QCursor>
++#include <QRect>
++#include <QScreen>
++#include <QGuiApplication>
++#endif
++
+ // InfoWindow show basic information about the usage of Flameshot
+ 
+ InfoWindow::InfoWindow(QWidget *parent) : QWidget(parent) {
+@@ -30,6 +37,13 @@ InfoWindow::InfoWindow(QWidget *parent) : QWidget(parent) {
+     setWindowIcon(QIcon(":img/app/flameshot.svg"));
+     setWindowTitle(tr("About"));
+ 
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
++    QRect position = frameGeometry();
++    QScreen *screen = QGuiApplication::screenAt(QCursor::pos());
++    position.moveCenter(screen->availableGeometry().center());
++    move(position.topLeft());
++#endif
++
+     m_layout = new QVBoxLayout(this);
+     m_layout->setAlignment(Qt::AlignHCenter);
+     initLabels();

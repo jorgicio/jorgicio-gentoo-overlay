@@ -1,0 +1,40 @@
+From 503de1be04d6c5e2521b15eacbbc87d7a317e247 Mon Sep 17 00:00:00 2001
+From: Ahmed Zetao Yang <zetao.yang@hotmail.com>
+Date: Fri, 21 Sep 2018 19:55:16 +0800
+Subject: [PATCH]  Pin Tool: Improve adjustment (#352)
+
+Fix pin widget adjustment position
+---
+ src/tools/pin/pintool.cpp   | 4 ----
+ src/tools/pin/pinwidget.cpp | 2 +-
+ 2 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/src/tools/pin/pintool.cpp b/src/tools/pin/pintool.cpp
+index 5017e14d..f56c4ea2 100755
+--- a/src/tools/pin/pintool.cpp
++++ b/src/tools/pin/pintool.cpp
+@@ -45,11 +45,7 @@ QString PinTool::description() const {
+ QWidget* PinTool::widget() {
+     PinWidget *w = new PinWidget(m_pixmap);
+     const int &&m = w->margin();
+-#if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
+-    QRect adjusted_pos = m_geometry + QMargins(m,-m,-m,-m);
+-#else
+     QRect adjusted_pos = m_geometry + QMargins(m, m, m, m);
+-#endif
+     w->setGeometry(adjusted_pos);
+     return w;
+ }
+diff --git a/src/tools/pin/pinwidget.cpp b/src/tools/pin/pinwidget.cpp
+index 330c37ff..f38be3ca 100644
+--- a/src/tools/pin/pinwidget.cpp
++++ b/src/tools/pin/pinwidget.cpp
+@@ -58,7 +58,7 @@ int PinWidget::margin() const {
+ }
+ 
+ void PinWidget::wheelEvent(QWheelEvent *e) {
+-    int val = e->delta() > 0 ? 5 : -5;
++    int val = e->delta() > 0 ? 15 : -15;
+     int newWidth = qBound(50, m_label->width() + val, maximumWidth());
+     int newHeight = qBound(50, m_label->height() + val, maximumHeight());
+ 

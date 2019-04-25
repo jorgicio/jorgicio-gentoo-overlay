@@ -6,15 +6,15 @@ EAPI=7
 inherit qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
-HOMEPAGE="http://github.com/lupoDharkael/flameshot"
+HOMEPAGE="https://flameshot.js.org"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://github.com/lupoDharkael/${PN}.git"
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/lupoDharkael/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
@@ -61,15 +61,15 @@ src_configure(){
 src_install(){
 	INSTALL_ROOT="${D}" default_src_install
 	if use kde; then
-		insinto /usr/share/config/kglobalshorcuts
-		newins docs/shortcuts-config/${PN}-shortcuts-kde ${PN}
+		insinto /usr/share/config
+		newins docs/shortcuts-config/${PN}-shortcuts-kde ${PN}rc
 	fi
 }
 
 pkg_postinst(){
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm(){
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }

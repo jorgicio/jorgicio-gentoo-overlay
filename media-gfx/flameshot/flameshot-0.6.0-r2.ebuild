@@ -6,21 +6,21 @@ EAPI=7
 inherit qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
-HOMEPAGE="http://github.com/lupoDharkael/flameshot"
+HOMEPAGE="https://flameshot.js.org"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://github.com/lupoDharkael/${PN}.git"
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/lupoDharkael/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="FreeArt GPL-3+ Apache-2.0"
 SLOT="0"
-IUSE=""
+IUSE="kde"
 
 DEPEND="
 	>=dev-qt/qtsvg-5.3.0:5
@@ -30,10 +30,25 @@ DEPEND="
 	>=dev-qt/qtwidgets-5.3.0:5
 	>=dev-qt/linguist-tools-5.3.0:5
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	kde? (
+		kde-plasma/plasma-desktop:5
+		kde-frameworks/kglobalaccel:5
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-geometry.patch"
+	"${FILESDIR}/${P}-new-captures-fix.patch"
+	"${FILESDIR}/${P}-highlight-composition-fix.patch"
+	"${FILESDIR}/${P}-allow-notification-drag-and-drop.patch"
+	"${FILESDIR}/${P}-pin-tool-improve-adjustment.patch"
+	"${FILESDIR}/${P}-popup-infowindow-at-screen-center.patch"
+	"${FILESDIR}/${P}-exit-non-zero.patch"
+)
 
 src_prepare(){
-	[[ ${PV} != 9999 ]] && sed -i "s#\(VERSION = \).*#\1${PV}#" ${PN}.pro
+	[[ ${PV} != 9999 ]] && sed -i "s|TAG_VERSION = .*|TAG_VERSION = v${PV}|" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro
 	sed -i "s#^Icon=.*#Icon=${PN}#" "docs/desktopEntry/package/${PN}.desktop" \
 		"snap/gui/${PN}.desktop" \
@@ -45,17 +60,21 @@ src_configure(){
 	if tc-is-gcc && ver_test "$(gcc-version)" -lt 4.9.2 ;then
 		die "You need at least GCC 4.9.2 to build this package"
 	fi
-	eqmake5 "CONFIG+=packaging"
+	eqmake5 CONFIG+=packaging BASEDIR="${D}"
 }
 
 src_install(){
 	INSTALL_ROOT="${D}" default_src_install
+	if use kde; then
+		insinto /usr/share/config
+		newins docs/shortcuts-config/${PN}-shortcuts-kde ${PN}rc
+	fi
 }
 
 pkg_postinst(){
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm(){
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
