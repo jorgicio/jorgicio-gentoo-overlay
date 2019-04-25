@@ -13,6 +13,7 @@ SRC_URI="
 	amd64? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-${PV}.tar.gz )"
 
 EGIT_REPO_URI="https://github.com/dark/dropbox-filesystem-fix.git"
+EGIT_COMMIT="72f4d04852d5002d9ba29b3f77fbacb2c12d1432"
 LICENSE="CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
 KEYWORDS="amd64 x86 ~x86-linux"
