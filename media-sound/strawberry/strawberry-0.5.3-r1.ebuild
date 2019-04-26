@@ -90,8 +90,8 @@ PATCHES=(
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
-	use system-taglib && rm -r 3rdparty/taglib
 	cmake-utils_src_prepare
+	use system-taglib && rm -r 3rdparty/taglib
 }
 
 src_configure() {
