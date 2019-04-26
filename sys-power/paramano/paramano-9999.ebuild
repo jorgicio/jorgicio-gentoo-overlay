@@ -1,21 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Docking battery monitor and CPU governor controller, forked from trayfreq"
-HOMEPAGE="http://github.com/phillid/paramano"
+HOMEPAGE="https://gitlab.com/dphillips/paramano"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else
-	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~x86 ~amd64 ~arm"
+	SRC_URI="${HOMEPAGE}/-/archive/${PV}/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -23,7 +21,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	x11-libs/gtk+:3
+	x11-libs/gtk+:2
 "
 RDEPEND="${DEPEND}
 	app-admin/sudo
