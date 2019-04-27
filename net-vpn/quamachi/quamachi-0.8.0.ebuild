@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,9 @@ IUSE=""
 DEPEND="
 	$(python_gen_any_dep 'dev-python/PyQt5[${PYTHON_USEDEP},network,gui]')
 	>=net-vpn/logmein-hamachi-2.1"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	net-misc/tigervnc
+"
 BDEPEND="${PYTHON_DEPS}"
 
 S="${WORKDIR}/${PN^}/Build"
