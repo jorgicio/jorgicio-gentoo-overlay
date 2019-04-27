@@ -35,6 +35,11 @@ pkg_setup(){
 	python-any-r1_pkg_setup
 }
 
+src_prepare(){
+	sed -i -e "s#make#\${MAKE}#" Makefile || die
+	default_src_prepare
+}
+
 src_install(){
 	emake DESTDIR="${D}" Sys-SBin="/usr/bin" install
 }
