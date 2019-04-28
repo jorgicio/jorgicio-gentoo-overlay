@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
-inherit base toolchain-funcs
+EAPI=7
+inherit toolchain-funcs
 
 DESCRIPTION="Bridge ALSA devices to Jack clients, to provide additional capture (a2j) or playback (j2a) channels"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/"
@@ -11,7 +11,7 @@ SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/alsa-lib
@@ -22,14 +22,12 @@ DEPEND="media-libs/alsa-lib
 S=${WORKDIR}/${P}/source
 RESTRICT="mirror"
 
-DOCS=(../AUTHORS ../README)
-
-PATCHES=("${FILESDIR}"/${PN}-0.4.0-Makefile.patch)
+DOCS=(../AUTHORS ../COPYING ../README)
 
 src_compile() {
-	CXX="$(tc-getCXX)" base_src_make
+	CXX="$(tc-getCXX)" default_src_compile
 }
 
 src_install() {
-	base_src_install PREFIX="${EPREFIX}/usr"
+	PREFIX=${EPREFIX}/usr default_src_install
 }
