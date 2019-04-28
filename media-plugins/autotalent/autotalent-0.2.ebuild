@@ -19,6 +19,6 @@ RDEPEND="${DEPEND}"
 DOCS=( README )
 
 src_prepare(){
-	sed -i -e "s#/usr#\${DESTDIR}/usr#" Makefile || die
+	sed -i -e "s#/usr/lib64#\${DESTDIR}/usr/$(get_libdir)#" Makefile || die
 	default_src_prepare
 }
