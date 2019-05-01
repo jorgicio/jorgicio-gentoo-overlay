@@ -35,7 +35,7 @@ diff -Naur a/Makefile b/Makefile
  
  jack_capture_gui2: jack_capture_gui2.cpp
 -	$(CPP) $(CPPFLAGS) $(OPTIMIZE) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
-+	$(CPP) $(CPPFLAGS) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
++	$(CXX) $(CXXFLAGS) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
  
  config_flags: Makefile das_config.h
  	cat das_config.h |grep COMPILEFLAGS|sed s/\\/\\/COMPILEFLAGS//|tr '\n' ' ' >config_flags
