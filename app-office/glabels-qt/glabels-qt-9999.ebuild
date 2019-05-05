@@ -14,9 +14,9 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
-	VERSION="continuous"
-	SRC_URI="${HOMEPAGE}/archive/${VERSION}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${VERSION}"
+	COMMIT="cb9f345a0a83fb65cb987ef23874d84193e2de6f"
+	SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -27,14 +27,14 @@ IUSE=""
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qttranslations:5
-"
-RDEPEND="${DEPEND}"
-BDEPEND="
 	dev-qt/linguist:5
 	dev-qt/designer:5
 	dev-qt/assistant:5
 	dev-qt/qdbusviewer:5
 	dev-qt/qtgui:5
+"
+RDEPEND="${DEPEND}"
+BDEPEND="
 	media-libs/zint[qt5]
 "
 
