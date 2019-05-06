@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,9 +25,19 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_install(){
+src_prepare() {
+	default_src_prepare
+	cd $S
+	for size in 16x16 22x22 24x24
+	do
+		rm -f Papirus/$size/panel/clementine-panel{,-grey}.svg
+	done
+}
+
+src_install() {
 	default_src_install
-	for size in 16x16 22x22 24x24 32x32 48x48 64x64; do
+	for size in 16x16 22x22 24x24 32x32 48x48 64x64
+	do
 		dosym firefox-aurora.svg /usr/share/icons/Papirus/${size}/apps/aurora.svg
 	done
 }
