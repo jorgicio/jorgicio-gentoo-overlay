@@ -25,11 +25,11 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=dev-python/PyQt5-5.7[multimedia,${PYTHON_USEDEP}]
 	>=media-video/mpv-0.25[libmpv]
-	media-video/mediainfo
 "
 RDEPEND="${DEPEND}
+	>=dev-python/PyQt5-5.7[dbus,multimedia,${PYTHON_USEDEP}]
+	media-video/mediainfo
 	virtual/ffmpeg[X,encode]"
 BDEPEND="
 	${PYTHON_DEPS}
