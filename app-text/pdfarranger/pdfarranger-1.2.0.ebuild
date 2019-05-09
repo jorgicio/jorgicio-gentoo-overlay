@@ -26,7 +26,7 @@ DEPEND="
 	app-text/poppler[cairo]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
-	dev-python/PyPDF:2[${PYTHON_USEDEP}]
+	dev-python/PyPDF2[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3
 "
 RDEPEND="${DEPEND}"
