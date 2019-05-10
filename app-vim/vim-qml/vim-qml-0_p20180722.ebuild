@@ -6,7 +6,7 @@ EAPI=7
 #VIM_PLUGIN_VIM_VERSION="7.0"
 inherit vim-plugin
 
-DESCRIPTION="vim plugin: "
+DESCRIPTION="vim plugin: highlighting syntax support for QML code"
 HOMEPAGE="https://vimawesome.com/plugin/vim-qml"
 LICENSE="vim"
 
