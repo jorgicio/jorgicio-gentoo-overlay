@@ -103,7 +103,7 @@ src_configure() {
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_PHONON="$(usex phonon)"
-		-DENABLE_STREAM_TIDAL="$(usex tidal)"
+		-DENABLE_TIDAL="$(usex tidal)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_VLC="$(usex vlc)"
 		-DENABLE_XINE="$(usex xine)"
