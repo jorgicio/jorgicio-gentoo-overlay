@@ -27,5 +27,4 @@ DEPEND="
 	dev-libs/json-glib
 "
 RDEPEND="${DEPEND}"
-BDEPEND=">=lxde-base/lxqt-build-tools-0.5.0"
-
+BDEPEND=">=dev-util/lxqt-build-tools-0.5.0"

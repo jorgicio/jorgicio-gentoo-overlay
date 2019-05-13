@@ -32,4 +32,3 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-util/lxqt-build-tools-0.6.0"
-
