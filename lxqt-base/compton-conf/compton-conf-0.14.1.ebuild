@@ -26,9 +26,10 @@ IUSE=""
 
 DEPEND="
 	x11-misc/compton
-	>=dev-util/lxqt-build-tools-0.6.0
 	>=dev-qt/qtcore-5.7.1:5
 	dev-libs/libconfig
 	lxqt-base/liblxqt:0=
 "
 RDEPEND="${DEPEND}"
+BDEPEND=">=dev-util/lxqt-build-tools-0.6.0"
+
