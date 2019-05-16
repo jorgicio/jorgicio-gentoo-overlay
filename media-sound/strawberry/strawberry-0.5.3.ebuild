@@ -123,10 +123,10 @@ pkg_postinst() {
 	elog "depending on your preferences"
 
 	if use phonon; then
-		elog "WARNING: You enabled the 'phonon' USE-flag."
-		elog "Phonon support for Strawberry is currently unstable,"
-		elog "it may lead to some failures and settings are user-wide"
-		elog "rather than application-wide. So use it with caution."
+		ewarn "WARNING: You enabled the 'phonon' USE-flag."
+		ewarn "Phonon support for Strawberry is currently unstable,"
+		ewarn "it may lead to some failures and settings are user-wide"
+		ewarn "rather than application-wide. So use it with caution."
 	fi
 
 }
