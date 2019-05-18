@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit xdg-utils
+
 DESCRIPTION="An x-cursor theme inspired by macOS and based on KDE Breeze"
 HOMEPAGE="https://github.com/keeferrourke/capitaine-cursors"
 
@@ -39,4 +41,16 @@ src_install(){
 	doins -r dist/*
 	insinto /usr/share/icons/${PN}-white
 	doins -r dist-white/*
+}
+
+pkg_preinst(){
+	xdg_environment_reset
+}
+
+pkg_postinst(){
+	xdg_icon_cache_update
+}
+
+pkg_postrm(){
+	xdg_icon_cache_update
 }
