@@ -46,15 +46,9 @@ src_prepare(){
 }
 
 src_compile() {
-	if use chromium; then
-		tools/make-chromium.sh || die
-	fi
-	if use firefox; then
-		tools/make-firefox.sh || die
-	fi
-	if use opera; then
-		tools/make-opera.sh || die
-	fi
+	use chromium && ( tools/make-chromium.sh || die )
+	use firefox && ( tools/make-firefox.sh || die )
+	use opera && ( tools/make-opera.sh || die )
 	default_src_compile
 }
 
