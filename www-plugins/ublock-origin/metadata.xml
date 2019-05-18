@@ -6,4 +6,9 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="chromium">Install the extension for Chromium-based browsers</flag>
+		<flag name="firefox">Install the extension for Firefox-based browsers</flag>
+		<flag name="opera">Install the extensions for Opera browser</flag>
+	</use>
 </pkgmetadata>
