@@ -65,7 +65,7 @@ src_install() {
 	fi
 
 	if use firefox; then
-		insinto "/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/uBlock0@raymondhill.net"
+		insinto "/usr/$(get_libdir)/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/uBlock0@raymondhill.net"
 		doins -r dist/build/uBlock0.firefox/.
 	fi
 
