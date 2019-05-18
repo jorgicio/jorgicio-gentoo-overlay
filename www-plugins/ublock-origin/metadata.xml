@@ -7,8 +7,8 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
-		<flag name="chromium">Install the extension for Chromium-based browsers</flag>
-		<flag name="firefox">Install the extension for Firefox-based browsers</flag>
-		<flag name="opera">Install the extensions for Opera browser</flag>
+		<flag name="chromium">Install the extension for Chromium-based browsers (Chromium, Google Chrome, Opera, Vivaldi, etc.)</flag>
+		<flag name="firefox">Install the extension for Firefox-based browsers (Firefox, Seamonkey, etc.)</flag>
+		<flag name="opera">Install the extension for Opera browser</flag>
 	</use>
 </pkgmetadata>
