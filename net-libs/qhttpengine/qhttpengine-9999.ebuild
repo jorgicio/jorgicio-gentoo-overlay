@@ -11,9 +11,7 @@ HOMEPAGE="https://nitroshare.net"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/nitroshare/${PN}.git"
-	KEYWORDS=""
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	SRC_URI="https://github.com/nitroshare/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
