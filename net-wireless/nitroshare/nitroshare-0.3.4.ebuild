@@ -12,7 +12,6 @@ HOMEPAGE="https://nitroshare.net"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
-	KEYWORDS=""
 else
 	SRC_URI="https://launchpad.net/nitroshare/${PV:0:3}/${PV}/+download/${P}.tar.gz -> ${P}.tar"
 	KEYWORDS="amd64 ~arm ~arm64 x86"
@@ -28,8 +27,8 @@ DEPEND="
 	>=dev-qt/qtnetwork-5.1.0:5
 	>=dev-qt/linguist-tools-5.1.0:5
 	x11-libs/libnotify
-	http? ( dev-qt/qhttpengine )
-	mdns? ( dev-qt/qmdnsengine )
+	http? ( net-libs/qhttpengine )
+	mdns? ( net-dns/qmdnsengine )
 	test? ( >=dev-qt/qttest-5.1.0:5 )
 	"
 

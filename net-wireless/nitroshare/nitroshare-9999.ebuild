@@ -28,8 +28,8 @@ DEPEND="
 	>=dev-qt/qtnetwork-5.4.0:5
 	>=dev-qt/linguist-tools-5.4.0:5
 	x11-libs/libnotify
-	http? ( dev-qt/qhttpengine )
-	mdns? ( dev-qt/qmdnsengine )
+	http? ( net-libs/qhttpengine )
+	mdns? ( net-dns/qmdnsengine )
 	test? ( >=dev-qt/qttest-5.4.0:5 )
 	"
 
