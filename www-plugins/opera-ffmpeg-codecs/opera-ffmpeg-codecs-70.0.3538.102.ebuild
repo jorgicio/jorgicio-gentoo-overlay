@@ -16,7 +16,7 @@ RESTRICT="bindist"
 LICENSE="LGPL-2.1 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~amd64-linux"
-IUSE=""
+IUSE="kerberos"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -31,6 +31,7 @@ DEPEND="
 	dev-libs/nss
 	sys-apps/pciutils
 	x11-libs/gtk+:3
+	kerberos? ( virtual/krb5 )
 "
 RDEPEND="${DEPEND}
 	media-video/ffmpeg[-chromium]
@@ -73,7 +74,7 @@ src_configure(){
 	myconf_gn+="linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false "
 	myconf_gn+="enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false "
 	myconf_gn+="is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false "
-	myconf_gn+="use_lld=false use_jumbo_build=false"
+	myconf_gn+="use_lld=false use_jumbo_build=false use_kerberos=$(usex kerberos true false)"
 
 	einfo "Configuring Opera ffmpeg plugins..."
 	set -- gn gen out/Release -v --args="${myconf_gn}"
