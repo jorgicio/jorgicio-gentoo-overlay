@@ -33,5 +33,6 @@ RDEPEND="app-shells/bash
 src_install(){
 	DESTDIR="${D}" emake install-bin
 	doman doc/pc.1
+	newman doc/pc.1 profile-cleaner.1
 	einstalldocs
 }
