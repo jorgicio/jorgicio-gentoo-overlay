@@ -19,6 +19,8 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
+DOCS=( README.md )
+
 RDEPEND="app-shells/bash
 	sys-devel/bc
 	sys-apps/coreutils
@@ -27,3 +29,9 @@ RDEPEND="app-shells/bash
 	sys-apps/sed
 	sys-process/parallel
 	dev-db/sqlite:3"
+
+src_install(){
+	DESTDIR="${D}" emake install-bin
+	doman doc/pc.1
+	einstalldocs
+}
