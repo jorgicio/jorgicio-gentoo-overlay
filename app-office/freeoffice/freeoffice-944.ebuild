@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils xdg-utils
+inherit desktop gnome2-utils xdg-utils
 
 DESCRIPTION="A complete, free Microsoft Office-compatible alternative office suite"
 HOMEPAGE="https://www.freeoffice.com"
