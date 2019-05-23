@@ -83,9 +83,9 @@ pkg_preinst(){
 
 pkg_postinst(){
 	echo
-	einfo "In order to use Softmaker Freeoffice, you need a serial number."
-	einfo "To obtain a valid free serial number, please visit"
-	einfo "https://www.freeoffice.com/en/download"
+	elog "In order to use Softmaker Freeoffice, you need a serial number."
+	elog "To obtain a valid free serial number, please visit"
+	elog "https://www.freeoffice.com/en/download"
 	echo
 	gnome2_icon_cache_update
 	xdg_desktop_database_update
