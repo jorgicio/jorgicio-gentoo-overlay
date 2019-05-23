@@ -49,7 +49,7 @@ NATIVE_DEPEND="
 	media-libs/libpng:1.2
 	net-misc/curl
 	virtual/opengl
-	media-libs/tiff:3
+	media-libs/tiff
 	sys-apps/util-linux
 	sys-libs/zlib
 	x11-libs/libdrm
