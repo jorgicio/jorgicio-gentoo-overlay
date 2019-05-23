@@ -77,6 +77,7 @@ NATIVE_DEPEND="
 "
 RDEPEND="
 	${NATIVE_DEPEND}
+	net-libs/libcurl-debian
 	dev-db/sqlite:3
 	!app-office/onlyoffice
 "
@@ -86,6 +87,12 @@ S="${WORKDIR}"
 
 src_unpack(){
 	unpack_deb "${A}"
+}
+
+src_prepare(){
+	sed -i -e "s#\$LD_LIBRARY_PATH#/usr/$(get_libdir)/debiancompat:\$LD_LIBRARY_PATH#" \
+		usr/bin/onlyoffice-desktopeditors || die
+	default_src_prepare
 }
 
 src_install() {
@@ -105,11 +112,11 @@ pkg_preinst(){
 pkg_postinst() {
 	gnome2_gconf_install
 	xdg_desktop_database_update
-	xdg_mime_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
 	gnome2_gconf_uninstall
 	xdg_desktop_database_update
-	xdg_mime_database_update
+	xdg_mimeinfo_database_update
 }
