@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 
 SRC_URI="
 	amd64? (
-		https://github.com/ONLYOFFICE/DesktopEditors/releases/download/${MY_P}/${PN/bin/desktopeditors}_amd64.deb -> ${MY_P}.deb
+		https://github.com/ONLYOFFICE/DesktopEditors/releases/download/${MY_P}/${PN/bin/desktopeditors}-x64.tar.gz -> ${MY_P}-x64.tar.gz
 	)
 "
 
@@ -77,31 +77,24 @@ NATIVE_DEPEND="
 "
 RDEPEND="
 	${NATIVE_DEPEND}
-	net-libs/libcurl-debian
 	dev-db/sqlite:3
 	!app-office/onlyoffice
 "
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}"
-
-src_unpack(){
-	unpack_deb "${A}"
-}
-
-src_prepare(){
-	sed -i -e "s#\$LD_LIBRARY_PATH#/usr/$(get_libdir)/debiancompat:\$LD_LIBRARY_PATH#" \
-		usr/bin/onlyoffice-desktopeditors || die
-	default_src_prepare
-}
+S="${WORKDIR}/desktopeditors"
 
 src_install() {
-	mkdir -p ${D}
-	cp -r ${S}/* ${D}
+	mkdir -p ${D}/opt/onlyoffice
+	cp -r ${S} ${D}/opt/onlyoffice/
 	local res
 	for res in 16 24 32 48 64 128 256; do
-		doicon -s ${res} opt/${PN/-bin}/desktopeditors/asc-de-${res}.png
+		doicon -s ${res} "${FILESDIR}"/icons/asc-de-${res}.png
 	done
+	domenu "${FILESDIR}/desktopeditors.desktop"
+	dobin "${FILESDIR}/onlyoffice-desktopeditors"
+	dosym "${EPREFIX}/usr/bin/onlyoffice-desktopeditors" "${EPREFIX}/usr/bin/desktopeditors"
+	dosym "${EPREFIX}/usr/$(get_libdir)/libcurl.so.4" "${EPREFIX}/opt/onlyoffice/desktopeditors/libcurl-gnutls.so.4"
 }
 
 pkg_preinst(){
