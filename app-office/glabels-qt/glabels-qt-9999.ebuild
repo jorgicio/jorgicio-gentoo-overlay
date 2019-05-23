@@ -10,14 +10,12 @@ HOMEPAGE="https://github.com/jimevins/glabels-qt"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	SRC_URI=""
-	KEYWORDS=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	COMMIT="cb9f345a0a83fb65cb987ef23874d84193e2de6f"
 	SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="GPL-3"

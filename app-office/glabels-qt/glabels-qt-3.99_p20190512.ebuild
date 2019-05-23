@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
-	COMMIT="cb9f345a0a83fb65cb987ef23874d84193e2de6f"
+	COMMIT="25756753ac753c7624c7979cae1ecf1da76f0a30"
 	SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
