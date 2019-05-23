@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit desktop font multilib unpacker xdg-utils
+inherit desktop gnome2-utils multilib unpacker xdg-utils
 
 MY_PN="ONLYOFFICE-DesktopEditors"
 MY_P="${MY_PN}-${PV}-${PR//r}"
@@ -32,6 +32,8 @@ NATIVE_DEPEND="
 	dev-libs/glib:2
 	dev-libs/libffi
 	dev-libs/libxml2:2
+	dev-libs/nss
+	dev-libs/atk
 	dev-qt/qtgui:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -44,9 +46,8 @@ NATIVE_DEPEND="
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/glu
-	media-libs/gst-plugins-base:0.10
-	media-libs/gstreamer:0.10
-	media-libs/libpng:1.2
+	media-libs/gst-plugins-base
+	media-libs/gstreamer
 	net-misc/curl
 	virtual/opengl
 	media-libs/tiff
@@ -65,8 +66,14 @@ NATIVE_DEPEND="
 	x11-libs/libXrender
 	x11-libs/libXxf86vm
 	media-libs/libmng
+	media-fonts/dejavu
+	media-fonts/crosextrafonts-carlito
 	net-print/cups
-	virtual/libstdc++
+	net-misc/wget
+	sys-devel/gcc
+	x11-libs/cairo
+	x11-libs/gtk+:2
+	x11-libs/gtkglext
 "
 RDEPEND="
 	${NATIVE_DEPEND}
@@ -90,15 +97,18 @@ src_install() {
 }
 
 pkg_preinst(){
+	gnome2_gconf_savelist
 	xdg_environment_reset
 }
 
 pkg_postinst() {
+	gnome2_gconf_install
 	xdg_desktop_database_update
 	xdg_mime_database_update
 }
 
 pkg_postrm() {
+	gnome2_gconf_uninstall
 	xdg_desktop_database_update
 	xdg_mime_database_update
 }
