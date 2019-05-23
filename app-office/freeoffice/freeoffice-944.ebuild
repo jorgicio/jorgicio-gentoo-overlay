@@ -27,13 +27,22 @@ RDEPEND="
 	net-misc/curl
 	app-arch/xz-utils
 	media-libs/mesa
+	media-fonts/crosextrafonts-carlito
 "
 
-QA_PRESTRIPPED="
-	/usr/lib/freeoffice/planmaker
-	/usr/lib/freeoffice/presentations
-	/usr/lib/freeoffice/textmaker
-"
+pkg_setup(){
+	if use amd64; then
+		QA_PRESTRIPPED="
+			/usr/lib64/freeoffice/planmaker
+			/usr/lib64/freeoffice/presentations
+			/usr/lib64/freeoffice/textmaker"
+	elif use x86; then
+		QA_PRESTRIPPED="
+			/usr/lib32/freeoffice/planmaker
+			/usr/lib32/freeoffice/presentations
+			/usr/lib32/freeoffice/textmaker"
+	fi
+}
 
 src_unpack(){
 	default_src_unpack
@@ -51,8 +60,8 @@ src_prepare(){
 }
 
 src_install(){
-	insinto "${EPREFIX}/usr/$(get_libdir)/${PN}"
-	doins -r *
+	mkdir -p "${D}/usr/$(get_libdir)/${PN}"
+	cp -r * "${D}/usr/$(get_libdir)/${PN}/"
 	for m in ${FILESDIR}/*.desktop; do
 		domenu "${m}"
 	done
@@ -64,9 +73,6 @@ src_install(){
 		newicon icons/prl_${size}.png ${PN}-presentations.png
 		newicon icons/tml_${size}.png ${PN}-textmaker.png
 	done
-	fperms +x "${EPREFIX}/usr/$(get_libdir)/${PN}/planmaker"
-	fperms +x "${EPREFIX}/usr/$(get_libdir)/${PN}/presentations"
-	fperms +x "${EPREFIX}/usr/$(get_libdir)/${PN}/textmaker"
 	insinto "${EPREFIX}/usr/share/mime/packages"
 	doins mime/softmaker-freeoffice18.xml
 }
