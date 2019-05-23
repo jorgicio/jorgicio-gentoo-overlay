@@ -78,6 +78,7 @@ NATIVE_DEPEND="
 RDEPEND="
 	${NATIVE_DEPEND}
 	dev-db/sqlite:3
+	!app-office/onlyoffice
 "
 DEPEND="${RDEPEND}"
 
