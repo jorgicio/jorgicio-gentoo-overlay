@@ -10,5 +10,6 @@
 		<flag name="chromium">Install the extension for Chromium-based browsers (Chromium, Google Chrome, Opera, Vivaldi, etc.)</flag>
 		<flag name="firefox">Install the extension for Firefox-based browsers (Firefox, Seamonkey, etc.)</flag>
 		<flag name="opera">Install the extension for Opera browser</flag>
+		<flag name="thunderbird">Install the extension for Thunderbird</flag>
 	</use>
 </pkgmetadata>
