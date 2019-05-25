@@ -27,7 +27,6 @@ IUSE="chromium firefox opera thunderbird"
 REQUIRED_USE="|| ( chromium firefox opera thunderbird )"
 RDEPEND=""
 DEPEND="${RDEPEND}"
-BDEPEND="app-arch/zip"
 
 DOCS=( MANIFESTO.md README.md )
 
@@ -48,19 +47,9 @@ src_prepare(){
 
 src_compile() {
 	use chromium && ( tools/make-chromium.sh || die )
-	if use firefox; then
-		tools/make-firefox.sh || die
-		cd dist/build/uBlock0.firefox
-		zip -r uBlock0@raymondhill.net.xpi .
-		cd -
-	fi
+	use firefox && ( tools/make-firefox.sh all || die )
 	use opera && ( tools/make-opera.sh || die )
-	if use thunderbird; then
-		tools/make-thunderbird.sh || die
-		cd dist/build/uBlock0.thunderbird
-		zip -r uBlock0@raymondhill.net.xpi .
-		cd -
-	fi
+	use thunderbird && ( tools/make-thunderbird.sh all || die )
 	default_src_compile
 }
 
@@ -71,8 +60,8 @@ src_install() {
 	fi
 
 	if use firefox; then
-		insinto "/usr/$(get_libdir)/mozilla/firefox/browser/extensions"
-		doins dist/build/uBlock0.firefox/uBlock0@raymondhill.net.xpi
+		insinto "/usr/$(get_libdir)/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+		newins dist/build/uBlock0.firefox.xpi uBlock0@raymondhill.net.xpi
 	fi
 
 	if use opera; then
@@ -81,7 +70,7 @@ src_install() {
 	fi
 
 	if use thunderbird; then
-		insinto "/usr/$(get_libdir)/mozilla/thunderbird/extensions"
-		doins dist/build/uBlock0.thunderbird/uBlock0@raymondhill.net.xpi
+		insinto "/usr/$(get_libdir)/thunderbird/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+		newins dist/build/uBlock0.thunderbird.xpi uBlock0@raymondhill.net.xpi
 	fi
 }
