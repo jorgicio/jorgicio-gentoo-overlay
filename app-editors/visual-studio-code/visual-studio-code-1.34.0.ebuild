@@ -42,6 +42,8 @@ RDEPEND="
 	)
 "
 
+DOCS=( resources/app/LICENSE.rtf )
+
 QA_PRESTRIPPED="opt/${PN}/code"
 QA_PREBUILT="opt/${PN}/code"
 
@@ -51,18 +53,12 @@ pkg_setup(){
 
 src_install(){
 	pax-mark m code
-	insinto "/opt/${PN}"
-	doins -r *
+	mkdir -p "${D}/opt/${PN}"
+	cp -r . "${D}/opt/${PN}/"
 	dosym "/opt/${PN}/bin/code" "/usr/bin/${PN}"
 	make_desktop_entry "${PN}" "Visual Studio Code" "${PN}" "Development;IDE"
 	newicon "resources/app/resources/linux/code.png" ${PN}.png
-	fperms +x "/opt/${PN}/code"
-	fperms +x "/opt/${PN}/bin/code"
-	fperms +x "/opt/${PN}/libnode.so"
-	fperms +x "/opt/${PN}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
-	fperms +x "/opt/${PN}/resources/app/extensions/git/dist/askpass.sh"
-	insinto "/usr/share/licenses/${PN}"
-	newins "resources/app/LICENSE.rtf" "LICENSE"
+	einstalldocs
 }
 
 pkg_postinst(){

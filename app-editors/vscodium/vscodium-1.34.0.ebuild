@@ -49,15 +49,10 @@ S="${WORKDIR}"
 
 src_install(){
 	pax-mark m vscodium
-	insinto "/opt/${PN}"
-	doins -r *
+	mkdir -p "${D}/opt/${PN}"
+	cp -r . "${D}/opt/${PN}/"
 	dosym "/opt/${PN}/bin/vscodium" "/usr/bin/${PN}"
 	make_desktop_entry "${PN}" "VSCodium" "${PN}" "Development;IDE"
 	newicon "resources/app/resources/linux/code.png" ${PN}.png
-	fperms +x "/opt/${PN}/vscodium"
-	fperms +x "/opt/${PN}/bin/vscodium"
-	fperms +x "/opt/${PN}/libnode.so"
-	fperms +x "/opt/${PN}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
-	fperms +x "/opt/${PN}/resources/app/extensions/git/dist/askpass.sh"
 }
 
