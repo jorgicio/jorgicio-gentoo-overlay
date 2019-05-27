@@ -27,7 +27,7 @@ RDEPEND="
 	gtk3? ( x11-libs/gtk+:3 )
 	media-libs/libsdl2
 	virtual/glu
-	virtual/jpeg:62
+	virtual/jpeg-compat:62
 	virtual/opengl"
 
 DEPEND="${RDEPEND}

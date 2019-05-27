@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils cmake-utils
+inherit cmake-utils desktop
 
 DESCRIPTION="A 3D-accelerated Doom source port based on ZDoom code"
 HOMEPAGE="https://gzdoom.drdteam.org/"
@@ -29,7 +29,7 @@ RDEPEND="
 	gtk3? ( x11-libs/gtk+:3 )
 	media-libs/libsdl2
 	virtual/glu
-	virtual/jpeg:62
+	virtual/jpeg-compat:62
 	virtual/opengl"
 
 DEPEND="${RDEPEND}
