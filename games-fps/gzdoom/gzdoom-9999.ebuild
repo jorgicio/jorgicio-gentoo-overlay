@@ -11,8 +11,6 @@ HOMEPAGE="https://gzdoom.drdteam.org/"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/coelckers/gzdoom.git"
-	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-src-g${PV}.zip"
 	KEYWORDS="~amd64 ~x86"
