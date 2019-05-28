@@ -46,21 +46,16 @@ QA_PRESTRIPPED="
 src_prepare(){
 	sed -i "s#dir=\"\$dir/\$rel\"#dir=\"\$rel\"#" "bin/prey"
 	sed -i "s#auto\_update\ =\ true#auto\_update\ =\ false#" "prey.conf.default"
-	default
+	default_src_prepare
 }
 
 src_install(){
-	insinto /usr/$(get_libdir)/${PN}
-	doins -r *
+	mkdir -p "${D}/usr/$(get_libdir)/${PN}"
+	cp -r . "${D}/usr/$(get_libdir)/${PN}"
 	insinto /etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
-	# Find executables and give them exec permissions
-	for x in $(find . -executable -type f); do
-		fperms +x /usr/$(get_libdir)/${PN}/${x}
-	done
-	exeinto /usr/bin
-	newexe "${FILESDIR}/${PN}-bin-r1" "${PN}"
+	newbin "${FILESDIR}/${PN}-bin-r1" "${PN}"
 }
 
 pkg_postinst(){
