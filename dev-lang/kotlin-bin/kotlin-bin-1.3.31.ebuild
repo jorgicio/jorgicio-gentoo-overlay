@@ -24,10 +24,9 @@ src_install() {
 	dodoc license/NOTICE.txt
 	rm -r license || die
 
-	insinto "/opt/${PN}"
-	doins -r *
+	mkdir -p "${D}/opt/${PN/-bin}"
+	cp -r . "${D}/opt/${PN/-bin}"
 	for i in bin/*; do
-		fperms +x "/opt/${PN}/$i"
-		dosym "${EROOT}/opt/${PN}/$i" "/usr/bin/${i//*\/}"
+		dosym "${EROOT}/opt/${PN/-bin}/$i" "/usr/bin/${i//*\/}"
 	done
 }
