@@ -7,7 +7,7 @@ EAPI=6
 inherit desktop gnome2-utils multilib unpacker xdg-utils
 
 MY_PN="ONLYOFFICE-DesktopEditors"
-MY_P="${MY_PN}-${PV}-${PR//r}"
+MY_P="${MY_PN}-${PVR//r}"
 
 DESCRIPTION="onlyoffice is an office productivity suite (binary version)"
 HOMEPAGE="https://www.onlyoffice.com/"
@@ -17,12 +17,12 @@ KEYWORDS="~amd64"
 
 SRC_URI="
 	amd64? (
-		https://github.com/ONLYOFFICE/DesktopEditors/releases/download/${MY_P}/${PN/bin/desktopeditors}-x64.tar.gz -> ${MY_P}-x64.tar.gz
+		https://github.com/ONLYOFFICE/DesktopEditors/releases/download/${MY_P}/${PN/bin/desktopeditors}_amd64.deb -> ${MY_P}_amd64.deb
 	)
 "
 
 SLOT="0"
-RESTRICT="strip mirror"
+RESTRICT="mirror strip"
 LICENSE="AGPL-3"
 IUSE=""
 
@@ -78,23 +78,25 @@ NATIVE_DEPEND="
 RDEPEND="
 	${NATIVE_DEPEND}
 	dev-db/sqlite:3
+	net-libs/libcurl-gnutls
 	!app-office/onlyoffice
 "
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/desktopeditors"
+S="${WORKDIR}"
+
+src_unpack(){
+	unpack_deb "${A}"
+}
 
 src_install() {
-	mkdir -p ${D}/opt/onlyoffice
-	cp -r ${S} ${D}/opt/onlyoffice/
+	mkdir -p ${D}
+	cp -r . ${D}
 	local res
 	for res in 16 24 32 48 64 128 256; do
-		doicon -s ${res} "${FILESDIR}"/icons/asc-de-${res}.png
+		doicon -s ${res} opt/onlyoffice/desktopeditors/asc-de-${res}.png
 	done
-	domenu "${FILESDIR}/desktopeditors.desktop"
-	dobin "${FILESDIR}/onlyoffice-desktopeditors"
-	dosym "${EPREFIX}/usr/bin/onlyoffice-desktopeditors" "${EPREFIX}/usr/bin/desktopeditors"
-	dosym "${EPREFIX}/usr/$(get_libdir)/libcurl.so.4" "${EPREFIX}/opt/onlyoffice/desktopeditors/libcurl-gnutls.so.4"
+	#dosym "${EPREFIX}/usr/$(get_libdir)/libcurl.so.4" "${EPREFIX}/opt/onlyoffice/desktopeditors/libcurl-gnutls.so.4"
 }
 
 pkg_preinst(){
