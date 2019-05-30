@@ -96,7 +96,7 @@ src_install() {
 	for res in 16 24 32 48 64 128 256; do
 		doicon -s ${res} opt/onlyoffice/desktopeditors/asc-de-${res}.png
 	done
-	#dosym "${EPREFIX}/usr/$(get_libdir)/libcurl.so.4" "${EPREFIX}/opt/onlyoffice/desktopeditors/libcurl-gnutls.so.4"
+	dosym "${EPREFIX}/usr/$(get_libdir)/libcurl-gnutls.so.4" "${EPREFIX}/opt/onlyoffice/desktopeditors/libcurl-gnutls.so.4"
 }
 
 pkg_preinst(){
