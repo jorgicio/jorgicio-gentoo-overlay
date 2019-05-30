@@ -73,4 +73,5 @@ src_install() {
 		insinto "/usr/$(get_libdir)/thunderbird/extensions/{3550f703-e582-4d05-9a08-453d09bdfdc6}"
 		newins dist/build/uBlock0.thunderbird.xpi uBlock0@raymondhill.net.xpi
 	fi
+	einstalldocs
 }
