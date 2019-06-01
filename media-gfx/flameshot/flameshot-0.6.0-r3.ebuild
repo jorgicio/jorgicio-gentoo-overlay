@@ -35,6 +35,17 @@ RDEPEND="${DEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-geometry.patch"
+	"${FILESDIR}/${P}-new-captures-fix.patch"
+	"${FILESDIR}/${P}-highlight-composition-fix.patch"
+	"${FILESDIR}/${P}-allow-notification-drag-and-drop.patch"
+	"${FILESDIR}/${P}-pin-tool-improve-adjustment.patch"
+	"${FILESDIR}/${P}-popup-infowindow-at-screen-center.patch"
+	"${FILESDIR}/${P}-exit-non-zero.patch"
+	"${FILESDIR}/${P}-close-option.patch"
+)
+
 src_prepare(){
 	[[ ${PV} != 9999 ]] && sed -i "s|TAG_VERSION = .*|TAG_VERSION = v${PV}|" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro

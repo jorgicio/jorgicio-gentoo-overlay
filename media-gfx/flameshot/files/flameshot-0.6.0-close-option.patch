@@ -1,0 +1,142 @@
+From cbb4727786a612d986f1830530f9b8028f08a205 Mon Sep 17 00:00:00 2001
+From: lupoDharkael <izhe@hotmail.es>
+Date: Sun, 21 Apr 2019 20:03:40 +0200
+Subject: [PATCH] Add option to close flameshot after every capture
+
+---
+ src/config/geneneralconf.cpp | 18 ++++++++++++++++++
+ src/config/geneneralconf.h   |  3 +++
+ src/core/controller.cpp      |  7 +++++++
+ src/utils/confighandler.cpp  |  8 ++++++++
+ src/utils/confighandler.h    |  4 ++++
+ 5 files changed, 40 insertions(+)
+
+diff --git a/src/config/geneneralconf.cpp b/src/config/geneneralconf.cpp
+index 2250b93..7ddce1a 100644
+--- a/src/config/geneneralconf.cpp
++++ b/src/config/geneneralconf.cpp
+@@ -36,6 +36,7 @@ GeneneralConf::GeneneralConf(QWidget *parent) : QWidget(parent) {
+     initShowDesktopNotification();
+     initShowTrayIcon();
+     initAutostart();
++    initCloseAfterCapture();
+ 
+     // this has to be at the end
+     initConfingButtons();
+@@ -47,6 +48,7 @@ void GeneneralConf::updateComponents() {
+     m_helpMessage->setChecked(config.showHelpValue());
+     m_sysNotifications->setChecked(config.desktopNotificationValue());
+     m_autostart->setChecked(config.startupLaunchValue());
++    m_closeAfterCapture->setChecked(config.closeAfterScreenshotValue());
+ 
+ #if defined(Q_OS_LINUX) || defined(Q_OS_UNIX)
+     m_showTray->setChecked(!config.disabledTrayIconValue());
+@@ -74,6 +76,10 @@ void GeneneralConf::autostartChanged(bool checked) {
+     ConfigHandler().setStartupLaunch(checked);
+ }
+ 
++void GeneneralConf::closeAfterCaptureChanged(bool checked) {
++    ConfigHandler().setCloseAfterScreenshot(checked);
++}
++
+ void GeneneralConf::importConfiguration() {
+     QString fileName = QFileDialog::getOpenFileName(this, tr("Import"));
+     if (fileName.isEmpty()) {
+@@ -204,3 +210,15 @@ void GeneneralConf::initAutostart() {
+     connect(m_autostart, &QCheckBox::clicked, this,
+             &GeneneralConf::autostartChanged);
+ }
++
++void GeneneralConf::initCloseAfterCapture() {
++    m_closeAfterCapture = new QCheckBox(tr("Close after capture"), this);
++    ConfigHandler config;
++    bool checked = config.closeAfterScreenshotValue();
++    m_closeAfterCapture->setChecked(checked);
++    m_closeAfterCapture->setToolTip(tr("Close after taking a screenshot"));
++    m_layout->addWidget(m_closeAfterCapture);
++
++    connect(m_closeAfterCapture, &QCheckBox::clicked, this,
++            &GeneneralConf::closeAfterCaptureChanged);
++}
+diff --git a/src/config/geneneralconf.h b/src/config/geneneralconf.h
+index e8795db..96991ec 100644
+--- a/src/config/geneneralconf.h
++++ b/src/config/geneneralconf.h
+@@ -36,6 +36,7 @@ private slots:
+    void showDesktopNotificationChanged(bool checked);
+    void showTrayIconChanged(bool checked);
+    void autostartChanged(bool checked);
++   void closeAfterCaptureChanged(bool checked);
+    void importConfiguration();
+    void exportFileConfiguration();
+    void resetConfiguration();
+@@ -46,6 +47,7 @@ private slots:
+     QCheckBox *m_showTray;
+     QCheckBox *m_helpMessage;
+     QCheckBox *m_autostart;
++    QCheckBox *m_closeAfterCapture;
+     QPushButton *m_importButton;
+     QPushButton *m_exportButton;
+     QPushButton *m_resetButton;
+@@ -55,4 +57,5 @@ private slots:
+     void initShowTrayIcon();
+     void initConfingButtons();
+     void initAutostart();
++    void initCloseAfterCapture();
+ };
+diff --git a/src/core/controller.cpp b/src/core/controller.cpp
+index cc50335..121a49c 100644
+--- a/src/core/controller.cpp
++++ b/src/core/controller.cpp
+@@ -244,10 +244,17 @@ void Controller::handleCaptureTaken(uint id, QPixmap p) {
+         it.value().exportCapture(p);
+         m_requestMap.erase(it);
+     }
++    if (ConfigHandler().closeAfterScreenshotValue()) {
++        QApplication::quit();
++    }
+ }
+ 
+ void Controller::handleCaptureFailed(uint id) {
+     m_requestMap.remove(id);
++
++    if (ConfigHandler().closeAfterScreenshotValue()) {
++        QApplication::quit();
++    }
+ }
+ 
+ void Controller::doLater(int msec, QObject *receiver, lambda func)  {
+diff --git a/src/utils/confighandler.cpp b/src/utils/confighandler.cpp
+index e4179ad..5aed0bf 100644
+--- a/src/utils/confighandler.cpp
++++ b/src/utils/confighandler.cpp
+@@ -317,6 +317,14 @@ void ConfigHandler::setContrastOpacity(const int transparency) {
+     m_settings.setValue(QStringLiteral("contrastOpacity"), transparency);
+ }
+ 
++bool ConfigHandler::closeAfterScreenshotValue() {
++    return m_settings.value(QStringLiteral("closeAfterScreenshot")).toBool();
++}
++
++void ConfigHandler::setCloseAfterScreenshot(const bool close) {
++    m_settings.setValue(QStringLiteral("closeAfterScreenshot"), close);
++}
++
+ void ConfigHandler::setDefaults() {
+     m_settings.clear();
+ }
+diff --git a/src/utils/confighandler.h b/src/utils/confighandler.h
+index 5ab557e..85d9361 100644
+--- a/src/utils/confighandler.h
++++ b/src/utils/confighandler.h
+@@ -68,6 +68,10 @@ class ConfigHandler {
+     int contrastOpacityValue();
+     void setContrastOpacity(const int);
+ 
++    bool closeAfterScreenshotValue();
++    void setCloseAfterScreenshot(const bool);
++
++
+     void setDefaults();
+     void setAllTheButtons();
+ 
