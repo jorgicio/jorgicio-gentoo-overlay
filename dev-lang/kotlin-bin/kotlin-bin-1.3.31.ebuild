@@ -24,9 +24,9 @@ src_install() {
 	dodoc license/NOTICE.txt
 	rm -r license || die
 
-	mkdir -p "${D}/opt/${PN/-bin}"
-	cp -r . "${D}/opt/${PN/-bin}"
+	mkdir -p "${D}/opt/${PN}"
+	cp -r . "${D}/opt/${PN}"
 	for i in bin/*; do
-		dosym "${EROOT}/opt/${PN/-bin}/$i" "/usr/bin/${i//*\/}"
+		dosym "${EROOT}/opt/${PN}/$i" "/usr/bin/${i//*\/}"
 	done
 }
