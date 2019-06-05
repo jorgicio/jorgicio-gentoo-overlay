@@ -57,7 +57,8 @@ src_install(){
 	insinto /etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
-	newbin "${FILESDIR}/${PN}-bin-r1" "${PN}"
+	use amd64 && newbin "${FILESDIR}/${PN}-bin-64" "${PN}"
+	use x86 && newbin "${FILESDIR}/${PN}-bin-32" "${PN}"
 }
 
 pkg_postinst(){
