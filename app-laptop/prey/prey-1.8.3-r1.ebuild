@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -36,12 +36,14 @@ RDEPEND="${DEPEND}
 "
 BDEPEND=">=net-libs/nodejs-0.6[npm]"
 
-QA_PRESTRIPPED="
-	usr/lib/${PN}/bin/node
-	usr/lib/${PN}/node_modules/sqlite3/lib/binding/node-v46-linux-ia32/node_sqlite3.node
-	usr/lib/${PN}/node_modules/sqlite3/lib/binding/node-v46-linux-x64/node_sqlite3.node
-	usr/lib/${PN}/lib/agent/actions/wipe/linux/wipe-linux
-"
+pkg_setup () {
+	QA_PRESTRIPPED="
+		usr/$(get_libdir)/${PN}/bin/node
+		usr/$(get_libdir)/${PN}/node_modules/sqlite3/lib/binding/node-v46-linux-ia32/node_sqlite3.node
+		usr/$(get_libdir)/${PN}/node_modules/sqlite3/lib/binding/node-v46-linux-x64/node_sqlite3.node
+		usr/$(get_libdir)/${PN}/lib/agent/actions/wipe/linux/wipe-linux
+	"
+}
 
 src_prepare(){
 	sed -i "s#dir=\"\$dir/\$rel\"#dir=\"\$rel\"#" "bin/prey"
@@ -64,7 +66,11 @@ pkg_postinst(){
 		elog "Daemon for prey-agent found. Cleaning..."
 		rm -f "${EROOT}/etc/init.d/prey-agent"
 	fi
-	install -m755 "${FILESDIR}/${PN}-agent-r1" "${EROOT}/etc/init.d/prey-agent"
+	if use amd64; then
+		install -m755 "${FILESDIR}/${PN}-agent-64" "${EROOT}/etc/init.d/prey-agent"
+	elif use x86; then
+		install -m755 "${FILESDIR}/${PN}-agent-32" "${EROOT}/etc/init.d/prey-agent"
+	fi
 	elog "Daemon for OpenRC installed"
 	gpasswd -a prey video >/dev/null
 	einfo "Don't forget add your user to the group prey (as root):"

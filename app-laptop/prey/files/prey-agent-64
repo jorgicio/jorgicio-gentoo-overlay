@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+#
+
+command=/usr/lib64/prey/bin/prey
+pidfile=${pidfile-/var/run/prey-agent.pid}
+description="The Prey Agent Daemon"
+
+: ${PREY_DIR:=/usr/lib64/prey}
+: ${PREY_USER:=prey}
+
+# Include defaults if available
+if [ -f /etc/default/prey-agent ]; then
+  . /etc/default/prey-agent
+fi
+
+start(){
+  ebegin "Starting Prey Agent"
+  start-stop-daemon --quiet --background --start -d $PREY_DIR --user $PREY_USER \
+    --exec $command --make-pidfile --pidfile $pidfile -- ""
+  eend $? "Failed to start Prey Agent"
+}
+
+stop(){
+  ebegin "Stopping Prey Agent"
+  start-stop-daemon --quiet --stop --pidfile $pidfile --signal QUIT
+  eend $? "Failed to stop Prey Agent"
+}
