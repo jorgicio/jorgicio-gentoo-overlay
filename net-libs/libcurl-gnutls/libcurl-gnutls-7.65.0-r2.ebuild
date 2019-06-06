@@ -9,8 +9,8 @@ DESCRIPTION="libcurl libraries linked with gnutls"
 HOMEPAGE="https://curl.haxx.se"
 SRC_URI="
 	amd64? (
-		https://mirrors.evowise.com/archlinux/community/os/x86_64/${P}-1-x86_64.pkg.tar.xz
-		https://mirrors.evowise.com/archlinux/multilib/os/x86_64/lib32-${P}-1-x86_64.pkg.tar.xz
+		https://mirrors.evowise.com/archlinux/community/os/x86_64/${P}-${PR//r}-x86_64.pkg.tar.xz
+		https://mirrors.evowise.com/archlinux/multilib/os/x86_64/lib32-${P}-${PR//r}-x86_64.pkg.tar.xz
 	)
 "
 
@@ -25,13 +25,13 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}"
 
 QA_PRESTRIPPED="
-	/usr/lib32/libcurl-gnutls-4.5.0
+	/usr/lib/libcurl-gnutls-4.5.0
 	/usr/lib64/libcurl-gnutls-4.5.0
 "
 
 src_install(){
 	mkdir -p "${D}/usr/$(get_libdir)"
 	cp -r usr/lib/. "${D}/usr/$(get_libdir)"
-	mkdir -p "${D}/usr"
-	cp -r usr/lib32 "${D}/usr"
+	mkdir -p "${D}/usr/lib"
+	cp -r usr/lib32/* "${D}/usr/lib/"
 }
