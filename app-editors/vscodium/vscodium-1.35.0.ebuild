@@ -51,7 +51,8 @@ src_install(){
 	pax-mark m vscodium
 	mkdir -p "${D}/opt/${PN}"
 	cp -r . "${D}/opt/${PN}/"
-	dosym "/opt/${PN}/bin/vscodium" "/usr/bin/${PN}"
+	dosym "/opt/${PN}/bin/codium" "/usr/bin/${PN}"
+	dosym "/opt/${PN}/bin/codium" "/usr/bin/codium"
 	make_desktop_entry "${PN}" "VSCodium" "${PN}" "Development;IDE"
 	newicon "resources/app/resources/linux/code.png" ${PN}.png
 }
