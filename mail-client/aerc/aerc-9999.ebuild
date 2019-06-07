@@ -4,13 +4,13 @@
 EAPI=7
 
 DESCRIPTION="Asynchronous email client for your terminal, written in Go."
-HOMEPAGE="https://git.sr.ht/~sircmpwn/aerc"
+HOMEPAGE="https://aerc-mail.org"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://git.sr.ht/~sircmpwn/${PN}.git"
 else
-	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://git.sr.ht/~sircmpwn/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
