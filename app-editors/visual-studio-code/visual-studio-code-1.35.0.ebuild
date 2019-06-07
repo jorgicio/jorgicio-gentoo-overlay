@@ -48,7 +48,8 @@ QA_PRESTRIPPED="opt/${PN}/code"
 QA_PREBUILT="opt/${PN}/code"
 
 pkg_setup(){
-	use amd64 && S="${WORKDIR}/VSCode-linux-x64" || S="${WORKDIR}/VSCode-linux-ia32"
+	use amd64 && S="${WORKDIR}/VSCode-linux-x64"
+	use x86 && S="${WORKDIR}/VSCode-linux-ia32"
 }
 
 src_install(){
