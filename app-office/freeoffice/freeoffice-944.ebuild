@@ -30,18 +30,11 @@ RDEPEND="
 	media-fonts/crosextrafonts-carlito
 "
 
-pkg_setup(){
-	if use amd64; then
-		QA_PRESTRIPPED="
-			/usr/lib64/freeoffice/planmaker
-			/usr/lib64/freeoffice/presentations
-			/usr/lib64/freeoffice/textmaker"
-	elif use x86; then
-		QA_PRESTRIPPED="
-			/usr/lib32/freeoffice/planmaker
-			/usr/lib32/freeoffice/presentations
-			/usr/lib32/freeoffice/textmaker"
-	fi
+pkg_setup() {
+	QA_PRESTRIPPED="
+		usr/$(get_libdir)/freeoffice/planmaker
+		usr/$(get_libdir)/freeoffice/presentations
+		usr/$(get_libdir)/freeoffice/textmaker"
 }
 
 src_unpack(){
