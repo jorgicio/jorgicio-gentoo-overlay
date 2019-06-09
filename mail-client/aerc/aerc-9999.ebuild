@@ -20,7 +20,10 @@ SLOT="0"
 IUSE=""
 
 DEPEND="app-text/scdoc"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-python/colorama
+	net-proxy/dante
+"
 BDEPEND=">=dev-lang/go-1.12.0"
 
 src_compile(){
