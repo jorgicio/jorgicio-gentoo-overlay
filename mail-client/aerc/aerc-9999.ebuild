@@ -19,7 +19,10 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="app-text/scdoc"
+DEPEND="
+	app-text/scdoc
+	dev-vcs/git
+"
 RDEPEND="${DEPEND}
 	dev-libs/libvterm
 	dev-python/colorama
