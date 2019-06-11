@@ -21,8 +21,14 @@ IUSE=""
 
 DEPEND="app-text/scdoc"
 RDEPEND="${DEPEND}
+	dev-libs/libvterm
 	dev-python/colorama
 	net-proxy/dante
+	|| (
+		virtual/w3m
+		www-client/lynx
+		www-client/links
+	)
 "
 BDEPEND=">=dev-lang/go-1.12.0"
 
