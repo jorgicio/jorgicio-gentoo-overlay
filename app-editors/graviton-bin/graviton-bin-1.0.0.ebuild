@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/nspr
 	net-print/cups
 	x11-libs/pango
-	x11-libs/libcap
+	sys-libs/libcap
 	x11-libs/libXtst
 	x11-libs/libnotify
 	!app-editors/graviton
