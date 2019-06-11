@@ -24,7 +24,10 @@ DEPEND="
 	dev-vcs/git
 "
 RDEPEND="${DEPEND}
-	dev-libs/libvterm
+	|| ( 
+		dev-libs/libvterm
+		dev-libs/libvterm-neovim
+	)
 	dev-python/colorama
 	net-proxy/dante
 	|| (
