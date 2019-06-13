@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit unpacker xdg-utils
+inherit pax-utils unpacker xdg-utils
 
 MY_PN="Graviton"
 DESCRIPTION="Minimalist code editor (binary package)"
@@ -46,6 +46,7 @@ src_unpack(){
 }
 
 src_install(){
+	pax-mark m opt/${MY_PN}/${PN-bin}
 	mkdir -p "${D}"
 	cp -r . "${D}/"
 }
