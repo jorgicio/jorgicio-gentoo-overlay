@@ -42,6 +42,6 @@ src_prepare(){
 
 src_install(){
 	default_src_install
-	rm -rf /usr/share/man/man5/default.cfg.5 \
-		/usr/share/man/man6/chocolate-{server,setup}.6
+	rm -rf ${ED}/usr/share/man/man5/default.cfg.5 \
+		${ED}/usr/share/man/man6/chocolate-{server,setup}.6 || die
 }
