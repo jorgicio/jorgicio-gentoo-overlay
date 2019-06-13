@@ -12,9 +12,7 @@ HOMEPAGE="http://fabiangreffrath.github.io/crispy-doom"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/fabiangreffrath/${PN}.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/fabiangreffrath/${PN}/archive/${P}.tar.gz"
 	KEYWORDS="~x86 ~amd64"
@@ -27,8 +25,8 @@ IUSE=""
 
 DEPEND="${PYTHON_DEPS}
 	media-libs/libpng:0
-	media-libs/sdl-mixer[vorbis]
-	media-libs/sdl-net
+	media-libs/sdl2-mixer[vorbis]
+	media-libs/sdl2-net
 	media-libs/libsamplerate[sndfile]
 "
 RDEPEND="${DEPEND}"
