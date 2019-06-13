@@ -36,6 +36,8 @@ pkg_setup(){
 }
 
 src_prepare(){
+	sed -i -e "s#Exec=@PROGRAM_PREFIX@setup#Exec=@PROGRAM_PREFIX@doom-setup#" \
+		src/setup/setup.desktop.in
 	default_src_prepare
 	eautoreconf
 }
