@@ -75,3 +75,21 @@ src_install() {
 	fi
 	einstalldocs
 }
+
+pkg_postinst(){
+	if use chromium; then
+		echo
+		elog "If you use Chromium/Chrome (or based), the extension is installed in"
+		elog "${EROOT}/usr/share/chromium/extensions/"
+		elog "To enable ${PN}, follow these steps:"
+		echo
+		elog "* Go to Chromium/Chrome extensions."
+		elog "* Click to check \"Developer mode\""
+		elog "* Click \"Load unpacked extension\""
+		elog "* In the file selector dialog, search the path mentioned above."
+		elog "* Click \"Open\""
+		echo
+		elog "Then the extension will be available in your browser."
+		echo
+	fi
+}
