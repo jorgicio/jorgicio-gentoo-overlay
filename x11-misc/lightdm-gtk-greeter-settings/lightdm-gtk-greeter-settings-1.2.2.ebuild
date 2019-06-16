@@ -4,18 +4,17 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit eutils distutils-r1 versionator
+inherit distutils-r1
 
-MY_BRANCH="$(get_version_component_range 1-2)"
 DESCRIPTION="Settings editor for LightDM GTK+ greeter"
 HOMEPAGE="https://launchpad.net/lightdm-gtk-greeter-settings"
-SRC_URI="https://launchpad.net/${PN}/${MY_BRANCH}/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/${PV:0:3}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="${PYTHON_DEPEND}"
@@ -24,5 +23,6 @@ DEPEND="
 	x11-misc/lightdm-gtk-greeter
 	dev-python/python-distutils-extra[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	dev-util/intltool
 	x11-libs/gtk+:3"
 RDEPEND="${DEPEND}"

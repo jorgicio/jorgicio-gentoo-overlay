@@ -87,7 +87,7 @@ QA_PREBUILT="
 	usr/share/${MY_PN}/libnode.so
 "
 
-DOCS=( resources/LICENSE.md copyright )
+DOCS=( resources/LICENSE.md )
 
 pkg_setup() {
 	python-any-r1_pkg_setup
