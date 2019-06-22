@@ -9,7 +9,7 @@ MY_PN="Graviton"
 DESCRIPTION="Minimalist code editor (currently beta) (binary package)"
 HOMEPAGE="https://graviton.ml"
 SRC_URI="
-	amd64? ( https://github.com/Graviton-Code-Editor/${MY_PN}-App/releases/download/v${PV}/${MY_PN}_${PV}_amd64.deb )
+	amd64? ( https://github.com/Graviton-Code-Editor/${MY_PN}-App/releases/download/${PV}/${MY_PN}_${PV}_amd64.deb )
 "
 
 LICENSE="MIT"
