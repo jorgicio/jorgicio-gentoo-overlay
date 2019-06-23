@@ -43,6 +43,7 @@ RDEPEND="
 	sys-libs/zlib
 	>=virtual/jre-1.8.0
 	virtual/opengl
+	x11-libs/libXrandr
 "
 
 PATCHES=(
