@@ -28,7 +28,7 @@ DEPEND="
 	x11-libs/cairo
 	gnome-base/gconf
 	x11-libs/libXtst
-	!app-editors/visual-studio-code
+	!app-editors/vscode
 "
 
 RDEPEND="
