@@ -5,12 +5,15 @@ EAPI=7
 
 inherit desktop pax-utils
 
-DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
+MY_PN="${PN/-bin}"
+MY_P=${MY_PN}-${PV}
+
+DESCRIPTION="Multiplatform Visual Studio Code from Microsoft (binary version)"
 HOMEPAGE="https://code.visualstudio.com"
 
 SRC_URI="
-	x86? ( https://update.code.visualstudio.com/${PV}/linux-ia32/stable ->  ${P}-x86.tar.gz )
-	amd64? ( https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz )
+	x86? ( https://update.code.visualstudio.com/${PV}/linux-ia32/stable ->  ${MY_P}-x86.tar.gz )
+	amd64? ( https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${MY_P}-amd64.tar.gz )
 	"
 RESTRICT="mirror strip bindist"
 
@@ -25,6 +28,7 @@ DEPEND="
 	x11-libs/cairo
 	gnome-base/gconf
 	x11-libs/libXtst
+	!app-editors/visual-studio-code
 "
 
 RDEPEND="
@@ -44,20 +48,21 @@ RDEPEND="
 
 DOCS=( resources/app/LICENSE.rtf )
 
-QA_PRESTRIPPED="opt/${PN}/code"
-QA_PREBUILT="opt/${PN}/code"
+QA_PRESTRIPPED="opt/${MY_PN}/code"
+QA_PREBUILT="opt/${MY_PN}/code"
 
 pkg_setup(){
-	use amd64 && S="${WORKDIR}/VSCode-linux-x64" || S="${WORKDIR}/VSCode-linux-ia32"
+	use amd64 && S="${WORKDIR}/VSCode-linux-x64"
+	use x86 && S="${WORKDIR}/VSCode-linux-ia32"
 }
 
 src_install(){
 	pax-mark m code
-	mkdir -p "${D}/opt/${PN}"
-	cp -r . "${D}/opt/${PN}/"
-	dosym "/opt/${PN}/bin/code" "/usr/bin/${PN}"
-	make_desktop_entry "${PN}" "Visual Studio Code" "${PN}" "Development;IDE"
-	newicon "resources/app/resources/linux/code.png" ${PN}.png
+	mkdir -p "${D}/opt/${MY_PN}"
+	cp -r . "${D}/opt/${MY_PN}/"
+	dosym "/opt/${PN}/bin/code" "/usr/bin/${MY_PN}"
+	make_desktop_entry "${MY_PN}" "Visual Studio Code" "${MY_PN}" "Development;IDE"
+	newicon "resources/app/resources/linux/code.png" ${MY_PN}.png
 	einstalldocs
 }
 

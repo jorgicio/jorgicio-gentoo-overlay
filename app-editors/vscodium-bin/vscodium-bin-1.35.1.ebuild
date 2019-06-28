@@ -5,7 +5,9 @@ EAPI=7
 
 inherit desktop pax-utils
 
-DESCRIPTION="Free/Libre Open Source Software Binaries of VSCode"
+MY_PN="${PN/-bin}"
+
+DESCRIPTION="Free/Libre Open Source Software Binaries of VSCode (binary version)"
 HOMEPAGE="https://vscodium.com"
 
 SRC_URI="
@@ -25,6 +27,7 @@ DEPEND="
 	x11-libs/cairo
 	gnome-base/gconf
 	x11-libs/libXtst
+	!app-editors/vscodium
 "
 
 RDEPEND="
@@ -42,17 +45,18 @@ RDEPEND="
 	)
 "
 
-QA_PRESTRIPPED="opt/${PN}/vscodium"
-QA_PREBUILT="opt/${PN}/vscodium"
+QA_PRESTRIPPED="opt/${MY_PN}/vscodium"
+QA_PREBUILT="opt/${MY_PN}/vscodium"
 
 S="${WORKDIR}"
 
 src_install(){
 	pax-mark m vscodium
-	mkdir -p "${D}/opt/${PN}"
-	cp -r . "${D}/opt/${PN}/"
-	dosym "/opt/${PN}/bin/vscodium" "/usr/bin/${PN}"
-	make_desktop_entry "${PN}" "VSCodium" "${PN}" "Development;IDE"
-	newicon "resources/app/resources/linux/code.png" ${PN}.png
+	mkdir -p "${D}/opt/${MY_PN}"
+	cp -r . "${D}/opt/${MY_PN}/"
+	dosym "/opt/${MY_PN}/bin/codium" "/usr/bin/${PN}"
+	dosym "/opt/${MY_PN}/bin/codium" "/usr/bin/codium"
+	make_desktop_entry "${MY_PN}" "VSCodium" "${PN}" "Development;IDE"
+	newicon "resources/app/resources/linux/code.png" ${MY_PN}.png
 }
 
