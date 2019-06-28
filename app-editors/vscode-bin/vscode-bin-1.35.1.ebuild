@@ -17,7 +17,7 @@ SRC_URI="
 	"
 RESTRICT="mirror strip bindist"
 
-LICENSE="MIT"
+LICENSE="MS-vscode-EULA"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="global-menu libsecret qt5"
