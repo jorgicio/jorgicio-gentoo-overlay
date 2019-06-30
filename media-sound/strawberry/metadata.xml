@@ -7,6 +7,7 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
+		<flag name="moodbar">Enable moodbar support</flag>
 		<flag name="phonon">Enable Phonon backend (unstable feature, use with caution)</flag>
 		<flag name="system-taglib">Use <pkg>media-libs/taglib</pkg> instead of bundled one</flag>
 		<flag name="tidal">Enable Tidal support (may require a Premium account)</flag>

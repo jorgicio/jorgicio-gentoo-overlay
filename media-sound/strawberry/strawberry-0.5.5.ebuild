@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cdda +dbus debug ipod mms mtp phonon pulseaudio system-taglib tidal +udisks vlc xine"
+IUSE="cdda +dbus debug ipod mms moodbar mtp phonon pulseaudio system-taglib tidal +udisks vlc xine"
 
 REQUIRED_USE="
 	udisks? ( dbus )
@@ -56,6 +56,7 @@ COMMON_DEPEND="
 	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
+	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	phonon? ( media-libs/phonon )
 	system-taglib? ( >=media-libs/taglib-1.11.1_p20181028 )
@@ -102,6 +103,7 @@ src_configure() {
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
+		-DENABLE_MOODBAR="$(usex moodbar)"
 		-DENABLE_PHONON="$(usex phonon)"
 		-DENABLE_TIDAL="$(usex tidal)"
 		-DENABLE_UDISKS2="$(usex udisks)"
