@@ -53,8 +53,9 @@ PATCHES=(
 
 src_unpack(){
 	default_src_unpack
-	cp -r "${WORKDIR}/libnbtplusplus-${LIBNBTPLUSPLUS_VER}"/. "${S}/libraries/libnbtplusplus" || die
-	cp -r "${WORKDIR}/quazip-${QUAZIP_VER}"/. "${S}/libraries/quazip" || die
+	rm -rf "${S}/libraries/libnbtplusplus" "${S}/libraries/quazip"
+	mv "${WORKDIR}/libnbtplusplus-${LIBNBTPLUSPLUS_VER}" "${S}/libraries/libnbtplusplus" || die
+	mv "${WORKDIR}/quazip-${QUAZIP_VER}" "${S}/libraries/quazip" || die
 }
 
 src_prepare(){
