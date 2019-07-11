@@ -27,7 +27,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	librsync-bundled? ( dev-util/patchelf )
-	experimental? ( !net-libs/dropbox-filesystem-fix )
 "
 
 # Be sure to have GLIBCXX_3.4.9, #393125
@@ -99,7 +98,7 @@ src_compile(){
 	if use experimental; then
 		default_src_compile
 		rm -vf Makefile README.md detect-ext4.c \
-		dropbox_start.py libdropbox_fs_fix.c LICENSE
+			dropbox_start.py libdropbox_fs_fix.c LICENSE
 	fi
 }
 
