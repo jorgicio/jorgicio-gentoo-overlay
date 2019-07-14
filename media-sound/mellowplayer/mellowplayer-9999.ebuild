@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/colinduquesnoy/${MY_PN}.git"
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="-* ~amd64"
 	MY_P="${MY_PN}-${PV}"
 	SRC_URI="https://gitlab.com/colinduquesnoy/${MY_PN}/-/archive/${PV}/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
@@ -41,7 +41,6 @@ RDEPEND="
 	www-plugins/adobe-flash:*
 	www-plugins/chrome-binary-plugins:*[widevine?]
 	x11-libs/libnotify
-	widevine? ( dev-qt/qtwebengine-widevine )
 "
 
 src_prepare(){
