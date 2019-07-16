@@ -10,7 +10,7 @@ HOMEPAGE="https://www.leocad.org"
 
 PARTS_LIB="11494"
 PARTS_RECENT_VERSION="18.02"
-SRC_URI="https://github.com/leozide/${PN}/releases/v${PARTS_RECENT_VERSION}/Library-Linux-${PARTS_LIB}.zip"
+SRC_URI="https://github.com/leozide/${PN}/releases/download/v${PARTS_RECENT_VERSION}/Library-Linux-${PARTS_LIB}.zip "
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
