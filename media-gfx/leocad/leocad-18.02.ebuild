@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils xdg-utils
 
@@ -14,15 +14,13 @@ BASE_URI="https://github.com/leozide/leocad"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${BASE_URI}"
-	SRC_URI=""
-	KEYWORDS=""
 else
 	LIB_NUM="11494"
 	SRC_URI="
 		${BASE_URI}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${BASE_URI}/releases/download/v${PV}/Library-Linux-${LIB_NUM}.zip
 	"
-	KEYWORDS="~x86 ~amd64 ~arm"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="GPL-2"

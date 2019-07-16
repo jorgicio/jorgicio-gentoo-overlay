@@ -8,14 +8,15 @@ inherit qmake-utils xdg-utils
 DESCRIPTION="LeoCAD is a CAD program that uses bricks similar to those found in many toys."
 HOMEPAGE="https://www.leocad.org"
 
-BASE_URI="https://github.com/leozide/leocad"
-
+PARTS_LIB="11494"
+PARTS_RECENT_VERSION="18.02"
+SRC_URI="https://github.com/leozide/${PN}/releases/v${PARTS_RECENT_VERSION}/Library-Linux-${PARTS_LIB}.zip"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/leozide/${PN}"
 else
-	SRC_URI="https://github.com/leozide/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI+="https://github.com/leozide/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
@@ -37,6 +38,8 @@ src_configure(){
 
 src_install(){
 	INSTALL_ROOT="${D}" default_src_install
+	insinto /usr/share/${PN}
+	doins ${WORKDIR}/library.bin
 }
 
 pkg_postinst(){
