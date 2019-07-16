@@ -46,6 +46,7 @@ pkg_postinst(){
 	echo
 	elog "LeoCAD uses its default Parts Library, but it's compatible with LDraw's ones."
 	elog "See https://www.leocad.org/docs/library.html for more information about installation."
+	elog "As alternative, you can install the media-gfx/ldraw package."
 	echo
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
