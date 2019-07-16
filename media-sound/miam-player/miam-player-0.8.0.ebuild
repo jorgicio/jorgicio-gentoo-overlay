@@ -6,15 +6,13 @@ EAPI=6
 inherit eutils qmake-utils xdg-utils
 
 DESCRIPTION="Cross-platform open source music player built with Qt5, QTav and Taglib."
-HOMEPAGE="https://mbach.github.io/Miam-Player"
+HOMEPAGE="https://github.com/MBach/Miam-Player"
 
 MY_PN="Miam-Player"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/MBach/${MY_PN}"
-	SRC_URI=""
-	KEYWORDS=""
 else
 	MY_P="${MY_PN}-${PV}"
 	SRC_URI="https://github.com/MBach/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -35,12 +33,13 @@ RDEPEND="${DEPEND}
 	media-libs/qtav:0/1[pulseaudio?]
 "
 
+PATCHES=( "${FILESDIR}/${PN}-add-qheaderview.patch" )
+
 src_prepare(){
 	for x in {Core,Library,TabPlaylists,UniqueLibrary}; do
 		sed -i -e "s/lib\$\$LIB_SUFFIX/\$\$LIB_SUFFIX/" "src/${x}/${x}.pro" || die
 	done
-	PATCHES="${FILESDIR}/${PN}-add-qheaderview.patch"
-	default
+	default_src_prepare
 }
 
 src_configure(){
@@ -49,7 +48,7 @@ src_configure(){
 
 src_install(){
 	emake INSTALL_ROOT="${D}" install
-	newicon debian/usr/share/icons/hicolor/64x64/apps/application-x-${PN//-}.png ${PN}.png
+	newicon -s 64 debian/usr/share/icons/hicolor/64x64/apps/application-x-${PN//-}.png ${PN}.png
 }
 
 
