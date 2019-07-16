@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]];then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	LIB_NUM="11331"
+	LIB_NUM="11494"
 	SRC_URI="
 		${BASE_URI}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${BASE_URI}/releases/download/v${PV}/Library-Linux-${LIB_NUM}.zip
