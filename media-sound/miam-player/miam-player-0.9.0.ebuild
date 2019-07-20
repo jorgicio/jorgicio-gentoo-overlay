@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils qmake-utils xdg-utils
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Cross-platform open source music player built with Qt5, QTav and Taglib."
 HOMEPAGE="https://github.com/MBach/Miam-Player"
