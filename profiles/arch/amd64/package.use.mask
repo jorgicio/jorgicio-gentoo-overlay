@@ -4,4 +4,4 @@
 # See https://help.dropbox.com/installs-integrations/desktop/system-requirements#linux
 # for more information.
 
->=net-misc/dropbox-73.3.127 experimental
+>=net-misc/dropbox-77.3.127 experimental
