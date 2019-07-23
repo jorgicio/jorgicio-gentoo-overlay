@@ -8,22 +8,18 @@ HOMEPAGE="https://github.com/PapirusDevelopmentTeam/materia-kde"
 
 if [[ ${PV} == 99999999 ]]; then
 	inherit git-r3
-	SRC_URI=""
-	KEYWORDS=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~*"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="kvantum"
+IUSE="kvantum +plasma"
 
-DEPEND=""
 RDEPEND="
-	${DEPEND}
-	kde-plasma/plasma-desktop
+	plasma? ( kde-plasma/plasma-desktop:5 )
 	kvantum? ( x11-themes/kvantum )
 "
 
@@ -31,6 +27,10 @@ src_prepare(){
 	if use !kvantum; then
 		sed -i -e "s#konsole Kvantum#konsole#" Makefile
 		sed -i -e "/Kvantum/d" Makefile
+	fi
+	if use !plasma; then
+		sed -i -e "s#plasma yakuake#yakuake#" Makefile
+		sed -i -e "/plasma/d" Makefile
 	fi
 	default_src_prepare
 }

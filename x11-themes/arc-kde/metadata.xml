@@ -8,5 +8,6 @@
 	</maintainer>
 	<use>
 		<flag name="kvantum">Enable kvantum engine support for better look-and-feel experience</flag>
+		<flag name="plasma">Enable plasma desktop theme for KDE</flag>
 	</use>
 </pkgmetadata>
