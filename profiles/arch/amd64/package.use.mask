@@ -1,0 +1,7 @@
+# Since Dropbox reverted partially the support for non-ext4 filesystems,
+# the "experimental" USE-flag is not needed anymore. However, support for
+# some filesystems like XFS and ZFS is 64-bit architecture only.
+# See https://help.dropbox.com/installs-integrations/desktop/system-requirements#linux
+# for more information.
+
+>=net-misc/dropbox-73.3.127 experimental
