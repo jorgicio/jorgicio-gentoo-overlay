@@ -62,9 +62,9 @@ src_install(){
 		dobin "${FILESDIR}/freeoffice-${e}"
 	done
 	for size in 16 32 48; do
-		newicon icons/pml_${size}.png ${PN}-planmaker.png
-		newicon icons/prl_${size}.png ${PN}-presentations.png
-		newicon icons/tml_${size}.png ${PN}-textmaker.png
+		newicon -s ${size} icons/pml_${size}.png ${PN}-planmaker.png
+		newicon -s ${size} icons/prl_${size}.png ${PN}-presentations.png
+		newicon -s ${size} icons/tml_${size}.png ${PN}-textmaker.png
 	done
 	insinto "${EPREFIX}/usr/share/mime/packages"
 	doins mime/softmaker-freeoffice18.xml
