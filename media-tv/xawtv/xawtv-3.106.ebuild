@@ -19,7 +19,7 @@ SRC_URI="http://linuxtv.org/downloads/xawtv/${P}.tar.bz2
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc x86"
 
 RDEPEND=">=sys-libs/ncurses-5.1:0
 	virtual/jpeg:0
