@@ -3,5 +3,7 @@
 # some filesystems like XFS and ZFS is 64-bit architecture only.
 # See https://help.dropbox.com/installs-integrations/desktop/system-requirements#linux
 # for more information.
-
 >=net-misc/dropbox-77.3.127 experimental
+
+# X86 MMX makes xawtv fail to build, as mentioned in https://github.com/jorgicio/issues/82
+media-tv/xawtv cpu_flags_x86_mmx
