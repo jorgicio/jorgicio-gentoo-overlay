@@ -1,2 +1,2 @@
 # Unmask the experimental USE-flag for x86 only.
->=net-misc/dropbox-77.3.127 -experimental
+net-misc/dropbox -experimental
