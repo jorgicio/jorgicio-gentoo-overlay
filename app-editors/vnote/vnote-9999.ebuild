@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 qmake-utils
+inherit git-r3 qmake-utils xdg-utils
 
 DESCRIPTION="A Vim-inspired note taking application that knows programmers and Markdown better"
 HOMEPAGE="https://github.com/tamlok/vnote"
@@ -27,10 +27,20 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+pkg_setup(){
+	export INSTALL_ROOT="${D}"
+}
+
 src_configure(){
 	eqmake5 VNote.pro
 }
 
-src_install(){
-	INSTALL_ROOT="${D}" default_src_install
+pkg_postinst(){
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm(){
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
