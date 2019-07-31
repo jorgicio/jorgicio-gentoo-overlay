@@ -1,13 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Ad blocker script"
-HOMEPAGE="https://github.com/juankfree/${PN}"
+HOMEPAGE="https://github.com/juankfree/hosty"
 SRC_URI="${HOMEPAGE}/raw/5564c7fa544b4484bb23913359159e070c8abd47/${PN}"
 
 LICENSE="LGPL-3.0"

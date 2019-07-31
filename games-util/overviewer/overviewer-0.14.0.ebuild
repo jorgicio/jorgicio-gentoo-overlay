@@ -1,28 +1,32 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_{6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit distutils-r1
 
 DESCRIPTION="The Minecraft Overviewer tool that renders a Google Maps-like map interface"
-HOMEPAGE="http://${PN}.org"
-SRC_URI="${HOMEPAGE}/builds/src/5/${P}.tar.gz"
+HOMEPAGE="https://overviewer.org"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/overviewer/Minecraft-Overviewer"
+else
+	SRC_URI="https://github.com/overviewer/Minecraft-Overviewer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/Minecraft-Overviewer-${PV}"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="${PYTHON_DEPENDS}
 	virtual/python-imaging
 	dev-python/numpy[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/Minecraft-Overviewer-${PV}"
 
 pkg_postinst(){
 	elog "To use this tool, you must have a Minecraft installation first!"

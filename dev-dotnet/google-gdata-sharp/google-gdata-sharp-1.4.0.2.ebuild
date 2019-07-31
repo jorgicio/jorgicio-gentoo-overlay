@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit mono eutils
+inherit mono
 
 MY_PN="libgoogle-data-mono"
 
@@ -25,16 +25,13 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/pkgconfig-typo-fix.patch
-	eapply_user
-}
+PATCHES=( "${FILESDIR}"/pkgconfig-typo-fix.patch )
 
-src_compile() {
-	emake PREFIX=/usr || die "compilation failed"
+pkg_setup() {
+	# The Makefile has prefix=/usr/local by default :|
+	export PREFIX="${EPREFIX}/usr"
 }
 
 src_install() {
-	# The Makefile has prefix=/usr/local by default :|
-	emake PREFIX=/usr DESTDIR="${ED}" install || die "installation failed"
+	DESTDIR="${ED}" default_src_install
 }

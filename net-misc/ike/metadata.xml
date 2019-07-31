@@ -6,4 +6,7 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="nat">Enable Network Address Translation (NAT) support</flag>
+	</use>
 </pkgmetadata>

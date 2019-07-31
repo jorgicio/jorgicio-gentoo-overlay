@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit base mono
+inherit mono
 
 DESCRIPTION="a cross platform Zero Configuration Networking library for Mono and .NET"
 HOMEPAGE="http://www.mono-project.com/Mono.Zeroconf"
