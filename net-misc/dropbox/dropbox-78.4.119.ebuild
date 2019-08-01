@@ -64,6 +64,15 @@ RDEPEND="${PYTHON_DEPS}
 	sys-libs/zlib
 	sys-libs/ncurses:5/5"
 
+inherit required-use-warn
+pkg_pretend() {
+	required-use-warn
+}
+
+REQUIRED_USE_WARN="
+	amd64? ( !experimental )
+"
+
 src_unpack() {
 	unpack ${A}
 	mkdir -p "${S}" || die
