@@ -64,14 +64,14 @@ RDEPEND="${PYTHON_DEPS}
 	sys-libs/zlib
 	sys-libs/ncurses:5/5"
 
-inherit required-use-warn
 pkg_pretend() {
-	required-use-warn
+	if use amd64 && use experimental; then
+		eerror "'experimental' USE-flag is not needed anymore because"
+		eerror "some file systems as XFS and ZFS are supported on"
+		eerror "amd64 only, so this USE-flag is reserved for x86 only."
+		die
+	fi
 }
-
-REQUIRED_USE_WARN="
-	amd64? ( !experimental )
-"
 
 src_unpack() {
 	unpack ${A}
