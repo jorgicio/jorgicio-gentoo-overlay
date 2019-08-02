@@ -23,7 +23,10 @@ RESTRICT="mirror strip"
 QA_PREBUILT="opt/.*"
 QA_EXECSTACK="opt/dropbox/dropbox"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	amd64? ( !experimental )
+"
 
 DEPEND="
 	librsync-bundled? ( dev-util/patchelf )
@@ -63,15 +66,6 @@ RDEPEND="${PYTHON_DEPS}
 	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
 	sys-libs/ncurses:5/5"
-
-pkg_pretend() {
-	if use amd64 && use experimental; then
-		eerror "'experimental' USE-flag is not needed anymore because"
-		eerror "some file systems as XFS and ZFS are supported on"
-		eerror "amd64 only, so this USE-flag is reserved for x86 only."
-		die
-	fi
-}
 
 src_unpack() {
 	unpack ${A}
