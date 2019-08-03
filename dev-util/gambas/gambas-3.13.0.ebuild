@@ -1,46 +1,45 @@
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit autotools eutils fdo-mime gnome2-utils
+inherit autotools desktop gnome2-utils xdg-utils
 
-SLOT="3"
+SLOT=3
 MY_PN="${PN}${SLOT}"
 
 DESCRIPTION="Gambas is a free development environment based on a Basic interpreter with object extensions"
-HOMEPAGE="http://gambas.sourceforge.net"
+HOMEPAGE="https://gambas.sourceforge.net"
 
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}.tar.bz2"
+SRC_URI="https://gitlab.com/gambas/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="*"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x86-linux"
 
-IUSE="+curl +net +qt4 +x11
+IUSE="+curl +net +x11
 	bzip2 cairo crypt dbus examples gmp gnome gsl gstreamer gtk2 gtk3 httpd image-imlib image-io jit libxml mime
-	mysql ncurses odbc openal opengl openssl pcre pdf pop3 postgres qt4-opengl qt4-webkit qt5 sdl sdl-sound sdl2 sqlite v4l xml zlib"
+	mysql ncurses odbc openal opengl openssl pcre pdf pop3 postgres qt5 sdl sdl-sound sdl2 sqlite v4l xml zlib"
 
-# gambas3 have the only one gui. it is based on qt4.
-# these use flags (modules/plugins) require this qt4 gui to be present at the system to work properly:
+# gambas3 have the only one gui. it is based on qt5.
+# these use flags (modules/plugins) require this qt5 gui to be present at the system to work properly:
 # cairo gnome gstreamer gtk2 gtk3 imageimlib imageio opengl pdf sdl sdl2 v4l
 
-REQUIRED_USE="cairo? ( qt4 x11 )
-	gnome? ( qt4 x11 )
-	gstreamer? ( qt4 x11 )
-	gtk2? ( qt4 x11 )
-	gtk3? ( qt4 x11 )
-	image-imlib? ( qt4 x11 )
-	image-io? ( qt4 x11 )
+REQUIRED_USE="cairo? ( qt5 x11 )
+	gnome? ( qt5 x11 )
+	gstreamer? ( qt5 x11 )
+	gtk2? ( qt5 x11 )
+	gtk3? ( qt5 x11 )
+	image-imlib? ( qt5 x11 )
+	image-io? ( qt5 x11 )
 	net? ( curl
 		pop3? ( mime ) )
-	opengl? ( qt4 x11 )
-	pdf? ( qt4 x11 )
-	qt4? ( x11 )
-	qt4-opengl? ( qt4 )
-	qt4-webkit? ( qt4 )
-	sdl? ( qt4 x11 )
+	opengl? ( qt5 x11 )
+	pdf? ( qt5 x11 )
+	qt5? ( x11 )
+	sdl? ( qt5 x11 )
 	sdl-sound? ( sdl )
-	sdl2? ( qt4 x11 )
-	v4l? ( qt4 x11 )"
+	sdl2? ( qt5 x11 )
+	v4l? ( qt5 x11 )"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
 	cairo? ( x11-libs/cairo )
@@ -66,13 +65,8 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	opengl? ( media-libs/mesa )
 	openssl? ( dev-libs/openssl )
 	pcre? ( dev-libs/libpcre )
-	pdf? ( app-text/poppler )
-	postgres? ( virtual/postgresql-base )
-	qt4? ( dev-qt/qtcore:4[qt3support]
-		dev-qt/qtgui:4[qt3support]
-		dev-qt/qtsvg:4 )
-	qt4-opengl? ( dev-qt/qtwebkit:4 )
-	qt4-webkit? ( dev-qt/qtopengl:4[qt3support] )
+	pdf? ( app-text/poppler:0= )
+	postgres? ( dev-db/postgresql )
 	qt5? (
 		>=dev-qt/qtcore-5.4.0:5
 		>=dev-qt/qtopengl-5.4.0:5
@@ -96,8 +90,6 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 DEPEND="${RDEPEND}
 	virtual/libintl"
 
-S="${WORKDIR}/${MY_PN}-${PV}"
-
 autocrap_cleanup() {
 	sed -e "/^\(AC\|GB\)_CONFIG_SUBDIRS(${1}[,)]/d" \
 		-i "${S}/configure.ac" || die
@@ -105,10 +97,13 @@ autocrap_cleanup() {
 		-i "${S}/Makefile.am" || die
 }
 
-src_prepare() {
-	# funtoo-ism
-	epatch "${FILESDIR}/xdgutils.patch"
+PATCHES=(
+	"${FILESDIR}/${PN}-3.13.x-xdgutils.patch"
+	"${FILESDIR}/${PN}-poppler-0.76.patch"
+)
+DOCS=( AUTHORS ChangeLog NEWS README )
 
+src_prepare() {
 	# deprecated
 	autocrap_cleanup sqlite2
 
@@ -140,7 +135,6 @@ src_prepare() {
 	use_if_iuse pcre || autocrap_cleanup pcre
 	use_if_iuse pdf || autocrap_cleanup pdf
 	use_if_iuse postgres || autocrap_cleanup postgresql
-	use_if_iuse qt4 || autocrap_cleanup qt4
 	use_if_iuse qt5 || autocrap_cleanup qt5
 	use_if_iuse sdl || autocrap_cleanup sdl
 	use_if_iuse sdl-sound || autocrap_cleanup sdlsound
@@ -151,15 +145,14 @@ src_prepare() {
 	use_if_iuse xml || autocrap_cleanup xml
 	use_if_iuse zlib || autocrap_cleanup zlib
 
+	has_version ">=dev-qt/qtcore-5.13.0" && PATCHES+=( "${FILESDIR}/${PN}-qt-5.13.patch" )
+
+	default_src_prepare
 	eautoreconf
 }
 
 src_configure() {
-	use_if_iuse qt4 && cd ${S}/gb.qt4 && \
-		econf $(use_enable qt4-opengl qtopengl) \
-			$(use_enable qt4-webkit qtwebkit)
-
-	cd ${S} && econf $(use_enable bzip2 bzlib2) \
+	econf $(use_enable bzip2 bzlib2) \
 		$(use_enable cairo) \
 		$(use_enable crypt) \
 		$(use_enable curl) \
@@ -187,7 +180,6 @@ src_configure() {
 		$(use_enable pcre) \
 		$(use_enable pdf) \
 		$(use_enable postgres postgresql) \
-		$(use_enable qt4) \
 		$(use_enable qt5) \
 		$(use_enable sdl) \
 		$(use_enable sdl-sound sdlsound) \
@@ -195,13 +187,14 @@ src_configure() {
 		$(use_enable v4l) \
 		$(use_enable x11) \
 		$(use_enable xml) \
-		$(use_enable zlib)
+		$(use_enable zlib) \
+		--disable-qt4
 }
 
 src_install() {
 	emake DESTDIR="${D}" install -j1
 
-	dodoc AUTHORS ChangeLog NEWS README
+	einstalldocs
 
 	if use net ; then
 		newdoc gb.net/src/doc/README gb.net-README
@@ -212,7 +205,7 @@ src_install() {
 		newdoc gb.pcre/src/README gb.pcre-README
 	fi
 
-	if use qt4 ; then
+	if use qt5 ; then
 		doicon "${S}/app/desktop/${MY_PN}.svg"
 		domenu "${S}/app/desktop/${MY_PN}.desktop"
 
@@ -229,25 +222,25 @@ src_install() {
 }
 
 pkg_preinst() {
-	if use qt4 ; then
+	if use qt5 ; then
 		gnome2_icon_savelist
 	fi
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mime_database_update
 
-	if use qt4 ; then
+	if use qt5 ; then
 		gnome2_icon_cache_update
 	fi
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mime_database_update
 
-	if use qt4 ; then
+	if use qt5 ; then
 		gnome2_icon_cache_update
 	fi
 }

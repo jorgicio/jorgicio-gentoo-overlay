@@ -2,18 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="5"
+EAPI=7
 
-inherit autotools eutils
+inherit autotools desktop
 
-RNAME="Magnesium"
+RNAME="Potassium"
 DESCRIPTION="Framework for analysis of source codes written in C"
 HOMEPAGE="http://frama-c.com"
-SRC_URI="${HOMEPAGE}/download/${PN}-${RNAME}-${PV}.tar.gz"
+SRC_URI="${HOMEPAGE}/download/${P}-${RNAME}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk +ocamlopt"
 RESTRICT="strip"
 
@@ -24,12 +24,13 @@ RDEPEND=">=dev-lang/ocaml-4.02[ocamlopt?]
 		gtk? ( >=dev-ml/lablgtk-2.14[sourceview,gnomecanvas,ocamlopt?] )"
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${PN}-${RNAME}-${PV}"
+S="${WORKDIR}/${P}-${RNAME}"
 
 src_prepare(){
 	touch config_file
 
 	eautoreconf
+	default_src_prepare
 }
 
 src_configure(){
@@ -47,7 +48,7 @@ src_compile(){
 src_install(){
 	emake install DESTDIR="${D}" || die "emake install failed"
 	dodoc Changelog doc/README
-	
+
 	if use gtk;then
 		doicon "${FILESDIR}"/${PN}.png
 		make_desktop_entry "frama-c-gui" "Frama-C GUI" "frama-c" "Development"
