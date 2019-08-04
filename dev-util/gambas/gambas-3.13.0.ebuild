@@ -9,7 +9,7 @@ SLOT=3
 MY_PN="${PN}${SLOT}"
 
 DESCRIPTION="Gambas is a free development environment based on a Basic interpreter with object extensions"
-HOMEPAGE="https://gambas.sourceforge.net"
+HOMEPAGE="http://gambas.sourceforge.net"
 
 SRC_URI="https://gitlab.com/gambas/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
