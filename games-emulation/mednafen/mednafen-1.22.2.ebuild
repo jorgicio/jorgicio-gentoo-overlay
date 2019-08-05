@@ -82,8 +82,6 @@ src_prepare() {
 		-i src/file.cpp || die
 	sed -e 's:\(mednafen_LDADD.*trio/libtrio\.a\):\1 -lminizip \$(LZO_LIBS):' \
 		-i src/Makefile.am || die
-	# delete bundled files just to be sure...
-	#rm src/compress/{ioapi.?,*lzo*,unzip.?} || die
 
 	# The insanity continues... upstream now believes it needs to
 	# warn users when compiling with -fPIC/-fPIE enabled
