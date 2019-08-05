@@ -32,6 +32,7 @@ DEPEND="
 	sys-apps/lsb-release
 	"
 RDEPEND="${DEPEND}
+	acct-user/prey
 	systemd? ( sys-apps/systemd )
 "
 BDEPEND=">=net-libs/nodejs-0.6[npm]"
@@ -57,8 +58,7 @@ src_install(){
 	insinto /etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
-	use amd64 && newbin "${FILESDIR}/${PN}-bin-64" "${PN}"
-	use x86 && newbin "${FILESDIR}/${PN}-bin-32" "${PN}"
+	newbin "${FILESDIR}/${PN}-bin" "${PN}"
 }
 
 pkg_postinst(){
@@ -66,11 +66,7 @@ pkg_postinst(){
 	if [[ -f "${EROOT}/etc/init.d/prey-agent" ]];then
 		elog "Daemon for prey-agent found. Cleaning..."
 		rm -f "${EROOT}/etc/init.d/prey-agent"
-	fi
-	if use amd64; then
-		install -m755 "${FILESDIR}/${PN}-agent-64" "${EROOT}/etc/init.d/prey-agent"
-	elif use x86; then
-		install -m755 "${FILESDIR}/${PN}-agent-32" "${EROOT}/etc/init.d/prey-agent"
+		install -m755 "${FILESDIR}/${PN}-agent" "${EROOT}/etc/init.d/prey-agent"
 	fi
 	elog "Daemon for OpenRC installed"
 	gpasswd -a prey video >/dev/null
