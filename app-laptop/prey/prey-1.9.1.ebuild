@@ -77,5 +77,4 @@ pkg_postinst(){
 
 pkg_prerm(){
 	prey config hooks pre_uninstall
-	userdel prey
 }
