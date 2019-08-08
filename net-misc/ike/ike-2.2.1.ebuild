@@ -44,6 +44,7 @@ src_configure(){
 		-DLDAP=$(usex ldap)
 		-DNATT=$(usex nat)
 		-DLIBDIR=/usr/$(get_libdir)
+		-DETCDIR=/etc/${PN}
 		-DQTGUI=NO
 	)
 	cmake-utils_src_configure
@@ -57,6 +58,6 @@ src_install(){
 pkg_postinst() {
 	echo
 	elog "a default configuration for the IKE Daemon"
-	elog "is stored in /etc/iked.conf.sample"
+	elog "is stored in /etc/${PN}/iked.conf.sample"
 	echo
 }
