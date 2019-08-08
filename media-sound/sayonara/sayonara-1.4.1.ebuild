@@ -35,15 +35,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	sed -i -e "s|/lib\${LIB_SUFFIX}|/\${LIB_SUFFIX}|" CMakeLists.txt || die
-	cmake-utils_src_prepare
-}
-
 src_configure() {
+	local lib_suffix="$(get_libdir)"
 	local mycmakeargs=(
 		-DWITH_TESTS="$(usex test)"
-		-DLIB_SUFFIX="$(get_libdir)"
+		-DLIB_SUFFIX=${lib_suffix//lib}
 	)
 	cmake-utils_src_configure
 }
