@@ -5,7 +5,7 @@ After=local-fs.target network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/sbin/iked -f /etc/iked.conf
+ExecStart=/usr/sbin/iked -f /etc/ike/iked.conf
 
 [Install]
 WantedBy=multi-user.target
