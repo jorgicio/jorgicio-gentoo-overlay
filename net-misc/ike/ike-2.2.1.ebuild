@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ldap nat systemd"
 
 COMMON_DEPEND="dev-libs/libedit
-	dev-libs/openssl
+	dev-libs/openssl:0=
 	ldap? ( net-nds/openldap )"
 
 DEPEND="${COMMON_DEPEND}
