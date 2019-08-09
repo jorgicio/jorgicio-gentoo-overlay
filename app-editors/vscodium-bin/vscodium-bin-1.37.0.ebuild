@@ -11,14 +11,13 @@ DESCRIPTION="Free/Libre Open Source Software Binaries of VSCode (binary version)
 HOMEPAGE="https://vscodium.com"
 
 SRC_URI="
-	x86? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-ia32-${PV}.tar.gz )
 	amd64? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-x64-${PV}.tar.gz )
 	"
 RESTRICT="mirror strip bindist"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64"
 IUSE="global-menu libsecret qt5"
 
 DEPEND="
