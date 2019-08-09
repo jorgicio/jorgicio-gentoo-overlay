@@ -33,15 +33,9 @@ RDEPEND="${DEPEND}
 	media-libs/qtav:0/1[pulseaudio?]
 "
 
-src_prepare(){
-	for x in {acoustid,core,cover-fetcher,library,player,plugins,tabplaylists,tageditor,uniquelibrary}; do
-		sed -i -e "s/lib\$\$LIB_SUFFIX/\$\$LIB_SUFFIX/" "src/${x}/${x}.pro" || die
-	done
-	default_src_prepare
-}
-
 src_configure(){
-	eqmake5 LIB_SUFFIX="$(get_libdir)"
+	local lib_suf="$(get_libdir)"
+	eqmake5 LIB_SUFFIX="${lib_suf//lib}"
 }
 
 src_install(){

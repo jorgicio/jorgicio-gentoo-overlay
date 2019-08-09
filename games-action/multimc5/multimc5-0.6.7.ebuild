@@ -60,7 +60,7 @@ src_unpack(){
 src_prepare(){
 	cd libraries/quazip
 	eapply "${FILESDIR}/quazip-fix-build-with-qt-511.patch"
-	cd ..
+	cd ../..
 	cmake-utils_src_prepare
 }
 
