@@ -44,13 +44,13 @@ RDEPEND="
 	)
 "
 
-QA_PRESTRIPPED="opt/${MY_PN}/vscodium"
-QA_PREBUILT="opt/${MY_PN}/vscodium"
+QA_PRESTRIPPED="opt/${MY_PN}/codium"
+QA_PREBUILT="opt/${MY_PN}/codium"
 
 S="${WORKDIR}"
 
 src_install(){
-	pax-mark m vscodium
+	pax-mark m codium
 	mkdir -p "${D}/opt/${MY_PN}"
 	cp -r . "${D}/opt/${MY_PN}/"
 	dosym "/opt/${MY_PN}/bin/codium" "/usr/bin/${MY_PN}"
