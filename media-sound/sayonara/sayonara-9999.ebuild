@@ -18,7 +18,7 @@ else
 	S="${WORKDIR}/${MY_PN}"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="test"
 
@@ -26,9 +26,9 @@ DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	media-libs/taglib
-	media-libs/gst-plugins-base
-	media-libs/gst-plugins-good
-	media-libs/gst-plugins-bad
+	media-libs/gst-plugins-base:1.0
+	media-libs/gst-plugins-good:1.0
+	media-libs/gst-plugins-bad:1.0
 	media-libs/libmtp
 	sys-libs/zlib
 	test? ( dev-qt/qttest )
