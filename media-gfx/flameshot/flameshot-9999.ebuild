@@ -3,18 +3,11 @@
 
 EAPI=7
 
-inherit qmake-utils toolchain-funcs xdg-utils
+inherit git-r3 qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
 HOMEPAGE="https://flameshot.js.org"
-
-if [[ ${PV} == 9999 ]];then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/lupoDharkael/${PN}.git"
-else
-	SRC_URI="https://github.com/lupoDharkael/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-fi
+EGIT_REPO_URI="https://github.com/lupoDharkael/${PN}.git"
 
 LICENSE="FreeArt GPL-3+ Apache-2.0"
 SLOT="0"
@@ -36,11 +29,8 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare(){
-	[[ ${PV} != 9999 ]] && sed -i "s|TAG_VERSION = .*|TAG_VERSION = v${PV}|" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro
-	sed -i "s#^Icon=.*#Icon=${PN}#" "docs/desktopEntry/package/${PN}.desktop" \
-		"snap/gui/${PN}.desktop" \
-		"snap/gui/${PN}-init.desktop"
+	sed -i "s#^Icon=.*#Icon=${PN}#" "docs/desktopEntry/package/${PN}.desktop"
 	default_src_prepare
 }
 

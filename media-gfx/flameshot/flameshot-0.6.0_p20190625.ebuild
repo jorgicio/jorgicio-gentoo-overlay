@@ -7,16 +7,9 @@ inherit qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
 HOMEPAGE="https://flameshot.js.org"
-
-if [[ ${PV} == 9999 ]];then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/lupoDharkael/${PN}.git"
-	SRC_URI=""
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/lupoDharkael/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-fi
+COMMIT="234a51baeab00d4c434af07f7a5a438b1d087871"
+SRC_URI="https://github.com/lupoDharkael/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 LICENSE="FreeArt GPL-3+ Apache-2.0"
 SLOT="0"
@@ -36,23 +29,12 @@ RDEPEND="${DEPEND}
 		kde-frameworks/kglobalaccel:5
 	)
 "
-
-PATCHES=(
-	"${FILESDIR}/${P}-fix-geometry.patch"
-	"${FILESDIR}/${P}-new-captures-fix.patch"
-	"${FILESDIR}/${P}-highlight-composition-fix.patch"
-	"${FILESDIR}/${P}-allow-notification-drag-and-drop.patch"
-	"${FILESDIR}/${P}-pin-tool-improve-adjustment.patch"
-	"${FILESDIR}/${P}-popup-infowindow-at-screen-center.patch"
-	"${FILESDIR}/${P}-exit-non-zero.patch"
-)
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare(){
-	[[ ${PV} != 9999 ]] && sed -i "s|TAG_VERSION = .*|TAG_VERSION = v${PV}|" ${PN}.pro
+	sed -i "s|TAG_VERSION = .*|TAG_VERSION = v0.6.0|" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro
-	sed -i "s#^Icon=.*#Icon=${PN}#" "docs/desktopEntry/package/${PN}.desktop" \
-		"snap/gui/${PN}.desktop" \
-		"snap/gui/${PN}-init.desktop"
+	sed -i "s#^Icon=.*#Icon=${PN}#" "docs/desktopEntry/package/${PN}.desktop"
 	default_src_prepare
 }
 
