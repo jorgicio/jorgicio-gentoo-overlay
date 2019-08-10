@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<upstream>
+		<remote-id type="github">VSCodium/VSCodium</remote-id>
+		<bugs-to>https://github.com/VSCodium/VSCodium/issues</bugs-to>
+		<maintainer type="project">
+			<name>VSCodium</name>
+		</maintainer>
+	</upstream>
 	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>
 		<name>Jorge Pizarro Callejas</name>

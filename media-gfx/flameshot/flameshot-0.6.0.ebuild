@@ -42,7 +42,7 @@ src_configure(){
 	if tc-is-gcc && ver_test "$(gcc-version)" -lt 4.9.2 ;then
 		die "You need at least GCC 4.9.2 to build this package"
 	fi
-	eqmake5 CONFIG+=packaging BASEDIR="${D}"
+	eqmake5 CONFIG+=packaging
 }
 
 src_install(){

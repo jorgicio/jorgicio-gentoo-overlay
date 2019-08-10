@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<upstream>
+		<remote-id type="github">PapirusDevelopmentTeam/papirus-icon-theme</remote-id>
+		<bugs-to>https://github.com/PapirusDevelopmentTeam/papirus-icon-theme</bugs-to>
+		<maintainer type="project">
+			<name>Papirus Development Team</name>
+		</maintainer>
+	</upstream>
 	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>
 		<name>Jorge Pizarro Callejas</name>

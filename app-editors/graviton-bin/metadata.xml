@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<upstream>
+		<remote-id type="github">Graviton-Code-Editor/Graviton-App</remote-id>
+		<bugs-to>https://github.com/Graviton-Code-Editor/Graviton-App/issues</bugs-to>
+		<maintainer type="person">
+			<name>Graviton Editor</name>
+			<email>mespinasanz@gmail.com</email>
+		</maintainer>
+	</upstream>
 	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>
 		<name>Jorge Pizarro Callejas</name>
