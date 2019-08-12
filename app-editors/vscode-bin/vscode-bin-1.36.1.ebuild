@@ -52,7 +52,6 @@ QA_PREBUILT="opt/${MY_PN}/code"
 
 pkg_setup(){
 	use amd64 && S="${WORKDIR}/VSCode-linux-x64"
-	use x86 && S="${WORKDIR}/VSCode-linux-ia32"
 }
 
 src_install(){
