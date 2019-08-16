@@ -25,10 +25,10 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default_src_prepare
-	cd $S
+	cd ${S}
 	for size in 16x16 22x22 24x24
 	do
-		rm -f Papirus/$size/panel/clementine-panel{,-grey}.svg
+		rm -f Papirus/${size}/panel/clementine-panel{,-grey}.svg
 	done
 }
 
@@ -37,6 +37,7 @@ src_install() {
 	for size in 16x16 22x22 24x24 32x32 48x48 64x64
 	do
 		dosym firefox-aurora.svg /usr/share/icons/Papirus/${size}/apps/aurora.svg
+		dosym firefox.svg /usr/share/icons/Papirus/${size}/apps/firefox-bin.svg
 	done
 }
 
