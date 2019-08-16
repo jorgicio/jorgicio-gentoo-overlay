@@ -12,6 +12,5 @@
 	</maintainer>
 	<use>
 		<flag name="libsecret">Enable libsecret support</flag>
-		<flag name="global-menu">Enable support for global menu</flag>
 	</use>
 </pkgmetadata>

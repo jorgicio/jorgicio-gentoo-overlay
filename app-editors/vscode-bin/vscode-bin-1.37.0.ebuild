@@ -19,7 +19,7 @@ RESTRICT="mirror strip bindist"
 LICENSE="MS-vscode-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="global-menu libsecret qt5"
+IUSE="libsecret"
 
 DEPEND="
 	>=media-libs/libpng-1.2.46
@@ -37,12 +37,6 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	dev-libs/nss
 	libsecret? ( app-crypt/libsecret[crypt] )
-	global-menu? (
-		dev-libs/libdbusmenu
-		qt5? (
-			dev-libs/libdbusmenu-qt
-		)
-	)
 "
 
 DOCS=( resources/app/LICENSE.rtf )
