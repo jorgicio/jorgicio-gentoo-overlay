@@ -3,10 +3,7 @@
 <pkgmetadata>
 	<upstream>
 		<remote-id type="github">PapirusDevelopmentTeam/papirus-icon-theme</remote-id>
-		<bugs-to>https://github.com/PapirusDevelopmentTeam/papirus-icon-theme</bugs-to>
-		<maintainer type="project">
-			<name>Papirus Development Team</name>
-		</maintainer>
+		<bugs-to>https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/issues</bugs-to>
 	</upstream>
 	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>

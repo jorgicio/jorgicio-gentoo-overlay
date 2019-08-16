@@ -4,9 +4,6 @@
 	<upstream>
 		<remote-id type="github">VSCodium/VSCodium</remote-id>
 		<bugs-to>https://github.com/VSCodium/VSCodium/issues</bugs-to>
-		<maintainer type="project">
-			<name>VSCodium</name>
-		</maintainer>
 	</upstream>
 	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>
