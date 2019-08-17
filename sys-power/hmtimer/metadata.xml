@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">cges30901/hmtimer</remote-id>
+		<bugs-to>https://github.com/cges30901/hmtimer/issues</bugs-to>
+		<maintainer type="person">
+			<name>Hsiu-Ming</name>
+			<email>cges30901@gmail.com</email>
+		</maintainer>
+	</upstream>
+	<maintainer type="person">
+		<email>jpizarrocallejas@gmail.com</email>
+		<name>Jorge Pizarro Callejas</name>
+		<description>Jorgicio Gentoo Overlay</description>
+	</maintainer>
+</pkgmetadata>
