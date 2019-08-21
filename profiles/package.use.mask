@@ -1,2 +1,3 @@
 # Phonon support is kinda broken or unstable.
 media-sound/strawberry phonon
+games-emulation/qmc2 phonon

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug +arcade joystick multimedia opengl phonon +minizip +zlib tools"
+IUSE="debug +arcade joystick +multimedia opengl phonon +minizip +zlib tools"
 
 DEPEND="
 	dev-qt/qtmultimedia:5
