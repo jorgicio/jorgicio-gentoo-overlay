@@ -9,6 +9,7 @@
 	<use>
 		<flag name="arcade">Enable arcade support</flag>
 		<flag name="tools">Enable MAME tools</flag>
+		<flag name="multimedia">Enable multimedia support</flag>
 		<flag name="phonon">Enable Phonon backend</flag>
 		<flag name="minizip">Enable system minizip instead of bundled</flag>
 		<flag name="zlib">Enable system zlib instead of bundled</flag>
