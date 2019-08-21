@@ -1,4 +1,2 @@
-# X86 MMX makes xawtv fail to build, as mentioned in https://github.com/jorgicio/issues/82
 # Phonon support is kinda broken or unstable.
-games-emulation/qmc2 phonon
 media-sound/strawberry phonon
