@@ -1,0 +1,206 @@
+diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
+--- a/lzma/7zArcIn.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/7zArcIn.c	2019-08-21 00:53:18.318200316 -0400
+@@ -57,6 +57,8 @@
+ };
+ 
+ const Byte k7zSignature[k7zSignatureSize] = {'7', 'z', 0xBC, 0xAF, 0x27, 0x1C};
++const int True = 1;
++const int False = 0;
+ 
+ #define SzBitUi32s_Init(p) { (p)->Defs = NULL; (p)->Vals = NULL; }
+ 
+diff -Naur a/lzma/7zDec.c b/lzma/7zDec.c
+--- a/lzma/7zDec.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/7zDec.c	2019-08-21 00:42:14.947229678 -0400
+@@ -37,6 +37,9 @@
+ 
+ #define k_PPMD 0x30401
+ 
++const int True = 1;
++const int False = 0;
++
+ typedef struct
+ {
+   IByteIn p;
+diff -Naur a/lzma/7zTypes.h b/lzma/7zTypes.h
+--- a/lzma/7zTypes.h	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/7zTypes.h	2019-08-21 00:40:18.294769806 -0400
+@@ -94,8 +94,8 @@
+ #endif
+ 
+ typedef int Bool_7z;
+-#define True 1
+-#define False 0
++extern const int True;
++extern const int False;
+ 
+ 
+ #ifdef _WIN32
+diff -Naur a/lzma/Bcj2Enc.c b/lzma/Bcj2Enc.c
+--- a/lzma/Bcj2Enc.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/Bcj2Enc.c	2019-08-21 00:44:40.982860060 -0400
+@@ -25,6 +25,9 @@
+ #define kBitModelTotal (1 << kNumModelBits)
+ #define kNumMoveBits 5
+ 
++const int True = 1;
++const int False = 0;
++
+ void Bcj2Enc_Init(CBcj2Enc *p)
+ {
+   unsigned i;
+diff -Naur a/lzma/CpuArch.c b/lzma/CpuArch.c
+--- a/lzma/CpuArch.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/CpuArch.c	2019-08-21 00:45:37.488906917 -0400
+@@ -55,6 +55,9 @@
+ #define CHECK_CPUID_IS_SUPPORTED
+ #endif
+ 
++const int True = 1;
++const int False = 0;
++
+ void MyCPUID(UInt32_7z function, UInt32_7z *a, UInt32_7z *b, UInt32_7z *c, UInt32_7z *d)
+ {
+   #ifdef USE_ASM
+diff -Naur a/lzma/LzFind.c b/lzma/LzFind.c
+--- a/lzma/LzFind.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/LzFind.c	2019-08-21 00:46:33.484898611 -0400
+@@ -16,6 +16,8 @@
+ 
+ #define kStartMaxLen 3
+ 
++const int True = 1;
++
+ static void LzInWindow_Free(CMatchFinder *p, ISzAlloc *alloc)
+ {
+   if (!p->directInput)
+diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
+--- a/lzma/LzFindMt.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/LzFindMt.c	2019-08-21 00:46:58.147537408 -0400
+@@ -7,6 +7,9 @@
+ 
+ #include "LzFindMt.h"
+ 
++const int True = 1;
++const int False = 0;
++
+ static void MtSync_Construct(CMtSync *p)
+ {
+   p->wasCreated = False;
+diff -Naur a/lzma/Lzma2Dec.c b/lzma/Lzma2Dec.c
+--- a/lzma/Lzma2Dec.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/Lzma2Dec.c	2019-08-21 00:47:34.441420461 -0400
+@@ -46,6 +46,9 @@
+ #define PRF(x)
+ #endif
+ 
++const int True = 1;
++const int False = 0;
++
+ typedef enum
+ {
+   LZMA2_STATE_CONTROL,
+diff -Naur a/lzma/Lzma2Enc.c b/lzma/Lzma2Enc.c
+--- a/lzma/Lzma2Enc.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/Lzma2Enc.c	2019-08-21 00:47:56.923825720 -0400
+@@ -35,6 +35,9 @@
+ 
+ #define PRF(x) /* x */
+ 
++const int True = 1;
++const int False = 0;
++
+ /* ---------- CLzma2EncInt ---------- */
+ 
+ typedef struct
+diff -Naur a/lzma/Lzma86Enc.c b/lzma/Lzma86Enc.c
+--- a/lzma/Lzma86Enc.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/Lzma86Enc.c	2019-08-21 00:48:22.076516575 -0400
+@@ -13,6 +13,9 @@
+ 
+ #define SZE_OUT_OVERFLOW SZE_DATA_ERROR
+ 
++const int True = 1;
++const int False = 0;
++
+ int Lzma86_Encode(Byte *dest, size_t *destLen, const Byte *src, size_t srcLen,
+     int level, UInt32_7z dictSize, int filterMode)
+ {
+diff -Naur a/lzma/MtCoder.c b/lzma/MtCoder.c
+--- a/lzma/MtCoder.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/MtCoder.c	2019-08-21 00:49:07.821410088 -0400
+@@ -5,6 +5,9 @@
+ 
+ #include "MtCoder.h"
+ 
++const int True = 1;
++const int False = 0;
++
+ void LoopThread_Construct(CLoopThread *p)
+ {
+   Thread_Construct(&p->thread);
+diff -Naur a/lzma/Ppmd7.c b/lzma/Ppmd7.c
+--- a/lzma/Ppmd7.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/Ppmd7.c	2019-08-21 00:49:48.355745908 -0400
+@@ -57,6 +57,9 @@
+   #define NODE(offs) ((CPpmd7_Node *)(p->Base + (offs)))
+ #endif
+ 
++const int True = 1;
++const int False = 0;
++
+ void Ppmd7_Construct(CPpmd7 *p)
+ {
+   unsigned i, k, m;
+diff -Naur a/lzma/Ppmd7Dec.c b/lzma/Ppmd7Dec.c
+--- a/lzma/Ppmd7Dec.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/Ppmd7Dec.c	2019-08-21 00:50:10.358099300 -0400
+@@ -8,6 +8,8 @@
+ 
+ #define kTopValue (1 << 24)
+ 
++const int False = 0;
++
+ Bool_7z Ppmd7z_RangeDec_Init(CPpmd7z_RangeDec *p)
+ {
+   unsigned i;
+diff -Naur a/lzma/XzDec.c b/lzma/XzDec.c
+--- a/lzma/XzDec.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/XzDec.c	2019-08-21 00:51:27.456345144 -0400
+@@ -30,6 +30,9 @@
+ 
+ #define CODER_BUF_SIZE (1 << 17)
+ 
++const int True = 1;
++const int False = 0;
++
+ unsigned Xz_ReadVarInt(const Byte *p, size_t maxSize, UInt64 *value)
+ {
+   unsigned i, limit;
+diff -Naur a/lzma/XzEnc.c b/lzma/XzEnc.c
+--- a/lzma/XzEnc.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/XzEnc.c	2019-08-21 00:51:57.289535611 -0400
+@@ -24,6 +24,9 @@
+ #define XzBlock_SetHasPackSize(p)   (p)->flags |= XZ_BF_PACK_SIZE;
+ #define XzBlock_SetHasUnpackSize(p) (p)->flags |= XZ_BF_UNPACK_SIZE;
+ 
++const int True = 1;
++const int False = 0;
++
+ static SRes WriteBytes(ISeqOutStream *s, const void *buf, UInt32_7z size)
+ {
+   return (s->Write(s, buf, size) == size) ? SZ_OK : SZ_ERROR_WRITE;
+diff -Naur a/lzma/XzIn.c b/lzma/XzIn.c
+--- a/lzma/XzIn.c	2019-08-21 00:39:47.801516016 -0400
++++ b/lzma/XzIn.c	2019-08-21 00:52:20.101975153 -0400
+@@ -9,6 +9,9 @@
+ #include "CpuArch.h"
+ #include "Xz.h"
+ 
++const int True = 1;
++const int False = 0;
++
+ SRes Xz_ReadHeader(CXzStreamFlags *p, ISeqInStream *inStream)
+ {
+   Byte sig[XZ_STREAM_HEADER_SIZE];

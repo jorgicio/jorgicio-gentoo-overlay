@@ -14,7 +14,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug +arcade joystick +multimedia opengl phonon +minizip +zlib tools"
 
 DEPEND="
-	dev-qt/qtmultimedia:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtxmlpatterns:5
@@ -22,6 +21,7 @@ DEPEND="
 	net-misc/rsync
 	x11-apps/xwininfo
 	arcade? ( dev-qt/qtdeclarative:5 )
+	multimedia? ( dev-qt/qtmultimedia:5 )
 	opengl? ( dev-qt/qtopengl:5 )
 	phonon? ( media-libs/phonon )
 	tools? ( dev-qt/qtscript:5 )
@@ -37,7 +37,7 @@ S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-fix-phonon-include.patch"
-	"${FILESDIR}/${PN}-fix-enum-gcc8.patch"
+	"${FILESDIR}/${PN}-fix-bool-gcc8.patch"
 )
 
 src_prepare(){
