@@ -6,7 +6,7 @@ diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
    
      for (i = 0; i < numInStreams; i++)
 -      streamUsed[i] = False;
-+      streamUsed[i] = FALSE;
++      streamUsed[i] = false;
      
      if (numBonds != 0)
      {
@@ -14,7 +14,7 @@ diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
  
        for (i = 0; i < numCoders; i++)
 -        coderUsed[i] = False;
-+        coderUsed[i] = FALSE;
++        coderUsed[i] = false;
        
        for (i = 0; i < numBonds; i++)
        {
@@ -23,13 +23,13 @@ diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
          if (bp->InIndex >= numInStreams || streamUsed[bp->InIndex])
            return SZ_ERROR_ARCHIVE;
 -        streamUsed[bp->InIndex] = True;
-+        streamUsed[bp->InIndex] = TRUE;
++        streamUsed[bp->InIndex] = true;
          
          RINOK(SzReadNumber32(sd, &bp->OutIndex));
          if (bp->OutIndex >= numCoders || coderUsed[bp->OutIndex])
            return SZ_ERROR_ARCHIVE;
 -        coderUsed[bp->OutIndex] = True;
-+        coderUsed[bp->OutIndex] = TRUE;
++        coderUsed[bp->OutIndex] = true;
        }
        
        for (i = 0; i < numCoders; i++)
@@ -38,7 +38,7 @@ diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
          if (index >= numInStreams || streamUsed[index])
            return SZ_ERROR_ARCHIVE;
 -        streamUsed[index] = True;
-+        streamUsed[index] = TRUE;
++        streamUsed[index] = true;
          f->PackStreams[i] = index;
        }
    }
@@ -47,10 +47,10 @@ diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
          
          for (i = 0; i < numInStreams; i++)
 -          streamUsed[i] = False;
-+          streamUsed[i] = FALSE;
++          streamUsed[i] = false;
          for (i = 0; i < numCoders; i++)
 -          coderUsed[i] = False;
-+          coderUsed[i] = FALSE;
++          coderUsed[i] = false;
          
          for (i = 0; i < numBonds; i++)
          {
@@ -59,13 +59,13 @@ diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
            if (index >= numInStreams || streamUsed[index])
              return SZ_ERROR_ARCHIVE;
 -          streamUsed[index] = True;
-+          streamUsed[index] = TRUE;
++          streamUsed[index] = true;
            
            RINOK(SzReadNumber32(&sd, &index));
            if (index >= numCoders || coderUsed[index])
              return SZ_ERROR_ARCHIVE;
 -          coderUsed[index] = True;
-+          coderUsed[index] = TRUE;
++          coderUsed[index] = true;
          }
          
          numPackStreams = numInStreams - numBonds;
@@ -74,7 +74,7 @@ diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
              if (index >= numInStreams || streamUsed[index])
                return SZ_ERROR_ARCHIVE;
 -            streamUsed[index] = True;
-+            streamUsed[index] = TRUE;
++            streamUsed[index] = true;
            }
            
          for (i = 0; i < numCoders; i++)
@@ -83,7 +83,7 @@ diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
      return dest;
    }
 -  needSlash = False;
-+  needSlash = FALSE;
++  needSlash = false;
    for (;;)
    {
      UInt32_7z parent = (UInt32_7z)(Int32)-1;
@@ -92,7 +92,7 @@ diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
      if (needSlash)
        *(dest - 1) = '/';
 -    needSlash = True;
-+    needSlash = TRUE;
++    needSlash = true;
      dest -= curLen;
  
      if SzBitWithVals_Check(&p->Parents, fileIndex)
@@ -104,7 +104,7 @@ diff -Naur a/lzma/7zDec.c b/lzma/7zDec.c
        return *p->cur++;;
    }
 -  p->extra = True;
-+  p->extra = TRUE;
++  p->extra = true;
    return 0;
  }
  
@@ -113,7 +113,7 @@ diff -Naur a/lzma/7zDec.c b/lzma/7zDec.c
    s.inStream = inStream;
    s.begin = s.end = s.cur = NULL;
 -  s.extra = False;
-+  s.extra = FALSE;
++  s.extra = false;
    s.res = SZ_OK;
    s.processed = 0;
  
@@ -122,10 +122,10 @@ diff -Naur a/lzma/7zDec.c b/lzma/7zDec.c
      case k_PPMD:
      #endif
 -      return True;
-+      return TRUE;
++      return true;
    }
 -  return False;
-+  return FALSE;
++  return false;
  }
  
  static Bool_7z IS_SUPPORTED_CODER(const CSzCoderInfo *c)
@@ -138,8 +138,8 @@ diff -Naur a/lzma/7zTypes.h b/lzma/7zTypes.h
  typedef int Bool_7z;
 -#define True 1
 -#define False 0
-+#define TRUE 1
-+#define FALSE 0
++#define true 1
++#define false 0
  
  
  #ifdef _WIN32
@@ -151,7 +151,7 @@ diff -Naur a/lzma/Bcj2Enc.c b/lzma/Bcj2Enc.c
          p->state = BCJ2_STREAM_RC;
          p->bufs[BCJ2_STREAM_RC] = buf;
 -        return True;
-+        return TRUE;
++        return true;
        }
        *buf++ = (Byte)(p->cache + (Byte)(p->low >> 32));
        p->cache = 0xFF;
@@ -160,7 +160,7 @@ diff -Naur a/lzma/Bcj2Enc.c b/lzma/Bcj2Enc.c
    p->cacheSize++;
    p->low = (UInt32_7z)p->low << 8;
 -  return False;
-+  return FALSE;
++  return false;
  }
  
  static void Bcj2Enc_Encode_2(CBcj2Enc *p)
@@ -169,7 +169,7 @@ diff -Naur a/lzma/Bcj2Enc.c b/lzma/Bcj2Enc.c
            src++;
            
 -          needConvert = False;
-+          needConvert = FALSE;
++          needConvert = false;
  
            if ((SizeT)(p->srcLim - src) >= 4)
            {
@@ -177,7 +177,7 @@ diff -Naur a/lzma/Bcj2Enc.c b/lzma/Bcj2Enc.c
              if ((p->fileSize == 0 || (UInt32_7z)(p->ip + 4 + relatVal - p->fileIp) < p->fileSize)
                  && ((relatVal + p->relatLimit) >> 1) < p->relatLimit)
 -              needConvert = True;
-+              needConvert = TRUE;
++              needConvert = true;
            }
  
            {
@@ -189,7 +189,7 @@ diff -Naur a/lzma/CpuArch.c b/lzma/CpuArch.c
    return flag;
  }
 -#define CHECK_CPUID_IS_SUPPORTED if (CheckFlag(1 << 18) == 0 || CheckFlag(1 << 21) == 0) return False;
-+#define CHECK_CPUID_IS_SUPPORTED if (CheckFlag(1 << 18) == 0 || CheckFlag(1 << 21) == 0) return FALSE;
++#define CHECK_CPUID_IS_SUPPORTED if (CheckFlag(1 << 18) == 0 || CheckFlag(1 << 21) == 0) return false;
  #else
  #define CHECK_CPUID_IS_SUPPORTED
  #endif
@@ -198,7 +198,7 @@ diff -Naur a/lzma/CpuArch.c b/lzma/CpuArch.c
    MyCPUID(0, &p->maxFunc, &p->vendor[0], &p->vendor[2], &p->vendor[1]);
    MyCPUID(1, &p->ver, &p->b, &p->c, &p->d);
 -  return True;
-+  return TRUE;
++  return true;
  }
  
  static const UInt32_7z kVendors[][3] =
@@ -207,7 +207,7 @@ diff -Naur a/lzma/CpuArch.c b/lzma/CpuArch.c
    UInt32_7z family, model;
    if (!x86cpuid_CheckAndRead(&p))
 -    return True;
-+    return TRUE;
++    return true;
  
    family = x86cpuid_GetFamily(p.ver);
    model = x86cpuid_GetModel(p.ver);
@@ -216,7 +216,7 @@ diff -Naur a/lzma/CpuArch.c b/lzma/CpuArch.c
      case CPU_FIRM_VIA: return (family < 6 || (family == 6 && model < 0xF));
    }
 -  return True;
-+  return TRUE;
++  return true;
  }
  
  #if !defined(MY_CPU_AMD64) && defined(_WIN32)
@@ -225,11 +225,11 @@ diff -Naur a/lzma/CpuArch.c b/lzma/CpuArch.c
    vi.dwOSVersionInfoSize = sizeof(vi);
    if (!GetVersionEx(&vi))
 -    return False;
-+    return FALSE;
++    return false;
    return (vi.dwMajorVersion >= 5);
  }
 -#define CHECK_SYS_SSE_SUPPORT if (!CPU_Sys_Is_SSE_Supported()) return False;
-+#define CHECK_SYS_SSE_SUPPORT if (!CPU_Sys_Is_SSE_Supported()) return FALSE;
++#define CHECK_SYS_SSE_SUPPORT if (!CPU_Sys_Is_SSE_Supported()) return false;
  #else
  #define CHECK_SYS_SSE_SUPPORT
  #endif
@@ -238,7 +238,7 @@ diff -Naur a/lzma/CpuArch.c b/lzma/CpuArch.c
    CHECK_SYS_SSE_SUPPORT
    if (!x86cpuid_CheckAndRead(&p))
 -    return False;
-+    return FALSE;
++    return false;
    return (p.c >> 25) & 1;
  }
  
@@ -250,7 +250,7 @@ diff -Naur a/lzma/LzFind.c b/lzma/LzFind.c
  void MatchFinder_Init(CMatchFinder *p)
  {
 -  MatchFinder_Init_2(p, True);
-+  MatchFinder_Init_2(p, TRUE);
++  MatchFinder_Init_2(p, true);
  }
    
  static UInt32_7z MatchFinder_GetSubValue(CMatchFinder *p)
@@ -264,9 +264,9 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
 -  p->wasCreated = False;
 -  p->csWasInitialized = False;
 -  p->csWasEntered = False;
-+  p->wasCreated = FALSE;
-+  p->csWasInitialized = FALSE;
-+  p->csWasEntered = FALSE;
++  p->wasCreated = false;
++  p->csWasInitialized = false;
++  p->csWasEntered = false;
    Thread_Construct(&p->thread);
    Event_Construct(&p->canStart);
    Event_Construct(&p->wasStarted);
@@ -277,9 +277,9 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
 -    p->needStart = False;
 -    p->stopWriting = False;
 -    p->exit = False;
-+    p->needStart = FALSE;
-+    p->stopWriting = FALSE;
-+    p->exit = FALSE;
++    p->needStart = false;
++    p->stopWriting = false;
++    p->exit = false;
      Event_Reset(&p->wasStarted);
      Event_Reset(&p->wasStopped);
  
@@ -288,14 +288,14 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
    {
      CriticalSection_Leave(&p->cs);
 -    p->csWasEntered = False;
-+    p->csWasEntered = FALSE;
++    p->csWasEntered = false;
      p->numProcessedBlocks++;
      Semaphore_Release1(&p->freeSemaphore);
    }
    Semaphore_Wait(&p->filledSemaphore);
    CriticalSection_Enter(&p->cs);
 -  p->csWasEntered = True;
-+  p->csWasEntered = TRUE;
++  p->csWasEntered = true;
  }
  
  /* MtSync_StopWriting must be called if Writing was started */
@@ -304,12 +304,12 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
    if (!Thread_WasCreated(&p->thread) || p->needStart)
      return;
 -  p->stopWriting = True;
-+  p->stopWriting = TRUE;
++  p->stopWriting = true;
    if (p->csWasEntered)
    {
      CriticalSection_Leave(&p->cs);
 -    p->csWasEntered = False;
-+    p->csWasEntered = FALSE;
++    p->csWasEntered = false;
    }
    Semaphore_Release1(&p->freeSemaphore);
   
@@ -318,7 +318,7 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
      Semaphore_Release1(&p->freeSemaphore);
    }
 -  p->needStart = True;
-+  p->needStart = TRUE;
++  p->needStart = true;
  }
  
  static void MtSync_Destruct(CMtSync *p)
@@ -327,7 +327,7 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
    {
      MtSync_StopWriting(p);
 -    p->exit = True;
-+    p->exit = TRUE;
++    p->exit = true;
      if (p->needStart)
        Event_Set(&p->canStart);
      Thread_Wait(&p->thread);
@@ -336,7 +336,7 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
    {
      CriticalSection_Delete(&p->cs);
 -    p->csWasInitialized = False;
-+    p->csWasInitialized = FALSE;
++    p->csWasInitialized = false;
    }
  
    Event_Close(&p->canStart);
@@ -345,7 +345,7 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
    Semaphore_Close(&p->filledSemaphore);
  
 -  p->wasCreated = False;
-+  p->wasCreated = FALSE;
++  p->wasCreated = false;
  }
  
  #define RINOK_THREAD(x) { if ((x) != 0) return SZ_ERROR_THREAD; }
@@ -354,7 +354,7 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
  
    RINOK_THREAD(CriticalSection_Init(&p->cs));
 -  p->csWasInitialized = True;
-+  p->csWasInitialized = TRUE;
++  p->csWasInitialized = true;
  
    RINOK_THREAD(AutoResetEvent_CreateNotSignaled(&p->canStart));
    RINOK_THREAD(AutoResetEvent_CreateNotSignaled(&p->wasStarted));
@@ -363,11 +363,11 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
    RINOK_THREAD(Semaphore_Create(&p->filledSemaphore, 0, numBlocks));
  
 -  p->needStart = True;
-+  p->needStart = TRUE;
++  p->needStart = true;
    
    RINOK_THREAD(Thread_Create(&p->thread, startAddress, obj));
 -  p->wasCreated = True;
-+  p->wasCreated = TRUE;
++  p->wasCreated = true;
    return SZ_OK;
  }
  
@@ -376,7 +376,7 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
  }
  
 -void MtSync_Init(CMtSync *p) { p->needStart = True; }
-+void MtSync_Init(CMtSync *p) { p->needStart = TRUE; }
++void MtSync_Init(CMtSync *p) { p->needStart = true; }
  
  #define kMtMaxValForNormalize 0xFFFFFFFF
  
@@ -385,7 +385,7 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
    {
      CriticalSection_Enter(&sync->cs);
 -    sync->csWasEntered = True;
-+    sync->csWasEntered = TRUE;
++    sync->csWasEntered = true;
    }
    
    BtGetMatches(p, p->btBuf + (globalBlockIndex & kMtBtNumBlocksMask) * kMtBtBlockSize);
@@ -394,7 +394,7 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
    {
      CriticalSection_Leave(&sync->cs);
 -    sync->csWasEntered = False;
-+    sync->csWasEntered = FALSE;
++    sync->csWasEntered = false;
    }
  }
  
@@ -403,7 +403,7 @@ diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
  
    /* Init without data reading. We don't want to read data in this thread */
 -  MatchFinder_Init_2(mf, False);
-+  MatchFinder_Init_2(mf, FALSE);
++  MatchFinder_Init_2(mf, false);
    
    p->pointerToCurPos = Inline_MatchFinder_GetPointerToCurrentPos(mf);
    p->btNumAvailBytes = 0;
@@ -417,9 +417,9 @@ diff -Naur a/lzma/Lzma2Dec.c b/lzma/Lzma2Dec.c
 -  p->needInitDic = True;
 -  p->needInitState = True;
 -  p->needInitProp = True;
-+  p->needInitDic = TRUE;
-+  p->needInitState = TRUE;
-+  p->needInitProp = TRUE;
++  p->needInitDic = true;
++  p->needInitState = true;
++  p->needInitProp = true;
    LzmaDec_Init(&p->decoder);
  }
  
@@ -428,7 +428,7 @@ diff -Naur a/lzma/Lzma2Dec.c b/lzma/Lzma2Dec.c
        p->decoder.prop.lc = lc;
        p->decoder.prop.lp = lp;
 -      p->needInitProp = False;
-+      p->needInitProp = FALSE;
++      p->needInitProp = false;
        return LZMA2_STATE_DATA;
      }
    }
@@ -437,7 +437,7 @@ diff -Naur a/lzma/Lzma2Dec.c b/lzma/Lzma2Dec.c
            Bool_7z initDic = (p->control == LZMA2_CONTROL_COPY_RESET_DIC);
            if (initDic)
 -            p->needInitProp = p->needInitState = True;
-+            p->needInitProp = p->needInitState = TRUE;
++            p->needInitProp = p->needInitState = true;
            else if (p->needInitDic)
            {
              p->state = LZMA2_STATE_ERROR;
@@ -445,8 +445,8 @@ diff -Naur a/lzma/Lzma2Dec.c b/lzma/Lzma2Dec.c
            }
 -          p->needInitDic = False;
 -          LzmaDec_InitDicAndState(&p->decoder, initDic, False);
-+          p->needInitDic = FALSE;
-+          LzmaDec_InitDicAndState(&p->decoder, initDic, FALSE);
++          p->needInitDic = false;
++          LzmaDec_InitDicAndState(&p->decoder, initDic, false);
          }
  
          if (srcSizeCur > destSizeCur)
@@ -456,8 +456,8 @@ diff -Naur a/lzma/Lzma2Dec.c b/lzma/Lzma2Dec.c
            LzmaDec_InitDicAndState(&p->decoder, initDic, initState);
 -          p->needInitDic = False;
 -          p->needInitState = False;
-+          p->needInitDic = FALSE;
-+          p->needInitState = FALSE;
++          p->needInitDic = false;
++          p->needInitState = false;
            p->state = LZMA2_STATE_DATA_CONT;
          }
    
@@ -470,8 +470,8 @@ diff -Naur a/lzma/Lzma2Enc.c b/lzma/Lzma2Enc.c
    p->props = propsEncoded[0];
 -  p->needInitState = True;
 -  p->needInitProp = True;
-+  p->needInitState = TRUE;
-+  p->needInitProp = TRUE;
++  p->needInitState = true;
++  p->needInitProp = true;
    return SZ_OK;
  }
  
@@ -480,7 +480,7 @@ diff -Naur a/lzma/Lzma2Enc.c b/lzma/Lzma2Enc.c
        return res;
      res = SZ_OK;
 -    useCopyBlock = True;
-+    useCopyBlock = TRUE;
++    useCopyBlock = true;
    }
  
    if (useCopyBlock)
@@ -489,7 +489,7 @@ diff -Naur a/lzma/Lzma2Enc.c b/lzma/Lzma2Enc.c
        else
          *packSizeRes = destPos;
 -      /* needInitState = True; */
-+      /* needInitState = TRUE; */
++      /* needInitState = true; */
      }
      
      LzmaEnc_RestoreState(p->enc);
@@ -499,8 +499,8 @@ diff -Naur a/lzma/Lzma2Enc.c b/lzma/Lzma2Enc.c
      
 -    p->needInitProp = False;
 -    p->needInitState = False;
-+    p->needInitProp = FALSE;
-+    p->needInitState = FALSE;
++    p->needInitProp = false;
++    p->needInitState = false;
      destPos += packSize;
      p->srcPos += unpackSize;
  
@@ -512,7 +512,7 @@ diff -Naur a/lzma/Lzma86Enc.c b/lzma/Lzma86Enc.c
    {
      size_t minSize = 0;
 -    Bool_7z bestIsFiltered = False;
-+    Bool_7z bestIsFiltered = FALSE;
++    Bool_7z bestIsFiltered = false;
  
      /* passes for SZ_FILTER_AUTO:
          0 - BCJ + LZMA
@@ -521,7 +521,7 @@ diff -Naur a/lzma/Lzma86Enc.c b/lzma/Lzma86Enc.c
          break;
        if (useFilter && i == 0)
 -        curModeIsFiltered = True;
-+        curModeIsFiltered = TRUE;
++        curModeIsFiltered = true;
        
        curRes = LzmaEncode(dest + LZMA86_HEADER_SIZE, &outSizeProcessed,
            curModeIsFiltered ? filteredStream : src, srcLen,
@@ -533,7 +533,7 @@ diff -Naur a/lzma/LzmaDec.c b/lzma/LzmaDec.c
  {
    p->dicPos = 0;
 -  LzmaDec_InitDicAndState(p, True, True);
-+  LzmaDec_InitDicAndState(p, TRUE, True);
++  LzmaDec_InitDicAndState(p, true, true);
  }
  
  static void LzmaDec_InitStateReal(CLzmaDec *p)
@@ -546,8 +546,8 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
  
 -#define MakeAsChar(p) (p)->backPrev = (UInt32_7z)(-1); (p)->prev1IsChar = False;
 -#define MakeAsShortRep(p) (p)->backPrev = 0; (p)->prev1IsChar = False;
-+#define MakeAsChar(p) (p)->backPrev = (UInt32_7z)(-1); (p)->prev1IsChar = FALSE;
-+#define MakeAsShortRep(p) (p)->backPrev = 0; (p)->prev1IsChar = FALSE;
++#define MakeAsChar(p) (p)->backPrev = (UInt32_7z)(-1); (p)->prev1IsChar = false;
++#define MakeAsShortRep(p) (p)->backPrev = 0; (p)->prev1IsChar = false;
  #define IsShortRep(p) ((p)->backPrev == 0)
  
  static UInt32_7z GetRepLen1Price(CLzmaEnc *p, UInt32_7z state, UInt32_7z posState)
@@ -556,7 +556,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
        if (p->opt[cur].prev2)
        {
 -        p->opt[posMem - 1].prev1IsChar = False;
-+        p->opt[posMem - 1].prev1IsChar = FALSE;
++        p->opt[posMem - 1].prev1IsChar = false;
          p->opt[posMem - 1].posPrev = p->opt[cur].posPrev2;
          p->opt[posMem - 1].backPrev = p->opt[cur].backPrev2;
        }
@@ -565,7 +565,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
          opt->posPrev = 0;
          opt->backPrev = i;
 -        opt->prev1IsChar = False;
-+        opt->prev1IsChar = FALSE;
++        opt->prev1IsChar = false;
        }
      }
      while (--repLen >= 2);
@@ -574,7 +574,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
          opt->posPrev = 0;
          opt->backPrev = distance + LZMA_NUM_REPS;
 -        opt->prev1IsChar = False;
-+        opt->prev1IsChar = FALSE;
++        opt->prev1IsChar = false;
        }
        if (len == matches[offs])
        {
@@ -583,7 +583,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
  
      curPrice = curOpt->price;
 -    nextIsChar = False;
-+    nextIsChar = FALSE;
++    nextIsChar = false;
      data = p->matchFinder.GetPointerToCurrentPos(p->matchFinderObj) - 1;
      curByte = *data;
      matchByte = *(data - (reps[0] + 1));
@@ -592,7 +592,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
        nextOpt->posPrev = cur;
        MakeAsChar(nextOpt);
 -      nextIsChar = True;
-+      nextIsChar = TRUE;
++      nextIsChar = true;
      }
  
      matchPrice = curPrice + GET_PRICE_1(p->isMatch[state][posState]);
@@ -601,7 +601,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
          nextOpt->posPrev = cur;
          MakeAsShortRep(nextOpt);
 -        nextIsChar = True;
-+        nextIsChar = TRUE;
++        nextIsChar = true;
        }
      }
      numAvailFull = p->numAvail;
@@ -611,8 +611,8 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
              opt->backPrev = 0;
 -            opt->prev1IsChar = True;
 -            opt->prev2 = False;
-+            opt->prev1IsChar = TRUE;
-+            opt->prev2 = FALSE;
++            opt->prev1IsChar = true;
++            opt->prev2 = false;
            }
          }
        }
@@ -621,7 +621,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
            opt->posPrev = cur;
            opt->backPrev = repIndex;
 -          opt->prev1IsChar = False;
-+          opt->prev1IsChar = FALSE;
++          opt->prev1IsChar = false;
          }
        }
        while (--lenTest >= 2);
@@ -631,8 +631,8 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
                  opt->backPrev = 0;
 -                opt->prev1IsChar = True;
 -                opt->prev2 = True;
-+                opt->prev1IsChar = TRUE;
-+                opt->prev2 = TRUE;
++                opt->prev1IsChar = true;
++                opt->prev2 = true;
                  opt->posPrev2 = cur;
                  opt->backPrev2 = repIndex;
                }
@@ -641,7 +641,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
            opt->posPrev = cur;
            opt->backPrev = curBack + LZMA_NUM_REPS;
 -          opt->prev1IsChar = False;
-+          opt->prev1IsChar = FALSE;
++          opt->prev1IsChar = false;
          }
          }
  
@@ -651,8 +651,8 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
                  opt->backPrev = 0;
 -                opt->prev1IsChar = True;
 -                opt->prev2 = True;
-+                opt->prev1IsChar = TRUE;
-+                opt->prev2 = TRUE;
++                opt->prev1IsChar = true;
++                opt->prev2 = true;
                  opt->posPrev2 = cur;
                  opt->backPrev2 = curBack + LZMA_NUM_REPS;
                }
@@ -661,7 +661,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
      p->result = SZ_ERROR_READ;
    if (p->result != SZ_OK)
 -    p->finished = True;
-+    p->finished = TRUE;
++    p->finished = true;
    return p->result;
  }
  
@@ -669,7 +669,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
  {
    /* ReleaseMFStream(); */
 -  p->finished = True;
-+  p->finished = TRUE;
++  p->finished = true;
    if (p->writeEndMark)
      WriteEndMarker(p, nowPos & p->pbMask);
    RangeEnc_FlushData(&p->rc);
@@ -678,7 +678,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
    p->distTableSize = i * 2;
  
 -  p->finished = False;
-+  p->finished = FALSE;
++  p->finished = false;
    p->result = SZ_OK;
    RINOK(LzmaEnc_Alloc(p, keepWindowSize, alloc, allocBig));
    LzmaEnc_Init(p);
@@ -687,7 +687,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
    {
      size = p->rem;
 -    p->overflow = True;
-+    p->overflow = TRUE;
++    p->overflow = true;
    }
    memcpy(p->data, data, size);
    p->rem -= size;
@@ -696,12 +696,12 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
    outStream.data = dest;
    outStream.rem = *destLen;
 -  outStream.overflow = False;
-+  outStream.overflow = FALSE;
++  outStream.overflow = false;
  
 -  p->writeEndMark = False;
 -  p->finished = False;
-+  p->writeEndMark = FALSE;
-+  p->finished = FALSE;
++  p->writeEndMark = false;
++  p->finished = false;
    p->result = SZ_OK;
  
    if (reInit)
@@ -710,7 +710,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
    p->rc.outStream = &outStream.funcTable;
  
 -  res = LzmaEnc_CodeOneBlock(p, True, desiredPackSize, *unpackSize);
-+  res = LzmaEnc_CodeOneBlock(p, TRUE, desiredPackSize, *unpackSize);
++  res = LzmaEnc_CodeOneBlock(p, true, desiredPackSize, *unpackSize);
    
    *unpackSize = (UInt32_7z)(p->nowPos64 - nowPos64);
    *destLen -= outStream.rem;
@@ -719,7 +719,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
    for (;;)
    {
 -    res = LzmaEnc_CodeOneBlock(p, False, 0, 0);
-+    res = LzmaEnc_CodeOneBlock(p, FALSE, 0, 0);
++    res = LzmaEnc_CodeOneBlock(p, false, 0, 0);
      if (res != SZ_OK || p->finished)
        break;
      if (progress)
@@ -728,7 +728,7 @@ diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
    outStream.data = dest;
    outStream.rem = *destLen;
 -  outStream.overflow = False;
-+  outStream.overflow = FALSE;
++  outStream.overflow = false;
  
    p->writeEndMark = writeEndMark;
    p->rc.outStream = &outStream.funcTable;
@@ -741,8 +741,8 @@ diff -Naur a/lzma/MtCoder.c b/lzma/MtCoder.c
  
 -  p->stopReading = False;
 -  p->stopWriting = False;
-+  p->stopReading = FALSE;
-+  p->stopWriting = FALSE;
++  p->stopReading = false;
++  p->stopWriting = false;
    RINOK_THREAD(AutoResetEvent_CreateNotSignaled(&p->canRead));
    RINOK_THREAD(AutoResetEvent_CreateNotSignaled(&p->canWrite));
  
@@ -751,7 +751,7 @@ diff -Naur a/lzma/MtCoder.c b/lzma/MtCoder.c
  {
    CMtThread *next;
 -  *stop = True;
-+  *stop = TRUE;
++  *stop = true;
    if (Event_Wait(&p->canRead) != 0)
      return SZ_ERROR_THREAD;
    
@@ -760,7 +760,7 @@ diff -Naur a/lzma/MtCoder.c b/lzma/MtCoder.c
    if (p->stopReading)
    {
 -    next->stopReading = True;
-+    next->stopReading = TRUE;
++    next->stopReading = true;
      return Event_Set(&next->canRead) == 0 ? SZ_OK : SZ_ERROR_THREAD;
    }
  
@@ -770,8 +770,8 @@ diff -Naur a/lzma/MtCoder.c b/lzma/MtCoder.c
        MtProgress_SetError(&p->mtCoder->mtProgress, res);
 -      next->stopReading = True;
 -      next->stopWriting = True;
-+      next->stopReading = TRUE;
-+      next->stopWriting = TRUE;
++      next->stopReading = true;
++      next->stopWriting = true;
        Event_Set(&next->canRead);
        Event_Set(&next->canWrite);
        return res;
@@ -780,7 +780,7 @@ diff -Naur a/lzma/MtCoder.c b/lzma/MtCoder.c
        {
          res = SZ_ERROR_THREAD;
 -        p->threads[0].stopReading = True;
-+        p->threads[0].stopReading = TRUE;
++        p->threads[0].stopReading = true;
          break;
        }
      }
@@ -792,11 +792,11 @@ diff -Naur a/lzma/Ppmd7.c b/lzma/Ppmd7.c
          #endif
          )) == 0)
 -      return False;
-+      return FALSE;
++      return false;
      p->Size = size;
    }
 -  return True;
-+  return TRUE;
++  return true;
  }
  
  static void InsertNode(CPpmd7 *p, void *node, unsigned indx)
@@ -805,7 +805,7 @@ diff -Naur a/lzma/Ppmd7.c b/lzma/Ppmd7.c
    if (p->OrderFall == 0)
    {
 -    p->MinContext = p->MaxContext = CreateSuccessors(p, True);
-+    p->MinContext = p->MaxContext = CreateSuccessors(p, TRUE);
++    p->MinContext = p->MaxContext = CreateSuccessors(p, true);
      if (p->MinContext == 0)
      {
        RestartModel(p);
@@ -814,7 +814,7 @@ diff -Naur a/lzma/Ppmd7.c b/lzma/Ppmd7.c
      if (fSuccessor <= successor)
      {
 -      CTX_PTR cs = CreateSuccessors(p, False);
-+      CTX_PTR cs = CreateSuccessors(p, FALSE);
++      CTX_PTR cs = CreateSuccessors(p, false);
        if (cs == NULL)
        {
          RestartModel(p);
@@ -826,7 +826,7 @@ diff -Naur a/lzma/Ppmd7Dec.c b/lzma/Ppmd7Dec.c
    p->Range = 0xFFFFFFFF;
    if (p->Stream->Read((void *)p->Stream) != 0)
 -    return False;
-+    return FALSE;
++    return false;
    for (i = 0; i < 4; i++)
      p->Code = (p->Code << 8) | p->Stream->Read((void *)p->Stream);
    return (p->Code < 0xFFFFFFFF);
@@ -838,7 +838,7 @@ diff -Naur a/lzma/XzDec.c b/lzma/XzDec.c
    SizeT destLenOrig = *destLen;
    SizeT srcLenOrig = *srcLen;
 -  Bool_7z allFinished = True;
-+  Bool_7z allFinished = TRUE;
++  Bool_7z allFinished = true;
    *destLen = 0;
    *srcLen = 0;
    *status = CODER_STATUS_NOT_FINISHED;
@@ -847,7 +847,7 @@ diff -Naur a/lzma/XzDec.c b/lzma/XzDec.c
    for (;;)
    {
 -    Bool_7z processed = False;
-+    Bool_7z processed = FALSE;
++    Bool_7z processed = false;
      unsigned i;
      /*
      if (p->numCoders == 1 && *destLen == destLenOrig && finishMode == LZMA_FINISH_ANY)
@@ -856,7 +856,7 @@ diff -Naur a/lzma/XzDec.c b/lzma/XzDec.c
  
        if (!encodingWasFinished)
 -        allFinished = False;
-+        allFinished = FALSE;
++        allFinished = false;
  
        if (i == 0)
        {
@@ -865,7 +865,7 @@ diff -Naur a/lzma/XzDec.c b/lzma/XzDec.c
  
        if (destLenCur != 0 || srcLenCur != 0)
 -        processed = True;
-+        processed = TRUE;
++        processed = true;
      }
      if (!processed)
        break;
@@ -874,7 +874,7 @@ diff -Naur a/lzma/XzDec.c b/lzma/XzDec.c
  {
    unsigned i;
 -  Bool_7z needReInit = True;
-+  Bool_7z needReInit = TRUE;
++  Bool_7z needReInit = true;
    unsigned numFilters = XzBlock_GetNumFilters(block);
    
    if (numFilters == p->numCoders)
@@ -883,7 +883,7 @@ diff -Naur a/lzma/XzDec.c b/lzma/XzDec.c
        }
        
 -      res = MixCoder_Code(&p->decoder, dest, &destLen2, src, &srcLen2, False, finishMode, status);
-+      res = MixCoder_Code(&p->decoder, dest, &destLen2, src, &srcLen2, FALSE, finishMode, status);
++      res = MixCoder_Code(&p->decoder, dest, &destLen2, src, &srcLen2, false, finishMode, status);
        XzCheck_Update(&p->check, dest, destLen2);
        
        (*srcLen) += srcLen2;
@@ -896,11 +896,11 @@ diff -Naur a/lzma/XzEnc.c b/lzma/XzEnc.c
        {
 -        p->enc.readWasFinished = True;
 -        p->enc.isFinalFinished = True;
-+        p->enc.readWasFinished = TRUE;
-+        p->enc.isFinalFinished = TRUE;
++        p->enc.readWasFinished = true;
++        p->enc.isFinalFinished = true;
        }
 -      p->enc.needRead = False;
-+      p->enc.needRead = FALSE;
++      p->enc.needRead = false;
      }
    
      *size = sizeOriginal;
@@ -909,7 +909,7 @@ diff -Naur a/lzma/XzEnc.c b/lzma/XzEnc.c
    p->delta = 0;
    p->ip = 0;
 -  p->ipDefined = False;
-+  p->ipDefined = FALSE;
++  p->ipDefined = false;
  }
  
  
@@ -921,12 +921,12 @@ diff -Naur a/lzma/XzIn.c b/lzma/XzIn.c
    {
      *headerSizeRes = 1;
 -    *isIndex = True;
-+    *isIndex = TRUE;
++    *isIndex = true;
      return SZ_OK;
    }
  
 -  *isIndex = False;
-+  *isIndex = FALSE;
++  *isIndex = false;
    *headerSizeRes = headerSize;
    RINOK(SeqInStream_Read(inStream, header + 1, headerSize - 1));
    return XzBlock_Parse(p, header);
