@@ -4,9 +4,6 @@
 	<upstream>
 		<remote-id type="github">atom/atom</remote-id>
 		<bugs-to>https://github.com/atom/atom/issues</bugs-to>
-		<maintainer type="project">
-			<name>Atom</name>
-		</maintainer>
 	</upstream>
 	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>
