@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jpizarrocallejas@gmail.com</email>
+		<name>Jorge Pizarro Callejas</name>
+		<description>Jorgicio Gentoo Overlay</description>
+	</maintainer>
+	<use>
+		<flag name="sddm">Enable support for SDDM</flag>
+		<flag name="lightdm">Enable support for LightDM</flag>
+		<flag name="gdm">Enable support for GDM</flag>
+	</use>
+</pkgmetadata>
