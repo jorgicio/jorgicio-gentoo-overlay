@@ -28,7 +28,7 @@ DEPEND="
 	lua? ( dev-lang/lua:0 )
 	"
 RDEPEND="${DEPEND}
-	games-fps/tremulous-data"
+	~games-fps/tremulous-data-${PV}"
 
 S="${WORKDIR}"
 
