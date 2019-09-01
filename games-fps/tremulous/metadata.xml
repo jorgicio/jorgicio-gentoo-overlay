@@ -7,7 +7,6 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
-		<flag name="lua">Enable Lua bindings</flag>
-		<flag name="server">Install the Tremded server</flag>
+		<flag name="lua">Enable Lua support</flag>
 	</use>
 </pkgmetadata>

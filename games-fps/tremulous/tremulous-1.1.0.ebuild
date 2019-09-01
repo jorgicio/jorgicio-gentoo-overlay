@@ -12,12 +12,12 @@ DESCRIPTION="Team-based aliens vs humans FPS with buildable structures"
 HOMEPAGE="http://tremulous.net"
 SRC_URI="
 	https://github.com/jkent/tremulous-mgclient/archive/${COMMIT_CLIENT}.tar.gz -> ${P}.tar.gz
-	server? ( https://github.com/jkent/tremulous-mgtremded/archive/${COMMIT_SERVER}.tar.gz -> ${PN}-server-${PV}.tar.gz )"
+	https://github.com/jkent/tremulous-mgtremded/archive/${COMMIT_SERVER}.tar.gz -> ${PN}-server-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="lua server"
+IUSE="lua"
 
 DEPEND="
 	media-libs/freetype
@@ -52,12 +52,9 @@ src_compile() {
 	local flags
 	use !lua && flags="USE_LUA=0"
 	emake ${flags} USE_FREETYPE=0
+	cd ../"${PN}-mgtremded-${COMMIT_SERVER}"
+	emake release
 	cd ..
-	if use server; then
-		cd "${PN}-mgtremded-${COMMIT_SERVER}"
-		emake release
-		cd ..
-	fi
 }
 
 src_install() {
@@ -65,18 +62,15 @@ src_install() {
 	cd "${PN}-mgclient-${COMMIT_CLIENT}"
 	exeinto ${tremulous_dir}
 	newexe build/release-linux-${ARCH}/tremulous.${ARCH} "${PN}"
+	cd ../"${PN}-mgtremded-${COMMIT_SERVER}"
+	exeinto ${tremulous_dir}
+	newexe build/release-linux-${ARCH}/tremded.${ARCH} "tremded"
+	insinto ${tremulous_dir}
+	doins "${FILESDIR}/game.qvm"
+	insinto /etc
+	doins "${FILESDIR}/tremdedrc"
+	newbin "${FILESDIR}/tremded.sh" "tremded"
 	cd ..
-	if use server; then
-		cd "${PN}-mgtremded-${COMMIT_SERVER}"
-		exeinto ${tremulous_dir}
-		newexe build/release-linux-${ARCH}/tremded.${ARCH} "tremded"
-		insinto ${tremulous_dir}
-		doins "${FILESDIR}/game.qvm"
-		insinto /etc
-		doins "${FILESDIR}/tremdedrc"
-		newbin "${FILESDIR}/tremded.sh" "tremded"
-		cd ..
-	fi
 	newbin "${FILESDIR}/${PN}.sh" "${PN}"
 	doicon "${FILESDIR}/${PN}.xpm"
 	domenu "${FILESDIR}/${PN}.desktop"
