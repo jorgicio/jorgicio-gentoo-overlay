@@ -9,4 +9,4 @@ if [ ! -r "$HOME/.tremulous/base/vm/game.qvm" ]; then
 fi
 
 cd /opt/tremulous/
-./tremulous.x86 "$@"
+./tremulous "$@"
