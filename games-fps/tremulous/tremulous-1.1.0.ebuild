@@ -23,7 +23,7 @@ DEPEND="
 	media-libs/freetype
 	media-libs/mesa
 	media-libs/openal
-	media-libs/sdl
+	media-libs/libsdl
 	virtual/glu
 	lua? ( dev-lang/lua:0 )
 	"
