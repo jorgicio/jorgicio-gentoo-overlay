@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs chromium-2 eutils flag-o-matic multilib ninja-utils python-any-r1 toolchain-funcs
+inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-utils portability python-any-r1 toolchain-funcs
 
 DESCRIPTION="ffmpeg extra codecs for Opera (i.e. mp3 and h.264)"
 HOMEPAGE="http://ffmpeg.org"
@@ -16,7 +16,7 @@ RESTRICT="bindist"
 LICENSE="LGPL-2.1 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~amd64-linux"
-IUSE="kerberos"
+IUSE="kerberos jumbo-build"
 
 DEPEND="
 	virtual/ffmpeg
@@ -43,11 +43,17 @@ BDEPEND="
 S="${WORKDIR}/chromium-${PV}"
 
 pre_build_checks(){
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		local -x CPP="$(tc-getCXX) -E"
+		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 8.0; then
+			die "At least gcc 8.0 is required"
+		fi
+	fi
 	CHECKREQS_MEMORY="3G"
 	CHECKREQS_DISK_BUILD="5G"
-	eshopts_push -s extglob
-	is-flagq '-g?(gdb)?([1-9])' && CHECKREQS_DISK_BUILD="25G"
-	eshopts_pop
+	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
+		CHECKREQS_DISK_BUILD="25G"
+	fi
 	check-reqs_pkg_setup
 }
 
@@ -60,13 +66,9 @@ pkg_setup(){
 	chromium_suid_sandbox_check_kernel_config
 }
 
-PATCHES=(
-	"${FILESDIR}/chromium-${PV}-FORTIFY_SOURCE-r2.patch"
-)
-
 src_prepare(){
 	python_setup
-	default_src_prepare
+	default
 }
 
 src_configure(){
@@ -77,7 +79,7 @@ src_configure(){
 	myconf_gn+="linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false "
 	myconf_gn+="enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false "
 	myconf_gn+="is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false "
-	myconf_gn+="use_lld=false use_jumbo_build=false use_kerberos=$(usex kerberos true false)"
+	myconf_gn+="use_lld=false use_jumbo_build=$(usex jumbo-build true false) use_kerberos=$(usex kerberos true false)"
 
 	einfo "Configuring Opera ffmpeg plugins..."
 	set -- gn gen out/Release -v --args="${myconf_gn}"
