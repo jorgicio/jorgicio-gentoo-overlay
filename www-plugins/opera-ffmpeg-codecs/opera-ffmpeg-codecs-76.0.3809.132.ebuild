@@ -28,9 +28,7 @@ DEPEND="
 	x11-libs/gtk+:3
 	kerberos? ( virtual/krb5 )
 "
-RDEPEND="${DEPEND}
-	media-video/ffmpeg[-chromium]
-"
+RDEPEND="${DEPEND}"
 
 BDEPEND="
 	${PYTHON_DEPS}
