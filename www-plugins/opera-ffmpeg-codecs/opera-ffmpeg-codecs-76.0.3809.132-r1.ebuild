@@ -40,6 +40,27 @@ BDEPEND="
 
 S="${WORKDIR}/chromium-${PV}"
 
+PATCHES=(
+	"${FILESDIR}/chromium-compiler-r10.patch"
+	"${FILESDIR}/chromium-widevine-r4.patch"
+	"${FILESDIR}/chromium-fix-char_traits.patch"
+	"${FILESDIR}/chromium-angle-inline.patch"
+	"${FILESDIR}/chromium-76-arm64-skia.patch"
+	"${FILESDIR}/chromium-76-quiche.patch"
+	"${FILESDIR}/chromium-76-no-cups.patch"
+	"${FILESDIR}/chromium-76-gcc-vulkan.patch"
+	"${FILESDIR}/chromium-76-gcc-private.patch"
+	"${FILESDIR}/chromium-76-gcc-noexcept.patch"
+	"${FILESDIR}/chromium-76-gcc-gl-init.patch"
+	"${FILESDIR}/chromium-76-gcc-blink-namespace1.patch"
+	"${FILESDIR}/chromium-76-gcc-blink-namespace2.patch"
+	"${FILESDIR}/chromium-76-gcc-blink-constexpr.patch"
+	"${FILESDIR}/chromium-76-gcc-uint32.patch"
+	"${FILESDIR}/chromium-76-gcc-ambiguous-nodestructor.patch"
+	"${FILESDIR}/chromium-76-gcc-include.patch"
+	"${FILESDIR}/chromium-76-gcc-pure-virtual.patch"
+)
+
 pre_build_checks(){
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
