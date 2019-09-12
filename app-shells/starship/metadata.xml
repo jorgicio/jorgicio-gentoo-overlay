@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">starship/starship</remote-id>
+		<bugs-to>https://github.com/starship/starship/issues</bugs-to>
+	</upstream>
+	<maintainer type="person">
+		<email>jpizarrocallejas@gmail.com</email>
+		<name>Jorge Pizarro Callejas</name>
+		<description>Jorgicio Gentoo Overlay</description>
+	</maintainer>
+	<use>
+		<flag name="utempter">Enable support for sys-libs/libutempter</flag>
+	</use>
+</pkgmetadata>
