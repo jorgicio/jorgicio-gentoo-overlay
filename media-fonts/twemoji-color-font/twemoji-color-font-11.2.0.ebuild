@@ -25,4 +25,3 @@ FONT_CONF=( fontconfig/56-twemoji-color.conf )
 S="${WORKDIR}/TwitterColorEmoji-SVGinOT-Linux-${PV//_/-}"
 FONT_S="${S}"
 PATCHES=( "${FILESDIR}/${PN}-fix-match.patch" )
-DOCS="${FILESDIR}/LICENSE*"
