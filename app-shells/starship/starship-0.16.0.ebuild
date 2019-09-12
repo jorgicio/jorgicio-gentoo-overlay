@@ -144,3 +144,20 @@ DEPEND="
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
+
+DOCS="docs/README.md"
+
+src_install() {
+	# Can't install as a cargo package,
+	# let's do this manually.
+	dobin target/release/${PN}
+	default
+}
+
+pkg_postinst() {
+	echo
+	elog "Thanks for installing starship."
+	elog "For better experience, it's suggested to install some Powerline font."
+	elog "You can get some from https://github.com/powerline/fonts"
+	echo
+}
