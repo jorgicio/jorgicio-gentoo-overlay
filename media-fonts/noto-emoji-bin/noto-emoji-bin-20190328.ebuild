@@ -19,8 +19,8 @@ RDEPEND="!media-fonts/noto-emoji"
 S="${WORKDIR}/${PN/-bin}-${COMMIT}/fonts"
 FONT_S="${S}"
 FONT_SUFFIX="ttf"
-FONT_PN="${PN/-emoji-bin}"
-FONT_CONF=( "${FILESDIR}/56-${PN/-bin}.conf" )
+FONT_PN="${PN/-bin}"
+FONT_CONF=( "${FILESDIR}/66-${PN/-bin}.conf" )
 FONTDIR="/usr/share/fonts/${FONT_PN}"
 
 src_prepare() {
