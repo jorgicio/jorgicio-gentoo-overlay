@@ -12,7 +12,7 @@ SRC_URI="${HOMEPAGE}/releases/download/v${PV//_/-}/TwitterColorEmoji-SVGinOT-Lin
 KEYWORDS="~*"
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
+IUSE="vanilla"
 
 DEPEND="
 	media-fonts/ttf-bitstream-vera[X?]
@@ -24,4 +24,8 @@ DOCS="README.md"
 FONT_CONF=( fontconfig/56-twemoji-color.conf )
 S="${WORKDIR}/TwitterColorEmoji-SVGinOT-Linux-${PV//_/-}"
 FONT_S="${S}"
-PATCHES=( "${FILESDIR}/${PN}-fix-match.patch" )
+
+src_prepare() {
+	use !vanilla && eapply "${FILESDIR}/${PN}-fix-match.patch"
+	default
+}
