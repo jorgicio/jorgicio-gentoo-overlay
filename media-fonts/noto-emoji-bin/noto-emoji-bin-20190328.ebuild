@@ -19,10 +19,20 @@ RDEPEND="!media-fonts/noto-emoji"
 S="${WORKDIR}/${PN/-bin}-${COMMIT}/fonts"
 FONT_S="${S}"
 FONT_SUFFIX="ttf"
-FONT_PN="${PN/-bin}"
+FONT_PN="${PN/-emoji-bin}"
 FONT_CONF=( "${FILESDIR}/56-${PN/-bin}.conf" )
+FONTDIR="/usr/share/fonts/${FONT_PN}"
 
 src_prepare() {
 	rm LICENSE NotoEmoji-Regular.ttf || die
 	default
+}
+
+src_install() {
+	font_src_install
+	insinto /usr/share/icons/"${PN/-bin}"/128x128/emotes/
+	doins ../png/128/*.png
+
+	insinto /usr/share/icons/"${PN/-bin}"/scalable/emotes/
+	doins ../svg/*.svg
 }
