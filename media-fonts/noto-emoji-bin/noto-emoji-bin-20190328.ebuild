@@ -16,23 +16,28 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="!media-fonts/noto-emoji"
 
-S="${WORKDIR}/${PN/-bin}-${COMMIT}/fonts"
-FONT_S="${S}"
+S="${WORKDIR}/${PN/-bin}-${COMMIT}"
+FONT_S="${S}/fonts"
 FONT_SUFFIX="ttf"
 FONT_PN="${PN/-bin}"
 FONT_CONF=( "${FILESDIR}/66-${PN/-bin}.conf" )
 FONTDIR="/usr/share/fonts/${FONT_PN}"
 
 src_prepare() {
-	rm LICENSE NotoEmoji-Regular.ttf || die
+	rm fonts/LICENSE fonts/NotoEmoji-Regular.ttf || die
 	default
+}
+
+src_compile() {
+	# it does nothing
+	true
 }
 
 src_install() {
 	font_src_install
 	insinto /usr/share/icons/"${PN/-bin}"/128x128/emotes/
-	doins ../png/128/*.png
+	doins png/128/*.png
 
 	insinto /usr/share/icons/"${PN/-bin}"/scalable/emotes/
-	doins ../svg/*.svg
+	doins svg/*.svg
 }
