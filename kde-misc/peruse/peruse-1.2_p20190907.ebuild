@@ -16,9 +16,10 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 	EGIT_REPO_URI="git://anongit.kde.org/${PN}.git"
 else
-	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
+	COMMIT="8c27d0130c3965c19b95e25c9ac1aa7241141964"
+	SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	S="${WORKDIR}/${PN}"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="LGPL-2.1"
