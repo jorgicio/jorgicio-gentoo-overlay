@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]];then
 	EGIT_REPO_URI="${HOMEPAGE}.git"
 else
 	SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="GPL-3"
