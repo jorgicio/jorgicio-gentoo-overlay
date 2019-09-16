@@ -20,7 +20,7 @@ KEYWORDS="~amd64"
 SLOT="0"
 LICENSE="MIT"
 
-IUSE="system-node"
+IUSE="system-node pax_kernel"
 
 DEPEND="${PYTHON_DEPS}
 	media-fonts/inconsolata
@@ -107,7 +107,6 @@ src_prepare(){
 }
 
 src_install() {
-	pax-mark m ${MY_PN}
 	mkdir -p "${D}/usr/share/${MY_PN}"
 	cp -r . "${D}/usr/share/${MY_PN}/"
 	doicon ${MY_PN}.png
@@ -120,6 +119,8 @@ src_install() {
 	make_desktop_entry "/usr/bin/${MY_PN} %U" "${MY_PN}" "${MY_PN}" \
 		"GNOME;GTK;Utility;TextEditor;Development;" \
 		"GenericName=Text Editor\nMimeType=text/plain;\nStartupNotify=true\nStartupWMClass=${MY_PN^}"
+
+	use pax_kernel && pax-mark -m "${ED%/}"/usr/share/${MY_PN}/${MY_PN}
 }
 
 pkg_preinst(){

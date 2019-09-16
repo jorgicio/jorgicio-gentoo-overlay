@@ -19,7 +19,7 @@ RESTRICT="mirror strip bindist"
 LICENSE="MS-vscode-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libsecret"
+IUSE="libsecret pax_kernel"
 
 DEPEND="
 	>=media-libs/libpng-1.2.46
@@ -49,13 +49,14 @@ pkg_setup(){
 }
 
 src_install(){
-	pax-mark m code
 	mkdir -p "${D}/opt/${MY_PN}"
 	cp -r . "${D}/opt/${MY_PN}/"
 	dosym "/opt/${MY_PN}/bin/code" "/usr/bin/${MY_PN}"
+	dosym "/opt/${MY_PN}/bin/code" "/usr/bin/code"
 	make_desktop_entry "${MY_PN}" "Visual Studio Code" "${MY_PN}" "Development;IDE"
 	newicon "resources/app/resources/linux/code.png" ${MY_PN}.png
 	einstalldocs
+	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/code
 }
 
 pkg_postinst(){

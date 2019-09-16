@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="pax_kernel"
 RESTRICT="mirror strip"
 
 RDEPEND="
@@ -46,9 +46,9 @@ src_unpack(){
 }
 
 src_install(){
-	pax-mark m opt/${MY_PN}/${PN-bin}
 	mkdir -p "${D}"
 	cp -r . "${D}/"
+	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/${PN-bin}
 }
 
 pkg_preinst(){
