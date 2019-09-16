@@ -12,5 +12,6 @@
 	</maintainer>
     <use>
         <flag name="system-node">Use node.js system implementation instead of bundled.</flag>
+        <flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
     </use>
 </pkgmetadata>
