@@ -17,7 +17,7 @@ battery-0.7.4
 bitflags-1.1.0
 blake2-rfc-0.2.18
 c2-chacha-0.2.2
-cc-1.0.36
+cc-1.0.45
 cfg-if-0.1.7
 chrono-0.4.6
 clap-2.33.0
@@ -37,16 +37,16 @@ failure-0.1.5
 failure_derive-0.1.5
 fuchsia-cprng-0.1.1
 gethostname-0.2.0
-getrandom-0.1.6
-git2-0.10.0
+getrandom-0.1.12
+git2-0.10.1
 humantime-1.2.0
 idna-0.2.0
 itoa-0.4.4
+jobserver-0.1.17
 lazy_static-1.4.0
 lazycell-1.2.1
-libc-0.2.58
-libgit2-sys-0.9.0
-libssh2-sys-0.2.11
+libc-0.2.62
+libgit2-sys-0.9.1
 libz-sys-1.0.25
 log-0.4.8
 mach-0.2.3
@@ -59,8 +59,7 @@ num-integer-0.1.39
 num-traits-0.2.6
 num_cpus-1.10.0
 numtoa-0.1.0
-openssl-probe-0.1.2
-openssl-sys-0.9.46
+once_cell-1.1.0
 path-slash-0.1.1
 percent-encoding-2.0.0
 pkg-config-0.3.14
@@ -95,7 +94,6 @@ semver-parser-0.7.0
 serde-1.0.98
 serde_json-1.0.40
 smallvec-0.6.10
-spin-0.5.2
 strsim-0.8.0
 syn-0.15.34
 synstructure-0.10.1
@@ -119,6 +117,7 @@ utf8-ranges-1.0.2
 vcpkg-0.2.6
 vec_map-0.8.1
 void-1.0.2
+wasi-0.7.0
 winapi-0.3.7
 winapi-i686-pc-windows-gnu-0.4.0
 winapi-util-0.1.2
