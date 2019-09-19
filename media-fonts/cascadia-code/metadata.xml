@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">microsoft/cascadia-code</remote-id>
+		<bugs-to>https://github.com/microsoft/cascadia-code/issues</bugs-to>
+		<maintainer type="project">
+			<email>opensource@microsoft.com</email>
+			<name>Microsoft</name>
+		</maintainer>
+	</upstream>
+	<maintainer type="person">
+		<email>jpizarrocallejas@gmail.com</email>
+		<name>Jorge Pizarro Callejas</name>
+		<description>Jorgicio Gentoo Overlay</description>
+	</maintainer>
+</pkgmetadata>
