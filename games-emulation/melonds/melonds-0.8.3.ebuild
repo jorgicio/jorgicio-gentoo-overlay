@@ -41,6 +41,8 @@ src_install() {
 	for size in 16 32 48 64 128 256; do
 		newicon -s ${size} icon/melon_${size}x${size}.png ${PN}.png
 	done
+	insinto /usr/share/${PN}
+	doins romlist.bin
 }
 
 pkg_postinst() {
@@ -50,6 +52,10 @@ pkg_postinst() {
 	elog "- bios7.bin"
 	elog "- bios9.bin"
 	elog "- firmware.bin"
+	elog "- romlist.bin"
+	elog "Place them in the same directory you're running melonDS."
+	elog "The romlist.bin file can be found in the /usr/share/${PN} directory,"
+	elog "while the other files can be found somewhere in the internet."
 	echo
 }
 
