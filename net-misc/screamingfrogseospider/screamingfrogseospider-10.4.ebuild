@@ -10,7 +10,7 @@ DESCRIPTION="A small desktop program you can install on your PC or Mac which spi
 HOMEPAGE="http://www.screamingfrog.co.uk/seo-spider/"
 SRC_URI="https://www.screamingfrog.co.uk/products/seo-spider/${P/-/_}_all.deb"
 
-LICENSE="custom"
+LICENSE="screamingfrogseospider-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
