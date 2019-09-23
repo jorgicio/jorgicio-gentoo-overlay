@@ -1,3 +1,5 @@
 # Phonon support is kinda broken or unstable.
 media-sound/strawberry phonon
 games-emulation/qmc2 phonon
+# System java is kinda broken and it requires Oracle JavaFX.
+net-misc/screamingfrogseospider system-java
