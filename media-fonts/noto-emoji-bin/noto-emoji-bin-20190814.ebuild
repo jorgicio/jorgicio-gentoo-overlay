@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Google Noto Emoji fonts (binary version)"
 HOMEPAGE="https://www.google.com/get/noto https://github.com/googlei18n/noto-emoji"
-COMMIT="e7490e1841094da518f4672398bdd74ee3c5fcac"
+COMMIT="833a43d03246a9325e748a2d783006454d76ff66"
 SRC_URI="https://github.com/googlei18n/${PN/-bin}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
