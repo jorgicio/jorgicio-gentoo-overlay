@@ -21,7 +21,7 @@ SRC_URI="
 KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="Apache-2.0 LGPL-2.1 LGPL-3 GPL-2 LGPL-2 public-domain GPL-2+ LGPL-2.1+ MIT"
+LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 

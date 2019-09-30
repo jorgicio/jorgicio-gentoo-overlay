@@ -9,7 +9,7 @@ DESCRIPTION="An advanced Qt5-based open-source launcher for Minecraft"
 HOMEPAGE="https://multimc.org"
 EGIT_REPO_URI="https://github.com/MultiMC/MultiMC5"
 
-LICENSE="Apache-2.0 LGPL-2.1 LGPL-3 GPL-2 LGPL-2 public-domain GPL-2+ LGPL-2.1+ MIT"
+LICENSE="Apache-2.0T"
 SLOT="0"
 IUSE=""
 
