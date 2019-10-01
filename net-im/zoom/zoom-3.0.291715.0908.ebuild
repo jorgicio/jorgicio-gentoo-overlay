@@ -23,6 +23,7 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio[alsa?] )
 	dev-db/sqlite:3
 	dev-db/unixODBC
+	dev-libs/nss
 	dev-qt/qtsql:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtmultimedia:5
@@ -42,9 +43,8 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	x11-libs/libxshmfence
-	dev-libs/nss
-	x11-libs/xcm-util-image
-	x11-libs/xcm-util-keysyms
+	x11-libs/xcb-util-image
+	x11-libs/xcb-util-keysyms
 "
 
 S="${WORKDIR}"
