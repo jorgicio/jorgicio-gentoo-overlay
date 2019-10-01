@@ -65,7 +65,7 @@ RDEPEND="${PYTHON_DEPS}
 	net-misc/wget
 	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
-	sys-libs/ncurses:5/5"
+	sys-libs/ncurses-compat:5/5"
 
 src_unpack() {
 	unpack ${A}
