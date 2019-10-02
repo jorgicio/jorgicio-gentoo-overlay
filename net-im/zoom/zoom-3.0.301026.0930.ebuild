@@ -19,7 +19,9 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror preserve-libs split"
 IUSE="alsa pax_kernel pulseaudio"
 
+DEPEND="dev-util/patchelf"
 RDEPEND="
+	${DEPEND}
 	pulseaudio? ( media-sound/pulseaudio[alsa?] )
 	dev-db/sqlite:3
 	dev-db/unixODBC

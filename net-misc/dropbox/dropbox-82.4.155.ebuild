@@ -14,7 +14,7 @@ SRC_URI="
 
 EGIT_REPO_URI="https://github.com/dark/dropbox-filesystem-fix.git"
 EGIT_COMMIT="72f4d04852d5002d9ba29b3f77fbacb2c12d1432"
-LICENSE="CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
+LICENSE="BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
 KEYWORDS="amd64 x86 ~x86-linux"
 IUSE="experimental +librsync-bundled selinux X"
@@ -78,7 +78,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm -vf libGL.so.1 libX11* libdrm.so.2 libpopt.so.0 wmctrl || die
+	use experimental && PATCHES=( "${FILESDIR}/dropbox-support-non-ext4.patch" )
+	default
+	rm -vf libGL.so.1 libX11* libdrm.so.2 libffi.so.6 libpopt.so.0 wmctrl || die
 	# tray icon doesnt load when removing libQt5* (bug 641416)
 	#rm -vrf libQt5* libicu* qt.conf plugins/ || die
 	if use X ; then
@@ -93,13 +95,11 @@ src_prepare() {
 	fi
 	pax-mark cm dropbox
 	mv README ACKNOWLEDGEMENTS "${T}" || die
-	use experimental && PATCHES=( "${FILESDIR}/dropbox-support-non-ext4.patch" )
-	default_src_prepare
 }
 
 src_compile(){
 	if use experimental; then
-		default_src_compile
+		default
 		rm -vf Makefile README.md detect-ext4.c \
 			dropbox_start.py libdropbox_fs_fix.c LICENSE
 	fi
