@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug gstreamer spellcheck video"
+IUSE="debug gstreamer spellcheck +video"
 
 RDEPEND="dev-db/sqlite:3
 	>=dev-libs/glib-2.44:2
