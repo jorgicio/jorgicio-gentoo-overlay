@@ -5,24 +5,23 @@ EAPI=6
 
 VALA_MIN_API_VERSION=0.34
 
-inherit autotools gnome2 vala virtualx
+inherit autotools gnome2 meson vala
 
-DESCRIPTION="Native GTK+3 Twitter client"
-HOMEPAGE="http://corebird.baedert.org/"
-if [[ ${PV} == *9999* ]];then
+DESCRIPTION="Native GTK+3 Twitter client, forked from Corebird"
+HOMEPAGE="https://ibboard.co.uk/cawbird/"
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/baedert/corebird.git"
-	KEYWORDS=""
+	EGIT_REPO_URI="https://github.com/IBBoard/${PN}"
 else
-	SRC_URI="https://github.com/baedert/corebird/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/IBBoard/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug gstreamer spellcheck"
+IUSE="debug gstreamer spellcheck video"
 
 RDEPEND="dev-db/sqlite:3
 	>=dev-libs/glib-2.44:2
@@ -44,23 +43,10 @@ DEPEND="${RDEPEND}
 	sys-apps/sed
 	virtual/pkgconfig"
 
-src_prepare() {
-	sed -i -e "/highlighting/d" tests/Makefile.am || die
-	sed -i -e "/manpagedir/s/manpagedir.*/&\/man1/g" data/Makefile.am || die
-	eautoreconf
-	gnome2_src_prepare
-	vala_src_prepare
-}
-
 src_configure() {
-	local myeconfargs=(
-		$(use_enable gstreamer video)
-		--disable-gst-check
-		$(use_enable spellcheck)
+	local emesonargs=(
+		VIDEO=$(usex video)
+		SPELLCHECK=$(usex spellcheck)
 	)
-	gnome2_src_configure "${myeconfargs[@]}"
-}
-
-src_test() {
-	virtx emake check
+	meson_src_configure
 }
