@@ -3,7 +3,7 @@
 
 EAPI=6
 
-VALA_MIN_API_VERSION=0.34
+VALA_MIN_API_VERSION=0.28
 
 inherit autotools gnome2 meson vala
 
@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug gstreamer spellcheck +video"
+IUSE="debug +gstreamer spellcheck"
 
 RDEPEND="dev-db/sqlite:3
 	>=dev-libs/glib-2.44:2
@@ -32,8 +32,8 @@ RDEPEND="dev-db/sqlite:3
 		media-libs/gst-plugins-good:1.0
 		media-plugins/gst-plugins-libav:1.0
 		media-plugins/gst-plugins-soup:1.0
-		video? ( media-plugins/gst-plugins-hls:1.0 ) )
-	spellcheck? ( >=app-text/gspell-1.0 )
+		media-plugins/gst-plugins-hls:1.0 )
+	spellcheck? ( >=app-text/gspell-1.2 )
 	>=net-libs/libsoup-2.42.3.1
 	>=net-libs/rest-0.7.91:0.7
 	>=x11-libs/gtk+-3.18:3"
@@ -44,13 +44,14 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	export VALAC=valac-$(vala_best_api_version)
 	default
 }
 
 src_configure() {
 	local emesonargs=(
-		VIDEO=$(usex video)
-		SPELLCHECK=$(usex spellcheck)
+		$(meson_use gstreamer "video")
+		$(meson_use spellcheck)
 	)
 	meson_src_configure
 }

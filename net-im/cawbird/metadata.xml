@@ -7,6 +7,6 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
-		<flag name="video">Enable video/gifs support</flag>
+		<flag name="spellcheck">Enable spell check support</flag>
 	</use>
 </pkgmetadata>
