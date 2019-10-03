@@ -32,7 +32,7 @@ RDEPEND="dev-db/sqlite:3
 		media-libs/gst-plugins-good:1.0
 		media-plugins/gst-plugins-libav:1.0
 		media-plugins/gst-plugins-soup:1.0
-		media-plugins/gst-plugins-hls:1.0 )
+		video? ( media-plugins/gst-plugins-hls:1.0 ) )
 	spellcheck? ( >=app-text/gspell-1.0 )
 	>=net-libs/libsoup-2.42.3.1
 	>=net-libs/rest-0.7.91:0.7
@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40
 	sys-apps/sed
 	virtual/pkgconfig"
+
+src_prepare() {
+	default
+}
 
 src_configure() {
 	local emesonargs=(
