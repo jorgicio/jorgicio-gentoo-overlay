@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 VALA_MIN_API_VERSION=0.28
 
-inherit autotools gnome2 meson vala
+inherit gnome2 meson vala
 
 DESCRIPTION="Native GTK+3 Twitter client, forked from Corebird"
 HOMEPAGE="https://ibboard.co.uk/cawbird/"
@@ -36,8 +36,9 @@ RDEPEND="dev-db/sqlite:3
 	spellcheck? ( >=app-text/gspell-1.2 )
 	>=net-libs/libsoup-2.42.3.1
 	>=net-libs/rest-0.7.91:0.7
-	>=x11-libs/gtk+-3.18:3"
-DEPEND="${RDEPEND}
+	>=x11-libs/gtk+-3.22:3"
+DEPEND="
+	${RDEPEND}
 	$(vala_depend)
 	>=dev-util/intltool-0.40
 	sys-apps/sed
