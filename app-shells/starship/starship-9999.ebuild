@@ -7,10 +7,11 @@ inherit cargo git-r3
 
 DESCRIPTION="The cross-shell prompt for astronauts"
 HOMEPAGE="https://starship.rs"
-EGIT_REPO_URI="https://github.com/starship/${PN}"
+EGIT_REPO_URI="https://github.com/starship/${PN}.git"
 
 LICENSE="ISC"
 SLOT="0"
+RESTRICT="network-sandbox"
 
 DEPEND="
 	dev-libs/openssl:0
