@@ -1,9 +1,0 @@
-diff -Naur a/dropboxd b/dropboxd
---- a/dropboxd	2019-01-15 13:48:35.690396087 -0300
-+++ b/dropboxd	2019-01-15 13:49:58.039231563 -0300
-@@ -12,4 +12,5 @@
- 
- export QT_PLUGIN_PATH=
- export QT_STYLE_OVERRIDE=
-+export LD_PRELOAD=/opt/dropbox/libdropbox_fs_fix.so 
- exec "$PAR"/dropbox "$@"
