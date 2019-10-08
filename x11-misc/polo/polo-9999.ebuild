@@ -38,15 +38,14 @@ RDEPEND="${DEPEND}
 
 src_prepare(){
 	sed -i -e "s/valac/\$\(VALAC\)/" src/makefile
-	default_src_prepare
 	export VALAC="$(type -P valac-$(vala_best_api_version))"
-	vala_src_prepare
+	default
 }
 
 src_install(){
 	default_src_install
-	dosym "${EROOT}/usr/bin/polo-gtk" "${EROOT}/usr/bin/polo"
-	rm "${EROOT}/usr/bin/polo-uninstall"
+	dosym "${ED%/}/usr/bin/polo-gtk" "${ED%/}/usr/bin/polo"
+	rm "${ED%/}/usr/bin/polo-uninstall"
 }
 
 pkg_postinst(){
