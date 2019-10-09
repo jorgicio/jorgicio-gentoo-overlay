@@ -32,6 +32,11 @@ src_prepare() {
 	done
 }
 
+# Nothing to compile
+src_compile() {
+	true
+}
+
 src_install() {
 	default_src_install
 	for size in 16x16 22x22 24x24 32x32 48x48 64x64
