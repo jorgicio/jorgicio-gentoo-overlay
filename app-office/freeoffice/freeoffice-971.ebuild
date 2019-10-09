@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop gnome2-utils pax-utils xdg-utils
+inherit desktop pax-utils xdg-utils
 
 DESCRIPTION="A complete, free Microsoft Office-compatible alternative office suite"
 HOMEPAGE="https://www.freeoffice.com"
@@ -76,23 +76,19 @@ src_install(){
 	fi
 }
 
-pkg_preinst(){
-	gnome2_icon_savelist
-}
-
 pkg_postinst(){
 	echo
 	elog "In order to use Softmaker Freeoffice, you need a serial number."
 	elog "To obtain a valid free serial number, please visit"
 	elog "https://www.freeoffice.com/en/download"
 	echo
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm(){
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
