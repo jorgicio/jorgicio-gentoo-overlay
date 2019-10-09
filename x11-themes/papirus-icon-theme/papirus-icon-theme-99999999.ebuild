@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils
+inherit xdg-utils
 
 DESCRIPTION="Papirus icon theme for GTK and KDE"
 HOMEPAGE="https://git.io/papirus-icon-theme"
@@ -41,14 +41,11 @@ src_install() {
 	done
 }
 
-pkg_preinst(){
-	gnome2_icon_savelist
-}
 
 pkg_postinst(){
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm(){
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
