@@ -24,6 +24,7 @@ fi
 LICENSE="LGPL-3"
 SLOT="0"
 IUSE="test"
+RESTRICT="mirror"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
