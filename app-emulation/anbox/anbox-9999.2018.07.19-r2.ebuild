@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}
 	dev-libs/boost:=[threads]
 	dev-libs/dbus-c++
 	dev-libs/glib:2
-	dev-cpp/properties-cpp
+	dev-libs/properties-cpp
 	dev-libs/protobuf
 	media-libs/glm
 	media-libs/libsdl2[wayland]
