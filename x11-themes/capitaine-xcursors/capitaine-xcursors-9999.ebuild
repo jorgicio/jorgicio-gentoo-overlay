@@ -5,6 +5,8 @@ EAPI=7
 
 inherit xdg-utils
 
+MY_PN="${PN/xcursors/cursors}"
+
 DESCRIPTION="An x-cursor theme inspired by macOS and based on KDE Breeze"
 HOMEPAGE="https://github.com/keeferrourke/capitaine-cursors"
 
@@ -13,7 +15,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	MY_PV="r${PV}"
-	MY_P="${PN}-${MY_PV}"
+	MY_P="${MY_PN}-${MY_PV}"
 	SRC_URI="${HOMEPAGE}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~x86 ~amd64 ~x86-linux ~amd64-linux ~x86-fbsd ~amd64-fbsd ~arm ~arm64"
 	S="${WORKDIR}/${MY_P}"
@@ -25,22 +27,36 @@ IUSE="build"
 
 BDEPEND="
 	build? (
-		x11-apps/xcursorgen
+		media-gfx/imagemagick
 		media-gfx/inkscape
+		x11-apps/xcursorgen
 	)
 "
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+DOCS=(
+	COPYING
+	README.md
+	preview.png
+	product.svg
+)
+
+src_prepare() {
+	default
+	use build && ( rm -rf dist dist-white || die )
+}
 
 src_compile(){
 	use build && ./build.sh
 }
 
 src_install(){
-	insinto /usr/share/icons/${PN}
+	insinto /usr/share/cursors/xorg-x11/${MY_PN}
 	doins -r dist/*
-	insinto /usr/share/icons/${PN}-white
+	insinto /usr/share/cursors/xorg-x11/${MY_PN}-white
 	doins -r dist-white/*
+	default
 }
 
 pkg_preinst(){
