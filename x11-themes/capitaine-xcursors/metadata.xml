@@ -7,6 +7,7 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
-		<flag name="build">Optionally build the cursor icons instead of install from the built ones provided by the maintainer</flag>
+		<flag name="binary">Install precompiled cursor theme instead of building it</flag>
+		<flag name="imagemagick">Use convert tool from Imagemagick instead of Inkscape to build the image files</flag>
 	</use>
 </pkgmetadata>

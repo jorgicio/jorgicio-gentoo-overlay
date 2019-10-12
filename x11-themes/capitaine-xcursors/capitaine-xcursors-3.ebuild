@@ -23,17 +23,16 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="build"
+IUSE="binary imagemagick"
+REQUIRED_USE="imagemagick? ( !binary )"
 
 BDEPEND="
-	build? (
-		media-gfx/imagemagick
-		media-gfx/inkscape
+	!binary? (
+		imagemagick? ( media-gfx/imagemagick )
+		!imagemagick? ( media-gfx/inkscape )
 		x11-apps/xcursorgen
 	)
 "
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 DOCS=(
 	COPYING
@@ -43,12 +42,13 @@ DOCS=(
 )
 
 src_prepare() {
+	use imagemagick && eapply "${FILESDIR}/${PN}-3-convert-fix.patch"
 	default
-	use build && ( rm -rf dist dist-white || die )
+	use !binary && ( rm -rf dist dist-white || die )
 }
 
 src_compile(){
-	use build && ./build.sh
+	use !binary && ./build.sh
 }
 
 src_install(){
