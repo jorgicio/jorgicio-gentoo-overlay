@@ -28,7 +28,7 @@ REQUIRED_USE="imagemagick? ( !binary )"
 
 BDEPEND="
 	!binary? (
-		imagemagick? ( media-gfx/imagemagick )
+		imagemagick? ( virtual/imagemagick-tools[png,svg] )
 		!imagemagick? ( media-gfx/inkscape )
 		x11-apps/xcursorgen
 	)
