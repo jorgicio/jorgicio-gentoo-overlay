@@ -1,7 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+PYTHON_COMPAT=( python3_{5,6,7} )
+
+inherit python-utils-r1 xdg-utils
 
 DESCRIPTION="LightDM settings app to use it with the slick greeter"
 HOMEPAGE="https://github.com/linuxmint/lightdm-settings"
@@ -25,6 +29,7 @@ DEPEND="
 	dev-util/desktop-file-utils
 "
 RDEPEND="${DEPEND}
+	${PYTHON_DEPS}
 	dev-python/setproctitle
 	dev-python/pygobject
 	sys-auth/polkit
@@ -34,11 +39,34 @@ RDEPEND="${DEPEND}
 	x11-misc/lightdm-slick-greeter
 "
 
-src_install(){
-	insinto /usr/$(get_libdir)
-	doins -r usr/lib/*
+DOCS=(
+	COPYING
+	README.md
+)
+
+src_prepare() {
+	sed -i -e "s#/usr/lib#/usr/$(get_libdir)#" usr/bin/${PN} || die
+	default
+}
+
+src_install() {
+	mkdir -p "${ED%/}"/usr/$(get_libdir)
+	cp -r usr/lib/* "${ED%/}"/usr/$(get_libdir)
+	cp -r usr/share "${ED%/}"/usr/
 	dobin usr/bin/${PN}
-	insinto /usr
-	doins -r usr/share
-	fperms +x /usr/$(get_libdir)/${PN}/${PN}
+	einstalldocs
+}
+
+pkg_preinst() {
+	xdg_environment_reset
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
 }
