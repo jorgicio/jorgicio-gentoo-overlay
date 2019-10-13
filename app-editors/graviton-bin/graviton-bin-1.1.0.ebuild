@@ -46,8 +46,8 @@ src_unpack(){
 }
 
 src_install(){
-	mkdir -p "${D}"
-	cp -r . "${D}/"
+	mkdir -p "${ED}"
+	cp -r . "${ED}/"
 	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/${PN-bin}
 }
 

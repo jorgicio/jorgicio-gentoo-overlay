@@ -49,8 +49,8 @@ pkg_setup(){
 }
 
 src_install(){
-	mkdir -p "${D}/opt/${MY_PN}"
-	cp -r . "${D}/opt/${MY_PN}/"
+	mkdir -p "${ED}/opt/${MY_PN}"
+	cp -r . "${ED}/opt/${MY_PN}/"
 	dosym "/opt/${MY_PN}/bin/code" "/usr/bin/${MY_PN}"
 	dosym "/opt/${MY_PN}/bin/code" "/usr/bin/code"
 	make_desktop_entry "${MY_PN}" "Visual Studio Code" "${MY_PN}" "Development;IDE"

@@ -107,8 +107,8 @@ src_prepare(){
 }
 
 src_install() {
-	mkdir -p "${D}/usr/share/${MY_PN}"
-	cp -r . "${D}/usr/share/${MY_PN}/"
+	mkdir -p "${ED}/usr/share/${MY_PN}"
+	cp -r . "${ED}/usr/share/${MY_PN}/"
 	doicon ${MY_PN}.png
 	newbin ${FILESDIR}/${PN} ${MY_PN}
 	insinto ${EPREFIX}/usr/share/lintian/overrides

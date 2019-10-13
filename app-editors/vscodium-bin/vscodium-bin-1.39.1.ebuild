@@ -44,8 +44,8 @@ QA_PREBUILT="opt/${MY_PN}/codium"
 S="${WORKDIR}"
 
 src_install(){
-	mkdir -p "${D}/opt/${MY_PN}"
-	cp -r . "${D}/opt/${MY_PN}/"
+	mkdir -p "${ED}/opt/${MY_PN}"
+	cp -r . "${ED}/opt/${MY_PN}/"
 	dosym "/opt/${MY_PN}/bin/codium" "/usr/bin/${MY_PN}"
 	dosym "/opt/${MY_PN}/bin/codium" "/usr/bin/codium"
 	make_desktop_entry "${MY_PN}" "VSCodium" "${MY_PN}" "Development;IDE"
