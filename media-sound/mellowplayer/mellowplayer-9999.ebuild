@@ -14,7 +14,7 @@ HOMEPAGE="https://colinduquesnoy.gitlab.io/MellowPlayer"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.com/colinduquesnoy/${MY_PN}.git"
+	EGIT_REPO_URI="https://gitlab.com/colinduquesnoy/${MY_PN}"
 else
 	KEYWORDS="-* ~amd64"
 	MY_P="${MY_PN}-${PV}"
@@ -43,12 +43,12 @@ RDEPEND="
 	x11-libs/libnotify
 "
 
-src_prepare(){
-	use widevine && PATCHES=( "${FILESDIR}/widevine-path.patch" )
+src_prepare() {
+	use widevine && eapply "${FILESDIR}/widevine-path.patch"
 	cmake-utils_src_prepare
 }
 
-src_configure(){
+src_configure() {
 	if test-flags-CXX -std=c++17;then
 		if tc-is-gcc; then
 			[ $(gcc-major-version) -lt 6 ] && die "You need at least GCC 6.0 in order to build ${MY_PN}"
@@ -62,10 +62,16 @@ src_configure(){
 	cmake-utils_src_configure
 }
 
-pkg_postinst(){
+pkg_preinst() {
+	xdg_environment_reset
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
-pkg_postrm(){
+pkg_postrm() {
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
