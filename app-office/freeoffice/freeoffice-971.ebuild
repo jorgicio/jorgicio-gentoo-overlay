@@ -54,8 +54,8 @@ src_prepare(){
 }
 
 src_install(){
-	mkdir -p "${D}/usr/$(get_libdir)/${PN}"
-	cp -r * "${D}/usr/$(get_libdir)/${PN}/"
+	mkdir -p "${ED}/usr/$(get_libdir)/${PN}"
+	cp -r . "${ED}/usr/$(get_libdir)/${PN}/"
 	for m in ${FILESDIR}/*.desktop; do
 		domenu "${m}"
 	done
