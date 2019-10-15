@@ -23,7 +23,6 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
 
 COMMON_DEPEND="
 	dev-qt/qtcore:5
@@ -51,7 +50,7 @@ PATCHES=(
 )
 
 src_unpack(){
-	default_src_unpack
+	default
 	rm -rf "${S}/libraries/libnbtplusplus" "${S}/libraries/quazip"
 	mv "${WORKDIR}/libnbtplusplus-${LIBNBTPLUSPLUS_VER}" "${S}/libraries/libnbtplusplus" || die
 	mv "${WORKDIR}/quazip-${QUAZIP_VER}" "${S}/libraries/quazip" || die
@@ -82,9 +81,11 @@ pkg_preinst(){
 }
 
 pkg_postinst(){
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm(){
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }

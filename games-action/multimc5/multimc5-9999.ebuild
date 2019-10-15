@@ -9,9 +9,8 @@ DESCRIPTION="An advanced Qt5-based open-source launcher for Minecraft"
 HOMEPAGE="https://multimc.org"
 EGIT_REPO_URI="https://github.com/MultiMC/MultiMC5"
 
-LICENSE="Apache-2.0T"
+LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
 
 COMMON_DEPEND="
 	dev-qt/qtcore:5
@@ -56,9 +55,11 @@ pkg_preinst(){
 }
 
 pkg_postinst(){
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm(){
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
