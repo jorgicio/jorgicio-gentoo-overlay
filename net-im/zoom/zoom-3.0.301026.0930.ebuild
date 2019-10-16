@@ -73,8 +73,8 @@ src_prepare() {
 }
 
 src_install() {
-	mkdir -p "${D}"
-	cp -r {opt,usr} "${D}/"
+	mkdir -p "${ED}"
+	cp -r {opt,usr} "${ED}/"
 	use pax_kernel && pax-mark -m "${ED%/}"/opt/${PN}/${PN}
 	default
 }
