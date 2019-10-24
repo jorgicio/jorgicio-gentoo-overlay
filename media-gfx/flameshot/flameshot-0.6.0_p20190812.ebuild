@@ -49,7 +49,7 @@ src_install(){
 	INSTALL_ROOT="${D}" default_src_install
 	if use kde; then
 		insinto /usr/share/config
-		newins docs/shortcuts-config/${PN}-shortcuts-kde ${PN}rc
+		doins docs/shortcuts-config/${PN}-shortcuts-kde
 	fi
 }
 

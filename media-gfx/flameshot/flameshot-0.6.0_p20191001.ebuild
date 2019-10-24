@@ -7,7 +7,8 @@ inherit qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
 HOMEPAGE="https://flameshot.js.org"
-SRC_URI="https://github.com/lupoDharkael/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+COMMIT="91ba28c3ded7ca3314f02418761c982069cf8b33"
+SRC_URI="https://github.com/lupoDharkael/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 LICENSE="FreeArt GPL-3+ Apache-2.0"
@@ -28,13 +29,12 @@ RDEPEND="${DEPEND}
 		kde-frameworks/kglobalaccel:5
 	)
 "
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare(){
-	sed -i "s|TAG_VERSION = .*|TAG_VERSION = v${PV}|" ${PN}.pro
+	sed -i "s|TAG_VERSION = .*|TAG_VERSION = v0.6.0|" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro
-	sed -i "s#^Icon=.*#Icon=${PN}#" "docs/desktopEntry/package/${PN}.desktop" \
-		"snap/gui/${PN}.desktop" \
-		"snap/gui/${PN}-init.desktop"
+	sed -i "s#^Icon=.*#Icon=${PN}#" "docs/desktopEntry/package/${PN}.desktop"
 	default_src_prepare
 }
 
