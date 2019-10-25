@@ -6,7 +6,7 @@ diff -Naur a/src/main/share/applications/mellowplayer.desktop b/src/main/share/a
  Type=Application
  Name=MellowPlayer
 -Exec=MellowPlayer
-+Exec=MellowPlayer --ppapi-widevine-path=/usr/lib64/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
++Exec=MellowPlayer --ppapi-widevine-path=/usr/lib64/qt5/plugins/ppapi/libwidevinecdm.so
  TryExec=MellowPlayer
  Icon=mellowplayer
  Terminal=false
