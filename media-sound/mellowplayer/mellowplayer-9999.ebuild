@@ -24,7 +24,6 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+widevine"
 
 DEPEND="
 	>=dev-qt/qtquickcontrols2-5.9:5
@@ -39,14 +38,11 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	www-plugins/adobe-flash:*
-	www-plugins/chrome-binary-plugins:*[widevine?]
+	www-plugins/chrome-binary-plugins:*
 	x11-libs/libnotify
 "
 
-src_prepare() {
-	use widevine && eapply "${FILESDIR}/widevine-path.patch"
-	cmake-utils_src_prepare
-}
+PATCHES=( "${FILESDIR}/widevine-path.patch" )
 
 src_configure() {
 	if test-flags-CXX -std=c++17;then
