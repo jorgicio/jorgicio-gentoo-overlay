@@ -61,9 +61,9 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 	# Create a symlink in order to use the Widevine plugin
-	dodir /usr/$(get_libdir)/qt5/ppapi
+	dodir /usr/$(get_libdir)/qt5/plugins/ppapi
 	dosym "${EROOT}"/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
-		/usr/$(get_libdir)/qt5/ppapi/libwidevinecdm.so
+		/usr/$(get_libdir)/qt5/plugins/ppapi/libwidevinecdm.so
 }
 
 pkg_preinst() {
