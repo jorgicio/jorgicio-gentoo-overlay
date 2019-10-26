@@ -1,26 +1,23 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils autotools flag-o-matic toolchain-funcs versionator xdg-utils
+inherit autotools flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="Linux-exclusive Opera-like lightweight web browser"
 HOMEPAGE="http://fifth-browser.sourceforge.net"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	SRC_URI=""
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/clbr/${PN}.git"
 else
 	SRC_URI="mirror://sourceforge/${PN}-browser/${P}.txz"
-	KEYWORDS="~x86 ~amd64 ~arm"
+	KEYWORDS="~x86 ~amd64 ~arm ~arm64"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	net-libs/webkitfltk
@@ -48,7 +45,7 @@ src_configure(){
 
 src_install(){
 	emake check
-	emake DESTDIR="${D}" install
+	default
 }
 
 pkg_postinst(){
