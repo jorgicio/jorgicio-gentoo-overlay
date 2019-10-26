@@ -1,33 +1,28 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1 flag-o-matic toolchain-funcs
+inherit python-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Port of Webkit to FLTK 1.3"
 HOMEPAGE="http://fifth-browser.sourceforge.net"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/clbr/${PN}.git"
-	KEYWORDS=""
 else
 	SRC_URI="mirror://sourceforge/fifth-browser/${P}.txz"
-	KEYWORDS="~x86 ~arm ~amd64"
+	KEYWORDS="~x86 ~arm ~arm64 ~amd64"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	dev-lang/perl
-	dev-lang/ruby[ssl]
 	sys-libs/zlib
 	media-libs/libpng:0
 	virtual/jpeg:0
@@ -38,21 +33,26 @@ DEPEND="
 	net-misc/curl
 	dev-libs/icu
 	media-libs/harfbuzz[icu]
-	dev-db/sqlite:3
-	dev-util/gperf
-	>=x11-libs/fltk-1.3.3:1[cairo]
 "
 RDEPEND="${DEPEND}"
+BDEPEND="
+	dev-util/gperf
+	>=x11-libs/fltk-1.3.3:1[cairo]
+	dev-lang/perl
+	dev-lang/ruby[ssl]
+	dev-db/sqlite:3
+"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.patch"
+	"${FILESDIR}/${PN}-2.patch"
+	"${FILESDIR}/${PN}-3.patch"
+	"${FILESDIR}/${PN}-4.patch"
+	"${FILESDIR}/${PN}-5.patch"
+	"${FILESDIR}/${PN}-6.patch"
+)
 
 src_prepare(){
-	PATCHES=(
-		"${FILESDIR}/${PN}-1.patch"
-		"${FILESDIR}/${PN}-2.patch"
-		"${FILESDIR}/${PN}-3.patch"
-		"${FILESDIR}/${PN}-4.patch"
-		"${FILESDIR}/${PN}-5.patch"
-		"${FILESDIR}/${PN}-6.patch"
-	)
 	sed -i '39 a\
 		#include <cmath>' Source/JavaScriptCore/runtime/Options.cpp
 	default
