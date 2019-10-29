@@ -41,7 +41,8 @@ RDEPEND="${DEPEND}
 	sys-libs/libcap
 	x11-libs/libXtst
 	x11-libs/pango
-	dev-vcs/git"
+	dev-vcs/git
+	dev-libs/openssl:0="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-python-interceptor.patch
@@ -103,12 +104,12 @@ src_prepare(){
 		#Fix apm binary to use the nodejs binary rather than the built-in
 		sed -i "s#\$binDir\/\$nodeBin#\$\(which \$nodeBin\)#" resources/app/apm/bin/apm
 	fi
-	default_src_prepare
+	default
 }
 
 src_install() {
-	mkdir -p "${ED}/usr/share/${MY_PN}"
-	cp -r . "${ED}/usr/share/${MY_PN}/"
+	mkdir -p "${D}/usr/share/${MY_PN}"
+	cp -r . "${D}/usr/share/${MY_PN}/"
 	doicon ${MY_PN}.png
 	newbin ${FILESDIR}/${PN} ${MY_PN}
 	insinto ${EPREFIX}/usr/share/lintian/overrides
