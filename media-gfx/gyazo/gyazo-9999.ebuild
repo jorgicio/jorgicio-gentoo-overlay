@@ -4,7 +4,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit desktop ruby-single
 
@@ -12,12 +12,10 @@ DESCRIPTION="Seriously Instant Screen-Grabbing"
 HOMEPAGE="http://gyazo.com"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	SRC_URI=""
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/gyazo/Gyazo-for-Linux.git"
 else
 	SRC_URI="https://github.com/gyazo/Gyazo-for-Linux/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S="${WORKDIR}/Gyazo-for-Linux-${PV}"
 fi
 
