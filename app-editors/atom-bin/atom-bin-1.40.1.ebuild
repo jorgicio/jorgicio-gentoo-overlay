@@ -23,7 +23,6 @@ LICENSE="MIT"
 IUSE="system-node pax_kernel"
 
 DEPEND="${PYTHON_DEPS}
-	media-fonts/inconsolata
 	system-node? ( >=net-libs/nodejs-6.0[npm] )
 	!!dev-util/atom-shell
 	!dev-util/apm
