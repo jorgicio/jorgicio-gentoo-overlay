@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools desktop flag-o-matic
 
 GLIDE_PATCH=841e1071597b64ead14dd08c25a03206b2d1d1b6
-MY_PV="${PV:0:4}-${PV:5:6}"
+MY_PV="${PV:0:4}-${PV:5:1}"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="DOS emulator"
 HOMEPAGE="http://dosbox.sourceforge.net/"

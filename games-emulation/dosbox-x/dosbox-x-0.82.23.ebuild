@@ -3,14 +3,15 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic git-r3
+inherit autotools flag-o-matic
 
 DESCRIPTION="A fork of DOSBox, with patches and more features"
 HOMEPAGE="https://dosbox-x.com/"
-EGIT_REPO_URI="https://github.com/joncampbell123/${PN}"
+SRC_URI="https://github.com/joncampbell123/${PN}/archive/${PN}-v${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="alsa debug hardened ffmpeg opengl +sdl2"
 
 DEPEND="alsa? ( media-libs/alsa-lib )
@@ -27,6 +28,8 @@ DEPEND="alsa? ( media-libs/alsa-lib )
 	)
 	media-libs/libpng"
 RDEPEND=${DEPEND}
+
+S="${WORKDIR}/${PN}-${PN}-v${PV}"
 
 src_prepare() {
 	default
