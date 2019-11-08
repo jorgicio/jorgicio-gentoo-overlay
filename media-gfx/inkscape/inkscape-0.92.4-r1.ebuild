@@ -110,6 +110,11 @@ pkg_pretend() {
 	fi
 }
 
+pkg_setup() {
+	use imagemagick && export PKG_CONFIG_PATH=/usr/$(get_libdir)/imagemagick6/pkgconfig
+	default
+}
+
 src_prepare() {
 	default
 

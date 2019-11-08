@@ -120,7 +120,7 @@ src_configure() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
 
 	local myeconfargs=(
-		PKG_CONFIG="/usr/bin/env PKG_CONFIG_PATH=/usr/$(get_libdir)/${PN/compat/6}/pkgconfig pkg-config"
+		PKG_CONFIG="/usr/bin/env PKG_CONFIG_PATH=/usr/$(get_libdir)/${PN/-compat/6}/pkgconfig pkg-config"
 		$(use_enable static-libs static)
 		$(use_enable hdri)
 		$(use_enable opencl)
@@ -192,7 +192,7 @@ src_install() {
 	emake \
 		DESTDIR="${D}" \
 		install \
-		pkgconfigdir="/usr/$(get_libdir)/${PN/compat/6}/pkgconfig"
+		pkgconfigdir="/usr/$(get_libdir)/${PN/-compat/6}/pkgconfig"
 
 	# Cleaning all unnecessary files such as tools and perl bindings
 	rm -rf "${ED%/}"/usr/share/doc "${ED%/}"/usr/bin "${ED%/}"/usr/$(get_libdir)/perl5 "${ED%/}"/usr/share/man
