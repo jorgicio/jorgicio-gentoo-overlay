@@ -110,10 +110,6 @@ pkg_pretend() {
 	fi
 }
 
-pkg_setup() {
-		default
-}
-
 src_prepare() {
 	default
 
