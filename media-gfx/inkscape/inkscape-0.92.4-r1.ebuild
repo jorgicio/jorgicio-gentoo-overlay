@@ -111,8 +111,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use imagemagick && export PKG_CONFIG_PATH=/usr/$(get_libdir)/imagemagick6/pkgconfig
-	default
+		default
 }
 
 src_prepare() {
@@ -130,6 +129,8 @@ src_prepare() {
 src_configure() {
 	# aliasing unsafe wrt #310393
 	append-flags -fno-strict-aliasing
+
+	use imagemagick && export PKG_CONFIG_PATH=/usr/$(get_libdir)/imagemagick6/pkgconfig
 
 	local myeconfargs=(
 		$(use_enable static-libs static)
