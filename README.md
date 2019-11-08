@@ -9,6 +9,7 @@
   - [Note for all people who send pull requests (MUST READ)](#note-for-all-people-who-send-pull-requests-must-read)
   - [Note for all people who doesn't own a Github accound (MUST READ)](#note-for-all-people-who-doesnt-own-a-github-accound-must-read)
   - [Note for all MATE lovers (READ IT!!!)](#note-for-all-mate-lovers-read-it)
+  - [Problem with compatibility with recent versions of ImageMagick? See here](#problem-with-compatibility-with-recent-versions-of-imagemagick-see-here)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -76,3 +77,7 @@ Thanks in advance.
 Thanks.~~
 That information is not needed anymore. MATE packages are already available on the official Portage tree, so I won't maintain that repo anymore.
 Thanks for the support!
+
+## Problem with compatibility with recent versions of ImageMagick? See here
+
+I just created another overlay called [magick6-compat](https://github.com/jorgicio/magick6-compat), which helps to get rid with the problem of compatibility between both versions of ImageMagick (6.x and 7.x). Feel free to send suggestions, PRs and stuff.
