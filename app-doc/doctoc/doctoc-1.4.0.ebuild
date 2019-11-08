@@ -10,18 +10,14 @@ DESCRIPTION="Generates a table of contents for Markdown files inside for a git-b
 HOMEPAGE="https://github.com/thlorenz/doctoc"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
-	KEYWORDS=""
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~x86 ~amd64"
-	RESTRICT="mirror"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
