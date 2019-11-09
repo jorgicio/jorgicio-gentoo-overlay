@@ -4,18 +4,12 @@
 
 EAPI=7
 
-CMAKE_MIN_VERSION="3.2.0"
 inherit cmake-utils
 
 DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="https://nitroshare.net"
-if [[ ${PV} == 9999 ]];then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
-else
-	SRC_URI="https://launchpad.net/nitroshare/${PV:0:3}/${PV}/+download/${P}.tar.gz -> ${P}.tar"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
-fi
+SRC_URI="https://launchpad.net/nitroshare/${PV:0:3}/${PV}/+download/${P}.tar.gz -> ${P}.tar"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 LICENSE="MIT"
 SLOT="0"

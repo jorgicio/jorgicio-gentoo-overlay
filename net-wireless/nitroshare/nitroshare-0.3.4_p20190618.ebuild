@@ -4,15 +4,18 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3
+inherit cmake-utils
+
+COMMIT="a2fc0eae88fb2ea8a13f02e052a0af47b8532a2f"
 
 DESCRIPTION="Network File Transfer Application"
 HOMEPAGE="https://nitroshare.net"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}-desktop"
+SRC_URI="https://github.com/${PN}/${PN}-desktop/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="appindicator http mdns test"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 DEPEND="
 	>=dev-qt/qtcore-5.4.0:5
@@ -31,6 +34,8 @@ RDEPEND="${DEPEND}
 		dev-libs/libappindicator:2
 	)
 "
+
+S="${WORKDIR}/${PN}-desktop-${COMMIT}"
 
 PATCHES=( "${FILESDIR}/${PN}-cmake-libdir.patch" )
 
