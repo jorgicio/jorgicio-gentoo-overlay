@@ -11,6 +11,7 @@ SRC_URI="https://developer.apple.com/fonts/downloads/SFPro.zip -> SFPro-${PV}.zi
 
 SLOT="0"
 KEYWORDS="~*"
+LICENSE="APSL-2"
 RESTRICT="mirror"
 
 S="${WORKDIR}"
