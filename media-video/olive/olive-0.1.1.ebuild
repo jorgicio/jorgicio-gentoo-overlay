@@ -35,6 +35,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/disable_git_version_checking.patch" )
+
 src_configure() {
 	eqmake5 \
 		DEFINES+=$(usex frei0r "" NOFREI0R)
