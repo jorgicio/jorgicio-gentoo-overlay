@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7}} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A Python framework for building analytical web applications"
-HOMEPAGE="https://plot.ly/products/dash"
+HOMEPAGE="https://plot.ly/dash"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -19,6 +19,9 @@ IUSE="test"
 DEPEND="
 	test? ( dev-python/pytest-dash[${PYTHON_USEDEP}] )"
 RDEPEND="${DEPEND}
+	dev-python/dash-core-components[${PYTHON_USEDEP}]
+	dev-python/dash-html-components[${PYTHON_USEDEP}]
+	dev-python/dash-table[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/flask-compress[${PYTHON_USEDEP}]
 	dev-python/flask-seasurf[${PYTHON_USEDEP}]
