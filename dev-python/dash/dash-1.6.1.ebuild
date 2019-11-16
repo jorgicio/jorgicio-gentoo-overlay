@@ -21,6 +21,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-python/dash-core-components[${PYTHON_USEDEP}]
 	dev-python/dash-html-components[${PYTHON_USEDEP}]
+	dev-python/dash-renderer[${PYTHON_USEDEP}]
 	dev-python/dash-table[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/flask-compress[${PYTHON_USEDEP}]
