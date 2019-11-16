@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="daq test"
 
 DEPEND="
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	test? ( dev-python/pytest-dash[${PYTHON_USEDEP}] )"
 RDEPEND="${DEPEND}
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/flask-compress[${PYTHON_USEDEP}]
