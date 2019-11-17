@@ -3,15 +3,15 @@
 
 EAPI=7
 
-inherit desktop pax-utils xdg
+inherit desktop pax-utils
 
 MY_PN="${PN/-bin}"
 
 DESCRIPTION="Free/Libre Open Source Software Binaries of VSCode (binary version)"
 HOMEPAGE="https://vscodium.com"
-RELEASE="0"
+
 SRC_URI="
-	amd64? ( https://github.com/VSCodium/vscodium/releases/download/${PV:0:4}.${RELEASE}/VSCodium-linux-x64-${PV}.tar.gz )
+	amd64? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-x64-${PV}.tar.gz )
 	"
 RESTRICT="mirror strip bindist"
 
