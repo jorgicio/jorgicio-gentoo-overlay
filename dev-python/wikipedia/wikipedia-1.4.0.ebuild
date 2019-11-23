@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} pypy )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} pypy )
 
 inherit distutils-r1
 

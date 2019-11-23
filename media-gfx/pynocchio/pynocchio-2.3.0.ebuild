@@ -2,20 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit distutils-r1 eutils gnome2-utils xdg
 
 DESCRIPTION="Qt-based image viewer specialized in manga/comic reading"
-HOMEPAGE="https://pynocchio.github.io"
+HOMEPAGE="https://mstuttgart.github.io/pynocchio"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/pynocchio/pynocchio"
+	EGIT_REPO_URI="https://github.com/mstuttgart/pynocchio"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/pynocchio/pynocchio/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/mstuttgart/pynocchio/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 src_prepare(){
 	mv ./${PN}-client.py ./scripts/${PN}
 	sed -i "s#pynocchio-client.py#scripts/pynocchio#" setup.py
-	eapply_user
+	default
 }
 
 pkg_preinst() {

@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
-inherit distutils-r1 gnome2-utils
+inherit distutils-r1 gnome2
 
 DESCRIPTION="Tweak tool for MATE, a fork of MintDesktop"
 HOMEPAGE="https://launchpad.net/ubuntu/+source/mate-tweak"
@@ -48,10 +48,6 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	>=x11-libs/libnotify-0.7"
-
-pkg_preinst(){
-	gnome2_schemas_savelist
-}
 
 pkg_postinst(){
 	gnome2_gconf_install

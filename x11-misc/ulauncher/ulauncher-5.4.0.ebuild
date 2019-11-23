@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit desktop distutils-r1
 
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/Ulauncher/${PN^}.git"
 else
-	SRC_URI="https://github.com/Ulauncher/${PN^}/releases/download/${PV}.${PR}/${PN}_${PV}.${PR}.tar.gz"
+	SRC_URI="https://github.com/Ulauncher/${PN^}/releases/download/${PV}/${PN}_${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}"
 fi
@@ -37,18 +37,13 @@ RDEPEND="${DEPEND}
 	dev-python/python-levenshtein[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/websocket-client[${PYTHON_USEDEP}]
-	dev-libs/gobject-introspection[${PYTHON_USEDEP}]
+	$(python_gen_any_dep 'dev-libs/gobject-introspection[${PYTHON_USEDEP}]')
 	dev-libs/libappindicator:3
 	dev-libs/keybinder:3
 	net-libs/webkit-gtk:4/37
 "
 
 BDEPEND="${PYTHON_DEPS}"
-
-src_prepare(){
-	find -iname "*.py" | xargs sed -i 's=\(^#! */usr/bin.*\)python *$=\1python2='
-	distutils-r1_src_prepare
-}
 
 src_install(){
 	distutils-r1_src_install

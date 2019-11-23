@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]];then
 	EBZR_REPO_URI="https://code.launchpad.net/~kazam-team/${PN}/stable"
 else
 	SRC_URI="https://launchpad.net/${PN}/stable/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="GPL-3"
