@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/flask-compress[${PYTHON_USEDEP}]
 	dev-python/flask-seasurf[${PYTHON_USEDEP}]
-	dev-python/plotly[${PYTHON_USEDEP}]"
+	>=dev-python/plotly-2.0.0[${PYTHON_USEDEP}]"
 
 python_test() {
 	pytest
