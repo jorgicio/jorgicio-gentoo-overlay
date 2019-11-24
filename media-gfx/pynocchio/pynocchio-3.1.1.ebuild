@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{5,6} )
 
-inherit distutils-r1 xdg
+inherit desktop distutils-r1 xdg
 
 DESCRIPTION="Qt-based image viewer specialized in manga/comic reading"
 HOMEPAGE="https://mstuttgart.github.io/pynocchio"
@@ -43,4 +43,14 @@ src_prepare(){
 	mv ./${PN}-client.py ./scripts/${PN}
 	sed -i "s#pynocchio-client.py#scripts/pynocchio#" setup.py
 	default
+}
+
+src_install() {
+	distutils-r1_src_install
+	domenu linux/applications/${PN}.desktop
+	doicon linux/pixmaps/${PN}.png
+	for size in 16 32 48 128 256; do
+		doicon -s ${size} -t hicolor linux/hicolor/${size}x${size}/apps/${PN}.png
+	done
+
 }
