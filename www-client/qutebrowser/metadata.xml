@@ -6,4 +6,8 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="scripts">Installs userscripts from the misc/userscripts
+			directory to /usr/share/qutebrowser/userscripts.</flag>
+	</use>
 </pkgmetadata>
