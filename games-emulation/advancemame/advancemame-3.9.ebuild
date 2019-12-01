@@ -45,6 +45,10 @@ src_prepare() {
 
 	use x86 && ln -s $(type -P nasm) "${T}/${CHOST}-nasm"
 	ln -s $(type -P sdl2-config) "${T}/${CHOST}-sdl2-config"
+
+	# Fix ncurses build
+	sed -i -e '/LIBS/s/-lncurses/& -ltinfo/' \
+		configure advance/v.mak advance/cfg.mak
 }
 
 src_configure() {
