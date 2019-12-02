@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7,8} )
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r1 xdg
 
 DESCRIPTION="Small Python-GTK application for arranging PDF documents. Fork of pdfshuffler."
 HOMEPAGE="https://github.com/jeromerobert/pdfarranger"
@@ -23,13 +23,13 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	app-text/poppler[cairo]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 	dev-python/PyPDF2[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	app-text/poppler[cairo,introspection]"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/python-distutils-extra[${PYTHON_USEDEP}]
