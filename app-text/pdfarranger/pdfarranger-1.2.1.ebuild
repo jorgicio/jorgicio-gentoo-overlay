@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7,8} )
 
-inherit distutils-r1 xdg
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Small Python-GTK application for arranging PDF documents. Fork of pdfshuffler."
 HOMEPAGE="https://github.com/jeromerobert/pdfarranger"
@@ -20,7 +20,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	dev-python/wheel[${PYTHON_USEDEP}]
@@ -41,10 +40,12 @@ pkg_preinst(){
 
 pkg_postinst(){
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm(){
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
