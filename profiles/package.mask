@@ -18,3 +18,7 @@ media-libs/diorite
 
 # Currently broken, possibly due to outdated wxGTK version
 dev-util/pseint
+
+# I think recent versions of MuQSS patches aren't kinda stable, (so is the kernel), also forces to use bfd linker.
+# You still can use it, but do it at your own risk.
+sys-kernel/ck-sources::jorgicio
