@@ -31,6 +31,7 @@ DEPEND="
 	>=dev-qt/qtwebengine-5.9:5[-bindist,widgets]
 	>=dev-qt/qttranslations-5.9:5
 	>=dev-qt/qtgraphicaleffects-5.9:5
+	>=dev-qt/linguist-tools-5.9:5
 	dev-libs/libevent
 	media-libs/mesa
 "
