@@ -1,9 +1,8 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-#VIM_PLUGIN_VIM_VERSION="7.0"
 inherit git-r3 vim-plugin
 
 DESCRIPTION="vim plugin: Collection of awesome color schemes for Vim, merged for quick use"

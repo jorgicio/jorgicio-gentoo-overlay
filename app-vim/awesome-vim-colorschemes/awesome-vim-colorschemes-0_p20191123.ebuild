@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: Collection of awesome color schemes for Vim, merged for
 HOMEPAGE="https://github.com/rafi/awesome-vim-colorschemes"
 LICENSE="MIT public-domain vim.org vim"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-COMMIT="dec452fcf71c8d09c4029fe28d9ac12af935f6ac"
+COMMIT="b5037cbf87ee4b0beed91adb33c339122e58326f"
 SRC_URI="https://github.com/rafi/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 VIM_PLUGIN_HELPTEXT="This plugin is a collection of awesome color schemes for Neo/vim, merged for quick use."
