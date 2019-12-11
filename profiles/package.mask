@@ -22,3 +22,7 @@ dev-util/pseint
 # I think recent versions of MuQSS patches aren't kinda stable, (so is the kernel), also forces to use bfd linker.
 # You still can use it, but do it at your own risk.
 sys-kernel/ck-sources
+
+
+# Masking due to unstability (UI can't open)
+=net-wireless/nitroshare-0.4.0_pre20190618
