@@ -34,6 +34,6 @@ BDEPEND="
 
 src_prepare(){
 	sed -i -e "s#ZINT_VERSION_RELEASE 2#ZINT_VERSION_RELEASE 3#" CMakeLists.txt
-	use !qt5 && PATCHES=( "${P}-disable-qt.patch" )
+	use !qt5 && PATCHES=( "${FILESDIR}/${P}-disable-qt.patch" )
 	cmake-utils_src_prepare
 }
