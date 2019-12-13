@@ -26,3 +26,6 @@ sys-kernel/ck-sources
 
 # Masking due to unstability (UI can't open)
 =net-wireless/nitroshare-0.4.0_pre20190618
+
+# Fails at build
+=media-libs/zint-2.7.0
