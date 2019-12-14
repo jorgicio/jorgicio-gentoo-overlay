@@ -18,7 +18,7 @@ RESTRICT="mirror strip bindist"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libsecret pax_kernel"
+IUSE="pax_kernel"
 
 DEPEND="
 	>=media-libs/libpng-1.2.46
@@ -35,7 +35,7 @@ RDEPEND="
 	x11-libs/libnotify
 	x11-libs/libXScrnSaver
 	dev-libs/nss
-	libsecret? ( app-crypt/libsecret[crypt] )
+	app-crypt/libsecret[crypt]
 "
 
 QA_PRESTRIPPED="opt/${MY_PN}/codium"
