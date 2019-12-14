@@ -11,7 +11,6 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
-		<flag name="libsecret">Enable libsecret support</flag>
         <flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
 	</use>
 </pkgmetadata>
