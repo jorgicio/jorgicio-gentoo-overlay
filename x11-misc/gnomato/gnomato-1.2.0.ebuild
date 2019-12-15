@@ -36,8 +36,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-sqlite-fix.patch" )
-
 src_prepare(){
 	sed -i "s/python2/python-2\.7/" "configure.ac"
 	sed -i "s/1\.0\.2/${PV}/" "configure.ac"
