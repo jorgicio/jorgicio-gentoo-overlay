@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit autotools gnome2-utils flag-o-matic python-r1
 
@@ -37,10 +37,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare(){
-	sed -i "s/python2/python-2\.7/" "configure.ac"
-	sed -i "s/Accessories/Utility/" "gnomato.desktop.in"
-	eautoreconf -vi
 	default
+	eautoreconf -vi
 }
 
 src_configure(){
