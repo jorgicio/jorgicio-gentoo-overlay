@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-USE="pax_kernel"
+IUSE="pax_kernel"
 RESTRICT="mirror strip"
 
 DEPEND=""
