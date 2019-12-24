@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop xdg
+inherit desktop pax-utils xdg
 
 MY_PN="${PN/-bin/}"
 
@@ -16,6 +16,7 @@ SRC_URI="
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+USE="pax_kernel"
 RESTRICT="mirror strip"
 
 DEPEND=""
@@ -40,4 +41,5 @@ src_install() {
 		 "Type=Application" \
 		 "Categories=Development;IDE;" \
 		 "Comment=Build, test, and document your APIs faster"
+	use pax_kernel && pax-mark m "${ED}/opt/${MY_PN}/${MY_PN^}"
 }

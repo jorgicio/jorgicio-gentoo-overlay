@@ -6,4 +6,7 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+    <use>
+        <flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
+    </use>
 </pkgmetadata>
