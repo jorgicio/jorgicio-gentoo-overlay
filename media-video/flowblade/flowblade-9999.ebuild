@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit python-r1 xdg-utils gnome2-utils
 
@@ -47,13 +47,18 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${P}/${PN}-trunk
 
-src_prepare(){
-	epatch "${FILESDIR}/${PN}-1.14-install-dir-fix.patch"
+pkg_setup() {
+	python_setup
+}
+
+src_prepare() {
+	eapply -p2 "${FILESDIR}/${PN}-2.4-install-dir-fix.patch"
 	default
 }
 
 src_install(){
 	local filename="io.github.jliljebl.${PN^}"
+	python_fix_shebang ${PN}
 	dobin ${PN}
 	insinto /usr/share/${PN}
 	doins -r Flowblade/*

@@ -27,6 +27,8 @@ S="${WORKDIR}"
 QA_PRESTRIPPED="
 	/usr/lib/libcurl-gnutls-4.5.0
 	/usr/lib64/libcurl-gnutls-4.5.0
+	/usr/lib/libcurl-gnutls-4.6.0
+	/usr/lib64/libcurl-gnutls-4.6.0
 "
 
 src_install(){

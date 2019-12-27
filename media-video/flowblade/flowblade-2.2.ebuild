@@ -47,13 +47,18 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${P}/${PN}-trunk
 
-src_prepare(){
-	epatch "${FILESDIR}/${PN}-1.14-install-dir-fix.patch"
+pkg_setup() {
+	python_setup
+}
+
+src_prepare() {
+	eapply -p2 "${FILESDIR}/${PN}-2.0-install-dir-fix.patch"
 	default
 }
 
 src_install(){
 	local filename="io.github.jliljebl.${PN^}"
+	python_fix_shebang ${PN}
 	dobin ${PN}
 	insinto /usr/share/${PN}
 	doins -r Flowblade/*

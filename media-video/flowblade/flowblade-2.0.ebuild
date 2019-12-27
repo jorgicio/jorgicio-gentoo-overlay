@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1 fdo-mime gnome2-utils
+inherit python-r1 xdg-utils gnome2-utils
 
 DESCRIPTION="A multitrack non-linear video editor"
 HOMEPAGE="https://github.com/jliljebl/flowblade"
@@ -47,13 +47,18 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${P}/${PN}-trunk
 
-src_prepare(){
-	epatch "${FILESDIR}/${PN}-1.14-install-dir-fix.patch"
+pkg_setup() {
+	python_setup
+}
+
+src_prepare() {
+	eapply -p2 "${FILESDIR}/${P}-install-dir-fix.patch"
 	default
 }
 
 src_install(){
 	local filename="io.github.jliljebl.${PN^}"
+	python_fix_shebang ${PN}
 	dobin ${PN}
 	insinto /usr/share/${PN}
 	doins -r Flowblade/*
@@ -70,13 +75,13 @@ pkg_preinst(){
 }
 
 pkg_postinst() {
-	fdo-mime_mime_database_update
-	fdo-mime_desktop_database_update
+	xdg_mime_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_mime_database_update
-	fdo-mime_desktop_database_update
+	xdg_mime_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

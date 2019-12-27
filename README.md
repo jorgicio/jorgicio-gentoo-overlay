@@ -81,3 +81,12 @@ Thanks for the support!
 ## Problem with compatibility with recent versions of ImageMagick? See here
 
 I just created another overlay called [magick6-compat](https://github.com/jorgicio/magick6-compat), which helps to get rid with the problem of compatibility between both versions of ImageMagick (6.x and 7.x). Feel free to send suggestions, PRs and stuff.
+
+## Problem with media-tv/xawtv ? See here
+
+If you have any issue related with mmx at compilation time, you should add this to your `/etc/portage/package.use`:
+```
+media-tv/xawtv -cpu_flags_x86_mmx
+```
+
+For some strange reason, despite being added in the package.use.mask file, it's still active, so you should disable it manually in the meantime.
