@@ -10,6 +10,7 @@
   - [Note for all people who doesn't own a Github accound (MUST READ)](#note-for-all-people-who-doesnt-own-a-github-accound-must-read)
   - [Note for all MATE lovers (READ IT!!!)](#note-for-all-mate-lovers-read-it)
   - [Problem with compatibility with recent versions of ImageMagick? See here](#problem-with-compatibility-with-recent-versions-of-imagemagick-see-here)
+  - [Problem with media-tv/xawtv ? See here](#problem-with-media-tvxawtv--see-here)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
