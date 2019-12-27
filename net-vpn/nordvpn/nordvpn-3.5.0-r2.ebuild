@@ -30,6 +30,9 @@ RDEPEND="
 	nordlynx? (
 		net-vpn/wireguard[module,tools]
 	)
+	systemd? (
+		sys-apps/systemd
+	)
 "
 
 S="${WORKDIR}"
