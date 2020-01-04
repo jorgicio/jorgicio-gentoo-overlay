@@ -1,7 +1,7 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit font
 
@@ -21,14 +21,9 @@ FONT_S="${S}"
 FONT_CONF=( "${FILESDIR}/75-${PN}.conf" )
 FONT_SUFFIX="ttf"
 DEPEND="
-	app-arch/cpio
-	app-arch/p7zip
-	app-arch/zstd
+	app-arch/libarchive[zstd]
 "
 
 src_unpack() {
-	7z x "${DISTDIR}/${A}" || die
-	mv "twitter-${PN}-fonts-${PV}-${FEDREL}.noarch.cpio.zstd"  "twitter-${PN}-fonts-${PV}-${FEDREL}.noarch.cpio.zst" || die
-	unzstd "twitter-${PN}-fonts-${PV}-${FEDREL}.noarch.cpio.zst" || die
-	cpio -idv < "twitter-${PN}-fonts-${PV}-${FEDREL}.noarch.cpio" || die
+	bsdtar xf "${DISTDIR}/${A}" || die
 }
