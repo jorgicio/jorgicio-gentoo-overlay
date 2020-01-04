@@ -13,7 +13,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 LICENSE="FreeArt GPL-3+ Apache-2.0"
 SLOT="0"
-IUSE="kde"
 
 DEPEND="
 	>=dev-qt/qtsvg-5.3.0:5
@@ -23,19 +22,15 @@ DEPEND="
 	>=dev-qt/qtwidgets-5.3.0:5
 	>=dev-qt/linguist-tools-5.3.0:5
 "
-RDEPEND="${DEPEND}
-	kde? (
-		kde-plasma/plasma-desktop:5
-		kde-frameworks/kglobalaccel:5
-	)
-"
+RDEPEND="${DEPEND}"
+
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare(){
 	sed -i "s|TAG_VERSION = .*|TAG_VERSION = v0.6.0|" ${PN}.pro
 	sed -i "s#icons#pixmaps#" ${PN}.pro
 	sed -i "s#^Icon=.*#Icon=${PN}#" "docs/desktopEntry/package/${PN}.desktop"
-	default_src_prepare
+	default
 }
 
 src_configure(){
@@ -46,11 +41,7 @@ src_configure(){
 }
 
 src_install(){
-	INSTALL_ROOT="${D}" default_src_install
-	if use kde; then
-		insinto /usr/share/config
-		doins docs/shortcuts-config/${PN}-shortcuts-kde
-	fi
+	INSTALL_ROOT="${D}" default
 }
 
 pkg_postinst(){
