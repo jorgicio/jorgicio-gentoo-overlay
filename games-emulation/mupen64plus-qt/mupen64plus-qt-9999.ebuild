@@ -23,16 +23,17 @@ DEPEND="
 	dev-libs/quazip
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+"
+RDEPEND="${DEPEND}
 	games-emulation/mupen64plus-audio-sdl
 	games-emulation/mupen64plus-core
 	games-emulation/mupen64plus-input-sdl
 	games-emulation/mupen64plus-rsp-hle
+	games-emulation/mupen64plus-ui-console
 	|| (
 		games-emulation/mupen64plus-video-glide64mk2
 		games-emulation/mupen64plus-video-rice
 	)
-"
-RDEPEND="${DEPEND}
 	x11-themes/hicolor-icon-theme"
 
 
