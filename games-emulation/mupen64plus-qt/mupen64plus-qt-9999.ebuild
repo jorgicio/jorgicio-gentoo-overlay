@@ -24,6 +24,7 @@ DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	games-emulation/mupen64plus-core
+	games-emulation/mupen64plus-input-sdl
 "
 RDEPEND="${DEPEND}
 	x11-themes/hicolor-icon-theme"
