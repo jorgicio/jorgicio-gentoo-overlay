@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
 inherit font
 
@@ -12,7 +12,6 @@ SRC_URI="${HOMEPAGE}/releases/download/v${PV//_/-}/TwitterColorEmoji-SVGinOT-Lin
 KEYWORDS="~*"
 LICENSE="MIT"
 SLOT="0"
-IUSE="vanilla"
 
 DEPEND="
 	media-fonts/ttf-bitstream-vera[X?]
@@ -24,8 +23,3 @@ DOCS="README.md"
 FONT_CONF=( fontconfig/56-twemoji-color.conf )
 S="${WORKDIR}/TwitterColorEmoji-SVGinOT-Linux-${PV//_/-}"
 FONT_S="${S}"
-
-src_prepare() {
-	use !vanilla && eapply "${FILESDIR}/${PN}-fix-match.patch"
-	default
-}
