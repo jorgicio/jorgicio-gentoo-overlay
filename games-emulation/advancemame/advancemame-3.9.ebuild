@@ -11,7 +11,7 @@ SRC_URI="https://github.com/amadvance/advancemame/releases/download/v${PV}/${P}.
 LICENSE="GPL-2 XMAME"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa fbcon oss stack-protector truetype"
+IUSE="alsa fbcon oss +stack-protector truetype"
 
 # sdl is required (bug #158417)
 RDEPEND="
