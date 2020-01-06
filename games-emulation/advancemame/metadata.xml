@@ -21,4 +21,7 @@ limitations you can anyway choice from different types of stretch.
 	<upstream>
 		<remote-id type="sourceforge">advancemame</remote-id>
 	</upstream>
+    <use>
+        <flag name="stack-protector">Enable the stack-protector feature</flag>
+    </use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/amadvance/advancemame/releases/download/v${PV}/${P}.
 LICENSE="GPL-2 XMAME"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa fbcon oss truetype"
+IUSE="alsa fbcon oss stack-protector truetype"
 
 # sdl is required (bug #158417)
 RDEPEND="
@@ -55,6 +55,14 @@ src_configure() {
 	# Fix for bug #78030
 	if use ppc; then
 		append-ldflags "-Wl,--relax"
+	fi
+
+	# For some strange reason, advmame crashes
+	# when stack-protector is activated.
+	# Disabling it may work, but do it at
+	# your own risk!
+	if use !stack-protector; then
+		append-cflags "-fno-stack-protector"
 	fi
 
 	PATH="${PATH}:${T}"
