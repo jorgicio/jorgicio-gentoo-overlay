@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -65,7 +65,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 
 	rm -vf libGL.so.1 libX11* libdrm.so.2 libffi.so.6 libpopt.so.0 wmctrl || die
 	# tray icon doesnt load when removing libQt5* (bug 641416)
@@ -76,7 +76,7 @@ src_prepare() {
 		rm -vrf PyQt5* *pyqt5* images || die
 	fi
 	if use librsync-bundled ; then
-		patchelf --set-rpath '$ORIGIN' librsyncffi.compiled._librsyncffi*.so || die
+		patchelf --set-rpath '$ORIGIN' librsyncffi_native.cpython-*.so || die
 	else
 		rm -vf librsync.so.1 || die
 	fi
