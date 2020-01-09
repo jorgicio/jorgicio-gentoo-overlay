@@ -39,7 +39,7 @@ DEPEND="
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}
-	gui? ( $(add_frameworks_dep kf-env) )
+	gui? ( >=kde-frameworks/kf-env-4 )
 "
 
 RESTRICT+=" !test? ( test )"
