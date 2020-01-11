@@ -29,8 +29,6 @@ RDEPEND="${DEPEND}
 	x11-libs/libXxf86vm
 	cdinstall? ( games-fps/quake1-data )"
 
-S="${WORKDIR}/${PN}-source-${PV}"
-
 PATCHES=( "${FILESDIR}/${PN}-3.1-unbreak-gentoo-minizip.patch" )
 
 dir="/usr/share/${PN}"
