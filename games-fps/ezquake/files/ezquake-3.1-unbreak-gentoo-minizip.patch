@@ -1,0 +1,15 @@
+diff -Naur a/minizip/ioapi.h b/minizip/ioapi.h
+--- a/minizip/ioapi.h	2020-01-10 21:52:42.291429675 -0300
++++ b/minizip/ioapi.h	2020-01-10 21:55:25.744428531 -0300
+@@ -45,6 +45,11 @@
+ #include <stdlib.h>
+ #include "zlib.h"
+ 
++// Added in order to get compatibility with Gentoo minizip
++#ifndef OF
++ #define OF(args) args
++#endif
++
+ #if defined(USE_FILE32API)
+ #define fopen64 fopen
+ #define ftello64 ftell
