@@ -1,11 +1,10 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=ezQuake
 GenericName=ezQuake
 Comment=One of the most popular QuakeWorld Clients for Linux/BSD/OSX/Win32
 Exec=ezquake
-Icon=ezquake.ico
+Icon=/usr/share/pixmaps/ezquake.ico
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Application;Game
+Categories=Game;ActionGame;
