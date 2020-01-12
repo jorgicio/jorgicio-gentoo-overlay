@@ -42,6 +42,9 @@ src_install() {
 	doicon "${FILESDIR}/${PN}.ico"
 	dobin "${FILESDIR}/${PN}"
 	dodir "${dir}/id1"
+	dodir "${dir}/qw"
+	dodir "${dir}/qw/save"
+	chgrp users "${ED}/${dir}/qw/save"
 }
 
 pkg_postinst() {
