@@ -6,7 +6,7 @@ EAPI=6
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
-inherit meson vala gnome2-utils
+inherit meson vala gnome2 xdg
 
 DESCRIPTION="A simple ebook reader originally intended for Elementary OS"
 HOMEPAGE="https://babluboy.github.io/bookworm"
@@ -23,7 +23,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -36,6 +35,7 @@ DEPEND="
 	x11-libs/gtk+:3
 	dev-db/sqlite:3
 	dev-python/html2text
+	dev-libs/appstream
 "
 RDEPEND="${DEPEND}"
 
@@ -43,28 +43,18 @@ DOCS="AUTHORS"
 
 src_prepare(){
 	export VALAC="$(type -p valac-$(vala_best_api_version))"
-	meson_src_prepare
+	gnome2_src_prepare
 }
 
 src_configure(){
-	local emesonargs=(
-		"-DICON_UPDATE=OFF"
-		"-DGSETTINGS_COMPILE=OFF"
-		"-DUSE_VALA_BINARY=$(type -p valac-$(vala_best_api_version))"
-	)
 	meson_src_configure
 }
 
-pkg_preinst(){
-	gnome2_schemas_savelist
+src_compile() {
+	meson_src_compile
 }
 
-pkg_postinst(){
-	gnome2_gconf_install
-	gnome2_schemas_update
-}
-
-pkg_postrm(){
-	gnome2_gconf_uninstall
-	gnome2_schemas_update
+src_install() {
+	meson_src_install
+	default
 }
