@@ -24,7 +24,7 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="debug"
+IUSE="debug mse"
 
 DEPEND="
 	$(vala_depend)
@@ -56,12 +56,13 @@ src_prepare(){
 src_configure(){
 	local myconf=()
 	use !debug && myconf+=( --no-debug-symbols )
+	use mse && myconf+=( --webkitgtk-supports-mse )
 	waf-utils_src_configure \
 		--no-unity \
-		--no-vala-lint \
-		--no-cef \
-		--no-js-lint \
 		--no-appindicator \
+		--no-vala-lint \
+		--no-js-lint \
+		--no-cef \
 		"${myconf[@]}"
 }
 

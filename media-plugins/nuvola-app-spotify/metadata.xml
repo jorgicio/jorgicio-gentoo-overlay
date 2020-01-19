@@ -6,7 +6,4 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
-    <use>
-        <flag name="mse">Enable support for the Media Source Extensions (MSE) (must be enabled in webkit-gtk)</flag>
-    </use>
 </pkgmetadata>

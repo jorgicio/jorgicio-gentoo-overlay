@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
-VALA_MIN_API_VERSION="0.42"
+VALA_MIN_API_VERSION="0.44"
 
 inherit python-any-r1 vala waf-utils
 
@@ -56,7 +56,6 @@ src_configure(){
 	local myconf=()
 	use !debug && myconf+=( --nodebug )
 	waf-utils_src_configure \
-		--no-strict \
 		--novaladoc \
 		--no-vala-lint \
 		"${myconf[@]}"
