@@ -3,17 +3,18 @@
 
 EAPI=7
 
-inherit autotools xorg-3 git-r3
+inherit autotools xorg-3
 
 DESCRIPTION="Library for the DRI2 extension to the X Window System"
-#HOMEPAGE=""
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/robclark/${PN}.git"
-if [[ ${PV} == 99999999 ]];then
+if [[ ${PV} == 9999 ]];then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/robclark/${PN}.git"
 	KEYWORDS=""
 else
-	EGIT_COMMIT="4f1eef3183df2b270c3d5cbef07343ee5127a6a4"
+	COMMIT="4f1eef3183df2b270c3d5cbef07343ee5127a6a4"
+	SRC_URI="https://github.com/robclark/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="MIT"
@@ -29,6 +30,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare(){
-	default_src_prepare
+	default
 	eautoreconf
 }

@@ -31,7 +31,8 @@ DEPEND="
 	${PYTHON_DEPS}
 	dev-util/intltool
 	>=media-libs/diorite-4.7.0
-	media-libs/libdri2
+	x11-libs/libdri2
+	x11-libs/libdrm
 "
 RDEPEND="${DEPEND}
 	x11-libs/gtk+:3
