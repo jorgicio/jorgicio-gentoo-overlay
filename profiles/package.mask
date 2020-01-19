@@ -10,12 +10,6 @@ games-engines/pilas
 # Depends on JDK/JRE 11, which support for Gentoo is still incomplete.
 dev-util/ghidra-bin
 
-# Support partially working, but not as expected.
-media-libs/nuvolasdk
-media-plugins/nuvola-app-deezer
-media-sound/nuvolaplayer
-media-libs/diorite
-
 # Currently broken, possibly due to outdated wxGTK version
 dev-util/pseint
 

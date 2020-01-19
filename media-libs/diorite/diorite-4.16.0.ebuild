@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
 VALA_MIN_API_VERSION="0.42"
 
@@ -25,7 +25,6 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="debug"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	$(vala_depend)
@@ -40,7 +39,11 @@ RDEPEND="${DEPEND}
 	dev-ruby/ruby-gio2
 "
 
-pkg_setup(){
+pkg_setup() {
+	QA_SONAME="
+		/usr/$(get_libdir)/libdioritedb4.so
+		/usr/$(get_libdir)/libdioritegtk4.so
+		/usr/$(get_libdir)/libdioriteglib4.so"
 	python-any-r1_pkg_setup
 }
 

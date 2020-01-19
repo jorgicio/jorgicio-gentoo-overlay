@@ -10,7 +10,7 @@ VALA_MIN_API_VERSION="0.42"
 inherit gnome2-utils python-any-r1 vala waf-utils
 
 DESCRIPTION="Cloud music integration for your Linux desktop"
-HOMEPAGE="https://nuvola.tiliado.eu https://launchpad.net/nuvola-player"
+HOMEPAGE="https://nuvola.tiliado.eu"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -20,13 +20,11 @@ if [[ ${PV} == 9999 ]]; then
 else
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/tiliado/nuvolaruntime/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/nuvolaruntime-${PV}"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="debug"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	$(vala_depend)
@@ -49,10 +47,6 @@ RDEPEND="${DEPEND}
 	x11-libs/gdk-pixbuf[jpeg]
 "
 
-pkg_setup(){
-	python-any-r1_pkg_setup
-}
-
 src_prepare(){
 	default_src_prepare
 	vala_src_prepare --ignore-use
@@ -72,6 +66,12 @@ src_configure(){
 
 pkg_postinst(){
 	gnome2_icon_cache_update
+	echo
+	elog "Thanks for installing Nuvola Player."
+	elog "You can add plugins by installing nuvolasdk first and then"
+	elog "the apps you want."
+	elog "Some of the apps supported: Deezer, Spotify, YouTube, Tidal, etc."
+	echo
 }
 
 pkg_postrm(){

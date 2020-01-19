@@ -18,9 +18,8 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE=""
 
-RDEPEND="media-sound/nuvolaplayer"
+RDEPEND="media-sound/nuvolaruntime"
 DEPEND="${RDEPEND}
 	media-libs/nuvolasdk
 	media-gfx/scour"
