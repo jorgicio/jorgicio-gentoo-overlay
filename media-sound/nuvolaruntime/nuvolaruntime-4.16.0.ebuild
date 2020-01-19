@@ -48,6 +48,14 @@ RDEPEND="${DEPEND}
 	x11-libs/gdk-pixbuf[jpeg]
 "
 
+pkg_setup() {
+	QA_SONAME="
+		/usr/$(get_libdir)/libengineio.so
+		/usr/$(get_libdir)/libnuvolaruntime-base.so
+		/usr/$(get_libdir)/libnuvolaruntime-runner.so"
+	python-any-r1_pkg_setup
+}
+
 src_prepare(){
 	default_src_prepare
 	vala_src_prepare --ignore-use
