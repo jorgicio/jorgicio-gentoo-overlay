@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,10 +13,9 @@ SRC_URI="https://registry.npmjs.org/${MY_PN}/-/${MY_P}.tgz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+git"
 RESTRICT="network-sandbox strip"
 
-RDEPEND="git? ( dev-vcs/git )"
+RDEPEND="dev-vcs/git"
 BDEPEND="net-libs/nodejs[npm]"
 
 S="${DISTDIR}"
