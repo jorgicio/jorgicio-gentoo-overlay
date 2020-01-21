@@ -45,6 +45,10 @@ RDEPEND="
 
 PATCHES=( "${FILESDIR}/widevine-path.patch" )
 
+src_prepare() {
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	if test-flags-CXX -std=c++17;then
 		if tc-is-gcc; then
