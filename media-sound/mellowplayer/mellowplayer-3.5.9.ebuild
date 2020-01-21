@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MIN_VERSION="3.10"
 
-inherit cmake-utils flag-o-matic toolchain-funcs xdg-utils
+inherit cmake-utils flag-o-matic toolchain-funcs xdg
 
 MY_PN="MellowPlayer"
 
@@ -65,18 +65,4 @@ src_install() {
 	dodir /usr/$(get_libdir)/qt5/plugins/ppapi
 	dosym "${EROOT}"/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
 		/usr/$(get_libdir)/qt5/plugins/ppapi/libwidevinecdm.so
-}
-
-pkg_preinst() {
-	xdg_environment_reset
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }
