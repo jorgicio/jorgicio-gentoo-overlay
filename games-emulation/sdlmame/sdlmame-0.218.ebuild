@@ -62,7 +62,7 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-PATCHES=( ${FILESDIR}"/${P}-qt.patch" )
+#PATCHES=( ${FILESDIR}"/${P}-qt.patch" )
 
 src_prepare() {
 	default
