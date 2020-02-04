@@ -16,10 +16,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-RESTRICT="mirror"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+frei0r"
+IUSE="frei0r vaapi vdpau"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -29,7 +28,7 @@ RDEPEND="
 	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
 	frei0r? ( media-plugins/frei0r-plugins )
-	media-video/ffmpeg[vaapi,vdpau,wavpack]
+	media-video/ffmpeg[vaapi?,vdpau?,wavpack]
 	virtual/opengl"
 
 DEPEND="${RDEPEND}
