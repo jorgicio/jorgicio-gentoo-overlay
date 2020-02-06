@@ -32,6 +32,7 @@ S="${WORKDIR}"
 
 src_install() {
 	dobin ${MY_PN}
+	default
 }
 
 pkg_postinst() {
