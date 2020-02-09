@@ -1,9 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop cmake-utils git-r3 xdg-utils
+inherit desktop cmake-utils git-r3 xdg
 
 DESCRIPTION="An advanced Qt5-based open-source launcher for Minecraft"
 HOMEPAGE="https://multimc.org"
@@ -48,18 +48,4 @@ src_install(){
 	cmake-utils_src_install
 	domenu application/package/linux/multimc.desktop
 	doicon -s scalable application/resources/multimc/scalable/multimc.svg
-}
-
-pkg_preinst(){
-	xdg_environment_reset
-}
-
-pkg_postinst(){
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm(){
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }
