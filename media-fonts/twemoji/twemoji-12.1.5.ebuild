@@ -5,7 +5,7 @@ EAPI=7
 
 inherit font
 
-FEDREL="1.fc32"
+FEDREL="3.fc32"
 
 DESCRIPTION="Twitter Emoji for everyone."
 HOMEPAGE="https://github.com/twitter/twemoji"
