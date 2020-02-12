@@ -22,9 +22,9 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="barcode"
 
 DEPEND="
-    app-text/barcode
 	dev-qt/qtcore:5
 	dev-qt/qttranslations:5
 	dev-qt/linguist:5
@@ -32,8 +32,11 @@ DEPEND="
 	dev-qt/assistant:5
 	dev-qt/qdbusviewer:5
 	dev-qt/qtgui:5
-	media-gfx/qrencode
-	<media-libs/zint-2.7:0=[qt5]
+	barcode? (
+	    >=app-text/barcode-0.98
+		>=media-gfx/qrencode-3.1
+		<media-libs/zint-2.7:0=[qt5]
+	)
 "
 RDEPEND="${DEPEND}"
 
