@@ -33,7 +33,7 @@ DEPEND="
 	dev-qt/qdbusviewer:5
 	dev-qt/qtgui:5
 	media-gfx/qrencode
-	<media-libs/zint-2.7[qt5]
+	<media-libs/zint-2.7:0=[qt5]
 "
 RDEPEND="${DEPEND}"
 
