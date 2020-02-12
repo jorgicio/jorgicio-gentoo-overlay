@@ -14,8 +14,9 @@ if [[ ${PV} == 9999 ]];then
 else
 	MASTER_VERSION="master558"
 	MY_PV="${PV:0:4}-${MASTER_VERSION}"
-	SRC_URI="${HOMEPAGE}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${MY_PV}"
+	MY_P="${PN/-qt}-${MY_PV}"
+	SRC_URI="${HOMEPAGE}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_P}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 

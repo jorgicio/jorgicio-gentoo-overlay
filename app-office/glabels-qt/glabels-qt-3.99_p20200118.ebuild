@@ -16,7 +16,7 @@ else
 	MY_PV="${PV:0:4}-${MASTER_VERSION}"
 	MY_P="${PN/-qt}-${MY_PV}"
 	SRC_URI="${HOMEPAGE}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${MY_P}"
+	S="${WORKDIR}/${PN}-${MY_P}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
