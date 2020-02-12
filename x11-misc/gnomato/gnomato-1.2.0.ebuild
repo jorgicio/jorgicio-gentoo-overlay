@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7,8} )
 
-inherit autotools gnome2-utils flag-o-matic python-r1
+inherit autotools gnome2-utils flag-o-matic python-any-r1
 
 DESCRIPTION="A timer for Pomodoro Technique"
 HOMEPAGE="https://github.com/diegorubin/gnomato"
@@ -22,11 +22,10 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	dev-libs/boost
+	dev-libs/boost:0=
 	dev-util/boost-build
 	dev-cpp/gtkmm:3.0
 	>=x11-libs/libnotify-0.7.3
@@ -35,6 +34,10 @@ DEPEND="
 	dev-db/sqlite:3
 "
 RDEPEND="${DEPEND}"
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
 
 src_prepare(){
 	default

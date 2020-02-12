@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools gnome2-utils flag-o-matic python-r1
+inherit autotools gnome2-utils flag-o-matic python-any-r1
 
 DESCRIPTION="A timer for Pomodoro Technique"
 HOMEPAGE="https://github.com/diegorubin/gnomato"
@@ -22,7 +22,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -38,8 +37,11 @@ RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-sqlite-fix.patch" )
 
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
+
 src_prepare(){
-	sed -i "s/python2/python-2\.7/" "configure.ac"
 	sed -i "s/1\.0\.2/${PV}/" "configure.ac"
 	sed -i "s/Accessories/Utility/" "gnomato.desktop.in"
 	default
