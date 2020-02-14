@@ -10,10 +10,12 @@ MY_PN="${PN/-bin}"
 DESCRIPTION="Free/Libre Open Source Software Binaries of VSCode (binary version)"
 HOMEPAGE="https://vscodium.com"
 
+MAJOR_VERSION="${PV:0:4}.0"
+
 SRC_URI="
-	amd64? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-x64-${PV}.tar.gz )
-	arm? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-arm-${PV}.tar.gz )
-	arm64? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-arm64-${PV}.tar.gz )
+	amd64? ( https://github.com/VSCodium/vscodium/releases/download/${MAJOR_VERSION}/VSCodium-linux-x64-${PV}.tar.gz )
+	arm? ( https://github.com/VSCodium/vscodium/releases/download/${MAJOR_VERSION}/VSCodium-linux-arm-${PV}.tar.gz )
+	arm64? ( https://github.com/VSCodium/vscodium/releases/download/${MAJOR_VERSION}/VSCodium-linux-arm64-${PV}.tar.gz )
 	"
 RESTRICT="mirror strip bindist"
 
