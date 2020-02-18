@@ -33,4 +33,16 @@ RDEPEND="${DEPEND}
 	)
 	"
 
-PATCHES=( "${FILESDIR}/${PN}-qt-5.11-compatibility.patch" )
+PATCHES=(
+    "${FILESDIR}/${PN}-qt-5.11-compatibility.patch"
+    "${FILESDIR}/${P}-fix-configure.patch"
+)
+
+src_configure(){
+	local mycmakeargs=(
+		-DBUILD_API=$(usex http ON OFF)
+		-DBUILD_MDNS=$(usex mdns ON OFF)
+		-DBUILD_TESTS=$(usex test ON OFF)
+	)
+	cmake-utils_src_configure
+}
