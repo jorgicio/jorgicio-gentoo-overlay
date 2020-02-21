@@ -65,7 +65,6 @@ RDEPEND="${DEPEND}
 	net-libs/gnutls
 	net-print/cups
 	sys-apps/dbus
-	sys-apps/systemd
 	sys-apps/util-linux
 	sys-libs/libcap
 	sys-libs/zlib
