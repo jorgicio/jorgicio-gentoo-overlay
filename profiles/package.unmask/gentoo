@@ -1,5 +1,0 @@
-# This package is fixed and needed for app-laptop/prey
->=media-tv/xawtv-3.103
-
-# Only the official portage-tree must be masked, not mine.
->=app-laptop/prey-1.3.0

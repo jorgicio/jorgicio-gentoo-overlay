@@ -6,4 +6,7 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="system-java">Use system Java implementation instead of bundled one. Note: it requires javafx, provided by Oracle Java only.</flag>
+	</use>
 </pkgmetadata>

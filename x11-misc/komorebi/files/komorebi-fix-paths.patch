@@ -1,0 +1,88 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2018-06-06 16:06:29.730292769 -0400
++++ b/CMakeLists.txt	2018-06-06 16:09:35.980296432 -0400
+@@ -81,19 +81,19 @@
+ target_link_libraries(komorebi ${DEPS_LIBRARIES} -lm)
+ target_link_libraries(komorebi-wallpaper-creator ${DEPS_LIBRARIES} -lm)
+ 
+-install(TARGETS komorebi RUNTIME DESTINATION /System/Applications/)
+-install(TARGETS komorebi-wallpaper-creator RUNTIME DESTINATION /System/Applications/)
++install(TARGETS komorebi RUNTIME DESTINATION /usr/bin)
++install(TARGETS komorebi-wallpaper-creator RUNTIME DESTINATION /usr/bin)
+ 
+ 
+ ######### Wallpapers ############
+-install(DIRECTORY data/Wallpapers/ DESTINATION /System/Resources/Komorebi)
++install(DIRECTORY data/Wallpapers/ DESTINATION /usr/share/komorebi)
+ 
+ 
+ ######### Fonts ############
+ install(DIRECTORY data/Fonts/ DESTINATION /usr/share/fonts)
+ 
+ ######### Icons ############
+-install(DIRECTORY data/Icons/ DESTINATION /System/Resources/Komorebi)
++install(DIRECTORY data/Icons/ DESTINATION /usr/share/komorebi)
+ 
+ ######### Other ############
+ install(FILES data/Other/komorebi.desktop DESTINATION /usr/share/applications/)
+diff -Naur a/src/OnScreen/BackgroundWindow.vala b/src/OnScreen/BackgroundWindow.vala
+--- a/src/OnScreen/BackgroundWindow.vala	2018-06-06 16:06:29.740292769 -0400
++++ b/src/OnScreen/BackgroundWindow.vala	2018-06-06 16:10:21.010297318 -0400
+@@ -314,7 +314,7 @@
+ 
+             if(wallpaperType == "video") {
+ 
+-                var videoPath = @"file:///System/Resources/Komorebi/$wallpaperName/$videoFileName";
++                var videoPath = @"file:///usr/share/komorebi/$wallpaperName/$videoFileName";
+                 videoPlayback.uri = videoPath;
+                 videoPlayback.playing = true;
+ 
+@@ -328,7 +328,7 @@
+ 
+             wallpaperActor.set_content(wallpaperImage);
+ 
+-            wallpaperPixbuf = new Gdk.Pixbuf.from_file_at_scale(@"/System/Resources/Komorebi/$wallpaperName/wallpaper.jpg",
++            wallpaperPixbuf = new Gdk.Pixbuf.from_file_at_scale(@"/usr/share/komorebi/$wallpaperName/wallpaper.jpg",
+                                                                 scaleWidth, scaleHeight, false);
+ 
+             wallpaperImage.set_data (wallpaperPixbuf.get_pixels(), Cogl.PixelFormat.RGB_888,
+diff -Naur a/src/OnScreen/InfoBox.vala b/src/OnScreen/InfoBox.vala
+--- a/src/OnScreen/InfoBox.vala	2018-06-06 16:06:29.740292769 -0400
++++ b/src/OnScreen/InfoBox.vala	2018-06-06 16:10:14.880297197 -0400
+@@ -71,12 +71,12 @@
+                 mode = "dark";
+ 
+             // Images first
+-            ramImage.set_from_file(@"/System/Resources/Komorebi/ram_$mode.svg");
++            ramImage.set_from_file(@"/usr/share/komorebi/ram_$mode.svg");
+ 
+             if(getCPUArch() == 32)
+-        	   cpuImage.set_from_file(@"/System/Resources/Komorebi/cpu_32_$mode.svg");
++        	   cpuImage.set_from_file(@"/usr/share/komorebi/cpu_32_$mode.svg");
+             else
+-               cpuImage.set_from_file(@"/System/Resources/Komorebi/cpu_64_$mode.svg");
++               cpuImage.set_from_file(@"/usr/share/komorebi/cpu_64_$mode.svg");
+ 
+             updateInfo();
+ 
+diff -Naur a/src/OnScreen/PreferencesWindow.vala b/src/OnScreen/PreferencesWindow.vala
+--- a/src/OnScreen/PreferencesWindow.vala	2018-06-06 16:06:29.740292769 -0400
++++ b/src/OnScreen/PreferencesWindow.vala	2018-06-06 16:10:25.220297401 -0400
+@@ -221,7 +221,7 @@
+             titleBox.add(titleLabel);
+             titleBox.add(aboutLabel);
+ 
+-            aboutGrid.attach(new Image.from_file("/System/Resources/Komorebi/komorebi.svg"), 0, 0, 1, 1);
++            aboutGrid.attach(new Image.from_file("/usr/share/komorebi/komorebi.svg"), 0, 0, 1, 1);
+             aboutGrid.attach(titleBox, 1, 0, 1, 1);
+ 
+             bottomPreferencesBox.pack_start(donateButton);
+@@ -232,7 +232,7 @@
+             preferencesPage.add(showDesktopIconsButton);
+             preferencesPage.pack_end(bottomPreferencesBox);
+ 
+-            bottomWallpapersBox.add(new Image.from_file("/System/Resources/Komorebi/info.svg"));
++            bottomWallpapersBox.add(new Image.from_file("/usr/share/komorebi/info.svg"));
+             bottomWallpapersBox.add(currentWallpaperLabel);
+ 
+             if(!canPlayVideos()) {

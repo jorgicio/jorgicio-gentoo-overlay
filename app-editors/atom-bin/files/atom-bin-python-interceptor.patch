@@ -1,0 +1,14 @@
+--- atom-bin/resources/app/apm/bin/python-interceptor.sh.orig	2017-09-26 16:35:26.033043559 +0300
++++ atom-bin/resources/app/apm/bin/python-interceptor.sh	2017-10-04 17:21:07.223480009 +0300
+@@ -34,9 +34,9 @@
+       ARGS+=("--format=safemake.py")
+     fi
+ 
+-    exec python "${ARGS[@]}"
++    exec python2 "${ARGS[@]}"
+     ;;
+   *)
+-    exec python "$@"
++    exec python2 "$@"
+     ;;
+ esac

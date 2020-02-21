@@ -1,0 +1,78 @@
+From dedd9930e459967432f4e4d51182241d2a85733d Mon Sep 17 00:00:00 2001
+From: Matt Major <mcm007@shsu.edu>
+Date: Mon, 28 Jan 2019 14:08:02 -0600
+Subject: [PATCH] added Brave support
+
+---
+ README.md                 | 1 +
+ common/profile-cleaner.in | 9 +++++++++
+ common/zsh-completion     | 1 +
+ doc/pc.1                  | 4 ++++
+ 4 files changed, 15 insertions(+)
+
+diff --git a/README.md b/README.md
+index 6f998f9..64a7fb9 100644
+--- a/README.md
++++ b/README.md
+@@ -3,6 +3,7 @@ Use profile-cleaner to reduce the size of browser profiles by organizing their s
+ 
+ ## Supported Browsers
+ * Aurora
++* Brave (https://aur.archlinux.org/packages/brave-bin)
+ * Chromium (stable, beta, and dev)
+ * Conkeror
+ * Falkon
+diff --git a/common/profile-cleaner.in b/common/profile-cleaner.in
+index 994cce2..05e5e1d 100644
+--- a/common/profile-cleaner.in
++++ b/common/profile-cleaner.in
+@@ -193,6 +193,14 @@ case "$1" in
+     do_xulbased
+     exit 0
+     ;;
++  B|b)
++    for name in BraveSoftware/Brave-Browser; do
++      export name
++      prepath="$XDG_CONFIG_HOME"/$name
++      [[ -d "$XDG_CONFIG_HOME"/$name ]] && do_chromebased
++    done
++    exit 0
++    ;;
+   C|c|CB|cb|CD|cd)
+     for name in chromium chromium-beta chromium-dev; do
+       export name
+@@ -321,6 +329,7 @@ case "$1" in
+   *)
+     echo -e " ${BLD}$0 ${NRM}${GRN}{browser abbreviation}${NRM}"
+     echo
++    echo -e "   ${BLD}b) ${GRN}b${NRM}${BLD}rave${NRM}"
+     echo -e "   ${BLD}c) ${GRN}c${NRM}${BLD}hromium (stable, beta, and dev)${NRM}"
+     echo -e "   ${BLD}f) ${GRN}f${NRM}${BLD}irefox (stable and beta)${NRM}"
+     echo -e "  ${BLD}fa) ${GRN}fa${NRM}${BLD}lkon${NRM}"
+diff --git a/common/zsh-completion b/common/zsh-completion
+index 9debfa0..06f27cd 100644
+--- a/common/zsh-completion
++++ b/common/zsh-completion
+@@ -20,6 +20,7 @@ _pc() {
+ 	's:Seamonkey'
+ 	't:Thunderbird'
+ 	'to:TOrbrowser'
++	'b:Brave'
+ 	'p:Paths')
+ 
+ 	_describe 'options' options
+diff --git a/doc/pc.1 b/doc/pc.1
+index e8731c5..9ea41c9 100644
+--- a/doc/pc.1
++++ b/doc/pc.1
+@@ -17,6 +17,10 @@ Profile-cleaner is a very simple shell script that will invoke sqlite3 to vacuum
+ .SH OPTIONS
+ .TP
+ .B
++b
++Clean brave's profile
++.TP
++.B
+ c
+ Clean chromium's profile
+ .TP

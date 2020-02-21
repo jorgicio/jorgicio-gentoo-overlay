@@ -1,0 +1,13 @@
+diff --git a/mnexec.c b/mnexec.c
+index a9cb867..7cc848d 100644
+--- a/mnexec.c
++++ b/mnexec.c
+@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
+                 return 1;
+             }
+             /* mount sysfs to pick up the new network namespace */
+-            if (mount("sysfs", "/sys", "sysfs", MS_MGC_VAL, NULL) == -1) {
++            if (mount("sysfs", "/sys", "sysfs", MS_SLAVE|MS_REC, NULL) == -1) {
+                 perror("mount");
+                 return 1;
+             }

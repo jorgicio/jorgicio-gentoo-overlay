@@ -1,0 +1,11 @@
+diff -Naur a/lib/system/linux/index.js b/lib/system/linux/index.js
+--- a/lib/system/linux/index.js	2018-04-16 23:31:25.510855714 -0300
++++ b/lib/system/linux/index.js	2018-04-16 23:34:10.520858960 -0300
+@@ -49,6 +49,6 @@
+ 
+ // restarts NetworkManager so it reconnects
+ exports.reconnect = function(callback){
+-  var cmd = "service NetworkManager restart";
++  var cmd = "rc-service NetworkManager restart";
+   exec(cmd, callback);
+ };

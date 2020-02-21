@@ -1,0 +1,12 @@
+diff -Naur a/src/main/share/applications/mellowplayer.desktop b/src/main/share/applications/mellowplayer.desktop
+--- a/src/main/share/applications/mellowplayer.desktop	2018-08-07 00:53:42.380247110 -0400
++++ b/src/main/share/applications/mellowplayer.desktop	2018-08-07 00:54:39.710248238 -0400
+@@ -3,7 +3,7 @@
+ Version=1.0
+ Type=Application
+ Name=MellowPlayer
+-Exec=MellowPlayer
++Exec=MellowPlayer --ppapi-widevine-path=/usr/lib64/qt5/plugins/ppapi/libwidevinecdm.so
+ TryExec=MellowPlayer
+ Icon=mellowplayer
+ Terminal=false

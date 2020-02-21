@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer type="person">
+		<email>jpizarrocallejas@gmail.com</email>
+		<name>Jorge Pizarro Callejas</name>
+		<description>Jorgicio Gentoo Overlay</description>
+	</maintainer>
+	<use>
+		<flag name="sphinx">Enables support for the Sphinx recognizer</flag>
+	</use>
+</pkgmetadata>

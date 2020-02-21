@@ -1,0 +1,2 @@
+# Unmask the experimental USE-flag for x86 only.
+net-misc/dropbox -experimental

@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{1,2,3,4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7,8} )
 
 inherit eutils python-r1
 
@@ -12,12 +11,11 @@ DESCRIPTION="Command line interface client for Telegram"
 HOMEPAGE="https://github.com/vysheng/tg"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="+lua +json"
+IUSE="+lua +json libressl"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
-	KEYWORDS=""
 else
 	TGL_COMMIT="b3dcce35110f5c995366318c2886065287815d09"
 	TL_PARSER_COMMIT="ec8a8ed7a4f22428b83e21a9d3b5815f7a6f3bd9"
@@ -34,7 +32,8 @@ fi
 DEPEND="sys-libs/zlib
 	sys-libs/readline
 	dev-libs/libconfig
-	dev-libs/openssl
+	!libressl? ( dev-libs/openssl )
+	libressl? ( dev-libs/libressl )
 	dev-libs/libevent
 	lua? ( dev-lang/lua )
 	json? ( dev-libs/jansson )

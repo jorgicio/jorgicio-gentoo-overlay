@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">Microsoft/vscode</remote-id>
+		<bugs-to>https://github.com/Microsoft/vscode/issues</bugs-to>
+		<maintainer type="project">
+			<name>Microsoft</name>
+			<email>opensource@microsoft.com</email>
+		</maintainer>
+	</upstream>
+	<maintainer type="person">
+		<email>jpizarrocallejas@gmail.com</email>
+		<name>Jorge Pizarro Callejas</name>
+		<description>Jorgicio Gentoo Overlay</description>
+	</maintainer>
+	<use>
+        <flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
+	</use>
+</pkgmetadata>

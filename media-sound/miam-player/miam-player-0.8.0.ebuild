@@ -1,22 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils qmake-utils
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Cross-platform open source music player built with Qt5, QTav and Taglib."
-HOMEPAGE="http://www.miam-player.org"
+HOMEPAGE="https://github.com/MBach/Miam-Player"
 
-MY_PN=(${PN//-/ })
-MY_PN="${MY_PN[@]^}"
-MY_PN="${MY_PN/ /-}"
+MY_PN="Miam-Player"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/MBach/${MY_PN}"
-	SRC_URI=""
-	KEYWORDS=""
 else
 	MY_P="${MY_PN}-${PV}"
 	SRC_URI="https://github.com/MBach/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -34,20 +30,32 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	media-libs/taglib
-	media-video/QtAV
+	media-libs/qtav:0/1[pulseaudio?]
 "
 
+PATCHES=( "${FILESDIR}/${PN}-add-qheaderview.patch" )
+
+src_prepare(){
+	for x in {Core,Library,TabPlaylists,UniqueLibrary}; do
+		sed -i -e "s/lib\$\$LIB_SUFFIX/\$\$LIB_SUFFIX/" "src/${x}/${x}.pro" || die
+	done
+	default_src_prepare
+}
+
 src_configure(){
-	local myconf=(
-		${PN}.pro
-		PREFIX="${EPREFIX}/usr"
-		DESKTOPDIR="${EPREFIX}/usr/share/applications"
-		ICONDIR="${EPREFIX}/usr/share/pixmaps"
-	)
-	eqmake5 ${myconf[@]}
+	eqmake5 LIB_SUFFIX="$(get_libdir)"
 }
 
 src_install(){
 	emake INSTALL_ROOT="${D}" install
-	newicon debian/usr/share/icons/hicolor/64x64/apps/application-x-${PN//-}.png ${PN}.png
+	newicon -s 64 debian/usr/share/icons/hicolor/64x64/apps/application-x-${PN//-}.png ${PN}.png
+}
+
+
+pkg_postinst(){
+	xdg_desktop_database_update
+}
+
+pkg_postrm(){
+	xdg_desktop_database_update
 }

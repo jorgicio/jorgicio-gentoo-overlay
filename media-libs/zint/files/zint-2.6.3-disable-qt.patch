@@ -1,0 +1,33 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-04-07 14:58:04.407219306 -0400
++++ b/CMakeLists.txt	2019-04-07 14:58:38.580862935 -0400
+@@ -62,29 +62,6 @@
+ add_subdirectory(backend)
+ add_subdirectory(frontend)
+ 
+-find_package(Qt5Widgets)
+-find_package(Qt5Gui)
+-find_package(Qt5UiTools)
+-
+-if (Qt5Widgets_FOUND)
+-    if (Qt5Gui_FOUND)
+-        if (Qt5UiTools_FOUND)
+-            set( QT_USE_QTGUI   TRUE )
+-            set( QT_USE_QTUITOOLS TRUE )
+-            set( QT_USE_QTXML TRUE )
+-            include_directories(
+-                ${CMAKE_CURRENT_SOURCE_DIR}
+-                ${Qt5Widgets_INCLUDES}
+-                ${Qt5Gui_INCLUDES}
+-                ${Qt5UiTools_INCLUDES}
+-                ${CMAKE_CURRENT_BINARY_DIR}
+-                )
+-            add_subdirectory(backend_qt)
+-            add_subdirectory(frontend_qt)
+-        endif(Qt5UiTools_FOUND)
+-    endif(Qt5Gui_FOUND)
+-endif(Qt5Widgets_FOUND)
+-
+ CONFIGURE_FILE(
+   "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+   "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"

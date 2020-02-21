@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_{5,6,7} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7,8}} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A Python library to build Twitter bots over Tweepy library"
-HOMEPAGE="https://github.com/caxap/${PN}"
+HOMEPAGE="https://github.com/caxap/tweebot"
 SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
 

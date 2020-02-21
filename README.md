@@ -4,18 +4,23 @@
 
 - [Jorgicio Custom Overlay](#jorgicio-custom-overlay)
   - [Usage](#usage)
+    - [Using Layman](#using-layman)
+    - [Using eselect-repository](#using-eselect-repository)
   - [Note for all people who send pull requests (MUST READ)](#note-for-all-people-who-send-pull-requests-must-read)
+  - [Note for all people who doesn't own a Github accound (MUST READ)](#note-for-all-people-who-doesnt-own-a-github-accound-must-read)
   - [Note for all MATE lovers (READ IT!!!)](#note-for-all-mate-lovers-read-it)
+  - [Problem with compatibility with recent versions of ImageMagick? See here](#problem-with-compatibility-with-recent-versions-of-imagemagick-see-here)
+  - [Problem with media-tv/xawtv ? See here](#problem-with-media-tvxawtv--see-here)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-Jorgicio Custom Overlay
-=======================
+# Jorgicio Custom Overlay
 
 Made with love by Jorge Pizarro Callejas, a.k.a. [Jorgicio](http://www.jorgicio.net).
 
-Usage
------
+## Usage
+
+### Using Layman
 
 First, install Layman from the official Portage tree. Must use the use-flag USE="git" at the moment of installation.
 
@@ -38,14 +43,51 @@ If you want to refresh the overlay (and all another overlays), just type:
 
 That's all, folks!
 
-Note for all people who send pull requests (MUST READ)
-------------------------------------------------------
+### Using eselect-repository
+
+[Eselect-repository](https://wiki.gentoo.org/wiki/Eselect/Repository) is a new Eselect module intended to manage repositories. It superseed the need for Layman to list, configure, and handle synchronizations of alternate repositories (except some ones like mercurial, bazaar, and g-sorcery). It can handle the repos list in [/etc/portage/repos.conf](https://wiki.gentoo.org/wiki//etc/portage/repos.conf)
+
+First, install the `eselect-repository` package from Portage:
+
+    emerge eselect-repository
+
+Then, enable the repo:
+
+    eselect repository enable jorgicio
+
+After that, use `emaint` (already included in Portage) to sync the repo and its files:
+    
+    emaint sync -r jorgicio
+
+Now you're ready to use this repo.
+More information about this method, you can find it in the link above.
+
+## Note for all people who send pull requests (MUST READ)
+
 All pull requests are welcomed to this repo, but if you do it, please use the [Gentoo Git Commit Message Format](https://devmanual.gentoo.org/ebuild-maintenance/index.html#git-commit-message-format). Thank you!
 
-Note for all MATE lovers (READ IT!!!)
--------------------------------------
+## Note for all people who doesn't own a Github accound (MUST READ)
+
+If you don't have a Github account, you can email me but ONLY with the tag \[Gentoo Overlay\] (as you can see it, with brackets and respecting capital letters). Any mail sent without that, can't be read, because is too annoying searching emails when one has a lot of them. With that tag, I can filter it easily, so I can read those emails.
+
+Thanks in advance.
+
+## Note for all MATE lovers (READ IT!!!)
 
 ~~For all [MATE](http://mate-desktop.org) lovers, there's another overlay to use latter versions of that desktop environment because Gentoo portage version is pretty old. You can check it [here](../../../mate-jorgicio), instructions included.
 Thanks.~~
 That information is not needed anymore. MATE packages are already available on the official Portage tree, so I won't maintain that repo anymore.
 Thanks for the support!
+
+## Problem with compatibility with recent versions of ImageMagick? See here
+
+I just created another overlay called [magick6-compat](https://github.com/jorgicio/magick6-compat), which helps to get rid with the problem of compatibility between both versions of ImageMagick (6.x and 7.x). Feel free to send suggestions, PRs and stuff.
+
+## Problem with media-tv/xawtv ? See here
+
+If you have any issue related with mmx at compilation time, you should add this to your `/etc/portage/package.use`:
+```
+media-tv/xawtv -cpu_flags_x86_mmx
+```
+
+For some strange reason, despite being added in the package.use.mask file, it's still active, so you should disable it manually in the meantime.

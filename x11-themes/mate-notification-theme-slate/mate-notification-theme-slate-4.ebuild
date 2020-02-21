@@ -9,7 +9,7 @@ inherit eutils autotools
 DESCRIPTION="A MATE notification daemon theme based in the Budgie notifications used by Solus OS"
 HOMEPAGE="http://solus-project.com http://github.com/solus-project"
 
-if [[ ${PV} == *9999* ]];then
+if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/solus-project/${PN}"
 	SRC_URI=""
@@ -32,8 +32,8 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare(){
+	default
 	eautoreconf
-	eapply_user
 }
 
 src_install(){

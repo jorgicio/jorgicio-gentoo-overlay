@@ -1,0 +1,53 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-02-18 17:15:14.935607745 -0300
++++ b/CMakeLists.txt	2020-02-18 17:16:01.477471090 -0300
+@@ -36,20 +36,37 @@
+     find_package(Qt5MacExtras)
+ endif()
+ 
+-# QHttpEngine is required in order to build the local HTTP API
+-find_package(qhttpengine NAMES qhttpengine QHttpEngine QUIET)
+-if(qhttpengine_FOUND)
+-    message(STATUS "Found QHttpEngine ${qhttpengine_VERSION}")
+-else()
+-    message(WARNING "QHttpEngine not found - local API disabled")
++# Add a dependency with a builtin fallback
++function(add_dependency name title version)
++    find_package(${name} ${version} QUIET)
++    if(${name}_FOUND)
++        message(STATUS "Found ${title} ${${name}_VERSION}")
++    else()
++        message(STATUS "${title} ${version}+ not found - using bundled version")
++        set(_old_BUILD_DOC ${BUILD_DOC})
++        set(BUILD_DOC OFF)
++        add_subdirectory(deps/${name})
++        set(BUILD_DOC ${_old_BUILD_DOC})
++    endif()
++endfunction()
++
++# Attempt to find QHttpEngine on the system; use bundled version if missing
++option(BUILD_API "Build local API plugin" ON)
++if(BUILD_API)
++    add_dependency(qhttpengine QHttpEngine 1.0.0)
++endif()
++
++# Attempt to find QMdnsEngine on the system; use bundled version if missing
++option(BUILD_MDNS "Build mDNS discovery plugin" ON)
++if(BUILD_MDNS)
++    add_dependency(qmdnsengine QMdnsEngine 0.1.0)
+ endif()
+ 
+-# QMdnsEngine is required in order to interface with the Android app
+-find_package(qmdnsengine QUIET)
+-if(qmdnsengine_FOUND)
+-    message(STATUS "Found QMdnsEngine ${qmdnsengine_VERSION}")
+-else()
+-    message(WARNING "QMdnsEngine not found - local API disabled")
++# Test suite is always disabled by default
++option(BUILD_TESTS "Build test suite" OFF)
++if(BUILD_TESTS)
++    enable_testing()
++    find_package(Qt5Test 5.1 REQUIRED)
+ endif()
+ 
+ # Windows requires the OpenSSL libraries to be included

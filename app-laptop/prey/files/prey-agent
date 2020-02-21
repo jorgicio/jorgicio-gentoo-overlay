@@ -1,11 +1,14 @@
 #!/sbin/openrc-run
 #
 
-command=/usr/lib/node_modules/prey/bin/prey
+ARCH=$(uname -m)
+[[ $ARCH == "x86_64" ]] && SUFFIX="64" || SUFFIX="32"
+
+command=/usr/lib${SUFFIX}/prey/bin/prey
 pidfile=${pidfile-/var/run/prey-agent.pid}
 description="The Prey Agent Daemon"
 
-: ${PREY_DIR:=/usr/lib/node_modules/prey}
+: ${PREY_DIR:=/usr/lib${SUFFIX}/prey}
 : ${PREY_USER:=prey}
 
 # Include defaults if available

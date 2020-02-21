@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 inherit waf-utils python-single-r1 git-r3
@@ -10,7 +10,7 @@ inherit waf-utils python-single-r1 git-r3
 DESCRIPTION="Opengl test suite"
 HOMEPAGE="https://launchpad.net/glmark2"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/glmark2/glmark2"
+EGIT_REPO_URI="https://github.com/glmark2/${PN}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -30,6 +30,8 @@ REQUIRED_USE="|| ( opengl gles2 )
 src_prepare() {
 	rm -rf "${S}/src/libpng"
 	sed -i "s/libpng15/libpng/g" "${S}/wscript" # allow build with >= libpng:1.6
+	sed -i "s|-Werror ||g" "${S}/wscript"
+	default_src_prepare
 }
 
 src_configure() {

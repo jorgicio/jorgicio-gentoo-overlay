@@ -3,12 +3,12 @@
 	<repo quality="experimental" status="unofficial">
 		<name>jorgicio-gentoo</name>
 		<description lang="en">Custom Gentoo Overlay from Jorgicio.</description>
-		<homepage>https://github.com/jorgicio/jorgicio-gentoo</homepage>
+		<homepage>https://github.com/jorgicio/jorgicio-gentoo-overlay</homepage>
 		<owner type="person">
             <name>Jorge Pizarro Callejas</name>
-			<email>jpizarro@inf.utfsm.cl</email>
-		</owner>
-		<source type="git">git://github.com/jorgicio/jorgicio-gentoo.git</source>
-        <feed>https://github.com/jorgicio/jorgicio-gentoo/commits/master.atom</feed>
+			<email>jpizarrocallejas@gmail.com</email>
+        </owner>
+		<source type="git">git://github.com/jorgicio/jorgicio-gentoo-overlay.git</source>
+        <feed>https://github.com/jorgicio/jorgicio-gentoo-overlay/commits/master.atom</feed>
 	</repo>
 </repositories>

@@ -1,0 +1,28 @@
+diff -Naur a/app/Makefile.am b/app/Makefile.am
+--- a/app/Makefile.am	2019-08-03 18:16:24.939184972 -0400
++++ b/app/Makefile.am	2019-08-03 18:16:58.222807012 -0400
+@@ -32,12 +32,6 @@
+ 	@if test x"$(XDG_UTILS)" != x; then \
+ 	  $(INSTALL) -d $(DESTDIR)$(gbdatadir)/icons; \
+ 	  cp -f $(srcdir)/mime/application-x-gambas*.png $(DESTDIR)$(gbdatadir)/icons; \
+-	  echo "Registering Gambas script mimetype..."; \
+-	  xdg-icon-resource install --context mimetypes --size 256 $(DESTDIR)$(gbdatadir)/icons/application-x-gambasscript.png application-x-gambasscript; \
+-	  xdg-mime install $(srcdir)/mime/application-x-gambasscript.xml; \
+-	  echo "Registering Gambas server page mimetype..."; \
+-	  xdg-icon-resource install --context mimetypes --size 256 $(DESTDIR)$(gbdatadir)/icons/application-x-gambasserverpage.png application-x-gambasserverpage; \
+-	  xdg-mime install $(srcdir)/mime/application-x-gambasserverpage.xml; \
+ 	fi
+ 
+ 	@echo "Installing the Gambas appdata file..."
+diff -Naur a/main/Makefile.am b/main/Makefile.am
+--- a/main/Makefile.am	2019-08-03 18:16:25.039195857 -0400
++++ b/main/Makefile.am	2019-08-03 18:17:43.787765350 -0400
+@@ -42,8 +42,6 @@
+ 		echo "Registering Gambas executable mimetype"; \
+ 		$(INSTALL) -d $(DESTDIR)$(gbdatadir)/icons; \
+ 		cp -f $(srcdir)/mime/application-x-gambas3.png $(DESTDIR)$(gbdatadir)/icons; \
+-		xdg-icon-resource install --context mimetypes --size 256 $(DESTDIR)$(gbdatadir)/icons/application-x-gambas3.png application-x-gambas3; \
+-		xdg-mime install $(srcdir)/mime/application-x-gambas3.xml; \
+ 	fi
+ 
+ 	@echo "Creating the information files for gb component..."

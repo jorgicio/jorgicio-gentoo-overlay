@@ -1,0 +1,19 @@
+diff -Naur a/src/application/splashdialog.cpp b/src/application/splashdialog.cpp
+--- a/src/application/splashdialog.cpp	2018-10-17 20:46:46.215724733 -0300
++++ b/src/application/splashdialog.cpp	2018-10-17 20:52:08.809896702 -0300
+@@ -24,6 +24,15 @@
+ 
+ #include <QApplication>
+ #include <QDesktopWidget>
++/*
++*   Check if Qt version is older or equal than 5.11 in order to
++*   include the QStyle header, older versions didn't 
++*   need it. Otherwise, it won't build.
++*/
++#include <QtGlobal>
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
++#include <QStyle>
++#endif
+ 
+ #include "splashdialog.h"
+ 

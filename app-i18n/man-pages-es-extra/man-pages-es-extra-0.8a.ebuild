@@ -1,7 +1,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 
-EAPI=5
+EAPI=7
 
 inherit eutils
 
@@ -14,7 +14,6 @@ LICENSE="GPL-3+ man-pages GPL-2+ GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
-RESTRICT="mirror"
 
 RDEPEND="virtual/man
 		app-i18n/man-pages-es"
@@ -22,8 +21,10 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}/delete-extra-files.patch" )
+
 src_prepare(){
-	epatch "${FILESDIR}/delete-extra-files.patch"
+	default
 	#Deleting some files because are already provided by sys-apps/man-db
 	rm -r man3
 	rm man5/resolv.conf.5
@@ -34,11 +35,13 @@ src_prepare(){
 }
 
 src_compile(){
-	emake DESTDIR="${D}" bz2 || die "Failed compression"
+	emake gz
+	emake screen
 }
 
 src_install(){
-	emake MANDIR="${ED}/usr/share/man/es" install || die "Failed installation"
-	dodoc LEEME.extra README
+	emake MANDIR="${D}/usr/share/man/es" remove
+	emake MANDIR="${D}/usr/share/man/es" install
+	dodoc LEEME.extra README PROYECTO
 }
 

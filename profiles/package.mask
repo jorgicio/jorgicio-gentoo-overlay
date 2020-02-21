@@ -1,0 +1,17 @@
+# This package depends on gnome-extra/zeitgeist, which is masked due to dependencies on older and deprecated packages
+x11-misc/diodon
+
+# This may build, but doesn't have a (proper) install method.
+=games-engines/box2d-9999
+
+# Depends on dev-python/PyQt4, which support is officially dropped. If you can find that package in another overlay, feel free to unmask this.
+games-engines/pilas
+
+# Depends on JDK/JRE 11, which support for Gentoo is still incomplete.
+dev-util/ghidra-bin
+
+# Currently broken, possibly due to outdated wxGTK version
+dev-util/pseint
+
+# Masking due to unstability (UI can't open)
+=net-wireless/nitroshare-0.4.0_pre20190618

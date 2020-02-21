@@ -1,0 +1,932 @@
+diff -Naur a/lzma/7zArcIn.c b/lzma/7zArcIn.c
+--- a/lzma/7zArcIn.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/7zArcIn.c	2019-08-21 14:18:18.253437041 -0400
+@@ -534,14 +534,14 @@
+     f->NumPackStreams = numPackStreams;
+   
+     for (i = 0; i < numInStreams; i++)
+-      streamUsed[i] = False;
++      streamUsed[i] = FALSE;
+     
+     if (numBonds != 0)
+     {
+       Byte coderUsed[SZ_NUM_CODERS_IN_FOLDER_MAX];
+ 
+       for (i = 0; i < numCoders; i++)
+-        coderUsed[i] = False;
++        coderUsed[i] = FALSE;
+       
+       for (i = 0; i < numBonds; i++)
+       {
+@@ -550,12 +550,12 @@
+         RINOK(SzReadNumber32(sd, &bp->InIndex));
+         if (bp->InIndex >= numInStreams || streamUsed[bp->InIndex])
+           return SZ_ERROR_ARCHIVE;
+-        streamUsed[bp->InIndex] = True;
++        streamUsed[bp->InIndex] = TRUE;
+         
+         RINOK(SzReadNumber32(sd, &bp->OutIndex));
+         if (bp->OutIndex >= numCoders || coderUsed[bp->OutIndex])
+           return SZ_ERROR_ARCHIVE;
+-        coderUsed[bp->OutIndex] = True;
++        coderUsed[bp->OutIndex] = TRUE;
+       }
+       
+       for (i = 0; i < numCoders; i++)
+@@ -585,7 +585,7 @@
+         RINOK(SzReadNumber32(sd, &index));
+         if (index >= numInStreams || streamUsed[index])
+           return SZ_ERROR_ARCHIVE;
+-        streamUsed[index] = True;
++        streamUsed[index] = TRUE;
+         f->PackStreams[i] = index;
+       }
+   }
+@@ -740,9 +740,9 @@
+           return SZ_ERROR_UNSUPPORTED;
+         
+         for (i = 0; i < numInStreams; i++)
+-          streamUsed[i] = False;
++          streamUsed[i] = FALSE;
+         for (i = 0; i < numCoders; i++)
+-          coderUsed[i] = False;
++          coderUsed[i] = FALSE;
+         
+         for (i = 0; i < numBonds; i++)
+         {
+@@ -751,12 +751,12 @@
+           RINOK(SzReadNumber32(&sd, &index));
+           if (index >= numInStreams || streamUsed[index])
+             return SZ_ERROR_ARCHIVE;
+-          streamUsed[index] = True;
++          streamUsed[index] = TRUE;
+           
+           RINOK(SzReadNumber32(&sd, &index));
+           if (index >= numCoders || coderUsed[index])
+             return SZ_ERROR_ARCHIVE;
+-          coderUsed[index] = True;
++          coderUsed[index] = TRUE;
+         }
+         
+         numPackStreams = numInStreams - numBonds;
+@@ -768,7 +768,7 @@
+             RINOK(SzReadNumber32(&sd, &index));
+             if (index >= numInStreams || streamUsed[index])
+               return SZ_ERROR_ARCHIVE;
+-            streamUsed[index] = True;
++            streamUsed[index] = TRUE;
+           }
+           
+         for (i = 0; i < numCoders; i++)
+@@ -1750,7 +1750,7 @@
+     *(--dest) = 0;
+     return dest;
+   }
+-  needSlash = False;
++  needSlash = FALSE;
+   for (;;)
+   {
+     UInt32_7z parent = (UInt32_7z)(Int32)-1;
+@@ -1758,7 +1758,7 @@
+     SzArEx_GetFileNameUtf16(p, fileIndex, dest - curLen);
+     if (needSlash)
+       *(dest - 1) = '/';
+-    needSlash = True;
++    needSlash = TRUE;
+     dest -= curLen;
+ 
+     if SzBitWithVals_Check(&p->Parents, fileIndex)
+diff -Naur a/lzma/7zDec.c b/lzma/7zDec.c
+--- a/lzma/7zDec.c	2019-08-21 14:17:52.770685272 -0400
++++ b/lzma/7zDec.c	2019-08-21 14:18:18.263438122 -0400
+@@ -66,7 +66,7 @@
+     if (size != 0)
+       return *p->cur++;;
+   }
+-  p->extra = True;
++  p->extra = TRUE;
+   return 0;
+ }
+ 
+@@ -80,7 +80,7 @@
+   s.p.Read = ReadByte;
+   s.inStream = inStream;
+   s.begin = s.end = s.cur = NULL;
+-  s.extra = False;
++  s.extra = FALSE;
+   s.res = SZ_OK;
+   s.processed = 0;
+ 
+@@ -281,9 +281,9 @@
+     #ifdef _7ZIP_PPMD_SUPPPORT
+     case k_PPMD:
+     #endif
+-      return True;
++      return TRUE;
+   }
+-  return False;
++  return FALSE;
+ }
+ 
+ static Bool_7z IS_SUPPORTED_CODER(const CSzCoderInfo *c)
+diff -Naur a/lzma/7zTypes.h b/lzma/7zTypes.h
+--- a/lzma/7zTypes.h	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/7zTypes.h	2019-08-21 14:18:45.546384178 -0400
+@@ -94,8 +94,8 @@
+ #endif
+ 
+ typedef int Bool_7z;
+-#define True 1
+-#define False 0
++#define TRUE 1
++#define FALSE 0
+ 
+ 
+ #ifdef _WIN32
+diff -Naur a/lzma/Bcj2Enc.c b/lzma/Bcj2Enc.c
+--- a/lzma/Bcj2Enc.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/Bcj2Enc.c	2019-08-21 14:18:18.273439200 -0400
+@@ -64,7 +64,7 @@
+       {
+         p->state = BCJ2_STREAM_RC;
+         p->bufs[BCJ2_STREAM_RC] = buf;
+-        return True;
++        return TRUE;
+       }
+       *buf++ = (Byte)(p->cache + (Byte)(p->low >> 32));
+       p->cache = 0xFF;
+@@ -75,7 +75,7 @@
+   }
+   p->cacheSize++;
+   p->low = (UInt32_7z)p->low << 8;
+-  return False;
++  return FALSE;
+ }
+ 
+ static void Bcj2Enc_Encode_2(CBcj2Enc *p)
+@@ -172,14 +172,14 @@
+           p->ip += (UInt32_7z)num + 1;
+           src++;
+           
+-          needConvert = False;
++          needConvert = FALSE;
+ 
+           if ((SizeT)(p->srcLim - src) >= 4)
+           {
+             UInt32_7z relatVal = GetUi32(src);
+             if ((p->fileSize == 0 || (UInt32_7z)(p->ip + 4 + relatVal - p->fileIp) < p->fileSize)
+                 && ((relatVal + p->relatLimit) >> 1) < p->relatLimit)
+-              needConvert = True;
++              needConvert = TRUE;
+           }
+ 
+           {
+diff -Naur a/lzma/CpuArch.c b/lzma/CpuArch.c
+--- a/lzma/CpuArch.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/CpuArch.c	2019-08-21 14:18:18.283440281 -0400
+@@ -50,7 +50,7 @@
+   #endif
+   return flag;
+ }
+-#define CHECK_CPUID_IS_SUPPORTED if (CheckFlag(1 << 18) == 0 || CheckFlag(1 << 21) == 0) return False;
++#define CHECK_CPUID_IS_SUPPORTED if (CheckFlag(1 << 18) == 0 || CheckFlag(1 << 21) == 0) return FALSE;
+ #else
+ #define CHECK_CPUID_IS_SUPPORTED
+ #endif
+@@ -120,7 +120,7 @@
+   CHECK_CPUID_IS_SUPPORTED
+   MyCPUID(0, &p->maxFunc, &p->vendor[0], &p->vendor[2], &p->vendor[1]);
+   MyCPUID(1, &p->ver, &p->b, &p->c, &p->d);
+-  return True;
++  return TRUE;
+ }
+ 
+ static const UInt32_7z kVendors[][3] =
+@@ -150,7 +150,7 @@
+   int firm;
+   UInt32_7z family, model;
+   if (!x86cpuid_CheckAndRead(&p))
+-    return True;
++    return TRUE;
+ 
+   family = x86cpuid_GetFamily(p.ver);
+   model = x86cpuid_GetModel(p.ver);
+@@ -170,7 +170,7 @@
+     case CPU_FIRM_AMD: return (family < 5 || (family == 5 && (model < 6 || model == 0xA)));
+     case CPU_FIRM_VIA: return (family < 6 || (family == 6 && model < 0xF));
+   }
+-  return True;
++  return TRUE;
+ }
+ 
+ #if !defined(MY_CPU_AMD64) && defined(_WIN32)
+@@ -180,10 +180,10 @@
+   OSVERSIONINFO vi;
+   vi.dwOSVersionInfoSize = sizeof(vi);
+   if (!GetVersionEx(&vi))
+-    return False;
++    return FALSE;
+   return (vi.dwMajorVersion >= 5);
+ }
+-#define CHECK_SYS_SSE_SUPPORT if (!CPU_Sys_Is_SSE_Supported()) return False;
++#define CHECK_SYS_SSE_SUPPORT if (!CPU_Sys_Is_SSE_Supported()) return FALSE;
+ #else
+ #define CHECK_SYS_SSE_SUPPORT
+ #endif
+@@ -193,7 +193,7 @@
+   Cx86cpuid p;
+   CHECK_SYS_SSE_SUPPORT
+   if (!x86cpuid_CheckAndRead(&p))
+-    return False;
++    return FALSE;
+   return (p.c >> 25) & 1;
+ }
+ 
+diff -Naur a/lzma/LzFind.c b/lzma/LzFind.c
+--- a/lzma/LzFind.c	2019-08-21 14:17:52.770685272 -0400
++++ b/lzma/LzFind.c	2019-08-21 14:18:18.283440281 -0400
+@@ -314,7 +314,7 @@
+ 
+ void MatchFinder_Init(CMatchFinder *p)
+ {
+-  MatchFinder_Init_2(p, True);
++  MatchFinder_Init_2(p, TRUE);
+ }
+   
+ static UInt32_7z MatchFinder_GetSubValue(CMatchFinder *p)
+diff -Naur a/lzma/LzFindMt.c b/lzma/LzFindMt.c
+--- a/lzma/LzFindMt.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/LzFindMt.c	2019-08-21 14:18:18.283440281 -0400
+@@ -9,9 +9,9 @@
+ 
+ static void MtSync_Construct(CMtSync *p)
+ {
+-  p->wasCreated = False;
+-  p->csWasInitialized = False;
+-  p->csWasEntered = False;
++  p->wasCreated = FALSE;
++  p->csWasInitialized = FALSE;
++  p->csWasEntered = FALSE;
+   Thread_Construct(&p->thread);
+   Event_Construct(&p->canStart);
+   Event_Construct(&p->wasStarted);
+@@ -25,9 +25,9 @@
+   if (p->needStart)
+   {
+     p->numProcessedBlocks = 1;
+-    p->needStart = False;
+-    p->stopWriting = False;
+-    p->exit = False;
++    p->needStart = FALSE;
++    p->stopWriting = FALSE;
++    p->exit = FALSE;
+     Event_Reset(&p->wasStarted);
+     Event_Reset(&p->wasStopped);
+ 
+@@ -37,13 +37,13 @@
+   else
+   {
+     CriticalSection_Leave(&p->cs);
+-    p->csWasEntered = False;
++    p->csWasEntered = FALSE;
+     p->numProcessedBlocks++;
+     Semaphore_Release1(&p->freeSemaphore);
+   }
+   Semaphore_Wait(&p->filledSemaphore);
+   CriticalSection_Enter(&p->cs);
+-  p->csWasEntered = True;
++  p->csWasEntered = TRUE;
+ }
+ 
+ /* MtSync_StopWriting must be called if Writing was started */
+@@ -53,11 +53,11 @@
+   UInt32_7z myNumBlocks = p->numProcessedBlocks;
+   if (!Thread_WasCreated(&p->thread) || p->needStart)
+     return;
+-  p->stopWriting = True;
++  p->stopWriting = TRUE;
+   if (p->csWasEntered)
+   {
+     CriticalSection_Leave(&p->cs);
+-    p->csWasEntered = False;
++    p->csWasEntered = FALSE;
+   }
+   Semaphore_Release1(&p->freeSemaphore);
+  
+@@ -68,7 +68,7 @@
+     Semaphore_Wait(&p->filledSemaphore);
+     Semaphore_Release1(&p->freeSemaphore);
+   }
+-  p->needStart = True;
++  p->needStart = TRUE;
+ }
+ 
+ static void MtSync_Destruct(CMtSync *p)
+@@ -76,7 +76,7 @@
+   if (Thread_WasCreated(&p->thread))
+   {
+     MtSync_StopWriting(p);
+-    p->exit = True;
++    p->exit = TRUE;
+     if (p->needStart)
+       Event_Set(&p->canStart);
+     Thread_Wait(&p->thread);
+@@ -85,7 +85,7 @@
+   if (p->csWasInitialized)
+   {
+     CriticalSection_Delete(&p->cs);
+-    p->csWasInitialized = False;
++    p->csWasInitialized = FALSE;
+   }
+ 
+   Event_Close(&p->canStart);
+@@ -94,7 +94,7 @@
+   Semaphore_Close(&p->freeSemaphore);
+   Semaphore_Close(&p->filledSemaphore);
+ 
+-  p->wasCreated = False;
++  p->wasCreated = FALSE;
+ }
+ 
+ #define RINOK_THREAD(x) { if ((x) != 0) return SZ_ERROR_THREAD; }
+@@ -105,7 +105,7 @@
+     return SZ_OK;
+ 
+   RINOK_THREAD(CriticalSection_Init(&p->cs));
+-  p->csWasInitialized = True;
++  p->csWasInitialized = TRUE;
+ 
+   RINOK_THREAD(AutoResetEvent_CreateNotSignaled(&p->canStart));
+   RINOK_THREAD(AutoResetEvent_CreateNotSignaled(&p->wasStarted));
+@@ -114,10 +114,10 @@
+   RINOK_THREAD(Semaphore_Create(&p->freeSemaphore, numBlocks, numBlocks));
+   RINOK_THREAD(Semaphore_Create(&p->filledSemaphore, 0, numBlocks));
+ 
+-  p->needStart = True;
++  p->needStart = TRUE;
+   
+   RINOK_THREAD(Thread_Create(&p->thread, startAddress, obj));
+-  p->wasCreated = True;
++  p->wasCreated = TRUE;
+   return SZ_OK;
+ }
+ 
+@@ -129,7 +129,7 @@
+   return res;
+ }
+ 
+-void MtSync_Init(CMtSync *p) { p->needStart = True; }
++void MtSync_Init(CMtSync *p) { p->needStart = TRUE; }
+ 
+ #define kMtMaxValForNormalize 0xFFFFFFFF
+ 
+@@ -391,7 +391,7 @@
+   if (!sync->needStart)
+   {
+     CriticalSection_Enter(&sync->cs);
+-    sync->csWasEntered = True;
++    sync->csWasEntered = TRUE;
+   }
+   
+   BtGetMatches(p, p->btBuf + (globalBlockIndex & kMtBtNumBlocksMask) * kMtBtBlockSize);
+@@ -406,7 +406,7 @@
+   if (!sync->needStart)
+   {
+     CriticalSection_Leave(&sync->cs);
+-    sync->csWasEntered = False;
++    sync->csWasEntered = FALSE;
+   }
+ }
+ 
+@@ -503,7 +503,7 @@
+   p->hashBufPos = p->hashBufPosLimit = 0;
+ 
+   /* Init without data reading. We don't want to read data in this thread */
+-  MatchFinder_Init_2(mf, False);
++  MatchFinder_Init_2(mf, FALSE);
+   
+   p->pointerToCurPos = Inline_MatchFinder_GetPointerToCurrentPos(mf);
+   p->btNumAvailBytes = 0;
+diff -Naur a/lzma/Lzma2Dec.c b/lzma/Lzma2Dec.c
+--- a/lzma/Lzma2Dec.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/Lzma2Dec.c	2019-08-21 14:18:18.283440281 -0400
+@@ -91,9 +91,9 @@
+ void Lzma2Dec_Init(CLzma2Dec *p)
+ {
+   p->state = LZMA2_STATE_CONTROL;
+-  p->needInitDic = True;
+-  p->needInitState = True;
+-  p->needInitProp = True;
++  p->needInitDic = TRUE;
++  p->needInitState = TRUE;
++  p->needInitProp = TRUE;
+   LzmaDec_Init(&p->decoder);
+ }
+ 
+@@ -151,7 +151,7 @@
+         return LZMA2_STATE_ERROR;
+       p->decoder.prop.lc = lc;
+       p->decoder.prop.lp = lp;
+-      p->needInitProp = False;
++      p->needInitProp = FALSE;
+       return LZMA2_STATE_DATA;
+     }
+   }
+@@ -230,14 +230,14 @@
+         {
+           Bool_7z initDic = (p->control == LZMA2_CONTROL_COPY_RESET_DIC);
+           if (initDic)
+-            p->needInitProp = p->needInitState = True;
++            p->needInitProp = p->needInitState = TRUE;
+           else if (p->needInitDic)
+           {
+             p->state = LZMA2_STATE_ERROR;
+             return SZ_ERROR_DATA;
+           }
+-          p->needInitDic = False;
+-          LzmaDec_InitDicAndState(&p->decoder, initDic, False);
++          p->needInitDic = FALSE;
++          LzmaDec_InitDicAndState(&p->decoder, initDic, FALSE);
+         }
+ 
+         if (srcSizeCur > destSizeCur)
+@@ -273,8 +273,8 @@
+           }
+           
+           LzmaDec_InitDicAndState(&p->decoder, initDic, initState);
+-          p->needInitDic = False;
+-          p->needInitState = False;
++          p->needInitDic = FALSE;
++          p->needInitState = FALSE;
+           p->state = LZMA2_STATE_DATA_CONT;
+         }
+   
+diff -Naur a/lzma/Lzma2Enc.c b/lzma/Lzma2Enc.c
+--- a/lzma/Lzma2Enc.c	2019-08-21 14:17:52.770685272 -0400
++++ b/lzma/Lzma2Enc.c	2019-08-21 14:18:18.293441360 -0400
+@@ -54,8 +54,8 @@
+   RINOK(LzmaEnc_WriteProperties(p->enc, propsEncoded, &propsSize));
+   p->srcPos = 0;
+   p->props = propsEncoded[0];
+-  p->needInitState = True;
+-  p->needInitProp = True;
++  p->needInitState = TRUE;
++  p->needInitProp = TRUE;
+   return SZ_OK;
+ }
+ 
+@@ -102,7 +102,7 @@
+     if (res != SZ_ERROR_OUTPUT_EOF)
+       return res;
+     res = SZ_OK;
+-    useCopyBlock = True;
++    useCopyBlock = TRUE;
+   }
+ 
+   if (useCopyBlock)
+@@ -132,7 +132,7 @@
+       }
+       else
+         *packSizeRes = destPos;
+-      /* needInitState = True; */
++      /* needInitState = TRUE; */
+     }
+     
+     LzmaEnc_RestoreState(p->enc);
+@@ -156,8 +156,8 @@
+     if (p->needInitProp)
+       outBuf[destPos++] = p->props;
+     
+-    p->needInitProp = False;
+-    p->needInitState = False;
++    p->needInitProp = FALSE;
++    p->needInitState = FALSE;
+     destPos += packSize;
+     p->srcPos += unpackSize;
+ 
+diff -Naur a/lzma/Lzma86Enc.c b/lzma/Lzma86Enc.c
+--- a/lzma/Lzma86Enc.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/Lzma86Enc.c	2019-08-21 14:18:18.293441360 -0400
+@@ -56,7 +56,7 @@
+ 
+   {
+     size_t minSize = 0;
+-    Bool_7z bestIsFiltered = False;
++    Bool_7z bestIsFiltered = FALSE;
+ 
+     /* passes for SZ_FILTER_AUTO:
+         0 - BCJ + LZMA
+@@ -75,7 +75,7 @@
+       if (curModeIsFiltered && !bestIsFiltered)
+         break;
+       if (useFilter && i == 0)
+-        curModeIsFiltered = True;
++        curModeIsFiltered = TRUE;
+       
+       curRes = LzmaEncode(dest + LZMA86_HEADER_SIZE, &outSizeProcessed,
+           curModeIsFiltered ? filteredStream : src, srcLen,
+diff -Naur a/lzma/LzmaDec.c b/lzma/LzmaDec.c
+--- a/lzma/LzmaDec.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/LzmaDec.c	2019-08-21 14:18:18.293441360 -0400
+@@ -785,7 +785,7 @@
+ void LzmaDec_Init(CLzmaDec *p)
+ {
+   p->dicPos = 0;
+-  LzmaDec_InitDicAndState(p, True, True);
++  LzmaDec_InitDicAndState(p, TRUE, TRUE);
+ }
+ 
+ static void LzmaDec_InitStateReal(CLzmaDec *p)
+diff -Naur a/lzma/LzmaEnc.c b/lzma/LzmaEnc.c
+--- a/lzma/LzmaEnc.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/LzmaEnc.c	2019-08-21 14:18:18.293441360 -0400
+@@ -904,8 +904,8 @@
+ }
+ 
+ 
+-#define MakeAsChar(p) (p)->backPrev = (UInt32_7z)(-1); (p)->prev1IsChar = False;
+-#define MakeAsShortRep(p) (p)->backPrev = 0; (p)->prev1IsChar = False;
++#define MakeAsChar(p) (p)->backPrev = (UInt32_7z)(-1); (p)->prev1IsChar = FALSE;
++#define MakeAsShortRep(p) (p)->backPrev = 0; (p)->prev1IsChar = FALSE;
+ #define IsShortRep(p) ((p)->backPrev == 0)
+ 
+ static UInt32_7z GetRepLen1Price(CLzmaEnc *p, UInt32_7z state, UInt32_7z posState)
+@@ -956,7 +956,7 @@
+       p->opt[posMem].posPrev = posMem - 1;
+       if (p->opt[cur].prev2)
+       {
+-        p->opt[posMem - 1].prev1IsChar = False;
++        p->opt[posMem - 1].prev1IsChar = FALSE;
+         p->opt[posMem - 1].posPrev = p->opt[cur].posPrev2;
+         p->opt[posMem - 1].backPrev = p->opt[cur].backPrev2;
+       }
+@@ -1123,7 +1123,7 @@
+         opt->price = curAndLenPrice;
+         opt->posPrev = 0;
+         opt->backPrev = i;
+-        opt->prev1IsChar = False;
++        opt->prev1IsChar = FALSE;
+       }
+     }
+     while (--repLen >= 2);
+@@ -1158,7 +1158,7 @@
+         opt->price = curAndLenPrice;
+         opt->posPrev = 0;
+         opt->backPrev = distance + LZMA_NUM_REPS;
+-        opt->prev1IsChar = False;
++        opt->prev1IsChar = FALSE;
+       }
+       if (len == matches[offs])
+       {
+@@ -1276,7 +1276,7 @@
+     curOpt->backs[3] = reps[3];
+ 
+     curPrice = curOpt->price;
+-    nextIsChar = False;
++    nextIsChar = FALSE;
+     data = p->matchFinder.GetPointerToCurrentPos(p->matchFinderObj) - 1;
+     curByte = *data;
+     matchByte = *(data - (reps[0] + 1));
+@@ -1299,7 +1299,7 @@
+       nextOpt->price = curAnd1Price;
+       nextOpt->posPrev = cur;
+       MakeAsChar(nextOpt);
+-      nextIsChar = True;
++      nextIsChar = TRUE;
+     }
+ 
+     matchPrice = curPrice + GET_PRICE_1(p->isMatch[state][posState]);
+@@ -1313,7 +1313,7 @@
+         nextOpt->price = shortRepPrice;
+         nextOpt->posPrev = cur;
+         MakeAsShortRep(nextOpt);
+-        nextIsChar = True;
++        nextIsChar = TRUE;
+       }
+     }
+     numAvailFull = p->numAvail;
+@@ -1360,8 +1360,8 @@
+             opt->price = curAndLenPrice;
+             opt->posPrev = cur + 1;
+             opt->backPrev = 0;
+-            opt->prev1IsChar = True;
+-            opt->prev2 = False;
++            opt->prev1IsChar = TRUE;
++            opt->prev2 = FALSE;
+           }
+         }
+       }
+@@ -1392,7 +1392,7 @@
+           opt->price = curAndLenPrice;
+           opt->posPrev = cur;
+           opt->backPrev = repIndex;
+-          opt->prev1IsChar = False;
++          opt->prev1IsChar = FALSE;
+         }
+       }
+       while (--lenTest >= 2);
+@@ -1439,8 +1439,8 @@
+                 opt->price = curAndLenPrice;
+                 opt->posPrev = cur + lenTest + 1;
+                 opt->backPrev = 0;
+-                opt->prev1IsChar = True;
+-                opt->prev2 = True;
++                opt->prev1IsChar = TRUE;
++                opt->prev2 = TRUE;
+                 opt->posPrev2 = cur;
+                 opt->backPrev2 = repIndex;
+               }
+@@ -1487,7 +1487,7 @@
+           opt->price = curAndLenPrice;
+           opt->posPrev = cur;
+           opt->backPrev = curBack + LZMA_NUM_REPS;
+-          opt->prev1IsChar = False;
++          opt->prev1IsChar = FALSE;
+         }
+         }
+ 
+@@ -1530,8 +1530,8 @@
+                 opt->price = curAndLenPrice2;
+                 opt->posPrev = cur + lenTest + 1;
+                 opt->backPrev = 0;
+-                opt->prev1IsChar = True;
+-                opt->prev2 = True;
++                opt->prev1IsChar = TRUE;
++                opt->prev2 = TRUE;
+                 opt->posPrev2 = cur;
+                 opt->backPrev2 = curBack + LZMA_NUM_REPS;
+               }
+@@ -1681,14 +1681,14 @@
+   if (p->matchFinderBase.result != SZ_OK)
+     p->result = SZ_ERROR_READ;
+   if (p->result != SZ_OK)
+-    p->finished = True;
++    p->finished = TRUE;
+   return p->result;
+ }
+ 
+ static SRes Flush(CLzmaEnc *p, UInt32_7z nowPos)
+ {
+   /* ReleaseMFStream(); */
+-  p->finished = True;
++  p->finished = TRUE;
+   if (p->writeEndMark)
+     WriteEndMarker(p, nowPos & p->pbMask);
+   RangeEnc_FlushData(&p->rc);
+@@ -2092,7 +2092,7 @@
+       break;
+   p->distTableSize = i * 2;
+ 
+-  p->finished = False;
++  p->finished = FALSE;
+   p->result = SZ_OK;
+   RINOK(LzmaEnc_Alloc(p, keepWindowSize, alloc, allocBig));
+   LzmaEnc_Init(p);
+@@ -2164,7 +2164,7 @@
+   if (p->rem < size)
+   {
+     size = p->rem;
+-    p->overflow = True;
++    p->overflow = TRUE;
+   }
+   memcpy(p->data, data, size);
+   p->rem -= size;
+@@ -2198,10 +2198,10 @@
+   outStream.funcTable.Write = MyWrite;
+   outStream.data = dest;
+   outStream.rem = *destLen;
+-  outStream.overflow = False;
++  outStream.overflow = FALSE;
+ 
+-  p->writeEndMark = False;
+-  p->finished = False;
++  p->writeEndMark = FALSE;
++  p->finished = FALSE;
+   p->result = SZ_OK;
+ 
+   if (reInit)
+@@ -2211,7 +2211,7 @@
+   RangeEnc_Init(&p->rc);
+   p->rc.outStream = &outStream.funcTable;
+ 
+-  res = LzmaEnc_CodeOneBlock(p, True, desiredPackSize, *unpackSize);
++  res = LzmaEnc_CodeOneBlock(p, TRUE, desiredPackSize, *unpackSize);
+   
+   *unpackSize = (UInt32_7z)(p->nowPos64 - nowPos64);
+   *destLen -= outStream.rem;
+@@ -2234,7 +2234,7 @@
+ 
+   for (;;)
+   {
+-    res = LzmaEnc_CodeOneBlock(p, False, 0, 0);
++    res = LzmaEnc_CodeOneBlock(p, FALSE, 0, 0);
+     if (res != SZ_OK || p->finished)
+       break;
+     if (progress)
+@@ -2307,7 +2307,7 @@
+   outStream.funcTable.Write = MyWrite;
+   outStream.data = dest;
+   outStream.rem = *destLen;
+-  outStream.overflow = False;
++  outStream.overflow = FALSE;
+ 
+   p->writeEndMark = writeEndMark;
+   p->rc.outStream = &outStream.funcTable;
+diff -Naur a/lzma/MtCoder.c b/lzma/MtCoder.c
+--- a/lzma/MtCoder.c	2019-08-21 14:17:52.770685272 -0400
++++ b/lzma/MtCoder.c	2019-08-21 14:18:18.303442440 -0400
+@@ -156,8 +156,8 @@
+   MY_BUF_ALLOC(p->inBuf, p->inBufSize, p->mtCoder->blockSize)
+   MY_BUF_ALLOC(p->outBuf, p->outBufSize, p->mtCoder->destBlockSize)
+ 
+-  p->stopReading = False;
+-  p->stopWriting = False;
++  p->stopReading = FALSE;
++  p->stopWriting = FALSE;
+   RINOK_THREAD(AutoResetEvent_CreateNotSignaled(&p->canRead));
+   RINOK_THREAD(AutoResetEvent_CreateNotSignaled(&p->canWrite));
+ 
+@@ -187,7 +187,7 @@
+ static SRes MtThread_Process(CMtThread *p, Bool_7z *stop)
+ {
+   CMtThread *next;
+-  *stop = True;
++  *stop = TRUE;
+   if (Event_Wait(&p->canRead) != 0)
+     return SZ_ERROR_THREAD;
+   
+@@ -195,7 +195,7 @@
+   
+   if (p->stopReading)
+   {
+-    next->stopReading = True;
++    next->stopReading = TRUE;
+     return Event_Set(&next->canRead) == 0 ? SZ_OK : SZ_ERROR_THREAD;
+   }
+ 
+@@ -235,8 +235,8 @@
+     {
+       MtCoder_SetError(p->mtCoder, res);
+       MtProgress_SetError(&p->mtCoder->mtProgress, res);
+-      next->stopReading = True;
+-      next->stopWriting = True;
++      next->stopReading = TRUE;
++      next->stopWriting = TRUE;
+       Event_Set(&next->canRead);
+       Event_Set(&next->canWrite);
+       return res;
+@@ -309,7 +309,7 @@
+       if (LoopThread_StartSubThread(&t->thread) != SZ_OK)
+       {
+         res = SZ_ERROR_THREAD;
+-        p->threads[0].stopReading = True;
++        p->threads[0].stopReading = TRUE;
+         break;
+       }
+     }
+diff -Naur a/lzma/Ppmd7.c b/lzma/Ppmd7.c
+--- a/lzma/Ppmd7.c	2019-08-21 14:17:52.770685272 -0400
++++ b/lzma/Ppmd7.c	2019-08-21 14:18:18.303442440 -0400
+@@ -111,10 +111,10 @@
+         + UNIT_SIZE
+         #endif
+         )) == 0)
+-      return False;
++      return FALSE;
+     p->Size = size;
+   }
+-  return True;
++  return TRUE;
+ }
+ 
+ static void InsertNode(CPpmd7 *p, void *node, unsigned indx)
+@@ -458,7 +458,7 @@
+ 
+   if (p->OrderFall == 0)
+   {
+-    p->MinContext = p->MaxContext = CreateSuccessors(p, True);
++    p->MinContext = p->MaxContext = CreateSuccessors(p, TRUE);
+     if (p->MinContext == 0)
+     {
+       RestartModel(p);
+@@ -480,7 +480,7 @@
+   {
+     if (fSuccessor <= successor)
+     {
+-      CTX_PTR cs = CreateSuccessors(p, False);
++      CTX_PTR cs = CreateSuccessors(p, FALSE);
+       if (cs == NULL)
+       {
+         RestartModel(p);
+diff -Naur a/lzma/Ppmd7Dec.c b/lzma/Ppmd7Dec.c
+--- a/lzma/Ppmd7Dec.c	2019-08-21 14:17:52.770685272 -0400
++++ b/lzma/Ppmd7Dec.c	2019-08-21 14:18:18.303442440 -0400
+@@ -14,7 +14,7 @@
+   p->Code = 0;
+   p->Range = 0xFFFFFFFF;
+   if (p->Stream->Read((void *)p->Stream) != 0)
+-    return False;
++    return FALSE;
+   for (i = 0; i < 4; i++)
+     p->Code = (p->Code << 8) | p->Stream->Read((void *)p->Stream);
+   return (p->Code < 0xFFFFFFFF);
+diff -Naur a/lzma/XzDec.c b/lzma/XzDec.c
+--- a/lzma/XzDec.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/XzDec.c	2019-08-21 14:18:18.313443522 -0400
+@@ -393,7 +393,7 @@
+ {
+   SizeT destLenOrig = *destLen;
+   SizeT srcLenOrig = *srcLen;
+-  Bool_7z allFinished = True;
++  Bool_7z allFinished = TRUE;
+   *destLen = 0;
+   *srcLen = 0;
+   *status = CODER_STATUS_NOT_FINISHED;
+@@ -410,7 +410,7 @@
+ 
+   for (;;)
+   {
+-    Bool_7z processed = False;
++    Bool_7z processed = FALSE;
+     unsigned i;
+     /*
+     if (p->numCoders == 1 && *destLen == destLenOrig && finishMode == LZMA_FINISH_ANY)
+@@ -456,7 +456,7 @@
+       res = coder->Code(coder->p, destCur, &destLenCur, srcCur, &srcLenCur, srcFinishedCur, finishMode, &encodingWasFinished);
+ 
+       if (!encodingWasFinished)
+-        allFinished = False;
++        allFinished = FALSE;
+ 
+       if (i == 0)
+       {
+@@ -484,7 +484,7 @@
+         return res;
+ 
+       if (destLenCur != 0 || srcLenCur != 0)
+-        processed = True;
++        processed = TRUE;
+     }
+     if (!processed)
+       break;
+@@ -573,7 +573,7 @@
+ SRes XzDec_Init(CMixCoder *p, const CXzBlock *block)
+ {
+   unsigned i;
+-  Bool_7z needReInit = True;
++  Bool_7z needReInit = TRUE;
+   unsigned numFilters = XzBlock_GetNumFilters(block);
+   
+   if (numFilters == p->numCoders)
+@@ -650,7 +650,7 @@
+         return SZ_OK;
+       }
+       
+-      res = MixCoder_Code(&p->decoder, dest, &destLen2, src, &srcLen2, False, finishMode, status);
++      res = MixCoder_Code(&p->decoder, dest, &destLen2, src, &srcLen2, FALSE, finishMode, status);
+       XzCheck_Update(&p->check, dest, destLen2);
+       
+       (*srcLen) += srcLen2;
+diff -Naur a/lzma/XzEnc.c b/lzma/XzEnc.c
+--- a/lzma/XzEnc.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/XzEnc.c	2019-08-21 14:18:18.313443522 -0400
+@@ -313,10 +313,10 @@
+       p->enc.readPos += processed;
+       if (processed == 0)
+       {
+-        p->enc.readWasFinished = True;
+-        p->enc.isFinalFinished = True;
++        p->enc.readWasFinished = TRUE;
++        p->enc.isFinalFinished = TRUE;
+       }
+-      p->enc.needRead = False;
++      p->enc.needRead = FALSE;
+     }
+   
+     *size = sizeOriginal;
+@@ -402,7 +402,7 @@
+   p->id = 0;
+   p->delta = 0;
+   p->ip = 0;
+-  p->ipDefined = False;
++  p->ipDefined = FALSE;
+ }
+ 
+ 
+diff -Naur a/lzma/XzIn.c b/lzma/XzIn.c
+--- a/lzma/XzIn.c	2019-08-21 14:17:52.780686353 -0400
++++ b/lzma/XzIn.c	2019-08-21 14:18:18.313443522 -0400
+@@ -32,11 +32,11 @@
+   if (headerSize == 0)
+   {
+     *headerSizeRes = 1;
+-    *isIndex = True;
++    *isIndex = TRUE;
+     return SZ_OK;
+   }
+ 
+-  *isIndex = False;
++  *isIndex = FALSE;
+   *headerSizeRes = headerSize;
+   RINOK(SeqInStream_Read(inStream, header + 1, headerSize - 1));
+   return XzBlock_Parse(p, header);

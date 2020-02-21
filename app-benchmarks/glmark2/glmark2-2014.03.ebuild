@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 inherit waf-utils python-single-r1
@@ -15,7 +15,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~arm ~amd64 ~x86"
+KEYWORDS="~arm ~arm64 ~amd64 ~x86"
 IUSE="drm gles2 +opengl wayland X"
 
 RDEPEND="media-libs/libpng
@@ -28,9 +28,13 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="|| ( opengl gles2 )
 			  || ( drm wayland X )"
 
+PATCHES=( "${FILESDIR}/${PN}-sqrt.patch" )
+
 src_prepare() {
 	rm -rf "${S}/src/libpng"
 	sed -i "s/libpng15/libpng/g" "${S}/wscript" # allow build with >= libpng:1.6
+	sed -i "s|-Werror ||g" "${S}/wscript"
+	default_src_prepare
 }
 
 src_configure() {

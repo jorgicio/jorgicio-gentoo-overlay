@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<upstream>
+		<bugs-to>https://github.com/lupoDharkael/flameshot/issues</bugs-to>
+		<maintainer type="person">
+			<name>Dharkael</name>
+		</maintainer>
+		<remote-id type="github">lupoDharkael/flameshot</remote-id>
+	</upstream>
 	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>
 		<name>Jorge Pizarro Callejas</name>

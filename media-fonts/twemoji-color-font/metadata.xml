@@ -6,4 +6,7 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
+	<use>
+		<flag name="vanilla">Disable bundled patches to apply in order to fix rendering on some browsers like Firefox.</flag>
+	</use>
 </pkgmetadata>

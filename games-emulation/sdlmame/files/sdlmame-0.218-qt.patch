@@ -1,0 +1,30 @@
+diff -Naur a/scripts/src/osd/sdl_cfg.lua b/scripts/src/osd/sdl_cfg.lua
+--- a/scripts/src/osd/sdl_cfg.lua	2020-02-01 16:30:37.000000000 -0300
++++ b/scripts/src/osd/sdl_cfg.lua	2020-02-02 23:23:02.326158882 -0300
+@@ -125,15 +125,17 @@
+ 	configuration { }
+ 
+ elseif _OPTIONS["targetos"]=="linux" then
+-	if _OPTIONS["QT_HOME"]~=nil then
+-		buildoptions {
+-			"-I" .. backtick(_OPTIONS["QT_HOME"] .. "/bin/qmake -query QT_INSTALL_HEADERS"),
+-		}
+-	else
+-		buildoptions {
+-			backtick(pkgconfigcmd() .. " --cflags Qt5Widgets"),
+-		}
+-	end
++    if OPTIONS["USE_QTDEBUG"] == "1" then
++            if _OPTIONS["QT_HOME"]~=nil then
++                buildoptions {
++                "-I" .. backtick(_OPTIONS["QT_HOME"] .. "/bin/qmake -query QT_INSTALL_HEADERS"),
++            }
++        else
++            buildoptions {
++                backtick(pkgconfigcmd() .. " --cflags Qt5Widgets"),
++            }
++        end
++    end
+ elseif _OPTIONS["targetos"]=="macosx" then
+ 	defines {
+ 		"SDLMAME_MACOSX",

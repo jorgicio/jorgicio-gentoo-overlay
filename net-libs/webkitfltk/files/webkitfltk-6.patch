@@ -1,0 +1,46 @@
+From 37ad1feba1a179a85bb3538f6b28ea21e59aa6fe Mon Sep 17 00:00:00 2001
+From: Fun <therealfun@users.noreply.github.com>
+Date: Sun, 19 Nov 2017 18:15:19 +0200
+Subject: [PATCH] use immediate variable assignment when shell function is used
+
+This should hide the scaring "which: no fltk-config13" warning:
+  https://github.com/clbr/webkitfltk/issues/21
+
+The warning will still be displayed, but for every makefile, not every
+source compiled with the fltk headers.
+---
+ Source/Makefile.fltk.shared | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Source/Makefile.fltk.shared b/Source/Makefile.fltk.shared
+index 2df5990fc..1ae847b26 100644
+--- a/Source/Makefile.fltk.shared
++++ b/Source/Makefile.fltk.shared
+@@ -23,13 +23,13 @@ CXXFLAGS += -ffunction-sections -fdata-sections
+ CXXFLAGS += -fno-rtti -fno-exceptions
+ CXXFLAGS += -Wall
+ 
+-FLTKCONFIG = $(shell which fltk-config13 || which fltk-config)
++FLTKCONFIG := $(shell which fltk-config13 || which fltk-config)
+ 
+-FLTKVER = $(shell $(FLTKCONFIG) --version)
+-FLTKMINOR = $(shell echo $(FLTKVER) | cut -d. -f2)
+-FLTKPATCH = $(shell echo $(FLTKVER) | cut -d. -f3)
++FLTKVER := $(shell $(FLTKCONFIG) --version)
++FLTKMINOR := $(shell echo $(FLTKVER) | cut -d. -f2)
++FLTKPATCH := $(shell echo $(FLTKVER) | cut -d. -f3)
+ 
+-FLTKENOUGH = $(shell test "$(FLTKMINOR)" -lt 3 || test "$(FLTKPATCH)" -lt 3 || echo ok)
++FLTKENOUGH := $(shell test "$(FLTKMINOR)" -lt 3 || test "$(FLTKPATCH)" -lt 3 || echo ok)
+ 
+ ifneq ($(FLTKENOUGH), ok)
+   $(error FLTK >= 1.3.3 not found, got $(FLTKVER))
+@@ -55,7 +55,7 @@ ifeq ($(shell which bison),)
+   $(error bison not found)
+ endif
+ 
+-PYTHONVER = $(shell $(PYTHON) --version 2>&1 | cut -d. -f1 | cut -d' ' -f2-)
++PYTHONVER := $(shell $(PYTHON) --version 2>&1 | cut -d. -f1 | cut -d' ' -f2-)
+ ifneq ($(PYTHONVER), 2)
+   $(error Python 2 is required, 3 won't work.)
+ endif

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="gitlab">ColinDuquesnoy/MellowPlayer</remote-id>
+		<bugs-to>https://gitlab.com/ColinDuquesnoy/MellowPlayer/issues</bugs-to>
+		<maintainer type="person">
+			<name>Colin Duquesnoy</name>
+			<email>colin.duquesnoy@gmail.com</email>
+		</maintainer>
+	</upstream>
+	<maintainer type="person">
+		<email>jpizarrocallejas@gmail.com</email>
+		<name>Jorge Pizarro Callejas</name>
+		<description>Jorgicio Gentoo Overlay</description>
+	</maintainer>
+</pkgmetadata>

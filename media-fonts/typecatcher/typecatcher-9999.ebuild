@@ -1,28 +1,24 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{1,2,3,4,5} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit eutils distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="The easiest way to install Google Webfonts for off-line use"
 HOMEPAGE="http://launchpad.net/typecatcher"
 if [[ ${PV} == *9999* ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/andrewsomething/${PN}"
-	KEYWORDS=""
 else
-	inherit versionator
-	MY_BRANCH="$(get_version_component_range 1-2)"
-	SRC_URI="http://launchpad.net/${PN}/${MY_BRANCH}/${PV}/+download/${PN}_${PV}.tar.gz"
+	SRC_URI="https://github.com/andrewsomething/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~x86 ~amd64"
-	RESTRICT="mirror"
 fi
 
-LICENSE="LGPL-3.0"
+LICENSE="LGPL-3"
 SLOT="0"
 IUSE=""
 

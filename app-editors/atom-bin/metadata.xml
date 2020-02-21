@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<upstream>
+		<remote-id type="github">atom/atom</remote-id>
+		<bugs-to>https://github.com/atom/atom/issues</bugs-to>
+	</upstream>
 	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
-    <use>
-        <flag name="system-node">Use node.js system implementation instead of bundled.</flag>
-    </use>
+	<use>
+		<flag name="system-node">Use node.js system implementation instead of bundled.</flag>
+		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
+	</use>
 </pkgmetadata>

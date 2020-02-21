@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7,8} )
 
 inherit distutils-r1
 
@@ -27,7 +27,6 @@ DEPEND="${PYTHON_DEPS}
 	dev-python/pushbullet-commons
 	dev-python/python-distutils-extra
 	dev-python/polib
-	net-libs/webkit-gtk:3[introspection]
 "
 RDEPEND="${DEPEND}
 	x11-misc/shared-mime-info"

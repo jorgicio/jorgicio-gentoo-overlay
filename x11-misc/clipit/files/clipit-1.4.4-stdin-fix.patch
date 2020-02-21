@@ -1,0 +1,53 @@
+From 45e46d03b3ff315b5b380004d85fb499b4c139db Mon Sep 17 00:00:00 2001
+From: Ivan Malison <IvanMalison@gmail.com>
+Date: Mon, 25 Jun 2018 18:24:12 -0700
+Subject: [PATCH] Proceed as normal if nothing provided in stdin
+
+---
+ src/main.c  | 1 -
+ src/utils.c | 6 +++---
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 0fd2aec..79a386e 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -1029,7 +1029,6 @@ int main(int argc, char **argv) {
+ 				return 0;
+ 			}
+ 			g_string_free(piped_string, TRUE);
+-			return -1;
+ 		}
+ 	}
+ 
+diff --git a/src/utils.c b/src/utils.c
+index 5e7776c..4439f32 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -118,7 +118,7 @@ GString *remove_newlines_string(GString *string)
+ gboolean parse_options(int argc, char* argv[])
+ {
+ 	/* Declare argument options and argument variables */
+-	gboolean icon = FALSE, daemon = FALSE,
++	gboolean no_icon = FALSE, daemon = FALSE,
+ 		clipboard = FALSE, primary = FALSE,
+ 		exit = FALSE;
+ 
+@@ -135,7 +135,7 @@ gboolean parse_options(int argc, char* argv[])
+ 			"no-icon", 'n',
+ 			0,
+ 			G_OPTION_ARG_NONE,
+-			&icon, _("Do not use status icon (Ctrl-Alt-P for menu)"),
++			&no_icon, _("Do not use status icon (Ctrl-Alt-P for menu)"),
+ 			NULL
+ 		},
+ 		{
+@@ -177,7 +177,7 @@ gboolean parse_options(int argc, char* argv[])
+ 	/* Check which options were parseed */
+ 
+ 	/* Do not display icon option */
+-	if (icon)
++	if (no_icon)
+ 	{
+ 		prefs.no_icon = TRUE;
+ 	}

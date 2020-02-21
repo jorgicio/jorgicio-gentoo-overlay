@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
 COMMIT_1="9b42fcb3f7d89c4762f7"
 COMMIT_2="c188dc56ce4739504912decc60dc33b6b0b3f335"

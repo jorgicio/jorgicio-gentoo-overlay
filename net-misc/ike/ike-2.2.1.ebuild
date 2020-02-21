@@ -1,63 +1,63 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=7
 
-CMAKE_IN_SOURCE_BUILD="1"
-inherit cmake-utils systemd
+CMAKE_IN_SOURCE_BUILD=1
+
+inherit cmake-utils desktop systemd
 
 DESCRIPTION="Shrew soft VPN Client"
 HOMEPAGE="http://www.shrew.net/"
-SRC_URI="http://www.shrew.net/download/${PN}/${P}-release.tbz2"
+SRC_URI="http://www.shrew.net/download/${PN}/${P}-release.tgz"
 
-LICENSE="shrew"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ldap nat qt4 systemd"
+IUSE="ldap nat systemd"
 
 COMMON_DEPEND="dev-libs/libedit
-	dev-libs/openssl
-	qt4? ( dev-qt/qtgui )
+	dev-libs/openssl:0=
 	ldap? ( net-nds/openldap )"
 
 DEPEND="${COMMON_DEPEND}
-	dev-util/cmake
 	>=sys-devel/bison-2.3
 	sys-devel/flex"
 
 RDEPEND="${COMMON_DEPEND}"
 
-#DOCS="CONTRIB.TXT README.TXT TODO.TXT"
+DOCS="CONTRIB.TXT README.TXT TODO.TXT"
 
 S="${WORKDIR}/${PN}"
 
-src_configure(){
-	mycmakeargs+=( $(cmake-utils_use ldap LDAP)
-		$(cmake-utils_use nat NATT)
-		$(cmake-utils_use qt4 QTGUI)
-		"-DMANDIR=/usr/share/man"
-		"-DETCDIR=/etc/ike"
-		)
+src_prepare(){
+	sed -i -e 's|define "parser_class_name"|define parser_class_name|' \
+		source/iked/conf.parse.yy || die
+	has_version ">=dev-libs/openssl-1.1.0:0" && PATCHES=( "${FILESDIR}/${PN}-openssl-1.1.0.patch" )
+	cmake-utils_src_prepare
+}
 
+src_configure(){
+	#QTGUI disabled because it uses QT4
+	mycmakeargs=(
+		-DLDAP=$(usex ldap)
+		-DNATT=$(usex nat)
+		-DLIBDIR=/usr/$(get_libdir)
+		-DETCDIR=/etc/${PN}
+		-DQTGUI=NO
+	)
 	cmake-utils_src_configure
 }
 
 src_install(){
 	cmake-utils_src_install
-
-	insinto /usr/share/applications
-	doins "${FILESDIR}"/ike.desktop
-
-	insinto /usr/share/pixmaps
-	doins "${S}"/source/qikea/png/ikea.png
-
-	if use systemd ; then
-		systemd_dounit "${FILESDIR}"/iked.service || die
-	fi
+	use systemd && systemd_dounit "${FILESDIR}"/iked.service
 }
 
 pkg_postinst() {
+	echo
 	elog "a default configuration for the IKE Daemon"
-	elog "is stored in /etc/ike/iked.conf.sample"
+	elog "is stored in /etc/${PN}/iked.conf.sample"
+	echo
 }

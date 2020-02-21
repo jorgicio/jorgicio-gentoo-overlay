@@ -1,0 +1,21 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-04-10 22:18:16.539024635 -0400
++++ b/CMakeLists.txt	2019-04-10 22:18:47.772308155 -0400
+@@ -1,6 +1,8 @@
+ cmake_minimum_required(VERSION 3.2.0)
+ project(qmdnsengine)
+ 
++INCLUDE(GNUInstallDirs)
++
+ set(PROJECT_NAME "QMdnsEngine")
+ set(PROJECT_DESCRIPTION "Multicast DNS library for Qt applications")
+ set(PROJECT_AUTHOR "Nathan Osman")
+@@ -12,7 +14,7 @@
+ set(PROJECT_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
+ 
+ set(BIN_INSTALL_DIR bin CACHE STRING "Binary installation directory relative to the install prefix")
+-set(LIB_INSTALL_DIR lib CACHE STRING "Library installation directory relative to the install prefix")
++set(LIB_INSTALL_DIR ${CMAKE_INSTALL_FULL_LIBDIR} CACHE STRING "Library installation directory relative to the install prefix")
+ set(INCLUDE_INSTALL_DIR include CACHE STRING "Header installation directory relative to the install prefix")
+ 
+ set(DOC_INSTALL_DIR share/doc/qmdnsengine CACHE STRING "Documentation installation directory relative to the install prefix")

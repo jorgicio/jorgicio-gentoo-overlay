@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<upstream>
+		<remote-id type="github">prey/prey-node-client</remote-id>
+		<bugs-to>https://github.com/prey/prey-node-client/issues</bugs-to>
+		<maintainer type="project">
+			<name>Prey Project</name>
+			<email>github@preyproject.com</email>
+		</maintainer>
+	</upstream>
 	<maintainer type="person">
 		<email>jpizarrocallejas@gmail.com</email>
 		<name>Jorge Pizarro Callejas</name>
