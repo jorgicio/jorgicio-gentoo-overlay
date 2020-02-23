@@ -1,22 +1,19 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6,7,8} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
-inherit git-r3 python-r1
+inherit desktop git-r3 python-any-r1 xdg
 
 DESCRIPTION="A GUI frontend for ffmpeg livestreaming"
 HOMEPAGE="https://github.com/TheSamsai/Castawesome"
-SRC_URI=""
 EGIT_REPO_URI="${HOMEPAGE}"
 
-LICENSE="LGPL-3"
+LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 DEPEND="${PYTHON_DEPENDS}
 	x11-libs/gtk+:3
@@ -25,7 +22,13 @@ DEPEND="${PYTHON_DEPENDS}
 	"
 RDEPEND="${DEPEND}"
 
-src_prepare(){
+PATCHES=( "${FILESDIR}/${PN}-Makefile.patch" )
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
+
+src_prepare() {
 	sed -i 's#cp castawesome.py#install -Dm 755 castawesome.py#' Makefile
 	sed -i 's#/usr/local#$(DESTDIR)/usr#g' Makefile
 	sed -i 's#/usr/local#/usr#' castawesome.py
@@ -35,7 +38,7 @@ src_prepare(){
 	default
 }
 
-src_install(){
+src_install() {
 	default
-	newicon IconCA.png ${PN}.png
+	rm "${ED}/usr/bin/uninstall_${PN}" || die
 }
