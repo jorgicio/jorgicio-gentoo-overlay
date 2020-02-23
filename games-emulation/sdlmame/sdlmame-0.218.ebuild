@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 inherit desktop eutils python-any-r1 toolchain-funcs qmake-utils xdg-utils
 
 MY_PV="${PV/.}"
@@ -40,8 +40,7 @@ RDEPEND="!games-emulation/sdlmametools
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5 )
 	x11-libs/libX11
-	x11-libs/libXinerama
-	${PYTHON_DEPS}"
+	x11-libs/libXinerama"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto"
