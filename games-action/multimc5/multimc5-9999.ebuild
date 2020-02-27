@@ -37,6 +37,10 @@ PATCHES=(
 	"${FILESDIR}/fortify-fix-2.patch"
 )
 
+src_prepare(){
+	cmake-utils_src_prepare
+}
+
 src_configure(){
 	local mycmakeargs=(
 		-DMultiMC_LAYOUT=lin-system
