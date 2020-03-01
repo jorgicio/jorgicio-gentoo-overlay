@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+pidfile="/var/run/expressvpn.pid"
+command="/usr/sbin/expressvpnd"
+start_stop_daemon_args="-b -m --pidfile ${pidfile}"
+
+depend() {
+    use net
+    use dbus
+}
