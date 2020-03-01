@@ -37,9 +37,10 @@ src_prepare() {
 }
 
 src_install() {
-	mkdir -p "${ED}/usr"
+	mkdir -p "${ED}/usr/$(get_libdir)"
 	cp -r ./usr/bin "${ED}/usr/"
 	cp -r ./usr/sbin "${ED}/usr/"
+	cp usr/lib/${PN}/libxvclient.so "${ED}/usr/$(get_libdir)"
 	doinitd "${FILESDIR}/${PN}"
 	dodoc changelog
 	doman usr/share/man/man1/${PN}.1
