@@ -36,7 +36,6 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}
 	app-accessibility/at-spi2-atk:2
 	app-arch/bzip2
-	app-arch/lz4
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/fribidi
@@ -52,7 +51,6 @@ RDEPEND="${DEPEND}
 	dev-libs/nettle
 	dev-libs/nss
 	dev-libs/nspr
-	dev-libs/wayland
 	media-gfx/graphite2
 	media-libs/alsa-lib
 	media-libs/fontconfig
