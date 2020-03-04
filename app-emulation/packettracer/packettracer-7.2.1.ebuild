@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 	dev-qt/qtgui:5
 	dev-libs/icu
 	dev-libs/openssl:0=
-	media-libs/libpng:1.2
+	media-libs/libpng-compat:1.2
 "
 S="${WORKDIR}"
 QA_PREBUILT="opt/packettracer/*"
@@ -46,7 +46,7 @@ pkg_nofetch(){
 src_prepare(){
 	sed -i -e "s#/opt/pt#/opt/${PN}#" bin/Cisco-PacketTracer.desktop
 	sed -i -e "s#Application;Network#Network#" bin/Cisco-PacketTracer.desktop
-	default_src_prepare
+	default
 }
 
 src_install(){
