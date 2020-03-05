@@ -4,8 +4,14 @@
 ARCH=$(uname -m)
 [[ $ARCH == "x86_64" ]] && SUFFIX="64" || SUFFIX="32"
 
-command="/usr/lib${SUFFIX}/prey/bin/prey"
 pidfile="/var/run/prey-agent.pid"
+command="/usr/lib${SUFFIX}/prey/bin/prey"
 description="The Prey Agent Daemon"
-start_stop_daemon_args-"-b -n --pidfile ${pidfile}"
+start_stop_daemon_args="-b -n --pidfile ${pidfile}"
 command_user="prey:prey"
+command_background=true
+name="Prey Agent"
+
+depend() {
+    need dbus
+}
