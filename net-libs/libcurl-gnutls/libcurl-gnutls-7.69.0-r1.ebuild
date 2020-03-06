@@ -7,10 +7,11 @@ inherit unpacker
 
 DESCRIPTION="libcurl libraries linked with gnutls"
 HOMEPAGE="https://curl.haxx.se"
+MIRROR_URI="https://mirror.rackspace.com/archlinux"
 SRC_URI="
 	amd64? (
-		https://mirrors.evowise.com/archlinux/community/os/x86_64/${P}-${PR//r}-x86_64.pkg.tar.xz
-		https://mirrors.evowise.com/archlinux/multilib/os/x86_64/lib32-${P}-${PR//r}-x86_64.pkg.tar.xz
+		${MIRROR_URI}/community/os/x86_64/${P}-${PR//r}-x86_64.pkg.tar.zst
+		${MIRROR_URI}/multilib/os/x86_64/lib32-${P}-${PR//r}-x86_64.pkg.tar.zst
 	)
 "
 
