@@ -3,12 +3,13 @@
 
 EAPI=7
 
-inherit git-r3 gnome2-utils meson xdg
+inherit gnome2-utils meson xdg
 
 DESCRIPTION="Markdown editor made with GTK+-3.0"
 HOMEPAGE="https://fabiocolacio.github.io/Marker"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/fabiocolacio/${PN^}"
+SRC_URI="https://github.com/fabiocolacio/${PN^}/releases/download/${PV}/${PV}.tar.xz -> ${P}.tar.xz"
+
+KEYWORDS="~x86 ~amd64"
 
 LICENSE="GPL-3 ISC"
 SLOT="0"
@@ -22,6 +23,8 @@ DEPEND="x11-libs/gtk+:3
 RDEPEND="${DEPEND}
 	pandoc? ( app-text/pandoc )
 "
+
+S="${WORKDIR}/${PN^}"
 
 src_prepare(){
 	sed -i 's/en_US/C/' src/scidown/src/charter/src/svg.c || die

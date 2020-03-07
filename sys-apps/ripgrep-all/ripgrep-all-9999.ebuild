@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -182,7 +182,6 @@ EGIT_REPO_URI="${HOMEPAGE}"
 
 LICENSE="AGPL-3"
 SLOT="0"
-IUSE=""
 
 RDEPEND="
 	app-text/pandoc
@@ -191,7 +190,6 @@ RDEPEND="
 	virtual/ffmpeg
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/rust"
 
 pkg_postinst(){
 	echo

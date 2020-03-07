@@ -11,6 +11,7 @@
   - [Note for all MATE lovers (READ IT!!!)](#note-for-all-mate-lovers-read-it)
   - [Problem with compatibility with recent versions of ImageMagick? See here](#problem-with-compatibility-with-recent-versions-of-imagemagick-see-here)
   - [Problem with media-tv/xawtv ? See here](#problem-with-media-tvxawtv--see-here)
+  - [Want to contribute? Please, contact me](#want-to-contribute-please-contact-me)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -91,3 +92,7 @@ media-tv/xawtv -cpu_flags_x86_mmx
 ```
 
 For some strange reason, despite being added in the package.use.mask file, it's still active, so you should disable it manually in the meantime.
+
+## Want to contribute? Please, contact me
+
+As you may notice, there are lots of packages here, so any help (PRs, adopting some of this packages, etc.) are welcome.

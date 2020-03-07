@@ -3,11 +3,17 @@
 
 EAPI=7
 
-inherit git-r3 qmake-utils xdg
+inherit qmake-utils xdg
 
 DESCRIPTION="A Vim-inspired note taking application that knows programmers and Markdown better"
 HOMEPAGE="https://github.com/tamlok/vnote"
-EGIT_REPO_URI="${HOMEPAGE}.git"
+HOEDOWN_VERSION="4.0.0"
+SRC_URI="
+	${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/tamlok/hoedown/archive/${HOEDOWN_VERSION}.tar.gz -> hoedown-${HOEDOWN_VERSION}.tar.gz
+"
+
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,6 +27,11 @@ RDEPEND="${DEPEND}"
 
 pkg_setup(){
 	export INSTALL_ROOT="${D}"
+}
+
+src_unpack() {
+	default
+	mv "${WORKDIR}/hoedown-${HOEDOWN_VERSION}"/* "${S}/hoedown" || die
 }
 
 src_configure(){
