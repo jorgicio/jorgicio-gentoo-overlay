@@ -61,7 +61,7 @@ kernel32-sys-0.2.2
 lazy_static-1.3.0
 libc-0.2.58
 libflate-0.1.23
-libsqlite3-sys-0.14.0
+libsqlite3-sys-0.16.0
 linked-hash-map-0.5.2
 lmdb-rkv-0.11.4
 lmdb-rkv-sys-0.8.3
@@ -119,7 +119,7 @@ regex-1.1.6
 regex-syntax-0.6.6
 remove_dir_all-0.5.1
 rkv-0.9.6
-rusqlite-0.18.0
+rusqlite-0.20.0
 rustc-demangle-0.1.15
 rustc_version-0.2.3
 ryu-0.2.8
@@ -170,8 +170,7 @@ xz2-0.1.6
 zip-0.5.2
 zstd-0.4.24+zstd.1.4.0
 zstd-safe-1.4.9+zstd.1.4.0
-zstd-sys-1.4.10+zstd.1.4.0
-"
+zstd-sys-1.4.10+zstd.1.4.0"
 
 inherit cargo
 
