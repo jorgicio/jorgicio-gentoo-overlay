@@ -1,24 +1,24 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit rpm gnome2-utils xdg-utils
+inherit unpacker xdg
+
+MY_PN="${PN/-bin}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Desktop chat client for Google Hangouts"
 HOMEPAGE="https://github.com/yakyak/yakyak"
 SRC_URI="
-	amd64? ( https://github.com/yakyak/${PN//-bin}/releases/download/v${PV}/${PN//-bin}-${PV}-linux-x86_64.rpm )
-	x86? ( https://github.com/yakyak/${PN//-bin}/releases/download/v${PV}/${PN//-bin}-${PV}-linux-i386.rpm )"
+	amd64? ( https://github.com/yakyak/${MY_PN}/releases/download/v${PV}/${MY_P}-linux-amd64.deb )
+	x86? ( https://github.com/yakyak/${MY_PN}/releases/download/v${PV}/${MY_P}-linux-i386.deb )"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnome"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-RESTRICT="strip"
+RESTRICT="mirror strip"
 
 QA_PRESTRIPPED="
 	/opt/yakyak/libnode.so
@@ -26,36 +26,24 @@ QA_PRESTRIPPED="
 	/opt/yakyak/yakyak
 "
 
-
 S="${WORKDIR}"
 
-src_prepare() {
-	default_src_prepare
-	use gnome && xdg_environment_reset
-}
+DOCS="changelog"
 
 src_unpack() {
-	use amd64 && rpm_unpack ${PN//-bin}-${PV}-linux-x86_64.rpm
-	use x86 && rpm_unpack ${PN//-bin}-${PV}-linux-i386.rpm
+	unpack_deb "${A}"
+}
+
+src_prepare() {
+	mv usr/share/doc/${MY_PN}/changelog.gz .
+	gunzip changelog.gz
+	rm -rf usr/share/doc
+	default
 }
 
 src_install() {
-	cp -r "${S}/usr" "${D}/" || die "Install failed!"
-	cp -r "${S}/opt" "${D}/" || die "Install failed!"
-}
-
-pkg_preinst() {
-	use gnome && gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	use gnome && gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	use gnome && gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	mkdir -p "${ED}"
+	cp -r ./opt "${ED}"/
+	cp -r ./usr "${ED}"/
+	default
 }
