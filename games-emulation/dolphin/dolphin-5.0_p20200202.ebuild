@@ -6,11 +6,13 @@ EAPI=6
 PLOCALES="ar ca cs da de el en es fa fr hr hu it ja ko ms nb nl pl pt pt_BR ro ru sr sv tr zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
+CMAKE_MAKEFILE_GENERATOR="ninja"
+
 inherit cmake-utils desktop gnome2-utils l10n pax-utils
 
 COMMIT="049183148307ad6a5a3244c313841fc97448b647"
 
-SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${COMMIT}.zip -> ${P}.zip"
+SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Gamecube and Wii game emulator"
@@ -58,7 +60,6 @@ RDEPEND="
 	upnp? ( net-libs/miniupnpc )
 "
 DEPEND="${RDEPEND}
-	app-arch/zip
 	dev-util/vulkan-headers
 	media-libs/freetype
 	sys-devel/gettext
