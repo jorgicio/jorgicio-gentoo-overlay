@@ -61,7 +61,7 @@ src_install() {
 	rm ${PN}.1
 	mkdir -p "${ED}"
 	cp -r . "${ED}"/
-	doinitd "${FILESDIR}/${PN}"
+	doinitd "${FILESDIR}/${PN}d"
 }
 
 pkg_postinst() {
