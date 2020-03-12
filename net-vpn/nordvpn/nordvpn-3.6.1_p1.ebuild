@@ -9,10 +9,10 @@ DESCRIPTION="NordVPN CLI tool for Linux"
 HOMEPAGE="https://nordvpn.com"
 BASE_URI="https://repo.nordvpn.com/deb/${PN}/debian/pool/main"
 SRC_URI="
-	amd64? ( "${BASE_URI}/${P/-/_}-${PR/r}_amd64.deb" )
-	arm? ( "${BASE_URI}/${P/-/_}-${PR/r}_armel.deb" )
-	arm64? ( "${BASE_URI}/${P/-/_}-${PR/r}_arm64.deb" )
-	x86? ( "${BASE_URI}/${P/-/_}-${PR/r}_i386.deb" )
+	amd64? ( "${BASE_URI}/${PN}_${PV/_p/-}_amd64.deb" )
+	arm? ( "${BASE_URI}/${PN}_${PV/_p/-}_armel.deb" )
+	arm64? ( "${BASE_URI}/${PN}_${PV/_p/-}_arm64.deb" )
+	x86? ( "${BASE_URI}/${PN}_${PV/_p/-}_i386.deb" )
 "
 
 LICENSE="NordVPN"
