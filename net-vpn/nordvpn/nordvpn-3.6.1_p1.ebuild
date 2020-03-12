@@ -28,7 +28,7 @@ RDEPEND="
 	sys-apps/net-tools
 	sys-process/procps
 	nordlynx? (
-		net-vpn/wireguard[module,tools]
+		virtual/wireguard[module,tools]
 	)
 	systemd? (
 		sys-apps/systemd
