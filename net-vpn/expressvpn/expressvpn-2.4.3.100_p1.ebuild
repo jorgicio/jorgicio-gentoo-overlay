@@ -9,9 +9,9 @@ DESCRIPTION="Propietary VPN client for Linux"
 HOMEPAGE="https://expressvpn.com"
 BASE_URI="https://download.expressvpn.xyz/clients/linux"
 SRC_URI="
-	amd64? ( "${BASE_URI}/${P/-/_}-${PR/r}_amd64.deb" )
-	arm? ( "${BASE_URI}/${P/-/_}-${PR/r}_armhf.deb" )
-	x86? ( "${BASE_URI}/${P/-/_}-${PR/r}_i386.deb" )"
+	amd64? ( "${BASE_URI}/${PN}_${PV/_p/-}_amd64.deb" )
+	arm? ( "${BASE_URI}/${PN}_${PV/_p/-}_armhf.deb" )
+	x86? ( "${BASE_URI}/${PN}_${PV/_p/-}_i386.deb" )"
 
 LICENSE="ExpressVPN"
 SLOT="0"
@@ -42,6 +42,7 @@ src_install() {
 	cp -r ./usr/sbin "${ED}/usr/"
 	cp usr/lib/${PN}/libxvclient.so "${ED}/usr/$(get_libdir)"
 	doinitd "${FILESDIR}/${PN}"
+	newconfd "${FILESDIR}/${P}" "${PN}"
 	dodoc changelog
 	doman usr/share/man/man1/${PN}.1
 	newbashcomp usr/lib/${PN}/bash-completion ${PN}
