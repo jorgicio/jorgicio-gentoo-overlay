@@ -1,11 +1,13 @@
 #!/sbin/openrc-run
 
-pidfile="/var/run/expressvpn.pid"
+pidfile="/var/run/expressvpnd.pid"
 command="/usr/sbin/expressvpnd"
 start_stop_daemon_args="-b -m --pidfile ${pidfile}"
 command_args="--client-version ${CLIENT_VERSION} --client-build ${CLIENT_BUILD}"
+retry="TERM/30/KILL/5"
+command_background=true
 
 depend() {
-    use net
-    use dbus
+    use logger net
+    provide dns
 }
