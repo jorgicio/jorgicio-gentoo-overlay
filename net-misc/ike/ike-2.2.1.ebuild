@@ -15,7 +15,7 @@ SRC_URI="http://www.shrew.net/download/${PN}/${P}-release.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ldap nat systemd"
+IUSE="ldap nat qt5 systemd"
 
 COMMON_DEPEND="dev-libs/libedit
 	dev-libs/openssl:0=
@@ -35,6 +35,8 @@ src_prepare(){
 	sed -i -e 's|define "parser_class_name"|define parser_class_name|' \
 		source/iked/conf.parse.yy || die
 	has_version ">=dev-libs/openssl-1.1.0:0" && PATCHES=( "${FILESDIR}/${PN}-openssl-1.1.0.patch" )
+        use qt5 && PATCHES=( ${PATCHES}
+"${FILESDIR}/${PN}-qt5.patch" )
 	cmake-utils_src_prepare
 }
 
@@ -45,7 +47,7 @@ src_configure(){
 		-DNATT=$(usex nat)
 		-DLIBDIR=/usr/$(get_libdir)
 		-DETCDIR=/etc/${PN}
-		-DQTGUI=NO
+		-DQTGUI=$(usex qt5)
 	)
 	cmake-utils_src_configure
 }
