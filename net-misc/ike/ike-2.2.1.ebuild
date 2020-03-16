@@ -35,7 +35,7 @@ src_prepare(){
 	sed -i -e 's|define "parser_class_name"|define parser_class_name|' \
 		source/iked/conf.parse.yy || die
 	has_version ">=dev-libs/openssl-1.1.0:0" && eapply "${FILESDIR}/${PN}-openssl-1.1.0.patch"
-	use qt5 && eapply ${PATCHES} "${FILESDIR}/${PN}-qt5.patch"
+	use qt5 && eapply "${FILESDIR}/${PN}-qt5.patch"
 	cmake-utils_src_prepare
 }
 
