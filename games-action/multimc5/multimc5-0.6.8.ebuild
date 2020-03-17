@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop cmake-utils xdg
+inherit desktop cmake xdg
 
 MY_PN="MultiMC5"
 MY_P="${MY_PN}-${PV}"
@@ -34,9 +34,8 @@ COMMON_DEPEND="
 	dev-qt/qtxml:5
 "
 DEPEND="
-	${COMMON_DEPEND}
-	>=virtual/jdk-1.8.0
-"
+	${COMMON_DEPEND}"
+
 RDEPEND="
 	${COMMON_DEPEND}
 	sys-libs/zlib
@@ -60,18 +59,18 @@ src_prepare(){
 	cd libraries/quazip
 	eapply "${FILESDIR}/quazip-fix-build-with-qt-511.patch"
 	cd ../..
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure(){
 	local mycmakeargs=(
 		-DMultiMC_LAYOUT=lin-system
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install(){
-	cmake-utils_src_install
+	cmake_src_install
 	domenu application/package/linux/multimc.desktop
 	doicon -s scalable application/resources/multimc/scalable/multimc.svg
 }

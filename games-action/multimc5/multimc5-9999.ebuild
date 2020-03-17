@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop cmake-utils git-r3 xdg
+inherit desktop cmake git-r3 xdg
 
 DESCRIPTION="An advanced Qt5-based open-source launcher for Minecraft"
 HOMEPAGE="https://multimc.org"
@@ -22,9 +22,8 @@ COMMON_DEPEND="
 	dev-qt/qtxml:5
 "
 DEPEND="
-	${COMMON_DEPEND}
-	>=virtual/jdk-1.8.0
-"
+	${COMMON_DEPEND}"
+
 RDEPEND="
 	${COMMON_DEPEND}
 	sys-libs/zlib
@@ -38,18 +37,18 @@ PATCHES=(
 )
 
 src_prepare(){
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure(){
 	local mycmakeargs=(
 		-DMultiMC_LAYOUT=lin-system
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install(){
-	cmake-utils_src_install
+	cmake_src_install
 	domenu application/package/linux/multimc.desktop
 	doicon -s scalable application/resources/multimc/scalable/multimc.svg
 }
