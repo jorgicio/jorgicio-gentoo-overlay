@@ -10,6 +10,7 @@ HOMEPAGE="https://invent.kde.org/KDE/ikona"
 EGIT_REPO_URI="https://invent.kde.org/kde/${PN}"
 
 LICENSE="GPL-2"
+RESTRICT="network-sandbox"
 
 DEPEND="
 	$(add_frameworks_dep ki18n)
