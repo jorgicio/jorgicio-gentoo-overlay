@@ -3,9 +3,7 @@
 
 EAPI=7
 
-CMAKE_MIN_VERSION="3.10"
-
-inherit cmake-utils flag-o-matic toolchain-funcs xdg
+inherit cmake flag-o-matic toolchain-funcs xdg
 
 MY_PN="MellowPlayer"
 
@@ -42,11 +40,12 @@ RDEPEND="
 	www-plugins/chrome-binary-plugins:*
 	x11-libs/libnotify
 "
+BDEPEND=">=dev-util/cmake-3.10"
 
 PATCHES=( "${FILESDIR}/widevine-path.patch" )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -60,11 +59,11 @@ src_configure() {
 	else
 		die "You need a c++17 compatible compiler in order to build ${MY_PN}"
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	# Create a symlink in order to use the Widevine plugin
 	dodir /usr/$(get_libdir)/qt5/plugins/ppapi
 	dosym "${EROOT}"/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
