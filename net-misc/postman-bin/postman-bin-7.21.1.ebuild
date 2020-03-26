@@ -19,9 +19,6 @@ KEYWORDS="~amd64"
 IUSE="pax_kernel"
 RESTRICT="mirror strip"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 S="${WORKDIR}/${MY_PN^}/app"
 
 src_prepare() {
