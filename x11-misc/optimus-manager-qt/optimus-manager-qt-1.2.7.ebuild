@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit kde5-functions qmake-utils xdg-utils
+inherit qmake-utils xdg
 
 SINGLEAPPLICATION_VERSION="3.0.15"
 
@@ -17,13 +17,14 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="plasma"
+RESTRICT="test"
 
 DEPEND="
 	dev-qt/qtcore:5
 	plasma? (
-		$(add_plasma_dep plasma-desktop)
-		$(add_frameworks_dep knotifications)
-		$(add_frameworks_dep kiconthemes)
+		kde-plasma/plasma-desktop
+		kde-frameworks/knotifications
+		kde-frameworks/kiconthemes
 	)"
 RDEPEND="
 	${DEPEND}
@@ -36,19 +37,9 @@ src_unpack() {
 }
 
 src_configure() {
-	local qconf
-	use plasma && qconf="DEFINES += PLASMA"
-	eqmake5 "${qconf}"
+	use plasma && eqmake5 "DEFINES += PLASMA" || eqmake5
 }
 
 src_install() {
 	INSTALL_ROOT="${D}" default
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
