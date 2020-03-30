@@ -37,7 +37,7 @@ RDEPEND="${DEPEND}
 	dev-python/python-levenshtein[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/websocket-client[${PYTHON_USEDEP}]
-	$(python_gen_any_dep 'dev-libs/gobject-introspection[${PYTHON_USEDEP}]')
+	dev-libs/gobject-introspection:=
 	dev-libs/libappindicator:3
 	dev-libs/keybinder:3
 	net-libs/webkit-gtk:4/37
