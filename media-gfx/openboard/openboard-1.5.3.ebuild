@@ -27,6 +27,7 @@ DEPEND="
 	dev-libs/openssl:0/1.1
 	dev-qt/qtcore:5
 	dev-qt/qtmultimedia:5
+	dev-qt/qtscript:5[scripttools]
 	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtxmlpatterns:5

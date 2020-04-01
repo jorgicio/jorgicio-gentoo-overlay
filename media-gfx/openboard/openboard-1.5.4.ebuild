@@ -3,16 +3,20 @@
 
 EAPI=7
 
-inherit desktop git-r3 qmake-utils toolchain-funcs xdg
+inherit desktop qmake-utils toolchain-funcs xdg
 
 MY_PN="OpenBoard"
+MY_P="${MY_PN}-${PV}"
+OPEN_SANKORE_COMMIT="47927bda021b4f7f1540b794825fb0d601875e79"
 
 DESCRIPTION="Interactive whiteboard software for schools and universities"
 HOMEPAGE="https://openboard.ch/index.en.html"
-EGIT_REPO_URI="https://github.com/OpenBoard-org/${MY_PN}"
+SRC_URI="https://github.com/OpenBoard-org/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	open-sankore? ( https://github.com/OpenBoard-org/${MY_PN}-Importer/archive/${OPEN_SANKORE_COMMIT}.tar.gz -> ${PN}-importer-20161008.tar.gz )"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="open-sankore"
 
 DEPEND="
@@ -32,6 +36,8 @@ DEPEND="
 	virtual/ffmpeg"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}/${MY_P}"
+
 DOCS=( README.md )
 
 PATCHES=(
@@ -40,17 +46,7 @@ PATCHES=(
 	"${FILESDIR}/quazip.diff"
 	"${FILESDIR}/poppler.patch"
 	"${FILESDIR}/drop_ThirdParty_repo.patch"
-	"${FILESDIR}/30fps.patch"
 )
-
-src_unpack() {
-	git-r3_src_unpack
-	if use open-sankore; then
-		EGIT_REPO_URI="https://github.com/OpenBoard-org/${MY_PN}-Importer"
-		EGIT_CHECKOUT_DIR="${WORKDIR}/${MY_PN}-Importer"
-		git-r3_src_unpack
-	fi
-}
 
 src_configure() {
 	local CXX_FLAG
@@ -58,7 +54,7 @@ src_configure() {
 	tc-is-clang && CXX_FLAG="linux-clang-libc++"
 	eqmake5 ${MY_PN}.pro -spec "${CXX_FLAG}"
 	if use open-sankore; then
-		cd "${WORKDIR}/${MY_PN}-Importer"
+		cd "${WORKDIR}/${MY_PN}-Importer-${OPEN_SANKORE_COMMIT}"
 		eqmake5 ${MY_PN}Importer.pro -spec "${CXX_FLAG}"
 	fi
 }
@@ -66,7 +62,7 @@ src_configure() {
 src_compile() {
 	default
 	if use open-sankore; then
-		cd "${WORKDIR}/${MY_PN}-Importer"
+		cd "${WORKDIR}/${MY_PN}-Importer-${OPEN_SANKORE_COMMIT}"
 		emake
 	fi
 }
@@ -81,7 +77,7 @@ src_install() {
 	dosym /usr/share/${PN}/${MY_PN} /usr/bin/${PN}
 	einstalldocs
 	if use open-sankore; then
-		cd "${WORKDIR}/${MY_PN}-Importer"
+		cd "${WORKDIR}/${MY_PN}-Importer-${OPEN_SANKORE_COMMIT}"
 		exeinto /usr/share/${PN}
 		doexe ${MY_PN}Importer
 		dosym /usr/share/${PN}/${MY_PN}Importer /usr/bin/${PN}importer
