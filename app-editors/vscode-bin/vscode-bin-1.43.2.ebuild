@@ -25,7 +25,6 @@ DEPEND="
 	>=media-libs/libpng-1.2.46
 	>=x11-libs/gtk+-2.24.8-r1:2
 	x11-libs/cairo
-	gnome-base/gconf
 	x11-libs/libXtst
 	!app-editors/vscode
 "
