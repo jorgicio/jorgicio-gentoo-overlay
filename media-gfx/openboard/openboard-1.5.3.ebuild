@@ -32,6 +32,7 @@ DEPEND="
 	dev-qt/qtwebkit:5
 	dev-qt/qtxmlpatterns:5
 	media-libs/fdk-aac:0=
+	media-libs/libass:0=
 	media-libs/libsdl
 	virtual/ffmpeg"
 RDEPEND="${DEPEND}"
