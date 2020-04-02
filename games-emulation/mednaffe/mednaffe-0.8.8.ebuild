@@ -11,12 +11,13 @@ SRC_URI="https://github.com/AmatCoder/mednaffe/releases/download/${PV}/${P}.tar.
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+gtk3"
 
 RDEPEND="
 	>=dev-libs/glib-2.32:2
 	games-emulation/mednafen[debugger]
-	>=x11-libs/gtk+-3.4:3
+	gtk3? ( >=x11-libs/gtk+-3.4:3 )
+	!gtk3? ( x11-libs/gtk+:2 )
 "
 DEPEND="${RDEPEND}
 	app-arch/unzip
@@ -31,7 +32,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-gtk3
+	econf $(use_enable gtk3)
 }
 
 pkg_preinst() {
