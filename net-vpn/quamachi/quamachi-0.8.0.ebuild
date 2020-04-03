@@ -4,7 +4,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit python-any-r1
 
@@ -15,7 +15,6 @@ SRC_URI="mirror://sourceforge/${PN}/${PN^}-${PV}.tar.bz2"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	$(python_gen_any_dep 'dev-python/PyQt5[${PYTHON_USEDEP},network,gui]')
@@ -23,7 +22,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	net-misc/tigervnc
 "
-BDEPEND="${PYTHON_DEPS}"
 
 S="${WORKDIR}/${PN^}/Build"
 
@@ -37,7 +35,7 @@ pkg_setup(){
 
 src_prepare(){
 	sed -i -e "s#make#\${MAKE}#" Makefile || die
-	default_src_prepare
+	default
 }
 
 src_install(){
