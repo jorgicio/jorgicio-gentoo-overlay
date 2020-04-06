@@ -21,8 +21,7 @@ FONT_S="${S}"
 FONT_CONF=( "${FILESDIR}/75-${PN}.conf" )
 FONT_SUFFIX="ttf"
 DEPEND="
-	app-arch/libarchive[zstd]
-"
+	app-arch/libarchive[zstd]"
 
 src_unpack() {
 	bsdtar xf "${DISTDIR}/${A}" || die
