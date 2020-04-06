@@ -18,7 +18,7 @@ IUSE="test"
 
 RDEPEND=">=dev-python/coverage-3.6[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]"
-DEPEND="${REDEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/docopt-0.6.1[${PYTHON_USEDEP}]
 	test? (
