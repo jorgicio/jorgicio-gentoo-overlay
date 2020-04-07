@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,6 @@ DEPEND="
 	>=media-libs/libpng-1.2.46
 	>=x11-libs/gtk+-2.24.8-r1:2
 	x11-libs/cairo
-	gnome-base/gconf
 	x11-libs/libXtst
 	!app-editors/vscode
 "
@@ -51,9 +50,11 @@ pkg_setup(){
 src_install(){
 	mkdir -p "${ED}/opt/${MY_PN}"
 	cp -r . "${ED}/opt/${MY_PN}/"
-	dosym "/opt/${MY_PN}/bin/code" "/usr/bin/${MY_PN}"
-	dosym "/opt/${MY_PN}/bin/code" "/usr/bin/code"
-	make_desktop_entry "${MY_PN}" "Visual Studio Code" "${MY_PN}" "Development;IDE"
+	dodir /usr/bin
+	dosym ../../opt/${MY_PN}/bin/code /usr/bin/${MY_PN}
+	dosym ../../opt/${MY_PN}/bin/code /usr/bin/code
+	domenu "${FILESDIR}/${PN}.desktop"
+	domenu "${FILESDIR}/${PN}-url-handler.desktop"
 	newicon "resources/app/resources/linux/code.png" ${MY_PN}.png
 	einstalldocs
 	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/code

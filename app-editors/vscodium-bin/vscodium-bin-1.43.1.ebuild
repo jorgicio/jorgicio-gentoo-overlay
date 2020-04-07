@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,6 @@ DEPEND="
 	>=media-libs/libpng-1.2.46
 	>=x11-libs/gtk+-2.24.8-r1:2
 	x11-libs/cairo
-	gnome-base/gconf
 	x11-libs/libXtst
 	!app-editors/vscodium
 "
@@ -49,10 +48,10 @@ S="${WORKDIR}"
 src_install(){
 	mkdir -p "${ED}/opt/${MY_PN}"
 	cp -r . "${ED}/opt/${MY_PN}/"
-	dosym "/opt/${MY_PN}/bin/codium" "/usr/bin/${MY_PN}"
-	dosym "/opt/${MY_PN}/bin/codium" "/usr/bin/codium"
-	make_desktop_entry "${MY_PN}" "VSCodium" "${MY_PN}" "Development;IDE"
+	dodir /usr/bin
+	dosym ../../opt/${MY_PN}/bin/codium /usr/bin/${MY_PN}
+	dosym ../../opt/${MY_PN}/bin/codium /usr/bin/codium
+	domenu "${FILESDIR}/${PN}.desktop"
 	newicon "resources/app/resources/linux/code.png" ${MY_PN}.png
 	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/codium
 }
-
