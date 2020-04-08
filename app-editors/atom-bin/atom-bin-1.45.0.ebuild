@@ -22,7 +22,6 @@ LICENSE="MIT"
 IUSE="system-node pax_kernel"
 
 DEPEND="${PYTHON_DEPS}
-	system-node? ( >=net-libs/nodejs-6.0[npm] )
 	!!dev-util/atom-shell
 	!dev-util/apm
 	!app-editors/atom"
@@ -34,6 +33,7 @@ DEPEND="${PYTHON_DEPS}
 # Dependencies found via ldd
 # ldd /usr/share/atom/atom
 RDEPEND="${DEPEND}
+	system-node? ( net-libs/nodejs[npm] )
 	app-accessibility/at-spi2-atk:2
 	app-arch/bzip2
 	dev-libs/atk
