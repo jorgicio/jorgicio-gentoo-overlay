@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils xdg-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="Lightweight Qt5 plain-text editor for Linux"
 HOMEPAGE="https://github.com/tsujan/FeatherPad"
@@ -19,35 +19,22 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
-	dev-qt/linguist-tools:5
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5"
 
 src_configure(){
 	eqmake5 "fp.pro"
 }
 
 src_install(){
-	INSTALL_ROOT="${D}" default_src_install
-}
-
-pkg_preinst(){
-	xdg_environment_reset
-}
-
-pkg_postinst(){
-	xdg_desktop_database_update
-}
-
-pkg_postrm(){
-	xdg_desktop_database_update
+	INSTALL_ROOT="${D}" default
 }

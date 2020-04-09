@@ -4,7 +4,7 @@
 	<upstream>
 		<remote-id type="github">MultiMC/MultiMC5</remote-id>
 		<bugs-to>https://github.com/MultiMC/MultiMC5/issues</bugs-to>
-		<maintainer type="project">
+		<maintainer>
 			<name>MultiMC</name>
 		</maintainer>
 	</upstream>

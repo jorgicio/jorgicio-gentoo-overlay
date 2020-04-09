@@ -7,7 +7,7 @@ inherit gnome2-utils meson xdg
 
 DESCRIPTION="Markdown editor made with GTK+-3.0"
 HOMEPAGE="https://fabiocolacio.github.io/Marker"
-SRC_URI="https://github.com/fabiocolacio/${PN^}/releases/download/${PV}/${PV}.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://github.com/fabiocolacio/${PN^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 

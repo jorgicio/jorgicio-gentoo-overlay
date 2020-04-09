@@ -4,7 +4,7 @@
 	<upstream>
 		<remote-id type="github">Graviton-Code-Editor/Graviton-App</remote-id>
 		<bugs-to>https://github.com/Graviton-Code-Editor/Graviton-App/issues</bugs-to>
-		<maintainer type="person">
+		<maintainer>
 			<name>Graviton Editor</name>
 			<email>mespinasanz@gmail.com</email>
 		</maintainer>
