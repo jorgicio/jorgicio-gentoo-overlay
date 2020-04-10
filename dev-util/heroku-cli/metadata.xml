@@ -6,8 +6,4 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
-    <use>
-		<flag name="git">Enable git support.</flag>
-        <flag name="system-node">Use node.js system implementation instead of bundled.</flag>
-    </use>
 </pkgmetadata>
