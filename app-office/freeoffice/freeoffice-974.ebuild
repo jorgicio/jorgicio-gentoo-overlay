@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ LICENSE="SoftMaker-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="pax_kernel"
-RESTRICT="mirror split"
+RESTRICT="mirror strip"
 
 DEPEND="app-admin/chrpath"
 RDEPEND="
@@ -56,7 +56,7 @@ src_prepare(){
 src_install(){
 	mkdir -p "${ED}/usr/$(get_libdir)/${PN}"
 	cp -r . "${ED}/usr/$(get_libdir)/${PN}/"
-	for m in ${FILESDIR}/*.desktop; do
+	for m in "${FILESDIR}"/*.desktop; do
 		domenu "${m}"
 	done
 	for e in planmaker presentations textmaker; do
@@ -67,7 +67,7 @@ src_install(){
 		newicon -s ${size} icons/prl_${size}.png ${PN}-presentations.png
 		newicon -s ${size} icons/tml_${size}.png ${PN}-textmaker.png
 	done
-	insinto "${EPREFIX}/usr/share/mime/packages"
+	insinto /usr/share/mime/packages
 	doins mime/softmaker-freeoffice18.xml
 	if use pax_kernel; then
 		pax-mark -m "${ED%/}"/usr/$(get_libdir)/${PN}/planmaker

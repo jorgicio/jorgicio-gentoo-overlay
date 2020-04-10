@@ -1,6 +1,5 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=7
 
@@ -19,7 +18,6 @@ IUSE="systemd"
 DEPEND="
 	virtual/cron
 	dev-libs/openssl
-	dev-python/pygtk
 	media-tv/xawtv
 	sys-apps/net-tools
 	|| ( media-gfx/scrot media-gfx/imagemagick )
@@ -29,11 +27,9 @@ DEPEND="
 	net-wireless/wireless-tools
 	sys-apps/lsb-release
 	acct-user/prey
-	net-libs/nodejs
-	"
+	net-libs/nodejs"
 RDEPEND="${DEPEND}
-	systemd? ( sys-apps/systemd )
-"
+	systemd? ( sys-apps/systemd )"
 
 pkg_setup () {
 	QA_PRESTRIPPED="
