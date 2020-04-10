@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="Development version of the next major version of gLabels (4.0)"
 HOMEPAGE="https://github.com/jimevins/glabels-qt"
@@ -12,12 +12,11 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
-	MASTER_VERSION="master558"
-	MY_PV="${PV:0:4}-${MASTER_VERSION}"
+	MY_PV="${PV/_p/-master}"
 	MY_P="${PN/-qt}-${MY_PV}"
 	SRC_URI="${HOMEPAGE}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_P}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -41,5 +40,5 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
