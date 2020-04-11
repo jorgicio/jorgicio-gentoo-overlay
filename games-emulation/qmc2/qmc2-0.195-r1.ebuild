@@ -1,8 +1,9 @@
-
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils xdg-utils
+inherit eutils xdg
 
 DESCRIPTION="Qt-based UNIX MAME frontend supporting SDLMAME"
 HOMEPAGE="https://qmc2.batcom-it.net"
@@ -45,7 +46,7 @@ src_prepare(){
 		-i Makefile || die
 	sed -e "s:QtWebKit/QWebView:QtWebKitWidgets/QWebView:g" \
 		-i htmleditor/htmleditor.ui || die
-	default_src_prepare
+	default
 }
 
 src_compile(){
@@ -67,12 +68,4 @@ src_install(){
 	emake ${FLAGS} install
 	use arcade && emake ${FLAGS} arcade-install
 	use tools && emake ${FLAGS} tools-install
-}
-
-pkg_postinst(){
-	xdg_desktop_database_update
-}
-
-pkg_postrm(){
-	xdg_desktop_database_update
 }

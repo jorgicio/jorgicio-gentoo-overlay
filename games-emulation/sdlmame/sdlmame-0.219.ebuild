@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mamedev/mame/archive/mame${MY_PV}.tar.gz -> mame-${P
 LICENSE="GPL-2+ BSD-2 MIT CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa +arcade debug desktop +mess opengl openmp tools"
+IUSE="alsa +arcade debug +mess opengl openmp tools"
 REQUIRED_USE="|| ( arcade mess )"
 
 # MESS (games-emulation/sdlmess) has been merged into MAME upstream since mame-0.162 (see below)
@@ -205,16 +205,6 @@ src_install() {
 		done
 		#newbin ldplayer${suffix} ${PN}-ldplayer
 		#newman docs/man/ldplayer.1 ${PN}-ldplayer.1
-	fi
-	if use desktop; then
-		local mydesktopfields=(
-			"sdlmame"
-			"MAME"
-			"mame"
-			"Application;Game;Emulation"
-		)
-		make_desktop_entry ${mydesktopfields[@]}
-		doicon "${FILESDIR}/mame.png"
 	fi
 }
 

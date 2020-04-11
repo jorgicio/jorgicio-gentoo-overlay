@@ -21,7 +21,6 @@ implementations of MAME's multi-window GUI debugger on both Linux/Unix and Mac O
   </longdescription>
   <use>
     <flag name="arcade">Enable the Multiple Arcade Machine Emulator for arcade games support</flag>
-	<flag name="desktop">Enable desktop access to run the sdlmame binary</flag>
     <flag name="tools">Build development tools shared between sdlmame and sdlmess</flag>
     <flag name="mess">Enable the Multi Emulator Super System for game system support</flag>
   </use>
