@@ -51,6 +51,7 @@ src_prepare(){
 
 src_compile(){
 	FLAGS="DESTDIR=\"${ED}\" PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc	CTIME=0 QMAKE=qmake "
+	local COMPILE_FLAGS="CC=$(tc-getCC) CXX=$(tc-getCXX) "
 	emake ${FLAGS} \
 		SYSTEM_MINIZIP=$(usex minizip "1" "0") \
 		SYSTEM_ZLIB=$(usex zlib "1" "0") \
@@ -59,11 +60,10 @@ src_compile(){
 		MULTIMEDIA=$(usex multimedia "1" "0" ) \
 		OPENGL=$(usex opengl "1" "0") \
 		PHONON=$(usex phonon "1" "0") \
-		CC=$(tc-getCC) \
-		CXX=$(tc-getCXX)
+		${COMPILE_FLAGS}
 
-	use arcade && emake ${FLAGS} arcade
-	use tools && emake ${FLAGS} tools
+	use arcade && emake ${FLAGS} ${COMPILE_FLAGS} arcade
+	use tools && emake ${FLAGS} ${COMPILE_FLAGS} tools
 }
 
 src_install(){
