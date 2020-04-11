@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,10 +23,8 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="chromium firefox opera thunderbird"
-REQUIRED_USE="|| ( chromium firefox opera thunderbird )"
-RDEPEND=""
-DEPEND="${RDEPEND}"
+IUSE="chromium firefox firefox-bin opera thunderbird"
+REQUIRED_USE="|| ( chromium firefox firefox-bin opera thunderbird )"
 
 DOCS=( MANIFESTO.md README.md )
 
@@ -42,15 +40,23 @@ src_prepare(){
 	sed -r -i \
 		-e 's/(git.+clone.+)https.+/\1\.\.\/uAssets/' \
 		tools/make-assets.sh || die
-	default_src_prepare
+	default
 }
 
 src_compile() {
-	use chromium && ( tools/make-chromium.sh || die )
-	use firefox && ( tools/make-firefox.sh all || die )
-	use opera && ( tools/make-opera.sh || die )
-	use thunderbird && ( tools/make-thunderbird.sh all || die )
-	default_src_compile
+	if use chromium; then
+		tools/make-chromium.sh || die
+	fi
+	if use firefox || use firefox-bin; then
+		tools/make-firefox.sh all || die
+	fi
+	if use opera; then
+		tools/make-opera.sh || die
+	fi
+	if use thunderbird; then
+		tools/make-thunderbird.sh all || die
+	fi
+	default
 }
 
 src_install() {
@@ -61,6 +67,11 @@ src_install() {
 
 	if use firefox; then
 		insinto "/usr/$(get_libdir)/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+		newins dist/build/uBlock0.firefox.xpi uBlock0@raymondhill.net.xpi
+	fi
+
+	if use firefox-bin; then
+		insinto "/opt/firefox/extensions/"
 		newins dist/build/uBlock0.firefox.xpi uBlock0@raymondhill.net.xpi
 	fi
 
