@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=7
 
-inherit desktop eutils gnome2-utils
+inherit desktop eutils xdg
 
 MY_P=${P/-/_}
 
@@ -14,12 +13,11 @@ SRC_URI="https://github.com/Stabyourself/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="CC-BY-NC-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=games-engines/love-11.1:0
 	media-libs/devil[gif,png]"
-DEPEND="app-arch/zip"
+BDEPEND="app-arch/zip"
 
 src_prepare(){
 	rm -rf "./_DO NOT INCLUDE" "README.md"
@@ -37,22 +35,14 @@ src_install() {
 	exeinto "${dir}"
 	doexe ${MY_P}.love
 
-	doicon -s scalable ${FILESDIR}/${PN}.svg
+	newicon graphics/icon.png ${PN}.png
 	make_wrapper ${PN} "love ${MY_P}.love" "${dir}"
 	make_desktop_entry ${PN}
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
 	elog "${PN} savegames and configurations are stored in:"
 	elog "~/.local/share/love/${PN}/"
 
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 }
