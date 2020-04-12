@@ -66,12 +66,13 @@ src_install() {
 	fi
 
 	if use firefox; then
-		insinto "/usr/$(get_libdir)/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+		#insinto "/usr/$(get_libdir)/firefox/browser/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+		insinto "/usr/$(get_libdir)/firefox/distribution/extensions/"
 		newins dist/build/uBlock0.firefox.xpi uBlock0@raymondhill.net.xpi
 	fi
 
 	if use firefox-bin; then
-		insinto "/opt/firefox/extensions/"
+		insinto "/opt/firefox/distribution/extensions/"
 		newins dist/build/uBlock0.firefox.xpi uBlock0@raymondhill.net.xpi
 	fi
 
@@ -101,6 +102,13 @@ pkg_postinst(){
 		elog "* Click \"Open\""
 		echo
 		elog "Then the extension will be available in your browser."
+		echo
+	fi
+	if use firefox || use firefox-bin; then
+		echo
+		elog "If you're using recent versions of Firefox, you should do the following:"
+		elog "Toggle xpinstall.signatures.required to false in about:config"
+		elog "Then restart Firefox."
 		echo
 	fi
 }
