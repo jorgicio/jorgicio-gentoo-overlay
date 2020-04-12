@@ -5,8 +5,6 @@ EAPI=7
 
 inherit desktop eutils xdg
 
-MY_P=${P/-/_}
-
 DESCRIPTION="A mix from Nintendo's Super Mario Bros and Valve's Portal"
 HOMEPAGE="http://stabyourself.net/mari0/"
 SRC_URI="https://github.com/Stabyourself/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -26,17 +24,17 @@ src_prepare(){
 
 src_compile(){
 	elog "Creating .love file..."
-	zip -9 -r "${MY_P}.love" . && elog "${MY_P}.love created" || die
+	zip -9 -r "${PN}.love" . && elog "${PN}.love created" || die
 }
 
 src_install() {
 	local dir=/usr/share/${PN}
 
 	exeinto "${dir}"
-	doexe ${MY_P}.love
+	doexe ${PN}.love
 
 	newicon graphics/icon.png ${PN}.png
-	make_wrapper ${PN} "love ${MY_P}.love" "${dir}"
+	make_wrapper ${PN} "love ${PN}.love" "${dir}"
 	make_desktop_entry ${PN}
 }
 
