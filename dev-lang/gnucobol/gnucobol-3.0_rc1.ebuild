@@ -5,11 +5,11 @@ EAPI=7
 
 DESCRIPTION="an open-source COBOL compiler, formerly known as OpenCOBOL"
 HOMEPAGE="https://www.gnu.org/software/gnucobol/"
-SRC_URI="mirror://sourceforge/open-cobol/${P}.tar.xz"
+SRC_URI="mirror://sourceforge/open-cobol/${PN}-${PV/_/-}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="berkdb nls"
 
 RDEPEND="
@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
+
+S="${WORKDIR}/${PN}-${PV/_/-}"
 
 src_configure() {
 	econf \
