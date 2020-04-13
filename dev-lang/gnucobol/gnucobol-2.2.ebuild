@@ -23,6 +23,15 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
+pkg_setup() {
+	QA_PRESTRIPPED="/usr/$(get_libdir)/gnucobol/CBL_OC_DUMP.so"
+}
+
+src_prepare() {
+	sed -i -e "s#MAKEFLAGS) install-data-hook#MAKEFLAGS)#" libcob/Makefile.in
+	default
+}
+
 src_configure() {
 	econf \
 		$(use_with berkdb db) \
