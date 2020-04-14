@@ -30,7 +30,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e "s#MAKEFLAGS) install-data-hook#MAKEFLAGS)#" libcob/Makefile.in
+	sed -i -e "s#MAKEFLAGS) install-data-hook#MAKEFLAGS)#" \
+		libcob/Makefile.in || die
 	default
 }
 
