@@ -1,12 +1,12 @@
 # Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
-inherit meson vala gnome2 xdg
+inherit gnome2-utils meson vala xdg
 
 DESCRIPTION="A simple ebook reader originally intended for Elementary OS"
 HOMEPAGE="https://babluboy.github.io/bookworm"
@@ -43,19 +43,26 @@ DOCS="AUTHORS"
 
 src_prepare(){
 	export VALAC="$(type -p valac-$(vala_best_api_version))"
-	gnome2_src_prepare
-}
-
-src_configure(){
-	meson_src_configure
-}
-
-src_compile() {
-	meson_src_compile
+	default
 }
 
 src_install() {
 	meson_src_install
 	dosym com.github.babluboy.bookworm /usr/bin/${PN}
 	default
+}
+
+pkg_preinst() {
+	gnome2_schemas_savelist
+	xdg_pkg_preinst
+}
+
+pkg_postinst() {
+	gnome2_schemas_update
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	gnome2_schemas_update
+	xdg_pkg_postrm
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson xdg
+inherit gnome2-utils meson xdg
 
 DESCRIPTION="A simple and modern GTK eBook reader"
 HOMEPAGE="https://johnfactotum.github.io/foliate/"
@@ -11,6 +11,7 @@ HOMEPAGE="https://johnfactotum.github.io/foliate/"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/johnfactotum/${PN}"
+	SRC_URI=""
 else
 	SRC_URI="https://github.com/johnfactotum/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
@@ -32,4 +33,19 @@ BDEPEND="sys-devel/gettext"
 src_install() {
 	meson_src_install
 	dosym com.github.johnfactotum.Foliate /usr/bin/${PN}
+}
+
+pkg_preinst() {
+	gnome2_schemas_savelist
+	xdg_pkg_preinst
+}
+
+pkg_postinst() {
+	gnome2_schemas_update
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	gnome2_schemas_update
+	xdg_pkg_postrm
 }
