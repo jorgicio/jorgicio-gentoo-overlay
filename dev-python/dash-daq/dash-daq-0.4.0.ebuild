@@ -9,23 +9,23 @@ inherit distutils-r1
 
 DESCRIPTION="Control componentes for Dash"
 HOMEPAGE="https://plot.ly/dash"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P/-/_}.tar.gz"
+SRC_URI="https://github.com/plotly/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-DEPEND="
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-RDEPEND="${DEPEND}
+RDEPEND="
 	dev-python/dash[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-apps/yarn"
 
-S="${WORKDIR}/${P/-/_}"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
 	pytest

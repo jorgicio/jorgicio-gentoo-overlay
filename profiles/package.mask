@@ -15,3 +15,6 @@ dev-util/pseint
 
 # Masking due to unstability (UI can't open)
 =net-wireless/nitroshare-0.4.0_pre20190618
+
+# Masking due to dependency removed (Festival)
+app-accessibility/dragonfire
