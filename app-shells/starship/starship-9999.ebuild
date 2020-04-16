@@ -19,7 +19,6 @@ DEPEND="
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
-RESTRICT="network-sandbox"
 
 DOCS="docs/README.md"
 
