@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+gui test zstd"
 
 BDEPEND="
-	gui? ( kde-frameworks/extra-cmake-modules )"
+	gui? ( kde-frameworks/extra-cmake-modules:5 )"
 
 DEPEND="
 	dev-cpp/sparsehash
@@ -39,7 +39,7 @@ DEPEND="
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}
-	gui? ( >=kde-frameworks/kf-env-4 )
+	gui? ( kde-frameworks/kf-env:5 )
 "
 
 RESTRICT+=" !test? ( test )"
