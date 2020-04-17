@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/OpenBoard-org/${MY_PN}/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="open-sankore"
 
 DEPEND="
@@ -78,12 +78,13 @@ src_install() {
 	doins -r resources/{customizations,etc,i18n,library}
 	domenu "${FILESDIR}/${PN}.desktop"
 	doicon resources/images/${MY_PN}.png
-	dosym /usr/share/${PN}/${MY_PN} /usr/bin/${PN}
+	dodir /usr/bin
+	dosym "${ED%/}"/usr/share/${PN}/${MY_PN} /usr/bin/${PN}
 	einstalldocs
 	if use open-sankore; then
 		cd "${WORKDIR}/${MY_PN}-Importer-${OPEN_SANKORE_COMMIT}"
 		exeinto /usr/share/${PN}
 		doexe ${MY_PN}Importer
-		dosym /usr/share/${PN}/${MY_PN}Importer /usr/bin/${PN}importer
+		dosym "${ED%/}"/usr/share/${PN}/${MY_PN}Importer /usr/bin/${PN}importer
 	fi
 }

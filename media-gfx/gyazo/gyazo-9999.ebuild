@@ -1,6 +1,5 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=7
 
@@ -9,7 +8,7 @@ USE_RUBY="ruby24 ruby25 ruby26"
 inherit desktop ruby-single
 
 DESCRIPTION="Seriously Instant Screen-Grabbing"
-HOMEPAGE="http://gyazo.com"
+HOMEPAGE="https://gyazo.com"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/gyazo/Gyazo-for-Linux.git"
@@ -21,7 +20,6 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
 
 DEPEND="media-gfx/imagemagick"
 RDEPEND="${DEPEND}

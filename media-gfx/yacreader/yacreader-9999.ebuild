@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit qmake-utils xdg
 
-DESCRIPTION="A comic reader for cross-platform reading and managing your digital comic collection"
+DESCRIPTION="A comic reader for cross-platform reading and managing your comic collection"
 HOMEPAGE="http://www.yacreader.com"
 
 if [[ ${PV} == 9999 ]];then
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]];then
 else
 	EXTENSION="1909283"
 	SRC_URI="https://github.com/YACReader/${PN}/releases/download/${PV}/${P}.${EXTENSION}-src.tar.xz"
-	KEYWORDS="~x86 ~amd64 ~arm ~arm64"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${P}.${EXTENSION}"
 fi
 

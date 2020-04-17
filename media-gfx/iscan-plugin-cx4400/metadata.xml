@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jpizarrocallejas@gmail.com</email>
-		<name>Jorge Pizarro Callejas</name>
-		<description>Jorgicio Gentoo Overlay</description>
-	</maintainer>
+    <longdescription>
+        Epson Stylus CX4300/CX4400/CX4450/CX5500/CX5600/DX4400/DX4450 scanner plugin for SANE epkowa backend
+    </longdescription>
+    <maintainer type="person">
+        <email>jpizarrocallejas@gmail.com</email>
+        <name>Jorge Pizarro Callejas</name>
+        <description>Jorgicio Gentoo Overlay</description>
+    </maintainer>
 </pkgmetadata>

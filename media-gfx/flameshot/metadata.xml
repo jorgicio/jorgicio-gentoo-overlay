@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<upstream>
 		<bugs-to>https://github.com/lupoDharkael/flameshot/issues</bugs-to>
-		<maintainer type="person">
+		<maintainer>
 			<name>Dharkael</name>
 		</maintainer>
 		<remote-id type="github">lupoDharkael/flameshot</remote-id>

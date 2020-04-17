@@ -1,12 +1,11 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-CMAKE_MIN_VERSION="2.8.12"
 PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} )
 
-inherit cmake-utils python-single-r1 xdg
+inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Screenshot capturing and sharing tool over various services"
 HOMEPAGE="https://screencloud.net"
@@ -18,7 +17,7 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/olav-st/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -44,12 +43,12 @@ RDEPEND="${DEPEND}
 DOCS=( README.md )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure(){
 	local mycmakeargs=(
 		-DPYTHON_USE_PYTHON3="$(usex python_single_target_python2_7 OFF ON)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

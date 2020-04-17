@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit qmake-utils xdg-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="LeoCAD is a CAD program that uses bricks similar to those found in many toys."
 HOMEPAGE="https://www.leocad.org"
@@ -37,9 +37,9 @@ src_configure(){
 }
 
 src_install(){
-	INSTALL_ROOT="${D}" default_src_install
+	INSTALL_ROOT="${D}" default
 	insinto /usr/share/${PN}
-	doins ${WORKDIR}/library.bin
+	doins "${WORKDIR}/library.bin"
 }
 
 pkg_postinst(){
@@ -48,11 +48,5 @@ pkg_postinst(){
 	elog "See https://www.leocad.org/docs/library.html for more information about installation."
 	elog "As alternative, you can install the media-gfx/ldraw package."
 	echo
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm(){
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }

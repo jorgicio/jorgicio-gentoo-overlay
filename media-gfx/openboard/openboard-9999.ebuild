@@ -80,12 +80,13 @@ src_install() {
 	doins -r resources/{customizations,etc,i18n,library}
 	domenu "${FILESDIR}/${PN}.desktop"
 	doicon resources/images/${MY_PN}.png
-	dosym /usr/share/${PN}/${MY_PN} /usr/bin/${PN}
+	dodir /usr/bin
+	dosym "${ED%/}"/usr/share/${PN}/${MY_PN} /usr/bin/${PN}
 	einstalldocs
 	if use open-sankore; then
 		cd "${WORKDIR}/${MY_PN}-Importer"
 		exeinto /usr/share/${PN}
 		doexe ${MY_PN}Importer
-		dosym /usr/share/${PN}/${MY_PN}Importer /usr/bin/${PN}importer
+		dosym "${ED%/}"/usr/share/${PN}/${MY_PN}Importer /usr/bin/${PN}importer
 	fi
 }

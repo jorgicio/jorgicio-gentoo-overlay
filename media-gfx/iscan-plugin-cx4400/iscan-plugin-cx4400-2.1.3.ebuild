@@ -1,12 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=6
+EAPI=7
 
 inherit unpacker
 
-DESCRIPTION="Epson Stylus CX4300/CX4400/CX4450/CX5500/CX5600/DX4400/DX4450 scanner plugin for SANE 'epkowa' backend."
+DESCRIPTION="Epson Stylus CX4300/CX4400/CX5600/DX4400 scanner plugin for SANE epkowa backend"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 SRC_URI="
 	x86? ( http://alumnos.inf.utfsm.cl/~jpizarro/avasys/${PN}_${PV}-1_i386.deb )
@@ -17,8 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="strip"
 
-IUSE=""
-
 DEPEND=">=media-gfx/iscan-2.28.0"
 RDEPEND="${DEPEND}"
 
@@ -27,7 +24,7 @@ S="${WORKDIR}"
 QA_PRESTRIPPED="/usr/lib/iscan/libesint7E.so.2.0.0"
 
 src_unpack(){
-	unpack_deb "${A}"
+	unpack_deb ${A}
 }
 
 src_install() {
