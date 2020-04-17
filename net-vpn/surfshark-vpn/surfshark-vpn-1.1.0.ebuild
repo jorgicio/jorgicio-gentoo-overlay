@@ -27,7 +27,7 @@ S="${WORKDIR}"
 DOCS="changelog copyright"
 
 src_unpack() {
-	unpack_deb "${A}"
+	unpack_deb ${A}
 }
 
 src_prepare() {

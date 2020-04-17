@@ -37,12 +37,14 @@ RDEPEND="
 S="${WORKDIR}"
 
 src_unpack() {
-	unpack_deb "${A}"
+	unpack_deb ${A}
 }
 
 src_prepare() {
 	rm _gpgbuilder || die
-	use !systemd && ( rm -rf usr/lib || die )
+	if use !systemd ; then
+		rm -rf usr/lib || die
+	fi
 	mv usr/share/doc/nordvpn/changelog.gz .
 	gunzip changelog.gz
 	mv usr/share/man/man1/${PN}.1.gz .

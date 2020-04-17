@@ -1,13 +1,12 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=7
 
 VALA_MIN_API_VERSION="0.30"
 VALA_USE_DEPEND="vapigen"
 
-inherit vala gnome2 meson
+inherit gnome2-utils meson vala
 
 DESCRIPTION="Provides a user friendly GTK+-3 GUI to control the Hamachi client on Linux"
 HOMEPAGE="https://www.haguichi.net"
@@ -19,7 +18,7 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 else
 	SRC_URI="http://launchpad.net/${PN}/${PV:0:3}/${PV}/+download/${P}.tar.xz"
-	KEYWORDS="~arm ~arm64 ~amd64 ~x86"
+	KEYWORDS="-* ~amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"
