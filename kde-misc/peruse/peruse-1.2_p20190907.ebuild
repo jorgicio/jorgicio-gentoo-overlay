@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-KDE_HANDBOOK="forceoptional"
+ECM_HANDBOOK="forceoptional"
 VIRTUALX_REQUIRED="test"
-inherit kde5
+inherit ecm kde.org
 
 DESCRIPTION="A comic book viewer based on Framework 5, for use on multiple form factors."
 HOMEPAGE="http://peruse.kde.org"
@@ -23,23 +23,23 @@ else
 fi
 
 LICENSE="LGPL-2.1"
-IUSE=""
+SLOT="5"
 
 CDEPEND="
-	$(add_frameworks_dep baloo)
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kdeclarative)
-	$(add_frameworks_dep kfilemetadata)
-	$(add_frameworks_dep kirigami)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep karchive)
-	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtopengl)
-	$(add_qt_dep qtsql)
+	kde-frameworks/baloo:5
+	kde-frameworks/kconfig:5
+	kde-frameworks/kiconthemes:5
+	kde-frameworks/kio:5
+	kde-frameworks/kdeclarative:5
+	kde-frameworks/kfilemetadata:5
+	kde-frameworks/kirigami:5
+	kde-frameworks/ki18n:5
+	kde-frameworks/karchive:5
+	dev-qt/qtdeclarative:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtopengl:5
+	dev-qt/qtsql:5
 "
 DEPEND="${CDEPEND}
 	sys-devel/gettext
@@ -50,4 +50,5 @@ pkg_postinst(){
 	elog "For cb* (cbr, cbz, etc.), pdf, deja-vu and epub support, you can do it by"
 	elog "installing kde-apps/okular"
 	echo
+	ecm_pkg_postinst
 }

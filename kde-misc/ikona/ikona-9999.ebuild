@@ -3,32 +3,32 @@
 
 EAPI=7
 
-inherit kde5 git-r3
+inherit ecm git-r3 kde.org
 
 DESCRIPTION="Icon preview designed for Plasma"
 HOMEPAGE="https://invent.kde.org/KDE/ikona"
 EGIT_REPO_URI="https://invent.kde.org/kde/${PN}"
 
 LICENSE="GPL-2"
-RESTRICT="network-sandbox"
+SLOT="5"
 
 DEPEND="
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kirigami)
-	$(add_frameworks_dep plasma)
-	$(add_qt_dep qtcore)
-	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtquickcontrols2)
-	$(add_qt_dep qtwebengine)"
+	kde-frameworks/ki18n:5
+	kde-frameworks/kirigami:5
+	kde-frameworks/plasma:5
+	dev-qt/qtcore:5
+	dev-qt/qtdeclarative:5
+	dev-qt/qtquickcontrols2:5
+	dev-qt/qtwebengine:5"
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-util/cmake
 	dev-util/patchelf
-	$(add_frameworks_dep extra-cmake-modules)
+	kde-frameworks/extra-cmake-modules:5
 	virtual/rust"
 
 src_install() {
-	kde5_src_install
+	ecm_src_install
 	# little tweak
 	mv "${ED}/usr/etc" "${ED}"/
 	patchelf --remove-rpath "${ED}/usr/bin/${PN}-cli"

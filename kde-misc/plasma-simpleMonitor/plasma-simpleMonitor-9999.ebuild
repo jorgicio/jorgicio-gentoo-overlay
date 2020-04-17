@@ -1,17 +1,15 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit kde5
+inherit ecm kde.org
 
 DESCRIPTION="Plasma 5 simple and compact system monitor"
 HOMEPAGE="https://store.kde.org/p/1173509"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	SRC_URI=""
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/dhabyx/${PN}.git"
 else
 	SRC_URI="https://github.com/dhabyx/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -19,10 +17,10 @@ else
 fi
 
 LICENSE="GPL-3"
-IUSE=""
+SLOT="5"
 
 DEPEND="
-	$(add_frameworks_dep extra-cmake-modules)
-	$(add_frameworks_dep plasma)
+	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/plasma:5
 "
 RDEPEND="${DEPEND}"

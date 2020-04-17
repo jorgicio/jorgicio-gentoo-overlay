@@ -1,10 +1,10 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
-inherit kde5 python-any-r1
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit ecm kde.org python-any-r1
 
 MY_PN="${PN/plasma-applet-}"
 DESCRIPTION="Collection of minimalistic plasmoids which look like Awesome VM Widgets"
@@ -23,10 +23,10 @@ else
 fi
 
 LICENSE="GPL-3"
-IUSE=""
+SLOT="5"
 
 DEPEND="
-	$(add_frameworks_dep extra-cmake-modules)
+	kde-frameworks/extra-cmake-modules:5
 	${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}"
