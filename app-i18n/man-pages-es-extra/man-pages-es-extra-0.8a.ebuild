@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND="virtual/man
-		app-i18n/man-pages-es"
+	app-i18n/man-pages-es"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
@@ -22,9 +22,10 @@ DOCS=( LEEME.extra README PROYECTO )
 
 src_prepare(){
 	rm Makefile || die
-	rm man3/{dlclose,dlerror,dlopen,dlsym}.3
-	rm man5/{acct,host.conf,resolv.conf,resolver}.5
-	rm man8/ld.so.8
+	rm man1/mc.1 || die
+	rm man3/{dlclose,dlerror,dlopen,dlsym}.3 || die
+	rm man5/{acct,host.conf,resolv.conf,resolver}.5 || die
+	rm man8/ld.so.8 || die
 	default
 }
 
