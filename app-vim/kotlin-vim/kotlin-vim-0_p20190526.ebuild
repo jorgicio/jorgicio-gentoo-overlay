@@ -5,7 +5,7 @@ EAPI=7
 
 inherit vim-plugin
 
-COMMIT="aea4336a1d66d91f1e87e8ebf2b33fd506bad74e"
+COMMIT="b9fa728701a0aa0b9a2ffe92f10880348fc27a8f"
 
 DESCRIPTION="vim plugin: Kotlin plugin for vim"
 HOMEPAGE="https://github.com/udalov/kotlin-vim"

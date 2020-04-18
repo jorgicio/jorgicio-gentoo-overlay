@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="github lzip"
 
 DEPEND="
-	app-shells/bash
+	app-shells/bash:*
 	app-crypt/gnupg
 	dev-vcs/git
 	app-arch/xz-utils

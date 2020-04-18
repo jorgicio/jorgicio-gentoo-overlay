@@ -4,7 +4,7 @@
 	<upstream>
 		<remote-id type="github">alphaonex86/ultracopier</remote-id>
 		<bugs-to>https://github.com/alphaonex86/ultracopier/issues</bugs-to>
-		<maintainer type="person">
+		<maintainer>
 			<name>Herman Jacques Roger Brule</name>
 			<email>alpha_one_x86@first-world.info</email>
 		</maintainer>

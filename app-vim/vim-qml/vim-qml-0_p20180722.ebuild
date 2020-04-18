@@ -1,9 +1,8 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-#VIM_PLUGIN_VIM_VERSION="7.0"
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: highlighting syntax support for QML code"
@@ -16,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	COMMIT="8af43da6950ce5483704bb97f5b24471d8ffda1a"
 	SRC_URI="https://github.com/peterhoeg/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 IUSE=""

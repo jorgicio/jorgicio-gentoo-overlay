@@ -1,9 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop pax-utils xdg-utils
+inherit desktop pax-utils xdg
 
 DESCRIPTION="Cisco's packet tracer"
 HOMEPAGE="https://www.netacad.com/about-networking-academy/packet-tracer"
@@ -129,14 +129,4 @@ src_install(){
 	fperms +x "${EPREFIX}/opt/${PN}/extensions/NetacadExamPlayer/ptplayer/java/lib/security/policy/limited/US_export_policy.jar"
 	fperms +x "${EPREFIX}/opt/${PN}/extensions/NetacadExamPlayer/ptplayer/java/lib/security/policy/unlimited/local_policy.jar"
 	fperms +x "${EPREFIX}/opt/${PN}/extensions/NetacadExamPlayer/ptplayer/java/lib/security/policy/unlimited/US_export_policy.jar"
-}
-
-pkg_postinst(){
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm(){
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 }

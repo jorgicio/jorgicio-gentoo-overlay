@@ -3,14 +3,17 @@
 
 EAPI=7
 
-inherit git-r3 vim-plugin
+inherit vim-plugin
+
+COMMIT="6191622d5806d4448fa2285047936bdcee57a098"
 
 DESCRIPTION="vim plugin: Base16 schemes for Vim"
 HOMEPAGE="https://github.com/chriskempson/base16-vim"
 LICENSE="vim vim.org public-domain MIT"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
-SRC_URI=""
-EGIT_REPO_URI="${HOMEPAGE}"
+SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 VIM_PLUGIN_HELPTEXT="The base16 colorscheme collection has schemes using 16 colors."
+
+S="${WORKDIR}/${PN}-${COMMIT}"

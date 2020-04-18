@@ -5,7 +5,7 @@ EAPI=7
 
 VALA_API_MIN_VERSION="0.36"
 
-inherit cmake-utils gnome2-utils vala xdg
+inherit cmake gnome2-utils vala xdg
 
 DESCRIPTION="A backup utility for Linux, inspired by Apple's Time Machine"
 HOMEPAGE="https://rastersoft.com/programas/cronopete.html"
@@ -22,12 +22,11 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
-DEPEND="
+RDEPEND="
 	$(vala_depend)
 	dev-libs/glib:2
 	dev-libs/libappindicator:3
 	dev-libs/libgee:0.8
-	dev-util/intltool
 	net-misc/rsync
 	sci-libs/gsl:0=
 	sys-devel/gettext[cxx]
@@ -37,10 +36,11 @@ DEPEND="
 	x11-libs/gtk+:3
 	x11-libs/pango
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/intltool"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -50,7 +50,7 @@ src_configure() {
 		-DGSETTINGS_COMPILE=OFF
 		-DICON_UPDATE=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

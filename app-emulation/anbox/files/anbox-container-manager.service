@@ -1,8 +1,0 @@
-[Unit]
-Description=Anbox Container Manager
-
-[Service]
-ExecStart=/usr/bin/anbox container-manager --daemon --data-path=/var/lib/anbox
-
-[Install]
-WantedBy=multi-user.target
