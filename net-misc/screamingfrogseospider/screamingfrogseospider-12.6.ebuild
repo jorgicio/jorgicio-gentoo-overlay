@@ -6,7 +6,7 @@ EAPI=7
 inherit unpacker xdg
 
 DESCRIPTION="Website crawler for your desktop"
-HOMEPAGE="http://www.screamingfrog.co.uk/seo-spider/"
+HOMEPAGE="https://www.screamingfrog.co.uk/seo-spider/"
 SRC_URI="https://download.screamingfrog.co.uk/products/seo-spider/${P/-/_}_all.deb"
 
 LICENSE="screamingfrogseospider-EULA"

@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mininet/${PN}"
 else
-	MY_PV="${PV/_p/d}"
+	MY_PV="${PV/_pre/d}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://github.com/mininet/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
