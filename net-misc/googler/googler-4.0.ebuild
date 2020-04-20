@@ -1,12 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit eutils python-r1 bash-completion-r1
+inherit bash-completion-r1 eutils python-r1
 
 DESCRIPTION="Google Search from command line"
 HOMEPAGE="https://github.com/jarun/googler"
@@ -17,7 +16,7 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -28,7 +27,7 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 
 src_prepare(){
-	sed -i "s#/usr/local#/usr#" Makefile
+	sed -i "s#/usr/local#/usr#" Makefile || die
 	default
 }
 

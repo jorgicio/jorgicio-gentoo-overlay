@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jpizarrocallejas@gmail.com</email>
-		<name>Jorge Pizarro Callejas</name>
-		<description>Jorgicio Gentoo Overlay</description>
-	</maintainer>
-	<use>
-		<flag name="system-java">Use system Java implementation instead of bundled one. Note: it requires javafx, provided by Oracle Java only.</flag>
-	</use>
+    <longdescription>
+        A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective.
+    </longdescription>
+    <maintainer type="person">
+        <email>jpizarrocallejas@gmail.com</email>
+        <name>Jorge Pizarro Callejas</name>
+        <description>Jorgicio Gentoo Overlay</description>
+    </maintainer>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -14,8 +14,11 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mininet/${PN}"
 else
-	SRC_URI="https://github.com/mininet/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	MY_PV="${PV/_p/d}"
+	MY_P="${PN}-${MY_PV}"
+	SRC_URI="https://github.com/mininet/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="Mininet"

@@ -1,12 +1,11 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=7
 
 CMAKE_IN_SOURCE_BUILD=1
 
-inherit cmake-utils desktop systemd
+inherit cmake desktop systemd
 
 DESCRIPTION="Shrew soft VPN Client"
 HOMEPAGE="http://www.shrew.net/"
@@ -36,7 +35,7 @@ src_prepare(){
 		source/iked/conf.parse.yy || die
 	has_version ">=dev-libs/openssl-1.1.0:0" && eapply "${FILESDIR}/${PN}-openssl-1.1.0.patch"
 	use qt5 && eapply "${FILESDIR}/${PN}-qt5.patch"
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure(){
@@ -47,11 +46,11 @@ src_configure(){
 		-DETCDIR=/etc/${PN}
 		-DQTGUI=$(usex qt5)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install(){
-	cmake-utils_src_install
+	cmake_src_install
 	use systemd && systemd_dounit "${FILESDIR}"/iked.service
 }
 
