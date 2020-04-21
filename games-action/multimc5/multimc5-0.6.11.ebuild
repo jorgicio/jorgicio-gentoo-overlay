@@ -48,14 +48,10 @@ PATCHES=(
 	"${FILESDIR}/fortify-fix-2.patch"
 )
 
-src_unpack(){
-	default
+src_prepare(){
 	rm -rf "${S}/libraries/libnbtplusplus" "${S}/libraries/quazip"
 	mv "${WORKDIR}/libnbtplusplus-${LIBNBTPLUSPLUS_VER}" "${S}/libraries/libnbtplusplus" || die
 	mv "${WORKDIR}/quazip-${QUAZIP_VER}" "${S}/libraries/quazip" || die
-}
-
-src_prepare(){
 	cd libraries/quazip
 	eapply "${FILESDIR}/quazip-fix-build-with-qt-511.patch"
 	cd ../..

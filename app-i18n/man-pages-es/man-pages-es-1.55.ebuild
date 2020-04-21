@@ -26,7 +26,9 @@ src_prepare(){
 
 src_install() {
 	for i in {1..8}; do
-		find man${i} -iname *.${i} -exec doman -i18n=es {} \;
+		for j in $(ls man${i}/*.${i}); do
+			doman -i18n=es ${j}
+		done
 	done
 	einstalldocs
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop cmake git-r3 xdg
+inherit cmake desktop git-r3 xdg
 
 DESCRIPTION="An advanced Qt5-based open-source launcher for Minecraft"
 HOMEPAGE="https://multimc.org"

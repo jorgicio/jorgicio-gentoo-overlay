@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop pax-utils xdg-utils
+inherit desktop pax-utils xdg
 
 DESCRIPTION="A complete, free Microsoft Office-compatible alternative office suite"
 HOMEPAGE="https://www.freeoffice.com"
@@ -39,7 +39,7 @@ pkg_setup() {
 }
 
 src_unpack(){
-	default_src_unpack
+	default
 	xz -d "freeoffice2018.tar.lzma"
 	mkdir -p "${WORKDIR}/${P}"
 	tar x -f "freeoffice2018.tar" -C "${WORKDIR}/${P}" && rm "freeoffice2018.tar"
@@ -50,7 +50,7 @@ src_prepare(){
 	chrpath --delete "textmaker"
 	chrpath --delete "planmaker"
 	chrpath --delete "presentations"
-	default_src_prepare
+	default
 }
 
 src_install(){
@@ -82,13 +82,5 @@ pkg_postinst(){
 	elog "To obtain a valid free serial number, please visit"
 	elog "https://www.freeoffice.com/en/download"
 	echo
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm(){
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	xdg_pkg_postinst
 }
