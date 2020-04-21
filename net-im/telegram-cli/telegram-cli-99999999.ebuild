@@ -1,43 +1,27 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} )
-
-inherit flag-o-matic git-r3 python-r1
+inherit flag-o-matic git-r3
 
 DESCRIPTION="Command line interface client for Telegram"
-HOMEPAGE="https://github.com/vysheng/tg"
+HOMEPAGE="https://github.com/kenorb-contrib/tg"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 IUSE="+lua +json libressl"
 EGIT_REPO_URI="${HOMEPAGE}"
-SRC_URI=""
-
-if [[ ${PV} == 9999 ]];then
-	KEYWORDS=""
-else
-	EGIT_COMMIT="${PV}"
-	KEYWORDS="~amd64 ~x86"
-fi
 
 DEPEND="sys-libs/zlib
 	sys-libs/readline
 	dev-libs/libconfig
-	!libressl? ( dev-libs/openssl )
+	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
 	dev-libs/libevent
-	lua? ( dev-lang/lua )
+	lua? ( dev-lang/lua:0 )
 	json? ( dev-libs/jansson )"
 
 RDEPEND="${DEPEND}"
-BDEPEND="${PYTHON_DEPS}"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.3.1-assertion-issue.patch"
-	"${FILESDIR}/${PN}-openssl-1.1.patch"
-)
 
 src_configure() {
 	append-cflags $(test-flags-CC -Wno-cast-function-type)
