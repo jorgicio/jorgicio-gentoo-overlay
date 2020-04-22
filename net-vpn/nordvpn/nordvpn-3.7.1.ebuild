@@ -9,14 +9,15 @@ DESCRIPTION="NordVPN CLI tool for Linux"
 HOMEPAGE="https://nordvpn.com"
 BASE_URI="https://repo.nordvpn.com/deb/${PN}/debian/pool/main"
 SRC_URI="
-	amd64? ( "${BASE_URI}/${PN}_${PV/_p/-}_amd64.deb" )
-	arm? ( "${BASE_URI}/${PN}_${PV/_p/-}_armhf.deb" )
-	x86? ( "${BASE_URI}/${PN}_${PV/_p/-}_i386.deb" )
+	amd64? ( "${BASE_URI}/${P/-/_}_amd64.deb" )
+	arm? ( "${BASE_URI}/${P/-/_}_armhf.deb" )
+	arm64? ( "${BASE_URI}/${P/-/_}_arm64.deb" )
+	x86? ( "${BASE_URI}/${P/-/_}_i386.deb" )
 "
 
 LICENSE="NordVPN"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="nordlynx systemd"
 RESTRICT="mirror strip"
 
@@ -43,7 +44,7 @@ src_unpack() {
 
 src_prepare() {
 	rm _gpgbuilder || die
-	if use !systemd ; then
+	if use !systemd; then
 		rm -rf usr/lib || die
 	fi
 	mv usr/share/doc/nordvpn/changelog.gz .
