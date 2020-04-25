@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils toolchain-funcs xdg-utils
+inherit qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
 HOMEPAGE="https://flameshot.js.org"
@@ -41,13 +41,5 @@ src_configure(){
 }
 
 src_install(){
-	INSTALL_ROOT="${D}" default
-}
-
-pkg_postinst(){
-	xdg_desktop_database_update
-}
-
-pkg_postrm(){
-	xdg_desktop_database_update
+	INSTALL_ROOT="${ED}" default
 }
