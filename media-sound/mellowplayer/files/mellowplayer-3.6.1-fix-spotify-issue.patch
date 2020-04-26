@@ -1,0 +1,65 @@
+From a897cc753866f06a3360c4a094cf1a31640a7d98 Mon Sep 17 00:00:00 2001
+From: ColinDuquesnoy <colin.duquesnoy@gmail.com>
+Date: Sun, 26 Apr 2020 13:35:00 +0200
+Subject: [PATCH] Fix broken spotify plugin.
+
+Close #419
+---
+ src/plugins/spotify/integration.js | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
+
+diff --git a/src/plugins/spotify/integration.js b/src/plugins/spotify/integration.js
+index 604eaca1..0ff8b90c 100644
+--- a/src/plugins/spotify/integration.js
++++ b/src/plugins/spotify/integration.js
+@@ -19,25 +19,19 @@
+ 
+ function getButtons() {
+     function getPlayPauseButton() {
+-        var playButton = document.querySelector('button[title=Play]');
+-        var pauseButton = document.querySelector('button[title=Pause]');
+-
+-        if (playButton === null)
+-            return pauseButton;
+-        else
+-            return playButton;
++        return getElementByXpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[2]/div/div[1]/div[3]/button');
+     }
+ 
+     function getSkipPreviousSongButton() {
+-        return document.querySelector('button[title=Previous]');
++        return getElementByXpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[2]/div/div[1]/div[2]/button');
+     }
+ 
+     function getSkipNextSongButton() {
+-        return document.querySelector('button[title=Next]');
++        return getElementByXpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[2]/div/div[1]/div[4]/button');
+     }
+ 
+     function getAddRemoveToMusicButton() {
+-        return document.querySelector('.now-playing button[title~=Liked]');
++        return getElementByXpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[1]/div/div[3]/button');
+     }
+ 
+     return {
+@@ -59,7 +53,7 @@ function getPlaybackStatus() {
+ 
+ function getArtist() {
+     try {
+-        return document.querySelector('.now-playing .track-info__artists').innerText;
++        return getElementByXpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[1]/div/div[2]/div[2]').children[0].innerText
+     } catch (e) {
+         return ""
+     }
+@@ -67,7 +61,7 @@ function getArtist() {
+ 
+ function getSongTitle() {
+     try {
+-        return document.querySelector('.now-playing .track-info__name').innerText;
++        return getElementByXpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[1]/div/div[2]/div[1]/div/span/a').innerText;
+     } catch (e) {
+         return ""
+     }
+-- 
+2.26.2
+

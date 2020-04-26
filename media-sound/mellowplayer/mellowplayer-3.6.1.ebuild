@@ -42,7 +42,10 @@ RDEPEND="
 "
 BDEPEND=">=dev-util/cmake-3.10"
 
-PATCHES=( "${FILESDIR}/widevine-path.patch" )
+PATCHES=(
+	"${FILESDIR}/widevine-path.patch"
+	"${FILESDIR}/${P}-fix-spotify-issue.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare
