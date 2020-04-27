@@ -4,7 +4,7 @@
 	<upstream>
 		<remote-id type="gitlab">ColinDuquesnoy/MellowPlayer</remote-id>
 		<bugs-to>https://gitlab.com/ColinDuquesnoy/MellowPlayer/issues</bugs-to>
-		<maintainer type="person">
+		<maintainer>
 			<name>Colin Duquesnoy</name>
 			<email>colin.duquesnoy@gmail.com</email>
 		</maintainer>

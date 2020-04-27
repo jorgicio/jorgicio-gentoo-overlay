@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-CMAKE_MIN_VERSION="3.10"
-
-inherit cmake-utils flag-o-matic toolchain-funcs xdg
+inherit cmake flag-o-matic toolchain-funcs xdg
 
 MY_PN="MellowPlayer"
 
@@ -25,28 +23,31 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="
+COMMON_DEPEND="
 	>=dev-qt/qtquickcontrols2-5.9:5
 	>=dev-qt/qtquickcontrols-5.9:5[widgets]
 	>=dev-qt/qtwebengine-5.9:5[-bindist,widgets]
 	>=dev-qt/qttranslations-5.9:5
-	>=dev-qt/qtgraphicaleffects-5.9:5
-	>=dev-qt/linguist-tools-5.9:5
+	>=dev-qt/qtgraphicaleffects-5.9:5"
+
+DEPEND="
+	${COMMON_DEPEND}
 	dev-libs/libevent
-	media-libs/mesa
-"
+	>=dev-qt/linguist-tools-5.9:5
+	media-libs/mesa"
 
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	www-plugins/adobe-flash:*
 	www-plugins/chrome-binary-plugins:*
-	x11-libs/libnotify
-"
+	x11-libs/libnotify"
+
+BDEPEND=">=dev-util/cmake-3.10"
 
 PATCHES=( "${FILESDIR}/widevine-path.patch" )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -60,13 +61,15 @@ src_configure() {
 	else
 		die "You need a c++17 compatible compiler in order to build ${MY_PN}"
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	# Create a symlink in order to use the Widevine plugin
 	dodir /usr/$(get_libdir)/qt5/plugins/ppapi
-	dosym "${EROOT}"/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
+#	dosym "${EROOT%/}"/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
+#		/usr/$(get_libdir)/qt5/plugins/ppapi/libwidevinecdm.so
+	dosym ../../../chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
 		/usr/$(get_libdir)/qt5/plugins/ppapi/libwidevinecdm.so
 }
