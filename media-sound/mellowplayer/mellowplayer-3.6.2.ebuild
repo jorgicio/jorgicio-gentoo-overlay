@@ -22,6 +22,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="widevine"
 
 COMMON_DEPEND="
 	>=dev-qt/qtquickcontrols2-5.9:5
@@ -39,14 +40,13 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	www-plugins/adobe-flash:*
-	www-plugins/chrome-binary-plugins:*
-	x11-libs/libnotify"
+	x11-libs/libnotify
+	widevine? ( www-plugins/chrome-binary-plugins:* )"
 
 BDEPEND=">=dev-util/cmake-3.10"
 
-PATCHES=( "${FILESDIR}/widevine-path.patch" )
-
 src_prepare() {
+	use widevine && eapply "${FILESDIR}/widevine-path.patch"
 	cmake_src_prepare
 }
 
@@ -66,10 +66,10 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	# Create a symlink in order to use the Widevine plugin
-	dodir /usr/$(get_libdir)/qt5/plugins/ppapi
-#	dosym "${EROOT%/}"/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
-#		/usr/$(get_libdir)/qt5/plugins/ppapi/libwidevinecdm.so
-	dosym ../../../chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
-		/usr/$(get_libdir)/qt5/plugins/ppapi/libwidevinecdm.so
+	if use widevine; then
+		# Create a symlink in order to use the Widevine plugin
+		dodir /usr/$(get_libdir)/qt5/plugins/ppapi
+		dosym ../../../chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
+			/usr/$(get_libdir)/qt5/plugins/ppapi/libwidevinecdm.so
+	fi
 }
