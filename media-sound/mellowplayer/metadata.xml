@@ -15,6 +15,7 @@
         <description>Jorgicio Gentoo Overlay</description>
     </maintainer>
     <use>
+        <flag name="bindist">Disable/restrict closed-source codecs for some delivered content</flag>
         <flag name="widevine">Enable DRM capability (required by services such as Spotify or Netflix)</flag>
     </use>
 </pkgmetadata>

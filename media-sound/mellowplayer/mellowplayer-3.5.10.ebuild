@@ -22,12 +22,13 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="widevine"
+IUSE="bindist widevine"
+REQUIRED_USE="widevine? ( !bindist )"
 
 COMMON_DEPEND="
 	>=dev-qt/qtquickcontrols2-5.9:5
 	>=dev-qt/qtquickcontrols-5.9:5[widgets]
-	>=dev-qt/qtwebengine-5.9:5[-bindist,widgets]
+	>=dev-qt/qtwebengine-5.9:5[bindist?,widgets]
 	>=dev-qt/qttranslations-5.9:5
 	>=dev-qt/qtgraphicaleffects-5.9:5"
 
