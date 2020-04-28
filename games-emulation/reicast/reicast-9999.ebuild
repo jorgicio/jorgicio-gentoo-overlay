@@ -30,24 +30,17 @@ DEPEND="
 	sdl? ( media-libs/libsdl2[video,sound,joystick?] )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	use pulseaudio && export USE_PULSEAUDIO=1
-	if use sdl; then
-		export USE_SDL=1
-		export USE_SDL_AUDIO=1
-	fi
-	use joystick && export USE_JOYSTICK=1
-	default
-}
-
 src_compile() {
 	FLAGS="PREFIX=/usr CC=$(tc-getCC) CXX=$(tc-getCXX) "
 	FLAGS+="AS=$(tc-getAS) STRIP=$(tc-getSTRIP) LD=$(tc-getLD)"
-	emake -C ${PN}/linux ${FLAGS}
+	use pulseaudio && FLAGS+=" USE_PULSEAUDIO=1"
+	use sdl && FLAGS+=" USE_SDL=1 USE_SDLAUDIO=1"
+	use joystick && FLAGS+=" USE_JOYSTICK=1"
+	emake -C ${PN}/linux "${FLAGS}"
 }
 
 src_install() {
 	emake -C ${PN}/linux \
 		DESTDIR="${ED}" \
-		${FLAGS} install
+		"${FLAGS}" install
 }
