@@ -19,11 +19,24 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="joystick pulseaudio sdl"
 
 DEPEND="
 	media-libs/alsa-lib
-	media-libs/mesa[egl,gles2]"
+	media-libs/mesa[egl,gles2]
+	pulseaudio? ( media-sound/pulseaudio )
+	sdl? ( media-libs/libsdl2[video,sound,joystick?] )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	use pulseaudio && export USE_PULSEAUDIO=1
+	if use sdl; then
+		export USE_SDL=1
+		export USE_SDL_AUDIO=1
+	fi
+	use joystick && export USE_JOYSTICK=1
+	default
+}
 
 src_compile() {
 	FLAGS="PREFIX=/usr CC=$(tc-getCC) CXX=$(tc-getCXX) "
