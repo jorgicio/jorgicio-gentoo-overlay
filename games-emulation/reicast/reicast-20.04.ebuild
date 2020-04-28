@@ -36,11 +36,11 @@ src_compile() {
 	use pulseaudio && FLAGS+=" USE_PULSEAUDIO=1"
 	use sdl && FLAGS+=" USE_SDL=1 USE_SDLAUDIO=1"
 	use joystick && FLAGS+=" USE_JOYSTICK=1"
-	emake -C ${PN}/linux "${FLAGS}"
+	emake -C ${PN}/linux ${FLAGS}
 }
 
 src_install() {
 	emake -C ${PN}/linux \
-		DESTDIR="${ED}" \
-		"${FLAGS}" install
+		${FLAGS} \
+		DESTDIR="${ED}" install
 }

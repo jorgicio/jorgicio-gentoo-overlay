@@ -3,5 +3,3 @@ media-sound/strawberry phonon
 games-emulation/qmc2 phonon
 # This is broken.
 media-tv/xawtv cpu_flags_x86_mmx
-# SDL2 support is broken at the moment.
-games-emulation/reicast sdl
