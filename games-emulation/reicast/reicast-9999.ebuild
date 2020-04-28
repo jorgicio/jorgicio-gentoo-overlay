@@ -24,6 +24,8 @@ IUSE="joystick pulseaudio sdl"
 DEPEND="
 	media-libs/alsa-lib
 	media-libs/mesa[egl,gles2]
+	virtual/libudev
+	virtual/opengl
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? ( media-libs/libsdl2[video,sound,joystick?] )"
 RDEPEND="${DEPEND}"
