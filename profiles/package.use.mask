@@ -4,4 +4,4 @@ games-emulation/qmc2 phonon
 # This is broken.
 media-tv/xawtv cpu_flags_x86_mmx
 # SDL support is broken.
-games-emulation/reitcast sdl
+games-emulation/reicast sdl
