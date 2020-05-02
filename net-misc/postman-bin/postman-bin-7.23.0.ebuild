@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,19 +11,20 @@ DESCRIPTION="Supercharge your API workflow"
 HOMEPAGE="https://www.getpostman.com"
 SRC_URI="
 	amd64? ( https://dl.pstmn.io/download/version/${PV}/linux64 -> ${P}-amd64.tar.gz )
-	x86? ( https://dl.pstmn.io/download/version/${PV}/linux32 -> ${P}-x86.tar.gz )
 "
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="pax_kernel"
 RESTRICT="mirror strip"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 S="${WORKDIR}/${MY_PN^}/app"
+
+src_prepare() {
+	mv _Postman Postman
+	default
+}
 
 src_install() {
 	mkdir -p "${ED}/opt/${MY_PN}"
