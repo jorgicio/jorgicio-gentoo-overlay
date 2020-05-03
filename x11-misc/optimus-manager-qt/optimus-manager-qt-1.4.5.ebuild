@@ -19,15 +19,21 @@ SLOT="0"
 IUSE="plasma"
 RESTRICT="test"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-qt/qtcore:5
+	dev-qt/qtx11extras:5
 	plasma? (
-		kde-plasma/plasma-desktop
-		kde-frameworks/knotifications
-		kde-frameworks/kiconthemes
+		kde-plasma/plasma-desktop:5
+		kde-frameworks/knotifications:5
+		kde-frameworks/kiconthemes:5
 	)"
+
+DEPEND="
+	${COMMON_DEPEND}
+	dev-qt/linguist-tools:5"
+
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	>=x11-misc/optimus-manager-1.2.2"
 
 src_unpack() {
