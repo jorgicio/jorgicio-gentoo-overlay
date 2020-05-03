@@ -10,7 +10,7 @@ CMAKE_MAKEFILE_GENERATOR="ninja"
 
 inherit cmake-utils desktop gnome2-utils l10n pax-utils
 
-COMMIT="049183148307ad6a5a3244c313841fc97448b647"
+COMMIT="ffc40c1a00b29bd3e0ed2aaadb4aca438d0ad3b8"
 
 SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
