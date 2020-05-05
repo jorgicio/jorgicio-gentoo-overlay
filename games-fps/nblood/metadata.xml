@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jpizarrocallejas@gmail.com</email>
-		<name>Jorge Pizarro Callejas</name>
-		<description>Jorgicio Gentoo Overlay</description>
-	</maintainer>
+    <maintainer type="person">
+        <email>jpizarrocallejas@gmail.com</email>
+        <name>Jorge Pizarro Callejas</name>
+        <description>Jorgicio Gentoo Overlay</description>
+    </maintainer>
+    <use>
+        <flag name="vpx">Enable support for <pkg>media-libs/libvpx</pkg>.</flag>
+        <flag name="fluidsynth">Install <pkg>media-libs/sdl2-mixer</pkg> with fluidsynth support.</flag>
+        <flag name="server">Enable support for multiplayer.</flag>
+    </use>
 </pkgmetadata>

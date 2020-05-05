@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop xdg
+inherit desktop toolchain-funcs xdg
 
 MY_PN="NBlood"
 MY_P="${MY_PN}-${PV}"
@@ -12,25 +12,29 @@ DESCRIPTION="Blood port based in EDuke32"
 HOMEPAGE="https://nukeykt.retrohost.net"
 SRC_URI="https://github.com/nukeykt/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="BUILDLIC GPL-2"
 SLOT="0"
-IUSE="pulseaudio"
+IUSE="flac fluidsynth gtk opengl pulseaudio server timidity vorbis vpx xmp"
 KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/${MY_P}"
 
-QA_PRESTRIPPED="${EPREFIX}/usr/bin/${PN}"
-
-DEPEND="
-	media-libs/flac
-	media-libs/libogg
+RDEPEND="
+	media-libs/libpng:0=
 	media-libs/libsdl2[video,sound,opengl,pulseaudio?]
-	media-libs/libvorbis
-	media-libs/sdl2-mixer[flac,midi,vorbis,timidity]
-	media-sound/timidity++
-	virtual/glu
-	virtual/opengl
-	x11-libs/gtk+:2"
-RDEPEND="${DEPEND}"
+	media-libs/sdl2-mixer[flac?,midi,vorbis?,timidity?,fluidsynth?]
+	sys-libs/zlib
+	flac? ( media-libs/flac )
+	vorbis? (
+		media-libs/libogg
+		media-libs/libvorbis )
+	opengl? (
+		virtual/glu
+		virtual/opengl )
+	gtk? ( x11-libs/gtk+:2 )
+	vpx? ( media-libs/libvpx:= )
+	xmp? ( media-libs/exempi:2= )"
+DEPEND="${RDEPEND}
+	timidity? ( media-sound/timidity++ )"
 BDEPEND="
 	x86? ( dev-lang/nasm )
 	media-gfx/imagemagick:0"
@@ -43,8 +47,27 @@ src_prepare() {
 
 src_compile() {
 	emake \
+		AS=$(tc-getAS) \
+		CC=$(tc-getCC) \
+		CXX=$(tc-getCXX) \
 		PACKAGE_REPOSITORY=1 \
-		REVFLAG="-DREV=\\\"v${PV}\\\""
+		REVFLAG="-DREV=\\\"v${PV}\\\"" \
+		HAVE_GTK=$(usex gtk 1 0) \
+		HAVE_FLAC=$(usex flac 1 0) \
+		HAVE_VORBIS=$(usex vorbis 1 0) \
+		HAVE_XMP=$(usex xmp 1 0) \
+		POLYMER=$(usex opengl 1 0) \
+		MIXERTYPE=SDL \
+		SDL_TARGET=2 \
+		STRIP="" \
+		NOASM=0 \
+		RENDERTYPE=SDL \
+		USE_OPENGL=$(usex opengl 1 0) \
+		USE_LIBVPX=$(usex vpx 1 0) \
+		NETCODE=$(usex server 1 0) \
+		OPTLEVEL=0 \
+		LUNATIC=0 \
+		STARTUP_WINDOW=$(usex gtk 1 0)
 	MAGICK_OCL_DEVICE=OFF convert \
 		source/blood/rsrc/game.bmp \
 		-gravity center \
