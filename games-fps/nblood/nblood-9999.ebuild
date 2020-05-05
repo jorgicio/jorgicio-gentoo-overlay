@@ -28,7 +28,7 @@ DEPEND="
 	x11-libs/gtk+:2"
 RDEPEND="${DEPEND}"
 BDEPEND="
-	x86? ( dev-lang/nasm )
+	dev-lang/nasm
 	media-gfx/imagemagick:0"
 
 src_prepare() {
