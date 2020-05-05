@@ -10,5 +10,6 @@
         <flag name="vpx">Enable support for <pkg>media-libs/libvpx</pkg>.</flag>
         <flag name="fluidsynth">Install <pkg>media-libs/sdl2-mixer</pkg> with fluidsynth support.</flag>
         <flag name="server">Enable support for multiplayer.</flag>
+        <flag name="tools">Install the support tools for mapster32.</flag>
     </use>
 </pkgmetadata>

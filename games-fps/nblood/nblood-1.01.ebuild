@@ -14,7 +14,7 @@ SRC_URI="https://github.com/nukeykt/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.ta
 
 LICENSE="BUILDLIC GPL-2"
 SLOT="0"
-IUSE="flac fluidsynth gtk opengl pulseaudio server timidity vorbis vpx xmp"
+IUSE="flac fluidsynth gtk opengl pulseaudio server timidity tools vorbis vpx xmp"
 KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/${MY_P}"
 
@@ -46,28 +46,32 @@ src_prepare() {
 }
 
 src_compile() {
-	emake \
-		AS=$(tc-getAS) \
-		CC=$(tc-getCC) \
-		CXX=$(tc-getCXX) \
-		PACKAGE_REPOSITORY=1 \
-		REVFLAG="-DREV=\\\"v${PV}\\\"" \
-		HAVE_GTK=$(usex gtk 1 0) \
-		HAVE_FLAC=$(usex flac 1 0) \
-		HAVE_VORBIS=$(usex vorbis 1 0) \
-		HAVE_XMP=$(usex xmp 1 0) \
-		POLYMER=$(usex opengl 1 0) \
-		MIXERTYPE=SDL \
-		SDL_TARGET=2 \
-		STRIP="" \
-		NOASM=0 \
-		RENDERTYPE=SDL \
-		USE_OPENGL=$(usex opengl 1 0) \
-		USE_LIBVPX=$(usex vpx 1 0) \
-		NETCODE=$(usex server 1 0) \
-		OPTLEVEL=0 \
-		LUNATIC=0 \
+	local myemakeopts=(
+		AS=$(tc-getAS)
+		CC=$(tc-getCC)
+		CXX=$(tc-getCXX)
+		PACKAGE_REPOSITORY=1
+		REVFLAG="-DREV=\\\"v${PV}\\\""
+		HAVE_GTK=$(usex gtk 1 0)
+		HAVE_FLAC=$(usex flac 1 0)
+		HAVE_VORBIS=$(usex vorbis 1 0)
+		HAVE_XMP=$(usex xmp 1 0)
+		POLYMER=$(usex opengl 1 0)
+		MIXERTYPE=SDL
+		SDL_TARGET=2
+		STRIP=""
+		NOASM=0
+		RENDERTYPE=SDL
+		USE_OPENGL=$(usex opengl 1 0)
+		USE_LIBVPX=$(usex vpx 1 0)
+		NETCODE=$(usex server 1 0)
+		OPTLEVEL=0
+		LUNATIC=0
 		STARTUP_WINDOW=$(usex gtk 1 0)
+		STANDALONE=0
+	)
+	emake "${myemakeopts[@]}"
+	use tools && emake utils "${myemakeopts[@]}"
 	MAGICK_OCL_DEVICE=OFF convert \
 		source/blood/rsrc/game.bmp \
 		-gravity center \
@@ -79,6 +83,31 @@ src_compile() {
 
 src_install() {
 	dobin ${PN}
+	if use tools; then
+		local tools=(
+			arttool
+			bsuite
+			cacheinfo
+			generateicon
+			getdxdidf
+			givedepth
+			ivfrate
+			kextract
+			kgroup
+			kmd2tool
+			makesdlkeytrans
+			map2stl
+			md2tool
+			mkpalette
+			transpal
+			unpackssi
+			wad2art
+			wad2map
+		)
+		dobin "${tools[@]}"
+	fi
+
+	keepdir /usr/share/games/${PN}
 	insinto /usr/share/games/${PN}
 	doins ${PN}.pk3
 	doicon -s 192 -t hicolor ${PN}.png
