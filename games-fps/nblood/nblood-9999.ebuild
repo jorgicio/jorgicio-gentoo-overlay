@@ -14,7 +14,8 @@ EGIT_REPO_URI="https://github.com/nukeykt/${MY_PN}"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="pulseaudio"
-RESTRICT="strip"
+
+QA_PRESTRIPPED="${EPREFIX}/usr/bin/${PN}"
 
 DEPEND="
 	media-libs/flac

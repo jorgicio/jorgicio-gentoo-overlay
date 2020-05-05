@@ -17,7 +17,8 @@ SLOT="0"
 IUSE="pulseaudio"
 KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/${MY_P}"
-RESTRICT="strip"
+
+QA_PRESTRIPPED="${EPREFIX}/usr/bin/${PN}"
 
 DEPEND="
 	media-libs/flac
