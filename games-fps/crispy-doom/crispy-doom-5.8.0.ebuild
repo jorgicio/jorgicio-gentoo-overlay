@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit autotools desktop python-any-r1
 
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]];then
 	EGIT_REPO_URI="https://github.com/fabiangreffrath/${PN}.git"
 else
 	SRC_URI="https://github.com/fabiangreffrath/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${P}"
 fi
 
@@ -44,6 +44,6 @@ src_prepare(){
 
 src_install(){
 	default_src_install
-	rm -rf ${ED}/usr/share/man/man5/default.cfg.5 \
-		${ED}/usr/share/man/man6/chocolate-{server,setup}.6 || die
+	rm -rf "${ED%/}"/usr/share/man/man5/default.cfg.5 \
+		"${ED%/}"/usr/share/man/man6/chocolate-{server,setup}.6 || die
 }
