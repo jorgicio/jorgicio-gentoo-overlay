@@ -11,6 +11,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="berkdb nls"
+RESTRICT="strip"
 
 RDEPEND="
 	dev-libs/gmp:0=
@@ -22,10 +23,6 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool:="
 
 DOCS=( AUTHORS ChangeLog NEWS README )
-
-pkg_setup() {
-	QA_PRESTRIPPED="/usr/$(get_libdir)/gnucobol/CBL_OC_DUMP.so"
-}
 
 src_prepare() {
 	sed -i -e "s#MAKEFLAGS) install-data-hook#MAKEFLAGS)#" \
