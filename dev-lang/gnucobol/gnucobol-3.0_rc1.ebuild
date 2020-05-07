@@ -15,11 +15,11 @@ IUSE="berkdb nls"
 RDEPEND="
 	dev-libs/gmp:0=
 	berkdb? ( sys-libs/db:4.8= )
-	sys-libs/ncurses
-	sys-libs/readline
+	sys-libs/ncurses:0=
+	sys-libs/readline:=
 	!dev-lang/open-cobol"
 DEPEND="${RDEPEND}
-	sys-devel/libtool"
+	sys-devel/libtool:="
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
