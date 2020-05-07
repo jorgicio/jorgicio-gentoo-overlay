@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake systemd
 
 DESCRIPTION="Re-connectable secure remote shell"
 HOMEPAGE="https://eternalterminal.dev"
@@ -23,7 +23,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="selinux utempter"
+IUSE="selinux systemd utempter"
 
 DEPEND="
 	dev-libs/libsodium
@@ -32,6 +32,14 @@ DEPEND="
 	app-arch/unzip
 	net-misc/wget
 	selinux? ( sys-libs/libselinux )
+	systemd? ( sys-apps/systemd )
 	utempter? ( sys-libs/libutempter )
 "
 RDEPEND="${DEPEND}"
+
+src_install() {
+	cmake_src_install
+	insinto /etc
+	doins etc/et.cfg
+	use systemd && systemd_dounit systemctl/et.service
+}
