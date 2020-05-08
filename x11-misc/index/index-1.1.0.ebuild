@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=dev-libs/mauikit-${PV}:5
+	>=dev-libs/mauikit-1.0.0:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
