@@ -51,7 +51,8 @@ src_prepare(){
 
 src_compile(){
 	FLAGS="DESTDIR=\"${ED}\" PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc	CTIME=0 QMAKE=qmake "
-	local COMPILE_FLAGS="CC=$(tc-getCC) CXX=$(tc-getCXX) "
+	local COMPILE_FLAGS="CC=$(tc-getCC) CXX=$(tc-getCXX) AS=$(tc-getAS) AR=$(tc-getAR)"
+	COMPILE_FLAGS+=" LD=$(tc-getLD) STRIP=$(tc-getSTRIP) NM=$(tc-getNM) RANLIB=$(tc-getRANLIB)"
 	emake ${FLAGS} \
 		SYSTEM_MINIZIP=$(usex minizip "1" "0") \
 		SYSTEM_ZLIB=$(usex zlib "1" "0") \
