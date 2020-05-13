@@ -8,8 +8,6 @@ HOMEPAGE="https://github.com/graysky2/profile-cleaner"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
-	SRC_URI=""
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/graysky2/${PN}.git"
 else
 	KEYWORDS="~amd64 ~x86"
@@ -30,8 +28,12 @@ RDEPEND="app-shells/bash
 	sys-process/parallel
 	dev-db/sqlite:3"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-brave-browser-support.patch"
+	"${FILESDIR}/${PN}-vivaldi-browser-support.patch" )
+
 src_install(){
-	DESTDIR="${D}" emake install-bin
+	DESTDIR="${ED}" emake install-bin
 	doman doc/pc.1
 	newman doc/pc.1 profile-cleaner.1
 	einstalldocs
