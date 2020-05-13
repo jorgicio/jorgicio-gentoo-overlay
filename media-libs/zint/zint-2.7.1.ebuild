@@ -25,7 +25,8 @@ COMMON_DEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
-	media-libs/libpng:0
+	media-libs/libpng:0=
+	sys-libs/zlib:0=
 "
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/hicolor-icon-theme
