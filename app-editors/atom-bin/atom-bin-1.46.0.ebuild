@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 SLOT="0"
 LICENSE="MIT"
 
-IUSE="system-node pax_kernel"
+IUSE="libressl system-node pax_kernel"
 
 DEPEND="${PYTHON_DEPS}
 	!!dev-util/atom-shell
@@ -104,7 +104,8 @@ RDEPEND="${RDEPEND}
 # TODO: Determine where it says we need these
 RDEPEND="${RDEPEND}
 	gnome-base/libgnome-keyring
-	dev-libs/openssl:0=
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:0= )
 "
 
 PATCHES=(
