@@ -1,9 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop qmake-utils xdg-utils
+inherit desktop qmake-utils xdg
 
 DESCRIPTION="Free and opensource replacement for files copy dialogs."
 HOMEPAGE="https://ultracopier.first-world.info"
@@ -43,14 +43,4 @@ src_install() {
 	for size in 16 36 48 72 128; do
 		newicon -s ${size} resources/${PN}-${size}x${size}.png ${PN}.png
 	done
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
