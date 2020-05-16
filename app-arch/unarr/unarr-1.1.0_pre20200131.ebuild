@@ -12,8 +12,10 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
-	SRC_URI="https://github.com/selmf/${PN}/releases/download/v${PV}/${P}.tar.xz"
+	COMMIT="7fa227366e8a3ff83eae6f9734644f4d5f257f39"
+	SRC_URI="https://github.com/selmf/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="LGPL-3"

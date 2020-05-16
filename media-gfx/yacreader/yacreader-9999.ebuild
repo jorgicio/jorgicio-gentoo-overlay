@@ -20,16 +20,18 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="pdf qrencode"
 
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtmultimedia:5
-	app-text/poppler[qt5]
 	dev-qt/qtdeclarative:5
 	virtual/glu
 	dev-qt/qtquickcontrols:5
 	dev-util/desktop-file-utils
-	app-arch/unarr
+	>=app-arch/unarr-1.1.0_pre20200131[7z]
+	pdf? ( app-text/poppler:=[qt5] )
+	qrencode? ( media-gfx/qrencode:= )
 "
 RDEPEND="${DEPEND}"
 

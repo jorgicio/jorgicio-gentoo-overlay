@@ -12,10 +12,10 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/YACReader/${PN}.git"
 else
-	EXTENSION="1909283"
-	SRC_URI="https://github.com/YACReader/${PN}/releases/download/${PV}/${P}.${EXTENSION}-src.tar.xz"
+	COMMIT="e6bc8f38a0280f6dcaf6796d9c451b57d59b93d0"
+	SRC_URI="https://github.com/YACReader/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${P}.${EXTENSION}"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="GPL-3"
@@ -29,7 +29,7 @@ DEPEND="
 	virtual/glu
 	dev-qt/qtquickcontrols:5
 	dev-util/desktop-file-utils
-	app-arch/unarr
+	>=app-arch/unarr-1.1.0_pre20200131[7z]
 	pdf? ( app-text/poppler:=[qt5] )
 	qrencode? ( media-gfx/qrencode:= )
 "
