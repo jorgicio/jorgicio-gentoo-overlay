@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Vacuum and reindex browser sqlite databases"
 HOMEPAGE="https://github.com/graysky2/profile-cleaner"
@@ -27,8 +27,6 @@ RDEPEND="app-shells/bash
 	sys-apps/sed
 	sys-process/parallel
 	dev-db/sqlite:3"
-
-PATCHES=( "${FILESDIR}/${PN}-brave-browser-support.patch" )
 
 src_install(){
 	DESTDIR="${ED}" emake install-bin
