@@ -28,6 +28,8 @@ RDEPEND="app-shells/bash
 	sys-process/parallel
 	dev-db/sqlite:3"
 
+PATCHES=( "${FILESDIR}/${P}-fix-brave-browser-support.patch" )
+
 src_install(){
 	DESTDIR="${ED}" emake install-bin
 	doman doc/pc.1
