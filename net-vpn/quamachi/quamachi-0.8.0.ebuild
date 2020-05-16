@@ -38,7 +38,7 @@ src_prepare(){
 }
 
 src_install(){
-	emake DESTDIR="${D}" Sys-SBin="/usr/bin" install
+	emake DESTDIR="${ED}" Sys-SBin="/usr/bin" install
 }
 
 pkg_postinst(){
