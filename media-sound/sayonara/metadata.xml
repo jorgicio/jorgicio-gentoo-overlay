@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<upstream>
 		<bugs-to>https://sayonara-player.com/forum/forum-5.html</bugs-to>
-		<maintainer type="person">
+		<maintainer>
 			<name>Lucio Carreras</name>
 			<email>luciocarreras@gmail.com</email>
 		</maintainer>
