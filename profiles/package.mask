@@ -21,3 +21,6 @@ app-accessibility/dragonfire
 
 # Masking due to removed Python 2 support for dev-python/networkx, required as a dependency
 =net-misc/mininet-2.2.2
+
+# Masking due to an issue at start, waiting to be solved in upstream.
+media-video/flowblade
