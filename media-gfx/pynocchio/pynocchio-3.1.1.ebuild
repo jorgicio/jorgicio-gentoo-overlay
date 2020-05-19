@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit desktop distutils-r1 xdg
 
@@ -12,8 +12,6 @@ HOMEPAGE="https://mstuttgart.github.io/pynocchio"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mstuttgart/pynocchio"
-	KEYWORDS=""
-	SRC_URI=""
 else
 	SRC_URI="https://github.com/mstuttgart/pynocchio/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -39,8 +37,8 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
 
 src_prepare(){
-	mv ./${PN}-client.py ./scripts/${PN}
-	sed -i "s#pynocchio-client.py#scripts/pynocchio#" setup.py
+	mv ./${PN}-client.py ./scripts/${PN} || die
+	sed -i "s#pynocchio-client.py#scripts/pynocchio#" setup.py || die
 	default
 }
 
