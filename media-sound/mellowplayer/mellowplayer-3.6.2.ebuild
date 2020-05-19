@@ -22,13 +22,12 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bindist widevine"
-REQUIRED_USE="widevine? ( !bindist )"
+IUSE="widevine"
 
 COMMON_DEPEND="
 	>=dev-qt/qtquickcontrols2-5.9:5
 	>=dev-qt/qtquickcontrols-5.9:5[widgets]
-	>=dev-qt/qtwebengine-5.9:5[bindist?,widgets]
+	>=dev-qt/qtwebengine-5.9:5[-bindist,widgets]
 	>=dev-qt/qttranslations-5.9:5
 	>=dev-qt/qtgraphicaleffects-5.9:5"
 
@@ -46,12 +45,7 @@ RDEPEND="
 
 BDEPEND=">=dev-util/cmake-3.10"
 
-src_prepare() {
-	use widevine && eapply "${FILESDIR}/widevine-path.patch"
-	cmake_src_prepare
-}
-
-src_configure() {
+pkg_pretend() {
 	if test-flags-CXX -std=c++17;then
 		if tc-is-gcc; then
 			[ $(gcc-major-version) -lt 6 ] && die "You need at least GCC 6.0 in order to build ${MY_PN}"
@@ -62,7 +56,11 @@ src_configure() {
 	else
 		die "You need a c++17 compatible compiler in order to build ${MY_PN}"
 	fi
-	cmake_src_configure
+}
+
+src_prepare() {
+	use widevine && eapply "${FILESDIR}/widevine-path.patch"
+	cmake_src_prepare
 }
 
 src_install() {
