@@ -17,8 +17,8 @@ SLOT="5"
 IUSE=""
 
 DEPEND="
-	dev-qt/qtgui:5
-	dev-qt/qtdbus:5
+	dev-qt/qtgui:5=
+	dev-qt/qtdbus:5=
 	x11-libs/gtk+:2
 	x11-libs/libX11
 "
