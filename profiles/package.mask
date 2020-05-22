@@ -23,4 +23,4 @@ app-accessibility/dragonfire
 =net-misc/mininet-2.2.2
 
 # Masking due to an issue at start, waiting to be solved in upstream, as mentioned in https://github.com/jorgicio/jorgicio-gentoo-overlay/issues/235
-media-video/flowblade
+#media-video/flowblade

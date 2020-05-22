@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_8 )
 
 inherit desktop python-any-r1 xdg
 
@@ -34,7 +34,7 @@ DEPEND="
 	media-plugins/swh-plugins
 	$(python_gen_any_dep 'dev-python/pycairo[${PYTHON_USEDEP}]' )
 	$(python_gen_any_dep 'dev-python/numpy[${PYTHON_USEDEP}]' )
-	$(python_gen_any_dep 'dev-python/pillow[${PYTHON_USEDEP}]' )
+	$(python_gen_any_dep 'dev-python/pillow:0[${PYTHON_USEDEP}]' )
 	gnome-base/librsvg:2=
 	media-gfx/gmic[ffmpeg,X]
 	dev-libs/glib:2[dbus]
