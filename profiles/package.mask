@@ -24,3 +24,6 @@ app-accessibility/dragonfire
 
 # Masking due to an issue at start, waiting to be solved in upstream, as mentioned in https://github.com/jorgicio/jorgicio-gentoo-overlay/issues/235
 #media-video/flowblade
+
+# Masking due to unfulfilling dependencies
+sci-astronomy/eht-imaging
