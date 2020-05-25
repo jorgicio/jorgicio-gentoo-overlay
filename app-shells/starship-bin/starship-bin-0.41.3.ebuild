@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="elibc_glibc elibc_musl"
+IUSE="elibc_glibc elibc_musl libressl"
 RESTRICT="mirror strip"
 
 DEPEND="
@@ -25,7 +25,8 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	!app-shells/starship
-	dev-libs/openssl:0
+	libressl? ( dev-libs/libressl:0 )
+	!libressl? ( dev-libs/openssl:0 )
 	sys-libs/zlib"
 
 S="${WORKDIR}"

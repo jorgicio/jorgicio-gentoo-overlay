@@ -13,10 +13,12 @@ EGIT_REPO_URI="https://github.com/starship/${PN}.git"
 
 LICENSE="ISC"
 SLOT="0"
+IUSE="libressl"
 
 DEPEND="
-	dev-libs/openssl:0
-	sys-libs/zlib
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:0= )
+	sys-libs/zlib:=
 "
 RDEPEND="${DEPEND}"
 

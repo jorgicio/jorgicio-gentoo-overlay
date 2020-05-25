@@ -170,10 +170,12 @@ SRC_URI="
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+IUSE="libressl"
 
 DEPEND="
-	dev-libs/openssl:0
-	sys-libs/zlib
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:0= )
+	sys-libs/zlib:=
 "
 RDEPEND="${DEPEND}"
 
