@@ -1,7 +1,7 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit font
 
@@ -15,14 +15,13 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="dotted-zero"
-KEYWORDS="~*"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
-DEPEND="app-arch/unzip"
-RDEPEND="${DEPEND}"
+BDEPEND="app-arch/unzip"
 FONT_SUFFIX="ttf"
 
 src_unpack(){
-	default_src_unpack
+	default
 	# Removing spaces from directory name
 	local dirname
 	use dotted-zero && dirname="Meslo LG DZ v${PV}" || dirname="Meslo LG v${PV}"

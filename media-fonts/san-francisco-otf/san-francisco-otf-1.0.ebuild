@@ -1,7 +1,7 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit font
 
@@ -10,7 +10,7 @@ HOMEPAGE="https://developer.apple.com/fonts/"
 SRC_URI="https://developer.apple.com/fonts/downloads/SFPro.zip -> SFPro-${PV}.zip"
 
 SLOT="0"
-KEYWORDS="~*"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 LICENSE="APSL-2"
 RESTRICT="mirror"
 
