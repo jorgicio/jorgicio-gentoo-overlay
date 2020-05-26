@@ -5,17 +5,17 @@ EAPI=7
 
 inherit font
 
-FEDREL="3.fc32"
+FEDREL="1.fc33"
 
 DESCRIPTION="Twitter Emoji for everyone."
 HOMEPAGE="https://github.com/twitter/twemoji"
-SRC_URI="
-	https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/${PN:0:1}/twitter-${PN}-fonts-${PV}-${FEDREL}.noarch.rpm
+SRC_URI="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/${PN:0:1}/twitter-${PN}-fonts-${PV}-${FEDREL}.noarch.rpm
 "
 
 LICENSE="MIT CC-BY-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+RESTRICT="bindist mirror"
 S="${WORKDIR}/usr/share/fonts/${PN}"
 FONT_S="${S}"
 FONT_CONF=( "${FILESDIR}/75-${PN}.conf" )
