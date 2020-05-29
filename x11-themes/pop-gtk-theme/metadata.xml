@@ -6,15 +6,4 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
-	<use>
-		<flag name="gnome">Add GNOME Shell theme</flag>
-		<flag name="cinnamon">Add Cinnamon theme</flag>
-		<flag name="flashback">Add GNOME Flashback theme</flag>
-		<flag name="mate">Add MATE theme</flag>
-		<flag name="openbox">Add Openbox theme</flag>
-		<flag name="plank">Add Plank theme</flag>
-		<flag name="telegram">Add Telegram theme</flag>
-		<flag name="xfce">Add Xfce theme</flag>
-		<flag name="parallel">Enable GNU Parallel support for parallel compilation using sys-process/parallel</flag>
-	</use>
 </pkgmetadata>

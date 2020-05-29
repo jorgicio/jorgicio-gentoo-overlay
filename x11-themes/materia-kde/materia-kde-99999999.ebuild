@@ -11,7 +11,7 @@ if [[ ${PV} == 99999999 ]]; then
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -32,9 +32,9 @@ src_prepare(){
 		sed -i -e "s#plasma yakuake#yakuake#" Makefile
 		sed -i -e "/plasma/d" Makefile
 	fi
-	default_src_prepare
+	default
 }
 
 src_install(){
-	PREFIX=/usr DESTDIR="${D}/" default_src_install
+	PREFIX=/usr DESTDIR="${D}/" default
 }

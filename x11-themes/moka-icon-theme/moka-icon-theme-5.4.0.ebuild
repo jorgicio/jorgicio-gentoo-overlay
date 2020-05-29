@@ -1,13 +1,12 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=7
 
-inherit eutils meson
+inherit meson
 
-DESCRIPTION="Moka is a stylized Linux desktop icon set, and the titular icon theme of the Moka Project. They are designed to be clear, simple and consistent."
-HOMEPAGE="http://snwh.org/moka"
+DESCRIPTION="Moka is a stylized Linux desktop icon set"
+HOMEPAGE="https://snwh.org/moka"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
@@ -15,7 +14,7 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/snwh/moka-icon-theme/archive/v${PV}/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~arm ~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="GPL-3 CC-BY-SA-4.0"

@@ -1,23 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils autotools
+inherit meson
 
 DESCRIPTION="System76 Pop GTK+ Theme, based in adapta-gtk-theme"
-HOMEPAGE="http://github.com/pop-os/gtk-theme"
+HOMEPAGE="https://github.com/pop-os/gtk-theme"
 
-if [[ ${PV} == *9999 ]];then
+if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
 	KEYWORDS=""
 else
-	MY_PR="${PR//r}"
-	SRC_URI="${HOMEPAGE}/archive/${PV}-${MY_PR}.tar.gz -> ${P}-${MY_PR}.tar.gz"
-	KEYWORDS="~x86 ~amd64 ~arm"
-	S="${WORKDIR}/${PN//pop-}-${PV}-${MY_PR}"
+	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86"
+	S="${WORKDIR}/${PN//pop-}-${PV}"
 fi
 
 LICENSE="GPL-2"
@@ -31,14 +30,9 @@ DEPEND="
 	>=x11-themes/gtk-engines-murrine-0.98.1
 	>=dev-libs/glib-2.48
 	>=gnome-base/librsvg-2.40.13
-	>=dev-libs/libsass-3.3.6
-	dev-libs/libxml2
-	>=dev-lang/sassc-3.3.2
-	media-gfx/optipng
-"
-
+	dev-libs/libxml2"
 RDEPEND="${DEPEND}"
-
-src_install(){
-	emake DESTDIR="${D}" install
-}
+BDEPEND="
+	>=dev-lang/sassc-3.3.2
+	media-gfx/inkscape
+	media-gfx/optipng"

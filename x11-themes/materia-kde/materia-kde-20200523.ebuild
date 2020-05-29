@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ if [[ ${PV} == 99999999 ]]; then
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -32,20 +32,9 @@ src_prepare(){
 		sed -i -e "s#plasma yakuake#yakuake#" Makefile
 		sed -i -e "/plasma/d" Makefile
 	fi
-	default_src_prepare
+	default
 }
 
 src_install(){
-	PREFIX=/usr DESTDIR="${D}/" default_src_install
-}
-
-pkg_postinst() {
-	if has '>x11-themes/materia-theme-20190315'; then
-		echo
-		ewarn "It looks you have a materia-theme older than 20190315".
-		ewarn "This version of materia-kde has compatibility only with"
-		ewarn "Materia GTK 20190315. Please, don't open an issue about"
-		ewarn "newest upstream color changes, because we don't like new colors."
-		echo
-	fi
+	PREFIX=/usr DESTDIR="${D}/" default
 }
