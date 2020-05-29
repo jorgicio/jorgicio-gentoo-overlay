@@ -20,10 +20,11 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg libav log lto profile pulseaudio +qt5 systemd upnp"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp"
 
 RDEPEND="
 	dev-libs/hidapi:0=
+	dev-libs/libfmt:0=
 	dev-libs/lzo:2=
 	dev-libs/pugixml:0=
 	media-libs/libpng:0=
@@ -45,10 +46,7 @@ RDEPEND="
 		dev-libs/libevdev
 		virtual/udev
 	)
-	ffmpeg? (
-		libav? ( media-video/libav:= )
-		!libav? ( media-video/ffmpeg:= )
-	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? (
@@ -60,6 +58,7 @@ RDEPEND="
 	upnp? ( net-libs/miniupnpc )
 "
 DEPEND="${RDEPEND}
+	app-arch/zip
 	dev-util/vulkan-headers
 	media-libs/freetype
 	sys-devel/gettext
@@ -69,7 +68,7 @@ DEPEND="${RDEPEND}
 # at runtime.
 RDEPEND="${RDEPEND}
 	media-libs/vulkan-loader"
-
+	
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
@@ -82,7 +81,6 @@ src_prepare() {
 		FreeSurround
 		cpp-optparse
 		# no support for for using system library
-		fmt
 		glslang
 		imgui
 		# FIXME: xxhash can't be found by cmake
@@ -98,7 +96,8 @@ src_prepare() {
 		# gentoo's version requires exception support.
 		# dolphin disables exceptions and fails the build.
 		picojson
-		hidapi
+		# No code to detect shared library.
+		zstd
 	)
 	local s
 	for s in "${KEEP_SOURCES[@]}"; do
