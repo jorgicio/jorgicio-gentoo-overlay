@@ -14,13 +14,18 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="jupyter"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/retrying[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/pytz[${PYTHON_USEDEP}]"
+	dev-python/pytz[${PYTHON_USEDEP}]
+	jupyter? (
+		dev-python/ipywidgets[${PYTHON_USEDEP}]
+		dev-python/notebook[${PYTHON_USEDEP}]
+	)"
 
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"

@@ -13,4 +13,7 @@
     <remote-id type="pypi">plotly</remote-id>
     <remote-id type="github">plotly/plotly.py</remote-id>
   </upstream>
+  <use>
+    <flag name="jupyter">Enable compatibility with Jupyter</flag>
+  </use>
 </pkgmetadata>
