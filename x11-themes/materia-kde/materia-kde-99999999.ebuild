@@ -16,25 +16,16 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="kvantum +plasma"
+IUSE="kvantum"
 
-RDEPEND="
-	plasma? ( kde-plasma/plasma-desktop:5 )
+DEPEND="
+	kde-plasma/plasma-desktop:5
 	kvantum? ( x11-themes/kvantum )
 "
+RDEPEND="${DEPEND}"
 
-src_prepare(){
-	if use !kvantum; then
-		sed -i -e "s#konsole Kvantum#konsole#" Makefile
-		sed -i -e "/Kvantum/d" Makefile
-	fi
-	if use !plasma; then
-		sed -i -e "s#plasma yakuake#yakuake#" Makefile
-		sed -i -e "/plasma/d" Makefile
-	fi
-	default
-}
-
-src_install(){
-	PREFIX=/usr DESTDIR="${D}/" default
+src_install() {
+	THEMES="aurorae color-schemes konsole plasma yakuake"
+	use kvantum && THEMES+=" Kvantum"
+	THEMES="${THEMES}" default
 }
