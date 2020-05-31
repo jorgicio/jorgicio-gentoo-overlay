@@ -32,13 +32,14 @@ DEPEND="
 	dev-qt/qdbusviewer:5
 	dev-qt/qtgui:5
 	barcode? (
-	    >=app-text/barcode-0.98
+		>=app-text/barcode-0.98
 		>=media-gfx/qrencode-3.1
-		<media-libs/zint-2.7:0=[qt5]
-	)
-"
+		<media-libs/zint-2.7:0=[qt5] )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	# Appdata directory is deprecated.
+	# See https://bugs.gentoo.org/709450
+	sed -i -e "s#/appdata#/metainfo#" data/CMakeLists.txt || die
 	cmake_src_prepare
 }
