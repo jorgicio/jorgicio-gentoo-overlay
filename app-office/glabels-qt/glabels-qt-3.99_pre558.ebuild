@@ -12,9 +12,9 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
-	MY_PV="${PV/_p/-master}"
+	MY_PV="${PV/_pre/-master}"
 	MY_P="${PN/-qt}-${MY_PV}"
-	SRC_URI="${HOMEPAGE}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="${HOMEPAGE}/archive/${MY_P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_P}"
 	KEYWORDS="~amd64 ~x86"
 fi
