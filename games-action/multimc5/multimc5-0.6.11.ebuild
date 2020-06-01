@@ -44,8 +44,11 @@ RDEPEND="
 	x11-libs/libXrandr
 "
 
+BDEPEND=">=virtual/jdk-1.8.0"
+
 PATCHES=(
 	"${FILESDIR}/fortify-fix-2.patch"
+	"${FILESDIR}/modern-java-check.patch"
 )
 
 src_prepare(){
