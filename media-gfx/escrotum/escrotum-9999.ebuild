@@ -29,3 +29,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	fig? ( dev-python/numpy[${PYTHON_USEDEP}] )
 	screencast? ( media-video/ffmpeg )"
+
+src_install() {
+	distutils-r1_src_install
+	doman man/${PN}.1
+}
