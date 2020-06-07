@@ -20,15 +20,15 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="fig screencast"
 
 DEPEND="
+	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/xcffib[${PYTHON_USEDEP}]"
+	dev-python/xcffib[${PYTHON_USEDEP}]
+	media-video/ffmpeg"
 RDEPEND="${DEPEND}
-	fig? ( dev-python/numpy[${PYTHON_USEDEP}] )
-	screencast? ( media-video/ffmpeg )"
+"
 
 src_install() {
 	distutils-r1_src_install
