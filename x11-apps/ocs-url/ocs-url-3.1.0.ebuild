@@ -1,27 +1,22 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit qmake-utils xdg-utils
 
+QTIL_VERSION="0.4.0"
+
 DESCRIPTION="A program enabling web-installation of items via OpenCollaborationServices"
 HOMEPAGE="https://opendesktop.org/p/1136805"
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	SRC_URI=""
-	KEYWORDS=""
-	EGIT_REPO_URI="https://git.opendesktop.org/akiraohgaki/${PN}.git"
-else
-	SRC_URI="https://git.opendesktop.org/akiraohgaki/${PN}/-/archive/release-${PV}/${PN}-release-${PV}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	S="${WORKDIR}/${PN}-release-${PV}"
-fi
+SRC_URI="
+	https://git.opendesktop.org/akiraohgaki/${PN}/-/archive/release-${PV}/${PN}-release-${PV}.tar.bz2
+	https://github.com/akiraohgaki/qtil/archive/v${QTIL_VERSION}.tar.gz -> qtil-${QTIL_VERSION}.tar.gz"
 
-RESTRICT="network-sandbox"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE=""
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 DEPEND="
 	>=dev-qt/qtcore-5.2.0:5
@@ -30,22 +25,23 @@ DEPEND="
 	>=dev-qt/qtsvg-5.2.0:5
 "
 RDEPEND="${DEPEND}"
-BDEPEND="dev-vcs/git"
 
-src_prepare(){
-	./scripts/prepare || die
-	default_src_prepare
+S="${WORKDIR}/${PN}-release-${PV}"
+
+src_prepare() {
+	mv "${WORKDIR}/qtil-${QTIL_VERSION}" "${S}/lib/qtil" || die
+	default
 }
 
-src_configure(){
+src_configure() {
 	eqmake5 PREFIX="/usr"
 }
 
-src_install(){
-	INSTALL_ROOT="${D}" default_src_install
+src_install() {
+	INSTALL_ROOT="${D}" default
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 	echo
@@ -57,7 +53,7 @@ pkg_postinst(){
 	echo
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
