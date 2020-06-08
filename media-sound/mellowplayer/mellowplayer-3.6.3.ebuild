@@ -59,7 +59,6 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	use widevine && eapply "${FILESDIR}/widevine-path.patch"
 	cmake_src_prepare
 }
 
