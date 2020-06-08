@@ -10,7 +10,7 @@ QTIL_VERSION="0.4.0"
 DESCRIPTION="A program enabling web-installation of items via OpenCollaborationServices"
 HOMEPAGE="https://opendesktop.org/p/1136805"
 EGIT_REPO_URI="https://git.opendesktop.org/akiraohgaki/${PN}.git"
-SRC_URI="https://github.com/akiraohgaki/qtil/archive/${QTIL_VERSION}.tar.gz -> qtil-${QTIL_VERSION}.tar.gz"
+SRC_URI="https://github.com/akiraohgaki/qtil/archive/v${QTIL_VERSION}.tar.gz -> qtil-${QTIL_VERSION}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
