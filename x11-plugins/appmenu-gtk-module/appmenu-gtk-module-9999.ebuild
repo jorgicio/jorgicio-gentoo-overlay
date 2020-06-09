@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]];then
 	KEYWORDS=""
 	SRC_URI=""
 	EGIT_REPO_URI="${HOMEPAGE}"
-	EGIT_CHECKOUT_DIR="${S}/subprojects/${PN}"
+	S="${WORKDIR}/${P}/subprojects/${PN}"
 else
 	MY_PN="vala-panel-appmenu"
 	MY_P="${MY_PN}-${PV}"

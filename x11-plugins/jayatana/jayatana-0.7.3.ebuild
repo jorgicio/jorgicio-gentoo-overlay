@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit cmake-utils gnome2-utils
+inherit cmake-utils
 
-DESCRIPTION="Application Menu GTK+ Module"
+DESCRIPTION="Application Menu Module for Java Swing applications"
 HOMEPAGE="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 
 if [[ ${PV} == 9999 ]];then
@@ -26,36 +26,26 @@ LICENSE="LGPL-3"
 SLOT="0"
 
 DEPEND="
-	>=x11-libs/gtk+-2.24.0:2
-	>=x11-libs/gtk+-3.22.0:3"
+	>=dev-libs/glib-2.40.0
+	>=dev-libs/libdbusmenu-16.04
+	>=x11-libs/libxkbcommon-0.5.0"
 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	>=virtual/jre-1.8"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	>=virtual/jdk-1.8
+	virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
-		-DGSETTINGS_COMPILE=OFF
+		-DJAVA_HOME="$(java-config --jdk-home)"
 	)
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
-	exeinto /etc/X11/xinit/xinitrc.d
-	doexe "${FILESDIR}/80-${PN}"
-}
-
-pkg_preinst() {
-	gnome2_schemas_savelist
-}
-
-pkg_postinst() {
-	gnome2_gconf_install
-	gnome2_schemas_update
-}
-
-pkg_postrm() {
-	gnome2_gconf_uninstall
-	gnome2_schemas_update
+	exeinto /etc/profile.d
+	doexe "${FILESDIR}/${PN}.sh"
 }
