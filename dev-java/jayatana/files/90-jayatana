@@ -1,0 +1,7 @@
+if [ -n "$JAVA_TOOL_OPTIONS" ]; then
+    JAVA_TOOL_OPTIONS="${JAVA_TOOL_OPTIONS:+$JAVA_TOOL_OPTIONS }-javaagent:JAVA_AGENT"
+else
+    JAVA_TOOL_OPTIONS=" -javaagent:JAVA_AGENT"
+fi
+
+export JAVA_TOOL_OPTIONS

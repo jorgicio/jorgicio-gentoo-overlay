@@ -24,6 +24,7 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
+IUSE="+system-wide"
 
 DEPEND="
 	>=x11-libs/gtk+-2.24.0:2
@@ -35,6 +36,8 @@ BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_APPMENU_GTK_MODULE=ON
+		-DSTANDALONE=OFF
 		-DGSETTINGS_COMPILE=OFF
 	)
 	cmake-utils_src_configure
@@ -42,8 +45,11 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	exeinto /etc/X11/xinit/xinitrc.d
-	doexe "${FILESDIR}/80-${PN}"
+
+	if use system-wide; then
+		exeinto /etc/X11/xinit/xinitrc.d
+		doexe "${FILESDIR}/80-${PN}"
+	fi
 }
 
 pkg_preinst() {
@@ -53,6 +59,15 @@ pkg_preinst() {
 pkg_postinst() {
 	gnome2_gconf_install
 	gnome2_schemas_update
+	if ! use system-wide; then
+		einfo
+		elog "If you want to enable this plugin as an user,"
+		einfo
+		elog "please, see instructions in:"
+		einfo
+		elog "https://gitlab.com/vala-panel-project/vala-panel-appmenu/-/tree/master/subprojects/appmenu-gtk-module"
+		einfo
+	fi
 }
 
 pkg_postrm() {
