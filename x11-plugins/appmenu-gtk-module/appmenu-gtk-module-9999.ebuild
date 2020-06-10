@@ -36,8 +36,6 @@ BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_APPMENU_GTK_MODULE=ON
-		-DSTANDALONE=OFF
 		-DGSETTINGS_COMPILE=OFF
 	)
 	cmake-utils_src_configure
