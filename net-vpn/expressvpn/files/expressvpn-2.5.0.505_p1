@@ -1,0 +1,6 @@
+# In order to make the client work properly,
+# please DON'T remove or modify the following lines.
+CLIENT_VERSION="2.5.0"
+CLIENT_BUILD="505"
+# Starting this point, you can add new lines,
+# as well as modify or delete them.
