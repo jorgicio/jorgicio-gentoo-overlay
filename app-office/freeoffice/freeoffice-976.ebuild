@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="pax_kernel"
 
-LANGUAGES="ar bg da de el en-GB en-US es et fi fr hu id it ja kk ko lt lv nl pl pt pt-BR ro ru si sv tr ua zh"
+LANGUAGES="ar bg da de el en-GB en-US es et fi fr hu id it ja kk ko lt lv nl pl pt pt-BR ro ru si sv tr uk zh"
 
 for lang in ${LANGUAGES}; do
 	IUSE+=" l10n_${lang%:*}"
@@ -87,6 +87,9 @@ src_prepare(){
 			;;
 			sv)
 				suffix="se"
+			;;
+			uk)
+				suffix="ua"
 			;;
 			*)
 				suffix="${lang%:*}"
