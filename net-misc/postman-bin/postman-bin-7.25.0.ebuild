@@ -8,7 +8,7 @@ inherit desktop pax-utils xdg
 MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Supercharge your API workflow"
-HOMEPAGE="https://www.getpostman.com"
+HOMEPAGE="https://www.postman.com"
 SRC_URI="
 	amd64? ( https://dl.pstmn.io/download/version/${PV}/linux64 -> ${P}-amd64.tar.gz )
 "
@@ -27,8 +27,8 @@ src_prepare() {
 }
 
 src_install() {
-	mkdir -p "${ED}/opt/${MY_PN}"
-	cp -r . "${ED}/opt/${MY_PN}"
+	mkdir -p "${ED%/}/opt/${MY_PN}"
+	cp -r . "${ED%/}/opt/${MY_PN}"
 	newicon -s 128 resources/app/assets/icon.png ${MY_PN}.png
 	dobin "${FILESDIR}/${MY_PN}"
 	make_desktop_entry "postman" \
@@ -38,5 +38,5 @@ src_install() {
 		 "Type=Application" \
 		 "Categories=Development;IDE;" \
 		 "Comment=Build, test, and document your APIs faster"
-	use pax_kernel && pax-mark m "${ED}/opt/${MY_PN}/${MY_PN^}"
+	use pax_kernel && pax-mark m "${ED%/}/opt/${MY_PN}/${MY_PN^}"
 }
