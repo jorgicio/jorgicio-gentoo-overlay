@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>jpizarrocallejas@gmail.com</email>
+        <name>Jorge Pizarro Callejas</name>
+        <description>Jorgicio Gentoo Overlay</description>
+    </maintainer>
+    <upstream>
+        <bugs-to>https://github.com/equalsraf/neovim-qt/issues</bugs-to>
+        <doc>https://github.com/equalsraf/neovim-qt/wiki</doc>
+        <remote-id type="github">equalsraf/neovim-qt</remote-id>
+    </upstream>
+    <longdescription lang="en"> Neovim client library and GUI, in Qt5. </longdescription>
+    <use>
+        <flag name="gcov">Build coverage support.</flag>
+        <flag name="msgpack">Use system msgpack libraries.</flag>
+    </use>
+</pkgmetadata>
