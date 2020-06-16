@@ -16,5 +16,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x86-linux ~x64-macos"
 DEPEND="app-arch/unzip"
 
 S=${WORKDIR}
-FONT_S="${S}/Inter"
+FONT_S="${S}/InterDesktop"
 FONT_SUFFIX="otf"
+
+# It's necessary to remove the space in the FONT_S directory name.
+src_prepare() {
+	mv "Inter Desktop" "InterDesktop" || die
+	default
+}
