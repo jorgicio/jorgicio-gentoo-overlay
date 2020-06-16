@@ -6,8 +6,8 @@ EAPI=7
 inherit git-r3 qmake-utils xdg
 
 DESCRIPTION="Vim-inspired note taking application that knows programmers and Markdown better"
-HOMEPAGE="https://github.com/tamlok/vnote"
-EGIT_REPO_URI="${HOMEPAGE}.git"
+HOMEPAGE="https://tamlok.gitee.io/vnote"
+EGIT_REPO_URI="https://github.com/tamlok/vnote.git"
 
 LICENSE="MIT"
 SLOT="0"
