@@ -8,9 +8,11 @@ inherit qmake-utils xdg
 DESCRIPTION="Vim-inspired note taking application that knows programmers and Markdown better"
 HOMEPAGE="https://tamlok.gitee.io/vnote"
 HOEDOWN_VERSION="4.0.0"
+MARKED_VERSION="0.6.0"
 SRC_URI="
 	https://github.com/tamlok/vnote/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/tamlok/hoedown/archive/${HOEDOWN_VERSION}.tar.gz -> hoedown-${HOEDOWN_VERSION}.tar.gz"
+	https://github.com/tamlok/hoedown/archive/${HOEDOWN_VERSION}.tar.gz -> hoedown-${HOEDOWN_VERSION}.tar.gz
+	https://github.com/markedjs/marked/archive/v${MARKED_VERSION}.tar.gz -> marked-${MARKED_VERSION}.tar.gz"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
@@ -24,9 +26,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	default
+src_prepare() {
 	mv "${WORKDIR}/hoedown-${HOEDOWN_VERSION}"/* "${S}/hoedown" || die
+	mv "${WORKDIR}/marked-${MARKED_VERSION}"/* "${S}/src/utils/marked" || die
+	default
 }
 
 src_configure(){
