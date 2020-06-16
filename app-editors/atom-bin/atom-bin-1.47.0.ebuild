@@ -112,30 +112,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-python-interceptor.patch
 )
 
-QA_PRESTRIPPED="
-	usr/share/${MY_PN}/${MY_PN}
-	usr/share/${MY_PN}/libffmpeg.so
-	usr/share/${MY_PN}/libnode.so
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-lfs
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/symbols-view/vendor/ctags-linux
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-shell
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-show-index
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-http-backend
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-imap-send
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-credential-cache--daemon
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-remote-http
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-daemon
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-upload-pack
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-credential-cache
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-sh-i18n--envsubst
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-remote-testsvn
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-fast-import
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-credential-store
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-http-push
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/libexec/git-core/git-http-fetch
-	usr/share/${MY_PN}/resources/app.asar.unpacked/node_modules/dugite/git/bin/git
-"
+QA_PRESTRIPPED="*"
 QA_PREBUILT="
 	usr/share/${MY_PN}/${MY_PN}
 	usr/share/${MY_PN}/libffmpeg.so
@@ -162,8 +139,8 @@ src_prepare(){
 }
 
 src_install() {
-	mkdir -p "${D}/usr/share/${MY_PN}"
-	cp -r . "${D}/usr/share/${MY_PN}/"
+	mkdir -p "${ED%/}/usr/share/${MY_PN}"
+	cp -r . "${ED%/}/usr/share/${MY_PN}/"
 	doicon "${MY_PN}.png"
 	newbin "${FILESDIR}/${PN}" ${MY_PN}
 	insinto "/usr/share/lintian/overrides"

@@ -108,10 +108,6 @@ RDEPEND="${RDEPEND}
 	!libressl? ( dev-libs/openssl:0= )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-python-interceptor.patch
-)
-
 QA_PRESTRIPPED="*"
 QA_PREBUILT="
 	usr/share/${MY_PN}/${MY_PN}

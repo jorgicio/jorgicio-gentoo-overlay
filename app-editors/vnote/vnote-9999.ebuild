@@ -14,7 +14,7 @@ SLOT="0"
 
 DEPEND="
 	>=dev-qt/qtcore-5.9:5=
-	>=dev-qt/qtwebengine-5.9:5=
+	>=dev-qt/qtwebengine-5.9:5=[widgets]
 	>=dev-qt/qtsvg-5.9:5=
 "
 RDEPEND="${DEPEND}"
@@ -24,5 +24,5 @@ src_configure(){
 }
 
 src_install() {
-	INSTALL_ROOT="${D}" default
+	INSTALL_ROOT="${ED%/}" default
 }

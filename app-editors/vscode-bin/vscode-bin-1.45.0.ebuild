@@ -48,8 +48,8 @@ pkg_setup(){
 }
 
 src_install(){
-	mkdir -p "${ED}/opt/${MY_PN}"
-	cp -r . "${ED}/opt/${MY_PN}/"
+	mkdir -p "${ED%/}/opt/${MY_PN}"
+	cp -r . "${ED%/}/opt/${MY_PN}/"
 	dodir /usr/bin
 	dosym ../../opt/${MY_PN}/bin/code /usr/bin/${MY_PN}
 	dosym ../../opt/${MY_PN}/bin/code /usr/bin/code
