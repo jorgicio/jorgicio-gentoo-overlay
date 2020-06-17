@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 VALA_MIN_API_VERSION=0.28
 
-inherit gnome2 meson vala
+inherit gnome2-utils meson vala xdg-utils
 
 DESCRIPTION="Native GTK+3 Twitter client, forked from Corebird"
 HOMEPAGE="https://ibboard.co.uk/cawbird/"
@@ -43,9 +43,8 @@ DEPEND="
 	sys-apps/sed
 	virtual/pkgconfig"
 
-src_prepare() {
+pkg_setup() {
 	export VALAC=valac-$(vala_best_api_version)
-	default
 }
 
 src_configure() {
@@ -54,4 +53,20 @@ src_configure() {
 		$(meson_use spellcheck)
 	)
 	meson_src_configure
+}
+
+pkg_preinst() {
+	gnome2_schemas_savelist
+}
+
+pkg_postinst() {
+	gnome2_schemas_update
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_schemas_update
+	xdg_icon_cache_update
+	xdg_desktop_database_update
 }
