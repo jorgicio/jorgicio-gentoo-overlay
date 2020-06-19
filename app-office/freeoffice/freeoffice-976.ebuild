@@ -13,7 +13,7 @@ SRC_URI="
 	x86? ( "${BASE_URI}-i386.tgz" )
 "
 
-LICENSE="SoftMaker-EULA"
+LICENSE="SoftMaker"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="pax_kernel"

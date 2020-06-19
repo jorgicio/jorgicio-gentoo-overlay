@@ -16,7 +16,7 @@ SRC_URI="
 	"
 RESTRICT="mirror strip bindist"
 
-LICENSE="MS-vscode-EULA"
+LICENSE="MS-vscode"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="pax_kernel"

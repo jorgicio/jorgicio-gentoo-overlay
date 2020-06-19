@@ -11,7 +11,7 @@ SRC_URI="
 	amd64? ( "${P}-amd64.tar.gz" )
 "
 
-LICENSE="Cisco_EULA"
+LICENSE="Cisco"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
