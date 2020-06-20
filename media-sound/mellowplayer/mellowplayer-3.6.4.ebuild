@@ -3,9 +3,7 @@
 
 EAPI=7
 
-CMAKE_MIN_VERSION="3.10"
-
-inherit cmake-utils flag-o-matic toolchain-funcs xdg
+inherit cmake flag-o-matic toolchain-funcs xdg-utils
 
 MY_PN="MellowPlayer"
 
@@ -45,6 +43,8 @@ RDEPEND="
 	x11-libs/libnotify
 	widevine? ( www-plugins/chrome-binary-plugins:* )"
 
+BDEPEND=">=dev-util/cmake-3.10"
+
 pkg_pretend() {
 	if test-flags-CXX -std=c++17;then
 		if tc-is-gcc; then
@@ -59,11 +59,21 @@ pkg_pretend() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	if use widevine; then
 		# Create a symlink in order to use the Widevine plugin
 		dodir /usr/$(get_libdir)/qt5/plugins/ppapi
 		dosym ../../../chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so \
 			/usr/$(get_libdir)/qt5/plugins/ppapi/libwidevinecdm.so
 	fi
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
