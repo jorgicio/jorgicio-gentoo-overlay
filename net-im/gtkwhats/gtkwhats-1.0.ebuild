@@ -57,10 +57,9 @@ HOMEPAGE="https://github.com/gigitux/gtkwhats"
 SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
-LICENSE="GPL-2"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	dev-libs/glib:2
@@ -76,7 +75,7 @@ src_install() {
 	local app_id="com.gigitux.${PN}"
 
 	domenu data/${app_id}.desktop
-	doicon --size scalable data/${app_id}.svg
+	doicon -s scalable data/${app_id}.svg
 
 	insinto /usr/share/metainfo
 	doins data/${app_id}.metainfo.xml
