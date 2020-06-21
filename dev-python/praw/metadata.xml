@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <longdescription>An implementation of Extended Window Manager Hints, based on Xlib</longdescription>
+    <upstream>
+        <remote-id type="pypi">ewmh</remote-id>
+        <remote-id type="github">parkouss/pyewmh</remote-id>
+    </upstream>
+</pkgmetadata>
