@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
+	app-arch/brotli[python,${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]"
 
