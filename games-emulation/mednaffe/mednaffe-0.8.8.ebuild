@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic gnome2-utils
+inherit autotools flag-o-matic gnome2-utils xdg-utils
 
 DESCRIPTION="A front-end (GUI) for mednafen emulator"
 HOMEPAGE="https://github.com/AmatCoder/mednaffe"
@@ -39,9 +39,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
