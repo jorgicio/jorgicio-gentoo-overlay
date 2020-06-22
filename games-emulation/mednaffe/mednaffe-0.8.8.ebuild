@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools flag-o-matic gnome2-utils
 
 DESCRIPTION="A front-end (GUI) for mednafen emulator"
@@ -11,18 +12,16 @@ SRC_URI="https://github.com/AmatCoder/mednaffe/releases/download/${PV}/${P}.tar.
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+gtk3"
+IUSE="gtk3"
 
 RDEPEND="
 	>=dev-libs/glib-2.32:2
-	games-emulation/mednafen[debugger]
+	>=games-emulation/mednafen-1.21.1[debugger]
 	gtk3? ( >=x11-libs/gtk+-3.4:3 )
-	!gtk3? ( x11-libs/gtk+:2 )
-"
+	!gtk3? ( x11-libs/gtk+:2 )"
 DEPEND="${RDEPEND}
 	app-arch/unzip
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 
 src_prepare() {
 	default
