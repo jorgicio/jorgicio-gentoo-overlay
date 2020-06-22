@@ -9,9 +9,8 @@ DESCRIPTION="A complete, free Microsoft Office-compatible alternative office sui
 HOMEPAGE="https://www.freeoffice.com"
 BASE_URI="https://www.softmaker.net/down/softmaker-${P}"
 SRC_URI="
-	amd64? ( "${BASE_URI}-amd64.tgz" )
-	x86? ( "${BASE_URI}-i386.tgz" )
-"
+	amd64? ( ${BASE_URI}-amd64.tgz )
+	x86? ( ${BASE_URI}-i386.tgz )"
 
 LICENSE="SoftMaker"
 SLOT="0"
