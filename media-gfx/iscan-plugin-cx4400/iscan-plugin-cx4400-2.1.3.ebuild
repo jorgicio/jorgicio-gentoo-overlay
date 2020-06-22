@@ -9,8 +9,7 @@ DESCRIPTION="Epson Stylus CX4300/CX4400/CX5600/DX4400 scanner plugin for SANE ep
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 SRC_URI="
 	x86? ( https://alumnos.inf.utfsm.cl/~jpizarro/avasys/${PN}_${PV}-1_i386.deb )
-	amd64? ( https://alumnos.inf.utfsm.cl/~jpizarro/avasys/${PN}_${PV}-1_amd64.deb )
-	https://alumnos.inf.utfsm.cl/~jpizarro/avasys/esfw8b.bin"
+	amd64? ( https://alumnos.inf.utfsm.cl/~jpizarro/avasys/${PN}_${PV}-1_amd64.deb )"
 
 LICENSE="AVASYS"
 SLOT="0"
@@ -37,7 +36,7 @@ src_install() {
 	insinto /usr/$(get_libdir)/iscan
 	doins usr/lib/iscan/*
 	insinto /usr/share/esci
-	doins "${DISTDIR}/esfw8b.bin"
+	doins "${FILESDIR}/esfw8b.bin"
 	default
 }
 
