@@ -14,14 +14,16 @@ SRC_URI="
 LICENSE="AVASYS"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="strip"
+RESTRICT="mirror strip"
 
 DEPEND=">=media-gfx/iscan-2.28.0"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
-QA_PRESTRIPPED="/usr/lib/iscan/libesint7E.so.2.0.0"
+QA_PRESTRIPPED="*"
+
+DOCS="usr/share/doc/${PN}/copyright usr/share/doc/${PN}/AVASYS*"
 
 src_unpack(){
 	unpack_deb ${A}
@@ -31,11 +33,9 @@ src_install() {
 	exeinto /usr/$(get_libdir)/iscan
 	doexe usr/lib/iscan/libesint7E.so.2.0.0
 	rm usr/lib/iscan/libesint7E.so.2.0.0
-	#dosym /usr/$(get_libdir)/iscan/libesint7E.so.2.0.0 /usr/$(get_libdir)/iscan/libesint7E.so
-	#dosym /usr/$(get_libdir)/iscan/libesint7E.so.2.0.0 /usr/$(get_libdir)/iscan/libesint7E.so.2
 	insinto /usr/$(get_libdir)/iscan
 	doins usr/lib/iscan/*
-	dodoc usr/share/doc/*/*
+	default
 }
 
 pkg_postinst() {
