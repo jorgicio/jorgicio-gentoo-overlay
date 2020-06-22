@@ -8,8 +8,9 @@ inherit unpacker
 DESCRIPTION="Epson Stylus CX4300/CX4400/CX5600/DX4400 scanner plugin for SANE epkowa backend"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 SRC_URI="
-	x86? ( http://alumnos.inf.utfsm.cl/~jpizarro/avasys/${PN}_${PV}-1_i386.deb )
-	amd64? ( http://alumnos.inf.utfsm.cl/~jpizarro/avasys/${PN}_${PV}-1_amd64.deb )"
+	x86? ( https://alumnos.inf.utfsm.cl/~jpizarro/avasys/${PN}_${PV}-1_i386.deb )
+	amd64? ( https://alumnos.inf.utfsm.cl/~jpizarro/avasys/${PN}_${PV}-1_amd64.deb )
+	https://alumnos.inf.utfsm.cl/~jpizarro/avasys/esfw8b.bin"
 
 LICENSE="AVASYS"
 SLOT="0"
@@ -35,15 +36,17 @@ src_install() {
 	rm usr/lib/iscan/libesint7E.so.2.0.0
 	insinto /usr/$(get_libdir)/iscan
 	doins usr/lib/iscan/*
+	insinto /usr/share/esci
+	doins "${DISTDIR}/esfw8b.bin"
 	default
 }
 
 pkg_postinst() {
 	elog "Registering the scanner..."
-	iscan-registry --add interpreter usb 0x04b8 0x083f "/usr/$(get_libdir)/iscan/libesint7E.so"
+	iscan-registry --add interpreter usb 0x04b8 0x083f "/usr/$(get_libdir)/iscan/libesint7E"
 }
 
 pkg_prerm() {
 	elog "Unregistering the scanner..."
-	iscan-registry --remove interpreter usb 0x04b8 0x083f "/usr/$(get_libdir)/iscan/libesint7E.so"
+	iscan-registry --remove interpreter usb 0x04b8 0x083f "/usr/$(get_libdir)/iscan/libesint7E"
 }
