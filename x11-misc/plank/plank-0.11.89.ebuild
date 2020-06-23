@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 VALA_MIN_API_VERSION=0.26
 VALA_USE_DEPEND=vapigen
@@ -17,15 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+introspection doc static-libs"
 
-DEPEND="
-	$(vala_depend)
-	dev-util/intltool
-	gnome-base/gnome-common
-	gnome-base/gnome-menus
-	sys-devel/gettext
-	virtual/pkgconfig
-"
-RDEPEND="${DEPEND}
+RDEPEND="
 	>=dev-libs/glib-2.32:2
 	dev-libs/libgee:0.8
 	x11-libs/gtk+:3
@@ -34,12 +26,21 @@ RDEPEND="${DEPEND}
 	dev-libs/libdbusmenu
 	x11-libs/libwnck:3
 "
+
+DEPEND="
+	${RDEPEND}
+	$(vala_depend)
+	dev-util/intltool
+	gnome-base/gnome-common
+	gnome-base/gnome-menus
+	sys-devel/gettext
+	virtual/pkgconfig"
+
 DOCS=( AUTHORS COPYRIGHT )
 
 src_prepare(){
-	eautoreconf
-	vala_src_prepare
 	default
+	eautoreconf
 }
 
 pkg_preinst(){

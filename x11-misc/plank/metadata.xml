@@ -6,8 +6,4 @@
 		<name>Jorge Pizarro Callejas</name>
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
-	<use>
-		<flag name="appindicator">Enable support for appindicator</flag>
-		<flag name="gtk3">Enable GTK+ 3 support</flag>
-	</use>
 </pkgmetadata>
