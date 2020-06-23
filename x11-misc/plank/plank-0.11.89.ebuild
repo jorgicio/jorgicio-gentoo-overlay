@@ -21,6 +21,7 @@ DEPEND="
 	$(vala_depend)
 	dev-util/intltool
 	gnome-base/gnome-common
+	gnome-base/gnome-menus
 	sys-devel/gettext
 	virtual/pkgconfig
 "
