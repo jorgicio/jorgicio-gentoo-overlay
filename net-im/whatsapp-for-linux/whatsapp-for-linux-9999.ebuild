@@ -9,7 +9,7 @@ DESCRIPTION="Unofficial Whatsapp Linux client desktop application"
 HOMEPAGE="https://github.com/eneshecan/whatsapp-for-linux"
 EGIT_REPO_URI="${HOMEPAGE}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 

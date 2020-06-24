@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jpizarrocallejas@gmail.com</email>
-		<name>Jorge Pizarro Callejas</name>
-		<description>Jorgicio Gentoo Overlay</description>
-	</maintainer>
+    <upstream>
+        <remote-id type="github">eneshecan/whatsapp-for-linux</remote-id>
+        <bugs-to>https://github.com/eneshecan/whatsapp-for-linux/issues</bugs-to>
+        <maintainer>
+            <name>Enes Hecan</name>
+            <email>nshecan@gmail.com</email>
+        </maintainer>
+    </upstream>
+    <maintainer type="person">
+        <email>jpizarrocallejas@gmail.com</email>
+        <name>Jorge Pizarro Callejas</name>
+        <description>Jorgicio Gentoo Overlay</description>
+    </maintainer>
 </pkgmetadata>
