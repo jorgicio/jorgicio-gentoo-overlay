@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-cpp/gtkmm:3
+	dev-cpp/gtkmm:3.0
 	net-libs/webkit-gtk:4="
 RDEPEND="${DEPEND}"
 

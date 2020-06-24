@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake desktop git-r3 gnome2-utils xdg-utils
+inherit cmake git-r3 gnome2-utils xdg-utils
 
 DESCRIPTION="Unofficial Whatsapp Linux client desktop application"
 HOMEPAGE="https://github.com/eneshecan/whatsapp-for-linux"
@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-cpp/gtkmm:3
+	dev-cpp/gtkmm:3.0
 	net-libs/webkit-gtk:4="
 RDEPEND="${DEPEND}"
 
