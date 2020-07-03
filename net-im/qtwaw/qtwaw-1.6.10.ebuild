@@ -24,7 +24,7 @@ SLOT="0"
 COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtwebengine:5
+	dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtwidgets:5
 	kde-frameworks/kdbusaddons:5
 	kde-frameworks/knotifications:5"
