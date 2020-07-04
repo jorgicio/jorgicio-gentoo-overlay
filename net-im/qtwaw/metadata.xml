@@ -4,6 +4,10 @@
    <upstream>
         <remote-id type="gitlab">scarpetta/qtwaw</remote-id>
         <bugs-to>https://gitlab.com/scarpetta/qtwaw/-/issues</bugs-to>
+        <maintainer>
+            <name>Marco Scarpetta</name>
+            <email>marcoscarpetta02@gmail.com</email>
+        </maintainer>
    </upstream>
     <maintainer type="person">
         <email>jpizarrocallejas@gmail.com</email>
