@@ -76,6 +76,7 @@ RDEPEND="
 	net-dns/libidn2
 	media-gfx/graphite2
 	app-arch/bzip2
+	gnome-keyring? ( gnome-base/gnome-keyring )
 	selinux? ( sec-policy/selinux-chromium )"
 
 QA_PREBUILT="*"
