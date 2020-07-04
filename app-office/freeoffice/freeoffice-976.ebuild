@@ -25,15 +25,14 @@ done
 
 RESTRICT="mirror strip"
 
-DEPEND="app-admin/chrpath"
+DEPEND="
+	app-admin/chrpath
+	app-arch/xz-utils"
 RDEPEND="
 	${DEPEND}
-	x11-libs/libXrandr
-	x11-misc/xdg-utils
-	dev-util/desktop-file-utils
+	media-libs/mesa
 	net-misc/curl
-	app-arch/xz-utils
-	media-libs/mesa"
+	x11-libs/libXrandr"
 
 QA_PRESTRIPPED="*"
 
