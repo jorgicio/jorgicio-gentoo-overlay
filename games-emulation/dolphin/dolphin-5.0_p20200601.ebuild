@@ -120,6 +120,9 @@ src_prepare() {
 
 	l10n_find_plocales_changes "Languages/po/" "" '.po'
 	l10n_for_each_disabled_locale_do remove_locale
+
+	# https://github.com/KhronosGroup/glslang/issues/1869
+	sed -i -e "/setAllocator/d" Externals/glslang/glslang/Include/PoolAlloc.h
 }
 
 src_configure() {
