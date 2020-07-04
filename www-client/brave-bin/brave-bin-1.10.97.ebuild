@@ -8,10 +8,9 @@ BRAVE_PN="${PN/-bin/}"
 CHROMIUM_LANGS="
 	am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
-	sw ta te th tr uk vi zh-CN zh-TW
-"
+	sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit chromium-2 xdg-utils
+inherit chromium-2 gnome2-utils pax-utils xdg-utils
 
 DESCRIPTION="Brave Web Browser"
 HOMEPAGE="https://brave.com"
@@ -19,11 +18,11 @@ SRC_URI="https://github.com/brave/brave-browser/releases/download/v${PV}/brave-v
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="gnome-keyring"
+KEYWORDS="-* ~amd64"
+IUSE="gnome-keyring selinux"
 RESTRICT="bindist mirror strip"
 
-DEPEND="gnome-base/gconf:2"
+DEPEND=""
 RDEPEND="
 	${DEPEND}
 	dev-libs/libpthread-stubs
@@ -77,11 +76,11 @@ RDEPEND="
 	net-dns/libidn2
 	media-gfx/graphite2
 	app-arch/bzip2
-"
+	selinux? ( sec-policy/selinux-chromium )"
 
 QA_PREBUILT="*"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_prepare() {
 	pushd "${S}/locales" > /dev/null || die
@@ -94,33 +93,33 @@ src_prepare() {
 src_install() {
 	declare BRAVE_HOME=/opt/${BRAVE_PN}
 
-	dodir ${BRAVE_HOME%/*}
+	mkdir -p "${ED}"/${BRAVE_HOME}
 
-	insinto ${BRAVE_HOME}
-		doins -r *
-
-	exeinto ${BRAVE_HOME}
-		doexe brave
+	cp -r . "${ED}/${BRAVE_HOME}"
 
 	dosym ${BRAVE_HOME}/brave /usr/bin/${PN} || die
 
-	newicon "${FILESDIR}/braveAbout.png" "${PN}.png" || die
-	newicon -s 128 "${FILESDIR}/braveAbout.png" "${PN}.png" || die
+	newicon "${FILESDIR}/braveAbout.png" "${PN}.png"
+	newicon -s 128 "${FILESDIR}/braveAbout.png" "${PN}.png"
 
-	# install-xattr doesnt approve using domenu or doins from FILESDIR
-	cp "${FILESDIR}"/${PN}.desktop "${S}"
-	domenu "${S}"/${PN}.desktop
+	domenu "${FILESDIR}/${PN}.desktop"
+
+	pax-mark m "${BRAVE_HOME}/brave"
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 	elog "If upgrading from an 0.25.x release or earlier, note that Brave has changed configuration folders."
 	elog "you will have to import your browser data from Settings -> People -> Import Bookmarks and Settings"
 	elog "then choose \"Brave (old)\". All your settings, bookmarks, and passwords should return."
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 }
