@@ -7,6 +7,7 @@
 		<description>Jorgicio Gentoo Overlay</description>
 	</maintainer>
 	<use>
-		<flag name="kvantum">Enable support for the Kvantum engine</flag>
+		<flag name="kvantum">Install Kvantum theme</flag>
+		<flag name="sddm">Install sddm theme</flag>
 	</use>
 </pkgmetadata>

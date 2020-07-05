@@ -18,19 +18,24 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="kvantum"
+IUSE="kvantum sddm"
 
 DEPEND="
 	kde-plasma/plasma-desktop:5
-	kvantum? ( x11-themes/kvantum )"
+	kvantum? ( x11-themes/kvantum )
+	sddm? ( x11-misc/sddm )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	sed -i -e "s#/usr#\${DESTDIR}/usr#g" install.sh
 	use !kvantum && sed -i -e "/KVANTUM/d" install.sh
+	sed -i -e "s#/usr#\${DESTDIR}/usr#g" install.sh
+	sed -i -e "s#/usr#\${DESTDIR}/usr#g" sddm/install.sh
 	default
 }
 
 src_install() {
 	DESTDIR="${ED}" ./install.sh || die
+	if use sddm; then
+		DESTDIR="${ED}" sh sddm/install.sh || die
+	fi
 }
