@@ -1,9 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1 systemd
 
@@ -20,21 +20,31 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="gdm lightdm sddm systemd"
+IUSE="elogind gdm lightdm sddm systemd"
+REQUIRED_USE="elogind? ( !systemd )"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	x11-apps/xrandr
 	x11-apps/mesa-progs
-"
+	elogind? ( sys-auth/elogind )"
 RDEPEND="
 	${DEPEND}
 	gdm? ( gnome-base/gdm )
 	lightdm? ( x11-misc/lightdm )
 	sddm? ( x11-misc/sddm )
 	systemd? ( sys-apps/systemd )"
-BDEPEND="${PYTHON_DEPS}"
+
+src_prepare() {
+	# Fixing path installation
+	sed -i -e 's|/sbin|/usr/sbin|g' \
+		login_managers/sddm/20-optimus-manager.conf
+	sed -i -e 's|/sbin|/usr/sbin|g' \
+		login_managers/lightdm/20-optimus-manager.conf
+	sed -i -e 's|/usr/bin/prime|/usr/sbin/prime|' \
+		systemd/optimus-manager.service
+	default
+}
 
 src_install() {
 	if use systemd; then
@@ -42,24 +52,38 @@ src_install() {
 		insinto /usr/$(get_libdir)/systemd/logind.conf.d
 		doins systemd/logind/10-${PN}.conf
 	fi
+
+	if use elogind; then
+		insinto /etc/elogind
+		doins systemd/logind/10-${PN}.conf
+	fi
+
 	insinto /lib/modprobe.d
 	doins modules/${PN}.conf
+
 	insinto /var/lib/${PN}
 	doins var/*
-	dobin scripts/*
+
+	dosbin scripts/*
+
 	insinto /etc/${PN}
 	doins config/*
+
 	if use sddm; then
 		insinto /etc/sddm.conf.d
 		doins login_managers/sddm/20-${PN}.conf
 	fi
+
 	if use lightdm; then
-		insinto /etc/lightdm.conf.d
+		insinto /etc/lightdm/lightdm.conf.d
 		doins login_managers/lightdm/20-${PN}.conf
 	fi
+
 	insinto /usr/share
 	doins ${PN}.conf
-	newinitd ${FILESDIR}/${PN}.sh ${PN}
+
+	newinitd "${FILESDIR}/${PN}.sh" ${PN}
+
 	distutils-r1_src_install
 }
 
