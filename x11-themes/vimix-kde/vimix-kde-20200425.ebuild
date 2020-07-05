@@ -20,7 +20,9 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="kvantum"
 
-DEPEND="kvantum? ( x11-themes/kvantum )"
+DEPEND="
+	kde-plasma/plasma-desktop:5
+	kvantum? ( x11-themes/kvantum )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
