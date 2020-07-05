@@ -30,7 +30,8 @@ DEPEND="
 	media-libs/fdk-aac:0=
 	media-libs/libass:0=
 	media-libs/libsdl
-	virtual/ffmpeg
+	media-libs/opus
+	media-video/ffmpeg
 	x11-libs/libva:0="
 RDEPEND="${DEPEND}"
 
