@@ -18,3 +18,8 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="x11-themes/papirus-icon-theme"
+
+pkg_prerm() {
+	# Restoring default colors after removing papirus-folders
+	papirus-folders -D
+}
