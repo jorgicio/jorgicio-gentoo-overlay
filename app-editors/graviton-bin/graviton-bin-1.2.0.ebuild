@@ -6,7 +6,7 @@ EAPI=7
 inherit pax-utils unpacker xdg-utils
 
 MY_PN="Graviton"
-DESCRIPTION="Minimalist code editor (currently beta) (binary package)"
+DESCRIPTION="A modern code editor (binary package)"
 HOMEPAGE="https://graviton.netlify.app"
 SRC_URI="https://github.com/Graviton-Code-Editor/${MY_PN}-App/releases/download/${PV}/${MY_PN}-${PV}-amd64-linux.deb"
 
