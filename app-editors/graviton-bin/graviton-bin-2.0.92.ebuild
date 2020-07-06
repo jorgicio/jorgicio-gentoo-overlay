@@ -7,7 +7,7 @@ inherit pax-utils unpacker xdg-utils
 
 MY_PN="Graviton"
 DESCRIPTION="Minimalist code editor (currently beta) (binary package)"
-HOMEPAGE="https://graviton.ml"
+HOMEPAGE="https://graviton.netlify.app"
 SRC_URI="https://github.com/Graviton-Code-Editor/${MY_PN}-App/releases/download/${PV}/${MY_PN}Editor_Installer_${PV}_linux.deb"
 
 LICENSE="MIT"
