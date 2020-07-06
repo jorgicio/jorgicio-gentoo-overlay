@@ -1,25 +1,24 @@
 # Copyright 2011-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic python-any-r1 eutils unpacker pax-utils xdg-utils gnome2-utils
+PYTHON_COMPAT=( python3_{6,7,8} )
+
+inherit flag-o-matic python-any-r1 eutils unpacker pax-utils xdg-utils
 
 DESCRIPTION="A hackable text editor for the 21st Century - Binary package"
 HOMEPAGE="https://atom.io"
 MY_PN="${PN//-bin}"
-SRC_URI="
-	amd64? ( https://github.com/${MY_PN}/${MY_PN}/releases/download/v${PV}/${MY_PN}-amd64.tar.gz -> ${MY_PN}-${PV}-amd64.tar.gz )
-"
+SRC_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/v${PV}/${MY_PN}-amd64.tar.gz -> ${MY_PN}-${PV}-amd64.tar.gz"
 
 RESTRICT="mirror strip bindist"
 
-KEYWORDS="~amd64"
+KEYWORDS="-* ~amd64"
 SLOT="0"
 LICENSE="MIT"
 
-IUSE="libressl system-node pax_kernel"
+IUSE="libressl system-node"
 
 DEPEND="${PYTHON_DEPS}
 	!!dev-util/atom-shell
@@ -99,27 +98,22 @@ RDEPEND="${RDEPEND}
 	gnome-base/gconf
 	x11-libs/libnotify
 	gnome-base/gvfs
-"
-
-# TODO: Determine where it says we need these
-RDEPEND="${RDEPEND}
 	gnome-base/libgnome-keyring
 	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( dev-libs/openssl:0= )
-"
+	!libressl? ( dev-libs/openssl:0= )"
+
+S="${WORKDIR}/${MY_PN}-${PV}-amd64"
 
 QA_PRESTRIPPED="*"
 QA_PREBUILT="
 	usr/share/${MY_PN}/${MY_PN}
 	usr/share/${MY_PN}/libffmpeg.so
-	usr/share/${MY_PN}/libnode.so
-"
+	usr/share/${MY_PN}/libnode.so"
 
 DOCS=( resources/LICENSE.md )
 
 pkg_setup() {
 	python-any-r1_pkg_setup
-	use amd64 && S="${WORKDIR}/${MY_PN}-${PV}-amd64" || die "Arch not supported"
 }
 
 src_prepare(){
@@ -148,19 +142,15 @@ src_install() {
 		"GNOME;GTK;Utility;TextEditor;Development;" \
 		"GenericName=Text Editor\nMimeType=text/plain;\nStartupNotify=true\nStartupWMClass=${MY_PN^}"
 
-	use pax_kernel && pax-mark -m "${ED%/}"/usr/share/${MY_PN}/${MY_PN}
-}
-
-pkg_preinst(){
-	gnome2_icon_savelist
+	pax-mark m "${ED%/}"/usr/share/${MY_PN}/${MY_PN}
 }
 
 pkg_postinst(){
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm(){
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }

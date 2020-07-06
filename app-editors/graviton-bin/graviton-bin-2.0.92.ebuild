@@ -8,14 +8,11 @@ inherit pax-utils unpacker xdg-utils
 MY_PN="Graviton"
 DESCRIPTION="Minimalist code editor (currently beta) (binary package)"
 HOMEPAGE="https://graviton.ml"
-SRC_URI="
-	amd64? ( https://github.com/Graviton-Code-Editor/${MY_PN}-App/releases/download/${PV}/${MY_PN}-${PV}-amd64-linux.deb )
-"
+SRC_URI="https://github.com/Graviton-Code-Editor/${MY_PN}-App/releases/download/${PV}/${MY_PN}Editor_Installer_${PV}_linux.deb"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="pax_kernel"
+KEYWORDS="-* ~amd64"
 RESTRICT="mirror strip"
 
 RDEPEND="
@@ -29,40 +26,36 @@ RDEPEND="
 	sys-libs/libcap
 	x11-libs/libXtst
 	x11-libs/libnotify
-	!app-editors/graviton
-"
+	!app-editors/graviton"
+
 DEPEND="${RDEPEND}"
 S="${WORKDIR}"
 
-QA_PRESTRIPPED=(
-	opt/${MY_PN}/libGLESv2.so
-	opt/${MY_PN}/libEGL.so
-	opt/${MY_PN}/${PN/-bin}
-	opt/${MY_PN}/libffmpeg.so
-)
+QA_PRESTRIPPED="*"
 
 src_unpack(){
 	unpack_deb ${A}
 }
 
+src_prepare() {
+	gunzip usr/share/doc/graviton/changelog.gz
+	mv usr/share/doc/graviton usr/share/doc/${P}
+	default
+}
+
 src_install(){
 	mkdir -p "${ED%/}"
 	cp -r . "${ED%/}/"
-	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/${PN-bin}
-}
 
-pkg_preinst(){
-	xdg_environment_reset
+	pax-mark m "${ED%/}"/opt/${MY_PN}/${PN-bin}
 }
 
 pkg_postinst(){
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 	xdg_icon_cache_update
 }
 
 pkg_postrm(){
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 	xdg_icon_cache_update
 }

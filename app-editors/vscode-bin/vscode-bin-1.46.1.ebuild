@@ -10,24 +10,20 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft (binary version)"
 HOMEPAGE="https://code.visualstudio.com"
+SRC_URI="https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${MY_P}-amd64.tar.gz"
 
-SRC_URI="
-	amd64? ( https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${MY_P}-amd64.tar.gz )
-	"
 RESTRICT="mirror strip bindist"
 
 LICENSE="MS-vscode"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="pax_kernel"
+KEYWORDS="-* ~amd64"
 
 DEPEND="
 	>=media-libs/libpng-1.2.46
 	>=x11-libs/gtk+-2.24.8-r1:2
 	x11-libs/cairo
 	x11-libs/libXtst
-	!app-editors/vscode
-"
+	!app-editors/vscode"
 
 RDEPEND="
 	${DEPEND}
@@ -38,14 +34,12 @@ RDEPEND="
 	dev-libs/nss
 	app-crypt/libsecret[crypt]"
 
+S="${WORKDIR}/VSCode-linux-x64"
+
 DOCS=( resources/app/LICENSE.rtf )
 
-QA_PRESTRIPPED="opt/${MY_PN}/code"
+QA_PRESTRIPPED="*"
 QA_PREBUILT="opt/${MY_PN}/code"
-
-pkg_setup(){
-	use amd64 && S="${WORKDIR}/VSCode-linux-x64"
-}
 
 src_install(){
 	mkdir -p "${ED%/}/opt/${MY_PN}"
@@ -57,7 +51,7 @@ src_install(){
 	domenu "${FILESDIR}/${PN}-url-handler.desktop"
 	newicon "resources/app/resources/linux/code.png" ${MY_PN}.png
 	einstalldocs
-	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/code
+	pax-mark m "${ED%/}"/opt/${MY_PN}/code
 }
 
 pkg_postinst(){

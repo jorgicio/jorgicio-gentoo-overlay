@@ -13,23 +13,20 @@ HOMEPAGE="https://vscodium.com"
 SRC_URI="
 	amd64? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-x64-${PV}.tar.gz )
 	arm? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-arm-${PV}.tar.gz )
-	arm64? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-arm64-${PV}.tar.gz )
-	"
+	arm64? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-arm64-${PV}.tar.gz )"
 
 RESTRICT="mirror strip bindist"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
-IUSE="pax_kernel"
+KEYWORDS="-* ~amd64 ~arm ~arm64"
 
 DEPEND="
 	>=media-libs/libpng-1.2.46
 	>=x11-libs/gtk+-2.24.8-r1:2
 	x11-libs/cairo
 	x11-libs/libXtst
-	!app-editors/vscodium
-"
+	!app-editors/vscodium"
 
 RDEPEND="
 	${DEPEND}
@@ -38,10 +35,9 @@ RDEPEND="
 	x11-libs/libnotify
 	x11-libs/libXScrnSaver
 	dev-libs/nss
-	app-crypt/libsecret[crypt]
-"
+	app-crypt/libsecret[crypt]"
 
-QA_PRESTRIPPED="opt/${MY_PN}/codium"
+QA_PRESTRIPPED="*"
 QA_PREBUILT="opt/${MY_PN}/codium"
 
 S="${WORKDIR}"
@@ -54,5 +50,5 @@ src_install(){
 	dosym ../../opt/${MY_PN}/bin/codium /usr/bin/codium
 	domenu "${FILESDIR}/${PN}.desktop"
 	newicon "resources/app/resources/linux/code.png" ${MY_PN}.png
-	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/codium
+	pax-mark m "${ED%/}"/opt/${MY_PN}/codium
 }
