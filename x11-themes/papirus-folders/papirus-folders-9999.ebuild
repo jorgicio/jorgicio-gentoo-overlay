@@ -19,6 +19,12 @@ SLOT="0"
 
 RDEPEND="x11-themes/papirus-icon-theme"
 
+src_prepare() {
+	# Fix zsh completions directory
+	sed -i -e "s#vendor-completions#site-functions#" Makefile
+	default
+}
+
 pkg_prerm() {
 	# Restoring default colors after removing papirus-folders
 	papirus-folders -D
