@@ -73,17 +73,6 @@ If you don't have a Github account, you can email me but ONLY with the tag \[Gen
 
 Thanks in advance.
 
-## Note for all MATE lovers (READ IT!!!)
-
-~~For all [MATE](http://mate-desktop.org) lovers, there's another overlay to use latter versions of that desktop environment because Gentoo portage version is pretty old. You can check it [here](../../../mate-jorgicio), instructions included.
-Thanks.~~
-That information is not needed anymore. MATE packages are already available on the official Portage tree, so I won't maintain that repo anymore.
-Thanks for the support!
-
-## Problem with compatibility with recent versions of ImageMagick? See here
-
-I just created another overlay called [magick6-compat](https://github.com/jorgicio/magick6-compat), which helps to get rid with the problem of compatibility between both versions of ImageMagick (6.x and 7.x). Feel free to send suggestions, PRs and stuff.
-
 ## Problem with media-tv/xawtv ? See here
 
 If you have any issue related with mmx at compilation time, you should add this to your `/etc/portage/package.use`:
