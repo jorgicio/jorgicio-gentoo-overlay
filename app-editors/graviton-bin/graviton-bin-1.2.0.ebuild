@@ -17,7 +17,6 @@ RESTRICT="mirror strip"
 
 RDEPEND="
 	net-libs/nodejs
-	media-fonts/inconsolata
 	x11-libs/gtk+:3
 	dev-libs/nss
 	dev-libs/nspr
