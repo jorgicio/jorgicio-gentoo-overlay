@@ -1,0 +1,23 @@
+From 5c921589f1db2acb9691b3077fddf6a9d7336693 Mon Sep 17 00:00:00 2001
+From: "John C. Allwein" <5902494+johnnyapol@users.noreply.github.com>
+Date: Sat, 18 Apr 2020 19:14:35 -0400
+Subject: [PATCH] NOISSUE fix compiling of api/logic/Version.cpp
+
+-Wrange-loop-construct triggers this error in clang
+---
+ api/logic/Version.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/api/logic/Version.cpp b/api/logic/Version.cpp
+index 42eac6690..6392a50fa 100644
+--- a/api/logic/Version.cpp
++++ b/api/logic/Version.cpp
+@@ -78,7 +78,7 @@ void Version::parse()
+     // FIXME: this is bad. versions can contain a lot more separators...
+     QStringList parts = m_string.split('.');
+ 
+-    for (const auto part : parts)
++    for (const auto &part : parts)
+     {
+         m_sections.append(Section(part));
+     }

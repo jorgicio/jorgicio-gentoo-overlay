@@ -49,6 +49,7 @@ BDEPEND=">=virtual/jdk-1.8.0"
 PATCHES=(
 	"${FILESDIR}/fortify-fix-2.patch"
 	"${FILESDIR}/modern-java-check.patch"
+	"${FILESDIR}/${PN}-fix-clang-10.patch"
 )
 
 src_prepare(){
