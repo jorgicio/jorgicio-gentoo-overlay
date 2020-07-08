@@ -5,13 +5,13 @@ EAPI=7
 
 inherit qmake-utils xdg
 
-SINGLEAPPLICATION_VERSION="3.0.18"
+SINGLEAPPLICATION_VERSION="3.1.3.1"
 
 DESCRIPTION="Qt-based interface for Optimus Manager"
 HOMEPAGE="https://github.com/Shatur95/optimus-manager-qt"
 SRC_URI="
 	${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/itay-grudev/SingleApplication/archive/${SINGLEAPPLICATION_VERSION}.tar.gz -> singleapplication-${SINGLEAPPLICATION_VERSION}.tar.gz"
+	https://github.com/itay-grudev/SingleApplication/archive/v${SINGLEAPPLICATION_VERSION}.tar.gz -> singleapplication-${SINGLEAPPLICATION_VERSION}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-3"

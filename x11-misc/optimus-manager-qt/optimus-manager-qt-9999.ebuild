@@ -35,5 +35,5 @@ src_configure() {
 }
 
 src_install() {
-	INSTALL_ROOT="${D}" default
+	INSTALL_ROOT="${ED}" default
 }
