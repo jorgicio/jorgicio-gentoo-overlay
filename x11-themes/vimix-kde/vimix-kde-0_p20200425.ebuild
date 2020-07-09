@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="Flat Material Design-like theme for KDE Plasma"
 HOMEPAGE="https://github.com/vinceliuice/vimix-kde"
 
-if [[ ${PV} == 99999999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
@@ -35,6 +35,7 @@ src_prepare() {
 
 src_install() {
 	DESTDIR="${ED}" ./install.sh || die
+
 	if use sddm; then
 		mkdir -p "${ED}"/usr/share/sddm/themes
 		DESTDIR="${ED}" sh sddm/install.sh || die
