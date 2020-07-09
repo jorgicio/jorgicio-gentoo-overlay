@@ -36,6 +36,7 @@ src_prepare() {
 src_install() {
 	DESTDIR="${ED}" ./install.sh || die
 	if use sddm; then
+		mkdir -p "${ED}"/usr/share/sddm/themes
 		DESTDIR="${ED}" sh sddm/install.sh || die
 	fi
 }
