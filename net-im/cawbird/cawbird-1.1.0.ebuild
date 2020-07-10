@@ -47,6 +47,10 @@ pkg_setup() {
 	export VALAC=valac-$(vala_best_api_version)
 }
 
+src_prepare() {
+	default
+}
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use gstreamer "video")
