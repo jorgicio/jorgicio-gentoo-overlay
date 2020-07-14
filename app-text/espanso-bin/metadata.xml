@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jpizarrocallejas@gmail.com</email>
-		<name>Jorge Pizarro Callejas</name>
-		<description>Jorgicio Gentoo Overlay</description>
-	</maintainer>
+    <upstream>
+        <bugs-to>https://github.com/federico-terzi/espanso/issues</bugs-to>
+        <remote-id type="github">federico-terzi/espanso</remote-id>
+        <maintainer>
+            <name>Federico Terzi</name>
+            <email>federicoterzi96@gmail.com</email>
+        </maintainer>
+    </upstream>
+    <maintainer type="person">
+        <email>jpizarrocallejas@gmail.com</email>
+        <name>Jorge Pizarro Callejas</name>
+        <description>Jorgicio Gentoo Overlay</description>
+    </maintainer>
 </pkgmetadata>
