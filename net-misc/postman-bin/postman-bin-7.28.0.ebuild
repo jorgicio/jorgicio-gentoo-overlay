@@ -9,14 +9,11 @@ MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Supercharge your API workflow"
 HOMEPAGE="https://www.postman.com"
-SRC_URI="
-	amd64? ( https://dl.pstmn.io/download/version/${PV}/linux64 -> ${P}-amd64.tar.gz )
-"
+SRC_URI="https://dl.pstmn.io/download/version/${PV}/linux64 -> ${P}-amd64.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="pax_kernel"
 RESTRICT="mirror strip"
 
 S="${WORKDIR}/${MY_PN^}/app"
@@ -38,5 +35,5 @@ src_install() {
 		 "Type=Application" \
 		 "Categories=Development;IDE;" \
 		 "Comment=Build, test, and document your APIs faster"
-	use pax_kernel && pax-mark m "${ED%/}/opt/${MY_PN}/${MY_PN^}"
+	pax-mark m "${ED%/}/opt/${MY_PN}/${MY_PN^}"
 }
