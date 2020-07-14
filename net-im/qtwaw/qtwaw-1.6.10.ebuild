@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit ecm kde.org
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt-based application for WhatsApp Web"
 HOMEPAGE="https://gitlab.com/scarpetta/qtwaw"
@@ -30,3 +30,13 @@ DEPEND="
 	kde-frameworks/knotifications:5"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
+
+pkg_postinst() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+}
