@@ -9,4 +9,7 @@
         <name>Jorge Pizarro Callejas</name>
         <description>Jorgicio Gentoo Overlay</description>
     </maintainer>
+    <use>
+        <flag name="system-java">Use system-wide Java instead of bundled one. (Requires JRE 11 or newer)</flag>
+    </use>
 </pkgmetadata>

@@ -5,3 +5,5 @@ games-emulation/qmc2 phonon
 media-tv/xawtv cpu_flags_x86_mmx
 # SDL support is broken.
 games-emulation/reicast sdl
+# virtual/jre-11 is masked.
+net-misc/screamingfrogseospider system-java
