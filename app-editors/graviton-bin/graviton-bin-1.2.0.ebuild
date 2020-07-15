@@ -46,7 +46,7 @@ src_install(){
 	mkdir -p "${ED%/}"
 	cp -r . "${ED%/}/"
 
-	pax-mark m "${ED%/}"/opt/${MY_PN}/${PN-bin}
+	pax-mark m "${ED%/}"/opt/${MY_PN}/${PN//-bin}
 }
 
 pkg_postinst(){
