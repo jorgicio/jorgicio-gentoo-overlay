@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils desktop
+inherit cmake desktop
 
 DESCRIPTION="A PSP emulator written in C++"
 HOMEPAGE="https://www.ppsspp.org/"
@@ -69,17 +69,19 @@ src_prepare() {
 	if ! use system-ffmpeg; then
 		sed -i -e "s#-O3#-O2#g;" "${S}"/ffmpeg/linux_*.sh || die
 	fi
-	cmake-utils_src_prepare
+	# Fix build with Clang 10 or older
+	sed -i -e "/setAllocator/d" ext/glslang/glslang/Include/PoolAlloc.h
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DHEADLESS=$(usex headless)
 		-DUSING_QT_UI=$(usex qt5)
-		$(cmake-utils_use_find_package sdl SDL2)
+		$(cmake_use_find_package sdl SDL2)
 		-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
