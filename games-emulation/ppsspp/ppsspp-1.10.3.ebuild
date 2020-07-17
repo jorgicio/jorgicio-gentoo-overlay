@@ -9,11 +9,11 @@ DESCRIPTION="A PSP emulator written in C++"
 HOMEPAGE="https://www.ppsspp.org/"
 SRC_URI="
 	https://github.com/hrydgard/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	!system-ffmpeg? ( https://github.com/hrydgard/ppsspp-ffmpeg/archive/90701640c7f458461310b54e7d4041230e2d5d5a.tar.gz -> ${P}-ffmpeg.tar.gz )
-	https://github.com/hrydgard/ppsspp-lang/archive/bfc3a511f60e84de4d49170e2c442ac36b09cdfd.tar.gz -> ${P}-assets_lang.tar.gz
-	https://github.com/hrydgard/pspautotests/archive/2970fbcc23c258ebc03bba922926003fe37555e5.tar.gz -> ${P}-pspautotests.tar.gz
+	!system-ffmpeg? ( https://github.com/hrydgard/ppsspp-ffmpeg/archive/55147e5f33f5ae4904f75ec082af809267122b94.tar.gz -> ${P}-ffmpeg.tar.gz )
+	https://github.com/hrydgard/ppsspp-lang/archive/1c64b8fbd3cb6bd87935eb53f302f7de6f86e209.tar.gz -> ${P}-assets_lang.tar.gz
+	https://github.com/hrydgard/pspautotests/archive/328b839c7243e7f733f9eae88d059485e3d808e7.tar.gz -> ${P}-pspautotests.tar.gz
 	https://github.com/hrydgard/minidx9/archive/7751cf73f5c06f1be21f5f31c3e2d9a7bacd3a93.tar.gz -> ${P}-dx9sdk.tar.gz
-	https://github.com/hrydgard/glslang/archive/f9d08a25fbe17e0677a89d398f4d7f232339c3f9.tar.gz -> ${P}-ext_glslang.tar.gz
+	https://github.com/hrydgard/glslang/archive/d0850f875ec392a130ccf00018dab458b546f27c.tar.gz -> ${P}-ext_glslang.tar.gz
 	https://github.com/Kingcom/armips/archive/7885552b208493a6a0f21663770c446c3ba65576.tar.gz -> ${P}-ext_armips.tar.gz
 	https://github.com/Kingcom/tinyformat/archive/e2eb06339c21d15db13cd8aa44a4b287970124f4.tar.gz -> ${P}-ext_armips_ext_tinyformat.tar.gz
 	https://github.com/KhronosGroup/SPIRV-Cross/archive/a1f7c8dc8ea2f94443951ee27003bffa562c1f13.tar.gz -> ${P}-ext_SPIRV-Cross.tar.gz
@@ -69,8 +69,6 @@ src_prepare() {
 	if ! use system-ffmpeg; then
 		sed -i -e "s#-O3#-O2#g;" "${S}"/ffmpeg/linux_*.sh || die
 	fi
-	# Fix build with Clang 10 or older
-	sed -i -e "/setAllocator/d" ext/glslang/glslang/Include/PoolAlloc.h
 	cmake-utils_src_prepare
 }
 
@@ -94,6 +92,8 @@ src_install() {
 		doicon -s ${i} "icons/hicolor/${i}x${i}/apps/${PN}.png"
 	done
 	make_desktop_entry "PPSSPP$(usex qt5 Qt SDL)" "PPSSPP ($(usex qt5 Qt SDL))" "${PN}" "Game"
+	# Install missing libraries
+	dolib.so "${BUILD_DIR}"/lib/lib{glslang,SPIRV}.so
 }
 
 pkg_postinst() {
