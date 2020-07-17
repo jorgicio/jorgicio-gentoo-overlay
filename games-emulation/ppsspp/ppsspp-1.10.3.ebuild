@@ -92,8 +92,6 @@ src_install() {
 		doicon -s ${i} "icons/hicolor/${i}x${i}/apps/${PN}.png"
 	done
 	make_desktop_entry "PPSSPP$(usex qt5 Qt SDL)" "PPSSPP ($(usex qt5 Qt SDL))" "${PN}" "Game"
-	# Install missing libraries
-	dolib.so "${BUILD_DIR}"/lib/lib{glslang,SPIRV}.so
 }
 
 pkg_postinst() {
