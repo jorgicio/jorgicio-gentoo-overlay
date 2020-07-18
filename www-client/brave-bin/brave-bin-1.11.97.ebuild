@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 BRAVE_PN="${PN/-bin/}"
 
@@ -10,7 +10,7 @@ CHROMIUM_LANGS="
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
 	sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit chromium-2 gnome2-utils pax-utils xdg-utils
+inherit chromium-2 desktop pax-utils xdg-utils
 
 DESCRIPTION="Brave Web Browser"
 HOMEPAGE="https://brave.com"
@@ -107,12 +107,9 @@ src_install() {
 	pax-mark m "${BRAVE_HOME}/brave"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 	elog "If upgrading from an 0.25.x release or earlier, note that Brave has changed configuration folders."
 	elog "you will have to import your browser data from Settings -> People -> Import Bookmarks and Settings"
@@ -120,6 +117,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 }
