@@ -9,11 +9,10 @@ DESCRIPTION="NordVPN CLI tool for Linux"
 HOMEPAGE="https://nordvpn.com"
 BASE_URI="https://repo.nordvpn.com/deb/${PN}/debian/pool/main"
 SRC_URI="
-	amd64? ( "${BASE_URI}/${P/-/_}_amd64.deb" )
-	arm? ( "${BASE_URI}/${P/-/_}_armhf.deb" )
-	arm64? ( "${BASE_URI}/${P/-/_}_arm64.deb" )
-	x86? ( "${BASE_URI}/${P/-/_}_i386.deb" )
-"
+	amd64? ( ${BASE_URI}/${P/-/_}_amd64.deb )
+	arm? ( ${BASE_URI}/${P/-/_}_armhf.deb )
+	arm64? ( ${BASE_URI}/${P/-/_}_arm64.deb )
+	x86? ( ${BASE_URI}/${P/-/_}_i386.deb )"
 
 LICENSE="NordVPN"
 SLOT="0"
@@ -33,8 +32,7 @@ RDEPEND="
 	)
 	systemd? (
 		sys-apps/systemd
-	)
-"
+	)"
 
 S="${WORKDIR}"
 
@@ -47,24 +45,17 @@ src_prepare() {
 	if use !systemd; then
 		rm -rf usr/lib || die
 	fi
-	mv usr/share/doc/nordvpn/changelog.gz .
-	gunzip changelog.gz
-	mv usr/share/man/man1/${PN}.1.gz .
-	gunzip ${PN}.1.gz
-	rm -rf usr/share/man \
-		usr/share/doc \
-		etc
+	gunzip usr/share/doc/nordvpn/changelog.gz
+	gunzip usr/share/man/man1/${PN}.1.gz
+	mv usr/share/doc/nordvpn usr/share/doc/${P}
+	rm -rf etc
 	default
 }
 
 src_install() {
-	dodoc changelog
-	rm changelog
-	doman ${PN}.1
-	rm ${PN}.1
 	mkdir -p "${ED}"
 	cp -r . "${ED}"/
-	doinitd "${FILESDIR}/${PN}d"
+	use !systemd && doinitd "${FILESDIR}/${PN}d"
 }
 
 pkg_postinst() {

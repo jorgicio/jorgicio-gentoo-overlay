@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 systemd unpacker
+inherit bash-completion-r1 desktop systemd unpacker
 
 DESCRIPTION="Propietary VPN client for Linux"
 HOMEPAGE="https://expressvpn.com"
@@ -31,8 +31,10 @@ src_unpack() {
 
 src_prepare() {
 	rm -r _gpgbuilder ./etc || die
-	mv usr/share/doc/expressvpn/changelog.gz .
-	gunzip changelog.gz
+	gunzip usr/share/doc/expressvpn/changelog.gz
+	sed -i -e "/Icon/d" usr/lib/${PN}/${PN}-agent.desktop
+	echo "Icon=/usr/share/pixmaps/expressvpn-agent.png" \
+		>> usr/lib/${PN}/${PN}-agent.desktop || die
 	default
 }
 
@@ -43,10 +45,12 @@ src_install() {
 	cp usr/lib/${PN}/libxvclient.so "${ED}/usr/$(get_libdir)"
 	doinitd "${FILESDIR}/${PN}"
 	newconfd "${FILESDIR}/${P}" "${PN}"
-	dodoc changelog
+	dodoc usr/share/doc/expressvpn/changelog
 	doman usr/share/man/man1/${PN}.1
 	newbashcomp usr/lib/${PN}/bash-completion ${PN}
 	use systemd && systemd_dounit usr/lib/${PN}/${PN}.service
+	domenu usr/lib/${PN}/${PN}-agent.desktop
+	newicon usr/lib/${PN}/icon.png ${PN}-agent.png
 }
 
 pkg_postinst() {
