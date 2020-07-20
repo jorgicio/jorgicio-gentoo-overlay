@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r1 python-utils-r1
 
 DESCRIPTION="Control componentes for Dash"
 HOMEPAGE="https://plot.ly/dash"
@@ -15,18 +15,39 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="network-sandbox"
 
 RDEPEND="
-	dev-python/dash[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	sys-apps/yarn"
+	dev-python/pyyaml[${PYTHON_USEDEP}]"
 
 DEPEND="
 	${RDEPEND}
+	dev-python/dash[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+BDEPEND="sys-apps/yarn"
 
 python_test() {
 	pytest
+}
+
+src_compile() {
+	python_setup
+
+	addpredict "${EPREFIX}"/usr/local/share/.yarn
+	addpredict "${EPREFIX}"/usr/local/share/.yarnrc
+
+	rm yarn.lock package-lock.json
+
+	yarn
+
+	${EPYTHON} get_version_info.py
+
+	yarn copy-lib
+
+	dash-generate-components ./src/components dash_daq \
+		-p package-info.json --r-prefix 'daq'
+
+	distutils-r1_src_compile
 }
