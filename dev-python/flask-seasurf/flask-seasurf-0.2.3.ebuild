@@ -7,12 +7,9 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} pypy )
 
 inherit distutils-r1
 
-MY_PN="Flask-SeaSurf"
-MY_P="${MY_PN}-${PV}"
-
 DESCRIPTION="An updated cross-site forgery protection extension for Flask"
 HOMEPAGE="https://pypi.org/project/Flask-SeaSurf"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/maxcountryman/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -26,8 +23,6 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-
-S="${WORKDIR}/${MY_P}"
 
 python_test() {
 	pytest
