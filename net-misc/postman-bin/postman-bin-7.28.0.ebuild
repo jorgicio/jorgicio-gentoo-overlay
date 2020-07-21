@@ -18,11 +18,6 @@ RESTRICT="mirror strip"
 
 S="${WORKDIR}/${MY_PN^}/app"
 
-src_prepare() {
-	mv _Postman Postman
-	default
-}
-
 src_install() {
 	mkdir -p "${ED%/}/opt/${MY_PN}"
 	cp -r . "${ED%/}/opt/${MY_PN}"
@@ -30,10 +25,7 @@ src_install() {
 	dobin "${FILESDIR}/${MY_PN}"
 	make_desktop_entry "postman" \
 		"Postman" \
-		 "postman" \
-		 "Development" \
-		 "Type=Application" \
-		 "Categories=Development;IDE;" \
-		 "Comment=Build, test, and document your APIs faster"
+		"postman" \
+		"Development;IDE;"
 	pax-mark m "${ED%/}/opt/${MY_PN}/${MY_PN^}"
 }
