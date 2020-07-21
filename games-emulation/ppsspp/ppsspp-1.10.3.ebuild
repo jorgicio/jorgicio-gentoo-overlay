@@ -1,9 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils desktop
+CMAKE_MAKEFILE_GENERATOR="emake"
+
+inherit cmake desktop
 
 DESCRIPTION="A PSP emulator written in C++"
 HOMEPAGE="https://www.ppsspp.org/"
@@ -24,15 +26,18 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="headless libav +qt5 sdl +system-ffmpeg"
-REQUIRED_USE="!qt5? ( sdl )"
+IUSE="discord-presence headless libglvnd +qt5 sdl +system-ffmpeg +system-libzip +system-snappy"
+REQUIRED_USE="
+	!qt5? ( sdl )
+	qt5? (
+		!sdl? ( !headless )
+	)"
 
 RDEPEND="
-	app-arch/snappy:=
-	dev-libs/libzip:=
 	media-libs/glew:=
 	sys-libs/zlib:=
 	virtual/opengl
+	libglvnd? ( media-libs/libglvnd[X] )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -41,10 +46,9 @@ RDEPEND="
 		!sdl? ( dev-qt/qtmultimedia:5 )
 	)
 	sdl? ( media-libs/libsdl2 )
-	system-ffmpeg? (
-		!libav? ( media-video/ffmpeg:= )
-		libav? ( media-video/libav:= )
-	)
+	system-ffmpeg? ( media-video/ffmpeg:= )
+	system-libzip? ( dev-libs/libzip:= )
+	system-snappy? ( app-arch/snappy:= )
 "
 DEPEND="${RDEPEND}"
 
@@ -69,29 +73,69 @@ src_prepare() {
 	if ! use system-ffmpeg; then
 		sed -i -e "s#-O3#-O2#g;" "${S}"/ffmpeg/linux_*.sh || die
 	fi
-	cmake-utils_src_prepare
+	if ! use system-libzip; then
+		sed -i -e "s#-O3#-O2#g" "${S}"/ext/native/ext/libzip/CMakeLists.txt || die
+	fi
+	if ! use system-snappy; then
+		sed -i -e "s#-O3#-O2#g" "${S}"/ext/snappy/CMakeLists.txt || die
+	fi
+	cmake_src_prepare
 }
 
 src_configure() {
-	local mycmakeargs=(
-		-DHEADLESS=$(usex headless)
-		-DUSING_QT_UI=$(usex qt5)
-		$(cmake-utils_use_find_package sdl SDL2)
-		-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
-	)
-	cmake-utils_src_configure
+	if use qt5; then
+		BUILD_DIR="${WORKDIR}/${P}_build-qt"
+		local mycmakeargs=(
+			-DHEADLESS=OFF
+			-DUSING_QT_UI=ON
+			-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
+			-DUSE_SYSTEM_LIBZIP=$(usex system-libzip)
+			-DUSE_SYSTEM_SNAPPY=$(usex system-snappy)
+			-DOpenGL_GL_PREFERENCE=$(usex libglvnd GLVND LEGACY)
+			-DUSE_DISCORD=$(usex discord-presence)
+		)
+		cmake_src_configure
+	fi
+	if use sdl || use headless; then
+		BUILD_DIR="${WORKDIR}/${P}_build"
+		local mycmakeargs=(
+			-DHEADLESS=$(usex headless)
+			-DUSING_QT_UI=OFF
+			$(cmake_use_find_package sdl SDL2)
+			-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
+			-DUSE_SYSTEM_LIBZIP=$(usex system-libzip)
+			-DUSE_SYSTEM_SNAPPY=$(usex system-snappy)
+			-DOpenGL_GL_PREFERENCE=$(usex libglvnd GLVND LEGACY)
+			-DUSE_DISCORD=$(usex discord-presence)
+		)
+		cmake_src_configure
+
+	fi
+}
+
+src_compile() {
+	use qt5 && emake -C "${WORKDIR}/${P}_build-qt"
+	if use sdl || use headless; then
+		emake -C "${WORKDIR}/${P}_build"
+	fi
 }
 
 src_install() {
-	use headless && dobin "${BUILD_DIR}/PPSSPPHeadless"
+	use headless && dobin "${WORKDIR}/${P}_build/PPSSPPHeadless"
+	if use qt5; then
+		dobin "${WORKDIR}/${P}_build-qt/PPSSPPQt"
+		make_desktop_entry "PPSSPPQt" "PPSSPP (Qt)" "${PN}" "Game"
+	fi
+	if use sdl; then
+		dobin "${WORKDIR}/${P}_build/PPSSPPSDL"
+		make_desktop_entry "PPSSPPSDL" "PPSSPP (SDL)" "${PN}" "Game"
+	fi
 	insinto /usr/share/"${PN}"
 	doins -r "${BUILD_DIR}/assets"
-	dobin "${BUILD_DIR}/PPSSPP$(usex qt5 Qt SDL)"
 	local i
 	for i in 16 24 32 48 64 96 128 256 512 ; do
 		doicon -s ${i} "icons/hicolor/${i}x${i}/apps/${PN}.png"
 	done
-	make_desktop_entry "PPSSPP$(usex qt5 Qt SDL)" "PPSSPP ($(usex qt5 Qt SDL))" "${PN}" "Game"
 }
 
 pkg_postinst() {
