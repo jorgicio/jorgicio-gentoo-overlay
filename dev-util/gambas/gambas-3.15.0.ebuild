@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools desktop gnome2-utils xdg-utils
 
 SLOT=3
 MY_PN="${PN}${SLOT}"
 
-DESCRIPTION="Gambas is a free development environment based on a Basic interpreter with object extensions"
+DESCRIPTION="A free development environment based on a Basic interpreter"
 HOMEPAGE="http://gambas.sourceforge.net"
 
 SRC_URI="https://gitlab.com/gambas/${PN}/-/archive/${PV}/${P}.tar.bz2"
@@ -52,12 +52,12 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 		media-libs/gstreamer )
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
-	jit? ( sys-devel/llvm )
+	jit? ( sys-devel/llvm:= )
 	image-imlib? ( media-libs/imlib2 )
 	image-io? ( dev-libs/glib
 		x11-libs/gdk-pixbuf )
 	libxml? ( dev-libs/libxml2 )
-	mime? ( dev-libs/gmime )
+	mime? ( dev-libs/gmime:3.0 )
 	mysql?  ( virtual/mysql )
 	ncurses? ( sys-libs/ncurses )
 	odbc? ( dev-db/unixODBC )
@@ -66,7 +66,7 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	openssl? ( dev-libs/openssl )
 	pcre? ( dev-libs/libpcre )
 	pdf? ( app-text/poppler:0= )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:12 )
 	qt5? (
 		>=dev-qt/qtcore-5.4.0:5
 		>=dev-qt/qtopengl-5.4.0:5
@@ -99,7 +99,7 @@ autocrap_cleanup() {
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.13.x-xdgutils.patch"
-	"${FILESDIR}/${PN}-poppler-0.76.patch"
+	"${FILESDIR}/${PN}-postgres-12.patch"
 )
 DOCS=( AUTHORS ChangeLog NEWS README )
 
@@ -145,9 +145,7 @@ src_prepare() {
 	use_if_iuse xml || autocrap_cleanup xml
 	use_if_iuse zlib || autocrap_cleanup zlib
 
-	has_version ">=dev-qt/qtcore-5.13.0" && PATCHES+=( "${FILESDIR}/${PN}-qt-5.13.patch" )
-
-	default_src_prepare
+	default
 	eautoreconf
 }
 
@@ -192,7 +190,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install -j1
+	emake DESTDIR="${ED}" install
 
 	einstalldocs
 
@@ -221,26 +219,14 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	if use qt5 ; then
-		gnome2_icon_savelist
-	fi
-}
-
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mime_database_update
-
-	if use qt5 ; then
-		gnome2_icon_cache_update
-	fi
+	use qt5 && xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mime_database_update
-
-	if use qt5 ; then
-		gnome2_icon_cache_update
-	fi
+	use qt5 && xdg_icon_cache_update
 }
