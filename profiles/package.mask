@@ -1,29 +1,2 @@
-# This package depends on gnome-extra/zeitgeist, which is masked due to dependencies on older and deprecated packages
-x11-misc/diodon
-
-# This may build, but doesn't have a (proper) install method.
-=games-engines/box2d-9999
-
-# Depends on dev-python/PyQt4, which support is officially dropped. If you can find that package in another overlay, feel free to unmask this.
-games-engines/pilas
-
-# Depends on JDK/JRE 11, which support for Gentoo is still incomplete.
-dev-util/ghidra-bin
-
-# Currently broken, possibly due to outdated wxGTK version
-dev-util/pseint
-
-# Masking due to unstability (UI can't open)
-=net-wireless/nitroshare-0.4.0_pre20190618
-
-# Masking due to dependency removed (Festival)
-app-accessibility/dragonfire
-
-# Masking due to removed Python 2 support for dev-python/networkx, required as a dependency
-=net-misc/mininet-2.2.2
-
-# Masking due to an issue at start, waiting to be solved in upstream, as mentioned in https://github.com/jorgicio/jorgicio-gentoo-overlay/issues/235
-#media-video/flowblade
-
 # Masking due to unfulfilling dependencies
 sci-astronomy/eht-imaging
