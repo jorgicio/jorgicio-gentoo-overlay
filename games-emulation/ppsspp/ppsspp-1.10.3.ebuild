@@ -3,8 +3,6 @@
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="emake"
-
 inherit cmake desktop
 
 DESCRIPTION="A PSP emulator written in C++"
@@ -26,7 +24,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="discord-presence headless libglvnd +qt5 sdl +system-ffmpeg +system-libzip +system-snappy"
+IUSE="discord-presence headless libglvnd qt5 sdl +system-ffmpeg +system-libzip +system-snappy"
 REQUIRED_USE="
 	!qt5? ( sdl )
 	qt5? (
@@ -115,9 +113,9 @@ src_configure() {
 }
 
 src_compile() {
-	use qt5 && emake -C "${WORKDIR}/${P}_build-qt"
+	use qt5 && eninja -C "${WORKDIR}/${P}_build-qt"
 	if use sdl || use headless; then
-		emake -C "${WORKDIR}/${P}_build"
+		eninja -C "${WORKDIR}/${P}_build"
 	fi
 }
 
