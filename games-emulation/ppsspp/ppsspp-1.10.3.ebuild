@@ -93,6 +93,7 @@ src_configure() {
 			-DUSE_SYSTEM_SNAPPY=$(usex system-snappy)
 			-DOpenGL_GL_PREFERENCE=$(usex libglvnd GLVND LEGACY)
 			-DUSE_DISCORD=$(usex discord-presence)
+			-DBUILD_SHARED_LIBS=OFF
 		)
 		cmake_src_configure
 	fi
@@ -107,9 +108,9 @@ src_configure() {
 			-DUSE_SYSTEM_SNAPPY=$(usex system-snappy)
 			-DOpenGL_GL_PREFERENCE=$(usex libglvnd GLVND LEGACY)
 			-DUSE_DISCORD=$(usex discord-presence)
+			-DBUILD_SHARED_LIBS=OFF
 		)
 		cmake_src_configure
-
 	fi
 }
 
