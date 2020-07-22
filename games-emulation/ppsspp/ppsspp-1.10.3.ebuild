@@ -25,11 +25,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="discord-presence headless libglvnd qt5 sdl +system-ffmpeg +system-libzip +system-snappy"
-REQUIRED_USE="
-	!qt5? ( sdl )
-	qt5? (
-		!sdl? ( !headless )
-	)"
+REQUIRED_USE="^^ ( qt5 sdl )"
 
 RDEPEND="
 	media-libs/glew:=
@@ -81,54 +77,24 @@ src_prepare() {
 }
 
 src_configure() {
-	if use qt5; then
-		BUILD_DIR="${WORKDIR}/${P}_build-qt"
-		local mycmakeargs=(
-			-DHEADLESS=OFF
-			-DUSING_QT_UI=ON
-			-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
-			-DUSE_SYSTEM_LIBZIP=$(usex system-libzip)
-			-DUSE_SYSTEM_SNAPPY=$(usex system-snappy)
-			-DOpenGL_GL_PREFERENCE=$(usex libglvnd GLVND LEGACY)
-			-DUSE_DISCORD=$(usex discord-presence)
-			-DBUILD_SHARED_LIBS=OFF
-		)
-		cmake_src_configure
-	fi
-	if use sdl || use headless; then
-		BUILD_DIR="${WORKDIR}/${P}_build"
-		local mycmakeargs=(
-			-DHEADLESS=$(usex headless)
-			-DUSING_QT_UI=OFF
-			$(cmake_use_find_package sdl SDL2)
-			-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
-			-DUSE_SYSTEM_LIBZIP=$(usex system-libzip)
-			-DUSE_SYSTEM_SNAPPY=$(usex system-snappy)
-			-DOpenGL_GL_PREFERENCE=$(usex libglvnd GLVND LEGACY)
-			-DUSE_DISCORD=$(usex discord-presence)
-			-DBUILD_SHARED_LIBS=OFF
-		)
-		cmake_src_configure
-	fi
-}
-
-src_compile() {
-	use qt5 && eninja -C "${WORKDIR}/${P}_build-qt"
-	if use sdl || use headless; then
-		eninja -C "${WORKDIR}/${P}_build"
-	fi
+	local mycmakeargs=(
+		-DHEADLESS=$(usex headless)
+		-DUSING_QT_UI=$(usex qt5)
+		$(cmake_use_find_package sdl SDL2)
+		-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
+		-DUSE_SYSTEM_LIBZIP=$(usex system-libzip)
+		-DUSE_SYSTEM_SNAPPY=$(usex system-snappy)
+		-DOpenGL_GL_PREFERENCE=$(usex libglvnd GLVND LEGACY)
+		-DUSE_DISCORD=$(usex discord-presence)
+		-DBUILD_SHARED_LIBS=OFF
+	)
+	cmake_src_configure
 }
 
 src_install() {
-	use headless && dobin "${WORKDIR}/${P}_build/PPSSPPHeadless"
-	if use qt5; then
-		dobin "${WORKDIR}/${P}_build-qt/PPSSPPQt"
-		make_desktop_entry "PPSSPPQt" "PPSSPP (Qt)" "${PN}" "Game"
-	fi
-	if use sdl; then
-		dobin "${WORKDIR}/${P}_build/PPSSPPSDL"
-		make_desktop_entry "PPSSPPSDL" "PPSSPP (SDL)" "${PN}" "Game"
-	fi
+	use headless && dobin "${BUILD_DIR}/PPSSPPHeadless"
+	dobin "${BUILD_DIR}/PPSSPP$(usex qt Qt SDL)"
+	make_desktop_entry "PPSSPP$(usex qt Qt SDL)" "PPSSPP ($(usex qt Qt SDL))" "${PN}" "Game"
 	insinto /usr/share/"${PN}"
 	doins -r "${BUILD_DIR}/assets"
 	local i
