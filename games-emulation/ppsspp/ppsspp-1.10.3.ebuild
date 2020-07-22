@@ -93,14 +93,14 @@ src_configure() {
 
 src_install() {
 	use headless && dobin "${BUILD_DIR}/PPSSPPHeadless"
-	dobin "${BUILD_DIR}/PPSSPP$(usex qt Qt SDL)"
-	make_desktop_entry "PPSSPP$(usex qt Qt SDL)" "PPSSPP ($(usex qt Qt SDL))" "${PN}" "Game"
 	insinto /usr/share/"${PN}"
 	doins -r "${BUILD_DIR}/assets"
+	dobin "${BUILD_DIR}/PPSSPP$(usex qt5 Qt SDL)"
 	local i
 	for i in 16 24 32 48 64 96 128 256 512 ; do
 		doicon -s ${i} "icons/hicolor/${i}x${i}/apps/${PN}.png"
 	done
+	make_desktop_entry "PPSSPP$(usex qt5 Qt SDL)" "PPSSPP ($(usex qt5 Qt SDL))" "${PN}" "Game"
 }
 
 pkg_postinst() {
