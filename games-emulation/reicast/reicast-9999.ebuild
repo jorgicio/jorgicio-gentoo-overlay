@@ -11,6 +11,8 @@ HOMEPAGE="https://reicast.com"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/reicast/${PN}-emulator"
+	# Default branch is alpha in the Github repo.
+	EGIT_BRANCH="alpha"
 else
 	SRC_URI="https://github.com/reicast/${PN}-emulator/archive/r${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
@@ -29,6 +31,13 @@ DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? ( media-libs/libsdl2[video,sound,joystick?] )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	sed "s/CFLAGS := -g -O3/CFLAGS := -g ${CFLAGS}/; s/LDFLAGS := -g/LDFLAGS := ${LDFLAGS}/" \
+		-i ${PN}/linux/Makefile || die
+	sed "s/-Wl,-O3//" -i ${PN}/linux/Makefile || die
+	default
+}
 
 src_compile() {
 	FLAGS="PREFIX=/usr CC=$(tc-getCC) CXX=$(tc-getCXX) "
