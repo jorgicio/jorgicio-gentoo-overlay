@@ -25,7 +25,7 @@ SLOT="0"
 IUSE="widevine"
 
 COMMON_DEPEND="
-	>=dev-qt/qtquickcontrols2-5.9:5
+	>=dev-qt/qtquickcontrols2-5.9:5[widgets]
 	>=dev-qt/qtquickcontrols-5.9:5[widgets]
 	>=dev-qt/qtwebengine-5.9:5[-bindist,widgets]
 	>=dev-qt/qttranslations-5.9:5
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
-	dev-libs/libevent
+	dev-libs/libevent:0=
 	>=dev-qt/linguist-tools-5.9:5
 	media-libs/mesa"
 
