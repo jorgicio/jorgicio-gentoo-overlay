@@ -9,11 +9,13 @@
   - [Note for all people who send pull requests (MUST READ)](#note-for-all-people-who-send-pull-requests-must-read)
   - [Note for all people who doesn't own a Github accound (MUST READ)](#note-for-all-people-who-doesnt-own-a-github-accound-must-read)
   - [Problem with media-tv/xawtv ? See here](#problem-with-media-tvxawtv--see-here)
-  - [Want to contribute? Please, contact me](#want-to-contribute-please-contact-me)
+  - [Want to contribute? Please, contact me (PLEASE, READ)](#want-to-contribute-please-contact-me-please-read)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Jorgicio Custom Overlay
+
+__ATTENTION PLEASE: This repo needs (more) collaboration! Read below for more details.__
 
 Made with love by Jorge Pizarro Callejas, a.k.a. [Jorgicio](http://www.jorgicio.net).
 
@@ -80,6 +82,8 @@ media-tv/xawtv -cpu_flags_x86_mmx
 
 For some strange reason, despite being added in the package.use.mask file, it's still active, so you should disable it manually in the meantime.
 
-## Want to contribute? Please, contact me
+## Want to contribute? Please, contact me (PLEASE, READ)
 
 As you may notice, there are lots of packages here, so any help (PRs, adopting some of this packages, etc.) are welcome.
+Also, I'm planning to move to another distro some time in the future and I'm going to have less spare time to dedicate to this repo, so I'm doing the best I can to maintain this repo. So my plan is to keep maintaining this repo from a virtual machine, but more collaborators are welcome and required. But I'm not planning to remove or leave this repo FYI.
+Thank you for your preference.
