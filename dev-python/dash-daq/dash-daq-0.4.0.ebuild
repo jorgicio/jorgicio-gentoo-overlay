@@ -35,6 +35,7 @@ python_test() {
 src_compile() {
 	python_setup
 
+	addpredict "${EPREFIX}"/usr/local/share/.cache
 	addpredict "${EPREFIX}"/usr/local/share/.yarn
 	addpredict "${EPREFIX}"/usr/local/share/.yarnrc
 

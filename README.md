@@ -15,8 +15,6 @@
 
 # Jorgicio Custom Overlay
 
-__ATTENTION PLEASE: This repo needs (more) collaboration! Read below for more details.__
-
 Made with love by Jorge Pizarro Callejas, a.k.a. [Jorgicio](http://www.jorgicio.net).
 
 ## Usage
@@ -82,8 +80,6 @@ media-tv/xawtv -cpu_flags_x86_mmx
 
 For some strange reason, despite being added in the package.use.mask file, it's still active, so you should disable it manually in the meantime.
 
-## Want to contribute? Please, contact me (PLEASE, READ)
+## Want to contribute? Please, contact me
 
 As you may notice, there are lots of packages here, so any help (PRs, adopting some of this packages, etc.) are welcome.
-Also, I'm planning to move to another distro some time in the future and I'm going to have less spare time to dedicate to this repo, so I'm doing the best I can to maintain this repo. So my plan is to keep maintaining this repo from a virtual machine, but more collaborators are welcome and required. But I'm not planning to remove or leave this repo FYI.
-Thank you for your preference.
