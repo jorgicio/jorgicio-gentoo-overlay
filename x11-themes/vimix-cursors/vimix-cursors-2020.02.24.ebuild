@@ -35,13 +35,13 @@ src_prepare() {
 	# Fix DESTDIR
 	sed -i 's#/usr#\${DESTDIR}/usr#' install.sh
 
+	# Fix sandbox issue
+	addpredict "${BROOT}"/usr/share/inkscape/fonts/.uuid.TMP-XXXXXX
+
 	default
 }
 
 src_compile() {
-	# Fix sandbox issue
-	addpredict "${EPREFIX}"/usr/share/inkscape/fonts/.uuid.TMP-XXXXXX
-
 	./build.sh || die
 }
 

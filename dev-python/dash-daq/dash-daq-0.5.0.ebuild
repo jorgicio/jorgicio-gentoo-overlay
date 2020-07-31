@@ -28,16 +28,21 @@ DEPEND="
 
 BDEPEND="sys-apps/yarn"
 
+src_prepare() {
+	# Fix sandbox issue
+	addpredict "${BROOT}"/usr/local/share/.cache
+	addpredict "${BROOT}"/usr/local/share/.yarn
+	addpredict "${BROOT}"/usr/local/share/.yarnrc
+
+	default
+}
+
 python_test() {
 	pytest
 }
 
 src_compile() {
 	python_setup
-
-	addpredict "${EPREFIX}"/usr/local/share/.cache
-	addpredict "${EPREFIX}"/usr/local/share/.yarn
-	addpredict "${EPREFIX}"/usr/local/share/.yarnrc
 
 	rm yarn.lock package-lock.json
 
