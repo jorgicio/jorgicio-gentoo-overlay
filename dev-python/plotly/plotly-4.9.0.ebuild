@@ -24,8 +24,3 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-src_install() {
-	distutils-r1_src_install
-	mv "${ED}"/usr/etc "${ED}"/ || die
-}
