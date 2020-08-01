@@ -18,13 +18,12 @@ SRC_URI="
 	https://github.com/Kingcom/tinyformat/archive/e2eb06339c21d15db13cd8aa44a4b287970124f4.tar.gz -> ${P}-ext_armips_ext_tinyformat.tar.gz
 	https://github.com/KhronosGroup/SPIRV-Cross/archive/a1f7c8dc8ea2f94443951ee27003bffa562c1f13.tar.gz -> ${P}-ext_SPIRV-Cross.tar.gz
 	https://github.com/Tencent/rapidjson/archive/73063f5002612c6bf64fe24f851cd5cc0d83eef9.tar.gz -> ${P}-ext_rapidjson.tar.gz
-	https://github.com/discordapp/discord-rpc/archive/3d3ae7129d17643bc706da0a2eea85aafd10ab3a.tar.gz -> ${P}-ext_discord-rpc.tar.gz
-"
+	https://github.com/discordapp/discord-rpc/archive/3d3ae7129d17643bc706da0a2eea85aafd10ab3a.tar.gz -> ${P}-ext_discord-rpc.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="discord-presence headless libglvnd qt5 sdl +system-ffmpeg +system-libzip +system-snappy"
+IUSE="discord-presence headless +libglvnd qt5 sdl +system-ffmpeg +system-libzip +system-snappy"
 REQUIRED_USE="^^ ( qt5 sdl )"
 
 RDEPEND="
