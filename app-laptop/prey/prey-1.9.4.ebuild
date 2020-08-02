@@ -31,14 +31,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	systemd? ( sys-apps/systemd )"
 
-pkg_setup () {
-	QA_PRESTRIPPED="
-		usr/$(get_libdir)/${PN}/bin/node
-		usr/$(get_libdir)/${PN}/node_modules/sqlite3/lib/binding/node-v46-linux-ia32/node_sqlite3.node
-		usr/$(get_libdir)/${PN}/node_modules/sqlite3/lib/binding/node-v46-linux-x64/node_sqlite3.node
-		usr/$(get_libdir)/${PN}/lib/agent/actions/wipe/linux/wipe-linux"
-	QA_TEXTRELS="usr/$(get_libdir)/prey/node_modules/sqlite3/lib/binding/node-v57-linux-ia32/node_sqlite3.node"
-}
+QA_PRESTRIPPED="*"
+QA_TEXTRELS="*"
 
 src_prepare(){
 	sed -i "s#dir=\"\$dir/\$rel\"#dir=\"\$rel\"#" "bin/prey"
@@ -52,7 +46,7 @@ src_install(){
 	insinto /etc/prey
 	insopts -m644
 	newins ${PN}.conf.default ${PN}.conf
-	newbin "${FILESDIR}/${PN}-bin" "${PN}"
+	newsbin "${FILESDIR}/${PN}-bin" "${PN}"
 }
 
 pkg_postinst(){
