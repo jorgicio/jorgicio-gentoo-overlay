@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit flag-o-matic python-any-r1 eutils unpacker pax-utils xdg-utils
+inherit desktop flag-o-matic python-any-r1 eutils unpacker pax-utils xdg-utils
 
 DESCRIPTION="A hackable text editor for the 21st Century - Binary package"
 HOMEPAGE="https://atom.io"
@@ -100,7 +100,10 @@ RDEPEND="${RDEPEND}
 	gnome-base/gvfs
 	gnome-base/libgnome-keyring
 	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( dev-libs/openssl:0= )"
+	!libressl? (
+		dev-libs/openssl:0=
+		dev-libs/openssl-compat:1.0.0=
+	)"
 
 S="${WORKDIR}/${MY_PN}-${PV}-amd64"
 
