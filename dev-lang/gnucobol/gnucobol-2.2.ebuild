@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="an open-source COBOL compiler, formerly known as OpenCOBOL"
 HOMEPAGE="https://www.gnu.org/software/gnucobol/"
-SRC_URI="mirror://sourceforge/open-cobol/${P}.tar.xz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
