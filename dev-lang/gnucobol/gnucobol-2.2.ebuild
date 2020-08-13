@@ -15,7 +15,7 @@ RESTRICT="strip"
 
 RDEPEND="
 	dev-libs/gmp:0=
-	berkdb? ( sys-libs/db:4.8= )
+	berkdb? ( >=sys-libs/db-4.1:= )
 	sys-libs/ncurses:0=
 	sys-libs/readline:=
 	!dev-lang/open-cobol"
