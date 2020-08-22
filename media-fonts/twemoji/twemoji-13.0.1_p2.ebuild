@@ -5,12 +5,12 @@ EAPI=7
 
 inherit font
 
-FEDREL="1.fc33"
+FEDREL="fc33"
+MY_PV="${PV/_p/-}.${FEDREL}"
 
 DESCRIPTION="Twitter Emoji for everyone."
 HOMEPAGE="https://github.com/twitter/twemoji"
-SRC_URI="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/${PN:0:1}/twitter-${PN}-fonts-${PV}-${FEDREL}.noarch.rpm
-"
+SRC_URI="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/${PN:0:1}/twitter-${PN}-fonts-${MY_PV}.noarch.rpm"
 
 LICENSE="MIT CC-BY-4.0"
 SLOT="0"
