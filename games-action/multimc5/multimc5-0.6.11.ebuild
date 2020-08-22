@@ -7,17 +7,17 @@ inherit desktop cmake xdg
 
 MY_PN="MultiMC5"
 MY_P="${MY_PN}-${PV}"
-QUAZIP_VER="multimc-3"
-LIBNBTPLUSPLUS_VER="multimc-0.6.1"
+QUAZIP_VER="3"
+LIBNBTPLUSPLUS_VER="0.6.1"
 
 DESCRIPTION="An advanced Qt5-based open-source launcher for Minecraft"
 HOMEPAGE="https://multimc.org"
 BASE_URI="https://github.com/MultiMC"
 SRC_URI="
 	${BASE_URI}/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	${BASE_URI}/libnbtplusplus/archive/${LIBNBTPLUSPLUS_VER}.tar.gz -> libnbtplusplus-${LIBNBTPLUSPLUS_VER}.tar.gz
-	${BASE_URI}/quazip/archive/${QUAZIP_VER}.tar.gz -> quazip-${QUAZIP_VER}.tar.gz
-"
+	${BASE_URI}/libnbtplusplus/archive/multimc-${LIBNBTPLUSPLUS_VER}.tar.gz -> ${P}-libnbtplusplus-${LIBNBTPLUSPLUS_VER}.tar.gz
+	${BASE_URI}/quazip/archive/multimc-${QUAZIP_VER}.tar.gz -> ${P}-quazip-${QUAZIP_VER}.tar.gz"
+
 KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/${MY_P}"
 
@@ -31,8 +31,8 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtgui:5
 	dev-qt/qttest:5
-	dev-qt/qtxml:5
-"
+	dev-qt/qtxml:5"
+
 DEPEND="
 	${COMMON_DEPEND}"
 
@@ -41,8 +41,7 @@ RDEPEND="
 	sys-libs/zlib
 	>=virtual/jre-1.8.0
 	virtual/opengl
-	x11-libs/libXrandr
-"
+	x11-libs/libXrandr"
 
 BDEPEND=">=virtual/jdk-1.8.0"
 
@@ -52,10 +51,16 @@ PATCHES=(
 	"${FILESDIR}/${PN}-fix-clang-10.patch"
 )
 
+src_unpack() {
+	unpack "${P}.tar.gz"
+	cd "${S}" || die
+	local i list=( libnbtplusplus-${LIBNBTPLUSPLUS_VER} quazip-${QUAZIP_VER} )
+	for i in "${list[@]}"; do
+		tar xf "${DISTDIR}/${P}-${i}.tar.gz" --strip-components 1 -C libraries/${i%-*} || die
+	done
+}
+
 src_prepare(){
-	rm -rf "${S}/libraries/libnbtplusplus" "${S}/libraries/quazip"
-	mv "${WORKDIR}/libnbtplusplus-${LIBNBTPLUSPLUS_VER}" "${S}/libraries/libnbtplusplus" || die
-	mv "${WORKDIR}/quazip-${QUAZIP_VER}" "${S}/libraries/quazip" || die
 	cd libraries/quazip
 	eapply "${FILESDIR}/quazip-fix-build-with-qt-511.patch"
 	cd ../..
