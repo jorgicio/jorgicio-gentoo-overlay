@@ -14,8 +14,8 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/colinduquesnoy/${MY_PN}"
 else
-	KEYWORDS="-* ~amd64"
 	MY_P="${MY_PN}-${PV}"
+	KEYWORDS="-* ~amd64"
 	SRC_URI="https://gitlab.com/colinduquesnoy/${MY_PN}/-/archive/${PV}/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 fi

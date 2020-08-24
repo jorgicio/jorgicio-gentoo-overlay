@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://gitlab.com/scarpetta/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-v${PV}"
+	S="${WORKDIR}/${PV}-v${PV}"
 fi
 
 LICENSE="GPL-3"
