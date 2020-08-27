@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/scarpetta/${PN}"
 else
 	SRC_URI="https://gitlab.com/scarpetta/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
 
