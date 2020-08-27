@@ -23,17 +23,11 @@ IUSE=""
 
 DEPEND="
 	app-text/podofo:=
-	app-text/qpdf:=
+	>=app-text/qpdf-10.0.0:=
 	dev-qt/qtcore:5
 	dev-qt/qtwidgets:5"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
-
-src_prepare() {
-	has_version "<app-text/qpdf-10.0.0" \
-		&& eapply "${FILESDIR}/${PN}-qpdf-9-compatibility.patch"
-	cmake_src_prepare
-}
 
 pkg_postinst() {
 	xdg_icon_cache_update
