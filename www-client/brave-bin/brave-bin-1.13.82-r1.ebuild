@@ -108,10 +108,10 @@ src_install() {
 
 	cp -r . "${ED}"
 
-	newicon "${FILESDIR}/braveAbout.png" "${PN}.png"
-	newicon -s 128 "${FILESDIR}/braveAbout.png" "${PN}.png"
-
-	dosym "${BRAVE_HOME}"/brave /usr/bin/${PN} || die
+	for size in 16 24 32 48 64 128 256; do
+		newicon -s ${size} opt/${BRAVE_PN}.com/${BRAVE_PN}/product_logo_${size}.png \
+			${BRAVE_PN}-browser.png
+	done
 
 	pax-mark m "${BRAVE_HOME}/brave"
 }
