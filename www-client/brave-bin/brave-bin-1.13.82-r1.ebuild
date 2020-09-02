@@ -113,8 +113,6 @@ src_install() {
 
 	dosym "${BRAVE_HOME}"/brave /usr/bin/${PN} || die
 
-	domenu "${FILESDIR}/${PN}.desktop"
-
 	pax-mark m "${BRAVE_HOME}/brave"
 }
 
