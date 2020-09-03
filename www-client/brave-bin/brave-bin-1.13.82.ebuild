@@ -99,13 +99,13 @@ src_prepare() {
 
 	rm -rf usr/share/{gnome-control-center,menu} etc || die
 
-	gzip -d usr/share/doc/${BRAVE_PN}-browser/changelog.gz || die
 	mv usr/share/doc/${BRAVE_PN}-browser usr/share/doc/${PF}
 
 	default
 }
 
 src_install() {
+	gzip -d usr/share/doc/${PF}/changelog.gz || die
 	gzip -d usr/share/man/man1/${BRAVE_PN}-browser-stable.1.gz || die
 	if [[ -L usr/share/man/man1/brave-browser.1.gz ]]; then
 		rm usr/share/man/man1/${BRAVE_PN}-browser.1.gz || die
