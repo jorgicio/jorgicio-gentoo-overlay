@@ -10,16 +10,16 @@ CHROMIUM_LANGS="
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
 	sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit chromium-2 desktop pax-utils xdg-utils
+inherit chromium-2 desktop pax-utils unpacker xdg-utils
 
 DESCRIPTION="Brave Web Browser"
 HOMEPAGE="https://brave.com"
-SRC_URI="https://github.com/brave/brave-browser/releases/download/v${PV}/brave-v${PV}-linux-x64.zip -> ${P}.zip"
+SRC_URI="https://github.com/brave/brave-browser/releases/download/v${PV}/brave-browser_${PV}_amd64.deb"
 
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="-* amd64"
-IUSE="gnome-keyring selinux"
+IUSE="selinux"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -74,35 +74,51 @@ RDEPEND="
 	x11-libs/libXxf86vm
 	x11-libs/pango
 	x11-libs/pixman
-	gnome-keyring? ( gnome-base/gnome-keyring )
 	selinux? ( sec-policy/selinux-chromium )"
 DEPEND="${RDEPEND}"
 
 QA_PREBUILT="*"
-
+BRAVE_HOME="opt/${BRAVE_PN}.com/${BRAVE_PN}"
+QA_DESKTOP_FILE="usr/share/applications/brave-browser.*\\.desktop"
 S="${WORKDIR}"
 
+pkg_pretend() {
+	use amd64 || die "This package is available for 64-bit only."
+}
+
+src_unpack() {
+	unpack_deb "${A}"
+}
+
 src_prepare() {
-	pushd "${S}/locales" > /dev/null || die
+	pushd "${BRAVE_HOME}/locales" > /dev/null || die
 		chromium_remove_language_paks
 	popd > /dev/null || die
+
+	mv usr/share/appdata usr/share/metainfo || die
+
+	rm -rf usr/share/{gnome-control-center,menu} etc || die
+
+	gzip -d usr/share/doc/${BRAVE_PN}-browser/changelog.gz || die
+	mv usr/share/doc/${BRAVE_PN}-browser usr/share/doc/${PF}
 
 	default
 }
 
 src_install() {
-	declare BRAVE_HOME=/opt/${BRAVE_PN}
+	gzip -d usr/share/man/man1/${BRAVE_PN}-browser-stable.1.gz || die
+	if [[ -L usr/share/man/man1/brave-browser.1.gz ]]; then
+		rm usr/share/man/man1/${BRAVE_PN}-browser.1.gz || die
+		dosym ${BRAVE_PN}-browser-stable.1 \
+			usr/share/man/man1/${BRAVE_PN}-browser.1
+	fi
 
-	mkdir -p "${ED}"/${BRAVE_HOME}
+	cp -r . "${ED}"
 
-	cp -r . "${ED}/${BRAVE_HOME}"
-
-	dosym ${BRAVE_HOME}/brave /usr/bin/${PN} || die
-
-	newicon "${FILESDIR}/braveAbout.png" "${PN}.png"
-	newicon -s 128 "${FILESDIR}/braveAbout.png" "${PN}.png"
-
-	domenu "${FILESDIR}/${PN}.desktop"
+	for size in 16 24 32 48 64 128 256; do
+		newicon -s ${size} ${BRAVE_HOME}/product_logo_${size}.png \
+			${BRAVE_PN}-browser.png
+	done
 
 	pax-mark m "${BRAVE_HOME}/brave"
 }
