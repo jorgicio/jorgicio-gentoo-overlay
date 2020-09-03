@@ -79,7 +79,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 QA_PREBUILT="*"
-
+BRAVE_HOME="opt/${BRAVE_PN}.com/${BRAVE_PN}"
+QA_DESKTOP_FILE="usr/share/applications/brave-browser.*\\.desktop"
 S="${WORKDIR}"
 
 src_unpack() {
@@ -87,29 +88,32 @@ src_unpack() {
 }
 
 src_prepare() {
-	pushd "${S}/opt/${BRAVE_PN}.com/${BRAVE_PN}/locales" > /dev/null || die
+	pushd "${BRAVE_HOME}/locales" > /dev/null || die
 		chromium_remove_language_paks
 	popd > /dev/null || die
 
-	mv usr/share/appdata usr/share/metainfo
+	mv usr/share/appdata usr/share/metainfo || die
 
-	gunzip usr/share/man/man1/${BRAVE_PN}-browser-stable.1.gz || die
-	mv usr/share/man/man1/${BRAVE_PN}-browser-stable.1 \
-		usr/share/man/man1/${BRAVE_PN}-browser.1
-	rm usr/share/man/man1/${BRAVE_PN}-browser.1.gz
+	rm -rf usr/share/{gnome-control-center,menu} etc || die
 
-	rm -rf usr/share/{gnome-control-center,menu,doc}
+	gzip -d usr/share/doc/${BRAVE_PN}-browser/changelog.gz || die
+	mv usr/share/doc/${BRAVE_PN}-browser usr/share/doc/${PF}
 
 	default
 }
 
 src_install() {
-	declare BRAVE_HOME=/opt/${BRAVE_PN}.com/${BRAVE_PN}
+	gzip -d usr/share/man/man1/${BRAVE_PN}-browser-stable.1.gz || die
+	if [[ -L usr/share/man/man1/brave-browser.1.gz ]]; then
+		rm usr/share/man/man1/${BRAVE_PN}-browser.1.gz || die
+		dosym ${BRAVE_PN}-browser-stable.1 \
+			usr/share/man/man1/${BRAVE_PN}-browser.1
+	fi
 
 	cp -r . "${ED}"
 
 	for size in 16 24 32 48 64 128 256; do
-		newicon -s ${size} opt/${BRAVE_PN}.com/${BRAVE_PN}/product_logo_${size}.png \
+		newicon -s ${size} ${BRAVE_HOME}/product_logo_${size}.png \
 			${BRAVE_PN}-browser.png
 	done
 
