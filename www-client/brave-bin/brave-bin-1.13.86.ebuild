@@ -4,6 +4,7 @@
 EAPI=7
 
 BRAVE_PN="${PN/-bin/}"
+BRAVE_PNF="${BRAVE_PN}-browser"
 
 CHROMIUM_LANGS="
 	am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
@@ -14,7 +15,7 @@ inherit chromium-2 desktop pax-utils unpacker xdg-utils
 
 DESCRIPTION="Brave Web Browser"
 HOMEPAGE="https://brave.com"
-SRC_URI="https://github.com/brave/brave-browser/releases/download/v${PV}/brave-browser_${PV}_amd64.deb"
+SRC_URI="https://github.com/brave/${BRAVE_PNF}/releases/download/v${PV}/${BRAVE_PNF}_${PV}_amd64.deb"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -79,7 +80,7 @@ DEPEND="${RDEPEND}"
 
 QA_PREBUILT="*"
 BRAVE_HOME="opt/${BRAVE_PN}.com/${BRAVE_PN}"
-QA_DESKTOP_FILE="usr/share/applications/brave-browser.*\\.desktop"
+QA_DESKTOP_FILE="usr/share/applications/${BRAVE_PNF}.*\\.desktop"
 S="${WORKDIR}"
 
 pkg_pretend() {
@@ -99,28 +100,28 @@ src_prepare() {
 
 	rm -rf usr/share/{gnome-control-center,menu} etc || die
 
-	mv usr/share/doc/${BRAVE_PN}-browser usr/share/doc/${PF}
+	mv usr/share/doc/${BRAVE_PNF} usr/share/doc/${PF}
 
 	default
 }
 
 src_install() {
 	gzip -d usr/share/doc/${PF}/changelog.gz || die
-	gzip -d usr/share/man/man1/${BRAVE_PN}-browser-stable.1.gz || die
+	gzip -d usr/share/man/man1/${BRAVE_PNF}-stable.1.gz || die
 	if [[ -L usr/share/man/man1/brave-browser.1.gz ]]; then
-		rm usr/share/man/man1/${BRAVE_PN}-browser.1.gz || die
-		dosym ${BRAVE_PN}-browser-stable.1 \
-			usr/share/man/man1/${BRAVE_PN}-browser.1
+		rm usr/share/man/man1/${BRAVE_PNF}.1.gz || die
+		dosym ${BRAVE_PNF}-stable.1 \
+			usr/share/man/man1/${BRAVE_PNF}.1
 	fi
 
 	cp -r . "${ED}"
 
 	for size in 16 24 32 48 64 128 256; do
 		newicon -s ${size} ${BRAVE_HOME}/product_logo_${size}.png \
-			${BRAVE_PN}-browser.png
+			${BRAVE_PNF}.png
 	done
 
-	pax-mark m "${BRAVE_HOME}/brave"
+	pax-mark m "${BRAVE_HOME}/${BRAVE_PN}"
 }
 
 pkg_postinst() {
