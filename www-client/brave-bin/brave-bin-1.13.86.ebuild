@@ -15,7 +15,7 @@ inherit chromium-2 desktop pax-utils unpacker xdg-utils
 
 DESCRIPTION="Brave Web Browser"
 HOMEPAGE="https://brave.com"
-SRC_URI="https://github.com/brave/${BRAVE_PNF}/releases/download/v${PV}/${BRAVE_PNF}_${PV}_amd64.deb"
+SRC_URI="https://github.com/${BRAVE_PN}/${BRAVE_PNF}/releases/download/v${PV}/${BRAVE_PNF}_${PV}_amd64.deb"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -121,7 +121,7 @@ src_install() {
 			${BRAVE_PNF}.png
 	done
 
-	pax-mark m "${BRAVE_HOME}/${BRAVE_PN}"
+	pax-mark m "${ED}/${BRAVE_HOME}/${BRAVE_PN}"
 }
 
 pkg_postinst() {
