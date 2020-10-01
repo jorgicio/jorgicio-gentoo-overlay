@@ -102,6 +102,8 @@ src_prepare() {
 
 	mv usr/share/doc/${BRAVE_PNF} usr/share/doc/${PF}
 
+	sed -i "s#/usr/bin/##g" usr/share/applications/${BRAVE_PNF}.desktop || die
+
 	default
 }
 
