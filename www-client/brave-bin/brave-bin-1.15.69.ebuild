@@ -104,7 +104,7 @@ src_install() {
 			${BRAVE_PNF}.png
 	done
 
-	dosym /${BRAVE_HOME}/${BRAVE_PNF}-browser /usr/bin/${BRAVE_PNF}-stable
+	dosym /${BRAVE_HOME}/${BRAVE_PNF} /usr/bin/${BRAVE_PNF}-stable
 
 	pax-mark m "${ED}/${BRAVE_HOME}/${BRAVE_PN}"
 
