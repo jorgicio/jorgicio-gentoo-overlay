@@ -108,7 +108,10 @@ src_install() {
 
 	pax-mark m "${ED}/${BRAVE_HOME}/${BRAVE_PN}"
 
-	make_desktop_entry "${BRAVE_PNF}-stable" "Brave Web Browser" "${BRAVE_PNF}" "Network"
+	domenu "${FILESDIR}/${BRAVE_PNF}.desktop"
+
+	insinto /usr/share/metainfo
+	doins "${FILESDIR}/${BRAVE_PNF}.appdata.xml"
 }
 
 pkg_postinst() {
