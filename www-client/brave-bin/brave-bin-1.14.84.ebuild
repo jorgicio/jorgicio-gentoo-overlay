@@ -88,7 +88,7 @@ pkg_pretend() {
 }
 
 src_unpack() {
-	unpack_deb "${A}"
+	unpack_deb ${A}
 }
 
 src_prepare() {
