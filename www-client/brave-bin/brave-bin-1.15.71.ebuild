@@ -11,11 +11,11 @@ CHROMIUM_LANGS="
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
 	sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit chromium-2 desktop pax-utils unpacker xdg-utils
+inherit chromium-2 desktop pax-utils xdg-utils
 
 DESCRIPTION="Brave Web Browser"
 HOMEPAGE="https://brave.com"
-SRC_URI="https://github.com/${BRAVE_PN}/${BRAVE_PNF}/releases/download/v${PV}/${BRAVE_PNF}_${PV}_amd64.deb"
+SRC_URI="https://github.com/${BRAVE_PN}/${BRAVE_PNF}/releases/download/v${PV}/${BRAVE_PNF}-${PV}-linux-amd64.zip"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -80,50 +80,38 @@ DEPEND="${RDEPEND}"
 
 QA_PREBUILT="*"
 BRAVE_HOME="opt/${BRAVE_PN}.com/${BRAVE_PN}"
-QA_DESKTOP_FILE="usr/share/applications/${BRAVE_PNF}.*\\.desktop"
 S="${WORKDIR}"
 
 pkg_pretend() {
 	use amd64 || die "This package is available for 64-bit only."
 }
 
-src_unpack() {
-	unpack_deb ${A}
-}
-
 src_prepare() {
-	pushd "${BRAVE_HOME}/locales" > /dev/null || die
+	pushd "${S}/locales" > /dev/null || die
 		chromium_remove_language_paks
 	popd > /dev/null || die
-
-	mv usr/share/appdata usr/share/metainfo || die
-
-	rm -rf usr/share/{gnome-control-center,menu} etc || die
-
-	mv usr/share/doc/${BRAVE_PNF} usr/share/doc/${PF}
-
-	sed -i "s#/usr/bin/##g" usr/share/applications/${BRAVE_PNF}.desktop || die
 
 	default
 }
 
 src_install() {
-	gzip -d usr/share/doc/${PF}/changelog.gz || die
-	gzip -d usr/share/man/man1/${BRAVE_PNF}-stable.1.gz || die
-	if [[ -L usr/share/man/man1/brave-browser.1.gz ]]; then
-		rm usr/share/man/man1/${BRAVE_PNF}.1.gz || die
-		dosym ${BRAVE_PNF}-stable.1 \
-			usr/share/man/man1/${BRAVE_PNF}.1
-	fi
+	mkdir -p "${ED}/${BRAVE_HOME}"
 
-	cp -r . "${ED}"
+	cp -r . "${ED}/${BRAVE_HOME}"
 
 	for size in 16 24 32 48 64 128 256; do
-		newicon -s ${size} ${BRAVE_HOME}/product_logo_${size}.png \
+		newicon -s ${size} product_logo_${size}.png \
 			${BRAVE_PNF}.png
 	done
 
+	dosym /${BRAVE_HOME}/${BRAVE_PNF} /usr/bin/${BRAVE_PNF}-stable
+
 	pax-mark m "${ED}/${BRAVE_HOME}/${BRAVE_PN}"
+
+	domenu "${FILESDIR}/${BRAVE_PNF}.desktop"
+
+	insinto /usr/share/metainfo
+	doins "${FILESDIR}/${BRAVE_PNF}.appdata.xml"
 }
 
 pkg_postinst() {
