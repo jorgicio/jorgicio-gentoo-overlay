@@ -1,0 +1,14 @@
+diff -Naur a/softwareimagewidget.cpp b/softwareimagewidget.cpp
+--- a/softwareimagewidget.cpp	2020-10-14 13:31:48.220473962 -0300
++++ b/softwareimagewidget.cpp	2020-10-14 14:04:34.489836650 -0300
+@@ -3,6 +3,10 @@
+ #include <QHash>
+ #include <QDir>
+ #include <QClipboard>
++#include <QtGlobal>
++#if ( QT_VERSION >= QT_VERSION_CHECK(5, 15, 0) )
++    #include <QPainterPath>
++#endif
+ 
+ #include "softwarelist.h"
+ #include "softwaresnapshot.h"

@@ -39,6 +39,7 @@ S="${WORKDIR}/${PN}"
 PATCHES=(
 	"${FILESDIR}/${PN}-fix-phonon-include.patch"
 	"${FILESDIR}/${PN}-fix-bool-gcc8.patch"
+	"${FILESDIR}/${PN}-qt-5.15-fix.patch"
 )
 
 src_prepare(){
