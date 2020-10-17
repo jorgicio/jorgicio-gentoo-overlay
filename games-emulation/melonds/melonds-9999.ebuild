@@ -26,6 +26,7 @@ SLOT="0"
 DEPEND="
 	media-libs/libsdl2[sound,video]
 	net-libs/libpcap
+	net-libs/libslirp
 	net-misc/curl
 	x11-libs/cairo
 	x11-libs/gtk+:3"
