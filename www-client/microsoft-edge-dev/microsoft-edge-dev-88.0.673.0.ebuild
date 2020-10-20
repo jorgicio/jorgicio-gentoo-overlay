@@ -13,7 +13,7 @@ inherit chromium-2 desktop pax-utils unpacker xdg-utils
 MY_P="${PN}_${PV}-1"
 
 DESCRIPTION="The Chromium-based web browser from Microsoft (development branch)"
-HOMEPAGE="https://www.microsoft.com/edge"
+HOMEPAGE="https://www.microsoft.com/edge https://www.microsoftedgeinsider.com"
 SRC_URI="https://packages.microsoft.com/repos/edge/pool/main/${PN:0:1}/${PN}/${MY_P}_amd64.deb"
 
 LICENSE="MS-edge"
@@ -116,6 +116,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	echo
+	ewarn "This is the dev branch version of Microsoft Edge for Linux."
+	ewarn "You may face some issues and bugs, so don't worry, it's a normal behavior."
+	ewarn "The stable version may be available sooner or later."
+	echo
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
