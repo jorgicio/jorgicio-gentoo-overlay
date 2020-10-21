@@ -1,0 +1,73 @@
+diff -Naur a/common/profile-cleaner.in b/common/profile-cleaner.in
+--- a/common/profile-cleaner.in	2020-10-21 12:19:53.816111337 -0300
++++ b/common/profile-cleaner.in	2020-10-21 12:15:56.071503426 -0300
+@@ -211,6 +211,27 @@
+     fi
+     exit 0
+     ;;
++
++  E|e)
++    for name in microsoft-edge-dev; do
++      if [[ -d "$XDG_CONFIG_HOME"/$name ]]; then
++        tocleanArr+=("$name")
++      else
++        missingArr+=("$name")
++      fi
++    done
++    if [[ "${tocleanArr[@]}" -eq 0 ]]; then
++      do_error_for_chromebased
++    else
++      for name in "${tocleanArr[@]}"; do
++        export name
++        prepath="$XDG_CONFIG_HOME"/$name
++        do_chromebased
++      done
++    fi
++    exit 0
++  ;;
++
+   GC|gc|GCB|gcb|GCD|gcd|GCU|gcu)
+     for name in google-chrome google-chrome-beta google-chrome-unstable; do
+       if [[ -d "$XDG_CONFIG_HOME"/$name ]]; then
+@@ -370,6 +391,7 @@
+       echo
+       echo -e "   ${BLD}b) ${GRN}b${NRM}${BLD}rave (stable, beta, dev and nightly)${NRM}"
+       echo -e "   ${BLD}c) ${GRN}c${NRM}${BLD}hromium (stable, beta, and dev)${NRM}"
++      echo -e "   ${BLD}e) ${GRN}e${NRM}${BLD}dge (dev)${NRM}"
+       echo -e "   ${BLD}f) ${GRN}f${NRM}${BLD}irefox (stable and beta)${NRM}"
+       echo -e "  ${BLD}fa) ${GRN}fa${NRM}${BLD}lkon${NRM}"
+       echo -e "  ${BLD}gc) ${GRN}g${NRM}${BLD}oogle-${GRN}c${NRM}${BLD}hrome (stable, beta, and dev)${NRM}"
+diff -Naur a/common/zsh-completion b/common/zsh-completion
+--- a/common/zsh-completion	2020-10-21 12:19:53.816111337 -0300
++++ b/common/zsh-completion	2020-10-21 12:21:07.118748765 -0300
+@@ -7,6 +7,7 @@
+ 		'b:Brave (stable, beta, dev and nightly)'
+ 		'c:Chromium (stable, beta, and dev)'
+ 		'ck:ConKeror'
++        'e:Microsoft Edge (dev)'
+ 		'f:Firefox (stable and beta)'
+ 		'fa:Falkon'
+ 		'gc:Google-Chrome (stable, beta, and dev)'
+diff -Naur a/doc/pc.1 b/doc/pc.1
+--- a/doc/pc.1	2020-10-21 12:19:53.816111337 -0300
++++ b/doc/pc.1	2020-10-21 12:19:16.595242050 -0300
+@@ -29,6 +29,10 @@
+ Clean conkeror's \fBprofile\fP(s)*
+ .TP
+ .B
++e
++Clean edge's profile
++.TP
++.B
+ f
+ Clean firefox's \fBprofile\fP(s)*
+ .TP
+@@ -136,6 +140,8 @@
+ .IP \(bu 3
+ Conkeror
+ .IP \(bu 3
++Microsoft Edge (dev)
++.IP \(bu 3
+ Firefox (stable,beta,aurora)
+ .IP \(bu 3
+ Google-chrome (stable,beta,dev)
