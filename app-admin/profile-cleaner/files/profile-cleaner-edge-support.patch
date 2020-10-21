@@ -1,6 +1,6 @@
 diff -Naur a/common/profile-cleaner.in b/common/profile-cleaner.in
 --- a/common/profile-cleaner.in	2020-10-21 12:19:53.816111337 -0300
-+++ b/common/profile-cleaner.in	2020-10-21 12:15:56.071503426 -0300
++++ b/common/profile-cleaner.in	2020-10-21 16:31:51.071503170 -0300
 @@ -211,6 +211,27 @@
      fi
      exit 0
@@ -24,7 +24,7 @@ diff -Naur a/common/profile-cleaner.in b/common/profile-cleaner.in
 +      done
 +    fi
 +    exit 0
-+  ;;
++    ;;
 +
    GC|gc|GCB|gcb|GCD|gcd|GCU|gcu)
      for name in google-chrome google-chrome-beta google-chrome-unstable; do
