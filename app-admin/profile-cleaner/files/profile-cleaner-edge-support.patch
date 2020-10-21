@@ -14,7 +14,7 @@ diff -Naur a/common/profile-cleaner.in b/common/profile-cleaner.in
 +        missingArr+=("$name")
 +      fi
 +    done
-+    if [[ "${tocleanArr[@]}" -eq 0 ]]; then
++    if [[ "${#tocleanArr[@]}" -eq 0 ]]; then
 +      do_error_for_chromebased
 +    else
 +      for name in "${tocleanArr[@]}"; do
