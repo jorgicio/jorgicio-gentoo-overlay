@@ -4,9 +4,7 @@
 EAPI=7
 
 CHROMIUM_LANGS="
-	am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
-	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
-	sw ta te th tr uk vi zh-CN zh-TW"
+	af am ar as az be bg bn-IN bn bs ca-valencia ca chr cs cy da de el en-GB en-US es-419 es et eu fa fil fi fr-CA fr ga gd gl gu he hi hr hu hy id is it ja ka kk km kn kok ko ky lb lo lt lv mi mk ml mn mr ms mt nb ne nl nn or pa pl prs pt-BR pt-PT qu ro ru sd si sk sl sq sr sr-BA sr-Latn sv sw ta te th tk tr tt ug uk ur uz-Latn vi zh-CN zh-TW"
 
 inherit chromium-2 desktop pax-utils unpacker xdg-utils
 
@@ -82,12 +80,27 @@ QA_DESKTOP_HOME="usr/share/applications/${PN}.desktop"
 S="${WORKDIR}"
 MSEDGE_HOME="opt/microsoft/msedge-dev"
 
+language_renamer() {
+	# Renaming languages in order to support CHROMIUM_LANGS format.
+	# Catalan (Valencia)
+	mv "${MSEDGE_HOME}"/locales/ca-Es-VALENCIA.pak \
+			"${MSEDGE_HOME}"/locales/ca-valencia.pak
+	# Serbian (Bosnia and Herzegovina, cyrillic)
+	mv "${MSEDGE_HOME}"/locales/sr-Cyrl-BA.pak \
+			"${MSEDGE_HOME}"/locales/sr-BA.pak
+	# Serbian (latin script)
+	mv "${MSEDGE_HOME}"/locales/sr-Latn-RS.pak \
+			"${MSEDGE_HOME}"/locales/sr-Latn.pak
+}
+
 pkg_pretend() {
 	use amd64 || die "This package is available for 64-bit only."
 }
 
 src_prepare() {
 	rm _gpgorigin
+
+	language_renamer
 
 	pushd "${MSEDGE_HOME}/locales" > /dev/null || die
 	chromium_remove_language_paks
@@ -113,7 +126,7 @@ src_install() {
 			${PN}.png
 	done
 
-	pax-mark m "${ED}/${MSEDGE_HOME}/${PN}"
+	pax-mark m "${ED}/${MSEDGE_HOME}"/msedge
 }
 
 pkg_postinst() {
