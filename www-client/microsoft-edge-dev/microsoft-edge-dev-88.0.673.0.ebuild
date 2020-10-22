@@ -90,6 +90,7 @@ src_prepare() {
 	rm _gpgorigin
 
 	pushd "${MSEDGE_HOME}/locales" > /dev/null || die
+	chromium_remove_language_paks
 	popd > /dev/null || die
 
 	mv usr/share/appdata usr/share/metainfo || die
