@@ -4,7 +4,10 @@
 EAPI=7
 
 CHROMIUM_LANGS="
-	af am ar as az be bg bn-IN bn bs ca-valencia ca chr cs cy da de el en-GB en-US es-419 es et eu fa fil fi fr-CA fr ga gd gl gu he hi hr hu hy id is it ja ka kk km kn kok ko ky lb lo lt lv mi mk ml mn mr ms mt nb ne nl nn or pa pl prs pt-BR pt-PT qu ro ru sd si sk sl sq sr sr-BA sr-Latn sv sw ta te th tk tr tt ug uk ur uz-Latn vi zh-CN zh-TW"
+	af am ar as az be bg bn-IN bn bs ca-valencia ca chr cs cy da de el en-GB en-US es-419 es et eu
+	fa fil fi fr-CA fr ga gd gl gu he hi hr hu hy id is it ja ka kk km kn kok ko ky lb lo lt lv mi
+	mk ml mn mr ms mt nb ne nl nn or pa pl prs pt-BR pt-PT qu ro ru sd si sk sl sq sr sr-BA sr-Latn
+	sv sw ta te th tk tr tt ug uk ur uz-Latn vi zh-CN zh-TW"
 
 inherit chromium-2 desktop pax-utils unpacker xdg-utils
 
