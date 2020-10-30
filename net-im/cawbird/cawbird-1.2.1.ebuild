@@ -8,7 +8,7 @@ VALA_MIN_API_VERSION=0.28
 inherit gnome2-utils meson vala xdg-utils
 
 DESCRIPTION="Native GTK+3 Twitter client, forked from Corebird"
-HOMEPAGE="https://ibboard.co.uk/cawbird/"
+HOMEPAGE="https://github.com/IBBoard/cawbird"
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
