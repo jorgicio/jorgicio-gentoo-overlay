@@ -86,18 +86,18 @@ pkg_pretend() {
 	use amd64 || die "This package is available for 64-bit only."
 }
 
-src_prepare() {
-	pushd "${S}/locales" > /dev/null || die
-		chromium_remove_language_paks
-	popd > /dev/null || die
-
-	default
+src_unpack() {
+	:
 }
 
 src_install() {
 	mkdir -p "${ED}/${BRAVE_HOME}"
+	cd "${ED}/${BRAVE_HOME}"
+	unpack ${A}
 
-	cp -r . "${ED}/${BRAVE_HOME}"
+	pushd "locales" > /dev/null || die
+		chromium_remove_language_paks
+	popd > /dev/null || die
 
 	for size in 16 24 32 48 64 128 256; do
 		newicon -s ${size} product_logo_${size}.png \
