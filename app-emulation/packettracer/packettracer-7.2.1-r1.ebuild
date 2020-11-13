@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="Cisco"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="libressl"
 RESTRICT="fetch mirror strip"
 
 DEPEND="
@@ -24,7 +24,8 @@ RDEPEND="${DEPEND}
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-libs/icu
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	media-libs/libpng-compat:1.2
 "
 S="${WORKDIR}"
