@@ -34,23 +34,26 @@ RDEPEND="
 	dev-libs/nss
 	app-crypt/libsecret[crypt]"
 
-S="${WORKDIR}/VSCode-linux-x64"
-
-DOCS=( resources/app/LICENSE.rtf )
+S="${WORKDIR}"
 
 QA_PRESTRIPPED="*"
 QA_PREBUILT="opt/${MY_PN}/code"
 
+src_unpack() {
+	:
+}
+
 src_install(){
-	mkdir -p "${ED%/}/opt/${MY_PN}"
-	cp -r . "${ED%/}/opt/${MY_PN}/"
+	mkdir -p "${ED%/}"/opt/
+	cd "${ED%/}"/opt/
+	unpack ${A}
+	mv VSCode-linux-x64 ${MY_PN}
 	dodir /usr/bin
 	dosym ../../opt/${MY_PN}/bin/code /usr/bin/${MY_PN}
 	dosym ../../opt/${MY_PN}/bin/code /usr/bin/code
 	domenu "${FILESDIR}/${PN}.desktop"
 	domenu "${FILESDIR}/${PN}-url-handler.desktop"
-	newicon "resources/app/resources/linux/code.png" ${MY_PN}.png
-	einstalldocs
+	newicon "${MY_PN}/resources/app/resources/linux/code.png" ${MY_PN}.png
 	pax-mark m "${ED%/}"/opt/${MY_PN}/code
 }
 
