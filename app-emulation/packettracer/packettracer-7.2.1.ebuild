@@ -39,7 +39,7 @@ pkg_nofetch(){
 	ewarn "your account, and after that, you should download a file"
 	ewarn "named \"Packet Tracer ${PV} for Linux 64bit.tar.gz\""
 	ewarn "then, rename it to \"${P}-amd64.tar.gz\" and move it to"
-	ewarn "your DISTDIR directory (default: /usr/portage/distfiles)"
+	ewarn "your DISTDIR directory (default: /var/cache/distfiles)"
 	ewarn "and then, you can proceed with the installation."
 	ewarn "Renaming is necessary due to space naming conflicts."
 }
