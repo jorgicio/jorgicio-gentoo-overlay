@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="Cisco"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="libressl"
 RESTRICT="fetch mirror strip"
 
 DEPEND="
@@ -24,7 +24,8 @@ RDEPEND="${DEPEND}
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-libs/icu
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	media-libs/libpng-compat:1.2
 "
 S="${WORKDIR}"
@@ -38,7 +39,7 @@ pkg_nofetch(){
 	ewarn "your account, and after that, you should download a file"
 	ewarn "named \"Packet Tracer ${PV} for Linux 64bit.tar.gz\""
 	ewarn "then, rename it to \"${P}-amd64.tar.gz\" and move it to"
-	ewarn "your DISTDIR directory (default: /usr/portage/distfiles)"
+	ewarn "your DISTDIR directory (default: /var/cache/distfiles)"
 	ewarn "and then, you can proceed with the installation."
 	ewarn "Renaming is necessary due to space naming conflicts."
 }
