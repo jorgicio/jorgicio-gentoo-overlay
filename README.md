@@ -3,19 +3,32 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Jorgicio Custom Overlay](#jorgicio-custom-overlay)
+  - [Branch renaming (Information for collaborators, MUST READ)](#branch-renaming-information-for-collaborators-must-read)
   - [Usage](#usage)
     - [Using Layman](#using-layman)
     - [Using eselect-repository](#using-eselect-repository)
   - [Note for all people who send pull requests (MUST READ)](#note-for-all-people-who-send-pull-requests-must-read)
   - [Note for all people who doesn't own a Github accound (MUST READ)](#note-for-all-people-who-doesnt-own-a-github-accound-must-read)
   - [Problem with media-tv/xawtv ? See here](#problem-with-media-tvxawtv--see-here)
-  - [Want to contribute? Please, contact me (PLEASE, READ)](#want-to-contribute-please-contact-me-please-read)
+  - [Want to contribute? Please, contact me](#want-to-contribute-please-contact-me)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Jorgicio Custom Overlay
 
 Made with love by Jorge Pizarro Callejas, a.k.a. [Jorgicio](http://www.jorgicio.net).
+
+## Branch renaming (Information for collaborators, MUST READ)
+
+The default branch is now `main` instead of `master`, so if you want to send your PRs, you should do the following if not done before:
+
+    git checkout master
+    git branch -m master main
+    git fetch
+    git branch --unset-upstream
+    git branch -u origin/main
+
+And that's it.
 
 ## Usage
 
