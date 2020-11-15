@@ -3,6 +3,7 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Jorgicio Custom Overlay](#jorgicio-custom-overlay)
+  - [Branch renaming (Information for users, MUST READ)](#branch-renaming-information-for-users-must-read)
   - [Branch renaming (Information for collaborators, MUST READ)](#branch-renaming-information-for-collaborators-must-read)
   - [Usage](#usage)
     - [Using Layman](#using-layman)
@@ -17,6 +18,10 @@
 # Jorgicio Custom Overlay
 
 Made with love by Jorge Pizarro Callejas, a.k.a. [Jorgicio](http://www.jorgicio.net).
+
+## Branch renaming (Information for users, MUST READ)
+
+Since I renamed the default branch from `master` to `main`, you may experiment syncing issues. In order to fix that, just remove this repo and add it again using the method of your choice. See more information below.
 
 ## Branch renaming (Information for collaborators, MUST READ)
 
