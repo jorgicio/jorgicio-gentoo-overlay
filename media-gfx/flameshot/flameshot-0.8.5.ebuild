@@ -7,7 +7,7 @@ inherit cmake xdg-utils
 
 DESCRIPTION="Powerful yet simple to use screenshot software"
 HOMEPAGE="https://flameshot.org"
-SRC_URI="https://github.com/lupoDharkael/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-org/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="FreeArt GPL-3 Apache-2.0"
 SLOT="0"
@@ -26,6 +26,7 @@ DEPEND="
 "
 BDEPEND="
 	dev-qt/linguist-tools:5
+	>=dev-util/cmake-3.13
 "
 RDEPEND="${DEPEND}"
 
