@@ -1,2 +1,2 @@
 # Maybe Gentoo mask it, I don't.
-games-emulation/ppsspp::jorgicio
+>=games-emulation/ppsspp-1.10.3
