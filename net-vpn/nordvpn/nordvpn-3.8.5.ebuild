@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit unpacker
+inherit linux-info unpacker
 
 DESCRIPTION="NordVPN CLI tool for Linux"
 HOMEPAGE="https://nordvpn.com"
@@ -36,8 +36,13 @@ RDEPEND="
 
 S="${WORKDIR}"
 
-src_unpack() {
-	unpack_deb ${A}
+pkg_pretend() {
+	if use nordlynx && kernel_is -ge 5 6; then
+		eerror "You enabled the nordlynx USE-flag and"
+		eerror "have a kernel >= 5.6, so this is not needed"
+		eerror "because the wireguard-modules built into the"
+		eerror "kernel. Please, disable it."
+	fi
 }
 
 src_prepare() {
