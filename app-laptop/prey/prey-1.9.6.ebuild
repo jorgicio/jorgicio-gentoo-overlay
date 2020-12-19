@@ -54,8 +54,8 @@ pkg_postinst(){
 	if [[ -f "${EROOT}/etc/init.d/prey-agent" ]];then
 		elog "Daemon for prey-agent found. Cleaning..."
 		rm -f "${EROOT}/etc/init.d/prey-agent"
-		install -m755 "${FILESDIR}/${PN}-agent" "${EROOT}/etc/init.d/prey-agent"
 	fi
+	install -m755 "${FILESDIR}/${PN}-agent" "${EROOT}/etc/init.d/prey-agent"
 	elog "Daemon for OpenRC installed"
 	gpasswd -a prey video >/dev/null
 	einfo "Don't forget add your user to the group prey (as root):"
