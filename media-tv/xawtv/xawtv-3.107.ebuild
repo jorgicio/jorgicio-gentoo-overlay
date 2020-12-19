@@ -81,6 +81,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.95-stdbool.patch"
 	epatch "${FILESDIR}/${PN}-3.95-underlinking.patch"
 	epatch "${FILESDIR}/${PN}-3.103_all_autocolor.patch"
+	epatch "${FILESDIR}/sys_siglist.patch"
 	eapply_user
 	eautoreconf
 }
@@ -106,6 +107,8 @@ src_configure() {
 
 src_compile() {
 	append-ldflags -fuse-ld=bfd
+	# This is required for GCC >= 10
+	append-cflags -fcommon
 	emake verbose=yes
 
 	if use X; then
