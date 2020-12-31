@@ -8,7 +8,8 @@ I got a new laptop, a Dell G3 15 3500. Since it has some new hardware, tried and
 
 I'm not planning to leave my overlay, but I won't maintain it for now. So that's why I need collaborators.
 
-You can add PRs or write me in order to add you as a collaborator.If you have some idea to share, it'll be welcome.
+You can add PRs or write me in order to add you as a collaborator. If you have some idea to share, it'll be welcome.
+Also, you can submit an issue and/or [write me](mailto:jpizarrocallejas@gmail.com) an email.
 
 Thank you, and sorry for the inconveniences.
 
