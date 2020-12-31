@@ -1,3 +1,17 @@
+# HELP! I need collaborators. (MUST READ, PLEASE)
+
+Hi!
+
+It's sad for me to say that I had to leave Gentoo (at least, for some undeterminate time). Let me explain:
+
+I got a new laptop, a Dell G3 15 3500. Since it has some new hardware, tried and installed Calculate (as well some other Live USBs) and Kubuntu is the only distro that recognizes ALL the hardware, including sound (with no issues) and the Prime, as well as I found it's a good git for a bit gaming.
+
+I'm not planning to leave my overlay, but I won't maintain it for now. So that's why I need collaborators.
+
+You can add PRs or write me in order to add you as a collaborator.If you have some idea to share, it'll be welcome.
+
+Thank you, and sorry for the inconveniences.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
