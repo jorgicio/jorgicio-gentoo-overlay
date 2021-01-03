@@ -18,7 +18,7 @@ IUSE="pkgconf"
 
 DEPEND=">=media-libs/libclthreads-2.4.0
 	>=media-libs/libclxclient-3.6.1
-	media-sound/jack-audio-connection-kit"
+	virtual/jack"
 RDEPEND="${RDEPEND}"
 BDEPEND="pkgconf? ( dev-util/pkgconf )"
 
