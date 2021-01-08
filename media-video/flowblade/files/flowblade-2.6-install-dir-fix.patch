@@ -1,0 +1,13 @@
+diff --git a/flowblade-trunk/flowblade b/flowblade-trunk/flowblade
+index 62b6b66..0c49d39 100755
+--- a/flowblade-trunk/flowblade
++++ b/flowblade-trunk/flowblade
+@@ -39,6 +39,8 @@ if launch_dir == "/usr/bin":
+     modules_path = "/usr/share/flowblade/Flowblade"
+     if not os.path.isdir(modules_path):
+         modules_path = "/usr/share/pyshared/Flowblade"
++        if not os.path.isdir(modules_path):
++            modules_path = "/usr/share/flowblade"
+     print ("modules path:", modules_path)
+ # When running in flatpak.
+ elif launch_dir == "/app/bin":
