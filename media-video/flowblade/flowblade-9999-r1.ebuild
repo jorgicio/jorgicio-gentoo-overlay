@@ -26,19 +26,19 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	>=x11-libs/gtk+-3.0:3
 	$(python_gen_any_dep 'dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]' )
 	>=media-libs/mlt-6.18.0[python,ffmpeg,gtk]
 	$(python_gen_any_dep 'dev-python/dbus-python[${PYTHON_USEDEP}]' )
+	>=x11-libs/gtk+-3.0:3[introspection]
 	media-plugins/frei0r-plugins
 	media-plugins/swh-plugins
-	$(python_gen_any_dep 'dev-python/pycairo[${PYTHON_USEDEP}]' )
 	$(python_gen_any_dep 'dev-python/numpy[${PYTHON_USEDEP}]' )
 	$(python_gen_any_dep 'dev-python/pillow:0[${PYTHON_USEDEP}]' )
 	gnome-base/librsvg:2=
 	media-gfx/gmic[ffmpeg,X]
 	dev-libs/glib:2[dbus]
-	x11-libs/gdk-pixbuf:2
+	x11-libs/pango[introspection]
+	x11-libs/gdk-pixbuf:2[introspection]
 	media-video/ffmpeg
 "
 RDEPEND="${DEPEND}"
