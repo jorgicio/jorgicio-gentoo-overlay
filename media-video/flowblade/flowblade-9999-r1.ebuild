@@ -48,7 +48,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply -p2 "${FILESDIR}/${PN}-2.4-install-dir-fix.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.6-install-dir-fix.patch"
 	default
 }
 
