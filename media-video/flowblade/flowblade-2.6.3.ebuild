@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_8 )
 
-inherit desktop python-any-r1 xdg
+inherit desktop python-single-r1 xdg
 
 DESCRIPTION="A multitrack non-linear video editor"
 HOMEPAGE="https://github.com/jliljebl/flowblade"
@@ -26,14 +26,14 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]' )
-	>=media-libs/mlt-6.18.0[python,ffmpeg,gtk]
-	$(python_gen_any_dep 'dev-python/dbus-python[${PYTHON_USEDEP}]' )
 	>=x11-libs/gtk+-3.0:3[introspection]
+	$(python_gen_cond_dep 'dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]' )
+	>=media-libs/mlt-6.18.0[python,ffmpeg,gtk,${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/dbus-python[${PYTHON_USEDEP}]' )
 	media-plugins/frei0r-plugins
 	media-plugins/swh-plugins
-	$(python_gen_any_dep 'dev-python/numpy[${PYTHON_USEDEP}]' )
-	$(python_gen_any_dep 'dev-python/pillow:0[${PYTHON_USEDEP}]' )
+	$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' )
+	$(python_gen_cond_dep 'dev-python/pillow:0[${PYTHON_USEDEP}]' )
 	gnome-base/librsvg:2=
 	media-gfx/gmic[ffmpeg,X]
 	dev-libs/glib:2[dbus]
@@ -44,7 +44,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
