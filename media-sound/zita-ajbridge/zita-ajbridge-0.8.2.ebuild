@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="media-libs/alsa-lib
 	>=media-libs/zita-alsa-pcmi-0.2.0
 	>=media-libs/zita-resampler-1.3.0
-	media-sound/jack-audio-connection-kit"
+	virtual/jack"
 
 S=${WORKDIR}/${P}/source
 RESTRICT="mirror"

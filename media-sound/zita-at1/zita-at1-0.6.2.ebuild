@@ -17,7 +17,7 @@ IUSE="pkgconf"
 DEPEND=">=media-libs/libclthreads-2.4.0
 	>=media-libs/libclxclient-3.6.1
 	>=media-libs/zita-resampler-1.1.0
-	media-sound/jack-audio-connection-kit
+	virtual/jack
 	>=sci-libs/fftw-3.2.2:3.0"
 RDEPEND="${RDEPEND}"
 BDEPEND="pkgconf? ( dev-util/pkgconf )"
