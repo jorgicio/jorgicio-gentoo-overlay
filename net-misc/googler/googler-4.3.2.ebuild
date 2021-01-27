@@ -1,9 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-PYTHON_COMPAT=( python3_{6,7,8} )
+EAPI=7
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit bash-completion-r1 eutils python-r1
 
@@ -23,17 +22,24 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="bash-completion fish-completion zsh-completion"
 
-DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}"
+RDEPEND="${PYTHON_DEPS}"
+
+RESTRICT="test"
 
 src_prepare(){
-	sed -i "s#/usr/local#/usr#" Makefile || die
 	default
+	sed -i \
+		-e "s:^.*gzip -c.*::" \
+		-e "s:googler.1.gz:googler.1:" \
+		Makefile || die
 }
 
 src_install(){
-	emake DESTDIR="${D}" disable-self-upgrade
-	emake DESTDIR="${D}" install
+	emake disable-self-upgrade
+	emake DESTDIR="${D}" \
+		PREFIX="${EPREFIX}/usr" \
+		DOCDIR="${D}/${EPREFIX}/usr/share/doc/${PF}" \
+		install
 	use bash-completion && newbashcomp auto-completion/bash/${PN}-completion.bash ${PN}
 	if use fish-completion; then
 		insinto /usr/share/fish/vendor_completions.d/
