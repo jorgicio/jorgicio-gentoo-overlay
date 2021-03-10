@@ -10,7 +10,8 @@ CHROMIUM_LANGS="
 
 inherit chromium-2 pax-utils unpacker xdg
 
-MY_PV="${PV/_beta}"
+MY_PV="$(ver_cut 1-3)-$(ver_cut 4-5)"
+MY_PV="${MY_PV/_beta}"
 
 DESCRIPTION="Password manager and secure wallet (currently in beta)"
 HOMEPAGE="https://1password.com"
