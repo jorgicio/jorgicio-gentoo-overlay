@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop pax-utils
+inherit desktop pax-utils xdg-utils
 
 MY_PN="${PN/-bin}"
 MY_P=${MY_PN}-${PV}
@@ -58,6 +58,11 @@ src_install(){
 }
 
 pkg_postinst(){
+	xdg_desktop_database_update
 	elog "You may install some additional utils, so check them in:"
 	elog "https://code.visualstudio.com/Docs/setup#_additional-tools"
+}
+
+pkg_postrm(){
+	xdg_desktop_database_update
 }
