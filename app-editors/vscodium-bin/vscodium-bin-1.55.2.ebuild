@@ -1,9 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop pax-utils
+inherit desktop pax-utils xdg-utils
 
 MY_PN="${PN/-bin}"
 
@@ -56,4 +56,12 @@ src_install(){
 	domenu "${FILESDIR}/${PN}.desktop"
 	newicon "resources/app/resources/linux/code.png" ${MY_PN}.png
 	pax-mark m "${ED%/}"/opt/${MY_PN}/codium
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
