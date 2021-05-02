@@ -25,6 +25,7 @@ RDEPEND="
 	>=dev-qt/qtprintsupport-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
 	X? (
+		>=dev-qt/qtx11extras-${QTMIN}:5
 		x11-libs/libICE
 		x11-libs/libX11
 		x11-libs/libXext
