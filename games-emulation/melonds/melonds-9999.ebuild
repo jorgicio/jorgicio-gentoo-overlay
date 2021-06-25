@@ -7,7 +7,7 @@ inherit cmake desktop xdg
 
 MY_PN="melonDS"
 
-DESCRIPTION="NintendoDS emulator, sorta. Also 1st quality melon."
+DESCRIPTION="Nintendo DS emulator, sorta. Also 1st quality melon."
 HOMEPAGE="http://melonds.kuribo64.net"
 
 if [[ ${PV} == 9999 ]]; then
@@ -22,30 +22,40 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="+opengl"
 
 DEPEND="
+	app-arch/libarchive
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 	media-libs/libsdl2[sound,video]
 	net-libs/libpcap
 	net-libs/libslirp
-	net-misc/curl
-	x11-libs/cairo
-	x11-libs/gtk+:3"
+	opengl? ( media-libs/libepoxy )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	cmake_src_prepare
 }
 
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=OFF
+		-DENABLE_OGLRENDERER=$(usex opengl)
+	)
+
+	cmake_src_configure
+}
+
 pkg_postinst() {
 	xdg_pkg_postinst
 	echo
-	elog "You need the following files in order to run melonDS:"
+	elog "You will need the following files in order to use melonDS:"
 	elog "- bios7.bin"
 	elog "- bios9.bin"
 	elog "- firmware.bin"
-	elog "- romlist.bin"
-	elog "Place them in the same directory you're running melonDS."
-	elog "The romlist.bin file can be found in the /usr/share/${MY_PN} directory,"
-	elog "while the other files can be found somewhere in the internet."
+	elog "Configure the paths for them in Config > Emu settings > DS-mode."
+	elog "These can be found somewhere on the internet."
 	echo
 }
