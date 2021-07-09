@@ -5,11 +5,8 @@ EAPI=7
 
 inherit cargo git-r3
 
-CARGO_FETCH_CRATES=yes
-
 DESCRIPTION="ripgrep, but also search in PDFs, e-books, office documents, compressed, etc."
 HOMEPAGE="https://github.com/phiresky/ripgrep-all"
-SRC_URI="$(cargo_crate_uris ${CRATES})"
 EGIT_REPO_URI="${HOMEPAGE}"
 
 LICENSE="AGPL-3"
@@ -19,10 +16,15 @@ RDEPEND="
 	app-text/pandoc
 	app-text/poppler
 	sys-apps/ripgrep
-	virtual/ffmpeg
+	media-video/ffmpeg
 "
 DEPEND="${RDEPEND}"
 RESTRICT="network-sandbox"
+
+src_unpack() {
+	git-r3_src_unpack
+	cargo_live_src_unpack
+}
 
 pkg_postinst(){
 	echo
