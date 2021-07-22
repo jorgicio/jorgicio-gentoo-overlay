@@ -18,6 +18,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
+CONSUMER_KEY_BASE64="VmY5dG9yRFcyWk93MzJEZmhVdEk5Y3NMOA=="
+CONSUMER_SECRET_BASE64="MThCRXIxbWRESDQ2Y0podzVtVU13SGUyVGlCRXhPb3BFRHhGYlB6ZkpybG5GdXZaSjI="
+
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="debug +gstreamer spellcheck"
@@ -29,10 +32,12 @@ RDEPEND="dev-db/sqlite:3
 		media-libs/gst-plugins-base:1.0[X]
 		>=media-libs/gst-plugins-bad-1.6:1.0[X]
 		media-libs/gst-plugins-good:1.0
+		media-plugins/gst-plugins-gtk:1.0
 		media-plugins/gst-plugins-libav:1.0
 		media-plugins/gst-plugins-soup:1.0
 		media-plugins/gst-plugins-hls:1.0 )
 	spellcheck? ( >=app-text/gspell-1.2 )
+	net-libs/liboauth
 	>=net-libs/libsoup-2.42.3.1
 	>=net-libs/rest-0.7.91:0.7
 	>=x11-libs/gtk+-3.22:3"
@@ -55,6 +60,8 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use gstreamer "video")
 		$(meson_use spellcheck)
+		-Dconsumer_key_base64="$CONSUMER_KEY_BASE64"
+		-Dconsumer_secret_base64="$CONSUMER_SECRET_BASE64"
 	)
 	meson_src_configure
 }
