@@ -1,0 +1,52 @@
+diff --git a/effects/internal/texteffect.cpp b/effects/internal/texteffect.cpp
+index 279f406..9c2c4dc 100644
+--- a/effects/internal/texteffect.cpp
++++ b/effects/internal/texteffect.cpp
+@@ -32,6 +32,7 @@
+ #include <QWidget>
+ #include <QtMath>
+ #include <QMenu>
++#include <QPainterPath>
+ 
+ #include "ui/labelslider.h"
+ #include "ui/collapsiblewidget.h"
+diff --git a/effects/internal/timecodeeffect.cpp b/effects/internal/timecodeeffect.cpp
+index 4de3e34..38d6924 100644
+--- a/effects/internal/timecodeeffect.cpp
++++ b/effects/internal/timecodeeffect.cpp
+@@ -32,6 +32,7 @@
+ #include <QWidget>
+ #include <QtMath>
+ #include <QDebug>
++#include <QPainterPath>
+ 
+ #include "ui/labelslider.h"
+ #include "ui/collapsiblewidget.h"
+diff --git a/olive-editor b/olive-editor
+new file mode 100755
+index 0000000..ad18010
+Binary files /dev/null and b/olive-editor differ
+diff --git a/ui/graphview.cpp b/ui/graphview.cpp
+index 3e13075..c191cdd 100644
+--- a/ui/graphview.cpp
++++ b/ui/graphview.cpp
+@@ -24,6 +24,7 @@
+ #include <QMouseEvent>
+ #include <QtMath>
+ #include <cfloat>
++#include <QPainterPath>
+ 
+ #include "global/config.h"
+ #include "panels/panels.h"
+diff --git a/ui/timelineheader.cpp b/ui/timelineheader.cpp
+index f39065b..0516fd3 100644
+--- a/ui/timelineheader.cpp
++++ b/ui/timelineheader.cpp
+@@ -25,6 +25,7 @@
+ #include <QScrollBar>
+ #include <QtMath>
+ #include <QAction>
++#include <QPainterPath>
+ 
+ #include "mainwindow.h"
+ #include "panels/panels.h"
