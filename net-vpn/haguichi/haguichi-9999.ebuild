@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,6 @@ DEPEND="
 	$(vala_depend)
 	net-vpn/logmein-hamachi
 	>=x11-libs/gtk+-3.18:3
-	>=x11-libs/libnotify-0.7.6
 	sys-devel/gettext
 	>=dev-libs/glib-2.48:2
 	appindicator? ( dev-libs/libappindicator:3 )
@@ -55,11 +54,9 @@ pkg_preinst(){
 }
 
 pkg_postinst(){
-	gnome2_gconf_install
 	gnome2_schemas_update
 }
 
 pkg_postrm(){
-	gnome2_gconf_uninstall
 	gnome2_schemas_update
 }
