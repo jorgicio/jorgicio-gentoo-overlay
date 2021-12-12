@@ -34,7 +34,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/disable_git_version_checking.patch" )
+PATCHES=( 
+	"${FILESDIR}/disable_git_version_checking.patch" 
+	"${FILESDIR}/QPainterPath.patch"
+)
 
 src_configure() {
 	eqmake5 \
