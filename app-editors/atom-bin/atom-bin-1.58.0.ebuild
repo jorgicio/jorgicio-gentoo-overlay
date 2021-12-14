@@ -18,7 +18,7 @@ KEYWORDS="-* ~amd64"
 SLOT="0"
 LICENSE="MIT"
 
-IUSE="libressl system-node"
+IUSE="system-node"
 
 DEPEND="${PYTHON_DEPS}
 	!!dev-util/atom-shell
@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}
 	system-node? ( net-libs/nodejs[npm] )
 	app-accessibility/at-spi2-atk:2
 	app-arch/bzip2
+	app-text/hunspell
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/fribidi
@@ -99,11 +100,8 @@ RDEPEND="${RDEPEND}
 	x11-libs/libnotify
 	gnome-base/gvfs
 	app-crypt/libsecret
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? (
-		dev-libs/openssl:0=
-		dev-libs/openssl-compat:1.0.0=
-	)"
+	dev-libs/openssl:0=
+	dev-libs/openssl-compat:1.0.0="
 
 S="${WORKDIR}/${MY_PN}-${PV}-amd64"
 
