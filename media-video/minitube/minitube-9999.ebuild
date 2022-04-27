@@ -27,24 +27,22 @@ SLOT="0"
 IUSE="debug download"
 
 DEPEND="dev-qt/qtgui:5[accessibility]
+	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtscript:5
+	dev-qt/qtdeclarative:5
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtimageformats:5
 	dev-qt/qtsingleapplication[qt5(+),X]
-	media-libs/phonon
+	media-video/mpv[libmpv]
 "
 RDEPEND="${DEPEND}"
 
 DOCS="AUTHORS CHANGES TODO"
 
-#455976
-PATCHES=( "${FILESDIR}"/${PN}-2.5.1-disable-updates.patch )
-
 src_prepare() {
-	eapply "${PATCHES[@]}"
-
 	# Remove unneeded translations
 	local trans=
 	for x in $(plocale_get_locales); do
