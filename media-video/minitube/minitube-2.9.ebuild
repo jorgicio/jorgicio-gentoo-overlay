@@ -6,7 +6,7 @@ PLOCALES="ar ca ca_ES da de_DE el en es es_AR es_ES fi fi_FI fr he_IL hr hu
 ia it jv nl pl pl_PL pt_BR ro ru sk sl tr zh_CN"
 PLOCALE_BACKUP="en"
 
-inherit l10n qmake-utils
+inherit plocale qmake-utils
 
 DESCRIPTION="Qt5 YouTube Client"
 HOMEPAGE="http://flavio.tordini.org/minitube"
@@ -47,7 +47,7 @@ src_prepare() {
 
 	# Remove unneeded translations
 	local trans=
-	for x in $(l10n_get_locales); do
+	for x in $(plocale_get_locales); do
 		trans+="${x}.ts "
 	done
 	if [[ -n ${trans} ]]; then
