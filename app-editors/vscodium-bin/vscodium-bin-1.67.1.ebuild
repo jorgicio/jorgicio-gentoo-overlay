@@ -12,14 +12,13 @@ HOMEPAGE="https://vscodium.com"
 
 SRC_URI="
 	amd64? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-x64-${PV}.tar.gz )
-	arm? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-armhf-${PV}.tar.gz )
 	arm64? ( https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-arm64-${PV}.tar.gz )"
 
 RESTRICT="mirror strip bindist"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64"
+KEYWORDS="-* ~amd64 ~arm64"
 
 DEPEND="
 	>=media-libs/libpng-1.2.46
