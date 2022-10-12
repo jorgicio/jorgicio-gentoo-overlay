@@ -1,9 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
-inherit desktop eutils python-any-r1 toolchain-funcs qmake-utils xdg-utils
+PYTHON_COMPAT=( python3_{8..11} )
+inherit desktop python-any-r1 qmake-utils toolchain-funcs xdg
 
 MY_PV="${PV/.}"
 
@@ -14,17 +14,10 @@ SRC_URI="https://github.com/mamedev/mame/archive/mame${MY_PV}.tar.gz -> mame-${P
 LICENSE="GPL-2+ BSD-2 MIT CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa +arcade debug +mess opengl openmp tools"
+IUSE="alsa +arcade debug +mess opengl openmp pulseaudio tools"
 REQUIRED_USE="|| ( arcade mess )"
 
-# MESS (games-emulation/sdlmess) has been merged into MAME upstream since mame-0.162 (see below)
-#  MAME/MESS build combined (default)	+arcade +mess	(mame)
-#  MAME build only			+arcade -mess	(mamearcade)
-#  MESS build only			-arcade +mess	(mess)
-# games-emulation/sdlmametools is dropped and enabled instead by the 'tools' useflag
-RDEPEND="!games-emulation/sdlmametools
-	!games-emulation/sdlmess
-	dev-db/sqlite:3
+RDEPEND="dev-db/sqlite:3
 	dev-libs/expat
 	media-libs/fontconfig
 	media-libs/flac
@@ -32,13 +25,14 @@ RDEPEND="!games-emulation/sdlmametools
 	media-libs/portaudio
 	media-libs/sdl2-ttf
 	sys-libs/zlib
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib
 		media-libs/portmidi )
 	debug? ( dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5 )
+	pulseaudio? ( media-sound/pulseaudio )
 	x11-libs/libX11
 	x11-libs/libXinerama"
 DEPEND="${RDEPEND}
@@ -65,6 +59,9 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	! use pulseaudio && enable_feature NO_USE_PULSEAUDIO
+
 	# Disable using bundled libraries
 	enable_feature USE_SYSTEM_LIB_EXPAT
 	enable_feature USE_SYSTEM_LIB_FLAC
@@ -130,14 +127,12 @@ src_compile() {
 
 src_install() {
 	local MAMEBIN
-	local suffix="$(use amd64 && echo 64)$(use debug && echo d)"
+	local suffix="$(use debug && echo d)"
 	local f
 
 	function mess_install() {
 		dosym ${MAMEBIN} "/usr/bin/mess${suffix}"
 		dosym ${MAMEBIN} "/usr/bin/sdlmess"
-		newman docs/man/mess.6 sdlmess.6
-		doman docs/man/mess.6
 	}
 	if use arcade ; then
 		if use mess ; then
