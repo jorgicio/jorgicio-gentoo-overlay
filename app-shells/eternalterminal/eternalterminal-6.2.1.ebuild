@@ -37,6 +37,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_configure() {
+	local mycmakeargs=(
+		-DDISABLE_VCPKG=True
+	)
+	cmake_src_configure
+}
+
 src_install() {
 	cmake_src_install
 	insinto /etc
